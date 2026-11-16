@@ -676,7 +676,7 @@ body[data-screen="bomb"] #vstop{top:5px}
 .tbl.clues td:first-child{width:86px;white-space:nowrap;font-variant-numeric:tabular-nums}
 /* clock: examples, then the times to write; every word can be tapped for its meaning */
 .ck-h{margin:0 0 8px}
-.ck-ex{max-width:680px;background:#fff;border:1.5px solid rgba(21,24,28,.2);border-radius:12px;overflow:hidden;margin:0 0 18px}
+.ck-ex{max-width:680px;background:#fff;border:1.5px solid rgba(21,24,28,.2);border-radius:12px;margin:0 0 18px}
 .ck-ex li{display:grid;grid-template-columns:5.2ch minmax(0,1fr);gap:18px;align-items:baseline;padding:10px 16px;font-size:20px;line-height:1.4;border-bottom:1px solid rgba(21,24,28,.12)}
 .ck-ex.anim li{animation:ckin .4s both}
 .ck-ex li:last-child{border-bottom:0}
@@ -690,8 +690,9 @@ body[data-screen="bomb"] #vstop{top:5px}
 .wd.open:hover{background-color:transparent}
 .wd-g{font-size:.66em;font-weight:800;line-height:1.15;color:var(--enamel);white-space:nowrap}
 .wd-g.pop{animation:wdpop .42s cubic-bezier(.2,1.6,.4,1) both}
-.wd.wait{background-color:rgba(255,200,61,.35)}
-.wd-n{color:var(--ink-2)}
+.wd{position:relative}
+.wd-pen{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);white-space:nowrap;font-size:.7em;font-weight:900;color:#fff;background:var(--bad);border-radius:999px;padding:1px 8px;pointer-events:none;animation:wdpen 1.25s ease-out forwards}
+@keyframes wdpen{0%{opacity:0;transform:translate(-50%,6px) scale(.7)}15%{opacity:1;transform:translate(-50%,0) scale(1.1)}70%{opacity:1;transform:translate(-50%,-10px)}100%{opacity:0;transform:translate(-50%,-22px)}}
 .ck-qs{display:grid;gap:12px;max-width:680px;background:var(--graphite);color:#fff;border-radius:16px;padding:16px 18px}
 .ck-qs .wd-g{color:var(--signal)}
 .ck-qs .wd:hover{background-color:rgba(255,255,255,.12)}
@@ -4184,25 +4185,22 @@ var STR = {
       if (!tok || /^\s+$/.test(tok)) return tok;
       var m = tok.match(/^(.*?)([.,!?]*)$/), core = m[1], key = core.toLowerCase().replace('’', "'"), g = ckGloss(key);
       if (!g) return esc(tok);
-      var open = ms.tr[key], wait = ms.trw && ms.trw.key === key;
-      return '<button type="button" class="wd' + (open ? ' open' : '') + (wait ? ' wait' : '') + '" data-a="hm" data-i="' + i + '" data-k="tr" data-v="' + esc(key) + '"' + (open ? ' tabindex="-1"' : '') + '>' +
-        '<span class="wd-w">' + esc(core) + '</span>' + (open ? '<span class="wd-g' + (ms.trNew === key ? ' pop' : '') + '" lang="' + ui() + '">' + esc(g) + '</span>' : wait ? '<span class="wd-g wd-n" aria-hidden="true">' + ms.trw.n + '</span>' : '') + '</button>' + esc(m[2]);
+      var open = ms.tr[key];
+      return '<button type="button" class="wd' + (open ? ' open' : '') + '" data-a="hm" data-i="' + i + '" data-k="tr" data-v="' + esc(key) + '"' + (open ? ' tabindex="-1"' : '') + '>' +
+        '<span class="wd-w">' + esc(core) + '</span>' + (open ? '<span class="wd-g' + (ms.trNew === key ? ' pop' : '') + '" lang="' + ui() + '">' + esc(g) + '</span>' : '') + '</button>' + esc(m[2]);
     }).join('') + '</span>';
   }
-  /* with the bomb on this screen the seconds come off its timer; on a separate phone the meaning comes after 3 seconds */
+  /* a tap shows the meaning at once and costs 3 seconds; "−3 s" flies up from the word.
+     With the bomb on this screen the seconds come off its timer. */
   function ckTranslate(key, ms, i) {
     ms.tr = ms.tr || {};
-    if (!ckGloss(key) || ms.tr[key] || ms.trw) return;
-    if (S.game && !S.game.over) { ms.tr[key] = true; ms.trNew = key; penalty(3); renderHelpBody(); ms.trNew = null; return; }
-    ms.trw = { key: key, n: 3 }; sfx('pen'); renderHelpBody();
-    var iv = setInterval(function () {
-      if (!ms.trw) { clearInterval(iv); return; }
-      var done = --ms.trw.n <= 0;
-      if (done) { clearInterval(iv); ms.tr[ms.trw.key] = true; ms.trNew = ms.trw.key; ms.trw = null; }
-      if (helperVisible() && S.tab === i) renderHelpBody();
-      if (done) ms.trNew = null;
-    }, SECOND);
-    IV.push(iv);
+    if (!ckGloss(key) || ms.tr[key]) return;
+    var sel = '#man-body .wd[data-v="' + key.replace(/["\\]/g, '\\$&') + '"]', ae = document.activeElement, same = document.querySelectorAll(sel), at = Math.max(0, Array.prototype.indexOf.call(same, ae));
+    ms.tr[key] = true; ms.trNew = key;
+    if (S.game && !S.game.over) penalty(3); else sfx('pen');
+    renderHelpBody(); ms.trNew = null;
+    var w = document.querySelectorAll(sel)[at];
+    if (w) { var f = document.createElement('span'); f.className = 'wd-pen'; f.setAttribute('aria-hidden', 'true'); f.textContent = t('pen', 3); w.appendChild(f); setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 1300); }
   }
   function ckFeedback(fb, fresh) {
     if (fb.kind === 'near') return '<p class="ck-fb" role="status">' + t('near') + '</p>';
