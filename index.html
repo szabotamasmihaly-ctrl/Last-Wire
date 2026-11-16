@@ -899,7 +899,6 @@ var VOCAB3 = {
 
 /* ---------- things to say to each other while playing ---------- */
 var PHRASES3 = [
-  ['Hvad er koden?', 'What is the code?', 'Mi a kód?'],
   ['Kan du gentage det?', 'Can you repeat that?', 'Meg tudod ismételni?'],
   ['Langsommere, tak.', 'Slower, please.', 'Lassabban, légy szíves!'],
   ['Hvordan staves det?', 'How do you spell that?', 'Hogyan betűzöd?'],
@@ -2970,10 +2969,6 @@ var STR = {
   'how.3': ['Solve the tasks together. Three mistakes, or no time left, and the bomb goes off.', 'Oldjátok meg együtt a feladatokat. Három hiba után, vagy ha lejár az idő, a bomba felrobban.', 'Løs opgaverne sammen. Tre fejl, eller ingen tid tilbage, og bomben springer.'],
   'how.4': ['Not sure about a word or a number? The game can write it down for you, but that costs 10 seconds.', 'Nem vagy biztos egy szóban vagy egy számban? A játék le tudja írni neked, de ez 10 másodpercbe kerül.', 'Er du i tvivl om et ord eller et tal? Spillet kan skrive det ned for dig, men det koster 10 sekunder.'],
 
-  /* the helper types the code */
-  'join.d': ['Ask your partner for the four-digit code on the bomb screen. Type it here.', 'Kérd el a társadtól a bomba képernyőjén látható négyjegyű kódot. Írd be ide.', 'Bed din makker om den firecifrede kode på bombeskærmen. Tast den her.'],
-  'join.err': ['That code does not exist. Check the four digits with your partner.', 'Ilyen kód nincs. Ellenőrizd a négy számjegyet a társaddal.', 'Den kode findes ikke. Tjek de fire tal med din makker.'],
-
   /* bomb screen */
   'hud.code': ['Bomb', 'Bomba', 'Bombe'], 'hud.left': ['Time left', 'Hátralévő idő', 'Tid tilbage'], 'hud.used': ['Time used', 'Eltelt idő', 'Tid brugt'], 'hud.mist': ['Mistakes', 'Hibák', 'Fejl'],
   'hud.mist.n': ['{0} of {1} mistakes', '{0} / {1} hiba', '{0} af {1} fejl'],
@@ -4420,15 +4415,6 @@ var STR = {
       '<section class="howto" aria-labelledby="h-how"><h2 id="h-how">' + t('how.t') + '</h2><ol><li><p>' + t('how.1') + '</p></li><li><p>' + t('how.2') + '</p></li><li><p>' + t('how.3') + '</p></li></ol><p class="howto-note">' + t('how.4') + '</p></section>';
   }
 
-  /* ---------- the helper types the code ---------- */
-  function viewJoin() {
-    return '<div class="paper-wrap"><div class="joinbox"><button type="button" class="link" data-a="home">‹ ' + t('back') + '</button>' +
-      '<h1 data-fit>' + t('role.help') + '</h1><p class="lead">' + t('join.d') + '</p>' +
-      '<label class="flabel" for="code-in">' + t('hud.code') + '</label>' +
-      '<input class="code-in" id="code-in" type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="4" placeholder="••••" value="' + esc(S.codeInput) + '" aria-describedby="code-err">' +
-      '<p class="err" id="code-err" role="alert">' + (S.codeErr ? t('join.err') : '') + '</p>' +
-      '<div class="ctas"><button type="button" class="cta ink" data-a="open">' + t('role.help.go') + '</button></div></div></div>';
-  }
   function bombTag(spec) { var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
   function openCode() {
     var spec = makeSpec(S.codeInput);
@@ -4663,8 +4649,8 @@ var STR = {
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'join' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewHome() : S.screen === 'join' ? viewJoin() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewHome() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -4725,7 +4711,6 @@ var STR = {
       case 'solo': newBomb(true); break;
       case 'join': stopLoop(); clearTimers(); S.codeInput = fixedCode(S.sel.lang, S.sel.mission, S.sel.level); openCode(); break;
       case 'rejoin': goHome(); break;
-      case 'open': openCode(); break;
       case 'tab': {
         S.tab = +ds.v; Voice.stop();
         var sc = $('.man-scroll'), keep = sc ? sc.scrollTop : 0;
