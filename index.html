@@ -2175,14 +2175,12 @@ function huTimeSent(h, m) {
   var H = HU_HOUR[h], N = HU_HOUR[h % 12 + 1];
   switch (m) {
     case 0: return capFirst(huOclock(h)) + ' van.';
-    case 5: return 'Öt perccel múlt ' + H + '.';
-    case 10: return 'Tíz perccel múlt ' + H + '.';
+    case 5: case 10: case 20: return capFirst(H) + ' múlt ' + huNum(m) + ' perccel.';
     case 15: return 'Negyed ' + N + ' van.';
-    case 20: return 'Öt perccel múlt negyed ' + N + '.';
     case 25: return 'Öt perc múlva fél ' + N + '.';
     case 30: return 'Fél ' + N + ' van.';
-    case 35: return 'Öt perccel múlt fél ' + N + '.';
-    case 40: return 'Öt perc múlva háromnegyed ' + N + '.';
+    case 35: return 'Fél ' + N + ' múlt öt perccel.';
+    case 40: return 'Húsz perc múlva ' + N + '.';
     case 45: return 'Háromnegyed ' + N + ' van.';
     case 50: return 'Tíz perc múlva ' + N + '.';
     case 55: return 'Öt perc múlva ' + N + '.';
@@ -2224,15 +2222,13 @@ function huParts(h, m) {
   var H = HU_HOUR[h], N = HU_HOUR[h % 12 + 1];
   switch (m) {
     case 0: return { type: 'o', nums: [h === 2 ? 'két' : h === 12 ? 'tizenkét' : H] };
-    case 5: case 10: return { type: 'past', nums: [huNum(m), H] };
+    case 5: case 10: case 20: return { type: 'past', nums: [huNum(m), H] };
     case 15: return { type: 'q1', nums: [N] };
-    case 20: return { type: 'pastq1', nums: ['öt', N] };
     case 25: return { type: 'tohalf', nums: ['öt', N] };
     case 30: return { type: 'half', nums: [N] };
     case 35: return { type: 'pasthalf', nums: ['öt', N] };
-    case 40: return { type: 'toq3', nums: ['öt', N] };
     case 45: return { type: 'q3', nums: [N] };
-    case 50: case 55: return { type: 'to', nums: [huNum(60 - m), N] };
+    case 40: case 50: case 55: return { type: 'to', nums: [huNum(60 - m), N] };
   }
   return null;
 }
@@ -2256,8 +2252,9 @@ function enAlts(h, m) {
 function huAlts(h, m) {
   var s = huTimeSent(h, m).replace(/\.$/, ''), out = [s], H = HU_HOUR[h], N = HU_HOUR[h % 12 + 1], n;
   if (/ van$/.test(s)) out.push(s.replace(/ van$/, ''));
-  if (m === 5 || m === 10) { n = huNum(m); out.push(n + ' perccel múlt ' + H + ' óra', H + ' múlt ' + n + ' perccel', H + ' óra múlt ' + n + ' perccel'); }
-  if (m === 50 || m === 55) { n = huNum(60 - m); out.push(n + ' perc múlva ' + N + ' óra'); }
+  if (m === 5 || m === 10 || m === 20) { n = huNum(m); out.push(n + ' perccel múlt ' + H, n + ' perccel múlt ' + huOclock(h), huOclock(h) + ' múlt ' + n + ' perccel', huOclock(h) + ' ' + n + ' perc', huOclock(h) + ' ' + n + ' perc van'); }
+  if (m === 35) out.push('öt perccel múlt fél ' + N);
+  if (m === 40 || m === 50 || m === 55) { n = huNum(60 - m); out.push(n + ' perc múlva ' + N + ' óra'); }
   return out.map(normWord);
 }
 /* constructions that are put together from two others: "five minutes past" + "half four" */
@@ -4174,7 +4171,7 @@ var STR = {
     da: { klokken: ['the clock', 'az óra', ''], er: ['is', 'van', ''], kvart: ['quarter', 'negyed', ''], halv: ['half', 'fél', ''], over: ['past', 'után', ''], i: ['to', 'előtt', ''],
       minutter: ['minutes', 'perc', ''], 'ét': ['one', 'egy', ''], tyve: ['twenty', 'húsz', ''] },
     hu: { 'óra': ["o'clock", '', 'klokken'], van: ['is', '', 'er'], negyed: ['quarter', '', 'kvart'], 'fél': ['half', '', 'halv'], 'háromnegyed': ['three quarters', '', 'tre kvarter'],
-      perccel: ['minutes (past)', '', 'minutter'], perc: ['minutes', '', 'minutter'], 'múlt': ['past', '', 'over'], 'múlva': ['in (to)', '', 'om'], 'két': ['two', '', 'to'], 'tizenkét': ['twelve', '', 'tolv'] }
+      perccel: ['minutes (past)', '', 'minutter'], perc: ['minutes', '', 'minutter'], 'múlt': ['past', '', 'over'], 'múlva': ['in (to)', '', 'om'], 'két': ['two', '', 'to'], 'tizenkét': ['twelve', '', 'tolv'], 'húsz': ['twenty', '', 'tyve'] }
   };
   (function () { /* the number words: one to twelve */
     var langs = ['en', 'hu', 'da'];
