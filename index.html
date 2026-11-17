@@ -768,6 +768,174 @@ textarea.nb-in:focus{border-color:var(--enamel)}
 .lv2-list.sents li{font-size:18px;padding:4px 0}
 .lv2-list.sents .pron{white-space:normal}
 
+
+/* ===== the learning path ===== */
+html[data-tl="es"]{--enamel:#D9480F;--enamel-deep:#9C330A;--face1:#E8590C;--face2:#D9480F;--face3:#B83C0C;--side1:#C4410D;--side2:#9C330A}
+body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{background:#fff}
+.dbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;border-radius:14px;border:2px solid #e2e2e2;background:#fff;color:var(--ink);font-weight:800;font-size:16px;letter-spacing:.05em;text-transform:uppercase;box-shadow:0 4px 0 #e2e2e2;padding:10px 18px;transition:transform .08s}
+.dbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #e2e2e2}
+.dbtn.go{background:var(--signal);border-color:var(--signal);color:#3a2a00;box-shadow:0 4px 0 var(--signal-deep)}
+.dbtn.ok{background:#58CC02;border-color:#58CC02;color:#fff;box-shadow:0 4px 0 #46A302}
+.dbtn.bad{background:#fff;border-color:#FF4B4B;color:#D33131;box-shadow:0 4px 0 #FF4B4B}
+.dbtn.ghost{width:auto;min-width:160px}
+.path{max-width:600px;margin:0 auto;padding:0 var(--gut) 90px}
+.ptop{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:4px 0 8px}
+.course{display:flex;gap:8px}
+.course button{display:inline-flex;align-items:center;gap:6px;border:2px solid #e5e5e5;border-radius:12px;background:#fff;padding:7px 12px;font-weight:800;font-size:15px;box-shadow:0 3px 0 #e5e5e5}
+.course button span{font-size:20px;line-height:1}
+.course button[aria-pressed="true"]{border-color:var(--enamel);color:var(--enamel);box-shadow:0 3px 0 var(--enamel);background:#f4f8ff}
+.pstats{display:flex;gap:14px;align-items:center}
+.pst{display:inline-flex;align-items:center;gap:4px;font-weight:900;font-size:17px;color:#afafaf;background:none;border:0;padding:4px 2px}
+.pst.fire.on{color:#FF9600}
+.pst.xp{color:#FFC800}
+.pst.words{color:#1CB0F6;cursor:pointer}
+.ring{width:24px;height:24px}
+.lvtabs{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 14px;scrollbar-width:none;position:sticky;top:0;z-index:4;background:#fff}
+.lvtabs::-webkit-scrollbar{display:none}
+.lvtab{flex:1 0 62px;border:2px solid #e5e5e5;border-radius:14px;background:#fff;padding:7px 8px 9px;font:900 24px/1 var(--font-display);box-shadow:0 4px 0 #e5e5e5;display:grid;gap:6px;justify-items:center;color:var(--ink)}
+.lvtab i{display:block;width:100%;max-width:52px;height:6px;border-radius:3px;background:#e5e5e5;overflow:hidden}
+.lvtab i b{display:block;height:100%;background:var(--signal)}
+.lvtab[aria-pressed="true"]{background:var(--enamel);color:#fff;border-color:var(--enamel-deep);box-shadow:0 4px 0 var(--enamel-deep)}
+.lvtab[aria-pressed="true"] i{background:rgba(255,255,255,.3)}
+.lvtab:disabled{opacity:.4}
+.unit{margin:18px 0 6px}
+.ubanner{display:grid;gap:2px;background:var(--uc);color:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 4px 0 var(--ucd)}
+.ubanner small{font-weight:800;opacity:.9;text-transform:uppercase;font-size:13px;letter-spacing:.07em}
+.ubanner b{font-size:19px;line-height:1.25}
+.nodes{display:grid;justify-items:center;gap:26px;padding:34px 0 12px}
+.node-w{position:relative;transform:translateX(var(--x));display:grid;justify-items:center}
+.node{position:relative;width:74px;height:66px;border-radius:50%;border:0;background:var(--uc);color:#fff;box-shadow:0 7px 0 var(--ucd);font:900 28px/1 var(--font-display);display:grid;place-items:center;transition:transform .08s}
+.node:active{transform:translateY(5px);box-shadow:0 2px 0 var(--ucd)}
+.node.lock{background:#e5e5e5;color:#b7b7b7;box-shadow:0 7px 0 #c9c9c9}
+.node.done{background:#FFC800;color:#fff;box-shadow:0 7px 0 #E0A100;font-size:34px;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.node-w.cur .node::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:5px solid var(--uc);opacity:.35;animation:pulse 1.6s ease-out infinite}
+.bubble{position:absolute;bottom:calc(100% + 14px);left:50%;background:#fff;border:2px solid #e5e5e5;color:var(--uc);font-weight:900;text-transform:uppercase;letter-spacing:.05em;padding:7px 14px;border-radius:12px;white-space:nowrap;animation:bob 1.3s ease-in-out infinite;box-shadow:0 3px 0 #e5e5e5}
+.bubble::after{content:"";position:absolute;left:50%;top:100%;width:12px;height:12px;background:#fff;border-right:2px solid #e5e5e5;border-bottom:2px solid #e5e5e5;transform:translate(-50%,-6px) rotate(45deg)}
+.nlabel{min-height:18px;margin-top:10px}
+.nst{color:#E0A100;font-size:14px;letter-spacing:1px}
+.node-w.fresh .node{animation:unlock .9s cubic-bezier(.2,1.5,.4,1) both}
+.lvnext{display:flex;justify-content:center;padding:20px 0}
+.classic-l{text-align:center;margin-top:28px}
+.classic-l .link{color:var(--ink-2)}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
+@keyframes pulse{0%{transform:scale(.9);opacity:.5}100%{transform:scale(1.35);opacity:0}}
+@keyframes unlock{0%{transform:scale(.4) rotate(-20deg);filter:grayscale(1)}60%{transform:scale(1.18) rotate(6deg)}100%{transform:none}}
+/* the station card */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:#fff;color:var(--ink);border-radius:22px 22px 0 0;padding:20px var(--gut) calc(22px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.25);max-width:620px;margin:0 auto;display:grid;gap:12px;animation:sheetin .32s cubic-bezier(.2,1.2,.4,1)}
+.sheet h2{font-size:22px;line-height:1.25}
+.sh-tag{font-weight:800;color:var(--enamel);letter-spacing:.05em}
+.sh-ex{font-size:19px;background:#f4f4f1;border-radius:12px;padding:10px 14px}
+.sh-ex mark,.pex mark{background:rgba(255,200,61,.55);color:inherit;border-radius:4px;padding:0 2px}
+.sh-due{display:flex;align-items:center;gap:8px;color:#1899D6;font-weight:700}
+.sh-btns{display:grid;gap:12px;margin-top:4px}
+.sh-btns .link{justify-self:center}
+@keyframes sheetin{0%{transform:translateY(100%)}100%{transform:none}}
+/* tappable words */
+.tw{all:unset;position:relative;display:inline-flex;flex-direction:column;align-items:center;vertical-align:baseline;cursor:pointer;border-radius:4px;padding:0 1px}
+.tw:hover{background-color:rgba(127,127,127,.18)}
+.tw:focus-visible{outline:2.5px solid var(--signal);outline-offset:2px}
+.tw.rv{background-image:linear-gradient(90deg,var(--signal) 55%,transparent 0);background-size:6px 2px;background-repeat:repeat-x;background-position:0 100%}
+.tw.open{cursor:default}
+.tw.open:hover{background-color:transparent}
+.tw-g{font-size:.62em;font-weight:800;line-height:1.15;color:var(--enamel);white-space:nowrap}
+.panel .tw-g,.card .tw-g{color:var(--signal)}
+.tw-g.pop{animation:wdpop .42s cubic-bezier(.2,1.6,.4,1) both}
+/* puzzles on the bomb */
+.gp-s{font-size:23px;font-weight:600;line-height:1.5}
+.gp-s.sm{font-size:19px}.gp-s.xs{font-size:16.5px}
+.hole{display:inline-block;width:70px;height:1em;border-bottom:3px solid var(--signal);margin:0 4px;vertical-align:-2px;animation:blink 1.2s ease-in-out infinite}
+.cbtns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:auto}
+.cbtns.n2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cbtns.n4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.cbtn{position:relative;min-height:96px;border:0;border-radius:16px;color:#fff;font-size:34px;line-height:1;display:grid;place-items:center;box-shadow:0 6px 0 rgba(0,0,0,.45),inset 0 -6px 0 rgba(0,0,0,.18),inset 0 3px 0 rgba(255,255,255,.25)}
+.cbtn:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.45),inset 0 -4px 0 rgba(0,0,0,.18)}
+.cbtn kbd{position:absolute;left:8px;top:8px}
+.c0{background:#D8263C}.c1{background:#2F6FE4}.c2{background:#F4C430;color:#3a2a00}.c3{background:#2FA35E}
+.lb{height:auto;min-height:94px;max-height:150px}
+.pz{font-weight:700;font-size:18px;color:#c7cdd2;align-self:center}
+.panel .tray{max-height:150px;overflow-y:auto}
+.fx-s{font-size:18px;line-height:1.3;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fx-s.sm .tile{font-size:15px;padding:4px 8px}.fx-s.xs .tile{font-size:14px;padding:3px 7px;min-height:32px}
+.fx-s.sm .fx-w{font-size:15px}.fx-s.xs .fx-w{font-size:14px}
+.fx-bad{background:#FF5B61;color:#fff;box-shadow:0 3px 0 #9b1d22;text-decoration:line-through}
+.fx-miss{background:transparent;color:#8c959d;box-shadow:inset 0 0 0 2px #3b444d}
+.fx-w{padding:0 2px;font-weight:600}
+.mt{display:grid;gap:10px}
+.mt li{display:flex;align-items:center;gap:10px;justify-content:space-between;background:#151A1E;border:2px solid #3b444d;border-radius:12px;padding:8px 8px 8px 12px}
+.mt li.bad{border-color:#FF5B61;animation:shake .4s}
+.mt-s{font-size:17px;line-height:1.3}.mt-s.sm{font-size:15px}.mt-s.xs{font-size:13.5px}
+.mt-n{flex:none;width:52px;height:52px;border-radius:12px;border:0;background:var(--signal);color:#1b1500;font:900 30px/1 var(--font-display);box-shadow:0 4px 0 var(--signal-deep)}
+.mt-n:active{transform:translateY(3px);box-shadow:0 1px 0 var(--signal-deep)}
+/* the helper's side */
+.pex{display:grid;gap:8px;max-width:620px;margin-bottom:6px;font-size:19px}
+.pex li{display:flex;gap:10px;align-items:baseline;background:#fff;border:2px solid #e2e2dc;border-radius:12px;padding:9px 14px}
+.pex i{font-style:normal;color:#58A700;font-weight:900}
+.cw{display:grid;gap:10px;width:100%}
+.cw li{display:flex;align-items:center;gap:12px;font-size:22px;background:rgba(255,255,255,.06);border-radius:12px;padding:8px 12px}
+.sw{flex:none;width:44px;height:44px;border-radius:11px;display:grid;place-items:center;font-size:20px;color:#fff;box-shadow:inset 0 -3px 0 rgba(0,0,0,.2)}
+.cw-c{flex:none;width:84px;font-size:14px;font-weight:700;opacity:.75}
+.cw-w{flex:1;font-weight:700}
+.cw .none{opacity:.6}
+.card-big.ls{font-size:24px;line-height:1.55}
+.mt-r{display:grid;gap:10px;max-width:640px}
+.mt-r li{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e2e2dc;border-radius:12px;padding:10px 14px;font-size:19px}
+.mt-r b{flex:none;width:42px;height:42px;border-radius:10px;background:var(--signal);display:grid;place-items:center;font:900 26px/1 var(--font-display)}
+.mt-r span{flex:1}
+.man-foot{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.man-foot .dbtn{width:auto}
+/* flashcards */
+.fc{max-width:540px;margin:0 auto;padding:6px var(--gut) 40px;display:grid;gap:18px}
+.fc-top{display:flex;align-items:center;gap:14px}
+.pbar{flex:1;height:16px;border-radius:8px;background:#e5e5e5;overflow:hidden}
+.pbar i{display:block;height:100%;background:#58CC02;border-radius:8px;transition:width .4s;box-shadow:inset 0 4px 0 rgba(255,255,255,.3)}
+.fc-h{font-size:22px;font-weight:800}
+.fc-card{perspective:1200px}
+.fc-card.in{animation:cardin .4s cubic-bezier(.2,1.3,.4,1)}
+.fc-in{position:relative;min-height:320px;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.3,1.3,.5,1)}
+.fc-in.flip{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border:2px solid #e5e5e5;border-radius:22px;box-shadow:0 6px 0 #e5e5e5;padding:24px 22px;display:grid;align-content:center;justify-items:center;gap:14px;background:#fff;text-align:center}
+.fc-back{transform:rotateY(180deg);background:#f7fff0;border-color:#b8eb8f;box-shadow:0 6px 0 #b8eb8f}
+.fc-w{font-size:40px;font-weight:800;line-height:1.1;word-break:break-word}
+.fc-g{font-size:26px;font-weight:700;color:#46A302}
+.fc-ctx{font-size:18px;color:var(--ink-2);line-height:1.45}
+.fc-ctx mark{background:rgba(255,200,61,.55);color:var(--ink);border-radius:4px;padding:0 2px}
+.fc-tag{display:block;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#1899D6;margin-bottom:4px}
+.fc-st{position:absolute;top:14px;right:16px}
+.fc-btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.str{display:inline-flex;gap:3px;align-items:flex-end}
+.str i{display:block;width:6px;height:14px;border-radius:2px;background:#e5e5e5}
+.str i:nth-child(1){height:6px}.str i:nth-child(2){height:8px}.str i:nth-child(3){height:10px}.str i:nth-child(4){height:12px}
+.str i.on{background:#FFC800}
+@keyframes cardin{0%{opacity:0;transform:translateX(40px) rotate(4deg)}100%{opacity:1;transform:none}}
+/* the word list */
+.wl{max-width:620px;margin:0 auto;padding:6px var(--gut) 60px;display:grid;gap:16px}
+.wl-h{display:flex;align-items:center;gap:14px}
+.wl-h h1{flex:1;font:900 34px/1 var(--font-display);text-transform:uppercase}
+.wl-n{font-weight:800;font-size:18px}
+.wl-empty{font-size:18px;color:var(--ink-2);max-width:46ch}
+.wlist{display:grid;gap:10px}
+.wlist li{border:2px solid #e5e5e5;border-radius:14px;padding:10px 14px;display:grid;gap:4px}
+.wlist li.learned{opacity:.6}
+.wl-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.wl-top b{font-size:19px}
+.wl-top span[lang]{flex:1;color:var(--ink-2)}
+.wl-ctx{font-size:15px;color:var(--ink-2)}
+/* the result */
+.result.pr .eyebrow{max-width:60ch}
+.bigstars{display:flex;gap:10px;font-size:58px;line-height:1;margin-top:6px}
+.bigstars i{font-style:normal;color:rgba(255,255,255,.25);animation:starin .5s cubic-bezier(.2,1.8,.4,1) both}
+.bigstars i.on{color:#FFC800;text-shadow:0 4px 0 #B07F00}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.25);border-radius:999px;padding:8px 16px;font-weight:700;font-size:17px}
+.chip b{font-size:20px}
+.chip.xp{color:#FFD84D}.chip.fire{color:#FFB547}.chip.wd{color:#8FD8FF}
+.chip.fire.up svg{animation:flame .8s ease-in-out 3}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:70;overflow:hidden}
+.confetti i{position:absolute;top:-20px;width:10px;height:16px;border-radius:2px;animation:fall linear both}
+@keyframes fall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),110vh) rotate(calc(var(--r) * 4))}}
+@keyframes starin{0%{transform:scale(0) rotate(-40deg);opacity:0}100%{transform:none;opacity:1}}
+@keyframes flame{50%{transform:scale(1.35) translateY(-3px)}}
+@media (prefers-reduced-motion:reduce){.bubble,.node-w.cur .node::before,.node-w.fresh .node,.sheet,.fc-card.in,.bigstars i,.hole,.tw-g.pop{animation:none}.fc-in{transition:none}}
 </style>
 </head>
 <body data-screen="home" data-view="hard">
@@ -2917,6 +3085,7 @@ function genRead(r, level, ctx) {
 var GEN = { wires: genWires, clock: genClock, dict: genDict, pics: genPics, story: genStory, comp: genComp, lever: genLever, verbs: genVerbs, order: genOrder, read: genRead };
 
 function makeSpec(code) {
+  if (/^P:/.test(String(code))) return makeStationSpec(code);
   var p = parseCode(code);
   if (!p) return null;
   var P = PACK[p.lang], M = MISSIONS[p.mission - 1];
@@ -3184,7 +3353,287 @@ var STR = {
   'set.ver': ['Version {0}', '{0}. verzió', 'Version {0}']
 };
 
+
+/* ===== Last Wire: the learning path ======================================================
+   A course is six CEFR levels (A1 to C2) of 50 grammar stations each, grouped into units of five.
+   Every station is a small bomb. Its puzzles are always the same four kinds; only what they teach changes:
+     gap    – the bomb shows a sentence with a hole, the helper has the words behind three colours
+     listen – the helper reads a sentence aloud, the bomb builds it from word tiles (wrong forms mixed in)
+     fix    – the bomb finds the wrong word, the helper has the words that could replace it
+     match  – the bomb has sentence beginnings, the helper has the endings
+   Course files call LWC(language, level, text). The text is one line per thing:
+     # unit title (en | hu | da)
+     @ station title (en | hu | da)
+     = a model sentence for the helper, the point in [brackets]
+     - an item: a sentence with one [right|wrong|wrong] gap ("—" means "no word here")
+     ~ a beginning | its ending
+*/
+var CEFR = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+var COURSES = ['en', 'es'];
+var COURSE = {};
+var GLOSS = {};
+function lwTrim(s) { return String(s == null ? '' : s).replace(/^\s+|\s+$/g, ''); }
+function lwTri(s) { var p = String(s).split('|').map(lwTrim); return { en: p[0], hu: p[1] || p[0], da: p[2] || p[0] }; }
+function joinGap(pre, w, post) {
+  if (w === '—') {
+    var a = pre.replace(/\s+$/, ''), b = post.replace(/^\s+/, '');
+    if (!a) return b.charAt(0).toUpperCase() + b.slice(1);
+    return a + (/^[.,!?;:…]/.test(b) || !b ? '' : ' ') + b;
+  }
+  return pre + w + post;
+}
+function lwItem(s) {
+  var m = s.match(/^(.*?)\[([^\]]+)\](.*)$/); if (!m) return null;
+  var opts = m[2].split('|').map(lwTrim).filter(Boolean);
+  if (opts.length < 2) return null;
+  return { pre: m[1], post: m[3], opts: opts, full: joinGap(m[1], opts[0], m[3]) };
+}
+function LWC(lang, lv, text) {
+  var C = COURSE[lang] || (COURSE[lang] = []), L = C[lv - 1] = { units: [], list: [] }, unit = null, st = null;
+  String(text).split('\n').forEach(function (raw) {
+    var line = lwTrim(raw); if (!line) return;
+    var c = line.charAt(0), body = lwTrim(line.slice(1));
+    if (c === '#') { unit = { t: lwTri(body), st: [] }; L.units.push(unit); return; }
+    if (c === '@') {
+      if (!unit) { unit = { t: lwTri(''), st: [] }; L.units.push(unit); }
+      st = { t: lwTri(body), ex: [], items: [], pairs: [], lang: lang, lv: lv, n: L.list.length + 1, u: L.units.length };
+      unit.st.push(st); L.list.push(st); return;
+    }
+    if (!st) return;
+    if (c === '=') st.ex.push(body);
+    else if (c === '-') { var it = lwItem(body); if (it) st.items.push(it); }
+    else if (c === '~') { var p = body.split('|'); if (p.length === 2) st.pairs.push([lwTrim(p[0]), lwTrim(p[1])]); }
+  });
+}
+/* word meanings for tap-to-translate: "word=hu;da" for English, "palabra=en;hu;da" for Spanish */
+function LWG(lang, text) {
+  var G = GLOSS[lang] || (GLOSS[lang] = {}), cols = lang === 'en' ? ['hu', 'da'] : ['en', 'hu', 'da'];
+  String(text).split('\n').forEach(function (raw) {
+    var line = lwTrim(raw), at = line.indexOf('='); if (at < 1) return;
+    var k = line.slice(0, at).toLowerCase(), v = line.slice(at + 1).split(';'), e = {};
+    cols.forEach(function (c, j) { if (v[j] && lwTrim(v[j])) e[c] = lwTrim(v[j]); });
+    G[k] = e;
+  });
+}
+function wordKey(w) { return String(w).toLowerCase().replace(/[’‘]/g, "'").replace(/^[¿¡"«“„(\[']+|[.,!?;:"»”)\]…]+$/g, ''); }
+function glossFor(lang, ui, w) { var G = GLOSS[lang], e = G && G[wordKey(w)]; return e && ui !== lang ? (e[ui] || '') : ''; }
+
+function stationOf(lang, lv, n) { var C = COURSE[lang], L = C && C[lv - 1]; return (L && L.list[n - 1]) || null; }
+function pathCode(lang, lv, n) { return 'P:' + lang + ':' + lv + ':' + n; }
+function parsePathCode(code) {
+  var m = /^P:([a-z]{2}):([1-6]):(\d{1,2})$/.exec(String(code || ''));
+  return m ? { lang: m[1], lv: +m[2], n: +m[3] } : null;
+}
+/* every station in course order, for "what comes next" */
+function courseList(lang) {
+  var out = [], C = COURSE[lang] || [];
+  for (var lv = 1; lv <= 6; lv++) { var L = C[lv - 1]; if (L) L.list.forEach(function (s) { out.push(pathCode(lang, lv, s.n)); }); }
+  return out;
+}
+
+/* ---------- words of a sentence ---------- */
+var LW_LEAD = /^[¿¡"«“„(]+/, LW_TAIL = /[.,!?;:"»”)…]+$/;
+function lwWords(s) { return lwTrim(s).split(/\s+/).filter(Boolean); }
+function lwCore(w) { return w.replace(LW_LEAD, '').replace(LW_TAIL, ''); }
+/* capitalised words in the middle of a sentence are names; they keep their capital on the tiles */
+var LW_NAMES = {};
+function lwNames(lang) {
+  if (LW_NAMES[lang]) return LW_NAMES[lang];
+  var N = LW_NAMES[lang] = { I: 1 };
+  (COURSE[lang] || []).forEach(function (L) {
+    if (L) L.list.forEach(function (st) {
+      st.items.forEach(function (it) { lwWords(it.full).forEach(function (w, k) { var c = lwCore(w); if (k > 0 && /^[A-ZÁÉÍÓÚÑ]/.test(c) && !/[.?!]$/.test(lwWords(it.full)[k - 1] || '')) N[c] = 1; }); });
+    });
+  });
+  return N;
+}
+function lwTile(w, first, lang) {
+  var c = lwCore(w); if (!c) return '';
+  if (!first) return c;
+  var N = lwNames(lang);
+  if (N[c] || /^I'/.test(c)) return c;
+  return c.charAt(0).toLowerCase() + c.slice(1);
+}
+function lwEnd(full) { var m = lwTrim(full).match(/[.?!…]+$/); return m ? m[0] : '.'; }
+function lwStart(full) { var m = lwTrim(full).match(/^[¿¡]/); return m ? m[0] : ''; }
+
+/* ---------- the four puzzles, built from a station's items ---------- */
+function genGapP(r, items) {
+  return items.map(function (it) {
+    var opts = it.opts.slice(0, 3), perm = r.shuffle(opts.map(function (_, k) { return k; }));
+    return { pre: it.pre, post: it.post, words: perm.map(function (k) { return opts[k]; }), ans: perm.indexOf(0), full: it.full };
+  });
+}
+function genListenP(r, items, lang) {
+  return items.map(function (it) {
+    var ws = lwWords(it.full), ans = ws.map(function (w, k) { return lwTile(w, k === 0, lang); }).filter(Boolean);
+    var have = {}; ans.forEach(function (x) { have[x.toLowerCase()] = 1; });
+    var extra = [];
+    it.opts.slice(1).forEach(function (o) {
+      if (o === '—') return;
+      lwWords(o).forEach(function (w, k) {
+        var x = lwTile(w, ws.length && it.pre === '' && k === 0, lang); if (x && !have[x.toLowerCase()] && extra.indexOf(x) < 0) extra.push(x);
+      });
+    });
+    return { full: it.full, ans: ans, tiles: r.shuffle(ans.concat(extra.slice(0, 3))), end: lwEnd(it.full), start: lwStart(it.full) };
+  });
+}
+function lwSplitGap(pre, w, post) {
+  var preT = lwWords(pre), postT, wT = w === '—' ? [] : lwWords(w), lead = '', tail = '';
+  if (pre && !/\s$/.test(pre) && preT.length) lead = preT.pop();
+  var m = post.match(/^(\S*)([\s\S]*)$/);
+  if (m[1] && !/^\s/.test(post)) { tail = m[1]; postT = lwWords(m[2]); } else postT = lwWords(post);
+  if (wT.length) { wT[0] = lead + wT[0]; wT[wT.length - 1] += tail; }
+  else { if (lead) preT.push(lead); if (tail) { if (preT.length) preT[preT.length - 1] += tail; else postT.unshift(tail); } }
+  return { toks: preT.concat(wT, postT), from: preT.length, n: wT.length };
+}
+function genFixP(r, items) {
+  var out = [];
+  items.forEach(function (it) {
+    if (out.length >= 2) return;
+    var right = it.opts[0], wrongs = it.opts.slice(1).filter(function (o) { return o !== '—'; });
+    if (!wrongs.length) return;
+    var wrong = r.pick(wrongs), sp = lwSplitGap(it.pre, wrong, it.post);
+    if (!it.pre && sp.toks.length) sp.toks[0] = sp.toks[0].charAt(0).toUpperCase() + sp.toks[0].slice(1);
+    var opts = it.opts.slice(0, 3), perm = r.shuffle(opts.map(function (_, k) { return k; }));
+    var bad = []; for (var k = 0; k < sp.n; k++) bad.push(sp.from + k);
+    out.push({ toks: sp.toks, bad: bad, words: perm.map(function (k) { return opts[k]; }), ans: perm.indexOf(0), full: it.full, right: right });
+  });
+  return out;
+}
+function genMatchP(r, pairs) {
+  var pick = r.sample(pairs, Math.min(3, pairs.length)), order = r.shuffle(pick.map(function (_, k) { return k; }));
+  return { left: pick.map(function (p) { return p[0]; }), right: order.map(function (k) { return pick[k][1]; }), ans: pick.map(function (_, k) { return order.indexOf(k) + 1; }), full: pick.map(function (p) { return p[0] + ' ' + p[1]; }) };
+}
+function makeStationSpec(code) {
+  var p = parsePathCode(code); if (!p) return null;
+  var st = stationOf(p.lang, p.lv, p.n), P = PACK[p.lang];
+  if (!st || !P || st.items.length < 3) return null;
+  var base = hashSeed('lwp:' + code), r = RU(mulberry32(base));
+  var idx = r.shuffle(st.items.map(function (_, k) { return k; }));
+  var gapI = idx.slice(0, 3), rest = idx.slice(3);
+  var len = function (k) { return lwWords(st.items[k].full).length; };
+  var listenI = rest.slice().sort(function (a, b) { return len(a) - len(b); }).slice(0, 2);
+  if (!listenI.length) listenI = [gapI[0]];
+  var fixI = rest.filter(function (k) { return listenI.indexOf(k) < 0; }).concat(gapI.slice().reverse());
+  var at = function (list) { return list.map(function (k) { return st.items[k]; }); };
+  var mods = [{ t: 'gap', data: { rounds: genGapP(r, at(gapI)), ex: st.ex } }, { t: 'listen', data: { rounds: genListenP(r, at(listenI), p.lang) } }];
+  var fix = genFixP(r, at(fixI)), hasPairs = st.pairs.length >= 3;
+  if (fix.length && (!hasPairs || p.lv >= 3)) mods.push({ t: 'fix', data: { rounds: fix, ex: st.ex } });
+  if (hasPairs) mods.push({ t: 'match', data: genMatchP(r, st.pairs) });
+  if (mods.length < 3 && fix.length) mods.push({ t: 'fix', data: { rounds: fix, ex: st.ex } });
+  var secs = 40;
+  mods.forEach(function (m) {
+    if (m.t === 'gap') secs += 32 * m.data.rounds.length;
+    else if (m.t === 'listen') m.data.rounds.forEach(function (x) { secs += 25 + 5 * x.ans.length; });
+    else if (m.t === 'fix') secs += 45 * m.data.rounds.length;
+    else secs += 90;
+  });
+  var r0 = RU(mulberry32(base ^ 0x5bd1e995));
+  return {
+    code: 'P:' + p.lang + ':' + p.lv + ':' + p.n, path: true, lang: p.lang, level: p.lv, station: p.n, mission: 0, st: st,
+    serial: genSerial(r0, P), batteries: r0.int(4), modules: mods, time: Math.round(secs / 10) * 10, maxStrikes: 3
+  };
+}
+/* every sentence a station uses: the words in it are the ones its flashcards look for */
+function stationTexts(st) {
+  var out = st.ex.map(function (s) { return s.replace(/[\[\]]/g, ''); });
+  st.items.forEach(function (it) { out.push(it.full); });
+  st.pairs.forEach(function (p) { out.push(p[0] + ' ' + p[1]); });
+  return out;
+}
+
+/* ---------- Spanish: the bomb's own words ---------- */
+var ES_ONES = ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve', 'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete', 'dieciocho', 'diecinueve',
+  'veinte', 'veintiuno', 'veintidós', 'veintitrés', 'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve'];
+var ES_TENS = [null, null, null, 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
+var ES_HUND = [null, 'ciento', 'doscientos', 'trescientos', 'cuatrocientos', 'quinientos', 'seiscientos', 'setecientos', 'ochocientos', 'novecientos'];
+function esNum(n) {
+  if (n < 30) return ES_ONES[n];
+  if (n < 100) return ES_TENS[Math.floor(n / 10)] + (n % 10 ? ' y ' + ES_ONES[n % 10] : '');
+  if (n === 100) return 'cien';
+  return ES_HUND[Math.floor(n / 100)] + (n % 100 ? ' ' + esNum(n % 100) : '');
+}
+PACK.es = {
+  id: 'es', bcp: 'es-ES', name: 'Español', title: 'Último Cable',
+  letters: ['á', 'é', 'í', 'ó', 'ú', 'ñ', 'ü', '¿', '¡'], alphabet: 'a b c d e f g h i j k l m n ñ o p q r s t u v w x y z'.split(' '),
+  serial: 'ABCDEFGHJKLMNPRSTVXYZ', vowels: 'AEIOU',
+  colors: [{ k: 'rojo', e: 'rojos' }, { k: 'azul', e: 'azules' }, { k: 'amarillo', e: 'amarillos' }, { k: 'verde', e: 'verdes' }, { k: 'blanco', e: 'blancos' }, { k: 'negro', e: 'negros' }],
+  ord: ['primero', 'segundo', 'tercero', 'cuarto', 'quinto', 'sexto'], last: 'último',
+  mod: { gap: 'Hueco', listen: 'Escucha', fix: 'Corrige', match: 'Une' },
+  plate: { danger: 'Peligro', bomb: 'Bomba de idiomas', front: 'Frente', back: 'Detrás', under: 'Base', up: 'Este lado arriba', serial: 'Número de serie', bat: 'Pilas', clock: 'Reloj', strikes: 'Fallos' },
+  win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
+  num: esNum
+};
+PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Fix it'; PACK.en.mod.match = 'Match';
+PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Ret'; PACK.da.mod.match = 'Par';
+PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Javítsd'; PACK.hu.mod.match = 'Párosítsd';
+var ES_PHRASES = [
+  ['¿Me oyes?', 'Can you hear me?', 'Hallasz?', 'Kan du høre mig?'],
+  ['¿Puedes repetirlo?', 'Can you say it again?', 'Megismételnéd?', 'Kan du sige det igen?'],
+  ['Más despacio, por favor.', 'Slower, please.', 'Lassabban, kérlek.', 'Langsommere, tak.'],
+  ['¿Qué color?', 'Which colour?', 'Melyik szín?', 'Hvilken farve?'],
+  ['Pulsa el rojo.', 'Press red.', 'Nyomd meg a pirosat.', 'Tryk på den røde.'],
+  ['¿Cuál es la frase?', 'What is the sentence?', 'Mi a mondat?', 'Hvad er sætningen?'],
+  ['Te leo la frase.', "I'll read you the sentence.", 'Felolvasom a mondatot.', 'Jeg læser sætningen op for dig.'],
+  ['Creo que es esta.', 'I think it is this one.', 'Szerintem ez az.', 'Jeg tror, det er den her.'],
+  ['¡Lo tengo!', 'Got it!', 'Megvan!', 'Jeg har den!'],
+  ['No estoy seguro.', "I'm not sure.", 'Nem vagyok biztos benne.', 'Jeg er ikke sikker.'],
+  ['¡Rápido!', 'Quick!', 'Gyorsan!', 'Hurtigt!'],
+  ['¡Bien hecho!', 'Well done!', 'Szép munka!', 'Godt gået!']
+];
+
+/* ---------- what the learning path says, as [English, Hungarian, Danish] ---------- */
+(function () {
+  var add = {
+    'lang.es': ['Spanish', 'spanyol', 'spansk'], 'in.es': ['in Spanish', 'spanyolul', 'på spansk'],
+    'mod.gap': ['Gap', 'Hiány', 'Hul'], 'mod.listen': ['Listen', 'Hallgasd', 'Lyt'], 'mod.fix': ['Fix it', 'Javítsd', 'Ret'], 'mod.match': ['Match', 'Párosítsd', 'Par'],
+    'cap.gap': ['Read the sentence aloud. Your partner has the words. Press their colour.', 'Olvasd fel a mondatot. A társadnál vannak a szavak. Nyomd meg a színt, amit mond.', 'Læs sætningen højt. Din makker har ordene. Tryk på farven.'],
+    'cap.listen': ['Your partner reads a sentence. Build it.', 'A társad felolvas egy mondatot. Rakd ki.', 'Din makker læser en sætning op. Byg den.'],
+    'cap.fix': ['Read it aloud. Tap the wrong word, then press your partner’s colour.', 'Olvasd fel. Koppints a hibás szóra, aztán a színre, amit a társad mond.', 'Læs den højt. Tryk på det forkerte ord og så på din makkers farve.'],
+    'cap.match': ['Read each beginning. Your partner has the endings. Set the numbers.', 'Olvasd fel a mondatkezdeteket. A társadnál vannak a befejezések. Állítsd be a számokat.', 'Læs hver begyndelse. Din makker har slutningerne. Sæt tallene.'],
+    'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
+    'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
+    'p.start': ['Start', 'Kezdés', 'Start'],
+    'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
+    'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
+    'p.classic': ['Classic bombs (Danish, English, Hungarian)', 'Klasszikus bombák (dán, angol, magyar)', 'Klassiske bomber (dansk, engelsk, ungarsk)'],
+    'p.streak': ['Day streak', 'Napi sorozat', 'Dage i træk'],
+    'p.goal': ['Daily goal: {0} XP', 'Napi cél: {0} XP', 'Dagens mål: {0} XP'],
+    'p.words': ['Words', 'Szavak', 'Ord'],
+    'p.due': ['{0} words to refresh first', 'Előbb {0} szót ismételsz', 'Først {0} ord at genopfriske'],
+    'p.days': ['days', 'nap', 'dage'],
+    'p.learned': ['learned', 'megtanulva', 'lært'],
+    'p.cont': ['Continue', 'Tovább', 'Fortsæt'],
+    'p.path': ['Back to the path', 'Vissza az útvonalra', 'Tilbage til stien'],
+    'p.hdone': ['We defused it ✓', 'Hatástalanítottuk ✓', 'Vi desarmerede den ✓'],
+    'fc.title': ['Words for this bomb', 'Szavak ehhez a bombához', 'Ord til denne bombe'],
+    'fc.title2': ['Your words', 'A szavaid', 'Dine ord'],
+    'fc.next': ['In this bomb', 'Ebben a bombában', 'I denne bombe'],
+    'fc.show': ['Show', 'Mutasd', 'Vis'],
+    'fc.again': ['Not yet', 'Még nem', 'Ikke endnu'],
+    'fc.know': ['I knew it', 'Tudtam', 'Det vidste jeg'],
+    'fc.skip': ['Skip', 'Kihagyom', 'Spring over'],
+    'w.empty': ['Tap any word in a puzzle to see what it means. It lands here and comes back until you know it.', 'Koppints bármelyik szóra egy feladatban, és látod a jelentését. Ide kerül, és addig visszatér, amíg meg nem tanulod.', 'Tryk på et ord i en opgave for at se, hvad det betyder. Det havner her og kommer igen, til du kan det.'],
+    'w.practise': ['Practise', 'Gyakorlás', 'Øv']
+  };
+  for (var k in add) STR[k] = add[k];
+})();
 </script>
+<script src="courses/en-a1.js"></script>
+<script src="courses/en-a2.js"></script>
+<script src="courses/en-b1.js"></script>
+<script src="courses/en-b2.js"></script>
+<script src="courses/en-c1.js"></script>
+<script src="courses/en-c2.js"></script>
+<script src="courses/es-a1.js"></script>
+<script src="courses/es-a2.js"></script>
+<script src="courses/es-b1.js"></script>
+<script src="courses/es-b2.js"></script>
+<script src="courses/es-c1.js"></script>
+<script src="courses/es-c2.js"></script>
+<script src="courses/gloss-en.js"></script>
+<script src="courses/gloss-es.js"></script>
 <script>
 'use strict';
 (function () {
@@ -3198,7 +3647,8 @@ var STR = {
 
   var S = {
     screen: 'home', solo: false, soloView: 'bomb',
-    sel: { lang: 'hu', mission: 1, level: 2, calm: false },
+    sel: { lang: 'hu', mission: 1, level: 2, calm: false, course: 'en', plv: 0 },
+    wopen: {}, wnew: null, sheet: null, fc: null, justOpen: null,
     code: '', spec: null, game: null,
     tab: 0, man: {},
     codeInput: '', codeErr: false,
@@ -3224,13 +3674,19 @@ var STR = {
     if (LANGS.indexOf(S.sel.lang) < 0) S.sel.lang = 'da';
     if (!(S.sel.mission >= 1 && S.sel.mission <= MISSIONS.length)) S.sel.mission = 1;
     if (!(S.sel.level >= 1 && S.sel.level <= 3)) S.sel.level = 2;
+    if (COURSES.indexOf(S.sel.course) < 0) S.sel.course = 'en';
   }
   function save() { try { localStorage.setItem(STORE, JSON.stringify({ set: S.set, prog: S.prog, sel: S.sel })); } catch (e) {} }
 
   /* ---------- two languages at once: the one the players practise, and the one the instructions are in ---------- */
   var UIX = { en: 0, hu: 1, da: 2 }, UI_ORDER = ['en', 'hu', 'da'];
   function ui() { return S.set.ui; }
-  function tl() { return (S.spec && S.screen !== 'home' && S.screen !== 'join') ? S.spec.lang : S.sel.lang; }
+  function tl() {
+    if (S.spec && (S.screen === 'bomb' || S.screen === 'helper' || S.screen === 'result')) return S.spec.lang;
+    if (S.screen === 'classic') return S.sel.lang;
+    if (S.screen === 'cards' && S.fc && S.fc.then) return parsePathCode(S.fc.then.code).lang;
+    return S.sel.course;
+  }
   function PK() { return PACK[tl()]; }
   function t(key, a, b) {
     var row = STR[key], s = row ? row[UIX[ui()]] : key;
@@ -3277,7 +3733,7 @@ var STR = {
 
   /* ---------- voice: the device's voice for the language first, Claude's voice second, written text as the fallback ---------- */
   var Voice = {
-    cl: null, clLangs: null, dev: { da: null, en: null, hu: null }, tok: 0, asked: false, on: false,
+    cl: null, clLangs: null, dev: { da: null, en: null, hu: null, es: null }, tok: 0, asked: false, on: false,
     /* the Claude voice arrives through the page's tts capability; the host object can appear a moment after load */
     askClaude: function () {
       if (Voice.asked) return true;
@@ -3315,7 +3771,7 @@ var STR = {
           var loadVoices = function () {
             try {
               var vs = window.speechSynthesis.getVoices() || [], changed = false;
-              LANGS.forEach(function (L) {
+              LANGS.concat(['es']).forEach(function (L) {
                 var re = new RegExp('^' + L + '([-_]|$)', 'i');
                 var mine = vs.filter(function (v) { return re.test(v.lang || ''); });
                 if (L === 'en') { var gb = mine.filter(function (v) { return /gb/i.test(v.lang); }); if (gb.length) mine = gb; }
@@ -3542,12 +3998,14 @@ var STR = {
     if (boom) { document.body.classList.add('boom'); setTimeout(go, 850); }
     else { if (S.view.focus != null) zoomOut(); st.classList.add('safe'); setTimeout(go, 1600); }
   }
-  function explode(why) { var g = S.game; if (g.over) return; g.over = 'boom'; g.why = why; sfx('boom'); finish(true); }
-  function progKey(spec) { return spec.lang + '-' + spec.mission + '-' + spec.level; }
+  function explode(why) { var g = S.game; if (g.over) return; g.over = 'boom'; g.why = why; sfx('boom'); if (S.spec.path) { pathLose(); save(); } finish(true); }
+  function progKey(spec) { return spec.path ? spec.code : spec.lang + '-' + spec.mission + '-' + spec.level; }
   function defuse() {
     var g = S.game; g.over = 'ok'; sfx('win');
     var stars = g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1, key = progKey(S.spec);
-    if (!(S.prog[key] >= stars)) { S.prog[key] = stars; save(); }
+    if (!(S.prog[key] >= stars)) S.prog[key] = stars;
+    if (S.spec.path) pathWin(stars);
+    save();
     finish(false);
   }
   function modAct(i, k, v) {
@@ -4366,6 +4824,482 @@ var STR = {
     return todo([t('h.read.1'), t('h.read.2'), t('h.read.3')]) + '<div class="notice" lang="' + tl() + '"><b class="kind">' + esc(d.kind) + '</b><p>' + esc(d.body) + '</p></div>' + sayList('read');
   };
 
+
+  /* ===== part P: the learning path ======================================================= */
+  var P_COL = ['#D8263C', '#2F6FE4', '#F4C430', '#2FA35E'], P_SHAPE = ['●', '▲', '■', '◆'];
+  var UNIT_COL = [['#58CC02', '#46A302'], ['#1CB0F6', '#1899D6'], ['#CE82FF', '#A568CC'], ['#FF9600', '#CC7800'], ['#FF4B4B', '#D33131'], ['#2B70C9', '#1F5AA6'], ['#00B5A3', '#008F81'], ['#E5527A', '#B83E60'], ['#8E6CEF', '#6E4FCC'], ['#E0A100', '#B07F00']];
+  var DAILY_GOAL = 30, CARD_MAX = 6, BOX_GAP = [0, 1, 2, 4, 7], LEARNED = 5;
+
+  /* ---------- progress: stars per station, XP, streak and how many bombs have been played ---------- */
+  function px() {
+    var x = S.prog._x;
+    if (!x || typeof x !== 'object') x = S.prog._x = {};
+    if (typeof x.xp !== 'number') x.xp = 0;
+    if (typeof x.played !== 'number') x.played = 0;
+    if (typeof x.streak !== 'number') x.streak = 0;
+    return x;
+  }
+  function today() { var d = new Date(); return d.getFullYear() + '-' + (d.getMonth() < 9 ? '0' : '') + (d.getMonth() + 1) + '-' + (d.getDate() < 10 ? '0' : '') + d.getDate(); }
+  function dayDiff(a, b) { if (!a || !b) return 99; return Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 864e5); }
+  function streakNow() { var x = px(); return dayDiff(x.last, today()) <= 1 ? x.streak : 0; }
+  function xpToday() { var x = px(); return x.day === today() ? (x.dayXp || 0) : 0; }
+  function addXp(n) {
+    var x = px(), d = today(), up = false;
+    if (x.day !== d) { x.day = d; x.dayXp = 0; }
+    x.dayXp += n; x.xp += n;
+    if (x.last !== d) { x.streak = dayDiff(x.last, d) === 1 ? x.streak + 1 : 1; x.last = d; up = true; }
+    return up;
+  }
+  function starsOf(code) { return S.prog[code] || 0; }
+  /* where the path stands: the station after the furthest one played */
+  function pathPos(lang) {
+    var list = courseList(lang), far = -1;
+    list.forEach(function (c, k) { if (starsOf(c)) far = k; });
+    var cur = Math.min(far + 1, list.length - 1);
+    return { list: list, far: far, cur: cur, code: list[cur] };
+  }
+
+  /* ---------- the words a player has tapped: they come back until they are learned ---------- */
+  var WKEY = STORE + '-words', WDB = null;
+  function wdb() {
+    if (!WDB) { try { WDB = JSON.parse(localStorage.getItem(WKEY) || '{}') || {}; } catch (e) { WDB = {}; } }
+    if (typeof WDB !== 'object') WDB = {};
+    return WDB;
+  }
+  function wlang(L) { var d = wdb(); if (!d[L] || typeof d[L] !== 'object') d[L] = {}; return d[L]; }
+  function wsave() { try { localStorage.setItem(WKEY, JSON.stringify(WDB)); } catch (e) {} }
+  function wAdd(L, k, ctx, code) {
+    var W = wlang(L), e = W[k], n = px().played;
+    if (!e) e = W[k] = { k: k, ctx: ctx, code: code, box: 0, taps: 0, last: n, t: Date.now() };
+    e.taps++; e.box = 0; e.last = n; if (ctx) e.ctx = ctx; if (code) e.code = code;
+    wsave();
+  }
+  function wList(L) { var W = wlang(L), out = []; for (var k in W) if (W[k] && W[k].k) out.push(W[k]); return out; }
+  function wLearning(L) { return wList(L).filter(function (e) { return e.box < LEARNED; }); }
+  function wIsDue(e) { return e.box < LEARNED && px().played >= e.last + BOX_GAP[Math.min(e.box, BOX_GAP.length - 1)]; }
+  function inReview(k) { var e = wlang(tl())[k]; return !!(e && e.box < LEARNED); }
+  function hasWord(text, k) { return lwWords(text).some(function (w) { return wordKey(w) === k; }); }
+  /* the cards before a station: due words first, and among them the ones this station uses, shown in its own sentence */
+  function cardsFor(spec) {
+    var L = spec.lang, texts = stationTexts(spec.st), list = wLearning(L).map(function (e) {
+      var s = null; texts.forEach(function (x) { if (!s && hasWord(x, e.k)) s = x; });
+      return { e: e, s: s, due: wIsDue(e) };
+    }).filter(function (c) { return c.due || c.s; });
+    list.sort(function (a, b) { return (b.s ? 1 : 0) - (a.s ? 1 : 0) || a.e.box - b.e.box || a.e.t - b.e.t; });
+    return list.slice(0, CARD_MAX).map(function (c) { return { k: c.e.k, ctx: c.s || c.e.ctx, here: !!c.s }; });
+  }
+  /* after a bomb: a word met again without a tap gets stronger, a word tapped again starts over */
+  function wordsAfter(spec, won) {
+    var L = spec.lang, texts = stationTexts(spec.st), n = px().played, up = 0;
+    wList(L).forEach(function (e) {
+      if (e.box >= LEARNED || S.wopen[e.k]) return;
+      if (won && texts.some(function (x) { return hasWord(x, e.k); })) { e.box++; e.last = n; if (e.box >= LEARNED) up++; }
+    });
+    wsave();
+    return up;
+  }
+
+  /* ---------- tap a word: its meaning appears, it costs 3 seconds, and it goes on the word list ---------- */
+  function wGloss(w) { return glossFor(tl(), ui(), w); }
+  function TW(text, ctx) {
+    ctx = ctx || text;
+    return String(text).split(/(\s+)/).map(function (tok) {
+      if (!tok || /^\s+$/.test(tok)) return tok;
+      var lead = (tok.match(LW_LEAD) || [''])[0], rest = tok.slice(lead.length), tail = (rest.match(LW_TAIL) || [''])[0], core = rest.slice(0, rest.length - tail.length);
+      var k = wordKey(core), g = core && wGloss(core);
+      if (!g) return esc(tok);
+      var open = !!S.wopen[k];
+      return esc(lead) + '<button type="button" class="tw' + (open ? ' open' : '') + (!open && inReview(k) ? ' rv' : '') + '" data-a="wt" data-w="' + esc(k) + '" data-s="' + esc(ctx) + '"' + (open ? ' tabindex="-1"' : '') + '>' +
+        '<span class="tw-w">' + esc(core) + '</span>' + (open ? '<span class="tw-g' + (S.wnew === k ? ' pop' : '') + '" lang="' + ui() + '">' + esc(g) + '</span>' : '') + '</button>' + esc(tail);
+    }).join('');
+  }
+  function wordTap(k, ctx) {
+    if (!k || S.wopen[k] || !wGloss(k)) return;
+    S.wopen[k] = true; S.wnew = k;
+    wAdd(tl(), k, ctx, S.spec ? S.spec.code : '');
+    if (S.screen === 'bomb' && S.game && !S.game.over) penalty(3); else sfx('pen');
+    if (helperVisible()) renderHelpBody();
+    else if (S.screen === 'bomb' && S.view && S.view.focus != null) renderMod(S.view.focus);
+    else render();
+    S.wnew = null;
+    var b = document.querySelector('.tw[data-w="' + k.replace(/["\\]/g, '\\$&') + '"]');
+    if (b) { var f = document.createElement('span'); f.className = 'wd-pen'; f.setAttribute('aria-hidden', 'true'); f.textContent = t('pen', 3); b.appendChild(f); setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 1300); }
+  }
+  function markEx(s) { return TW(s.replace(/[\[\]]/g, ''), s.replace(/[\[\]]/g, '')).replace(/\u0000/g, ''); }
+  /* a model sentence with its point highlighted: the brackets become a mark */
+  function exHTML(s) {
+    var m = s.match(/^(.*?)\[([^\]]+)\](.*)$/), clean = s.replace(/[\[\]]/g, '');
+    if (!m) return TW(clean, clean);
+    return TW(m[1], clean) + '<mark>' + TW(m[2], clean) + '</mark>' + TW(m[3], clean);
+  }
+  function exBox(ex) { return ex && ex.length ? '<ul class="pex" lang="' + tl() + '">' + ex.map(function (s) { return '<li><i aria-hidden="true">✓</i><span>' + exHTML(s) + '</span></li>'; }).join('') + '</ul>' : ''; }
+  function sizeCls(text) { var n = String(text).length; return n > 90 ? ' xs' : n > 60 ? ' sm' : ''; }
+  function cBtns(i, n, pick) {
+    var h = '<div class="cbtns n' + n + '">';
+    for (var k = 0; k < n; k++) h += '<button type="button" class="cbtn c' + k + (pick === k ? ' on' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '" aria-label="' + esc(PACK[tl()].colors[k].k) + '">' + kbd(k + 1) + '<span aria-hidden="true">' + P_SHAPE[k] + '</span></button>';
+    return h + '</div>';
+  }
+  function cWords(words) {
+    var C = PACK[tl()].colors;
+    return '<ul class="cw" lang="' + tl() + '">' + words.map(function (w, k) {
+      return '<li><span class="sw c' + k + '" aria-hidden="true">' + P_SHAPE[k] + '</span><span class="cw-c">' + esc(C[k].k) + '</span><b class="cw-w">' + (w === '—' ? '<span class="none">—</span>' : TW(w, w)) + '</b>' + (w !== '—' ? sayBtn(w, true) : '') + '</li>';
+    }).join('') + '</ul>';
+  }
+
+  /* ---- gap: the bomb has the sentence, the helper has the words ---- */
+  UI.gap = {
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<p class="gp-s' + sizeCls(rd.full) + '" lang="' + tl() + '">' + TW(rd.pre, rd.full) + '<span class="hole" aria-label="___"></span>' + TW(rd.post, rd.full) + '</p>' +
+        cBtns(i, rd.words.length) + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st) {
+      if (k !== 'c') return;
+      var rd = d.rounds[st.r]; v = +v; if (!(v >= 0 && v < rd.words.length)) return;
+      if (v !== rd.ans) { st.fb = true; return 'strike'; }
+      st.r++; st.fb = false;
+      return st.r >= d.rounds.length ? 'solved' : 'next';
+    },
+    key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= d.rounds[st.r].words.length) { modAct(i, 'c', n - 1); return true; } },
+    keys: function () { return t('keys.col'); },
+    done: function (d) { return learn(UI.gap.recap(d)); },
+    recap: function (d) { return d.rounds.map(function (x) { return { tx: x.full }; }); },
+    pos: function (d, st) { return st.r; },
+    help: function (d, i, ms) {
+      var p = Math.min(ms.step || 0, d.rounds.length - 1);
+      return exBox(d.ex) + card(cnt('n.sentence', p + 1, d.rounds.length), '', cWords(d.rounds[p].words) + stepNav(i, p, d.rounds.length, null, null, true));
+    },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); else if (k === 'play') Voice.speak(v, 0.9); }
+  };
+
+  /* ---- listen: the helper reads, the bomb builds ---- */
+  UI.listen = {
+    init: function () { return { r: 0, placed: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
+      h += '<div class="build lb" role="group">' + (rd.start && st.placed.length ? '<span class="pz">' + rd.start + '</span>' : '') + (st.placed.length ? st.placed.map(function (ti, pos) {
+        var x = rd.tiles[ti];
+        return '<button type="button" class="tile in" data-a="m" data-i="' + i + '" data-k="rm" data-v="' + pos + '" lang="' + tl() + '">' + esc(pos === 0 ? cap(x) : x) + '</button>';
+      }).join('') + '<span class="pz">' + esc(rd.end) + '</span>' : '<span class="build-empty">🎧</span>') + '</div>';
+      h += '<div class="tray" role="group">' + rd.tiles.map(function (x, ti) {
+        return st.placed.indexOf(ti) >= 0 ? '<span class="tile ghost" aria-hidden="true">' + esc(x) + '</span>' : '<button type="button" class="tile" data-a="m" data-i="' + i + '" data-k="add" data-v="' + ti + '" lang="' + tl() + '">' + esc(x) + '</button>';
+      }).join('') + '</div>';
+      h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', !st.placed.length) + B(i, 'send', null, t('ck.check'), 'go wide', !st.placed.length) + '</div>';
+      return h + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st) {
+      var rd = d.rounds[st.r];
+      if (k === 'add') { v = +v; if (v >= 0 && v < rd.tiles.length && st.placed.indexOf(v) < 0) st.placed.push(v); st.fb = false; return 're'; }
+      if (k === 'rm') { st.placed.splice(+v, 1); st.fb = false; return 're'; }
+      if (k === 'clear') { st.placed = []; st.fb = false; return 're'; }
+      if (k === 'send') {
+        if (!st.placed.length) return;
+        var got = st.placed.map(function (ti) { return rd.tiles[ti].toLowerCase(); }).join(' '), want = rd.ans.map(function (x) { return x.toLowerCase(); }).join(' ');
+        if (got === want) { st.r++; st.placed = []; st.fb = false; return st.r >= d.rounds.length ? 'solved' : 'next'; }
+        st.fb = true; st.placed = []; return 'strike';
+      }
+    },
+    key: function (e, d, st, i, onCtl) {
+      if (e.key === 'Backspace') { if (st.placed.length) modAct(i, 'rm', st.placed.length - 1); return true; }
+      if (e.key === 'Enter' && !onCtl && st.placed.length) { modAct(i, 'send'); return true; }
+    },
+    keys: function () { return ''; },
+    done: function (d) { return learn(UI.listen.recap(d)); },
+    recap: function (d) { return d.rounds.map(function (x) { return { tx: x.full }; }); },
+    pos: function (d, st) { return st.r; },
+    help: function (d, i, ms) {
+      var p = Math.min(ms.step || 0, d.rounds.length - 1), rd = d.rounds[p], has = Voice.has();
+      return card(cnt('n.sentence', p + 1, d.rounds.length), '', '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' +
+        (has ? '<div class="row">' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+        stepNav(i, p, d.rounds.length, null, null, true));
+    },
+    onHelp: function (k, v, d, ms, i) {
+      if (stepMove(k, ms, d.rounds.length)) { Voice.stop(); renderHelpBody(); return; }
+      helpCommon(k, v, ms, i, function (key) { var rd = d.rounds[+String(key).slice(1)]; return rd ? rd.full : null; });
+    }
+  };
+
+  /* ---- fix: find the wrong word, then the helper's colour mends it ---- */
+  UI.fix = {
+    init: function () { return { r: 0, found: false, miss: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
+      h += '<div class="fx-s' + sizeCls(rd.toks.join(' ')) + '" lang="' + tl() + '">' + rd.toks.map(function (w, k) {
+        var bad = rd.bad.indexOf(k) >= 0;
+        if (st.found && bad) return '<span class="tile fx-bad">' + esc(w) + '</span>';
+        if (st.miss.indexOf(k) >= 0) return '<span class="tile fx-miss">' + esc(w) + '</span>';
+        return st.found ? '<span class="fx-w">' + esc(w) + '</span>' : '<button type="button" class="tile fx-t" data-a="m" data-i="' + i + '" data-k="tap" data-v="' + k + '">' + esc(w) + '</button>';
+      }).join(' ') + '</div>';
+      if (st.found) h += cBtns(i, rd.words.length);
+      return h + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st) {
+      var rd = d.rounds[st.r]; v = +v;
+      if (k === 'tap' && !st.found) {
+        if (rd.bad.indexOf(v) >= 0) { st.found = true; st.fb = false; return 'next'; }
+        if (st.miss.indexOf(v) < 0) st.miss.push(v);
+        st.fb = true; return 'strike';
+      }
+      if (k === 'c' && st.found) {
+        if (!(v >= 0 && v < rd.words.length)) return;
+        if (v !== rd.ans) { st.fb = true; return 'strike'; }
+        st.r++; st.found = false; st.miss = []; st.fb = false;
+        return st.r >= d.rounds.length ? 'solved' : 'next';
+      }
+    },
+    key: function (e, d, st, i) { var n = digitOf(e); if (st.found && n >= 1 && n <= d.rounds[st.r].words.length) { modAct(i, 'c', n - 1); return true; } },
+    keys: function () { return ''; },
+    done: function (d) { return learn(UI.fix.recap(d)); },
+    recap: function (d) { return d.rounds.map(function (x) { return { tx: x.full }; }); },
+    pos: function (d, st) { return st.r; },
+    help: function (d, i, ms) {
+      var p = Math.min(ms.step || 0, d.rounds.length - 1);
+      return exBox(d.ex) + card(cnt('n.sentence', p + 1, d.rounds.length), '', cWords(d.rounds[p].words) + stepNav(i, p, d.rounds.length, null, null, true));
+    },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); else if (k === 'play') Voice.speak(v, 0.9); }
+  };
+
+  /* ---- match: beginnings on the bomb, endings with the helper ---- */
+  UI.match = {
+    init: function (d) { return { set: d.left.map(function () { return 0; }), bad: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var n = d.right.length;
+      var h = '<ol class="mt" lang="' + tl() + '">' + d.left.map(function (s, k) {
+        var v = st.set[k];
+        return '<li class="' + (st.bad.indexOf(k) >= 0 ? 'bad' : '') + '"><span class="mt-s' + sizeCls(s) + '">' + TW(s, d.full[k]) + ' …</span>' +
+          '<button type="button" class="mt-n" data-a="m" data-i="' + i + '" data-k="n" data-v="' + k + '" aria-label="' + (v || '?') + '">' + (v || '?') + '</button></li>';
+      }).join('') + '</ol>';
+      var ready = st.set.every(function (x) { return x > 0; });
+      h += '<div class="row">' + B(i, 'send', null, t('ck.check'), 'go wide', !ready) + '</div>';
+      return h + (st.fb ? fbBad('p.bad') : '') + '<span class="sr">' + n + '</span>';
+    },
+    on: function (k, v, d, st) {
+      if (k === 'n') { v = +v; st.set[v] = st.set[v] % d.right.length + 1; st.bad = []; st.fb = false; return 're'; }
+      if (k === 'send') {
+        if (!st.set.every(function (x) { return x > 0; })) return;
+        var bad = []; st.set.forEach(function (x, j) { if (x !== d.ans[j]) bad.push(j); });
+        if (!bad.length) return 'solved';
+        st.bad = bad; st.fb = true; return 'strike';
+      }
+    },
+    keys: function () { return ''; },
+    done: function (d) { return learn(UI.match.recap(d)); },
+    recap: function (d) { return d.full.map(function (x) { return { tx: x }; }); },
+    help: function (d) {
+      return '<ol class="mt-r" lang="' + tl() + '">' + d.right.map(function (s, k) { return '<li><b>' + (k + 1) + '</b><span>… ' + TW(s, s) + '</span>' + sayBtn(s, true) + '</li>'; }).join('') + '</ol>';
+    }
+  };
+
+  /* ---------- the path screen ---------- */
+  var FLAG = { en: '🇬🇧', es: '🇪🇸' };
+  var ICON_FIRE = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 2 1 3 2 3.5C11 9 11 5 12 2z" fill="currentColor"/></svg>';
+  var ICON_BOLT = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>';
+  var ICON_CARDS = '<svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><rect x="3" y="6" width="13" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 3h10.5A2.5 2.5 0 0 1 21 5.5V17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  var ICON_HOME = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 11 12 3l9 8v10h-6v-6H9v6H3z" fill="currentColor"/></svg>';
+  function ring(v, max) {
+    var f = Math.max(0, Math.min(1, v / max)), c = 2 * Math.PI * 9;
+    return '<svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-opacity=".2" stroke-width="3.5"/><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="' + (c * f).toFixed(1) + ' 99" transform="rotate(-90 12 12)"/></svg>';
+  }
+  function statsBar() {
+    var s = streakNow(), on = px().last === today(), learning = wLearning(S.sel.course).length;
+    return '<div class="pstats">' +
+      '<span class="pst fire' + (on ? ' on' : '') + '" title="' + esc(t('p.streak')) + '">' + ICON_FIRE + '<b>' + s + '</b><span class="sr">' + t('p.streak') + '</span></span>' +
+      '<span class="pst xp" title="' + esc(t('p.goal', DAILY_GOAL)) + '">' + ring(xpToday(), DAILY_GOAL) + '<b>' + xpToday() + '</b><span class="sr">XP</span></span>' +
+      '<button type="button" class="pst words" data-a="words" title="' + esc(t('p.words')) + '">' + ICON_CARDS + '<b>' + learning + '</b><span class="sr">' + t('p.words') + '</span></button></div>';
+  }
+  function levelDone(lang, lv) { var L = COURSE[lang] && COURSE[lang][lv - 1]; if (!L) return 0; var n = 0; L.list.forEach(function (s) { if (starsOf(pathCode(lang, lv, s.n))) n++; }); return n; }
+  function viewPath() {
+    var L = S.sel.course, C = COURSE[L] || [], pos = pathPos(L), lv = S.sel.plv;
+    if (!(lv >= 1 && lv <= 6) || !C[lv - 1]) lv = S.sel.plv = pos.code ? parsePathCode(pos.code).lv : 1;
+    var courses = COURSES.map(function (c) { return '<button type="button" data-a="course" data-v="' + c + '" aria-pressed="' + (L === c) + '" lang="' + c + '"><span aria-hidden="true">' + FLAG[c] + '</span>' + PACK[c].name + '</button>'; }).join('');
+    var tabs = CEFR.map(function (name, k) {
+      var Lv = C[k], n = Lv ? Lv.list.length : 0, d = Lv ? levelDone(L, k + 1) : 0;
+      return '<button type="button" class="lvtab" data-a="plv" data-v="' + (k + 1) + '" aria-pressed="' + (lv === k + 1) + '"' + (Lv ? '' : ' disabled') + '><span>' + name + '</span><i><b style="width:' + (n ? Math.round(100 * d / n) : 0) + '%"></b></i></button>';
+    }).join('');
+    var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
+      '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>';
+    var Lv = C[lv - 1];
+    if (!Lv) return h + '</div>';
+    var off = [0, 1, 2, 1, 0, -1, -2, -1], gi = 0;
+    Lv.units.forEach(function (u, ui) {
+      var col = UNIT_COL[ui % UNIT_COL.length];
+      h += '<section class="unit" style="--uc:' + col[0] + ';--ucd:' + col[1] + '"><header class="ubanner"><small>' + CEFR[lv - 1] + ' · ' + t('p.unit', ui + 1) + '</small><b>' + esc(u.t[ui_()] || u.t.en) + '</b></header><div class="nodes">';
+      u.st.forEach(function (st) {
+        var code = pathCode(L, lv, st.n), k = pos.list.indexOf(code), stars = starsOf(code), cur = k === pos.cur, lock = !stars && k > pos.cur;
+        var x = off[gi++ % off.length] * 46;
+        h += '<div class="node-w' + (cur ? ' cur' : '') + (S.justOpen === code ? ' fresh' : '') + '" style="--x:' + x + 'px" id="n-' + st.n + '">' +
+          (cur ? '<span class="bubble">' + t('p.start') + '</span>' : '') +
+          '<button type="button" class="node' + (stars ? ' done' : '') + (lock ? ' lock' : '') + (cur ? ' now' : '') + '" data-a="node" data-v="' + code + '" aria-label="' + esc(CEFR[lv - 1] + ' ' + st.n + ': ' + (st.t[ui_()] || st.t.en)) + '">' +
+          (stars ? '<span aria-hidden="true">★</span>' : lock ? '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.6"/><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/></svg>' : '<span aria-hidden="true">' + st.n + '</span>') + '</button>' +
+          '<span class="nlabel">' + (stars ? '<span class="nst" aria-hidden="true">' + stars3(stars) + '</span>' : '') + '</span></div>';
+      });
+      h += '</div></section>';
+    });
+    if (lv < 6 && C[lv]) h += '<div class="lvnext"><button type="button" class="dbtn ghost" data-a="plv" data-v="' + (lv + 1) + '">' + CEFR[lv] + ' →</button></div>';
+    h += '<p class="classic-l"><button type="button" class="link" data-a="classic">' + t('p.classic') + '</button></p></div>';
+    return h;
+  }
+  function ui_() { return ui(); }
+  function stars3(n) { var s = ''; for (var k = 0; k < 3; k++) s += k < n ? '★' : '☆'; return s; }
+  function scrollToNode() {
+    var cur = $('.node-w.fresh') || $('.node-w.cur');
+    if (cur) { try { cur.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' }); } catch (e) { cur.scrollIntoView(); } }
+  }
+
+  /* ---------- the station card that slides up from below ---------- */
+  function sheetHTML() {
+    var p = parsePathCode(S.sheet), st = p && stationOf(p.lang, p.lv, p.n); if (!st) return '';
+    var stars = starsOf(S.sheet), due = cardsFor(makeStationSpec(S.sheet)).length;
+    var ex = st.ex[0] || (st.items[0] && st.items[0].full) || '';
+    return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
+      '<p class="sh-tag">' + CEFR[p.lv - 1] + ' · ' + p.n + (stars ? ' <span class="nst">' + stars3(stars) + '</span>' : '') + '</p>' +
+      '<h2 id="sh-t">' + esc(st.t[ui()] || st.t.en) + '</h2>' +
+      '<p class="sh-ex" lang="' + p.lang + '">' + exHTML(ex) + '</p>' +
+      (due ? '<p class="sh-due">' + ICON_CARDS + t('p.due', due) + '</p>' : '') +
+      '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
+      '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
+      '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button></div></aside>';
+  }
+  function openSheet(code) { S.sheet = code; renderDrawer(); var b = $('.sheet .dbtn'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
+  function closeSheet() { S.sheet = null; renderDrawer(); }
+
+  /* ---------- launching a station: the word cards first, then the bomb or the helper's page ---------- */
+  function play(code, role) {
+    var spec = makeSpec(code); if (!spec) return;
+    S.sheet = null; renderDrawer();
+    var cards = cardsFor(spec);
+    if (cards.length) { S.fc = { list: cards, i: 0, flip: false, then: { code: code, role: role }, fresh: true, ok: 0 }; S.screen = 'cards'; render(); window.scrollTo(0, 0); return; }
+    go(code, role);
+  }
+  function go(code, role) {
+    var spec = makeSpec(code); if (!spec) return;
+    S.wopen = {};
+    if (role === 'help') {
+      stopLoop(); clearTimers();
+      S.spec = spec; S.code = spec.code; S.solo = false; S.game = null; S.man = {}; S.tab = 0; S.screen = 'helper';
+      render(); window.scrollTo(0, 0); return;
+    }
+    launch(spec, role === 'solo');
+  }
+  function launch(spec, solo) {
+    clearTimers();
+    S.solo = !!solo; S.code = spec.code; S.spec = spec; S.wopen = S.wopen || {};
+    S.game = {
+      dur: spec.time * 1000, elapsed: 0, last: Date.now(), started: false, strikes: 0, hints: 0,
+      solved: spec.modules.map(function () { return false; }),
+      ms: spec.modules.map(function (m) { return UI[m.t].init(m.data); }),
+      over: null, why: '', paused: false, calm: !!S.sel.calm, beeped: 0, quitAsk: false
+    };
+    S.view = freshView();
+    S.man = {}; S.tab = 0; S.soloView = 'bomb'; S.screen = 'bomb';
+    save(); sfx('arm'); render(); startLoop(); window.scrollTo(0, 0);
+  }
+  function nextCode(code) { var p = parsePathCode(code), list = courseList(p.lang), k = list.indexOf(code); return list[Math.min(k + 1, list.length - 1)]; }
+  /* the result of a station: stars, XP, the streak, and words that got stronger */
+  function pathWin(stars) {
+    var g = S.game, x = px();
+    g.xp = 10 + 5 * stars; g.streakUp = addXp(g.xp); x.played++;
+    g.learned = wordsAfter(S.spec, true);
+    S.justOpen = nextCode(S.spec.code);
+  }
+  function pathLose() { px().played++; wordsAfter(S.spec, false); }
+  function helperDone() {
+    var code = S.spec.code; if (!starsOf(code)) S.prog[code] = 1;
+    addXp(10); px().played++; wordsAfter(S.spec, true); S.justOpen = nextCode(code);
+    save(); sfx('win'); goPath();
+  }
+  function goPath() {
+    stopLoop(); clearTimers(); document.body.classList.remove('boom');
+    if (S.spec && S.spec.path) { S.sel.course = S.spec.lang; S.sel.plv = parsePathCode(S.justOpen || S.spec.code).lv; }
+    S.game = null; S.screen = 'home'; S.solo = false; S.spec = null; save(); render();
+    setTimeout(function () { scrollToNode(); setTimeout(function () { S.justOpen = null; }, 1500); }, 60);
+  }
+
+  /* ---------- flashcards ---------- */
+  function hiWord(ctx, k) {
+    return String(ctx).split(/(\s+)/).map(function (tok) { return wordKey(lwCore(tok)) === k && tok.trim() ? '<mark>' + esc(tok) + '</mark>' : esc(tok); }).join('');
+  }
+  function viewCards() {
+    var F = S.fc, n = F.list.length, c = F.list[F.i], back = F.flip, g = glossFor(tl(), ui(), c.k) || '…';
+    var e = wlang(tl())[c.k] || { box: 0 };
+    var pct = Math.round(100 * F.i / n);
+    var h = '<div class="fc"><div class="fc-top"><div class="pbar"><i style="width:' + pct + '%"></i></div><button type="button" class="link" data-a="fc-skip">' + t(F.then ? 'fc.skip' : 'close') + '</button></div>' +
+      '<p class="fc-h">' + t(F.then ? 'fc.title' : 'fc.title2') + '</p>' +
+      '<div class="fc-card' + (F.fresh ? ' in' : '') + '"><div class="fc-in' + (back ? ' flip' : '') + '">' +
+      '<div class="fc-face fc-front"><span class="fc-st">' + strength(e.box) + '</span><p class="fc-w" lang="' + tl() + '">' + esc(c.k) + '</p>' + sayBtn(c.k) +
+      '<p class="fc-ctx" lang="' + tl() + '">' + (c.here ? '<span class="fc-tag">' + t('fc.next') + '</span>' : '') + hiWord(c.ctx, c.k) + '</p></div>' +
+      '<div class="fc-face fc-back"><p class="fc-w" lang="' + tl() + '">' + esc(c.k) + '</p><p class="fc-g" lang="' + ui() + '">' + esc(g) + '</p><p class="fc-ctx" lang="' + tl() + '">' + hiWord(c.ctx, c.k) + '</p>' + sayBtn(c.ctx, true) + '</div>' +
+      '</div></div>';
+    h += back ? '<div class="fc-btns"><button type="button" class="dbtn bad" data-a="fc" data-v="0">' + t('fc.again') + '</button><button type="button" class="dbtn ok" data-a="fc" data-v="1">' + t('fc.know') + '</button></div>'
+      : '<div class="fc-btns"><button type="button" class="dbtn go" data-a="fc-flip">' + t('fc.show') + '</button></div>';
+    return h + '</div>';
+  }
+  function strength(box) { var h = '<span class="str" aria-label="' + box + '/' + LEARNED + '">'; for (var k = 0; k < LEARNED; k++) h += '<i' + (k < box ? ' class="on"' : '') + '></i>'; return h + '</span>'; }
+  function fcAnswer(ok) {
+    var F = S.fc, c = F.list[F.i], e = wlang(tl())[c.k];
+    if (e) {
+      if (ok) { if (!F.missed || !F.missed[c.k]) e.box = Math.min(LEARNED, e.box + 1); e.last = px().played; F.ok++; sfx('ok'); }
+      else { e.box = Math.max(0, e.box - 1); e.last = px().played; F.missed = F.missed || {}; F.missed[c.k] = 1; if (F.list.filter(function (x) { return x.k === c.k; }).length < 2) F.list.push(c); sfx('strike'); }
+      wsave();
+    }
+    F.i++; F.flip = false; F.fresh = true;
+    if (F.i >= F.list.length) { fcDone(); return; }
+    render();
+  }
+  function fcDone() { var F = S.fc; S.fc = null; if (F && F.then) go(F.then.code, F.then.role); else { S.screen = 'words'; render(); } }
+
+  /* ---------- the word list ---------- */
+  function viewWords() {
+    var L = S.sel.course, all = wList(L).sort(function (a, b) { return a.box - b.box || b.t - a.t; }), learning = all.filter(function (e) { return e.box < LEARNED; });
+    var h = '<div class="wl"><div class="wl-h"><button type="button" class="pbtn sm" data-a="home">← ' + t('back') + '</button><h1>' + t('p.words') + '</h1><span class="wl-n">' + FLAG[L] + ' ' + learning.length + '</span></div>';
+    if (!all.length) return h + '<p class="wl-empty">' + t('w.empty') + '</p></div>';
+    if (learning.length) h += '<button type="button" class="dbtn go" data-a="practise">' + t('w.practise') + '</button>';
+    h += '<ul class="wlist">' + all.map(function (e) {
+      return '<li class="' + (e.box >= LEARNED ? 'learned' : '') + '"><div class="wl-top"><b lang="' + L + '">' + esc(e.k) + '</b><span lang="' + ui() + '">' + esc(glossFor(L, ui(), e.k)) + '</span>' + strength(e.box) + '</div>' +
+        (e.ctx ? '<p class="wl-ctx" lang="' + L + '">' + hiWord(e.ctx, e.k) + '</p>' : '') + '</li>';
+    }).join('') + '</ul></div>';
+    return h;
+  }
+  function practise() {
+    var L = S.sel.course, list = wLearning(L).sort(function (a, b) { return (wIsDue(b) ? 1 : 0) - (wIsDue(a) ? 1 : 0) || a.box - b.box; }).slice(0, 10);
+    if (!list.length) return;
+    S.fc = { list: list.map(function (e) { return { k: e.k, ctx: e.ctx, here: false }; }), i: 0, flip: false, then: null, fresh: true, ok: 0 };
+    S.screen = 'cards'; render(); window.scrollTo(0, 0);
+  }
+
+  /* ---------- the result of a station ---------- */
+  function confetti() {
+    if (reduced()) return '';
+    var h = '<div class="confetti" aria-hidden="true">', cols = ['#58CC02', '#1CB0F6', '#FFC83D', '#FF4B4B', '#CE82FF', '#fff'];
+    for (var k = 0; k < 46; k++) h += '<i style="left:' + ((k * 37) % 100) + '%;background:' + cols[k % cols.length] + ';animation-delay:' + ((k % 9) * 0.07).toFixed(2) + 's;animation-duration:' + (1.6 + (k % 5) * 0.3).toFixed(1) + 's;--r:' + ((k * 73) % 360) + 'deg;--dx:' + (((k * 29) % 120) - 60) + 'px"></i>';
+    return h + '</div>';
+  }
+  function viewPathResult() {
+    var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok', st = spec.st;
+    var stars = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, recap = '';
+    spec.modules.forEach(function (m, i) { var rows = UI[m.t].recap(m.data, g.ms[i]); if (rows.length) recap += learn(rows); });
+    var starH = ''; for (var k = 0; k < 3; k++) starH += '<i class="' + (k < stars ? 'on' : '') + '" style="animation-delay:' + (0.35 + k * 0.18) + 's">★</i>';
+    var nxt = ok ? nextCode(spec.code) : null;
+    return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">' + CEFR[spec.level - 1] + ' · ' + spec.station + ' · ' + esc(st.t[ui()] || st.t.en) + '</p>' +
+      '<h1 data-fit lang="' + spec.lang + '">' + (ok ? P.win : P.boom) + '</h1>' +
+      (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
+      (ok ? '<div class="chips"><span class="chip xp">' + ICON_BOLT + '<b data-count="' + g.xp + '">+' + g.xp + '</b> XP</span>' +
+        '<span class="chip fire' + (g.streakUp ? ' up' : '') + '">' + ICON_FIRE + '<b>' + streakNow() + '</b> ' + t('p.days') + '</span>' +
+        (g.learned ? '<span class="chip wd">' + ICON_CARDS + '<b>+' + g.learned + '</b> ' + t('p.learned') + '</span>' : '') + '</div>' : '') +
+      '<div class="ctas">' + (ok ? '<button type="button" class="cta" data-a="pcont">' + t('p.cont') + '</button>' : '<button type="button" class="cta" data-a="again">' + t('res.retry') + '</button>') +
+      (ok && nxt !== spec.code ? '<button type="button" class="hb big" data-a="pnext">' + t('res.next') + '</button>' : '') +
+      (ok ? '<button type="button" class="hb big" data-a="again">' + t('res.again') + '</button>' : '<button type="button" class="hb big" data-a="pcont">' + t('p.path') + '</button>') + '</div>' +
+      (recap ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + recap + '</section></div>' : '') + '</div>';
+  }
+  function countUp() {
+    var b = $('.chip.xp b[data-count]'); if (!b || reduced()) return;
+    var to = +b.getAttribute('data-count'), n = 0, iv = setInterval(function () { n = Math.min(to, n + Math.ceil(to / 14)); b.textContent = '+' + n; if (n >= to) clearInterval(iv); }, 45);
+  }
+
   /* ===== part D: screens, events, start-up ===== */
   function helperVisible() { return S.screen === 'helper' || (S.screen === 'bomb' && S.solo && S.soloView === 'manual'); }
   function stars(n) { var s = ''; for (var k = 0; k < 3; k++) s += k < n ? '★' : '☆'; return s; }
@@ -4377,6 +5311,7 @@ var STR = {
   function uiOptions() { return UI_ORDER.map(function (L) { return '<option value="' + L + '"' + (ui() === L ? ' selected' : '') + '>' + PACK[L].name + '</option>'; }).join(''); }
   function topbar() {
     return '<div class="bar"><button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button><span class="bar-sp"></span>' +
+      (S.screen !== 'home' ? '<button type="button" class="bar-b ico" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') +
       '<button type="button" class="bar-b" data-a="drawer" data-v="parlor">' + t('bar.phrases') + '</button>' +
       '<label class="bar-sel">' + ICON_GLOBE + '<span class="sr">' + t('ui.label') + '</span><select data-a="uilang" id="ui-sel">' + uiOptions() + '</select></label>' +
       '<button type="button" class="bar-b ico" data-a="drawer" data-v="set" aria-label="' + esc(t('bar.settings')) + '">' + ICON_GEAR + '</button></div>';
@@ -4410,7 +5345,7 @@ var STR = {
       '<section class="howto" aria-labelledby="h-how"><h2 id="h-how">' + t('how.t') + '</h2><ol><li><p>' + t('how.1') + '</p></li><li><p>' + t('how.2') + '</p></li><li><p>' + t('how.3') + '</p></li></ol><p class="howto-note">' + t('how.4') + '</p></section>';
   }
 
-  function bombTag(spec) { var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
+  function bombTag(spec) { if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
   function openCode() {
     var spec = makeSpec(S.codeInput);
     if (!spec) { S.codeErr = true; render(); return; }
@@ -4550,7 +5485,7 @@ var STR = {
       return '<button type="button" role="tab" id="tab-' + i + '" class="tab' + (S.tab === i ? ' on' : '') + '" aria-selected="' + (S.tab === i) + '" data-a="tab" data-v="' + i + '"><small>' + t('help.task', i + 1) + '</small>' + TT(modName(m.t), 'b') + (ui() !== tl() ? '<small>' + modNameUi(m.t) + '</small>' : '') + '</button>';
     }).join('');
     var side = sideHTML(S.tab), after = afterHTML(S.tab);
-    return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + LEVELS[spec.level - 1] + '</p>' +
+    return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + (spec.path ? CEFR[spec.level - 1] + ' · ' + esc(spec.st.t[ui()] || spec.st.t.en) : LEVELS[spec.level - 1]) + '</p>' +
       '<div class="man-code"><span class="lbl">' + t('hud.code') + '</span><b>' + bombTag(spec) + '</b></div></header>' +
       '<p class="man-tip">' + t('help.tip') + '</p>' +
       '<div class="tabs" role="tablist">' + tabs + '</div><div class="man-cols' + (side ? ' two' : '') + '" id="man-cols">' +
@@ -4575,11 +5510,13 @@ var STR = {
   }
   function renderHelpSide() { var el = $('#man-side'); if (el && helperVisible()) el.innerHTML = sideHTML(S.tab); }
   function viewHelper() {
+    if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="dbtn ok" data-a="help-done">' + t('p.hdone') + '</button><button type="button" class="pbtn" data-a="home">' + t('p.path') + '</button></div></div>';
     return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="pbtn" data-a="rejoin">' + t('help.other') + '</button></div></div>';
   }
 
   /* ---------- result ---------- */
   function viewResult() {
+    if (S.spec.path) return viewPathResult();
     var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok';
     var st = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, recap = '';
     spec.modules.forEach(function (m, i) {
@@ -4608,7 +5545,7 @@ var STR = {
     var P = PK(), can = Voice.has(), U = PACK[ui()], other = ui() !== tl();
     var ns = []; for (var n = 0; n <= 20; n++) ns.push(n); [30, 40, 50, 60, 70, 80, 90, 100].forEach(function (x) { ns.push(x); });
     return '<h2>' + t('bar.phrases') + '</h2><p class="sub">' + t('phr.sub') + '</p>' +
-      '<ul class="phr">' + PHRASES3.map(function (r) { var x = row3(r); return '<li><span>' + TT(x) + GL(tri(r)) + '</span>' + sayBtn(x, true) + '</li>'; }).join('') + '</ul>' +
+      '<ul class="phr">' + (tl() === 'es' ? ES_PHRASES.map(function (r) { return { x: r[0], gl: { en: r[1], hu: r[2], da: r[3] } }; }) : PHRASES3.map(function (r) { return { x: row3(r), gl: tri(r) }; })).map(function (o) { return '<li><span>' + TT(o.x) + GL(o.gl) + '</span>' + sayBtn(o.x, true) + '</li>'; }).join('') + '</ul>' +
       '<h3>' + t('phr.colors') + '</h3><ul class="cols">' + P.colors.map(function (c, k) { return '<li><i style="background:' + HEX[k] + '"></i>' + TT(c.k) + (other ? '<span class="gl">' + U.colors[k].k + '</span>' : '') + '</li>'; }).join('') + '</ul>' +
       '<h3>' + t('phr.ord') + '</h3><ul class="numl">' + P.ord.map(function (o, k) { return '<li><b>' + (k + 1) + '.</b>' + TT(o) + '</li>'; }).join('') + '<li><b>…</b>' + TT(P.last) + '</li></ul>' +
       '<h3>' + t('phr.nums') + '</h3><ul class="numl">' + ns.map(function (x) { return '<li><b>' + x + '</b>' + TT(P.num(x)) + '</li>'; }).join('') + '</ul>' +
@@ -4634,7 +5571,7 @@ var STR = {
   }
   function renderDrawer() {
     var el = $('#overlay');
-    if (!S.drawer) { el.innerHTML = ''; return; }
+    if (!S.drawer) { el.innerHTML = S.sheet ? sheetHTML() : ''; return; }
     var name = t(S.drawer === 'parlor' ? 'bar.phrases' : 'bar.settings');
     el.innerHTML = '<div class="scrim" data-a="drawer-close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="' + esc(name) + '"><button type="button" class="pbtn x" data-a="drawer-close">' + t('close') + '</button>' + (S.drawer === 'parlor' ? parlor() : settings()) + '</aside>';
   }
@@ -4644,13 +5581,15 @@ var STR = {
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewHome() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'words' ? viewWords() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
       if (S.view.intro && $('#bomb')) { S.view.intro = false; intro(); }
     }
+    if (S.screen === 'result') countUp();
+    if (S.screen === 'cards' && S.fc) S.fc.fresh = false;
     fit();
   }
   /* shrink a big heading until its longest word fits the screen, whatever font ends up loading */
@@ -4670,7 +5609,11 @@ var STR = {
     if (!typing && $('#bomb') && (gr.cols !== S.view.cols || gr.rows !== S.view.rows)) render(); else applyView(false);
   });
   try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); } catch (e) {}
-  function goHome() { stopLoop(); clearTimers(); document.body.classList.remove('boom'); S.game = null; S.screen = 'home'; S.solo = false; render(); window.scrollTo(0, 0); }
+  function goHome() {
+    if (S.spec && S.spec.path && S.screen !== 'home' && S.screen !== 'classic') { goPath(); return; }
+    var back = S.spec && !S.spec.path && S.screen !== 'home' && S.screen !== 'classic' ? 'classic' : 'home';
+    stopLoop(); clearTimers(); document.body.classList.remove('boom'); S.game = null; S.spec = back === 'home' ? null : S.spec; S.screen = back; S.solo = false; S.fc = null; render(); window.scrollTo(0, 0);
+  }
   /* re-render and put the keyboard back on the control that was used */
   function rerenderKeep(sel) { render(); var x = sel && $(sel); if (x) { try { x.focus({ preventScroll: true }); } catch (e) {} } }
 
@@ -4705,7 +5648,7 @@ var STR = {
       case 'get': newBomb(false); break;
       case 'solo': newBomb(true); break;
       case 'join': stopLoop(); clearTimers(); S.codeInput = fixedCode(S.sel.lang, S.sel.mission, S.sel.level); openCode(); break;
-      case 'rejoin': goHome(); break;
+      case 'rejoin': S.spec = null; S.screen = 'classic'; render(); window.scrollTo(0, 0); break;
       case 'tab': {
         S.tab = +ds.v; Voice.stop();
         var sc = $('.man-scroll'), keep = sc ? sc.scrollTop : 0;
@@ -4716,6 +5659,21 @@ var STR = {
       }
       case 'home': goHome(); break;
       case 'brand': if (S.screen === 'bomb' && g && !g.over) { g.quitAsk = true; paintToolbar(); } else if (S.screen !== 'home') goHome(); break;
+      case 'course': S.sel.course = ds.v; S.sel.plv = 0; save(); render(); scrollToNode(); break;
+      case 'plv': S.sel.plv = +ds.v; save(); rerenderKeep('[data-a="plv"][data-v="' + ds.v + '"]'); window.scrollTo(0, 0); break;
+      case 'node': openSheet(ds.v); break;
+      case 'sheet-close': closeSheet(); break;
+      case 'play': play(S.sheet, ds.v); break;
+      case 'wt': wordTap(ds.w, ds.s); break;
+      case 'fc-flip': S.fc.flip = true; render(); { var fb = $('.fc-btns .ok'); if (fb) { try { fb.focus({ preventScroll: true }); } catch (e6) {} } } break;
+      case 'fc': fcAnswer(ds.v === '1'); break;
+      case 'fc-skip': fcDone(); break;
+      case 'words': S.screen = 'words'; render(); window.scrollTo(0, 0); break;
+      case 'practise': practise(); break;
+      case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
+      case 'help-done': helperDone(); break;
+      case 'pcont': goPath(); break;
+      case 'pnext': { var nc = nextCode(S.spec.code); S.justOpen = null; play(nc, S.solo ? 'solo' : 'bomb'); break; }
       case 'quit': g.quitAsk = true; paintToolbar(); break;
       case 'quit-no': g.quitAsk = false; paintToolbar(); break;
       case 'quit-yes': goHome(); break;
@@ -4725,8 +5683,8 @@ var STR = {
         /* alone on one screen: the helper's cards open at the step the bomb is on */
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
-      case 'next': S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); break;
-      case 'again': S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
+      case 'next': if (S.spec.path) { play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); break;
+      case 'again': if (S.spec.path) { launch(makeSpec(S.spec.code), S.solo); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
       case 'sfx': S.set.sfx = !!el.checked; save(); if (S.set.sfx) sfx('step'); break;
       case 'voice': S.set.voice = el.value; save(); voiceChanged(); break;
       case 'voice-test': Voice.speak(PK().hello, 1).then(function (ok) { if (!ok) voiceChanged(); }); break;
@@ -4788,6 +5746,7 @@ var STR = {
     if (e.key === 'Escape') {
       /* Escape closes what is open; with nothing open it ends a reading. The key is claimed only when it closed something. */
       if (S.drawer) { e.preventDefault(); S.drawer = null; renderDrawer(); }
+      else if (S.sheet) { e.preventDefault(); closeSheet(); }
       else if (S.screen === 'bomb' && S.view && S.view.focus != null && !helperVisible()) { e.preventDefault(); zoomOut(); }
       else if (Voice.on) Voice.stop();
       return;
@@ -4797,6 +5756,7 @@ var STR = {
     if (e.key === 'Enter' && inField && el.getAttribute('data-hin') != null) { e.preventDefault(); helperTyped(el); act('hm', { i: el.getAttribute('data-hin'), k: 'check', v: el.getAttribute('data-p') }, el); return; }
     if (e.key === 'Enter' && !e.shiftKey && inField && el.getAttribute('data-in') != null) { e.preventDefault(); syncInput(el); modAct(+el.getAttribute('data-in'), el.getAttribute('data-enter')); return; }
     if ((e.key === 'Enter' || e.key === ' ') && el && el.getAttribute && el.getAttribute('data-a') && tag !== 'BUTTON' && !inField) { e.preventDefault(); act(el.getAttribute('data-a'), el.dataset, el); return; }
+    if (S.screen === 'cards' && S.fc && !inField && (e.key === 'Enter' || e.key === ' ') && !(el && el.tagName === 'BUTTON')) { e.preventDefault(); if (!S.fc.flip) act('fc-flip', {}); return; }
     if (inField || S.drawer || !S.spec) return;
     var onCtl = !!(el && el.closest && el.closest('button,[role="button"],a'));
     if (S.screen === 'bomb' && S.game && !S.game.over && !S.game.paused && !helperVisible() && S.view) {
