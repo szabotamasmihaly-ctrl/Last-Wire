@@ -853,6 +853,16 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .nst{color:#E0A100;font-size:14px;letter-spacing:1px}
 .node-w.fresh .node{animation:unlock .9s cubic-bezier(.2,1.5,.4,1) both}
 .lvnext{display:flex;justify-content:center;padding:20px 0}
+.ptest{display:flex;justify-content:center;padding:0 0 6px}
+.pt{max-width:560px;margin:0 auto;padding:12px 16px 40px}
+.pt-bar{height:14px;border-radius:99px;background:#e5e5e5;overflow:hidden;margin:18px 0 8px}.pt-bar i{display:block;height:100%;background:var(--signal);border-radius:99px;transition:width .3s}
+.pt-lv{font-weight:900;color:var(--ink-2);margin:0 0 18px;letter-spacing:.06em}
+.pt-q{font-size:24px;line-height:1.5;font-weight:700;margin:0 0 26px}
+.pt-gap{display:inline-block;min-width:90px;border-bottom:3px solid var(--ink-2);text-align:center;padding:0 6px}
+.pt-os{display:grid;gap:12px}
+.pt-o{min-height:56px;border-radius:14px;border:2px solid #e2e2e2;background:#fff;color:var(--ink);font:inherit;font-size:19px;font-weight:700;box-shadow:0 4px 0 #e2e2e2;cursor:pointer}
+.pt-o.ok{background:#d7ffb8;border-color:#58cc02;box-shadow:0 4px 0 #58a700}.pt-o.no{background:#ffdfe0;border-color:#ff4b4b;box-shadow:0 4px 0 #ea2b2b}
+.pt-done{display:grid;justify-items:center;gap:6px;padding:40px 0 30px}.pt-done small{font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2)}.pt-done b{font-size:96px;line-height:1;font-family:var(--display,inherit)}
 .classic-l{text-align:center;margin-top:28px}
 .classic-l .link{color:var(--ink-2)}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
@@ -3693,6 +3703,8 @@ var ES_PHRASES = [
     'p.start': ['Start', 'Kezdés', 'Start'],
     'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
     'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
+    'p.place': ['Find my level', 'Szintfelmérő', 'Find mit niveau'],
+    'p.placed': ['Your level', 'A szinted', 'Dit niveau'],
     'p.classic': ['Classic bombs (Danish, English, Hungarian)', 'Klasszikus bombák (dán, angol, magyar)', 'Klassiske bomber (dansk, engelsk, ungarsk)'],
     'p.streak': ['Day streak', 'Napi sorozat', 'Dage i træk'],
     'p.goal': ['Daily goal: {0} XP', 'Napi cél: {0} XP', 'Dagens mål: {0} XP'],
@@ -5286,15 +5298,18 @@ var ES_PHRASES = [
       return '<button type="button" class="lvtab" data-a="plv" data-v="' + (k + 1) + '" aria-pressed="' + (lv === k + 1) + '"' + (Lv ? '' : ' disabled') + '><span>' + name + '</span><i><b style="width:' + (n ? Math.round(100 * d / n) : 0) + '%"></b></i></button>';
     }).join('');
     var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
-      '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>';
+      '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>' +
+      '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button></div>';
     var Lv = C[lv - 1];
     if (!Lv) return h + '</div>';
     var off = [0, 1, 2, 1, 0, -1, -2, -1], gi = 0;
+    var lvCodes = Lv.list.map(function (s) { return pathCode(L, lv, s.n); }), lvCur = -1;
+    lvCodes.some(function (c, k) { if (!starsOf(c)) { lvCur = k; return true; } return false; });
     Lv.units.forEach(function (u, ui) {
       var col = UNIT_COL[ui % UNIT_COL.length];
       h += '<section class="unit" style="--uc:' + col[0] + ';--ucd:' + col[1] + '"><header class="ubanner"><small>' + CEFR[lv - 1] + ' · ' + t('p.unit', ui + 1) + '</small><b>' + esc(u.t[ui_()] || u.t.en) + '</b></header><div class="nodes">';
       u.st.forEach(function (st) {
-        var code = pathCode(L, lv, st.n), k = pos.list.indexOf(code), stars = starsOf(code), cur = k === pos.cur && !stars, lock = !stars && k > pos.cur;
+        var code = pathCode(L, lv, st.n), k = lvCodes.indexOf(code), stars = starsOf(code), cur = k === lvCur, lock = !stars && k > lvCur;
         var x = off[gi++ % off.length] * 46;
         h += '<div class="node-w' + (cur ? ' cur' : '') + (S.justOpen === code ? ' fresh' : '') + '" style="--x:' + x + 'px" id="n-' + st.n + '">' +
           (cur ? '<span class="bubble">' + t('p.start') + '</span>' : '') +
@@ -5482,6 +5497,47 @@ var ES_PHRASES = [
   function fcDone() { var F = S.fc; S.fc = null; if (F && F.then) go(F.then.code, F.then.role); else { S.screen = 'words'; render(); } }
 
   /* ---------- the word list ---------- */
+  /* ---------- placement test: three gaps per level, climb while two of three are right ---------- */
+  function ptQs(lang, lv) {
+    var Lv = COURSE[lang] && COURSE[lang][lv - 1]; if (!Lv) return [];
+    var st = Lv.list.slice().sort(function () { return Math.random() - 0.5; }), out = [];
+    for (var i = 0; i < st.length && out.length < 3; i++) {
+      var its = st[i].items.filter(function (it) { return it.opts.indexOf('—') < 0; });
+      if (!its.length) continue;
+      var it = its[Math.floor(Math.random() * its.length)], o = it.opts.slice(0, 3).sort(function () { return Math.random() - 0.5; });
+      out.push({ pre: it.pre, post: it.post, opts: o, ans: o.indexOf(it.opts[0]) });
+    }
+    return out;
+  }
+  function ptStart() { S.pt = { lang: S.sel.course, lv: 1, qs: ptQs(S.sel.course, 1), i: 0, right: 0, n: 0, pick: -1, place: 0 }; S.screen = 'place'; render(); window.scrollTo(0, 0); }
+  function ptAnswer(k) {
+    var P = S.pt; if (!P || P.pick >= 0 || P.place) return;
+    var q = P.qs[P.i]; P.pick = k; if (k === q.ans) P.right++; P.n++;
+    render();
+    setTimeout(function () {
+      if (S.pt !== P) return;
+      P.pick = -1; P.i++;
+      if (P.i >= P.qs.length) {
+        var pass = P.right >= 2, C = COURSE[P.lang] || [];
+        if (pass && P.lv < 6 && C[P.lv]) { P.lv++; P.qs = ptQs(P.lang, P.lv); P.i = 0; P.right = 0; }
+        else P.place = P.lv;
+      }
+      render();
+    }, 750);
+  }
+  function viewPlace() {
+    var P = S.pt, L = P.lang;
+    var h = '<div class="pt"><div class="wl-h"><button type="button" class="pbtn sm" data-a="home">← ' + t('back') + '</button><h1>' + t('p.place') + '</h1><span class="wl-n">' + FLAG[L] + '</span></div>';
+    if (P.place) return h + '<div class="pt-done"><small>' + t('p.placed') + '</small><b>' + CEFR[P.place - 1] + '</b></div><button type="button" class="dbtn go" data-a="ptgo" data-v="' + P.place + '">' + t('p.cont') + '</button></div>';
+    var q = P.qs[P.i], total = 18, pct = Math.min(100, Math.round(100 * P.n / total));
+    h += '<div class="pt-bar"><i style="width:' + pct + '%"></i></div><p class="pt-lv">' + CEFR[P.lv - 1] + '</p>';
+    h += '<p class="pt-q" lang="' + L + '">' + esc(lwTrim(q.pre)) + ' <span class="pt-gap">' + (P.pick >= 0 ? esc(q.opts[P.pick]) : '') + '</span> ' + esc(lwTrim(q.post)) + '</p><div class="pt-os">';
+    q.opts.forEach(function (o, k) {
+      var cls = P.pick < 0 ? '' : k === q.ans ? ' ok' : k === P.pick ? ' no' : '';
+      h += '<button type="button" class="pt-o' + cls + '" data-a="pta" data-v="' + k + '" lang="' + L + '">' + esc(o) + '</button>';
+    });
+    return h + '</div></div>';
+  }
   function viewWords() {
     var L = S.sel.course, all = wList(L).sort(function (a, b) { return a.box - b.box || b.t - a.t; }), learning = all.filter(function (e) { return e.box < LEARNED; });
     var h = '<div class="wl"><div class="wl-h"><button type="button" class="pbtn sm" data-a="home">← ' + t('back') + '</button><h1>' + t('p.words') + '</h1><span class="wl-n">' + FLAG[L] + ' ' + learning.length + '</span></div>';
@@ -5816,8 +5872,8 @@ var ES_PHRASES = [
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'warm' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -5897,6 +5953,9 @@ var ES_PHRASES = [
       case 'course': S.sel.course = ds.v; S.sel.plv = 0; save(); render(); scrollToNode(); break;
       case 'plv': S.sel.plv = +ds.v; save(); rerenderKeep('[data-a="plv"][data-v="' + ds.v + '"]'); window.scrollTo(0, 0); break;
       case 'node': openSheet(ds.v); break;
+      case 'ptest': ptStart(); break;
+      case 'pta': ptAnswer(+ds.v); break;
+      case 'ptgo': S.sel.plv = +ds.v; S.pt = null; save(); S.screen = 'home'; render(); window.scrollTo(0, 0); break;
       case 'sheet-close': closeSheet(); break;
       case 'play': play(S.sheet, ds.v); break;
       case 'wt': wordTap(ds.w, ds.s); break;
