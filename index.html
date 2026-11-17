@@ -681,6 +681,14 @@ body[data-screen="bomb"] #vstop{top:5px}
 .ck-ex li{display:grid;grid-template-columns:5.2ch minmax(0,1fr);gap:18px;align-items:baseline;padding:10px 16px;font-size:20px;line-height:1.4;border-bottom:1px solid rgba(21,24,28,.12)}
 .ck-ex.anim li{animation:ckin .4s both}
 .ck-ex li:last-child{border-bottom:0}
+.ck-ex li{grid-template-columns:30px 5.2ch minmax(0,1fr);gap:14px;align-items:center}
+.ck-ex li.step{border-top:6px solid var(--paper-2)}
+.ck-ico{width:30px;height:30px;display:block}
+.ci-face{fill:#fff;stroke:var(--ink);stroke-width:1.8}
+.ci-past{fill:#58CC02;opacity:.85}
+.ci-to{fill:#FF9600;opacity:.85}
+.ci-hand{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round}
+.ci-dot{fill:var(--ink)}
 .ck-ex.anim li:nth-child(2){animation-delay:.04s}.ck-ex.anim li:nth-child(3){animation-delay:.08s}.ck-ex.anim li:nth-child(4){animation-delay:.12s}.ck-ex.anim li:nth-child(5){animation-delay:.16s}.ck-ex.anim li:nth-child(6){animation-delay:.2s}.ck-ex.anim li:nth-child(7){animation-delay:.24s}.ck-ex.anim li:nth-child(8){animation-delay:.28s}.ck-ex.anim li:nth-child(9){animation-delay:.32s}
 .ck-t{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
 .ck-s{font-weight:500}
@@ -719,7 +727,7 @@ body[data-screen="bomb"] #vstop{top:5px}
 @keyframes wdpop{0%{opacity:0;transform:translateY(-5px) scale(.6)}100%{opacity:1;transform:none}}
 @keyframes ckin{0%{opacity:0;transform:translateX(-10px)}100%{opacity:1;transform:none}}
 @keyframes ckok{0%{transform:scale(.97)}50%{transform:scale(1.02)}100%{transform:none}}
-@media (max-width:520px){.ck-ex li{font-size:18px;gap:12px;padding:9px 12px}.ck-q .ck-t{font-size:30px}.ck-q .slot{flex-basis:120px}.ck-ans{font-size:20px}}
+@media (max-width:520px){.ck-ex li{font-size:18px;gap:10px;padding:9px 12px;grid-template-columns:26px 5ch minmax(0,1fr)}.ck-ico{width:26px;height:26px}.ck-q .ck-t{font-size:30px}.ck-q .slot{flex-basis:120px}.ck-ans{font-size:20px}}
 @media (prefers-reduced-motion:reduce){.ck-ex.anim li,.wd-g.pop,.ck-q.pop,.ck-q.pop .ck-tick,.ck-q.shake,.ck-words.pop span{animation:none}}
 /* pronunciation: red letters are not pronounced, yellow letters sound different */
 .pron{font-weight:600}
@@ -2918,14 +2926,40 @@ function clockClues(r, P, level, targets, relaxed) {
   clues.sort(function (a, b) { return a.h - b.h || a.m - b.m; });
   return { clues: clues, ana: ana };
 }
+/* The clock examples are built in steps, each step one idea, around two neighbouring hours A and B:
+   full hour | quarter past, half, quarter to | minutes past (before :30) | minutes to (after :30) | :25 and :35.
+   The three times to write use only the constructions and number words the examples show, and are never an example themselves. */
+function clockGroups(level, A, B) {
+  var g = [[[A, 0]], [[A, 15], [A, 30], [A, 45], [B, 15]]];
+  if (level >= 2) g.push([[A, 10], [A, 20], [B, 10]], [[A, 40], [A, 50], [B, 55]]);
+  if (level >= 3) g.push([[A, 25], [A, 35]]);
+  return g;
+}
 function genClock(r, level, ctx) {
-  var P = ctx.pack, ask = CLOCK_ASK[level - 1], times, res = null, tries = 0;
-  while (!res) {
-    times = r.sample(ask, 3).map(function (m) { var h; do { h = r.range(1, 12); } while (!P.timeOk(h, m)); return { h: h, m: m, text: P.timeSent(h, m) }; });
-    res = clockClues(r, P, level, times, tries >= 10);
-    tries++;
-  }
-  return { times: times, clues: res.clues.map(function (c) { return { h: c.h, m: c.m, text: P.timeSent(c.h, c.m) }; }), ana: res.ana };
+  var P = ctx.pack, A = r.range(3, 9), B = A + 1, clues = [], K = {}, U = {}, used = {};
+  clockGroups(level, A, B).forEach(function (grp, gi) {
+    grp.forEach(function (x) {
+      var p = P.timeParts(x[0], x[1]); U[p.type] = 1; p.nums.forEach(function (w) { K[w] = 1; }); used[x[0] + ':' + x[1]] = 1;
+      clues.push({ h: x[0], m: x[1], g: gi, text: P.timeSent(x[0], x[1]) });
+    });
+  });
+  var ask = CLOCK_MINS[level - 1], pool = [];
+  for (var h = 1; h <= 12; h++) ask.forEach(function (m) {
+    if (used[h + ':' + m] || !P.timeOk(h, m)) return;
+    var p = P.timeParts(h, m);
+    if (U[p.type] && p.nums.every(function (w) { return K[w]; })) pool.push({ h: h, m: m });
+  });
+  /* one time for each idea of the level: the new ideas are always asked */
+  var want = level === 1 ? [[0, 15, 30, 45], [0, 15, 30, 45], [0, 15, 30, 45]] : level === 2 ? [[0, 15, 30, 45], [5, 10, 20], [40, 50, 55]] : [[5, 10, 20, 40, 50, 55], [25], [35]];
+  var times = [], seen = {};
+  want.forEach(function (ms) {
+    var c = r.shuffle(pool.filter(function (x) { return ms.indexOf(x.m) >= 0 && !seen[x.m]; }))[0];
+    if (c) { seen[c.m] = 1; times.push(c); }
+  });
+  r.shuffle(pool).forEach(function (x) { if (times.length < 3 && !seen[x.m]) { seen[x.m] = 1; times.push(x); } });
+  r.shuffle(pool).forEach(function (x) { if (times.length < 3 && times.indexOf(x) < 0) times.push(x); });
+  times = times.map(function (x) { return { h: x.h, m: x.m, text: P.timeSent(x.h, x.m) }; });
+  return { times: times, clues: clues };
 }
 
 function genLever(r, level, ctx) {
@@ -4672,11 +4706,20 @@ var ES_PHRASES = [
     if (!always && coarse()) return;
     var x = document.getElementById('hin-' + i + '-' + p); if (x) { try { x.focus({ preventScroll: !always }); } catch (e) {} }
   }
+  /* a small clock: green from 12 to the minute hand while it is "past", orange from the hand back to 12 when it is "to" */
+  function ckIcon(m) {
+    var a = m * 6 * Math.PI / 180, x = 16 + 13 * Math.sin(a), y = 16 - 13 * Math.cos(a), arc = '';
+    if (m > 0 && m <= 30) arc = '<path d="M16 16 L16 3 A13 13 0 ' + (m > 30 ? 1 : 0) + ' 1 ' + x.toFixed(2) + ' ' + y.toFixed(2) + ' Z" class="ci-past"/>';
+    else if (m > 30) arc = '<path d="M16 16 L' + x.toFixed(2) + ' ' + y.toFixed(2) + ' A13 13 0 0 1 16 3 Z" class="ci-to"/>';
+    var hx = 16 + 10 * Math.sin(a), hy = 16 - 10 * Math.cos(a);
+    return '<svg class="ck-ico" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" class="ci-face"/>' + arc +
+      '<line x1="16" y1="16" x2="' + hx.toFixed(2) + '" y2="' + hy.toFixed(2) + '" class="ci-hand"/><circle cx="16" cy="16" r="1.8" class="ci-dot"/></svg>';
+  }
   UI.clock.help = function (d, i, ms) {
     ms.val = ms.val || {}; ms.ok = ms.ok || {}; ms.fb = ms.fb || {};
     var anim = !ms.seen; ms.seen = true;
-    var h = '<h3 class="ck-h">' + t('ck.ex') + '</h3><ul class="ck-ex' + (anim ? ' anim' : '') + '">' + d.clues.map(function (c) {
-      return '<li><b class="ck-t">' + hhmm(c.h, c.m) + '</b>' + ckWords(c.text, ms, i) + '</li>';
+    var h = '<h3 class="ck-h">' + t('ck.ex') + '</h3><ul class="ck-ex' + (anim ? ' anim' : '') + '">' + d.clues.map(function (c, k) {
+      return '<li' + (k && c.g !== d.clues[k - 1].g ? ' class="step"' : '') + '>' + ckIcon(c.m) + '<b class="ck-t">' + hhmm(c.h, c.m) + '</b>' + ckWords(c.text, ms, i) + '</li>';
     }).join('') + '</ul>';
     var first = -1;
     h += '<div class="ck-qs">' + d.times.map(function (x, p) {
