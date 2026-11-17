@@ -170,6 +170,7 @@ body[data-screen="bomb"] :focus-visible{outline-color:var(--signal)}
 .tb-q{font-weight:700;margin-right:6px}
 @media (max-width:430px){.tb{padding:7px 9px;font-size:14px}.tb .wide{display:none}}
 .caption{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:16px var(--gut) 8px;background:linear-gradient(rgba(7,9,11,0),rgba(7,9,11,.96) 16px);font-size:14.5px;line-height:1.35;pointer-events:none}
+.caption:empty{display:none}
 .caption .pp{max-width:76ch;margin:0 auto}
 .caption p.big{font-size:17px;font-weight:600;line-height:1.45}
 .codechip{display:inline-block;background:var(--signal);color:#1b1500;font:800 1.55em/1 var(--font-display);letter-spacing:.16em;padding:5px 6px 2px 10px;border-radius:6px;vertical-align:-4px}
@@ -4513,8 +4514,10 @@ var ES_PHRASES = [
   };
 
   /* ===== part C: the helper's page for each task ===== */
-  function todo(steps) { return '<div class="todo"><h3>' + t('help.do') + '</h3><ol>' + steps.map(function (s) { return '<li>' + s + '</li>'; }).join('') + '</ol></div>'; }
+  /* no instruction boxes: every page shows only what solves the puzzle */
+  function todo() { return ''; }
   function sayList(type) {
+    return '';
     var rows = TASKSAY3[type]; if (!rows) return '';
     return '<div class="sayit"><h3>' + t('help.say') + '</h3><ul class="phr">' + rows.map(function (r) { var x = row3(r); return '<li><span>' + TT(x) + GL(tri(r)) + '</span>' + sayBtn(x, true) + '</li>'; }).join('') + '</ul></div>';
   }
@@ -4525,7 +4528,7 @@ var ES_PHRASES = [
   /* quiet: the step is not finished yet, so "Next" is not the main button and nothing says "that was the last one" */
   function stepNav(i, pos, n, nextLabel, prevLabel, quiet) {
     return '<div class="stepnav">' + HB(i, 'prev', null, prevLabel || t('prev'), '', pos === 0) + '<span class="pos">' + (pos + 1) + ' / ' + n + '</span>' + HB(i, 'next', null, nextLabel || t('next'), quiet ? '' : 'go', pos >= n - 1) + '</div>' +
-      (pos >= n - 1 && !quiet ? '<p class="lastone">' + t('last') + '</p>' : '');
+      '';
   }
   /* something to listen to. Asking the game to write it down takes ten seconds. */
   function listenBox(i, key, text, ms) {
@@ -4578,7 +4581,7 @@ var ES_PHRASES = [
       '<div class="row">' + HB(i, 'undo', null, t('wires.undo'), 'sm') + HB(i, 'clear', null, t('wires.clear'), 'sm') + '</div>' : '') + '</div>';
     h += '<h3>' + t('wires.rules') + '</h3><ol class="rules" lang="' + tl() + '">' + d.rules.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '<li class="else">' + esc(d.def) + '</li></ol>';
     h += '<ul class="ords" lang="' + tl() + '">' + P.ord.map(function (o, k) { return '<li><b>' + (k + 1) + '.</b> ' + esc(o) + '</li>'; }).join('') + '</ul>';
-    if (lv >= 2) h += '<p class="tipline">' + t('wires.plate') + (lv >= 3 ? ' ' + t('wires.vowels', P.vowels.split('').join(' ')) : '') + '</p>';
+    if (lv >= 3) h += '<p class="tipline">' + t('wires.vowels', P.vowels.split('').join(' ')) + '</p>';
     if (ui() !== tl()) {
       var keep = lv === 1 ? [0, 1, 2, 3, 4, 5, 8] : lv === 2 ? [0, 1, 2, 3, 4, 5, 6, 8, 9, 10] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
       h += '<h3>' + t('wires.words') + '</h3><dl class="gloss">' + keep.map(function (k) { var r = WIREGLOSS3[k]; return '<dt lang="' + tl() + '">' + esc(row3(r)) + '</dt><dd>' + esc(tri(r)[ui()]) + '</dd>'; }).join('') + '</dl>';
@@ -4789,7 +4792,7 @@ var ES_PHRASES = [
       '<h3>' + t('lever.sents') + '</h3><ul class="sents" lang="' + tl() + '">' + d.report.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' +
       '<h3>' + t('lever.table') + '</h3><div class="tbl-wrap"><table class="tbl"><thead><tr>' + P.leverHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody lang="' + tl() + '">' +
       P.leverRows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
-      '<p class="tipline">' + t('lever.note.' + tl()) + '</p>' + sayList('lever');
+      sayList('lever');
   };
 
   /* ---- verbs ---- */
@@ -4798,7 +4801,6 @@ var ES_PHRASES = [
     return todo([t('h.verbs.1'), t('h.verbs.2'), t('h.verbs.3')]) +
       '<h3>' + t('verbs.sig') + '</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t('verbs.form') + '</th><th>' + t('verbs.sig') + '</th></tr></thead><tbody lang="' + tl() + '">' +
       P.verbSignals.map(function (r) { return '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
-      '<p class="tipline">' + t('verbs.note.' + tl()) + '</p>' +
       '<h3>' + t('verbs.table') + '</h3><div class="tbl-wrap"><table class="tbl verbs"><thead><tr>' + P.verbHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function (r) { return '<tr><td>' + TT(r.show) + GL(r.gl) + '</td>' + r.f.map(function (f) { return '<td lang="' + tl() + '">' + esc(f) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
       sayList('verbs');
@@ -4809,11 +4811,11 @@ var ES_PHRASES = [
     var p = Math.min(ms.step || 0, d.rounds.length - 1), rd = d.rounds[p], P = PK();
     var rules = rd.rule.map(function (k) {
       var R = P.ordRules.filter(function (x) { return x.k === k; })[0];
-      return '<p>' + t('rule.' + tl() + '.' + k) + '</p>' + (R ? '<p class="ex" lang="' + tl() + '">' + R.ex + '</p>' : '');
+      return R ? '<p class="ex" lang="' + tl() + '">' + R.ex + '</p>' : '';
     }).join('');
     return todo([t('h.order.1'), t('h.order.2'), t('h.order.3')]) +
-      card(cnt('n.sentence', p + 1, d.rounds.length) + ' · ' + t('order.task'), rd.instr,
-        sayBtn(rd.instr) + '<div class="rulebox"><h4>' + t('order.rule') + '</h4>' + rules + '<p class="small">' + t('order.end') + '</p></div>' + stepNav(i, p, d.rounds.length)) +
+      card(cnt('n.sentence', p + 1, d.rounds.length), rd.instr,
+        sayBtn(rd.instr) + (rules ? '<div class="rulebox"><h4>' + t('ck.ex') + '</h4>' + rules + '</div>' : '') + stepNav(i, p, d.rounds.length)) +
       sayList('order');
   };
   UI.order.onHelp = function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); };
@@ -5459,11 +5461,11 @@ var ES_PHRASES = [
     var h, fine = !coarse();
     if (v.focus != null) {
       var m = S.spec.modules[v.focus], U = UI[m.t];
-      h = '<p>' + t('cap.' + m.t, m.t === 'pics' ? tIn() : null) + '</p>' + (fine && U.keys ? '<p class="keys">' + U.keys(m.data) + '</p>' : '');
-    } else if (v.face === 'under') h = '<p>' + t('cap.under') + '</p>';
+      h = '';
+    } else if (v.face === 'under') h = '';
     else if (!g.started) h = '<p class="big">' + (S.solo ? t('cap.start.solo') : t('cap.start', '<b class="codechip">' + bombTag(S.spec) + '</b>')) + '</p>';
-    else h = '<p>' + t('cap.over') + (hasBack() ? ' ' + t('cap.over.more') : '') + '</p>' + (fine ? '<p class="keys">' + t('keys.over') + '</p>' : '');
-    el.innerHTML = '<div class="pp">' + h + '</div>';
+    else h = '';
+    el.innerHTML = h ? '<div class="pp">' + h + '</div>' : '';
   }
   function viewBomb() {
     var g = S.game, v = S.view, manual = S.solo && S.soloView === 'manual';
@@ -5493,7 +5495,6 @@ var ES_PHRASES = [
     var side = sideHTML(S.tab), after = afterHTML(S.tab);
     return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + (spec.path ? CEFR[spec.level - 1] + ' · ' + esc(spec.st.t[ui()] || spec.st.t.en) : LEVELS[spec.level - 1]) + '</p>' +
       '<div class="man-code"><span class="lbl">' + t('hud.code') + '</span><b>' + bombTag(spec) + '</b></div></header>' +
-      '<p class="man-tip">' + t('help.tip') + '</p>' +
       '<div class="tabs" role="tablist">' + tabs + '</div><div class="man-cols' + (side ? ' two' : '') + '" id="man-cols">' +
       '<article class="chapter" id="man-body" role="tabpanel" aria-labelledby="tab-' + S.tab + '">' + chapterHTML(S.tab) + '</article>' +
       (side ? '<aside class="side" id="man-side" aria-label="' + esc(t('nb.title')) + '">' + side + '</aside>' : '') +
