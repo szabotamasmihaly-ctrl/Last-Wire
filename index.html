@@ -4637,6 +4637,7 @@ var ES_PHRASES = [
   }
   /* quiet: the step is not finished yet, so "Next" is not the main button and nothing says "that was the last one" */
   function stepNav(i, pos, n, nextLabel, prevLabel, quiet) {
+    if (S.game) return ''; /* on one screen the helper's page follows the bomb */
     return '<div class="stepnav">' + HB(i, 'prev', null, prevLabel || t('prev'), '', pos === 0) + '<span class="pos">' + (pos + 1) + ' / ' + n + '</span>' + HB(i, 'next', null, nextLabel || t('next'), quiet ? '' : 'go', pos >= n - 1) + '</div>' +
       '';
   }
@@ -5656,6 +5657,7 @@ var ES_PHRASES = [
   function helpHTML() {
     var spec = S.spec;
     if (S.game && nextTask() >= 0) S.tab = nextTask();
+    if (S.game) spec.modules.forEach(function (m, k) { if (UI[m.t].pos && S.game.ms[k]) manState(k).step = UI[m.t].pos(m.data, S.game.ms[k]); });
     if (S.tab >= spec.modules.length || S.tab < 0) S.tab = 0;
     var n = spec.modules.length, dots = '<div class="tsteps" aria-label="' + (S.tab + 1) + ' / ' + n + '">' + spec.modules.map(function (m, k) {
       return '<i class="' + (k < S.tab ? 'done' : k === S.tab ? 'on' : '') + '"></i>';
