@@ -35,7 +35,7 @@ LWC('da', 4, `
 - Et [åbent|åben|åbne] køleskab er en invitation til hunden.
 - Det var et [sultent|sulten|sultne] barn, der spiste min sandwich.
 - Hun har to [sultne|sulten|sultent] børn og et tomt køleskab.
-- Vi har to [små|lille|lilla] børn og en stor hund.
+- Vi har to [små|lille|lilles] børn og en stor hund.
 @ hellere, helst | hellere, helst | hellere, helst
 = Jeg vil [hellere] sove end arbejde.
 = Hvad vil du [helst]? Pizza eller pizza?
