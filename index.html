@@ -914,6 +914,12 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .mt-s{font-size:17px;line-height:1.3}.mt-s.sm{font-size:15px}.mt-s.xs{font-size:13.5px}
 .mt-n{flex:none;width:52px;height:52px;border-radius:12px;border:0;background:var(--signal);color:#1b1500;font:900 30px/1 var(--font-display);box-shadow:0 4px 0 var(--signal-deep)}
 .mt-n:active{transform:translateY(3px);box-shadow:0 1px 0 var(--signal-deep)}
+.mt li{justify-content:flex-start}.mt-s{flex:1}
+.mt-eq{flex:none;font:900 28px/1 var(--font-display);color:var(--signal);font-style:normal}
+.mt-r .mt-eq{color:var(--ink)}
+.mt-n.empty{background:transparent;border:3px dashed #6b7680;box-shadow:none}
+.mt-tray{display:flex;justify-content:center;gap:14px;margin-top:14px}
+.mt-n.used{opacity:.25;box-shadow:none}
 /* the helper's side */
 .pex{display:grid;gap:8px;max-width:620px;margin-bottom:6px;font-size:19px}
 .pex li{display:flex;gap:10px;align-items:baseline;background:#fff;border:2px solid #e2e2dc;border-radius:12px;padding:9px 14px}
@@ -5247,15 +5253,20 @@ var ES_PHRASES = [
       var n = d.right.length;
       var h = '<ol class="mt" lang="' + tl() + '">' + d.left.map(function (s, k) {
         var v = st.set[k];
-        return '<li class="' + (st.bad.indexOf(k) >= 0 ? 'bad' : '') + '"><span class="mt-s' + sizeCls(s) + '">' + TW(s, d.full[k]) + ' …</span>' +
-          '<button type="button" class="mt-n" data-a="m" data-i="' + i + '" data-k="n" data-v="' + k + '" aria-label="' + (v || '?') + '">' + (v || '?') + '</button></li>';
+        return '<li class="' + (st.bad.indexOf(k) >= 0 ? 'bad' : '') + '"><span class="mt-s' + sizeCls(s) + '">' + TW(s, d.full[k]) + ' …</span><span class="mt-eq" aria-hidden="true">=</span>' +
+          '<button type="button" class="mt-n' + (v ? '' : ' empty') + '" data-a="m" data-i="' + i + '" data-k="n" data-v="' + k + '" aria-label="' + (v || '_') + '">' + (v || '') + '</button></li>';
       }).join('') + '</ol>';
+      h += '<div class="mt-tray">' + d.right.map(function (_, j) {
+        var used = st.set.indexOf(j + 1) >= 0;
+        return '<button type="button" class="mt-n' + (used ? ' used' : '') + '" data-a="m" data-i="' + i + '" data-k="p" data-v="' + (j + 1) + '"' + (used ? ' disabled' : '') + '>' + (j + 1) + '</button>';
+      }).join('') + '</div>';
       var ready = st.set.every(function (x) { return x > 0; });
       h += '<div class="row">' + B(i, 'send', null, t('ck.check'), 'go wide', !ready) + '</div>';
       return h + (st.fb ? fbBad('p.bad') : '') + '<span class="sr">' + n + '</span>';
     },
     on: function (k, v, d, st) {
-      if (k === 'n') { v = +v; st.set[v] = st.set[v] % d.right.length + 1; st.bad = []; st.fb = false; return 're'; }
+      if (k === 'n') { st.set[+v] = 0; st.bad = []; st.fb = false; return 're'; }
+      if (k === 'p') { v = +v; var at = st.set.indexOf(0); if (at < 0 || st.set.indexOf(v) >= 0) return; st.set[at] = v; st.bad = []; st.fb = false; return 're'; }
       if (k === 'send') {
         if (!st.set.every(function (x) { return x > 0; })) return;
         var bad = []; st.set.forEach(function (x, j) { if (x !== d.ans[j]) bad.push(j); });
@@ -5267,7 +5278,7 @@ var ES_PHRASES = [
     done: function (d) { return learn(UI.match.recap(d)); },
     recap: function (d) { return d.full.map(function (x) { return { tx: x }; }); },
     help: function (d) {
-      return '<ol class="mt-r" lang="' + tl() + '">' + d.right.map(function (s, k) { return '<li><b>' + (k + 1) + '</b><span>… ' + TW(s, s) + '</span>' + sayBtn(s, true) + '</li>'; }).join('') + '</ol>';
+      return '<ol class="mt-r" lang="' + tl() + '">' + d.right.map(function (s, k) { return '<li><b>' + (k + 1) + '</b><i class="mt-eq" aria-hidden="true">=</i><span>… ' + TW(s, s) + '</span>' + sayBtn(s, true) + '</li>'; }).join('') + '</ol>';
     }
   };
 
