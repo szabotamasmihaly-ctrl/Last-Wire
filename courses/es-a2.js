@@ -1,471 +1,471 @@
 LWC('es', 2, `
 # The past: preterite | Múlt idő: pretérito indefinido | Datid: pretérito indefinido
 @ Preterite -ar: hablé, hablaste | Pretérito -ar: hablé, hablaste | Pretérito -ar: hablé, hablaste
-= Ayer [hablé] con mi madre.
-= Ella [trabajó] hasta tarde.
-- Ayer yo [compré|compró|compro] un libro.
-- ¿Tú [llamaste|llamastes|llamó] a Pedro?
-- Nosotros [viajamos|viajemos|viajaron] a Roma el año pasado.
-- Ellos [bailaron|bailamos|bailó] toda la noche.
-- Ella [cocinó|cociné|cocina] paella el domingo.
-- Yo [llegué|llegé|llegó] tarde.
+= Ayer [hablé] con mi gato. No contestó.
+= Mi abuela [bailó] hasta las cinco.
+- Ayer yo [compré|compró|compro] un pato. No sé por qué.
+- ¿Tú [cantaste|cantastes|cantó] en la boda? Todos lloraron.
+- Nosotros [viajamos|viajemos|viajaron] a Roma y comimos pizza en el hotel.
+- Mis padres [bailaron|bailamos|bailó] encima de la mesa.
+- Ella [cocinó|cociné|cocina] paella. Vinieron los bomberos.
+- Yo [llegué|llegé|llegó] tarde a mi propia fiesta.
 @ Preterite -er, -ir: comí, viví | Pretérito -er, -ir: comí, viví | Pretérito -er, -ir: comí, viví
-= Anoche [comí] pescado.
-= Ellos [vivieron] en París.
-- Ella [escribió|escribí|escribe] una carta.
-- Nosotros [bebimos|bebemos|bebieron] vino.
-- ¿Tú [abriste|abristes|abrió] la ventana?
-- Yo [salí|salió|salo] a las ocho.
-- Ellos [aprendieron|aprendimos|aprendió] mucho.
-- Mi hijo [nació|nací|nace] en 2010.
+= Anoche [comí] tres cenas.
+= Mis abuelos [vivieron] en un barco diez años.
+- Mi gato [escribió|escribí|escribe] un correo a mi jefe. Con la cola.
+- Nosotros [bebimos|bebemos|bebieron] demasiado café y no dormimos.
+- ¿Tú [abriste|abristes|abrió] la nevera? Falta mi pastel.
+- Yo [salí|salió|salo] de casa en pijama. Sin querer.
+- Los niños [aprendieron|aprendimos|aprendió] a abrir la nevera.
+- Mi perro [nació|nací|nace] un viernes 13.
 @ fui: ser and ir in the past | fui: a „ser” és az „ir” múltja | fui: ser og ir i datid
-= Ayer [fui] al cine. (ir)
-= Fue un día genial. (ser)
-- Nosotros [fuimos|fueron|fue] a la playa.
-- ¿Adónde [fuiste|fuistes|fue] ayer?
-- La fiesta [fue|fui|era fue] increíble.
-- Ellos [fueron|fuimos|fue] al museo.
-- Yo [fui|fue|era] a Madrid en tren.
-- ¿Cómo [fue|fui|está fue] el viaje?
+= Ayer [fui] al supermercado en pijama. (ir)
+= Fue el peor corte de pelo de mi vida. (ser)
+- Nosotros [fuimos|fueron|fue] a la playa en enero. Mala idea.
+- ¿Adónde [fuiste|fuistes|fue] anoche? ¿Quién es Kevin?
+- La fiesta [fue|fui|era fue] increíble. No recuerdo nada.
+- Mis padres [fueron|fuimos|fue] a una discoteca. Volvieron a las seis.
+- Yo [fui|fue|era] a Madrid en un tren muy lento.
+- ¿Cómo [fue|fui|está fue] tu cita? ¿Tan mal?
 @ hice, tuve, estuve | hice, tuve, estuve | hice, tuve, estuve
-= Ayer [hice] la compra.
-= [Tuve] un problema.
-- ¿Qué [hiciste|haciste|hizo] el fin de semana?
-- Ella [tuvo|tenió|tuve] un bebé.
-- Nosotros [estuvimos|estamos|estuvieron] en Londres.
-- Él [hizo|hació|hice] la cena.
-- Yo [estuve|estí|estuvo] enfermo dos días.
-- Ellos [tuvieron|tenieron|tuvimos] suerte.
+= Ayer [hice] un pastel. El perro no lo quiso.
+= [Tuve] un sueño raro con una vaca.
+- ¿Qué [hiciste|haciste|hizo] con mi móvil?
+- La gata [tuvo|tenió|tuve] seis gatitos en mi armario.
+- Nosotros [estuvimos|estamos|estuvieron] tres horas en el ascensor.
+- Mi padre [hizo|hació|hice] la cena. Luego pedimos pizza.
+- Yo [estuve|estí|estuvo] enfermo dos días. Bueno, uno.
+- Ellos [tuvieron|tenieron|tuvimos] suerte. El oso no tenía hambre.
 @ pude, puse, dije, vine | pude, puse, dije, vine | pude, puse, dije, vine
-= No [pude] venir.
-= ¿Qué [dijiste]?
-- Ella [dijo|decí|dijió] la verdad.
-- Yo [puse|poní|pusé] las llaves en la mesa.
-- ¿Por qué no [viniste|veniste|vino] ayer?
-- Nosotros no [pudimos|podimos|pudieron] entrar.
-- Ellos [dijeron|dijieron|decieron] que sí.
-- Él [vino|venió|vine] en coche.
+= No [pude] dormir. Mi gato roncaba.
+= ¿Qué [dijiste]? Tenía la boca llena.
+- Mi loro [dijo|decí|dijió] una palabra muy fea delante de la abuela.
+- Yo [puse|poní|pusé] las llaves en la nevera. Otra vez.
+- ¿Por qué no [viniste|veniste|vino] a mi fiesta? Había tarta.
+- Nosotros no [pudimos|podimos|pudieron] entrar. El perro cerró la puerta.
+- Mis padres [dijeron|dijieron|decieron] que sí. ¡Por fin un perro!
+- El profesor [vino|venió|vine] en monopatín.
 # Describing the past | A múlt leírása | At beskrive fortiden
 @ Imperfect: hablaba, comía | Imperfecto: hablaba, comía | Imperfecto: hablaba, comía
-= De niño [jugaba] en la calle.
-= Antes [vivíamos] en el campo.
-- Cuando era pequeño, [comía|comió|como] mucho chocolate.
-- Mi abuela [cantaba|cantaban|cantabas] todas las noches.
-- Nosotros [íbamos|ibamos|íbais] a la playa cada verano.
-- Ella [tenía|tenías|teníamos] el pelo largo de joven.
-- Antes no [había|hubo|hay] internet.
-- Los niños [jugaban|jugábamos|jugaba] en el parque cada tarde.
+= De niño [comía] arena.
+= Antes [teníamos] una cabra que se llamaba Pepe.
+- Cuando era pequeño, [creía|creyó|creo] que los gatos hablaban.
+- Mi abuela [cantaba|cantaban|cantabas] en la ducha y los vecinos aplaudían.
+- Nosotros [íbamos|ibamos|íbais] a la playa con el gato.
+- Mi padre [tenía|tenías|teníamos] pelo. Mucho pelo.
+- Antes no [había|hubo|hay] internet. ¿Qué hacía la gente?
+- Los niños [jugaban|jugábamos|jugaba] con las gallinas.
 @ era, iba, veía | era, iba, veía | era, iba, veía
-= Mi casa [era] muy pequeña.
-= [Iba] al colegio en bici.
-- Cuando [era|fui|soy] niño, vivía en Sevilla.
-- Nosotros [íbamos|ibamos|iban] al cine los sábados.
-- De niño, yo [veía|veían|veías] la tele cada noche.
-- Cuando yo era niño, mis padres [eran|era|éramos] muy estrictos.
-- De joven, ella siempre [iba|iban|ibas] en autobús.
-- De niños, desde nuestra ventana [veíamos|veímos|víamos] el mar.
+= Mi primer coche [era] rosa.
+= [Iba] al colegio en burro. Bueno, en bici.
+- Cuando [era|fui|soy] niño, quería ser un dinosaurio.
+- Nosotros [íbamos|ibamos|iban] al cine para dormir.
+- De niño, yo [veía|veían|veías] dibujos animados todo el día.
+- Mis padres [eran|era|éramos] muy estrictos. Ahora son abuelos y todo vale.
+- De joven, mi abuela [iba|iban|ibas] a todas las fiestas.
+- De niños, desde nuestra ventana [veíamos|veímos|víamos] al vecino bailar.
 @ Preterite or imperfect? | Indefinido vagy imperfecto? | Indefinido eller imperfecto?
-= [Llovía] cuando salí.
-= Ayer [llovió] todo el día.
-- Ayer, cuando [llegué|llegue|llego] a casa, ella dormía.
-- [Era|Fue|Es] tarde y hacía frío.
-- Mientras [cocinaba|cociné|cocino], sonó el teléfono.
-- El año pasado [fuimos|fuemos|vamos] a Italia.
-- De niña, yo [tenía|tenías|tengo] un perro.
-- Ayer [vi|veía|veo] a tu hermano en la calle.
-~ Leía un libro | cuando sonó el teléfono.
-~ Hacía sol | y fuimos a la playa.
-~ Mientras dormía, | entró un ladrón.
+= [Dormía] cuando el gato saltó encima de mí.
+= Ayer [llovió] dentro de mi tienda de campaña.
+- Ayer, cuando [llegué|llegue|llego] a casa, el perro veía la tele.
+- [Era|Fue|Es] medianoche y alguien comía en la cocina.
+- Mientras [cantaba|canté|canto] en la ducha, se fue el agua.
+- El año pasado [fuimos|fuemos|vamos] a Italia y comimos solo helado.
+- De niña, yo [tenía|tenías|tengo] miedo de los payasos. Todavía.
+- Ayer [vi|veía|veo] a mi profesor en la discoteca.
+~ Bailaba en la cocina | cuando entró mi jefe.
+~ Hacía sol | y fuimos a la playa sin crema.
+~ Mientras dormía, | el gato se comió mi bocadillo.
 @ Time words for the past: ayer, anoche | Időhatározók a múltban | Tidsord i fortiden
-= [Ayer] fui al médico.
-= [Hace] dos años viví en Roma.
-- [Anoche|Ayer noche|La noche ayer] vi una película.
-- Llegué [hace|desde|por] una hora.
-- [El año pasado|El pasado año pasado|El año pasada] fui a Cuba.
-- [Anteayer|Antes ayer|Ayer antes] hablé con ella.
-- [La semana pasada|La pasada semana pasada|La semana pasado] estuve enfermo.
-- Me casé [hace|desde|antes] diez años.
+= [Ayer] empecé una dieta. Hoy ya no.
+= [Hace] dos horas comí. Tengo hambre otra vez.
+- [Anoche|Ayer noche|La noche ayer] soñé con una pizza gigante.
+- El perro se comió mis zapatos [hace|desde|por] una hora.
+- [El año pasado|El pasado año pasado|El año pasada] aprendí a bailar. Más o menos.
+- [Anteayer|Antes ayer|Ayer antes] perdí las gafas. Estaban en mi cabeza.
+- [La semana pasada|La pasada semana pasada|La semana pasado] mi abuela se compró una moto.
+- Mi padre contó ese chiste [hace|desde|antes] diez años. Y ayer.
 @ Reflexives in the past | Visszaható igék múlt időben | Refleksive verber i datid
-= Ayer [me levanté] a las seis.
-= Ella [se acostó] tarde.
-- Nosotros [nos divertimos|nos divirtimos|se divertimos] mucho.
-- ¿A qué hora [te despertaste|se despertaste|te despertó]?
-- Ellos [se casaron|se casamos|nos casaron] en mayo.
-- Yo [me duché|me duchó|se duché] rápido.
-- Él [se puso|se ponió|se pusé] la chaqueta.
-- ¿[Os|Se|Nos] lavasteis las manos?
+= Ayer [me levanté] a las dos de la tarde.
+= Mi abuelo [se acostó] a las cinco. ¡Qué fiesta!
+- Nosotros [nos divertimos|nos divirtimos|se divertimos] mucho en el funeral del pez.
+- ¿A qué hora [te despertaste|se despertaste|te despertó]? ¿El martes?
+- Mis gatos [se casaron|se casamos|nos casaron] en mayo. Fue precioso.
+- Yo [me duché|me duchó|se duché] con agua fría. Sin querer.
+- Él [se puso|se ponió|se pusé] los pantalones al revés.
+- ¿[Os|Se|Nos] lavasteis las manos? ¿Con jabón?
 # The present perfect | Pretérito perfecto | Pretérito perfecto
 @ he hablado, has comido | he hablado, has comido | he hablado, has comido
-= Hoy [he trabajado] mucho.
-= ¿[Has comido] ya?
-- Esta semana [he visto|he veído|ha visto] dos películas.
-- Nosotros [hemos terminado|habemos terminado|han terminado].
-- ¿Tú [has estado|has estando|ha estado] en México?
-- Ellos [han llegado|hemos llegado|ha llegado] tarde.
-- Ella [ha comprado|he comprado|ha comprada] un coche.
-- Yo nunca [he probado|he probé|ha probado] el sushi.
+= Hoy [he dormido] doce horas. Estoy cansado.
+= ¿[Has comido] mi pastel?
+- Esta semana [he visto|he veído|ha visto] la misma película cinco veces.
+- Nosotros [hemos terminado|habemos terminado|han terminado] la pizza. Toda.
+- ¿Tú [has estado|has estando|ha estado] en la luna?
+- Mis vecinos [han comprado|hemos comprado|ha comprado] una batería. ¡Socorro!
+- Mi gata [ha aprendido|he aprendido|ha aprendida] a abrir puertas.
+- Yo nunca [he probado|he probé|ha probado] la sopa de mi padre. Ni quiero.
 @ Irregular participles: hecho, visto, dicho | Rendhagyó participiumok | Uregelmæssige participier
-= ¿Qué [has hecho] hoy?
-= No [he visto] a nadie.
-- ¿Has [escrito|escribido|escrebido] el correo?
-- Ella ha [roto|rompido|rompió] el vaso.
-- Hemos [vuelto|volvido|vuelvido] a casa.
-- ¿Quién ha [abierto|abrido|abrieto] la puerta?
-- No me ha [dicho|decido|dichado] nada.
-- Han [puesto|ponido|ponesto] la mesa.
+= ¿Qué [has hecho] con mi pelo?
+= No [he visto] nada. Yo no estaba.
+- ¿Has [escrito|escribido|escrebido] una canción para tu gato?
+- El perro ha [roto|rompido|rompió] el sofá. Otra vez.
+- Hemos [vuelto|volvido|vuelvido] a casa sin el abuelo. ¡Vamos!
+- ¿Quién ha [abierto|abrido|abrieto] la nevera? Solo hay un limón.
+- No me has [dicho|decido|dichado] que tu novio es un payaso.
+- Mis hermanos han [puesto|ponido|ponesto] un pez en la bañera.
 @ ya, todavía no | ya, todavía no | ya, todavía no
-= [Ya] he comido.
-= [Todavía no] he terminado.
-- ¿[Ya|Todavía|Aún] has hecho los deberes?
-- Todavía no [he visto|veo|he ver] esa película.
-- Ella [ya|todavía no|aún] ha salido. No está.
-- Aún no [ha llegado|llega|ha llegando] el tren.
-- ¿Has leído el libro [ya|todavía|aún no]?
-- [Todavía no|Ya no todavía|Todavía] hemos decidido.
+= [Ya] me he comido el postre. Y el tuyo.
+= [Todavía no] he empezado los deberes.
+- ¿[Ya|Todavía|Aún] has limpiado tu habitación? ¿De verdad?
+- Todavía no [he encontrado|encuentro|he encontrar] el mando de la tele.
+- Ella [ya|todavía no|aún] ha gastado todo su dinero. Y es día 3.
+- Aún no [ha llegado|llega|ha llegando] la pizza. Estoy llorando.
+- ¿Has perdonado al gato [ya|todavía|aún no]?
+- [Todavía no|Ya no todavía|Todavía] hemos decidido el nombre del pez.
 @ Perfect or preterite? | Perfecto vagy indefinido? | Perfecto eller indefinido?
-= Hoy [he ido] al médico.
-= Ayer [fui] al médico.
-- Esta mañana [he desayunado|desayuné ayer|desayunaba] tarde.
-- El lunes pasado [fui|he ido|iba] al dentista.
-- Este año [hemos viajado|viajamos ayer|viajábamos] mucho.
-- En 2015 [viví|he vivido|vivo] en Berlín.
-- ¿Alguna vez [has estado|estuviste ayer|estabas] en Japón?
-- Anoche [cené|he cenado|ceno] con mis padres.
+= Hoy [he roto] mi móvil.
+= Ayer [rompí] mi móvil. Soy un experto.
+- Esta mañana [he desayunado|desayuné ayer|desayunaba] pizza fría.
+- El lunes pasado [fui|he ido|iba] al dentista. Todavía tiemblo.
+- Este año [hemos comido|comimos ayer|comíamos] demasiado chocolate.
+- En 2015 [viví|he vivido|vivo] en una tienda de campaña.
+- ¿Alguna vez [has bailado|bailaste ayer|bailabas] con un desconocido?
+- Anoche [cené|he cenado|ceno] tres veces.
 @ acabar de + infinitive | acabar de + főnévi igenév | acabar de + infinitiv
-= [Acabo de] llegar.
-= Ella acaba [de] salir.
-- Acabamos de [comer|comido|comiendo].
-- [Acabo de|Acabo|Acabo a] ver a tu hermano.
-- El tren acaba de [salir|salido|saliendo].
-- ¿Acabas [de|a|por] despertarte?
-- Ellos [acaban de|acaban|acaban a] llegar.
-- Acabo de [terminar|terminado|terminando] el libro.
+= [Acabo de] despertarme. Son las cuatro de la tarde.
+= El gato acaba [de] romper otro vaso.
+- Acabamos de [pedir|pedido|pidiendo] pizza. ¡Escondeos!
+- [Acabo de|Acabo|Acabo a] ver a tu padre bailando en la calle.
+- El autobús acaba de [salir|salido|saliendo]. Sin mí. Claro.
+- ¿Acabas [de|a|por] llegar? ¿En pijama?
+- Mis vecinos [acaban de|acaban|acaban a] comprar una trompeta.
+- Acabo de [terminar|terminado|terminando] la serie. ¿Y ahora qué hago?
 # Pronouns | Névmások | Stedord
 @ lo, la, los, las | Tárgyas névmások: lo, la | Genstandsstedord: lo, la
-= ¿El libro? Ya [lo] he leído.
-= ¿La película? No [la] he visto.
-- ¿Tienes las llaves? Sí, [las|los|la] tengo.
-- ¿Conoces a Juan? Sí, [lo|la|le lo] conozco.
-- Compré manzanas y [las|los|la] comí.
-- ¿Dónde está mi bolso? No [lo|la|los] encuentro.
-- ¿Ves a las niñas? No, no [las|los|la] veo.
-- Este pastel está rico. ¿[Lo|La|Los] has hecho tú?
+= ¿El pastel? Ya [lo] he comido.
+= ¿La pizza? El perro [la] tiene.
+- ¿Tienes mis calcetines? Sí, [los|las|lo] tengo puestos.
+- ¿Conoces al hombre de la cabra? Sí, [lo|la|le lo] conozco.
+- Compré galletas y [las|los|la] escondí. No las encuentro.
+- ¿Dónde está mi móvil? No [lo|la|los] encuentro. Ah, en mi mano.
+- ¿Ves a las gallinas? No, no [las|los|la] veo. ¡Se escaparon!
+- Este pastel está horrible. ¿[Lo|La|Los] has hecho tú?
 @ le, les | Részes névmások: le, les | Hensynsled: le, les
-= [Le] doy un regalo a mi madre.
-= [Les] escribo a mis padres.
-- [Le|Lo|La] dije la verdad a Pedro.
-- ¿[Les|Los|Le] has escrito a tus abuelos?
-- [Le|Les|La] compré flores a mi novia.
-- A los niños [les|le|los] gusta jugar.
-- ¿Qué [le|lo|la] pasa a Ana?
-- [Les|Le|Los] explico el problema a los alumnos.
+= [Le] regalé calcetines a mi abuelo. Otra vez.
+= [Les] escribo cartas a mis gatos.
+- [Le|Lo|La] dije la verdad a mamá. Ahora estoy castigado.
+- ¿[Les|Los|Le] has contado el chiste a tus abuelos?
+- [Le|Les|La] compré flores a mi profesora. Se las comió la cabra.
+- A los gatos [les|le|los] gusta dormir en el teclado.
+- ¿Qué [le|lo|la] pasa a Ana? Ha visto una araña.
+- [Les|Le|Los] explico los deberes a los perros.
 @ se lo, se la | se lo, se la | se lo, se la
-= ¿El regalo? [Se lo] di a Ana.
-= ¿La carta? Te [la] envío mañana.
-- ¿Le diste el libro a Juan? Sí, [se lo|le lo|lo le] di.
-- ¿Me prestas tu coche? Sí, [te lo|lo te|se lo te] presto.
-- ¿Les has dicho la verdad? Sí, [se la|les la|la les] he dicho.
-- ¿Nos traes el café? Sí, [os lo|lo os|se lo os] traigo.
-- Quiero esta camisa. ¿Me [la|lo|las] envuelve?
-- ¿Le das las llaves? Sí, [se las|le las|se los] doy.
+= ¿El secreto? [Se lo] conté a todo el mundo.
+= ¿La pizza? Te [la] doy si me das la tuya.
+- ¿Le diste el pastel a Juan? Sí, [se lo|le lo|lo le] di. Bueno, la mitad.
+- ¿Me prestas tu coche? No, no [te lo|lo te|se lo te] presto. Lo sabes.
+- ¿Les has dicho la verdad? Sí, [se la|les la|la les] he dicho. Lloran.
+- ¿Nos traes el café? Sí, [os lo|lo os|se lo os] traigo. Frío.
+- Quiero esta camisa de flores. ¿Me [la|lo|las] envuelve?
+- ¿Le das las llaves al perro? Sí, [se las|le las|se los] doy. Conduce bien.
 @ Pronouns with infinitive | Névmás a főnévi igenévvel | Stedord med infinitiv
-= Quiero [verte].
-= Voy a [comprarlo].
-- Tengo que [llamarla|la llamar|llamar la].
-- ¿Puedes [ayudarme|me ayudar|ayudar me]?
-- Voy a [decírselo|decirlo se|se decirlo].
-- Necesito [verlos|los ver|ver los].
-- Queremos [invitarte|te invitar|invitar te].
-- Prefiero no [hacerlo|lo hacer|hacer lo].
+= Quiero [comerlo]. Todo.
+= Voy a [contártelo]. Pero es un secreto.
+- Tengo que [llamarla|la llamar|llamar la]. Es mi madre y son las tres.
+- ¿Puedes [ayudarme|me ayudar|ayudar me]? Estoy en el tejado.
+- Voy a [decírselo|decirlo se|se decirlo] a la profesora.
+- Necesito [verlos|los ver|ver los] bailar. Por favor.
+- Queremos [invitarte|te invitar|invitar te] a la boda del gato.
+- Prefiero no [saberlo|lo saber|saber lo].
 @ alguien, nadie, algo, nada | alguien, nadie, algo, nada | alguien, nadie, algo, nada
-= ¿Hay [alguien] en casa?
-= No hay [nada] en la nevera.
-- No conozco a [nadie|alguien|ninguno] aquí.
-- ¿Quieres [algo|nada|nadie] de beber?
-- No he comido [nada|algo|nadie] hoy.
-- [Alguien|Nadie|Algo] ha llamado. ¿Quién era?
-- [Nadie|Alguien|Nada] sabe la respuesta. Es un misterio.
-- ¿Tienes [algún|alguno|algo] libro de español?
+= ¿Hay [alguien] en el armario?
+= No hay [nada] en la nevera. Solo un limón triste.
+- No conozco a [nadie|alguien|ninguno] en esta boda. ¿Es la mía?
+- ¿Quieres [algo|nada|nadie] de comer? ¿Una galleta? ¿Diez?
+- No he hecho [nada|algo|nadie] hoy. Estoy orgulloso.
+- [Alguien|Nadie|Algo] se ha comido mi bocadillo. ¿Quién fue?
+- [Nadie|Alguien|Nada] sabe dónde está el mando. Es un misterio.
+- ¿Tienes [algún|alguno|algo] chiste nuevo? Los tuyos son viejos.
 # Comparing | Összehasonlítás | Sammenligning
 @ más ... que, menos ... que | más ... que, menos ... que | más ... que, menos ... que
-= Ana es [más] alta [que] Luis.
-= El tren es [menos] caro que el avión.
-- Mi casa es [más grande que|más grande de|grande más que] la tuya.
-- Él es [menos|meno|menor de] trabajador que su hermano.
-- Madrid es más grande [que|de|como] Sevilla.
-- Hoy hace [más|mucho|muy] calor que ayer.
-- Tengo más de [cien|ciento|que cien] libros.
-- El café es [más fuerte que|más fuerte de|fuerte más que] el té.
+= Mi gato es [más] listo [que] mi hermano.
+= Mi coche es [menos] rápido que mi abuela.
+- Mi perro es [más grande que|más grande de|grande más que] mi coche.
+- Mi hermano es [menos|meno|menor de] trabajador que el sofá.
+- Mi abuela es más moderna [que|de|como] yo. Tiene TikTok.
+- Hoy hace [más|mucho|muy] calor que en el infierno.
+- Tengo más de [cien|ciento|que cien] calcetines y ninguno hace pareja.
+- El café de mi padre es [más fuerte que|más fuerte de|fuerte más que] un caballo.
 @ tan ... como, tanto ... como | tan ... como, tanto ... como | tan ... como, tanto ... como
-= Soy [tan] alto [como] tú.
-= Tengo [tantos] libros como tú.
-- Ella es [tan|tanto|tanta] inteligente como su madre.
-- No tengo [tanto|tan|tanta] dinero como tú.
-- Hay [tantas|tantos|tan] chicas como chicos.
-- Juan corre tan rápido [como|que|de] Pedro.
-- No trabajo [tanto|tan|tantos] como antes.
-- Este libro no es [tan|tanto|tanta] interesante como el otro.
+= Mi perro es [tan] grande [como] un caballo.
+= Tengo [tantos] gatos como tú. Demasiados.
+- Mi abuela es [tan|tanto|tanta] rápida como un coche.
+- No tengo [tanto|tan|tanta] dinero como mi gato.
+- Hay [tantas|tantos|tan] arañas como personas en esta casa.
+- Mi padre baila tan mal [como|que|de] un robot.
+- No duermo [tanto|tan|tantos] como mi gato. Nadie puede.
+- Este chiste no es [tan|tanto|tanta] malo como el tuyo.
 @ el más ..., la más ... | Felsőfok: el más ... | Superlativ: el más ...
-= Es [el más] alto de la clase.
-= Es la ciudad [más] bonita del mundo.
-- Es el edificio [más alto|más alto que|altísimo más] de la ciudad.
-- Ella es la [más|mucho|muy] simpática del grupo.
-- Es el día [más feliz|más feliz que|felicísimo más] de mi vida.
-- Este es el restaurante más caro [de|que|en] Madrid.
-- Son los [más|mucho|muy] rápidos del equipo.
-- Es la película [más aburrida|aburrida más|más aburrido] que he visto.
+= Es el gato [más] perezoso del mundo.
+= Es la idea [más] tonta de mi vida.
+- Es el bocadillo [más caro|más caro que|carísimo más] de la ciudad.
+- Mi abuela es la [más|mucho|muy] divertida de la familia.
+- Es el día [más feliz|más feliz que|felicísimo más] de mi vida. Hay pizza gratis.
+- Es el chiste más malo [de|que|en] la historia.
+- Mis gatos son los [más|mucho|muy] vagos del barrio.
+- Es la película [más aburrida|aburrida más|más aburrido] que he visto. Dormí bien.
 @ mejor, peor, mayor, menor | mejor, peor, mayor, menor | mejor, peor, mayor, menor
-= Este café es [mejor] que ese.
-= Mi hermano es [mayor] que yo.
-- Hoy me siento [mejor|más bueno|más bien] que ayer.
-- Es la [peor|más mala|peorísima] película del año.
-- Mi hermana es [menor|más pequeña de|menos] que yo. Tiene diez años.
-- Eres mi [mejor|más bueno|buenísimo] amigo.
-- Este examen fue [peor|más malo de|malísimo que] que el otro.
-- Los [mayores|más mayores de|mayor] tienen que trabajar.
+= Mi gato cocina [mejor] que mi padre.
+= Mi hermano es [mayor] que yo, pero no lo parece.
+- Hoy canto [mejor|más bueno|más bien] que ayer. Los vecinos no opinan igual.
+- Es la [peor|más mala|peorísima] cita de mi vida. Trajo a su madre.
+- Mi hermana es [menor|más pequeña de|menos] que yo, pero manda más.
+- Eres mi [mejor|más bueno|buenísimo] amigo. Bueno, después de la pizza.
+- Este corte de pelo es [peor|más malo de|malísimo que] que el otro.
+- Los [mayores|más mayores de|mayor] siempre dicen "en mis tiempos".
 @ -ísimo | -ísimo: nagyon | -ísimo: meget
-= El pastel está [buenísimo].
-= Es [carísimo].
-- La película es [larguísima|larguísimo|largísima].
-- Estoy [cansadísimo|muy cansadísimo|cansadísime].
-- La casa es [grandísima|grandésima|muy grandísima].
-- El examen fue [facilísimo|facilisimo|fácilísimo].
-- Ella es [guapísima|guapisima|muy guapísima].
-- Hace un día [buenísimo|buenisimo|muy buenísimo].
+= La pizza está [buenísima].
+= Este bocadillo es [carísimo].
+- La película es [larguísima|larguísimo|largísima]. Tengo barba.
+- Estoy [cansadísimo|muy cansadísimo|cansadísime]. Y no he hecho nada.
+- Mi perro es [grandísimo|grandésimo|muy grandísimo]. Parece un sofá.
+- El examen fue [facilísimo|facilisimo|fácilísimo]. Para mi gato.
+- Tu abuela es [guapísima|guapisima|muy guapísima] con esa moto.
+- Este chiste es [malísimo|malisimo|muy malísimo]. Cuéntalo otra vez.
 # The future | Jövő idő | Fremtid
 @ Simple future: hablaré | Egyszerű jövő: hablaré | Futurum: hablaré
-= Mañana [lloverá].
-= [Viajaré] a Perú.
-- El año que viene [estudiaré|estudiaba|estudié] medicina.
-- ¿[Vendrás|Vendrés|Venirás] a la fiesta?
-- Nosotros [viviremos|vivimos ayer|vivíamos] en la costa.
-- Ellos [llegarán|llegaron ayer|llegaban] mañana.
-- Te [llamaré|llamé ayer|llamaba] esta noche.
-- Ella [será|serás|fue ayer] una gran médica.
+= Mañana [lloverán] gatos.
+= [Viviré] en la luna.
+- El año que viene [estudiaré|estudiaba|estudié] para ser un gato.
+- ¿[Vendrás|Vendrés|Venirás] a la boda de mi perro?
+- Nosotros [viviremos|vivimos ayer|vivíamos] en una casa de chocolate.
+- Los robots [harán|hicieron ayer|hacían] nuestros deberes.
+- Te [llamaré|llamé ayer|llamaba] cuando me despierte. El martes.
+- Mi hermana [será|serás|fue ayer] presidenta. Ya manda mucho.
 @ Irregular future: tendré, haré, podré | Rendhagyó jövő: tendré, haré | Uregelmæssig futurum: tendré, haré
-= [Tendré] tiempo mañana.
-= ¿Qué [harás]?
-- Mañana [podré|poderé|podería] ayudarte.
-- Nosotros [saldremos|saliremos|salaremos] a las ocho.
-- ¿[Sabrás|Saberás|Sabrá tú] hacerlo?
-- Ella [dirá|decirá|decerá] que no.
-- [Habrá|Haberá|Hayrá] mucha gente.
-- Ellos [vendrán|venirán|venderán] el lunes.
+= [Tendré] diez gatos. Como mínimo.
+= ¿Qué [harás] con todo ese queso?
+- Mañana [podré|poderé|podería] ayudarte. Hoy estoy en el sofá.
+- Nosotros [saldremos|saliremos|salaremos] cuando el abuelo termine de bailar.
+- ¿[Sabrás|Saberás|Sabrá tú] cocinar sin quemar la casa?
+- Mi madre [dirá|decirá|decerá] que no. Siempre dice que no.
+- [Habrá|Haberá|Hayrá] pizza para todos. Bueno, para mí.
+- Mis primos [vendrán|venirán|venderán] con su cabra.
 @ ir a or future? | ir a vagy jövő idő? | ir a eller futurum?
-= Esta tarde [voy a] estudiar.
-= Algún día [seré] rico.
-- Mira las nubes, [va a|irá|va] llover.
-- Mañana [voy a|voy|vaya a] ver a mis abuelos.
-- En el futuro, los coches [volarán|vuelan ayer|volaban].
-- ¿Qué [vas a|vas|vayas a] hacer este verano?
-- Creo que [ganará|ganó mañana|ganaba] el Madrid.
-- Ya tengo los billetes: [vamos a|vamos|vayamos a] ir a Roma.
+= Esta tarde [voy a] dormir la siesta. Tres horas.
+= Algún día [seré] famoso. O no.
+- Mira esa gaviota. [Va a|Irá|Va] robar tu bocadillo.
+- Mañana [voy a|voy|vaya a] limpiar mi habitación. Quizás.
+- En el futuro, los gatos [gobernarán|gobiernan ayer|gobernaban] el mundo.
+- ¿Qué [vas a|vas|vayas a] hacer con un caballo en un piso?
+- Creo que mi perro [ganará|ganó mañana|ganaba] el concurso de baile.
+- Ya tengo los billetes: [vamos a|vamos|vayamos a] ir al concierto de la abuela.
 @ Present for near future | Jelen idő közeli jövőre | Nutid om nær fremtid
-= Mañana [trabajo].
-= El tren [sale] a las cinco.
-- La película [empieza|empezó|empezar] a las nueve esta noche.
-- El lunes que viene [tengo|tuve|tener] una reunión.
-- ¿Qué [haces|hiciste|hacer] esta noche?
-- Mañana [voy|fui|ir] al médico.
-- El concierto [es|fue|ser] el sábado que viene.
-- Mañana el avión [llega|llegó|llegar] a las diez.
+= Mañana [trabajo]. Qué triste.
+= El tren [sale] a las cinco. Yo salgo a las cinco y diez.
+- La película [empieza|empezó|empezar] a medianoche. Traemos almohadas.
+- El lunes que viene [tengo|tuve|tener] cita con el dentista. Socorro.
+- ¿Qué [haces|hiciste|hacer] esta noche? ¿Nada? ¡Perfecto!
+- Mañana [voy|fui|ir] a la peluquería. Rezad por mí.
+- La boda del gato [es|fue|ser] el sábado que viene.
+- Mañana el avión [llega|llegó|llegar] a las diez. Mi maleta no sé.
 @ Time words for the future | Időhatározók a jövőben | Tidsord om fremtiden
-= [Mañana] iré al banco.
-= [El año que viene] estudiaré francés.
-- [Pasado mañana|Después mañana|Mañana pasado] es mi cumpleaños.
-- [La semana que viene|La semana viene|La que viene semana] tengo vacaciones.
-- [Dentro de|En dentro|Dentro en] dos horas salimos.
-- [El próximo|El próximo de|Próximo el] lunes empiezo.
-- [Esta noche|Este noche|Esta noches] vamos al cine.
-- [Mañana por la mañana|Mañana de la mañana|Mañana en mañana] tengo clase.
+= [Mañana] empiezo la dieta. Seguro.
+= [El año que viene] aprenderé a cocinar. Como cada año.
+- [Pasado mañana|Después mañana|Mañana pasado] es mi cumpleaños. ¿Y mi regalo?
+- [La semana que viene|La semana viene|La que viene semana] tengo vacaciones. Por fin.
+- [Dentro de|En dentro|Dentro en] dos horas llega la pizza. Me muero.
+- [El próximo|El próximo de|Próximo el] lunes empiezo el gimnasio. Otra vez.
+- [Esta noche|Este noche|Esta noches] vamos a bailar con la abuela.
+- [Mañana por la mañana|Mañana de la mañana|Mañana en mañana] no existo.
 # Por and para, first steps | Por és para, első lépések | Por og para, første skridt
 @ para: purpose and destination | para: cél és irány | para: formål og mål
-= Este regalo es [para] ti.
-= Estudio [para] aprender.
-- Salgo [para|por|a] Madrid mañana.
-- Trabajo [para|por|a] ganar dinero.
-- Necesito el informe [para|por|a] el lunes.
-- Esta toalla es [para|por|de para] la playa.
-- [Para|Por|A] mí, es la mejor película.
-- Ahorro [para|por|a] comprar una casa.
+= Este calcetín es [para] ti. Feliz cumpleaños.
+= Como chocolate [para] ser feliz.
+- Salgo [para|por|a] la playa. Adiós, trabajo.
+- Trabajo [para|por|a] comprar pizza.
+- Necesito el pastel [para|por|a] esta noche.
+- Este sombrero es [para|por|de para] mi perro.
+- [Para|Por|A] mí, la pizza fría es la mejor.
+- Ahorro [para|por|a] comprar un dragón.
 @ por: through, because, time | por: át, miatt, idő | por: igennem, på grund af, tid
-= Paseo [por] el parque.
-= Gracias [por] todo.
-- Paseamos [por|para|de] la ciudad toda la tarde.
-- Pagué diez euros [por|para|de] el libro.
-- Viajamos [por|para|en por] toda Europa.
-- No salimos [por|para|a] la lluvia.
-- Hablo con ella [por|para|a] teléfono.
-- Gracias [por|para|de] tu ayuda.
+= Paseo [por] el parque con mi gato.
+= Gracias [por] la pizza.
+- Bailamos [por|para|de] la calle toda la noche.
+- Pagué cien euros [por|para|de] este sombrero horrible.
+- Viajamos [por|para|en por] toda Europa en bici.
+- No salimos [por|para|a] la lluvia. Y por la pereza.
+- Hablo con mi gato [por|para|a] teléfono.
+- Gracias [por|para|de] nada.
 @ por or para? | por vagy para? | por eller para?
-= Lo hago [por] ti.
-= Este regalo es [para] ti.
-- Fui al mercado [para|por|de] comprar fruta.
-- Caminamos [por|para|de] la playa.
-- El tren [para|por|de para] Sevilla sale a las tres.
-- Cambié mi bici [por|para|de] una guitarra.
-- Estudio mucho [para|por|de] aprobar.
-- Llegué tarde [por|para|de] el tráfico.
+= Lo hago [por] ti. Y por el pastel.
+= Este pastel es [para] ti. Bueno, la mitad.
+- Fui al mercado [para|por|de] comprar una gallina.
+- Corrimos [por|para|de] la playa. Nos perseguía un perro.
+- El tren [para|por|de para] Sevilla sale sin mí.
+- Cambié mi bici [por|para|de] una cabra.
+- Estudio mucho [para|por|de] aprobar. Bueno, un poco.
+- Llegué tarde [por|para|de] el tráfico. Y por la cama.
 ~ Gracias | por la cena.
-~ Este libro es | para ti.
+~ Este pastel es | para ti.
 ~ Paseamos | por el centro.
 @ Imperative tú: ¡ven!, ¡haz! | Felszólítás tú: ¡ven!, ¡haz! | Bydeform tú: ¡ven!, ¡haz!
-= [Ven] aquí.
-= [Haz] los deberes.
-- [Pon|Pone|Pones] la mesa, por favor.
-- [Sal|Sale|Salir] de ahí.
-- [Di|Dice|Dices] la verdad.
-- [Ten|Tiene|Tienes] cuidado.
-- [Ve|Va|Vas] a tu habitación.
-- [Sé|Es|Eres] bueno.
+= [Ven] aquí. ¡Hay pizza!
+= [Haz] los deberes. Y los míos.
+- [Pon|Pone|Pones] la mesa. El gato no la va a poner.
+- [Sal|Sale|Salir] del armario. Ya sé que estás ahí.
+- [Di|Dice|Dices] la verdad. ¿Te comiste el pastel?
+- [Ten|Tiene|Tienes] cuidado con la cabra. Muerde.
+- [Ve|Va|Vas] a tu habitación. Y no salgas hasta el jueves.
+- [Sé|Es|Eres] bueno con la abuela. Conduce ella.
 @ Imperative usted: hable, coma | Felszólítás usted: hable, coma | Bydeform usted: hable, coma
-= [Pase], por favor.
-= [Siéntese] aquí.
-- [Hable|Habla|Hablas] más despacio, por favor.
-- [Coma|Come|Comes] menos sal, señor.
-- [Abra|Abre|Abres] la boca, por favor.
-- [Firme|Firma|Firmas] aquí, señora.
-- [Tome|Toma|Tomas] la segunda calle.
-- [Espere|Espera|Esperas] un momento, por favor.
+= [Pase], por favor. Cuidado con el gato.
+= [Siéntese] aquí. No, ahí no. Ahí está el perro.
+- [Hable|Habla|Hablas] más despacio, por favor. Soy de otro planeta.
+- [Coma|Come|Comes] menos sal, señor. Y menos pastel.
+- [Abra|Abre|Abres] la boca, por favor. ¡Uy!
+- [Firme|Firma|Firmas] aquí, señora. Y aquí. Y aquí.
+- [Tome|Toma|Tomas] la segunda calle. Bueno, la tercera.
+- [Espere|Espera|Esperas] un momento, por favor. Unas tres horas.
 # Habits and duration | Szokások és időtartam | Vaner og varighed
 @ soler + infinitive | soler + főnévi igenév | soler + infinitiv
-= [Suelo] levantarme temprano.
-= ¿Qué [sueles] hacer los domingos?
-- Ella suele [comer|come|comiendo] en casa.
-- Nosotros [solemos|suelemos|suelen] ir en metro.
-- ¿Sueles [cocinar|cocinas|cocinando]?
-- Antes [solía|suelía|solí] correr cada día.
-- Ellos [suelen|solen|suelan] llegar tarde.
-- No suelo [beber|bebo|bebiendo] café.
+= [Suelo] cantar en la ducha. Muy alto.
+= ¿Qué [sueles] hacer los domingos? ¿Nada?
+- Mi gato suele [dormir|duerme|durmiendo] en mi cara.
+- Nosotros [solemos|suelemos|suelen] perder las llaves.
+- ¿Sueles [hablar|hablas|hablando] con tus plantas?
+- De niño [solía|suelía|solí] esconder las verduras en los zapatos.
+- Mis vecinos [suelen|solen|suelan] bailar a las tres de la mañana.
+- No suelo [madrugar|madrugo|madrugando]. Nunca.
 @ llevar + time + -ando | llevar + idő + gerundium | llevar + tid + gerundium
-= [Llevo] dos años estudiando español.
-= ¿Cuánto tiempo [llevas] aquí?
-- Llevo una hora [esperando|esperar|espero].
-- Ella [lleva|llevas|llevo] diez años viviendo en Londres.
-- ¿Cuánto [llevas|llevo|lleva tú] trabajando aquí?
-- Llevamos todo el día [caminando|caminar|caminamos].
-- Ellos [llevan|llevamos|lleva] mucho tiempo casados.
-- Llevo meses [buscando|buscar|busco] trabajo.
+= [Llevo] dos horas buscando las gafas. Están en mi cabeza.
+= ¿Cuánto tiempo [llevas] mirando la nevera?
+- Llevo una hora [esperando|esperar|espero] la pizza.
+- Mi abuela [lleva|llevas|llevo] diez años aprendiendo a bailar salsa.
+- ¿Cuánto [llevas|llevo|lleva tú] hablando con el gato?
+- Llevamos todo el día [durmiendo|dormir|dormimos]. ¡Qué éxito!
+- Mis padres [llevan|llevamos|lleva] cuarenta años discutiendo por la tele.
+- Llevo meses [buscando|buscar|busco] mi otro calcetín.
 @ hace ... que, desde hace | hace ... que, desde hace | hace ... que, desde hace
-= [Hace] tres años [que] vivo aquí.
-= Vivo aquí [desde hace] tres años.
-- Hace mucho tiempo [que|de|desde] no te veo.
-- Trabajo aquí [desde|desde hace|hace desde] 2020.
-- Estudio inglés [desde hace|hace desde|desde de] cinco años.
-- [Hace|Desde|Lleva] dos semanas que no llueve.
-- No como carne [desde hace|hace de|desde que hace] un año.
-- Vivo en Madrid [desde|desde hace|hace] enero.
+= [Hace] tres días [que] no me ducho. Es broma.
+= Hablo con mi planta [desde hace] años.
+- Hace mucho tiempo [que|de|desde] no limpio mi habitación.
+- Mi gato no me habla [desde|desde hace|hace desde] el lunes.
+- Mi padre cuenta el mismo chiste [desde hace|hace desde|desde de] veinte años.
+- [Hace|Desde|Lleva] dos semanas que no llueve. Mi pelo está feliz.
+- No como verduras [desde hace|hace de|desde que hace] un año.
+- Estoy a dieta [desde|desde hace|hace] esta mañana.
 @ volver a, dejar de | volver a, dejar de | volver a, dejar de
-= [Dejé de] fumar.
-= [Volví a] llamarla.
-- He dejado [de|a|por] beber café.
-- Mañana vuelvo [a|de|por] intentarlo.
-- ¿Por qué dejaste [de|a|en] estudiar?
-- No vuelvas [a|de|por] hacer eso.
-- Ella dejó [de|a|por] trabajar en 2019.
-- Volvimos [a|de|en] vernos años después.
+= [Dejé de] comer chocolate. Duró una hora.
+= El perro [volvió a] comerse mis zapatos.
+- He dejado [de|a|por] cantar en la ducha. Los vecinos lloran de alegría.
+- Mañana vuelvo [a|de|por] empezar la dieta.
+- ¿Por qué dejaste [de|a|en] bailar? ¡Bailabas fatal, pero con amor!
+- No vuelvas [a|de|por] cortarte el pelo tú solo.
+- Mi abuela dejó [de|a|por] trabajar y empezó a ir de discotecas.
+- El gato volvió [a|de|en] romper el jarrón.
 @ empezar a, terminar de | empezar a, terminar de | empezar a, terminar de
-= Empecé [a] estudiar a las ocho.
-= Terminé [de] comer.
-- Empieza [a|de|por] llover.
-- ¿Has terminado [de|a|por] leer el libro?
-- Mi hijo empezó [a|de|en] hablar muy pronto.
-- Cuando termines [de|a|en] trabajar, llámame.
-- Voy a empezar [a|de|por] correr.
-- Terminamos [de|a|por] cenar a las once.
+= El perro empezó [a] cantar a las tres.
+= Terminé [de] comer. Ahora el postre.
+- Empieza [a|de|por] llover. Y yo sin paraguas.
+- ¿Has terminado [de|a|por] usar el baño? ¡Llevas una hora!
+- Mi hijo empezó [a|de|en] hablar y no ha parado.
+- Cuando termines [de|a|en] llorar, come un helado.
+- Voy a empezar [a|de|por] correr. Mañana.
+- Terminamos [de|a|por] cenar a las once y empezamos a cenar otra vez.
 # Quantity and place | Mennyiség és hely | Mængde og sted
 @ demasiado, suficiente | demasiado, suficiente | demasiado, suficiente
-= Hay [demasiada] gente.
-= No tengo [suficiente] dinero.
-- Comes [demasiado|demasiada|demasiados].
-- Hay [demasiados|demasiado|demasiadas] coches.
-- No tenemos [suficientes|suficiente|suficientas] sillas.
-- Hace [demasiado|demasiada|demasiados] calor.
-- ¿Tienes [suficiente|suficientes|suficienta] tiempo?
-- Bebe [demasiada|demasiado|demasiadas] agua.
+= Hay [demasiados] gatos en esta casa.
+= No tengo [suficiente] paciencia para esto.
+- Hablas [demasiado|demasiada|demasiados]. Y muy alto.
+- Hay [demasiadas|demasiado|demasiados] arañas en el baño.
+- No tenemos [suficientes|suficiente|suficientas] sillas. El perro se sienta en la mesa.
+- Hace [demasiado|demasiada|demasiados] calor. Me derrito.
+- ¿Tienes [suficiente|suficientes|suficienta] valor para probar mi sopa?
+- Mi padre bebe [demasiada|demasiado|demasiadas] leche. Es un gato.
 @ ningún, ninguna | ningún, ninguna | ningún, ninguna
-= No tengo [ningún] problema.
-= No hay [ninguna] silla libre.
-- No conozco [ninguna|ningún|ninguno] canción suya.
-- No tengo [ningún|ninguno|ninguna] hermano.
-- ¿Tienes alguna pregunta? No, [ninguna|ningún|ninguno].
-- [Ningún|Ninguno|Ninguna] alumno aprobó.
-- No veo [ningún|ninguno|ninguna] coche.
-- ¿Alguno de tus amigos habla ruso? No, [ninguno|ningún|nadie ningún].
+= No tengo [ningún] plan. Solo dormir.
+= No hay [ninguna] galleta. ¿Quién fue?
+- No conozco [ninguna|ningún|ninguno] canción buena de mi padre.
+- No tengo [ningún|ninguno|ninguna] problema. Bueno, uno: el lunes.
+- ¿Tienes alguna idea? No, [ninguna|ningún|ninguno].
+- [Ningún|Ninguno|Ninguna] alumno entendió el chiste del profesor.
+- No veo [ningún|ninguno|ninguna] coche. Ni el mío.
+- ¿Alguno de tus gatos habla? No, [ninguno|ningún|nadie ningún]. Todavía.
 @ Location: cerca de, delante de | Helyhatározók: cerca de, delante de | Sted: cerca de, delante de
-= El banco está [cerca del] hotel.
-= Hay un árbol [delante de] la casa.
-- La farmacia está [al lado del|al lado el|lado del] banco.
-- El gato está [debajo de|debajo|bajo de] la mesa.
-- Vivo [lejos de|lejos|lejos a] mi trabajo.
-- El coche está [detrás de|detrás|atrás de la] la casa.
-- Nos vemos [enfrente de|enfrente|en frente a] la estación.
-- La lámpara está [encima de|encima|arriba de la] la mesa.
+= Mi cama está [cerca de] la nevera. Perfecto.
+= Hay una cabra [delante de] mi casa.
+- La pizzería está [al lado del|al lado el|lado del] gimnasio. Qué suerte.
+- El gato está [debajo de|debajo|bajo de] la cama con mis calcetines.
+- Vivo [lejos de|lejos|lejos a] mi trabajo. Por suerte.
+- El perro está [detrás de|detrás|atrás de la] la puerta. Esperando.
+- Nos vemos [enfrente de|enfrente|en frente a] la heladería.
+- El gato duerme [encima de|encima|arriba de la] la tele.
 @ aquí, ahí, allí | aquí, ahí, allí | aquí, ahí, allí
-= Ven [aquí].
-= Mi casa está [allí], en la montaña.
-- Este libro de [aquí|allí|ahí allí] es mío.
-- ¿Ves esa montaña? Mis abuelos viven [allí|aquí|acá aquí].
-- Pon la bolsa [ahí|aquí allí|acá ahí], a tu lado.
-- [Aquí|Allí aquí|Ahí aquí] tienes tu café.
-- ¿Quién está [ahí|allí ahí|aquí allí]? Abre la puerta.
-- Siéntate [aquí|allí aquí|ahí allí], a mi lado.
+= Ven [aquí]. Tengo galletas.
+= Mi suegra vive [allí], muy lejos. ¡Qué bien!
+- Este pastel de [aquí|allí|ahí allí] es mío.
+- ¿Ves esa montaña? Mi gato vive [allí|aquí|acá aquí] ahora.
+- Deja la pizza [ahí|aquí allí|acá ahí], a tu lado. No te la comas.
+- [Aquí|Allí aquí|Ahí aquí] tienes tu café. Está frío.
+- ¿Quién está [ahí|allí ahí|aquí allí]? ¿Eres tú, gato?
+- Siéntate [aquí|allí aquí|ahí allí], a mi lado. No muerdo.
 @ ser or estar with adjectives | ser vagy estar melléknévvel | ser eller estar med tillægsord
-= Ella [es] muy lista.
-= Ya [está] lista para salir.
-- El libro [es|está|son] aburrido. Me duermo leyéndolo.
-- Estoy [aburrido|aburrida es|aburro]. No hay nada que hacer.
-- La fruta no [está|es|son] madura todavía.
-- [Es|Está|Son] muy rico. Tiene tres casas.
-- La sopa [está|es|son] muy rica. ¿Me das más?
-- ¿[Estás|Eres|Es] lista? Nos vamos.
+= Mi gato [es] muy listo.
+= Ya [estoy] listo. Bueno, me falta un zapato.
+- La película [es|está|son] aburrida. Me dormí en el minuto dos.
+- Estoy [aburrido|aburrida es|aburro]. Voy a molestar a mi hermana.
+- El plátano no [está|es|son] maduro. Está verde como mi pelo.
+- [Es|Está|Son] muy rico. Tiene tres yates y un gato.
+- La sopa [está|es|son] muy rica. ¿Quién la hizo? ¿El perro?
+- ¿[Estás|Eres|Es] lista? La abuela ya está en la moto.
 # Feelings and opinions | Érzések és vélemények | Følelser og meninger
 @ doler: me duele | doler: me duele | doler: me duele
-= Me [duele] la cabeza.
-= Me [duelen] los pies.
-- ¿Te [duele|duelen|dueles] la espalda?
-- A mi padre le [duelen|duele|duelo] las rodillas.
-- Me [duele|duelen|dolo] el estómago.
-- Nos [duelen|duele|dolemos] las piernas de tanto andar.
-- ¿Qué te [duele|duelen|dueles]? La garganta.
-- Le [duele|duelen|duela] mucho la muela.
+= Me [duele] la cabeza. Mi hermano canta.
+= Me [duelen] los pies. Bailé toda la noche.
+- ¿Te [duele|duelen|dueles] la tripa? ¿Cuántas pizzas comiste?
+- A mi abuelo le [duelen|duele|duelo] las rodillas, pero baila igual.
+- Me [duele|duelen|dolo] el corazón. Se acabó el chocolate.
+- Nos [duelen|duele|dolemos] las piernas. El ascensor no funciona.
+- ¿Qué te [duele|duelen|dueles]? El orgullo.
+- Al perro le [duele|duelen|duela] la barriga. Se comió un calcetín.
 @ me parece, me interesa | me parece, me interesa | me parece, me interesa
-= Me [parece] una buena idea.
-= Me [interesan] los idiomas.
-- ¿Qué te [parece|pareces|parecen] el plan?
-- Me [interesa|interesan|intereso] mucho la historia.
-- A ellos no les [importa|importan|importo] el dinero.
-- Nos [parecen|parece|parecemos] caros estos zapatos.
-- ¿Te [interesan|interesa|interesas] los deportes?
-- Me [importa|importan|importo] mucho tu opinión.
+= Me [parece] una idea terrible. ¡Vamos!
+= Me [interesan] los gatos con sombrero.
+- ¿Qué te [parece|pareces|parecen] mi nuevo corte de pelo? Sé sincero.
+- Me [interesa|interesan|intereso] mucho tu bocadillo.
+- A los gatos no les [importa|importan|importo] tu opinión.
+- Nos [parecen|parece|parecemos] raros tus vecinos.
+- ¿Te [interesan|interesa|interesas] los dinosaurios?
+- No me [importa|importan|importo] nada. Estoy de vacaciones.
 @ creo que, pienso que | creo que, pienso que | creo que, pienso que
-= [Creo que] tienes razón.
-= Pienso [que] es tarde.
-- Creo [que|de|qué] va a llover.
-- [Pienso que|Pienso de|Pienso en que] es una buena película.
-- ¿Crees [que|de|qué] vendrá?
-- Me parece [que|de|qué] está enfermo.
-- Creo [que sí|que si|sí que]. Viene seguro.
-- Pienso [que no|que nada|no que]. Es imposible.
+= [Creo que] mi gato me odia.
+= Pienso [que] la pizza es comida sana.
+- Creo [que|de|qué] el perro se ha comido el mando.
+- [Pienso que|Pienso de|Pienso en que] mi vecino es un vampiro.
+- ¿Crees [que|de|qué] la abuela vendrá en moto?
+- Me parece [que|de|qué] alguien se ha comido mi yogur.
+- ¿Hay pizza? Creo [que sí|que si|sí que]. Huele a pizza.
+- ¿Limpias tú hoy? Pienso [que no|que nada|no que].
 @ estar de acuerdo | estar de acuerdo | estar de acuerdo
-= [Estoy de acuerdo] contigo.
-= No [estamos] de acuerdo.
-- ¿[Estás|Eres|Tienes] de acuerdo?
-- Estoy de acuerdo [con|de|a] ella.
-- No [estoy|soy|tengo] de acuerdo con el plan.
-- Ellos [están|son|tienen] de acuerdo en todo.
-- [De acuerdo|De acorde|En acuerdo], nos vemos a las ocho.
-- Estoy [totalmente|total|totales] de acuerdo.
+= [Estoy de acuerdo] contigo. La pizza es vida.
+= No [estamos] de acuerdo. Mi gato quiere el sofá.
+- ¿[Estás|Eres|Tienes] de acuerdo? ¿Pizza para desayunar?
+- Estoy de acuerdo [con|de|a] mi gato. Los lunes son malos.
+- No [estoy|soy|tengo] de acuerdo con el plan del abuelo.
+- Mis padres no [están|son|tienen] de acuerdo en nada. Ni en la pizza.
+- [De acuerdo|De acorde|En acuerdo], nos vemos a las ocho en la heladería.
+- Estoy [totalmente|total|totales] de acuerdo. Más chocolate.
 ~ ¿Vamos al cine? | De acuerdo.
 ~ Creo que es caro. | Estoy de acuerdo.
 ~ ¿Te parece bien? | Me parece perfecto.
 @ ¡Qué ...! exclamations | Felkiáltások: ¡Qué ...! | Udråb: ¡Qué ...!
-= ¡[Qué] bonito!
-= ¡Qué [frío] hace!
-- ¡[Qué|Cómo|Cuál] casa tan grande!
-- ¡Qué [rico|rica|ricos] está el pastel!
-- ¡[Cuánta|Cuánto|Qué tanta] gente!
-- ¡[Qué|Cuál|Cuánto] pena!
-- ¡[Cómo|Qué|Cuál] llueve!
-- ¡Qué [suerte|suertes|suerte de] tienes!
+= ¡[Qué] horror!
+= ¡Qué [hambre] tengo!
+- ¡[Qué|Cómo|Cuál] perro tan grande! ¿Es un caballo?
+- ¡Qué [rica|rico|ricas] está la pizza fría!
+- ¡[Cuánta|Cuánto|Qué tanta] gente en mi baño!
+- ¡[Qué|Cuál|Cuánto] vergüenza! Mi madre baila.
+- ¡[Cómo|Qué|Cuál] ronca tu gato!
+- ¡Qué [suerte|suertes|suerte de] tienes! Tu gato te quiere.
 `);
