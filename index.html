@@ -3513,7 +3513,7 @@ var STR = {
      ~ a beginning | its ending
 */
 var CEFR = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-var COURSES = ['en', 'es'];
+var COURSES = ['en', 'es', 'da'];
 var COURSE = {};
 var GLOSS = {};
 function lwTrim(s) { return String(s == null ? '' : s).replace(/^\s+|\s+$/g, ''); }
@@ -3551,7 +3551,7 @@ function LWC(lang, lv, text) {
 }
 /* word meanings for tap-to-translate: "word=hu;da" for English, "palabra=en;hu;da" for Spanish */
 function LWG(lang, text) {
-  var G = GLOSS[lang] || (GLOSS[lang] = {}), cols = lang === 'en' ? ['hu', 'da'] : ['en', 'hu', 'da'];
+  var G = GLOSS[lang] || (GLOSS[lang] = {}), cols = lang === 'en' ? ['hu', 'da'] : lang === 'da' ? ['en', 'hu'] : ['en', 'hu', 'da'];
   String(text).split('\n').forEach(function (raw) {
     var line = lwTrim(raw), at = line.indexOf('='); if (at < 1) return;
     var k = line.slice(0, at).toLowerCase(), v = line.slice(at + 1).split(';'), e = {};
@@ -3783,6 +3783,13 @@ var ES_PHRASES = [
 <script src="courses/es-c2.js"></script>
 <script src="courses/gloss-en.js"></script>
 <script src="courses/gloss-es.js"></script>
+<script src="courses/da-a1.js"></script>
+<script src="courses/da-a2.js"></script>
+<script src="courses/da-b1.js"></script>
+<script src="courses/da-b2.js"></script>
+<script src="courses/da-c1.js"></script>
+<script src="courses/da-c2.js"></script>
+<script src="courses/gloss-da.js"></script>
 <script>
 'use strict';
 (function () {
@@ -5328,7 +5335,7 @@ var ES_PHRASES = [
   UI.joke = UI.match;
 
   /* ---------- the path screen ---------- */
-  var FLAG = { en: '🇬🇧', es: '🇪🇸' };
+  var FLAG = { en: '🇬🇧', es: '🇪🇸', da: '🇩🇰' };
   var ICON_FIRE = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 2 1 3 2 3.5C11 9 11 5 12 2z" fill="currentColor"/></svg>';
   var ICON_BOLT = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="currentColor"/></svg>';
   var ICON_CARDS = '<svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><rect x="3" y="6" width="13" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 3h10.5A2.5 2.5 0 0 1 21 5.5V17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>';
