@@ -4555,7 +4555,7 @@ var ES_PHRASES = [
     var rows = TASKSAY3[type]; if (!rows) return '';
     return '<div class="sayit"><h3>' + t('help.say') + '</h3><ul class="phr">' + rows.map(function (r) { var x = row3(r); return '<li><span>' + TT(x) + GL(tri(r)) + '</span>' + sayBtn(x, true) + '</li>'; }).join('') + '</ul></div>';
   }
-  function noVoice() { return '<p class="warn">' + t('novoice', t('lang.' + tl())) + '</p>'; }
+  function noVoice() { return ''; }
   function HB(i, k, v, label, cls, dis) {
     return '<button type="button" class="pbtn ' + (cls || '') + '" data-a="hm" data-i="' + i + '" data-k="' + k + '"' + (v != null ? ' data-v="' + esc(v) + '"' : '') + (dis ? ' disabled' : '') + '>' + label + '</button>';
   }
@@ -4616,10 +4616,6 @@ var ES_PHRASES = [
     h += '<h3>' + t('wires.rules') + '</h3><ol class="rules" lang="' + tl() + '">' + d.rules.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '<li class="else">' + esc(d.def) + '</li></ol>';
     h += '<ul class="ords" lang="' + tl() + '">' + P.ord.map(function (o, k) { return '<li><b>' + (k + 1) + '.</b> ' + esc(o) + '</li>'; }).join('') + '</ul>';
     if (lv >= 3) h += '<p class="tipline">' + t('wires.vowels', P.vowels.split('').join(' ')) + '</p>';
-    if (ui() !== tl()) {
-      var keep = lv === 1 ? [0, 1, 2, 3, 4, 5, 8] : lv === 2 ? [0, 1, 2, 3, 4, 5, 6, 8, 9, 10] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-      h += '<h3>' + t('wires.words') + '</h3><dl class="gloss">' + keep.map(function (k) { var r = WIREGLOSS3[k]; return '<dt lang="' + tl() + '">' + esc(row3(r)) + '</dt><dd>' + esc(tri(r)[ui()]) + '</dd>'; }).join('') + '</dl>';
-    }
     return h + sayList('wires');
   };
   UI.wires.onHelp = function (k, v, d, ms) {
@@ -4810,7 +4806,6 @@ var ES_PHRASES = [
     h += '<h3>' + t('story.bank') + '</h3><ul class="bank">' + d.bank.map(function (w, k) {
       return '<li><button type="button" class="bankw' + (cross[k] ? ' x' : '') + '" data-a="hm" data-i="' + i + '" data-k="cross" data-v="' + k + '" aria-pressed="' + !!cross[k] + '" lang="' + tl() + '">' + esc(w) + '</button>' + sayBtn(w, true) + '</li>';
     }).join('') + '</ul>';
-    if (ui() !== tl()) h += '<div class="row">' + HB(i, 'tr', null, ms.tr ? t('story.tr.hide') : t('story.tr', t('in.' + ui()))) + '</div>' + (ms.tr ? '<div class="notice" lang="' + ui() + '"><p>' + esc(d.full[ui()]) + '</p></div>' : '');
     return h + sayList('story');
   };
   UI.story.onHelp = function (k, v, d, ms) {
@@ -4845,7 +4840,7 @@ var ES_PHRASES = [
       '<h3>' + t('verbs.sig') + '</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t('verbs.form') + '</th><th>' + t('verbs.sig') + '</th></tr></thead><tbody lang="' + tl() + '">' +
       P.verbSignals.map(function (r) { return '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
       '<h3>' + t('verbs.table') + '</h3><div class="tbl-wrap"><table class="tbl verbs"><thead><tr>' + P.verbHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
-      rows.map(function (r) { return '<tr><td>' + TT(r.show) + GL(r.gl) + '</td>' + r.f.map(function (f) { return '<td lang="' + tl() + '">' + esc(f) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
+      rows.map(function (r) { return '<tr><td>' + TT(r.show) + '</td>' + r.f.map(function (f) { return '<td lang="' + tl() + '">' + esc(f) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
       sayList('verbs');
   };
 
@@ -5363,7 +5358,6 @@ var ES_PHRASES = [
   function topbar() {
     return '<div class="bar"><button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button><span class="bar-sp"></span>' +
       (S.screen !== 'home' ? '<button type="button" class="bar-b ico" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') +
-      '<button type="button" class="bar-b" data-a="drawer" data-v="parlor">' + t('bar.phrases') + '</button>' +
       '<label class="bar-sel">' + ICON_GLOBE + '<span class="sr">' + t('ui.label') + '</span><select data-a="uilang" id="ui-sel">' + uiOptions() + '</select></label>' +
       '<button type="button" class="bar-b ico" data-a="drawer" data-v="set" aria-label="' + esc(t('bar.settings')) + '">' + ICON_GEAR + '</button></div>';
   }
@@ -5393,7 +5387,7 @@ var ES_PHRASES = [
       '<p class="bomb-d">' + esc(missionText(S.sel.mission)) + '</p>' +
       '<label class="check"><input type="checkbox" id="calm" data-a="calm"' + (S.sel.calm ? ' checked' : '') + '><span>' + t('home.calm') + '</span></label>' +
       '<button type="button" class="link" data-a="solo">' + t('home.solo') + '</button></section>' +
-      '<section class="howto" aria-labelledby="h-how"><h2 id="h-how">' + t('how.t') + '</h2><ol><li><p>' + t('how.1') + '</p></li><li><p>' + t('how.2') + '</p></li><li><p>' + t('how.3') + '</p></li></ol><p class="howto-note">' + t('how.4') + '</p></section>';
+      '';
   }
 
   function bombTag(spec) { if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
