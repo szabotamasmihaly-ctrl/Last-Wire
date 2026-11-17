@@ -373,6 +373,25 @@ textarea.slot{height:100px;resize:none;display:block}
 @media (max-width:560px){.man-h{grid-template-columns:minmax(0,1fr)}.man-code{justify-items:start}.stamp{position:static;justify-self:start}}
 .man-code b{font:800 32px/1 var(--font-display);letter-spacing:.08em;white-space:nowrap}
 .man-tip{color:var(--ink-2)}
+.warm{max-width:640px;margin:0 auto;padding:22px var(--gut) 40px;display:grid;gap:22px}
+.warm-words{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ww{display:grid;justify-items:center;gap:6px;text-align:center;background:#fff;border:2px solid var(--ink);border-bottom-width:5px;border-radius:16px;padding:16px 10px 12px;animation:warmin .45s cubic-bezier(.2,1.4,.4,1) both}
+.ww b{font-size:22px;line-height:1.2;word-break:break-word}
+.ww span{color:var(--enamel);font-weight:700}
+.warm-sents{display:grid;gap:0;background:#fff;border:1.5px solid rgba(21,24,28,.2);border-radius:14px;padding:4px 16px}
+.warm-sents li{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid rgba(21,24,28,.12);animation:warmin .45s both}
+.warm-sents li:last-child{border-bottom:0}
+.warm-sents li>span{display:grid;gap:2px}
+.ws{font-size:19px;font-weight:600}
+.wg{color:var(--ink-2)}
+.warm-go{justify-self:stretch;align-items:center;text-align:center;font-size:20px}
+@keyframes warmin{0%{opacity:0;transform:translateY(10px) scale(.96)}100%{opacity:1;transform:none}}
+@media (max-width:520px){.warm-words{grid-template-columns:minmax(0,1fr)}.ww{grid-template-columns:minmax(0,1fr) auto;justify-items:start;text-align:left;align-items:center}.ww span{grid-column:1}.ww .say,.ww button{grid-row:1/3;grid-column:2}}
+@media (prefers-reduced-motion:reduce){.ww,.warm-sents li{animation:none}}
+.dsents{display:grid;gap:12px;max-width:520px}
+.dsents li{display:flex;align-items:center;gap:12px;background:var(--graphite);color:#fff;border-radius:14px;padding:14px 16px}
+.dsents b{font:800 28px/1 var(--font-display);min-width:1.2em}
+.dsents .shown{font-size:20px;font-weight:600}
 .tsteps{display:flex;gap:6px;margin:4px 0 14px}
 .tsteps i{flex:1;height:8px;border-radius:99px;background:var(--paper-2);transition:background .4s}
 .tsteps i.done{background:var(--ok)}
@@ -4630,11 +4649,11 @@ var ES_PHRASES = [
   UI.wires.help = function (d, i, ms) {
     var P = PK(), lv = S.spec.level, notes = ms.notes || [];
     var h = todo([t('h.wires.1'), t('h.wires.2'), t('h.wires.3')]);
-    h += '<div class="notes"><h3>' + t('wires.notes') + '</h3><div class="swatches" role="group">' + P.colors.map(function (c, k) {
+    h += '<div class="notes"><div class="swatches" role="group">' + P.colors.map(function (c, k) {
       return '<button type="button" class="swatch" data-a="hm" data-i="' + i + '" data-k="note" data-v="' + k + '"><i style="background:' + HEX[k] + '"></i>' + TT(c.k) + '</button>';
     }).join('') + '</div>' + (notes.length ? '<ol class="notelist">' + notes.map(function (c, k) { return '<li><b>' + (k + 1) + '</b><i style="background:' + HEX[c] + '"></i>' + TT(P.colors[c].k) + '</li>'; }).join('') + '</ol>' +
       '<div class="row">' + HB(i, 'undo', null, t('wires.undo'), 'sm') + HB(i, 'clear', null, t('wires.clear'), 'sm') + '</div>' : '') + '</div>';
-    h += '<h3>' + t('wires.rules') + '</h3><ol class="rules" lang="' + tl() + '">' + d.rules.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '<li class="else">' + esc(d.def) + '</li></ol>';
+    h += '<ol class="rules" lang="' + tl() + '">' + d.rules.map(function (r) { return '<li>' + esc(r) + '</li>'; }).join('') + '<li class="else">' + esc(d.def) + '</li></ol>';
     h += '<ul class="ords" lang="' + tl() + '">' + P.ord.map(function (o, k) { return '<li><b>' + (k + 1) + '.</b> ' + esc(o) + '</li>'; }).join('') + '</ul>';
     if (lv >= 3) h += '<p class="tipline">' + t('wires.vowels', P.vowels.split('').join(' ')) + '</p>';
     return h + sayList('wires');
@@ -4783,18 +4802,15 @@ var ES_PHRASES = [
     d.items.forEach(function (it, s) { var ws = it.t.split(' '); ws.forEach(function (w, k) { seq.push({ s: s, k: k, n: ws.length, w: wordCore(w) }); }); });
     return seq;
   }
+  /* dictation: the helper hears each whole sentence (or reads it, with no voice) and says it to the partner */
   UI.dict.help = function (d, i, ms) {
-    var seq = dictSeq(d), p = Math.min(ms.step || 0, seq.length - 1), cur = seq[p], has = Voice.has();
-    var h = todo([t(has ? 'h.dict.1' : 'h.dict.1b'), t('h.dict.2'), t('h.dict.3')]);
-    if (!has) h += noVoice();
-    h += card(cnt('n.sentence', cur.s + 1, d.items.length) + ' · ' + cnt('n.word', cur.k + 1, cur.n), '', listenBox(i, 'w' + p, cur.w, ms) + stepNav(i, p, seq.length, t('dict.next'), t('dict.prev')));
-    if (has) h += '<div class="row">' + HB(i, 'play', 's' + cur.s, SPK + t('dict.whole')) + '</div>';
-    return h + sayList('dict');
+    var has = Voice.has();
+    return '<ol class="dsents">' + d.items.map(function (it, k) {
+      return '<li><b>' + (k + 1) + '</b>' + (has && !ms.rev['s' + k] ? HB(i, 'play', 's' + k, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + k, t('hear.slow')) : '<span class="shown" lang="' + tl() + '">' + esc(it.t) + '</span>') + '</li>';
+    }).join('') + '</ol>';
   };
   UI.dict.onHelp = function (k, v, d, ms, i) {
-    var seq = dictSeq(d);
-    if (stepMove(k, ms, seq.length)) { Voice.stop(); renderHelpBody(); return; }
-    helpCommon(k, v, ms, i, function (key) { return key.charAt(0) === 's' ? d.items[+key.slice(1)].t : seq[+key.slice(1)].w; });
+    helpCommon(k, v, ms, i, function (key) { return d.items[+key.slice(1)].t; });
   };
   UI.dict.pos = function (d, st) { var p = 0; for (var s = 0; s < st.s && s < d.items.length; s++) p += d.items[s].t.split(' ').length; return p + st.w; };
 
@@ -4804,9 +4820,7 @@ var ES_PHRASES = [
     var rows = d.items.map(function (it, k) { return { k: k, w: it.w }; }).sort(function (a, b) { return a.w.localeCompare(b.w, tl()); });
     var h = todo([t('h.pics.1'), t(has ? 'h.pics.2' : 'h.pics.2b'), t('h.pics.3', tIn())]);
     if (!has) h += noVoice();
-    h += '<h3>' + t(has ? 'pics.words' : 'pics.words.b') + '</h3>';
     if (has) h += '<label class="check ink"><input type="checkbox" data-a="hmc" data-i="' + i + '" data-k="slow"' + (ms.slow ? ' checked' : '') + '><span>' + t('slowmode') + '</span></label>';
-    if (has && ms.vf) h += '<p class="vfail">' + t('voice.fail.n') + '</p>';
     h += '<ul class="wordlist">' + rows.map(function (r) {
       var key = 'n' + r.k, shown = !has || ms.rev[key], counting = ms.cd && ms.cd.key === key;
       return '<li class="' + (ms.last === key ? 'on' : '') + '">' +
@@ -4824,7 +4838,7 @@ var ES_PHRASES = [
   UI.story.help = function (d, i, ms) {
     var cross = ms.cross || {};
     var h = todo([t('h.story.1'), t('h.story.2'), t('h.story.3')]);
-    h += '<h3>' + t('story.bank') + '</h3><ul class="bank">' + d.bank.map(function (w, k) {
+    h += '<ul class="bank">' + d.bank.map(function (w, k) {
       return '<li><button type="button" class="bankw' + (cross[k] ? ' x' : '') + '" data-a="hm" data-i="' + i + '" data-k="cross" data-v="' + k + '" aria-pressed="' + !!cross[k] + '" lang="' + tl() + '">' + esc(w) + '</button>' + sayBtn(w, true) + '</li>';
     }).join('') + '</ul>';
     return h + sayList('story');
@@ -4848,8 +4862,8 @@ var ES_PHRASES = [
   UI.lever.help = function (d) {
     var P = PK();
     return todo([t('h.lever.1'), t('h.lever.2.' + tl()), t('h.lever.3')]) +
-      '<h3>' + t('lever.sents') + '</h3><ul class="sents" lang="' + tl() + '">' + d.report.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' +
-      '<h3>' + t('lever.table') + '</h3><div class="tbl-wrap"><table class="tbl"><thead><tr>' + P.leverHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody lang="' + tl() + '">' +
+      '<ul class="sents" lang="' + tl() + '">' + d.report.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + P.leverHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody lang="' + tl() + '">' +
       P.leverRows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
       sayList('lever');
   };
@@ -4858,9 +4872,9 @@ var ES_PHRASES = [
   UI.verbs.help = function (d) {
     var P = PK(), rows = d.table.slice().sort(function (a, b) { return a.inf.localeCompare(b.inf, tl()); });
     return todo([t('h.verbs.1'), t('h.verbs.2'), t('h.verbs.3')]) +
-      '<h3>' + t('verbs.sig') + '</h3><div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t('verbs.form') + '</th><th>' + t('verbs.sig') + '</th></tr></thead><tbody lang="' + tl() + '">' +
+      '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t('verbs.form') + '</th><th>' + t('verbs.sig') + '</th></tr></thead><tbody lang="' + tl() + '">' +
       P.verbSignals.map(function (r) { return '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
-      '<h3>' + t('verbs.table') + '</h3><div class="tbl-wrap"><table class="tbl verbs"><thead><tr>' + P.verbHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      '<div class="tbl-wrap"><table class="tbl verbs"><thead><tr>' + P.verbHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
       rows.map(function (r) { return '<tr><td>' + TT(r.show) + '</td>' + r.f.map(function (f) { return '<td lang="' + tl() + '">' + esc(f) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
       sayList('verbs');
   };
@@ -5227,8 +5241,66 @@ var ES_PHRASES = [
   function openSheet(code) { S.sheet = code; renderDrawer(); var b = $('.sheet .dbtn'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
   function closeSheet() { S.sheet = null; renderDrawer(); }
 
-  /* ---------- launching a station: the word cards first, then the bomb or the helper's page ---------- */
-  function play(code, role) {
+
+  /* ---------- before every bomb: three words and three sentences the level uses ---------- */
+  var WARM_SKIP = { a: 1, an: 1, the: 1, is: 1, are: 1, was: 1, were: 1, be: 1, to: 1, of: 1, and: 1, or: 1, in: 1, on: 1, at: 1, it: 1, he: 1, she: 1, i: 1, you: 1, we: 1, they: 1, my: 1, your: 1, his: 1, her: 1, el: 1, la: 1, los: 1, las: 1, un: 1, una: 1, de: 1, que: 1, y: 1, en: 1, es: 1, no: 1, yo: 1, a2: 1 };
+  function warmFor(spec) {
+    var L = spec.lang, words = [], sents = [], seen = {};
+    function addW(w, gl, ctx) {
+      w = String(w || '').trim(); var key = w.toLowerCase(); if (!w || seen[key] || words.length >= 3) return;
+      var g = gl ? (gl[ui()] || '') : glossFor(L, ui(), w);
+      if (ui() !== L && !g) return;
+      seen[key] = 1; words.push({ w: w, g: ui() !== L ? g : '', ctx: ctx || '' });
+    }
+    function addS(x, gl) { if (sents.length < 3 && x && !sents.some(function (y) { return y.s === x; })) sents.push({ s: x, g: gl && ui() !== L ? (gl[ui()] || '') : '' }); }
+    if (spec.path) {
+      var items = spec.st.items || [];
+      items.forEach(function (it) { lwWords(it.opts[0] === '—' ? '' : it.opts[0]).forEach(function (w) { var c = w.replace(/[^\wÀ-ɏ'’-]/g, ''); if (c.length > 2 && !WARM_SKIP[c.toLowerCase()]) addW(c, null, it.full); }); });
+      items.forEach(function (it) { lwWords(it.full).forEach(function (w) { var c = w.replace(/[^\wÀ-ɏ'’-]/g, ''); if (c.length > 3 && !WARM_SKIP[c.toLowerCase()]) addW(c, null, it.full); }); });
+      words.forEach(function (x) { addS(x.ctx); });
+      items.forEach(function (it) { addS(it.full); });
+      return { words: words, sents: sents };
+    }
+    /* the classic bombs: words from each task in turn, then sentences from the dictation and from playing */
+    var lists = spec.modules.map(function (m) {
+      var d = m.data;
+      switch (m.t) {
+        case 'pics': return d.items.map(function (x) { return [x.w, x.gl]; });
+        case 'comp': return d.items.map(function (x) { return [x.word, x.gl]; });
+        case 'lever': return d.items.map(function (x) { return [x.full || x.w, x.gl]; });
+        case 'verbs': return (d.table || []).map(function (x) { return [x.show, x.gl]; });
+        case 'clock': return { en: ['quarter', 'half', 'past', 'to'], da: ['kvart', 'halv', 'over', 'i'], hu: ['negyed', 'fél', 'múlt', 'múlva'] }[L].map(function (w) { var row = CK_GLOSS[L][w] || ['', '', '']; return [w, { en: row[0] || w, hu: row[1] || w, da: row[2] || w }]; });
+        case 'wires': return WIREGLOSS3.slice(0, 6).map(function (r) { return [row3(r), tri(r)]; });
+        case 'story': return d.gaps.map(function (w) { return [w, null]; });
+        case 'read': return d.body.split(/\s+/).map(function (w) { return w.replace(/[^\wÀ-ɏ'’-]/g, ''); }).filter(function (w) { return w.length > 5; }).map(function (w) { return [w, null]; });
+        case 'dict': d.items.forEach(function (x) { addS(x.t, x.gl); }); return [];
+        default: return [];
+      }
+    });
+    for (var k = 0; k < 12 && words.length < 3; k++) lists.forEach(function (l) { if (l[k]) addW(l[k][0], l[k][1]); });
+    spec.modules.forEach(function (m) { (TASKSAY3[m.t] || []).forEach(function (r) { if (r[1].indexOf('…') < 0) addS(row3(r), tri(r)); }); });
+    return { words: words, sents: sents };
+  }
+  function viewWarm() {
+    var W = S.warm, x = warmFor(W.spec);
+    return '<div class="warm"><div class="warm-words">' + x.words.map(function (w, k) {
+      return '<div class="ww" style="animation-delay:' + (k * 0.08) + 's"><b lang="' + tl() + '">' + esc(w.w) + '</b>' + (w.g ? '<span lang="' + ui() + '">' + esc(w.g) + '</span>' : '') + sayBtn(w.w, true) + '</div>';
+    }).join('') + '</div><ul class="warm-sents">' + x.sents.map(function (z, k) {
+      return '<li style="animation-delay:' + (0.3 + k * 0.08) + 's"><span><span class="ws" lang="' + tl() + '">' + esc(z.s) + '</span>' + (z.g ? '<span class="wg" lang="' + ui() + '">' + esc(z.g) + '</span>' : '') + '</span>' + sayBtn(z.s, true) + '</li>';
+    }).join('') + '</ul><button type="button" class="cta warm-go" data-a="warm-go">' + t('p.start') + ' →</button></div>';
+  }
+  function warmUp(spec, then) { stopLoop(); clearTimers(); S.warm = { spec: spec, then: then }; S.screen = 'warm'; render(); window.scrollTo(0, 0); var b = $('.warm-go'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
+  function warmGo() {
+    var W = S.warm; S.warm = null; if (!W) { S.screen = 'home'; render(); return; }
+    var th = W.then;
+    if (th.path) play2(th.code, th.role);
+    else if (th.a === 'join') { S.codeInput = fixedCode(S.sel.lang, S.sel.mission, S.sel.level); openCode(); }
+    else newBomb(th.a === 'solo');
+  }
+
+  /* ---------- launching a station: the warm-up, the word cards, then the bomb or the helper's page ---------- */
+  function play(code, role) { var spec = makeSpec(code); if (!spec) return; S.sheet = null; renderDrawer(); warmUp(spec, { path: true, code: code, role: role }); }
+  function play2(code, role) {
     var spec = makeSpec(code); if (!spec) return;
     S.sheet = null; renderDrawer();
     var cards = cardsFor(spec);
@@ -5652,8 +5724,8 @@ var ES_PHRASES = [
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'words' ? viewWords() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'warm' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -5716,9 +5788,8 @@ var ES_PHRASES = [
       case 'mission': S.sel.mission = +ds.v; save(); rerenderKeep('[data-a="mission"][data-v="' + ds.v + '"]'); break;
       case 'level': S.sel.level = +ds.v; save(); rerenderKeep('[data-a="level"][data-v="' + ds.v + '"]'); break;
       case 'calm': S.sel.calm = !!el.checked; save(); break;
-      case 'get': newBomb(false); break;
-      case 'solo': newBomb(true); break;
-      case 'join': stopLoop(); clearTimers(); S.codeInput = fixedCode(S.sel.lang, S.sel.mission, S.sel.level); openCode(); break;
+      case 'get': case 'solo': case 'join': warmUp(makeSpec(fixedCode(S.sel.lang, S.sel.mission, S.sel.level)), { a: a }); break;
+      case 'warm-go': warmGo(); break;
       case 'rejoin': S.spec = null; S.screen = 'classic'; render(); window.scrollTo(0, 0); break;
       case 'tab': {
         S.tab = +ds.v; Voice.stop();
@@ -5870,7 +5941,7 @@ var ES_PHRASES = [
   function snapshot() {
     var g = S.game;
     return {
-      v: 3, screen: S.screen === 'result' ? 'home' : S.screen, solo: S.solo, soloView: S.soloView, code: S.code, tab: S.tab, codeInput: S.codeInput,
+      v: 3, screen: S.screen === 'result' || S.screen === 'warm' ? 'home' : S.screen, solo: S.solo, soloView: S.soloView, code: S.code, tab: S.tab, codeInput: S.codeInput,
       view: S.view ? { face: S.view.face, n: S.view.n } : null,
       game: g && !g.over ? { elapsed: g.elapsed, started: g.started, strikes: g.strikes, hints: g.hints, solved: g.solved, ms: g.ms, calm: g.calm } : null
     };
