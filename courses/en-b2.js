@@ -465,4 +465,65 @@ LWC('en', 4, `
 - Never before [had I|I had|have I had] eaten a whole pizza alone. Now I do it every week.
 - Not only [is it|it is|it's] cheap, it's also delicious. And alive.
 - Seldom [does he|he does|he] say sorry. Never, actually.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: if I were... | Dalok: if I were... | Sange: if I were...
+= If I [were] the Dancing Queen, I'd never sit down.
+= If I had a Yellow Submarine, I [would] live in it.
+- If I [had|have|would have] a time machine, I'd see Queen live.
+- If Dad [knew|knows|would know] the words, he'd sing Bohemian Rhapsody properly.
+- We [would|will|did] dance if they played Uptown Funk.
+- If you [were|are|will be] a song, you'd be Happy.
+- What would you do if Beyoncé [called|calls|would call] you?
+- If I were you, I [wouldn't|won't|didn't] sing Toxic at the job interview.
+~ If I were a rich man, | I'd buy Hotel California.
+~ If my cat could sing, | she'd sing Roar.
+~ If they played Thriller, | Grandma would do the zombie walk.
+@ Songs: had done | Dalok: had done | Sange: had done
+= The party [had] already started when Dancing Queen came on.
+= When we arrived, they [had played] Wonderwall twice.
+- By the time I found my umbrella, the rain [had|has|was] stopped.
+- I [had never heard|have never heard|had never hear] Bohemian Rhapsody before that night.
+- She was tired because she [had danced|danced had|has danced] to Thriller for six hours.
+- [Had|Did|Was] you heard the song before the concert?
+- The band [had already left|have already leaving|had already leave] when we arrived.
+- Grandpa realised he [had forgotten|has forgotten|had forget] the words to Hey Jude.
+~ When I got there, | they had already sung Mamma Mia.
+~ He had never danced | before he heard Uptown Funk.
+~ The cake had gone | by the time we sang Happy Birthday.
+@ Songs: he said, she asked | Dalok: függő beszéd | Sange: indirekte tale
+= Dad said he [was] the real Billie Jean.
+= She told me she [had] never heard Wonderwall.
+- Grandma said she [would|will|wills] sing Respect at the party.
+- My friend told me he [couldn't|can't|cannot to] stop playing Bad Guy.
+- The DJ asked if we [wanted|want|wanting] to hear Africa again.
+- She said she [had seen|has saw|seen] Queen live in 1986.
+- He asked me what [I was listening|was I listening|am I listening] to.
+- They told us not [to play|playing|play] Highway to Hell in the car.
+~ The teacher said | Hey Jude was too long.
+~ My sister asked | if I liked Shake It Off.
+~ He told me | not to sing Toxic again.
+@ Songs: who, which, whose | Dalok: who, which, whose | Sange: who, which, whose
+= Freddie Mercury was the singer [who] wrote Bohemian Rhapsody.
+= Thriller is the song [which] scares my grandma.
+- Abba is the band [whose|who's|who] song Waterloo won Eurovision.
+- This is the uncle [who|which|whose] sings Toxic at every wedding.
+- Purple Rain, [which|that|what] came out in 1984, is my mum's favourite.
+- The cat [that|what|whose] ate my Abba CD is in trouble.
+- Here is the shop [where|which|who] Dad bought his Thriller jacket.
+- She's the girl [whose|who|which] karaoke version of Halo broke a window.
+~ Prince was the singer | who wrote Purple Rain.
+~ Mamma Mia is the film | which made Abba famous again.
+~ This is the room | where we practise Hey Jude.
+@ Songs: to do or doing? | Dalok: to do vagy doing? | Sange: to do eller doing?
+= I can't stop [singing] Shake It Off.
+= Dad decided [to learn] the Billie Jean moonwalk.
+- I enjoy [listening|to listen|listen] to Bohemian Rhapsody in the car.
+- She refused [to sing|singing|sing] Toxic at the school concert.
+- We avoid [playing|to play|play] Wonderwall at parties now.
+- Grandma wants [to dance|dancing|dance] to Dancing Queen at her 90th birthday.
+- Do you mind [turning|to turn|turn] down Highway to Hell?
+- He promised [not to play|not playing|to not playing] Africa again.
+~ I'd love | to hear Hey Jude live.
+~ She keeps | humming Thriller in the library.
+~ We agreed | to stop singing Let It Go.
 `);

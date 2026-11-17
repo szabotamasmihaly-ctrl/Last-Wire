@@ -462,4 +462,65 @@ LWC('en', 5, `
 - She won't eat broccoli, and [nor will|nor won't|nor does] the dog.
 - We loved the free pizza, and [so did|so loved|so were] the kids.
 - I'm not ready for Monday, and [neither is|neither are|neither isn't] Tom.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: if I had known... | Dalok: if I had known... | Sange: if I had known...
+= If I [had known] the words, I would have sung Bohemian Rhapsody.
+= If Grandma hadn't danced, nobody [would have] noticed Thriller was on.
+- If you had warned me, I [wouldn't have|won't have|wouldn't had] played Wonderwall.
+- If we [had left|left had|would have left] earlier, we'd have missed Uncle Bob's Toxic.
+- She [would have won|would won|will have won] the karaoke if she hadn't sung Let It Go.
+- If the DJ [hadn't played|didn't played|wouldn't have played] Africa, the party would have ended at ten.
+- Had I known, I [would have|will have|would of] brought earplugs.
+- If I had practised, I [might have|might had|may of] hit the high note in Halo.
+~ If I had known it was a wedding, | I wouldn't have sung Highway to Hell.
+~ Had the band played Hey Jude, | the crowd would have stayed.
+~ If you had listened, | you'd know the words to Wonderwall by now.
+@ Songs: I wish, if only | Dalok: I wish, if only | Sange: I wish, if only
+= I wish Dad [didn't] sing Toxic so often.
+= If only I [had] learned the words to Bohemian Rhapsody.
+- I wish I [could|can|would can] sing like Freddie Mercury.
+- She wishes she [hadn't|didn't have|wouldn't] sung Let It Go at the job interview.
+- If only the neighbours [would|will|are] stop playing Wonderwall.
+- I wish I [were|am|be] the Dancing Queen.
+- He wishes he [had gone|went|has gone] to the Abba concert in 1979.
+- If only my cat [liked|likes|would liked] Mamma Mia as much as I do.
+~ I wish I had | a Yellow Submarine.
+~ If only they would | play something other than Africa.
+~ She wishes she hadn't | started the Thriller dance in the lift.
+@ Songs: never have I... | Dalok: never have I... | Sange: never have I...
+= Never [have I] heard a worse Bohemian Rhapsody.
+= Not only [did] Grandma sing Toxic, she also danced.
+- Rarely [does|do|is] Dad finish Stairway to Heaven without crying.
+- Never before [had I|I had|have I had] seen a cat dance to Thriller.
+- Not until the last chorus [did we|we did|we] realise it was Wonderwall.
+- Little [did he|he did|does he did] know that Hey Jude lasts seven minutes.
+- Hardly [had|have|did] the DJ played Africa when it started to rain.
+- Only then [did she|she did|had she did] understand why everyone loved Abba.
+~ Never have I | danced so badly to Uptown Funk.
+~ Seldom does Grandpa | sing anything but Hey Jude.
+~ Not once did the band | play Bohemian Rhapsody.
+@ Songs: what I need is... | Dalok: what I need is... | Sange: what I need is...
+= What I need [is] a quiet day without Wonderwall.
+= It was Grandma [who] started the Thriller dance.
+- What annoys me [is|are|it is] Dad's version of Toxic.
+- It was Africa [that|what|whose] made everyone cry.
+- [What|That|Which] I love about Abba is the outfits.
+- It's not the song [that|what|whose] I hate, it's the singer.
+- All I want [is|are|it's] one karaoke night without Let It Go.
+- The reason I left [was that|was what|that was] they played Bohemian Rhapsody for the fifth time.
+~ What Grandpa loves | is a long Hey Jude singalong.
+~ It was my cat | that knocked over the Purple Rain records.
+~ All we need | is love. And pizza.
+@ Songs: is said to be | Dalok: is said to be | Sange: is said to be
+= Bohemian Rhapsody [is said] to be the best karaoke song.
+= Hey Jude is believed [to have been] written for John Lennon's son.
+- Thriller [is thought|thinks|is think] to be the best-selling album of all time.
+- Grandma [is said|said is|is saying] to have danced with Abba in 1976.
+- Wonderwall [is known|knows|is know] to be every guitarist's first song.
+- The DJ is believed [to have left|to has left|have left] before Africa ended.
+- It [is reported|reports|is report] that my uncle sang Toxic for two hours.
+- My neighbour [is said|says is|is saying] to own every Abba record.
+~ Thriller is thought | to be the best-selling album ever.
+~ Grandpa is said | to have met Freddie Mercury.
+~ It is believed that | nobody knows all the words to Bohemian Rhapsody.
 `);

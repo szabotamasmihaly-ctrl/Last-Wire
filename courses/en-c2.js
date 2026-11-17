@@ -459,4 +459,65 @@ LWC('en', 6, `
 - He's [not exactly|not exact|exactly not] a genius. He microwaved a fork.
 - The test was [not too|not to|too not] difficult. I only cried twice.
 - It's [hardly|hard|hardly not] surprising that the cat left.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: were it not for... | Dalok: were it not for... | Sange: were it not for...
+= Were it not for Abba, Grandma [would] never dance.
+= Had it not been for the DJ, we [would have] gone home early.
+- [Were|Are|If] it not for Wonderwall, my brother would never have learned the guitar.
+- Should you hear Bohemian Rhapsody, [do|you do|doing] sing along.
+- [Should|Would|Shall] the band play Africa, I will leave immediately.
+- Had Dad [not|no|don't] sung Toxic, the wedding would have been perfect.
+- Were I [to|for|that] sing Halo, every glass in the room would break.
+- [Had|Did|Would] I known about the karaoke, I would have stayed at home.
+~ Were it not for Freddie Mercury, | karaoke would be boring.
+~ Should Grandma request Thriller, | clear the dance floor.
+~ Had we left earlier, | we would have missed Uncle Bob's Toxic.
+@ Songs: I insist that he sing | Dalok: I insist that he sing | Sange: I insist that he sing
+= Grandma insists that the DJ [play] Dancing Queen.
+= It is essential that nobody [sing] Let It Go tonight.
+- I suggest that he [practise|practising|to practising] Bohemian Rhapsody before the wedding.
+- The neighbours demanded that we [stop|stopping|to stopping] playing Wonderwall.
+- It's vital that the band [not play|not playing|no play] Africa again.
+- She recommended that he [be|been|being] kept away from the microphone.
+- The school insists that every student [learn|learning|to learning] Hey Jude.
+- I propose that Dad [sing|singing|sung] Thriller as the last song.
+~ We insist that he | sing Hey Jude one more time.
+~ It's crucial that she | not hear the Thriller remix.
+~ They asked that the DJ | be fired after Africa.
+@ Songs: having sung... | Dalok: having sung... | Sange: having sung...
+= [Having] sung Bohemian Rhapsody, Dad needed a nap.
+= Played too often, Wonderwall [becomes] torture.
+- [Having heard|Heard having|Having hear] Toxic five times, we left the party.
+- [Exhausted|Exhausting|Exhaust] by the Thriller dance, Grandma fell asleep.
+- [Not knowing|Knowing not|No knowing] the words, he just hummed Hey Jude.
+- [Written|Writing|Wrote] in 1975, Bohemian Rhapsody still fills dance floors.
+- [Seeing|Seen|Saw] the karaoke machine, Uncle Bob cracked his knuckles.
+- [Having been|Having be|Been having] banned from karaoke, she sang in the car instead.
+~ Having heard the first chord, | everyone knew it was Wonderwall.
+~ Recorded in 1982, | Thriller still sounds fresh.
+~ Not wanting to be rude, | we clapped after Uncle Bob's Toxic.
+@ Songs: I do love it | Dalok: I do love it | Sange: I do love it
+= I [do] love Abba. Really.
+= She [did] warn us about Dad's Toxic.
+- He [does|do|is] know all the words to Bohemian Rhapsody. Sadly.
+- We [did|do did|done] try to stop Grandma, but Thriller was on.
+- I [do|am|does] like Wonderwall. Just not every day.
+- They [did|does|done] play Africa. Twice.
+- She [does|do|is] sing well, when she isn't singing Let It Go.
+- You [do|does|did do] realise this is the fourth Hey Jude?
+~ I do appreciate | your Purple Rain. But it's 3 a.m.
+~ He did say | he'd sing only one song.
+~ We do want | to hear Hey Jude. Once.
+@ Songs: so do I, neither can I | Dalok: so do I, neither can I | Sange: so do I, neither can I
+= I love Abba, and so [does] Grandma.
+= Dad can't sing Halo, and [neither] can I.
+- I adore Dancing Queen, and so [does|do|is] my cat.
+- He hasn't heard Thriller, and neither [have|has|do] we.
+- She sang Toxic, and so [did|does|was] her grandmother.
+- My brother won't play Wonderwall, and nor [will|won't|does] I.
+- We weren't impressed by Uncle Bob, and neither [was|were|did] the DJ.
+- I'd love to see Abba live, and so [would|will|do] my mum.
+~ I can't stand Africa, | and neither can the neighbours.
+~ Grandma loves Hey Jude, | and so does Grandpa.
+~ They didn't sing, | and nor did we.
 `);

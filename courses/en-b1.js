@@ -471,4 +471,65 @@ LWC('en', 3, `
 - [None|No|Nobody] of the jokes were funny.
 - I've eaten [all|every|each] the cake.
 - [Each|All|None] guest gets a goat.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: have you ever...? | Dalok: have you ever...? | Sange: have you ever...?
+= Have you ever [heard] Grandma sing Toxic?
+= I've [never] finished Stairway to Heaven. It's too long.
+- I [have played|have play|played have] Wonderwall 300 times this year.
+- She [has never|have never|has ever] danced to Thriller.
+- [Have|Has|Did] you ever been to Hotel California?
+- We [haven't|hasn't|didn't] heard Bohemian Rhapsody since breakfast.
+- My dad [has just|have just|just has] learned the Billie Jean moonwalk.
+- They [have already|already have been|has already] sung Mamma Mia twice.
+~ Have you ever | sung Halo in a lift?
+~ I've just | broken the Wonderwall. Sorry.
+~ She has never | seen Purple Rain.
+@ Songs: if + will | Dalok: if + will | Sange: if + will
+= If you play Wonderwall again, I [will] scream.
+= If it [rains], we'll sing Here Comes the Rain Again.
+- If Grandma [hears|will hear|heard] Dancing Queen, she will dance on the table.
+- If you [don't|won't|not] stop singing Toxic, the dog will leave.
+- We [will|would|are] miss the bus if Dad sings Bohemian Rhapsody again.
+- If the band [plays|will play|play] Africa, everyone will cry.
+- What [will|would|do] you do if they play Thriller?
+- If I win, I'll [sing|singing|to sing] We Are the Champions all night.
+~ If you play Shake It Off, | I'll shake it off.
+~ If it's sunny, | we'll play Here Comes the Sun.
+~ If you sing Hello, | someone will answer.
+@ Songs: must, have to | Dalok: must, have to | Sange: must, have to
+= You [mustn't] sing Let It Go in the exam.
+= You [don't have to] dance. But Thriller is on.
+- You [have to|has to|must to] listen to Hey Jude before you judge it.
+- We [don't have to|mustn't to|not have to] stay. It's not Hotel California.
+- Dad [has to|have to|must to] practise the Billie Jean moonwalk every day.
+- You [mustn't|don't must|not must] play Highway to Hell on the school bus.
+- [Do|Does|Must] we have to listen to Wonderwall again?
+- She [doesn't have to|don't have to|mustn't to] sing. She can just play the cowbell.
+~ You must | try Grandma's Uptown Funk dance.
+~ You mustn't | touch Dad's Purple Rain records.
+~ We don't have to | sing the whole Bohemian Rhapsody.
+@ Songs: used to | Dalok: used to | Sange: used to
+= My dad [used to] dance like Michael Jackson.
+= I [didn't use to] like Abba. Now I do.
+- Grandma [used to|use to|was used] sing Respect in a band.
+- We [used to|use to|was using] play Wonderwall at every party.
+- [Did|Do|Was] you use to listen to Thriller on cassette?
+- My mum didn't [use to|used to|uses to] know the words to Bohemian Rhapsody.
+- They [used to|were use to|use] go to a club called Hotel California.
+- My cat [used to|use to|was use] hate Roar. Now she sings it.
+~ I used to think | Yellow Submarine was a real boat.
+~ My parents used to | dance to Mamma Mia every Friday.
+~ Did you use to | have posters of Queen?
+@ Songs: was written, is played | Dalok: szenvedő szerkezet | Sange: passiv
+= Bohemian Rhapsody [was written] by Freddie Mercury.
+= Wonderwall [is played] at every party.
+- Thriller [was recorded|was record|recorded was] in 1982.
+- Happy [is sung|is sang|sung is] by kids all over the world.
+- Hey Jude [was written|was wrote|written was] by Paul McCartney.
+- This song [isn't|aren't|don't] played on the radio any more.
+- Dancing Queen [was sung|was sang|sang was] by Abba.
+- The Yellow Submarine [was painted|painted was|was paint] by Grandpa. It's his bath.
+~ Purple Rain was | written by Prince.
+~ Waterloo was | sung by Abba in 1974.
+~ This song is | played at every wedding.
 `);
