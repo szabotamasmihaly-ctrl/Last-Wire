@@ -1,468 +1,468 @@
 LWC('en', 4, `
 # Regrets and unreal past | Megbánás és irreális múlt | Fortrydelse og uvirkelig fortid
 @ Third conditional | Harmadik típusú feltételes | Tredje betingelse
-= If I [had known], I would have come.
-= If she had asked, I [would have helped].
-- If we had left earlier, we [would have caught|would caught|will have caught] the train.
-- If you [had told|told|would have told] me, I'd have helped.
-- She would have passed if she [had studied|studied|would study] harder.
-- If it hadn't rained, we [would have gone|would go|had gone] to the beach.
-- What would you have done if you [had lost|lost|would lose] your passport?
-- I [wouldn't have|won't have|hadn't] been late if the bus had come.
-~ If I had seen you, | I would have said hello.
-~ If he had studied, | he would have passed.
-~ If we had known it was your birthday, | we would have bought a cake.
+= If I [had known] it was a fancy-dress party, I wouldn't have come as myself.
+= If the cat had asked nicely, I [would have fed] her.
+- If we had left earlier, we [would have caught|would caught|will have caught] the last train instead of the first bus.
+- If you [had told|told|would have told] me it was your wedding, I'd have worn shoes.
+- She would have won the dance contest if she [had stayed|stayed|would stay] on her feet.
+- If the seagull hadn't been so fast, I [would have eaten|would eat|had eaten] my chips.
+- What would you have done if the monkey [had taken|took|would take] your passport?
+- I [wouldn't have|won't have|hadn't] laughed if he hadn't fallen into the cake.
+~ If I had seen the step, | I wouldn't have fallen down it.
+~ If he had read the recipe, | the kitchen would still exist.
+~ If we had known it was your birthday, | we would have pretended to remember.
 @ Mixed conditionals | Vegyes feltételes mondatok | Blandede betingelser
-= If I had studied medicine, I [would be] a doctor now.
-= If I [were] braver, I would have said something.
-- If she had taken the job, she [would be|would have been now|will be] rich now.
-- If I [had eaten|ate|would eat] breakfast, I wouldn't be hungry now.
-- If he [weren't|hadn't|wouldn't be] so lazy, he would have finished it.
-- If we had bought that house, we [would live|would have lived now|will live] by the sea now.
-- If I [spoke|had spoken now|would speak] French, I'd have understood the film.
-- If you hadn't missed the train, you [would be|would have been now|are] here now.
+= If I had studied medicine, I [would be] a doctor now. Instead, I'm a professional napper.
+= If I [were] braver, I would have told the waiter there was a fly in my soup.
+- If she had bought bitcoin, she [would be|would have been now|will be] rich now.
+- If I [had eaten|ate|would eat] breakfast, I wouldn't be eating your lunch.
+- If he [weren't|hadn't|wouldn't be] so lazy, he'd have replied by now.
+- If we had moved next to a pizza place, we [would be|would have been now|will be] happy.
+- If I [spoke|had spoken now|would speak] Italian, I wouldn't have ordered a lamp.
+- If you hadn't slept on the train, you [would be|would have been now|are] home, not in Poland.
 @ I wish I had, If only | I wish I had, If only | I wish I had, If only
-= I wish I [had studied] harder.
-= [If only] I hadn't said that!
-- I wish I [hadn't eaten|didn't eat|wouldn't eat] so much last night.
-- If only we [had left|left|would leave] earlier!
-- She wishes she [had taken|took|would take] the job.
-- I wish you [had told|told|would tell] me yesterday.
-- If only I [had listened|listened|would listen] to you.
-- He wishes he [hadn't sold|didn't sell|wouldn't sell] his car.
+= I wish I [had read] the small print.
+= [If only] I hadn't replied to all!
+- I wish I [hadn't eaten|didn't eat|wouldn't eat] that third burrito.
+- If only we [had checked|checked|would check] the weather before the picnic!
+- My dad wishes he [had kept|kept|would keep] his hair.
+- I wish you [had told|told|would tell] me about the spinach before my interview.
+- If only I [had listened|listened|would listen] to my grandma about the mushrooms.
+- He wishes he [hadn't shaved|didn't shave|wouldn't shave] his eyebrows for a bet.
 @ should have, could have | should have, could have | should have, could have
-= You [should have] told me.
-= We [could have] won.
-- I should have [brought|bring|brought have] an umbrella.
-- You [shouldn't have|shouldn't|mustn't have] said that.
-- She could have [been|be|was] a great singer.
-- We should [have left|left|leave have] earlier.
-- He [could have|can have|could] called. Why didn't he?
-- They shouldn't have [spent|spend|spending] so much.
+= You [should have] warned me about your cat.
+= We [could have] won if the goalkeeper hadn't been eating a sandwich.
+- I should have [read|reading|read have] the instructions. Now I have three extra screws.
+- You [shouldn't have|shouldn't|mustn't have] told Grandma about TikTok.
+- She could have [been|be|was] a pop star, but she can't sing.
+- We should [have left|left|leave have] before Uncle Bob started his speech.
+- He [could have|can have|could] warned us about the dog. Why didn't he?
+- They shouldn't have [spent|spend|spending] the holiday money on a hot tub.
 ~ I failed the test. | I should have studied.
-~ We missed the bus. | We should have left earlier.
-~ He was rude. | He shouldn't have said that.
+~ We got lost. | We should have used a map.
+~ He was rude to the chef. | He shouldn't have complained about the hair.
 @ wish + would | wish + would | wish + would
-= I wish you [would] stop talking.
-= I wish it [would] stop raining.
-- I wish he [would|will|does] call me.
-- I wish you wouldn't [leave|left|leaving] your socks everywhere.
-- I wish my neighbours [would|will|are] be quieter.
-- She wishes he [would|will|is] listen to her.
-- I wish people [wouldn't|won't|don't] drop litter.
-- I wish the bus [would|will|does] come.
+= I wish my neighbour [would] stop practising the bagpipes.
+= I wish the cat [would] stop judging me.
+- I wish my dad [would|will|does] stop telling the same joke.
+- I wish you wouldn't [leave|left|leaving] wet towels on my bed.
+- I wish my phone [would|will|is] last more than two hours.
+- She wishes her husband [would|will|is] stop snoring like a tractor.
+- I wish people [wouldn't|won't|don't] eat fish in the office.
+- I wish the bus [would|will|does] come. I've grown a beard.
 # Guessing about the past | Következtetés a múltra | Gæt om fortiden
 @ must have, can't have | must have, can't have | must have, can't have
-= She [must have] forgotten.
-= He [can't have] seen us.
-- The ground is wet. It [must have|can't have|must] rained.
-- She didn't answer. She must have [been|be|was] asleep.
-- You [can't have|mustn't have|must have] finished already! You only started.
-- They must have [left|leave|leaving] early.
-- He can't have [heard|hear|hearing] you. He was wearing headphones.
-- I [must have|can't have|mustn't] dropped my keys somewhere.
+= The cake has gone. The dog [must have] eaten it.
+= He [can't have] written this poem. He can't spell "cat".
+- There are footprints on the ceiling. Someone [must have|can't have|must] been very bored.
+- She didn't answer. She must have [been|be|was] at the gym. Or in bed.
+- You [can't have|mustn't have|must have] finished already! The film started five minutes ago.
+- The kids are very quiet. They must have [found|find|finding] the chocolate.
+- He can't have [heard|hear|hearing] me. He had a cat on his head.
+- I [must have|can't have|mustn't] left my glasses in the fridge again.
 @ might have, could have | might have, could have | might have, could have
-= She [might have] missed the bus.
-= It [could have] been a mistake.
-- He might have [gone|go|went] home.
-- They [might not have|mightn't have to|might have not] seen the sign.
-- The letter could have [got|get|getting] lost.
-- She may [have forgotten|forgot|has forgotten].
-- You could have [been|be|being] killed!
-- I might [have left|left|leave] it on the bus.
+= The parcel [might have] gone to the wrong country.
+= That [could have] been a ghost. Or the cat.
+- Grandma might have [gone|go|went] to the casino again.
+- They [might not have|mightn't have to|might have not] seen the "Wet paint" sign.
+- My homework could have [got|get|getting] eaten. It's possible.
+- She may [have forgotten|forgot|has forgotten] that she invited us.
+- You could have [been|be|being] eaten by that goose!
+- I might [have left|left|leave] my car keys in the shop. Or in my pocket.
 @ needn't have, didn't need to | needn't have, didn't need to | needn't have, didn't need to
-= You [needn't have] brought food. (but you did)
-= I [didn't need to] go. (so I didn't)
-- We needn't have [hurried|hurry|hurrying]. The train was late.
-- You [needn't have|didn't need have|needn't] bought me a present!
-- I didn't need [to wake|wake|waking] up early, so I slept in.
-- She needn't have [worried|worry|worrying]. Everything was fine.
-- He [didn't need to|needn't to|didn't need] pay. It was free.
-- They needn't have [cooked|cook|cooking]. We'd already eaten.
+= You [needn't have] brought a cake. (but you did, so thank you)
+= I [didn't need to] dress up. (so I came in pyjamas)
+- We needn't have [run|ran|running]. The train was an hour late.
+- You [needn't have|didn't need have|needn't] cleaned. We like the mess.
+- I didn't need [to set|set|setting] an alarm. The cat woke me at five.
+- She needn't have [worried|worry|worrying]. The goat was fine.
+- He [didn't need to|needn't to|didn't need] pay. His grandma knows the owner.
+- They needn't have [cooked|cook|cooking]. We'd already eaten three pizzas.
 @ had better, would rather | had better, would rather | had better, would rather
-= You['d better] go now.
-= I['d rather] stay home.
-- You'd better [not|don't|not to] be late.
-- I'd rather [walk|to walk|walking] than take the bus.
-- We['d better|would better|had to better] hurry.
-- Would you rather [stay|to stay|staying] in or go out?
-- She'd rather [not|don't|not to] talk about it.
-- You'd better [call|to call|calling] your mum.
+= You['d better] hide. Mum found the broken vase.
+= I['d rather] be in bed.
+- You'd better [not|don't|not to] eat the last cookie.
+- I'd rather [eat|to eat|eating] a spider than go to that party.
+- We['d better|would better|had to better] run. The bull has seen us.
+- Would you rather [fight|to fight|fighting] one horse-sized duck or ten duck-sized horses?
+- She'd rather [not|don't|not to] talk about the karaoke.
+- You'd better [feed|to feed|feeding] the cat. She's looking at your leg.
 @ be supposed to | be supposed to | be supposed to
-= You're [supposed to] be in bed.
-= It was [supposed to] be a surprise.
-- We're supposed [to arrive|arrive|arriving] at nine.
-- You [aren't supposed to|don't supposed to|aren't suppose to] park here.
-- The film is supposed [to be|be|being] good.
-- What [am I supposed|do I suppose|I am supposed] to do?
-- He was supposed to [call|calling|called] me.
-- You [weren't supposed|didn't suppose|weren't suppose] to see that!
+= You're [supposed to] be in bed, not on the roof.
+= It was [supposed to] be a surprise party. Then Dad posted it.
+- We're supposed [to be|be|being] on a diet. Pass the cake.
+- You [aren't supposed to|don't supposed to|aren't suppose to] feed the ducks bread.
+- This film is supposed [to be|be|being] scary. The cat laughed.
+- What [am I supposed|do I suppose|I am supposed] to do with fifty lemons?
+- He was supposed to [pick|picking|picked] me up. He forgot me at the zoo.
+- You [weren't supposed|didn't suppose|weren't suppose] to open that! It's for the cat.
 # The passive, further | Szenvedő szerkezet haladóknak | Passiv for viderekomne
 @ get + past participle | get + befejezett melléknévi igenév | get + kort tillægsform
-= He [got] hurt.
-= We [got] lost.
-- My car [got stolen|got steal|got stole] last week.
-- She got [promoted|promote|promoting] last year.
-- They got [married|marry|marrying] in June.
-- Did you get [paid|pay|payed] for that?
-- I got [stuck|stick|sticked] in traffic.
-- Be careful, or you'll get [hurt|hurting|hurted].
+= He [got] chased by a goose.
+= We [got] lost in IKEA. For two days.
+- My bike [got stolen|got steal|got stole] by a man in a chicken costume.
+- She got [promoted|promote|promoting] because the boss liked her cat.
+- They got [married|marry|marrying] in a hot-air balloon.
+- Did you get [paid|pay|payed] for walking the neighbour's snake?
+- I got [stuck|stick|sticked] in a lift with my ex.
+- Be careful with that crab, or you'll get [pinched|pinching|pinch].
 @ have something done | have something done | have something done
-= I [had my hair cut].
-= We're [having the house painted].
-- She had her car [repaired|repair|repairing].
-- I need to [have my eyes tested|test my eyes have|have tested my eyes].
-- They're having a new kitchen [fitted|fit|fitting].
-- We had the windows [cleaned|clean|cleaning].
-- He had his phone [stolen|steal|stealing] on the train.
-- Where do you [get|make|do] your hair cut?
+= I [had my hair cut]. Then I cried.
+= We're [having the house painted]. Purple, sorry neighbours.
+- She had her car [cleaned|clean|cleaning]. Inside it was a family of mice.
+- I need to [have my eyes tested|test my eyes have|have tested my eyes]. I waved at a lamp.
+- They're having a hot tub [fitted|fit|fitting] on their balcony.
+- We had the cat [photographed|photograph|photographing] by a professional. She hated it.
+- He had his phone [stolen|steal|stealing] by a monkey.
+- Where do you [get|make|do] your nails done? They're amazing. And long.
 @ It is said that, He is said to | It is said that, He is said to | It is said that, He is said to
-= [It is said] that he is rich.
-= He [is said to] be rich.
-- It [is believed|believes|is believing] that the painting is fake.
-- She is thought [to be|be|being] in Paris.
-- [It|There|He] is reported that ten people were hurt.
-- The castle is said [to be|that is|being] haunted.
-- He is known [to have|have|having] three houses.
-- [It is|There is|It's said] expected that prices will rise.
+= [It is said] that the cat runs the company.
+= My uncle [is said to] have met Elvis.
+- It [is believed|believes|is believing] that the painting was made by a monkey.
+- Grandma is thought [to be|be|being] in Las Vegas.
+- [It|There|He] is reported that a cow stopped the traffic.
+- The school toilet is said [to be|that is|being] haunted.
+- He is known [to have|have|having] forty cats.
+- [It is|There is|It's said] expected that the pizza will arrive soon.
 @ to be done, being done | Szenvedő főnévi igenév és -ing | Passiv infinitiv og -ing
-= I want [to be told] the truth.
-= She hates [being] watched.
-- He expects [to be paid|to pay|being pay] on time.
-- I don't like [being told|to tell|being tell] what to do.
-- The work needs [to be done|to do be|be done] today.
-- She enjoys [being photographed|to photograph|being photograph].
-- Nobody likes [being laughed|to laugh|being laugh] at.
-- This letter has [to be signed|to sign be|be signed].
+= I want [to be left] alone with this cake.
+= My cat hates [being] watched while she eats.
+- He expects [to be invited|to invite|being invite] to every party.
+- I don't like [being told|to tell|being tell] what to do. Except by my cat.
+- My room needs [to be cleaned|to clean be|be cleaned]. The dog is scared of it.
+- She loves [being photographed|to photograph|being photograph]. Especially by fans.
+- Nobody likes [being woken|to wake|being wake] up by a trumpet.
+- This form has [to be signed|to sign be|be signed] by your parents. And your cat.
 @ The passive with modals | Szenvedő szerkezet módbeli igékkel | Passiv med modalverber
-= It [should be finished] by now.
-= It [could have been] worse.
-- The rules must [be followed|follow|be follow].
-- This [should have been|should been|should have be] done yesterday.
-- The meeting might [be cancelled|cancel|be cancel].
-- He can't [have been told|have told|be tell].
-- The house [must have been|must been|must have be] built in 1900.
-- It [could be|could|could being] seen from miles away.
+= My pizza [should be delivered] soon. Please.
+= It [could have been] worse. The goat could have eaten the car.
+- The cat's rules must [be followed|follow|be follow].
+- This mess [should have been|should been|should have be] cleaned up yesterday.
+- The wedding might [be cancelled|cancel|be cancel]. The groom is stuck in a tree.
+- He can't [have been told|have told|be tell] about the surprise. He looks surprised.
+- This bread [must have been|must been|must have be] baked in 1900.
+- My dad's snoring [could be|could|could being] heard from the moon.
 # More about the future | További jövő idejű formák | Mere om fremtiden
 @ was going to | was going to | was going to
-= I [was going to] call you, but I forgot.
-= It [was going to] rain, so we stayed in.
-- We were going [to buy|buy|buying] a car, but it was too expensive.
-- I was going to [tell|told|telling] you!
-- She [was going to|is going to|went to] study law, but she changed her mind.
-- They [were going to|was going to|are going to] get married last year.
-- I thought it [was going to|is going to|will going to] be easy.
-- He was going to [come|came|coming], but he got ill.
+= I [was going to] go to the gym, but my sofa said no.
+= It [was going to] be a quiet night. Then the neighbours got a parrot.
+- We were going [to buy|buy|buying] a dog, but we came home with a pig.
+- I was going to [tell|told|telling] you! Eventually.
+- She [was going to|is going to|went to] become a lawyer, but she became a clown.
+- They [were going to|was going to|are going to] get married on a mountain, but nobody could climb it.
+- I thought the exam [was going to|is going to|will going to] be easy. I was wrong.
+- He was going to [cook|cooked|cooking], but we called the fire brigade first.
 @ be to, be due to | be to, be due to | be to, be due to
-= The President [is to] visit Japan.
-= The train [is due to] arrive at five.
-- The plane is due [to land|land|landing] at noon.
-- You [are to|are|have] stay here until I return.
-- The new bridge is [to be|be|being] opened in May.
-- Her baby is [due|due to|to due] next month.
-- The meeting is due [to start|start|starting] at ten.
-- All students [are to|have|are] report to the office.
+= The Queen [is to] visit our tiny village. Hide the goats.
+= The pizza [is due to] arrive at eight.
+- The plane is due [to land|land|landing] at noon. With my suitcase, I hope.
+- You [are to|are|have] stay in bed until your temperature goes down.
+- The new zoo is [to be|be|being] opened by a famous penguin.
+- The cat's kittens are [due|due to|to due] next month.
+- The meeting is due [to start|start|starting] at ten. The coffee at nine.
+- All guests [are to|have|are] leave their shoes at the door.
 @ be bound to, be likely to | be bound to, be likely to | be bound to, be likely to
-= She's [bound to] win.
-= It's [likely to] rain.
-- He's bound [to find out|find out|finding out].
-- Prices are [likely to|likely|like to] rise.
-- They're [unlikely to|not likely|unlikely] come.
-- It's bound [to be|be|being] expensive.
-- She's likely [to be|be|being] late.
-- You're bound to [make|making|made] mistakes at first.
+= If you leave cake there, the dog is [bound to] eat it.
+= It's [likely to] rain on the one day I wash my car.
+- Mum's bound [to find out|find out|finding out] about the broken vase.
+- Prices are [likely to|likely|like to] rise again. Especially for pizza.
+- My brother is [unlikely to|not likely|unlikely] clean his room this decade.
+- A party with Grandpa is bound [to be|be|being] wild.
+- She's likely [to be|be|being] late. She's always late.
+- You're bound to [make|making|made] mistakes. Just don't make them with my car.
 @ The future perfect continuous | Befejezett folyamatos jövő | Førfremtid udvidet
-= By June, I['ll have been working] here for a year.
-= She'll [have been driving] for ten hours.
-- By noon, we'll have been [waiting|wait|waited] for three hours.
-- Next year, they [will have been|will been|will have] married for 20 years.
-- By the time he arrives, I'll have been [cooking|cook|cooked] all day.
-- In May, she'll have been [living|live|lived] here for ten years.
-- How long [will you have been|will you been|you will have been] studying by then?
-- He'll be tired. He'll have [been running|run been|running been] all morning.
+= By June, I['ll have been waiting] for this pizza for a year.
+= She'll [have been talking] for six hours by midnight.
+- By noon, we'll have been [queuing|queue|queued] for the toilet for an hour.
+- Next year, my parents [will have been|will been|will have] arguing about the thermostat for 30 years.
+- By the time the guests arrive, I'll have been [cooking|cook|cooked] for nine hours. And burning things for eight.
+- In May, my cat will have been [ignoring|ignore|ignored] me for ten years.
+- How long [will you have been|will you been|you will have been] watching this series by Sunday?
+- He'll be exhausted. He'll have [been chasing|chase been|chasing been] that chicken all morning.
 @ in case | in case | in case
-= Take an umbrella [in case] it rains.
-= I'll write it down in case I [forget].
-- Take some money in case you [need|will need|would need] it.
-- I'll give you my number [in case|if case|in the case] you get lost.
-- She left early in case the traffic [was|would be|will be] bad.
-- Bring a jacket [in case|unless|so] it gets cold.
-- I always keep water in the car in case I [get|will get|would get] thirsty.
-- Let's buy two [in case|unless|if not] one breaks.
+= Take a snack [in case] the meeting goes on forever.
+= I'll save it in case I [need] it. It's a box of empty boxes.
+- Take some money in case the dog [eats|will eat|would eat] your wallet.
+- I'll give you my number [in case|if case|in the case] you get lost in IKEA.
+- She brought two umbrellas in case it [rained|would rain|will rain] twice as hard.
+- Bring a jumper [in case|unless|so] the cinema is cold.
+- I always keep chocolate in my bag in case I [get|will get|would get] sad.
+- Let's buy two pizzas [in case|unless|if not] one gets eaten on the way.
 # Clauses that save words | Szórövidítő mellékmondatok | Sætninger der sparer ord
 @ -ing clauses | -ing-es mellékmondatok | -ing-sætninger
-= [Walking] home, I saw a fox.
-= [Feeling] tired, she went to bed.
-- [Opening|Opened|To open] the door, he saw a stranger.
-- [Not knowing|Knowing not|Don't knowing] what to do, I called my mum.
-- [Living|Lived|Live] alone, she often feels lonely.
-- The man [sitting|sit|sits] next to me snored all night.
-- [Hearing|Heard|Hear] the news, she started to cry.
-- Anyone [wanting|wanted|wants] a ticket should call now.
+= [Walking] home, I saw a fox wearing a sock.
+= [Feeling] brave, she ate the hottest chilli.
+- [Opening|Opened|To open] the fridge, he found a cat.
+- [Not knowing|Knowing not|Don't knowing] what to say, I sang.
+- [Living|Lived|Live] with five cats, she never feels lonely. Or clean.
+- The man [sitting|sit|sits] next to me ate my popcorn.
+- [Hearing|Heard|Hear] the ice cream van, the kids ran like Olympic athletes.
+- Anyone [wanting|wanted|wants] cake should be nice to me.
 @ Having done | Having done | Having done
-= [Having finished] work, she went home.
-= Having [seen] the film, I didn't want to read the book.
-- [Having eaten|Having eat|Have eaten] lunch, we went for a walk.
-- Having [lost|lose|losing] my keys, I couldn't get in.
-- [Having been|Having be|Been having] there before, he knew the way.
-- Having [spent|spend|spending] all my money, I walked home.
-- [Not having|Having not|Don't having] a car, she takes the bus.
-- Having [said|say|saying] goodbye, they left.
+= [Having eaten] the whole cake, the dog lay down.
+= Having [seen] the film, I'll never go swimming again.
+- [Having finished|Having finish|Have finished] dinner, we started dessert. And then dinner again.
+- Having [lost|lose|losing] my glasses, I said hello to a coat stand.
+- [Having been|Having be|Been having] there before, Grandma knew the bouncer.
+- Having [spent|spend|spending] all my money on shoes, I walked home barefoot.
+- [Not having|Having not|Don't having] a car, he rides a horse to work.
+- Having [said|say|saying] goodbye three times, they finally left.
 @ -ed clauses | Múlt idejű melléknévi igeneves szerkezetek | Sætninger med kort tillægsform
-= The car [stolen] yesterday was found today.
-= [Made] in Italy, these shoes are expensive.
-- Most of the people [invited|inviting|invite] to the party came.
-- The book, [written|writing|wrote] in 1850, is still popular.
-- [Built|Building|Build] in 1900, the house needs repairs.
-- Food [cooked|cooking|cook] slowly tastes better.
-- The money [found|finding|find] in the street was returned.
-- [Seen|Seeing|Saw] from above, the city looks tiny.
+= The bike [stolen] yesterday was found in a tree.
+= [Made] by my dad, the cake looked like a hat.
+- Most of the people [invited|inviting|invite] to the wedding were cats.
+- The letter, [written|writing|wrote] in 1850, was a pizza order.
+- [Built|Building|Build] by my uncle, the shed fell down in a week.
+- Food [cooked|cooking|cook] by Grandma is always too much.
+- The money [found|finding|find] in the sofa paid for dinner.
+- [Seen|Seeing|Saw] from above, the city looks like a pizza.
 @ which about the whole idea | which: az egész mondatra | which om hele sætningen
-= He was late, [which] made me angry.
-= She passed, [which] surprised everyone.
-- It rained all day, [which|what|that] was a pity.
-- He didn't call, [which|what|that] is strange.
-- They won the cup, [which|what|that] nobody expected.
-- She forgot my birthday, [which|what|that] really hurt.
-- The train was late, [which|what|that] meant I missed my flight.
-- He lent me his car, [which|what|that] was very kind.
+= He sang at the wedding, [which] nobody had asked for.
+= The cat learned to open the fridge, [which] is a problem.
+- It rained on our beach day, [which|what|that] was typical.
+- He didn't laugh at my joke, [which|what|that] is strange. It's a great joke.
+- Grandma won the boxing match, [which|what|that] nobody expected.
+- She forgot my birthday, [which|what|that] was fine. I forgot hers too.
+- The train was late, [which|what|that] meant I missed my own wedding.
+- He lent me his car, [which|what|that] was brave of him.
 @ whoever, whatever, wherever | whoever, whatever, wherever | whoever, whatever, wherever
-= [Whatever] you do, don't tell him.
-= Sit [wherever] you like.
-- [Whoever|Whatever|Whenever] wins will get a prize.
-- Take [whatever|whoever|wherever] you want.
-- Call me [whenever|whatever|whoever] you need help.
-- [Wherever|Whatever|Whoever] I go, I take my camera.
-- [However|Whatever|Whichever] hard I try, I can't do it.
-- Choose [whichever|whoever|wherever] colour you prefer.
+= [Whatever] you do, don't feed it after midnight.
+= Sit [wherever] you like. Not on the cat.
+- [Whoever|Whatever|Whenever] ate my yoghurt will be found.
+- Take [whatever|whoever|wherever] you want. Except the cake.
+- Call me [whenever|whatever|whoever] you need a ride. Not before noon.
+- [Wherever|Whatever|Whoever] I go, a pigeon follows me.
+- [However|Whatever|Whichever] hard I try, I can't fold a fitted sheet.
+- Choose [whichever|whoever|wherever] pizza you want. They're all pepperoni.
 # Linking ideas | Gondolatok összekapcsolása | At forbinde idéer
 @ despite, in spite of | despite, in spite of | despite, in spite of
-= [Despite] the rain, we went out.
-= In spite [of] being tired, she kept going.
-- [Despite|Although|Despite of] the cold, he wore shorts.
-- In spite [of|that|for] the traffic, we arrived on time.
-- Despite [feeling|feel|felt] ill, she went to work.
-- [Despite|Although|Even] having lots of money, he's unhappy.
-- She failed, in spite of [working|work|worked] hard.
-- [In spite of|Despite of|In spite] the noise, I slept well.
+= [Despite] the snow, Grandpa went swimming.
+= In spite [of] being a cat, she thinks she's a dog.
+- [Despite|Although|Despite of] the cold, he wore shorts. And no shoes.
+- In spite [of|that|for] the traffic, we arrived on time. On the wrong day.
+- Despite [being|be|been] on a diet, she ate two desserts.
+- [Despite|Although|Even] having twenty pairs of shoes, she wears slippers.
+- He failed the driving test, in spite of [practising|practise|practised] for ten years.
+- [In spite of|Despite of|In spite] the noise from the party, the baby slept. We didn't.
 @ whereas, while | whereas, while | whereas, while
-= I like tea, [whereas] my wife likes coffee.
-= [While] he's tall, his brother is short.
-- He's very quiet, [whereas|despite|although of] his sister talks all the time.
-- [While|Despite|In spite] I understand you, I can't agree.
-- Some people love winter, [whereas|despite|so that] others hate it.
-- My flat is small, [whereas|in spite|despite of] hers is huge.
-- [While|Despite|However] I like the idea, it's too expensive.
-- He earns a lot, [whereas|despite|in spite] I earn very little.
+= I like getting up early, [whereas] my cat likes getting me up early.
+= [While] my dog is friendly, my cat is planning world domination.
+- He's very quiet, [whereas|despite|although of] his parrot never stops talking.
+- [While|Despite|In spite] I understand your love for cheese, this is too much.
+- Some people love Mondays, [whereas|despite|so that] most people are normal.
+- My flat is tiny, [whereas|in spite|despite of] my cat's bed is huge.
+- [While|Despite|However] I like your idea, the answer is no.
+- He spends money like water, [whereas|despite|in spite] I save every coin.
 @ so that, in order to | so that, in order to | so that, in order to
-= I left early [so that] I wouldn't be late.
-= She saved money [in order to] buy a car.
-- He whispered [so that|in order|for to] nobody would hear.
-- We went early in order [to get|get|getting] good seats.
-- I wrote it down so that I [wouldn't|won't to|not] forget.
-- She studied hard [in order to|in order|so to] pass.
-- Turn the light off [so that|in order to|for] I can sleep.
-- He took a taxi so as [not to|to not|not] miss the train.
+= I hid the cake [so that] my brother wouldn't find it.
+= She wore a disguise [in order to] avoid her ex.
+- He whispered [so that|in order|for to] the cat wouldn't hear.
+- We went early in order [to get|get|getting] the best seats near the snacks.
+- I wrote it on my hand so that I [wouldn't|won't to|not] forget.
+- She practised every day [in order to|in order|so to] beat her grandma at chess.
+- Turn the light off [so that|in order to|for] the cat can sleep.
+- He ran so as [not to|to not|not] miss the last slice of pizza.
 @ even if, even though | even if, even though | even if, even though
-= [Even though] it was late, we kept talking.
-= I'll go, [even if] it rains.
-- [Even though|Even|Despite] he's rich, he lives simply.
-- I wouldn't do it [even if|even though|despite] you paid me.
-- She went to work [even though|even if|despite] she was ill.
-- [Even if|Even though|Despite] you run, you won't catch the bus.
-- He failed [even though|even if|despite] he had studied.
-- [Even if|Even though|In spite] I had the money, I wouldn't buy it.
+= [Even though] it was midnight, the neighbours kept singing.
+= I'll eat it, [even if] it's green.
+- [Even though|Even|Despite] he's a millionaire, he still steals sugar packets.
+- I wouldn't eat that [even if|even though|despite] you paid me.
+- She went to work [even though|even if|despite] it was her birthday.
+- [Even if|Even though|Despite] you hide the chocolate, I'll find it.
+- He failed [even though|even if|despite] he had copied from the cat.
+- [Even if|Even though|In spite] I had the money, I wouldn't buy a boat. OK, I would.
 @ however, therefore, moreover | however, therefore, moreover | however, therefore, moreover
-= The plan is good. [However], it's expensive.
-= He was ill. [Therefore], he stayed home.
-- It was cheap. [However|Therefore|Moreover], it broke after a week.
-- She studied hard. [Therefore|However|Although], she passed easily.
-- The hotel is cheap. [Moreover|However|Although], it's near the beach.
-- I'd love to come. [However|Therefore|Moreover], I'm busy that day.
-- He has no ticket. [Therefore|However|Despite], he can't come in.
-- The car is fast. [What's more|However|Therefore], it's very safe.
+= The plan is brilliant. [However], it involves a goat.
+= He ate all the cookies. [Therefore], he gets no dinner.
+- The car was cheap. [However|Therefore|Moreover], it had no doors.
+- The cat knocked over the plant. [Therefore|However|Although], she is in trouble.
+- The hotel has a pool. [Moreover|However|Although], it has free cake.
+- I'd love to come. [However|Therefore|Moreover], I'll be busy doing nothing.
+- He forgot his ticket. [Therefore|However|Despite], he watched the concert from a tree.
+- The pizza was huge. [What's more|However|Therefore], it was free.
 # Verb patterns, further | Igei szerkezetek haladóknak | Verbalmønstre for viderekomne
 @ regret, forget + -ing or to | regret, forget + -ing vagy to | regret, forget + -ing eller to
-= I regret [saying] that. (I said it)
-= We regret [to inform] you... (now)
-- I'll never forget [meeting|to meet|meet] the Queen.
-- Don't forget [to post|posting|post] the letter.
-- She regrets [selling|to sell|sell] her old car.
-- We regret [to tell|telling|tell] you that the flight is cancelled.
-- He went on [talking|to talk|talk] for hours.
-- After the news, she went on [to talk|talk|talked] about sport.
+= I regret [eating] that burrito. (I ate it)
+= We regret [to inform] you that your pizza has been eaten. (now)
+- I'll never forget [seeing|to see|see] my dad on a skateboard.
+- Don't forget [to feed|feeding|feed] the cat. She won't forget.
+- She regrets [cutting|to cut|cut] her own fringe.
+- We regret [to announce|announcing|announce] that the clown is sick.
+- He went on [talking|to talk|talk] about his cat for two hours.
+- After the cat story, he went on [to talk|talk|talked] about his other cat.
 @ suggest, recommend | suggest, recommend | suggest, recommend
-= I suggest [going] by train.
-= She suggested [that we] meet later.
-- He suggested [taking|to take|take] a break.
-- I recommend [booking|to book|book] early.
-- She suggested that I [see|to see|seeing] a doctor.
-- What do you suggest [doing|to do|do]?
-- They recommended that we [try|to try|trying] the fish.
-- I'd suggest [leaving|to leave|leave] now.
+= I suggest [hiding] before Mum gets home.
+= She suggested [that we] order pizza. Smart woman.
+- He suggested [taking|to take|take] the cat to the beach.
+- I recommend [wearing|to wear|wear] earplugs. My dad snores.
+- The doctor suggested that I [stop|to stop|stopping] eating cake for breakfast.
+- What do you suggest [doing|to do|do] with a hundred lemons?
+- They recommended that we [try|to try|trying] the snail ice cream.
+- I'd suggest [running|to run|run]. The goose looks angry.
 @ advise, allow, encourage + to | advise, allow, encourage + to | advise, allow, encourage + to
-= The doctor advised me [to rest].
-= They don't allow you [to smoke].
-- My teacher encouraged me [to apply|apply|applying].
-- They allowed us [to leave|leave|leaving] early.
-- She persuaded him [to stay|stay|staying].
-- The guide warned us [not to|to not|don't] swim there.
-- He forced me [to sign|sign|signing] it.
-- I'd advise you [to think|think|thinking] carefully.
+= The vet advised me [to put] the cat on a diet. The cat disagreed.
+= They don't allow you [to bring] your own popcorn.
+- My grandma encouraged me [to try|try|trying] skydiving.
+- They allowed us [to sleep|sleep|sleeping] in the museum.
+- She persuaded him [to wear|wear|wearing] the reindeer jumper.
+- The guide warned us [not to|to not|don't] feed the monkeys.
+- My cat forced me [to get|get|getting] up at 5 a.m.
+- I'd advise you [to run|run|running]. Now.
 @ make, let, have, get someone do | make, let, have, get | make, let, have, get
-= I [got] him to fix my bike.
-= She [had] her assistant book a table.
-- I'll get my brother [to help|help|helping] us.
-- She had the waiter [bring|to bring|bringing] more bread.
-- They made us [wait|to wait|waiting] for hours.
-- He got me [to lend|lend|lending] him money.
-- My boss let me [leave|to leave|leaving] early.
-- Can you get someone [to look|look|looking] at my car?
+= I [got] my little brother to eat the broccoli.
+= She [had] her assistant walk her pig.
+- I'll get my dad [to fix|fix|fixing] it. Then I'll get someone to fix what he broke.
+- She had the waiter [bring|to bring|bringing] more cheese. Four times.
+- They made us [wait|to wait|waiting] for three hours. For a sandwich.
+- He got me [to lend|lend|lending] him my car. I'll never see it again.
+- My boss let me [leave|to leave|leaving] early because my cat was sad.
+- Can you get someone [to look|look|looking] at this spider? From far away.
 @ It's time + past | It's time + múlt | It's time + datid
-= It's time we [went] home.
-= It's high time you [got] a job.
-- It's time you [cleaned|clean|will clean] your room.
-- It's high time they [fixed|fix|will fix] this road.
-- It's time we [left|leave|leaving].
-- It's about time he [apologised|apologises|will apologise].
-- Isn't it time you [stopped|stop|stopping] smoking?
-- It's time [to go|going|go]. The taxi's here.
+= It's time we [went] home. The party ended yesterday.
+= It's high time you [got] a haircut. You look like a sheep.
+- It's time you [cleaned|clean|will clean] your room. Something is growing in there.
+- It's high time they [fixed|fix|will fix] this hole in the road. A duck lives in it.
+- It's time we [left|leave|leaving]. Grandpa found the microphone.
+- It's about time he [apologised|apologises|will apologise] to the cat.
+- Isn't it time you [stopped|stop|stopping] playing video games? It's Thursday.
+- It's time [to go|going|go]. The taxi's here. And it's a tractor.
 # Nouns and determiners | Főnevek és determinánsok | Navneord og bestemmerord
 @ the for one specific thing | the: konkrét dolog | the: én bestemt ting
-= [—] Cats are clever. (all cats)
-= [The] cat next door is clever.
-- I love [—|the|a] chocolate.
-- [The|—|A] chocolate you gave me was delicious.
-- [—|The|An] honesty is important.
-- She works at [the|—|an] hospital near the station.
-- She goes to [—|the|a] bed at ten every night.
-- Can you pass [the|—|a] salt, please?
+= [—] Cats rule the world. (all cats)
+= [The] cat next door rules our street.
+- I love [—|the|a] chocolate more than people.
+- [The|—|A] chocolate you gave me has disappeared. Strange.
+- [—|The|An] honesty is important, so I ate your cake.
+- She works at [the|—|an] zoo near my house. She's a penguin's assistant.
+- She goes to [—|the|a] bed at nine, like a grandma.
+- Can you pass [the|—|a] salt, please? And the chips. And the cake.
 @ advice, news, information | Megszámlálhatatlan főnevek | Utællelige navneord
-= Can I give you [some] advice?
-= The news [is] good.
-- I need [some information|an information|informations].
-- The news [is|are|were] on at nine.
-- She gave me [a piece of|a|an] advice.
-- Your luggage [is|are|were] here.
-- We have [a lot of|many|a] homework.
-- The furniture [was|were|are] very old.
+= Can I give you [some] advice? Never trust a goose.
+= The news [is] terrible. They've closed the pizza place.
+- I need [some information|an information|informations] about this strange rash.
+- The news [is|are|were] boring. Let's watch cats.
+- My grandma gave me [a piece of|a|an] advice: always carry a snack.
+- Your luggage [is|are|were] in Brazil. Sorry.
+- We have [a lot of|many|a] homework. The dog has already eaten some.
+- The furniture [was|were|are] covered in cat hair.
 @ few, a few, little, a little | few, a few, little, a little | few, a few, little, a little
-= [Few] people came. (almost nobody)
-= [A few] people came. (some)
-- He's lonely. He has [few|a few|little] friends.
-- I have [a little|little|few] money. Let's get a coffee.
-- There's [little|a little|few] hope now. It's too late.
-- We've got [a few|few|a little] minutes. Let's talk.
-- [Very few|Very little|A very few] students passed. The test was hard.
-- She speaks [a little|few|a few] Italian.
+= [Few] people laughed at his joke. (almost nobody)
+= [A few] people laughed. (some, to be kind)
+- He's grumpy. He has [few|a few|little] friends. Two cats and a plant.
+- I have [a little|little|few] money. Let's buy a doughnut.
+- There's [little|a little|few] hope for this cake now. It's black.
+- We've got [a few|few|a little] minutes before Mum gets home. Hide everything!
+- [Very few|Very little|A very few] people survived Dad's chilli.
+- She speaks [a little|few|a few] cat.
 @ neither, either, both: verb agreement | neither, either, both egyeztetés | neither, either, both: kongruens
-= [Both] of them are right.
-= Neither of them [is] here.
-- Either Tom or Sam [is|are|be] lying.
-- Both my brothers [are|is|be] doctors.
-- [Neither|Either|Both] of my parents can swim. They're scared of water.
-- You can have [either|both|neither] one. Choose!
-- Neither the teacher nor the students [were|was|is] ready.
-- [Both|Either|Neither] Anna and Ben came.
+= [Both] of my cats are evil.
+= Neither of them [is] sorry.
+- Either the cat or the dog [is|are|be] lying.
+- Both my uncles [are|is|be] clowns. Real ones.
+- [Neither|Either|Both] of my parents can whistle. It's sad.
+- You can have [either|both|neither] cookie. But only one!
+- Neither the teacher nor the students [were|was|is] awake.
+- [Both|Either|Neither] Anna and Ben brought a goat.
 @ Compound adjectives | Összetett melléknevek | Sammensatte tillægsord
-= a [ten-minute] walk
-= a [well-known] writer
-- It's a [two-hour|two-hours|two hour's] flight.
-- She has a [five-year-old|five-years-old|five-year-olds] son.
-- He's a [good-looking|good-look|good-looked] man.
-- It was a [last-minute|last-minutes|lasts-minute] decision.
-- They live in a [three-bedroom|three-bedrooms|three bedrooms'] house.
-- I need a [ten-euro|ten-euros|ten euro's] note.
+= a [ten-minute] shower that lasted an hour
+= a [well-known] liar
+- It's a [two-hour|two-hours|two hour's] film about a sandwich.
+- She has a [five-year-old|five-years-old|five-year-olds] son who is smarter than me.
+- He's a [good-looking|good-look|good-looked] dog.
+- It was a [last-minute|last-minutes|lasts-minute] decision to buy the llama.
+- They live in a [three-bedroom|three-bedrooms|three bedrooms'] flat with eight cats.
+- I found a [ten-euro|ten-euros|ten euro's] note in my old jeans. Best day ever.
 # Reporting, further | Függő beszéd haladóknak | Indirekte tale for viderekomne
 @ admit, deny + -ing | admit, deny + -ing | admit, deny + -ing
-= He denied [stealing] the money.
-= She admitted [lying].
-- He admitted [breaking|to break|break] the window.
-- She denied [taking|to take|take] the money.
-- They admitted [making|to make|make] a mistake.
-- He denied [being|to be|be] there.
-- She admitted [having|to have|have] forgotten.
-- He denies [knowing|to know|know] her.
+= The dog denied [eating] the cake. His face was covered in cream.
+= She admitted [singing] in the shower. Everybody knew.
+- He admitted [breaking|to break|break] the window with his head.
+- The cat denied [stealing|to steal|steal] the fish. Classic cat.
+- They admitted [losing|to lose|lose] the baby at the supermarket. Briefly.
+- He denied [being|to be|be] at the party, but he's in every photo.
+- She admitted [having|to have|have] lied about her age. She's 92.
+- He denies [knowing|to know|know] the man in the chicken costume.
 @ accuse of, apologise for | accuse of, apologise for | accuse of, apologise for
-= She accused him [of] lying.
-= He apologised [for] being late.
-- They accused her [of|for|with] stealing.
-- I apologise [for|of|about to] the delay.
-- She blamed me [for|of|with] the accident.
-- He insisted [on|for|to] paying.
-- They congratulated us [on|for|of] our wedding.
-- She thanked me [for|of|on] helping.
+= She accused the cat [of] stealing her seat.
+= He apologised [for] singing at the funeral.
+- They accused him [of|for|with] eating all the samples.
+- I apologise [for|of|about to] my dog. He's very friendly. Too friendly.
+- She blamed me [for|of|with] the smell.
+- Grandpa insisted [on|for|to] driving. We prayed.
+- They congratulated us [on|for|of] our new baby goat.
+- She thanked me [for|of|on] eating her broccoli.
 @ Reporting without changing tense | Függő beszéd igeidő-változás nélkül | Indirekte tale uden tidsskift
-= "I live in Rome." → She says she [lives] in Rome.
-= "The Earth is round." → He said the Earth [is] round.
-- "I'm hungry." → She says she [is|was|were] hungry. (now)
-- "I like jazz." → He tells everyone he [likes|liked|like] jazz.
-- He told us water [boils|boil|boiling] at 100 degrees.
-- She has just told me she [is|were|be] getting married.
-- "I'll come." → He says he [will|would|wills] come.
-- The teacher explained that the sun [is|be|were] a star.
+= "I'm a vampire." → He says he [is] a vampire. He's been saying it since lunch.
+= "Cats can't fly." → She said cats [can't] fly. My cat disagrees.
+- "I'm starving." → She says she [is|was|were] starving. She's eating.
+- "I love jazz." → He tells everyone he [loves|loved|love] jazz. He doesn't.
+- My teacher told us water [boils|boil|boiling] at 100 degrees. Not in my kitchen.
+- She has just told me she [is|were|be] marrying a magician.
+- "I'll be there." → He says he [will|would|wills] be there. We'll see.
+- The guide explained that the moon [is|be|were] not made of cheese.
 @ Reported questions, further | Függő kérdések haladóknak | Indirekte spørgsmål for viderekomne
-= He asked me where I [had been].
-= She wanted to know [whether] I was coming.
-- They asked us how long we [had been|have been|had be] waiting.
-- She asked me [whether|that|what if] I could help.
-- He wanted to know why I [hadn't called|didn't called|haven't call].
-- They asked if we [would|will|wills] come back.
-- She asked me what I [was doing|am doing|did doing].
-- He asked [if|that|what] the shop was open.
+= My mum asked me where I [had been] all night.
+= She wanted to know [whether] I was the one who ate the cake.
+- They asked us how long we [had been|have been|had be] living in a tent.
+- She asked me [whether|that|what if] I could babysit her snake.
+- He wanted to know why I [hadn't called|didn't called|haven't call]. My phone was in the soup.
+- They asked if we [would|will|wills] come back. We said no.
+- She asked me what I [was doing|am doing|did doing] in her wardrobe.
+- He asked [if|that|what] the restaurant allowed goats.
 @ said that or told me that | say vagy tell + that | say eller tell + that
-= She [told] me that she was leaving.
-= He [said] that he was tired.
-- He [explained|explained me|told] that the shop was closed.
-- She [told|said|explained] us that the trip was cancelled.
-- They [said|told|said us] they would come.
-- I [told|said|explained] him the truth.
-- She [mentioned|mentioned me|told] that she had a dog.
-- He [told|said|explained] me a story.
+= She [told] me that she was moving to the moon.
+= He [said] that the cat had started it.
+- He [explained|explained me|told] that the shop was closed for a cat birthday.
+- She [told|said|explained] us that the trip was cancelled because of a goose.
+- They [said|told|said us] they would bring snacks. They brought celery.
+- I [told|said|explained] him the truth about his haircut.
+- She [mentioned|mentioned me|told] that she had a pet crocodile.
+- My grandpa [told|said|explained] me a story that lasted three hours.
 # Emphasis | Nyomatékosítás | Fremhævelse
 @ What I need is... | What I need is... | What I need is...
-= [What] I need is a holiday.
-= What I like [is] the music.
-- [What|That|Which] I don't understand is why he left.
-- What she wants [is|are|it is] a new car.
-- [What|Which|That] annoys me is the noise.
-- What happened [was|is that|were] that we got lost.
-- [What|That|It] I love about Rome is the food.
-- What you need to do [is|it is|are] relax.
+= [What] I need is a holiday from my holiday.
+= What I hate [is] people who chew loudly.
+- [What|That|Which] I don't understand is why the cat is wearing your hat.
+- What my dog wants [is|are|it is] a sandwich. Always.
+- [What|Which|That] annoys me is my neighbour's karaoke.
+- What happened [was|is that|were] that we got lost in the car park.
+- [What|That|It] I love about Grandma is her motorbike.
+- What you need to do [is|it is|are] put the phone down and sleep.
 @ It was ... that | It was ... that | It was ... that
-= [It was] Tom who broke it.
-= It's the price [that] worries me.
-- [It was|There was|That was] in Paris that we met.
-- It's my sister [who|which|what] lives in London, not me.
-- It was yesterday [that|when it|which] I saw her.
-- [It's|There's|That's] not money that makes you happy.
-- It was the noise [that|what|who] woke me up.
-- [It was|There was|What was] John who called.
+= [It was] the cat who broke it. Not me. Probably.
+= It's the smell [that] worries me.
+- [It was|There was|That was] in a lift that we met. It was stuck for six hours.
+- It's my brother [who|which|what] snores, not me.
+- It was yesterday [that|when it|which] the goat escaped.
+- [It's|There's|That's] not money that makes you happy. It's pizza.
+- It was the trumpet [that|what|who] woke the whole street.
+- [It was|There was|What was] Grandma who started the food fight.
 @ so ... that, such ... that | so ... that, such ... that | so ... that, such ... that
-= It was [so] cold [that] the river froze.
-= It was [such] a good film that I saw it twice.
-- He was [so|such|such a] tired that he fell asleep at dinner.
-- It was [such a|so|so a] beautiful day that we went to the beach.
-- The music was so loud [that|than|as] I couldn't hear.
-- They had [such|so|such a] fun that they stayed late.
-- She spoke [so|such|so much] quickly that nobody understood.
-- There were [so many|such many|so much] people that we left.
+= The film was [so] boring [that] the popcorn fell asleep.
+= It was [such] a bad joke that everyone groaned.
+- He was [so|such|such a] tired that he fell asleep in his soup.
+- It was [such a|so|so a] hot day that my ice cream melted before I bought it.
+- The music was so loud [that|than|as] the neighbours' cat moved out.
+- They had [such|so|such a] fun at the zoo that the zoo asked them to leave.
+- She spoke [so|such|so much] fast that even she didn't understand.
+- There were [so many|such many|so much] cats that we couldn't see the sofa.
 @ do, does, did for emphasis | Nyomatékos do, does, did | Fremhævende do, does, did
-= I [do] like your dress!
-= She [did] call. I promise.
-- I [do|am|did do] love you.
-- He [does|do|is] look tired today.
-- We [did|do|done] enjoy the party, thanks.
-- She doesn't eat meat, but she [does|do|is] eat fish.
-- I didn't win, but I [did|do|was] try.
-- You [do|does|are] look nice!
+= I [do] like your hat! It's... brave.
+= She [did] feed the cat. The cat is lying.
+- I [do|am|did do] love you. Now can I have your chips?
+- He [does|do|is] look like a potato in that photo.
+- We [did|do|done] enjoy the party, until the police came.
+- She doesn't eat meat, but she [does|do|is] eat bacon. Apparently.
+- I didn't win, but I [did|do|was] fall over in a funny way.
+- You [do|does|are] look nice! Did you sleep for once?
 @ Never have I... (first look) | Never have I... (bevezető) | Never have I... (første kig)
-= [Never] have I seen such a mess.
-= Not only [is] he rich, he's also kind.
-- Never [have I|I have|did I have] been so happy.
-- Not only [did she|she did|she] win, she broke the record.
-- Rarely [do we|we do|we] see such talent.
-- Never before [had I|I had|have I had] felt so tired.
-- Not only [is it|it is|it's] cheap, it's also good.
-- Seldom [does he|he does|he] make mistakes.
+= [Never] have I seen such a fat cat.
+= Not only [does] he snore, he talks in his sleep.
+- Never [have I|I have|did I have] been so embarrassed. My dad danced.
+- Not only [did she|she did|she] win the race, she did it in high heels.
+- Rarely [do we|we do|we] see a dog driving a car.
+- Never before [had I|I had|have I had] eaten a whole pizza alone. Now I do it every week.
+- Not only [is it|it is|it's] cheap, it's also delicious. And alive.
+- Seldom [does he|he does|he] say sorry. Never, actually.
 `);

@@ -853,7 +853,33 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .nst{color:#E0A100;font-size:14px;letter-spacing:1px}
 .node-w.fresh .node{animation:unlock .9s cubic-bezier(.2,1.5,.4,1) both}
 .lvnext{display:flex;justify-content:center;padding:20px 0}
-.ptest{display:flex;justify-content:center;padding:0 0 6px}
+.ptest{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:0 0 6px}
+.sn{max-width:560px;margin:0 auto;padding:8px var(--gut) 40px;display:grid;gap:18px}
+.sn-top{display:flex;align-items:center;gap:10px}
+.sn-p{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:16px;border:2px solid #e5e5e5;font-size:22px;font-weight:900;color:var(--ink-2);background:#fff;transition:transform .2s}
+.sn-p.on{color:#fff;border-color:var(--pc);background:var(--pc);box-shadow:0 4px 0 var(--pcd);transform:scale(1.04)}
+.sn-p.p0{--pc:#58CC02;--pcd:#46A302}.sn-p.p1{--pc:#CE82FF;--pcd:#A568CC}
+.sn-vs{font-weight:900;color:var(--ink-2)}
+.sn-body{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:6px;min-height:64px;padding:14px;border-radius:22px;background:#f2fbe9;border:2px solid #d7f0c2}
+.sn-seg{min-width:34px;height:34px;padding:0 10px;border-radius:99px;background:#58CC02;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+.sn-seg:nth-child(even){background:#46A302}
+.sn-seg.new{animation:cardin .5s cubic-bezier(.2,1.5,.4,1)}
+.sn-head{font-size:34px;line-height:1}
+.sn-n{text-align:center;font-size:15px;font-weight:800;color:var(--ink-2)}
+.sn-card{display:grid;justify-items:center;align-content:center;gap:10px;min-height:230px;border-radius:22px;border:2px solid #e5e5e5;box-shadow:0 6px 0 #e5e5e5;background:#fff;text-align:center;padding:22px}
+.sn-card.back{background:repeating-linear-gradient(45deg,#58CC02 0 14px,#61d60a 14px 28px);border-color:#46A302;box-shadow:0 6px 0 #46A302;color:#fff;font-size:64px;font-weight:900;cursor:pointer}
+.sn-card.sn-face{animation:cardin .45s cubic-bezier(.2,1.3,.4,1)}
+.sn-w{font-size:40px;font-weight:800;line-height:1.1;word-break:break-word}
+.sn-g{font-size:22px;font-weight:700;color:#46A302}
+.sn-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sn-btns .dbtn,.sn .dbtn.go{font-size:28px}
+.sn-eye{justify-self:center}
+.sn-win{text-align:center;display:grid;gap:8px;justify-items:center}
+.sn-win .sn-p{flex:none;min-width:120px;font-size:30px}
+.sn-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sn-list li{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-radius:12px;background:#fff;border:2px solid #eee}
+.sn-list li i{font-style:normal;font-weight:800;color:var(--ink-2);min-width:22px}
+.sn-list li b{font-size:18px}.sn-list li span{color:var(--ink-2)}
 .pt{max-width:560px;margin:0 auto;padding:12px 16px 40px}
 .pt-bar{height:14px;border-radius:99px;background:#e5e5e5;overflow:hidden;margin:18px 0 8px}.pt-bar i{display:block;height:100%;background:var(--signal);border-radius:99px;transition:width .3s}
 .pt-lv{font-weight:900;color:var(--ink-2);margin:0 0 18px;letter-spacing:.06em}
@@ -3737,7 +3763,8 @@ var ES_PHRASES = [
     'fc.know': ['I knew it', 'Tudtam', 'Det vidste jeg'],
     'fc.skip': ['Skip', 'Kihagyom', 'Spring over'],
     'w.empty': ['Tap any word in a puzzle to see what it means. It lands here and comes back until you know it.', 'Koppints bármelyik szóra egy feladatban, és látod a jelentését. Ide kerül, és addig visszatér, amíg meg nem tanulod.', 'Tryk på et ord i en opgave for at se, hvad det betyder. Det havner her og kommer igen, til du kan det.'],
-    'w.practise': ['Practise', 'Gyakorlás', 'Øv']
+    'w.practise': ['Practise', 'Gyakorlás', 'Øv'],
+    'p.snake': ['Word snake', 'Szókígyó', 'Ordslange']
   };
   for (var k in add) STR[k] = add[k];
 })();
@@ -5328,7 +5355,7 @@ var ES_PHRASES = [
     }).join('');
     var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
       '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>' +
-      '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button></div>';
+      '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button><button type="button" class="pbtn sm" data-a="snake">🐍 ' + t('p.snake') + '</button></div>';
     var Lv = C[lv - 1];
     if (!Lv) return h + '</div>';
     var off = [0, 1, 2, 1, 0, -1, -2, -1], gi = 0;
@@ -5583,6 +5610,57 @@ var ES_PHRASES = [
     if (!list.length) return;
     S.fc = { list: list.map(function (e) { return { k: e.k, ctx: e.ctx, here: false }; }), i: 0, flip: false, then: null, fresh: true, ok: 0 };
     S.screen = 'cards'; render(); window.scrollTo(0, 0);
+  }
+
+  /* ---------- word snake: say the whole chain from memory, then flip one more word ---------- */
+  function snDeck(L, lv) {
+    var G = GLOSS[L] || {}, Lv = COURSE[L] && COURSE[L][lv - 1], seen = {}, mine = [], lvw = [];
+    function add(list, w) { var k = wordKey(lwCore(w)); if (k.length < 4 || seen[k] || WARM_SKIP[k] || !G[k] || /[^a-zà-ÿñ'’-]/i.test(k)) return; seen[k] = 1; list.push(k); }
+    wLearning(L).forEach(function (e) { add(mine, e.k); });
+    if (Lv) Lv.list.forEach(function (st) { (st.items || []).forEach(function (it) { lwWords(it.full).forEach(function (w) { add(lvw, w); }); }); });
+    function mix(a) { for (var i = a.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)), x = a[i]; a[i] = a[j]; a[j] = x; } return a; }
+    mix(mine); mix(lvw);
+    /* the words you saved come in among the level's words, not all at the start */
+    var out = [], m = 0;
+    lvw.forEach(function (w, i) { if (i % 3 === 1 && m < mine.length) out.push(mine[m++]); out.push(w); });
+    while (m < mine.length) out.push(mine[m++]);
+    return out.slice(0, 80);
+  }
+  function snStart() {
+    var L = S.sel.course, lv = S.sel.plv || 1;
+    S.sn = { lang: L, lv: lv, deck: snDeck(L, lv), chain: [], turn: 0, phase: 'flip', peek: false, win: -1 };
+    S.screen = 'snake'; render(); window.scrollTo(0, 0);
+  }
+  function snPlayers(turn) {
+    return '<div class="sn-top"><span class="sn-p p0' + (turn === 0 ? ' on' : '') + '">1</span><span class="sn-vs" aria-hidden="true">🐍</span><span class="sn-p p1' + (turn === 1 ? ' on' : '') + '">2</span></div>';
+  }
+  function snBody(show, fresh) {
+    var Z = S.sn, h = '<div class="sn-body" lang="' + Z.lang + '">';
+    Z.chain.forEach(function (k, i) { h += '<span class="sn-seg' + (fresh && i === Z.chain.length - 1 ? ' new' : '') + '">' + (show ? esc(Z.deck[k]) : '') + '</span>'; });
+    return h + '<span class="sn-head" aria-hidden="true">🐍</span></div>';
+  }
+  function viewSnake() {
+    var Z = S.sn, L = Z.lang, n = Z.chain.length;
+    var h = '<div class="sn"><div class="wl-h"><button type="button" class="pbtn sm" data-a="home">← ' + t('back') + '</button><h1>' + t('p.snake') + '</h1><span class="wl-n">' + FLAG[L] + ' ' + CEFR[Z.lv - 1] + '</span></div>';
+    if (!Z.deck.length) return h + '</div>';
+    if (Z.phase === 'over') {
+      h += '<div class="sn-win"><span class="sn-p p' + Z.win + ' on">🏆 ' + (Z.win + 1) + '</span></div>' + snBody(false, false) + '<p class="sn-n">' + n + '</p>';
+      h += '<ol class="sn-list">' + Z.chain.map(function (k, i) { var w = Z.deck[k]; return '<li><i>' + (i + 1) + '</i><b lang="' + L + '">' + esc(w) + '</b><span lang="' + ui() + '">' + esc(glossFor(L, ui(), w)) + '</span></li>'; }).join('') + '</ol>';
+      return h + '<button type="button" class="dbtn go" data-a="snake">↻</button></div>';
+    }
+    h += snPlayers(Z.turn);
+    if (Z.phase === 'say') {
+      h += snBody(Z.peek, false) + '<p class="sn-n">' + n + '</p>' +
+        '<button type="button" class="pbtn sm sn-eye" data-a="sn-peek" aria-pressed="' + Z.peek + '">' + (Z.peek ? '🙈' : '👁') + '</button>' +
+        '<div class="sn-btns"><button type="button" class="dbtn bad" data-a="sn-judge" data-v="0" aria-label="✗">✗</button><button type="button" class="dbtn ok" data-a="sn-judge" data-v="1" aria-label="✓">✓</button></div>';
+    } else if (Z.phase === 'flip') {
+      h += snBody(false, false) + '<button type="button" class="sn-card back" data-a="sn-flip" aria-label="' + esc(t('fc.show')) + '">?</button>';
+    } else {
+      var w = Z.deck[Z.chain[n - 1]], g = glossFor(L, ui(), w);
+      h += snBody(false, true) + '<div class="sn-card sn-face"><p class="sn-w" lang="' + L + '">' + esc(w) + '</p>' + (g ? '<p class="sn-g" lang="' + ui() + '">' + esc(g) + '</p>' : '') + sayBtn(w) + '</div>' +
+        '<button type="button" class="dbtn go" data-a="sn-pass">→ ' + (2 - Z.turn) + '</button>';
+    }
+    return h + '</div>';
   }
 
   /* ---------- the result of a station ---------- */
@@ -5901,8 +5979,8 @@ var ES_PHRASES = [
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' || S.screen === 'snake' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'snake' && S.sn ? viewSnake() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -5993,6 +6071,11 @@ var ES_PHRASES = [
       case 'fc-skip': fcDone(); break;
       case 'words': S.screen = 'words'; render(); window.scrollTo(0, 0); break;
       case 'practise': practise(); break;
+      case 'snake': snStart(); break;
+      case 'sn-flip': S.sn.phase = 'shown'; S.sn.chain.push(S.sn.chain.length); sfx('ok'); render(); break;
+      case 'sn-pass': S.sn.turn = 1 - S.sn.turn; S.sn.phase = 'say'; S.sn.peek = false; render(); break;
+      case 'sn-peek': S.sn.peek = !S.sn.peek; render(); break;
+      case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
       case 'help-done': helperDone(); break;
       case 'pcont': goPath(); break;

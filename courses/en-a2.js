@@ -1,501 +1,501 @@
 LWC('en', 2, `
 # Stories from the past | Történetek a múltból | Historier fra fortiden
 @ Irregular past: got, made, told | Rendhagyó múlt: got, made, told | Uregelmæssig datid: got, made, told
-= She [told] me a secret.
-= We [made] a cake.
-- I [got|getted|get] a letter yesterday.
-- He [gave|gived|give] me a present.
-- They [found|finded|find] a wallet in the park.
-- She [wrote|writed|writes] a long email.
-- We [left|leaved|leave] at six.
-- I [thought|thinked|think] about you.
+= My parrot [told] everyone my secret.
+= We [made] a cake. The fire brigade came.
+- I [got|getted|get] a love letter from my dentist.
+- Grandma [gave|gived|give] me socks again. For the tenth year.
+- They [found|finded|find] a wallet. It was empty, of course.
+- She [wrote|writed|writes] a 20-page email to her ex.
+- We [left|leaved|leave] the party before the karaoke.
+- I [thought|thinked|think] it was Saturday. It was Monday.
 ~ give | gave
 ~ write | wrote
 ~ think | thought
 @ Irregular past: broke, lost, paid | Rendhagyó múlt: broke, lost, paid | Uregelmæssig datid: broke, lost, paid
-= I [lost] my keys.
-= He [broke] his arm.
-- She [paid|payed|pay] for the coffee.
-- We [won|winned|win] the game.
-- They [sold|selled|sell] their house.
-- I [forgot|forgetted|forget] her name.
-- The phone [fell|falled|fall] on the floor.
-- He [sent|sended|send] me a photo.
+= I [lost] my phone. It was in my hand.
+= He [broke] his arm doing a TikTok dance.
+- She [paid|payed|pay] for dinner with coins. All of them.
+- We [won|winned|win] the quiz. The prize was a fish.
+- They [sold|selled|sell] their car to buy a horse.
+- I [forgot|forgetted|forget] my own birthday.
+- My toast [fell|falled|fall] on the floor. Butter side down.
+- He [sent|sended|send] a photo of his lunch to his boss. By mistake.
 @ Past questions with "did" | Múlt idejű kérdés: did | Spørgsmål i datid: did
-= Where [did] you go?
-= Did she [call] you?
-- What did you [do|did|done] last weekend?
-- [Did|Was|Do] they enjoy the trip?
-- When did he [arrive|arrived|arrives]?
-- Why [did|was|were] you leave early?
-- Did you [see|saw|seen] the news?
-- How [did|was|were] you get here?
+= Where [did] you hide the chocolate?
+= Did the dog [eat] your homework again?
+- What did you [do|did|done] to my hair?
+- [Did|Was|Do] they enjoy the trip? They came home early.
+- When did the cat [learn|learned|learns] to open the fridge?
+- Why [did|was|were] you wear a suit to the beach?
+- Did you [see|saw|seen] the man with the goat on the bus?
+- How [did|was|were] you get on the roof?
 @ Past negatives | Tagadás múlt időben | Nægtelse i datid
-= I [didn't] sleep well.
-= It [wasn't] easy.
-- We [didn't have|didn't had|not had] time.
-- She [didn't understand|didn't understood|not understood] the question.
-- They [weren't|didn't|wasn't] at home.
-- He [didn't|wasn't|don't] eat breakfast.
-- I [wasn't|didn't|weren't] hungry.
-- You [didn't tell|didn't told|not told] me!
+= I [didn't] sleep. The neighbours had a party.
+= It [wasn't] me. It was the cat.
+- We [didn't have|didn't had|not had] time to shower. Sorry.
+- She [didn't understand|didn't understood|not understood] the joke. Nobody did.
+- They [weren't|didn't|wasn't] at home. They were at Grandma's disco.
+- He [didn't|wasn't|don't] eat breakfast. He ate my breakfast.
+- I [wasn't|didn't|weren't] scared. I was just screaming.
+- You [didn't tell|didn't told|not told] me about the snake!
 @ ago | ago: valamivel ezelőtt | ago: for ... siden
-= I moved here two years [ago].
-= She called [ten minutes ago].
-- We met [five years ago|ago five years|before five years].
-- He left [an hour ago|ago an hour|an hour before ago].
-- The film started [ten minutes ago|since ten minutes|ten minutes since].
-- I saw her [two days ago|two days before now ago|ago two days].
-- They got married [a long time ago|a long time since|since a long time].
-- She arrived [a week ago|before a week|a week since].
+= I started my diet [two hours ago].
+= The pizza arrived [ten minutes ago]. It's gone.
+- My dad told this joke [five years ago|ago five years|before five years]. And yesterday.
+- He went to buy milk [an hour ago|ago an hour|an hour before ago]. Where is he?
+- The film started [ten minutes ago|since ten minutes|ten minutes since]. We're still in the car.
+- I washed my car [two days ago|two days before now ago|ago two days]. It rained.
+- Dinosaurs lived here [a long time ago|a long time since|since a long time].
+- I made a new year's plan [a week ago|before a week|a week since]. It's over.
 # What was happening? | Mi történt éppen? | Hvad skete der?
 @ was -ing, were -ing | Folyamatos múlt | Udvidet datid
-= I [was sleeping] at ten.
-= They [were playing] cards.
-- She [was reading|were reading|was read] when I came in.
-- We [were watching|was watching|were watch] TV.
-- It [was raining|were raining|was rain] all morning.
-- What [were|was|did] you doing at eight?
-- He [wasn't listening|weren't listening|didn't listening].
-- They [were waiting|was waiting|waiting] for the bus.
+= I [was sleeping] in the meeting.
+= The cats [were having] a party in the kitchen.
+- She [was singing|were singing|was sing] when the bus stopped.
+- We [were watching|was watching|were watch] a horror film. Then the lights went out.
+- It [was raining|were raining|was rain] inside the tent.
+- What [were|was|did] you doing on the roof at 3 a.m.?
+- He [wasn't listening|weren't listening|didn't listening]. He was playing a game.
+- The children [were painting|was painting|painting] the dog.
 @ when and while | when és while | when og while
-= I was cooking [when] the phone rang.
-= [While] she was sleeping, I read.
-- I was walking home [when|while|during] it started to rain.
-- [While|During|Meanwhile] we were eating, the lights went out.
-- He fell [while|during|when he] he was running.
-- She called [when|while|during] I got home.
-- [While|During|Meanwhile] I was waiting, I read a magazine.
-- The dog barked [when|while|during] the postman came.
+= I was dancing [when] my boss walked in.
+= [While] I was sleeping, the cat ate my sandwich.
+- I was singing in the shower [when|while|during] the water stopped.
+- [While|During|Meanwhile] we were eating, a bird took my chips.
+- He fell [while|during|when he] he was taking a selfie.
+- My mum called [when|while|during] I was on a date.
+- [While|During|Meanwhile] I was waiting, I ate all the snacks.
+- The dog barked [when|while|during] the postman came. As always.
 ~ I was having a bath | when the doorbell rang.
-~ While I was driving, | I saw an accident.
-~ She was reading | while he was cooking.
+~ While I was sleeping, | the dog ate my shoes.
+~ She was singing | while he was crying.
 @ Past simple or past continuous? | Egyszerű vagy folyamatos múlt? | Datid eller udvidet datid?
-= I [was walking] when I [saw] her.
-= He [broke] his leg.
-- When I arrived, they [were having|having|have] dinner.
-- She [dropped|was dropping|drops] her phone while she was running.
-- I [was sleeping|sleeping|sleep] when you called.
-- We [met|were meeting|meet] in 2015.
-- What [were|did|was] you doing when the lights went out?
-- He [saw|was seeing|sees] the accident while he was driving.
+= I [was walking] when a bird [hit] my head.
+= He [fell] off his chair in the exam.
+- When I came home, the dog [was watching|watching|watch] TV.
+- She [dropped|was dropping|drops] her phone in the soup.
+- I [was dreaming|dreaming|dream] about pizza when you called.
+- We [met|were meeting|meet] in a lift. It was stuck for six hours.
+- What [were|did|was] you doing in my wardrobe?
+- He [saw|was seeing|sees] a ghost while he was brushing his teeth.
 @ used to | used to | used to
-= I [used to] live in Rome.
-= She [didn't use to] like coffee.
-- We [used to|use to|used] play here as kids.
-- He used to [have|had|having] long hair.
-- I [didn't use to|didn't used to|not used to] eat vegetables.
-- They used to [be|were|being] friends.
-- She [used to|uses to|use] smoke, but she stopped.
-- There [used to|use to|used] be a cinema here.
+= I [used to] think carrots were sweets.
+= My dad [didn't use to] have a belly.
+- We [used to|use to|used] have a goat called Steve.
+- My grandpa used to [have|had|having] hair like a rock star.
+- I [didn't use to|didn't used to|not used to] like coffee. Now I need five.
+- They used to [be|were|being] best friends. Then came the pizza.
+- She [used to|uses to|use] sing. The neighbours were happy when she stopped.
+- There [used to|use to|used] be a cake here. Who ate it?
 @ Did you use to...? | Did you use to...? | Did you use to...?
-= [Did] you use to play football?
-= Where did you [use] to live?
-- [Did|Do|Were] you use to have a pet?
-- Did she [use|used|uses] to work here?
-- What did you use to [do|did|doing] on Sundays?
-- [Did|Was|Does] he use to be shy?
-- Where did they use to [go|went|going] on holiday?
-- Did it [use|used|uses] to snow here?
-~ Did you use to have a dog? | Yes, his name was Max.
-~ Where did you use to live? | In a small village.
+= [Did] you use to sleep with a teddy?
+= Where did you [use] to hide your sweets?
+- [Did|Do|Were] you use to have a funny haircut?
+- Did your dad [use|used|uses] to dance like that?
+- What did you use to [eat|ate|eating] as a kid? Sand.
+- [Did|Was|Does] he use to be shy? Not anymore.
+- Where did they use to [go|went|going] on holiday? Grandma's garden.
+- Did it [use|used|uses] to snow in summer here?
+~ Did you use to have a pet? | Yes, a stone called Bob.
+~ Where did you use to live? | In a very small village.
 ~ What did you use to eat? | Lots of sweets!
 # The present perfect | Befejezett jelen | Førnutid
 @ have done, has done | have done, has done | have done, has done
-= I [have finished] my work.
-= She [has lost] her bag.
-- We [have bought|has bought|have buyed] a new sofa.
-- He [has eaten|have eaten|has ate] all the cake!
-- They [have gone|has gone|have went] home.
-- I've [seen|saw|see] this film.
-- She's [written|wrote|writed] three books.
-- My parents [have|has|are] arrived.
+= I [have finished] all the cookies.
+= My cat [has learned] to open doors.
+- We [have bought|has bought|have buyed] a sofa that is bigger than our flat.
+- He [has eaten|have eaten|has ate] the whole birthday cake!
+- My neighbours [have gone|has gone|have went]. Silence at last!
+- I've [seen|saw|see] this film nine times.
+- She's [written|wrote|writed] a song about her cat.
+- My parents [have|has|are] discovered emojis. Help.
 @ ever and never | ever és never | ever og never
-= Have you [ever] been to Japan?
-= I've [never] eaten sushi.
-- Have you ever [tried|tried ever|try] skiing?
-- I have [never|ever|not never] seen snow.
-- Has she [ever|never|already] met him?
-- He's never [flown|flew|fly] in a plane.
-- [Have|Did|Are] you ever been to Spain?
-- We've never [heard|hear|heared] that song.
-~ Have you ever been to London? | Yes, twice.
-~ Have you ever eaten snails? | No, never.
-~ Has she ever met him? | Yes, last year.
+= Have you [ever] eaten a bug?
+= I've [never] won anything.
+- Have you ever [tried|tried ever|try] pizza with chocolate?
+- I have [never|ever|not never] seen my dad dance. Thank you.
+- Has your cat [ever|never|already] said sorry?
+- He's never [flown|flew|fly] in a plane. Only in his dreams.
+- [Have|Did|Are] you ever fallen asleep in the cinema?
+- We've never [heard|hear|heared] Grandpa sing. Let's keep it that way.
+~ Have you ever been on TV? | Yes, in the audience.
+~ Have you ever eaten snails? | No, and I never will.
+~ Has she ever met a famous person? | Yes, she sat next to a pop star.
 @ just, already, yet | just, already, yet | just, already, yet
-= I've [just] arrived.
-= Have you finished [yet]?
-- She's [already|yet|still] done her homework.
-- I haven't called him [yet|already|just].
-- They've [just|yet|ever] left. You missed them!
-- Has the film started [yet|already|just]?
-- We've [already|yet|ever] seen it twice.
-- He's [just|yet|still] got a new job.
+= I've [just] woken up. It's 2 p.m.
+= Have you cleaned your room [yet]?
+- She's [already|yet|still] spent all her money. It's only the 3rd.
+- I haven't started my homework [yet|already|just]. It's due in five minutes.
+- The pizza has [just|yet|ever] arrived. Run!
+- Has the cat forgiven you [yet|already|just]?
+- We've [already|yet|ever] watched the whole series. In one night.
+- He's [just|yet|still] broken his new phone.
 @ for and since | for és since | for og since
-= I've lived here [for] ten years.
-= She's worked here [since] 2019.
-- We've known each other [since|for|from] school.
-- He's been ill [for|since|from] three days.
-- I've had this car [since|for|from] January.
-- They've been married [for|since|during] twenty years.
-- She hasn't eaten [since|for|from] breakfast.
-- I've waited [for|since|during] an hour!
+= I've waited for this pizza [for] an hour.
+= My dad has told the same joke [since] 1998.
+- We've been friends [since|for|from] the day you stole my crisps.
+- He's been in the bathroom [for|since|from] forty minutes.
+- I haven't slept [since|for|from] Monday.
+- They've been married [for|since|during] fifty years. And they still argue about the TV.
+- She hasn't laughed [since|for|from] last Christmas.
+- I've been on hold [for|since|during] two hours!
 ~ for | two weeks
 ~ since | Monday
-~ for | a long time
+~ for | a very long time
 @ Present perfect or past simple? | Befejezett jelen vagy múlt? | Førnutid eller datid?
-= I [have seen] it. (Ever)
-= I [saw] it yesterday.
-- I [lost|have lost|lose] my keys last night.
-- She [has lived|lived|lives] here since 2010.
-- We [went|have gone|go] to Paris in 2018.
-- Have you [ever|yesterday|ago] eaten octopus?
-- He [has just called|just called yesterday|calls just].
-- When [did you arrive|have you arrived|you arrived]?
+= I [have broken] my phone. (Look!)
+= I [broke] my phone yesterday.
+- I [lost|have lost|lose] my keys last night. They were in the fridge.
+- She [has lived|lived|lives] with ten cats since 2010.
+- We [went|have gone|go] to Paris in 2018. It rained.
+- Have you [ever|yesterday|ago] eaten a whole pizza alone?
+- He [has just called|just called yesterday|calls just]. He's outside.
+- When [did you start|have you started|you started] talking to plants?
 # The future | Jövő idő | Fremtid
 @ will for predictions | will: jóslás | will: forudsigelser
-= It [will] rain tomorrow.
-= You [won't] like it.
-- I think she [will win|wins will|will wins].
-- It [won't|willn't|doesn't will] be easy.
-- People [will live|will lives|live will] on Mars one day.
-- [Will|Do|Are] you be at home tonight?
-- I'm sure you [will pass|pass will|will passed].
-- He [won't|not will|isn't will] remember.
+= Robots [will] do our homework one day.
+= You [won't] believe this.
+- I think my cat [will rule|rules will|will rules] the world.
+- It [won't|willn't|doesn't will] be easy to explain this to Mum.
+- People [will live|will lives|live will] on Mars. With Wi-Fi.
+- [Will|Do|Are] you be my friend in ten years?
+- I'm sure you [will pass|pass will|will passed]. Probably.
+- He [won't|not will|isn't will] remember this tomorrow.
 @ will for offers and quick decisions | will: felajánlás, döntés | will: tilbud og hurtige beslutninger
-= I['ll] carry that for you.
-= It's cold. I['ll] close the window.
-- The phone's ringing. I ['ll|am|going to] get it.
-- I['ll|'m|going] have the fish, please.
-- Don't worry, I ['ll|am|go] help you.
-- I'm tired. I think I['ll|'m going|go] go to bed.
-- [Shall|Will|Do] I open the door?
-- I forgot! I['ll|'m|do] call her now.
+= I['ll] eat it for you.
+= It's a spider! I['ll] call my mum.
+- The phone's ringing. I ['ll|am|going to] hide.
+- I['ll|'m|going] have everything on the menu, please.
+- Don't worry, I ['ll|am|go] help you. After my nap.
+- I'm bored. I think I['ll|'m going|go] go and annoy my sister.
+- [Shall|Will|Do] I carry your cat for you?
+- I forgot Mum's birthday! I['ll|'m|do] call her now. Quick!
 ~ The bag is heavy. | I'll carry it.
 ~ I'm thirsty. | I'll get you some water.
-~ It's dark in here. | I'll turn on the light.
+~ There's a spider. | I'll get the vacuum cleaner.
 @ going to or will? | going to vagy will? | going to eller will?
-= Look at the clouds! It['s going to] rain.
-= I think it [will] be sunny.
-- I've bought paint. I['m going to|going to|'m go to] paint my room.
-- Watch out! You['re going to|going to|'re go to] fall!
-- Oh, you're hungry? I['ll|am|'m make] make a sandwich.
-- We've booked tickets. We['re going to|going to|'re go to] see a concert.
-- I promise I [will|am going|going] be careful.
-- She's pregnant. She['s going to|going to|is go to] have a baby.
+= Look at that seagull! It['s going to] take your chips.
+= I think the cat [will] sleep all day.
+- I've bought a guitar. I['m going to|going to|'m go to] be a rock star.
+- Watch out! You['re going to|going to|'re go to] step on the cat!
+- Oh, you're hungry? I['ll|am|'m make] make you a toast.
+- We've booked tickets. We['re going to|going to|'re go to] see a dog show.
+- I promise I [will|am going|going] stop eating your chips.
+- Look at the baby's face. She['s going to|going to|is go to] cry.
 @ Present continuous for arrangements | Folyamatos jelen: megbeszélt tervek | Udvidet nutid: aftaler
-= I['m meeting] Anna tomorrow.
-= What [are] you doing tonight?
-- We['re flying|fly|will flying] to Rome on Friday.
-- She [is starting|starts will|start] her new job next week.
-- [Are|Do|Will] you coming to the party?
-- I['m seeing|see|saw] the doctor at three.
-- They [are getting|get|will getting] married in June.
-- What time [is|does|will] he arriving?
+= I['m meeting] the Queen of cats tomorrow.
+= What [are] you doing on Saturday? Nothing? Great!
+- We['re flying|fly|will flying] to Rome on Friday. The cat is coming too.
+- My grandma [is starting|starts will|start] dance school next week.
+- [Are|Do|Will] you coming to my pizza party?
+- I['m seeing|see|saw] the dentist at three. Help me.
+- They [are getting|get|will getting] married in a zoo.
+- What time [is|does|will] the clown arriving?
 @ might and may | might és may | might og may
-= I [might] be late.
-= It [may] snow tonight.
-- We might [go|going|to go] to the beach.
-- She [might not|mightn't to|not might] come.
-- It may [be|is|being] true.
-- I might [buy|buying|bought] a new phone.
-- They [may not|don't may|may not to] know.
-- He might [call|calls|to call] you later.
+= I [might] be late. Or I might not come.
+= It [may] rain fish today. Who knows?
+- We might [go|going|to go] to the beach in January.
+- She [might not|mightn't to|not might] come. She's still in bed.
+- It may [be|is|being] true. My cat never lies.
+- I might [buy|buying|bought] a llama.
+- They [may not|don't may|may not to] know about the party.
+- He might [call|calls|to call] you later. Or never.
 # Comparing | Összehasonlítás | Sammenligning
 @ -er than | -er than | -er than
-= Tom is [taller] than Sam.
-= My car is [older] than yours.
-- A lion is [bigger|more big|biger] than a cat.
-- Today is [hotter|more hot|hoter] than yesterday.
-- She is [younger|more young|youngger] than me.
-- This box is [heavier|heavyer|more heavy] than that one.
-- Trains are [faster|more fast|fastter] than buses.
-- He is [happier|happyer|more happy] now.
+= My cat is [smarter] than my brother.
+= My grandma is [faster] than me.
+- My dog is [bigger|more big|biger] than my car.
+- This curry is [hotter|more hot|hoter] than the sun.
+- I feel [older|more old|oldder] than my grandma on Mondays.
+- My bag is [heavier|heavyer|more heavy] than me.
+- Snails are [slower|more slow|slowwer] than my internet. Almost.
+- The cat is [happier|happyer|more happy] without me.
 @ more ... than | more ... than | more ... than
-= This book is [more interesting] than that one.
-= Gold is [more expensive] than silver.
-- Maths is [more difficult|difficulter|most difficult] than art.
-- She is [more famous|famouser|most famous] than her sister.
-- Cars are [more dangerous|dangerouser|dangerous more] than bikes.
-- This chair is [more comfortable|comfortabler|comfortable more].
-- He drives [more carefully|carefullier|careful more] than me.
-- Is English [more useful|usefuller|useful more] than French?
+= My phone is [more expensive] than my car.
+= Cats are [more intelligent] than people. Ask any cat.
+- Maths is [more difficult|difficulter|most difficult] than flying.
+- My dog is [more famous|famouser|most famous] than me on the internet.
+- Grandma's driving is [more dangerous|dangerouser|dangerous more] than a shark.
+- The sofa is [more comfortable|comfortabler|comfortable more] than my bed.
+- My cat eats [more slowly|slowlier|slowly more] than a snail.
+- Is pizza [more important|importanter|important more] than love?
 @ the -est, the most | Felsőfok | Superlativ
-= He is [the tallest] in the class.
-= It's [the most beautiful] city.
-- Everest is [the highest|the higher|the most high] mountain.
-- This is [the best|the goodest|the better] pizza in town.
-- She is [the most intelligent|the intelligentest|the more intelligent] girl I know.
-- It was [the worst|the baddest|the worse] day of my life.
-- January is [the coldest|the colder|the most cold] month.
-- That's [the most expensive|the expensivest|the more expensive] car here.
+= My dad tells [the worst] jokes.
+= It's [the most boring] film in history.
+- Mondays are [the longest|the longer|the most long] days of the week.
+- This is [the best|the goodest|the better] pizza in the world.
+- My cat is [the most beautiful|the beautifulest|the more beautiful] cat in the universe.
+- It was [the worst|the baddest|the worse] haircut of my life.
+- January is [the saddest|the sadder|the most sad] month.
+- That's [the most expensive|the expensivest|the more expensive] sandwich I've ever eaten.
 @ good, better, best | good, better, best | good, better, best
-= My English is [better] now.
-= It's the [worst] film ever.
-- She sings [better|gooder|more good] than me.
-- This is the [best|goodest|better] day ever!
-- My cold is [worse|badder|more bad] today.
-- He lives [further|farer|more far] from school than me.
-- I have [less|lesser|fewer] money than you.
-- Who is the [best|better|goodest] player?
+= My cooking is [better] now. Nobody got ill.
+= It's the [worst] song ever. I love it.
+- My dog sings [better|gooder|more good] than me.
+- This is the [best|goodest|better] day ever! Free cake!
+- My singing is [worse|badder|more bad] in the morning.
+- The fridge is [further|farer|more far] from my bed than I want.
+- I have [less|lesser|fewer] money than my cat.
+- Who is the [best|better|goodest] dancer? Grandpa, of course.
 ~ good | better
 ~ bad | worse
 ~ far | further
 @ as ... as | as ... as | as ... as
-= Tom is [as tall as] his dad.
-= It's not [as cold as] yesterday.
-- She is as [old|older|oldest] as my sister.
-- This isn't [as good as|as good than|so good like] the book.
-- He runs as [fast|faster|fastest] as a car!
-- I'm not [as rich as|as rich than|rich as] you.
-- The test was [as easy as|as easy like|easy as] I thought.
-- Is it as [big|bigger|biggest] as your old flat?
+= My dog is [as big as] a horse.
+= I'm not [as crazy as] my brother.
+- My grandma is as [cool|cooler|coolest] as a pop star.
+- The film isn't [as good as|as good than|so good like] the popcorn.
+- He runs as [fast|faster|fastest] as a cheetah. When he sees cake.
+- I'm not [as rich as|as rich than|rich as] my cat. She has a sofa.
+- The test was [as easy as|as easy like|easy as] eating pizza.
+- Is your new flat as [small|smaller|smallest] as a shoe box?
 # Rules and advice | Szabályok és tanács | Regler og råd
 @ must and mustn't | must és mustn't | must og mustn't
-= You [must] wear a seatbelt.
-= You [mustn't] smoke here.
-- I must [go|to go|going] now.
-- You [mustn't|don't must|not must] park here.
-- Students must [wear|to wear|wearing] a uniform.
-- We [mustn't|don't must|must not to] be late.
-- You must [listen|listens|to listen] carefully.
-- Children [mustn't|don't must|not must] play with fire.
+= You [must] feed the cat. Now.
+= You [mustn't] tell Mum.
+- I must [go|to go|going]. My pizza is getting cold.
+- You [mustn't|don't must|not must] feed the teacher.
+- Guests must [take|to take|taking] off their shoes. And socks.
+- We [mustn't|don't must|must not to] laugh. He's serious.
+- You must [try|tries|to try] Grandma's soup. She's watching.
+- Children [mustn't|don't must|not must] drive the bus.
 @ have to and don't have to | have to és don't have to | have to og don't have to
-= I [have to] work on Saturday.
-= You [don't have to] come.
-- She [has to|have to|must to] get up early.
-- We [don't have to|mustn't|haven't to] pay. It's free!
-- Do you [have to|has to|must] wear a tie?
-- He [doesn't have to|don't have to|hasn't to] cook tonight.
-- I [had to|must|have to] wait for an hour yesterday.
-- They [have to|has to|having to] study for the test.
+= I [have to] walk my neighbour's goat.
+= You [don't have to] laugh at my jokes.
+- She [has to|have to|must to] wear a hat at work. A big one.
+- We [don't have to|mustn't|haven't to] pay. The dog paid.
+- Do you [have to|has to|must] wear a tie to the beach?
+- He [doesn't have to|don't have to|hasn't to] cook tonight. Thank goodness.
+- I [had to|must|have to] wait for the bus for two hours yesterday.
+- They [have to|has to|having to] clean the cat's piano.
 ~ It's free, | so you don't have to pay.
-~ It's dangerous, | so you mustn't touch it.
+~ It's a crocodile, | so you mustn't touch it.
 ~ It's the law, | so you have to stop.
 @ should and shouldn't | should és shouldn't | should og shouldn't
-= You [should] see a doctor.
-= You [shouldn't] eat so much.
-- You should [try|to try|trying] this cake.
-- He [shouldn't|doesn't should|not should] drive so fast.
-- What [should|do should|shall to] I wear?
-- We should [leave|to leave|leaving] now.
-- You [shouldn't|should not to|don't should] worry.
-- [Should|Do|Must to] I call her?
+= You [should] go to bed. It's 4 a.m.
+= You [shouldn't] eat yellow snow.
+- You should [try|to try|trying] this cake. I made it with salt.
+- He [shouldn't|doesn't should|not should] sing in public.
+- What [should|do should|shall to] I wear to a cat's wedding?
+- We should [leave|to leave|leaving] before Grandpa starts dancing.
+- You [shouldn't|should not to|don't should] text your ex at night.
+- [Should|Do|Must to] I tell him about the spinach in his teeth?
 @ could for past ability | could: múltbeli képesség | could: evne i fortiden
-= I [could] swim when I was five.
-= She [couldn't] come yesterday.
-- When I was young, I [could|can|could to] run fast.
-- We [couldn't|can't|couldn't to] find a taxi last night.
-- He could [read|reads|to read] at four.
-- I [couldn't|didn't could|not could] sleep last night.
-- Could you [see|saw|seeing] the stage from your seat?
-- She could [speak|speaks|spoke] three languages as a child.
+= I [could] touch my toes when I was five.
+= She [couldn't] stop laughing.
+- When I was young, I [could|can|could to] eat ten pancakes.
+- We [couldn't|can't|couldn't to] find the car. We were in the wrong city.
+- My cat could [open|opens|to open] the fridge at one year old.
+- I [couldn't|didn't could|not could] sleep. The cat was snoring.
+- Could you [see|saw|seeing] anything at the concert?
+- My grandma could [dance|dances|danced] all night. She still can.
 @ Asking: Can I, Could you, May I | Kérés: Can I, Could you | At bede: Can I, Could you
-= [Could] you help me, please?
-= [May] I come in?
-- [Could|Do|Would to] you open the window?
-- Can I [borrow|borrowing|to borrow] your pen?
-- [May|Am|Does] I sit here?
-- Could you [speak|speaking|to speak] more slowly?
-- [Can|Do|Are] I use your phone?
-- Could I [have|having|to have] the bill, please?
+= [Could] you stop singing, please?
+= [May] I have your chips?
+- [Could|Do|Would to] you move your cat?
+- Can I [borrow|borrowing|to borrow] your dog for a selfie?
+- [May|Am|Does] I sleep here? Just for one year.
+- Could you [speak|speaking|to speak] more slowly? My brain is on holiday.
+- [Can|Do|Are] I have the last piece of cake?
+- Could I [have|having|to have] more cheese? And more?
 ~ Could you help me? | Sure, what's the problem?
-~ May I come in? | Yes, please do.
-~ Can I borrow your pen? | Here you are.
+~ May I come in? | Only if you have pizza.
+~ Can I borrow your pen? | You never give them back!
 # How much is enough? | Mennyi elég? | Hvor meget er nok?
 @ much and many | much és many | much og many
-= There aren't [many] people.
-= I don't have [much] time.
-- How [many|much|lot] children do you have?
-- There isn't [much|many|lot] milk left.
-- Did you buy [many|much|lot] things?
-- We don't have [much|many|lots] money.
-- Are there [many|much|a lot] tourists in summer?
-- I didn't eat [much|many|lot] food.
+= There aren't [many] cookies. There aren't any cookies.
+= I don't have [much] patience.
+- How [many|much|lot] cats are in your flat?
+- There isn't [much|many|lot] coffee left. It's an emergency.
+- Did you buy [many|much|lot] things? Just one boat.
+- We don't have [much|many|lots] time. The pizza is burning.
+- Are there [many|much|a lot] sharks in this pool?
+- I didn't eat [much|many|lot]. Just three dinners.
 @ a few and a little | a few és a little | a few og a little
-= I have [a few] friends here.
-= Add [a little] salt.
-- There are [a few|a little|few of] apples in the bag.
-- Can I have [a little|a few|little of] milk?
-- She speaks [a little|a few|few] French.
-- I need [a few|a little|little] minutes.
-- We have [a little|a few|few] time before the train.
-- He made [a few|a little|little] mistakes.
+= I have [a few] questions about your hat.
+= Add [a little] chocolate. OK, a lot.
+- There are [a few|a little|few of] spiders in the bath.
+- Can I have [a little|a few|little of] peace and quiet?
+- She speaks [a little|a few|few] cat.
+- I need [a few|a little|little] minutes. Or days.
+- We have [a little|a few|few] money. Let's buy cake.
+- He made [a few|a little|little] mistakes. The kitchen is on fire.
 @ too and enough | too és enough | too og enough
-= It's [too] hot.
-= He isn't old [enough].
-- This coffee is [too|enough|to] sweet.
-- I'm not tall [enough|too|enought] to reach it.
-- The bag is [too heavy|heavy too|enough heavy] to carry.
-- We don't have [enough time|time enough|too time].
-- It's [too|very too|enough] late to call her.
-- Are you warm [enough|too|enought]?
+= It's [too] early for Monday.
+= I'm not old [enough] to be this tired.
+- This coffee is [too|enough|to] strong. My hair is standing up.
+- I'm not tall [enough|too|enought] to reach the cookies.
+- The cat is [too lazy|lazy too|enough lazy] to catch mice.
+- We don't have [enough pizza|pizza enough|too pizza] for everyone.
+- It's [too|very too|enough] late to say sorry.
+- Are you brave [enough|too|enought] to eat Dad's cooking?
 @ too much, too many | too much, too many | too much, too many
-= There's [too much] noise.
-= I ate [too many] sweets.
-- You drink [too much|too many|too lot] coffee.
-- There are [too many|too much|too lot] cars in this city.
-- She works [too much|too many|too lots].
-- I have [too many|too much|to many] emails.
-- Don't put [too much|too many|to much] sugar in it.
-- He has [too many|too much|to much] toys.
+= There's [too much] glitter on this cake.
+= My grandma has [too many] cats.
+- You drink [too much|too many|too lot] coffee. You're vibrating.
+- There are [too many|too much|too lot] people in this lift.
+- My brother talks [too much|too many|too lots].
+- I have [too many|too much|to many] tabs open. In my brain.
+- Don't put [too much|too many|to much] salt in the cake. Again.
+- The dog has [too many|too much|to much] toys and still wants mine.
 @ every and each | every és each | every og each
-= I swim [every] day.
-= [Each] student has a book.
-- She calls me [every|all|each of] evening.
-- [Every|All|Each of] room has a TV.
-- We go there [every|all|each of] summer.
-- [Everyone|Every|All of] is here.
-- [Everything|Every|Everythings] is ready.
-- He knows [everybody|every|all] in town.
+= My dad tells the same joke [every] day.
+= [Each] cat has its own sofa.
+- She calls her mum [every|all|each of] hour.
+- [Every|All|Each of] room in our house has a cat in it.
+- We go to the same beach [every|all|each of] summer. It's tradition.
+- [Everyone|Every|All of] is dancing. Even Grandpa.
+- [Everything|Every|Everythings] is fine. The fire is small.
+- He knows [everybody|every|all] in town. And their cats.
 # Little words that matter | Kis szavak | Små vigtige ord
 @ myself, yourself | Visszaható névmások | Refleksive stedord
-= I hurt [myself].
-= Did you make it [yourself]?
-- She looked at [herself|she|hers] in the mirror.
-- We enjoyed [ourselves|us|ourself] at the party.
-- He cut [himself|he|hisself] with a knife.
-- They built the house [themselves|them|theirselves].
-- Help [yourself|you|yourselfs] to some cake!
-- The cat is cleaning [itself|it's|its].
+= I cut my hair [myself]. Can you tell?
+= Did you make this cake [yourself]? Really?
+- She talks to [herself|she|hers] in the mirror.
+- We enjoyed [ourselves|us|ourself] at the cat show.
+- He locked [himself|he|hisself] out. In his pyjamas.
+- They painted the house [themselves|them|theirselves]. In pink.
+- Help [yourself|you|yourselfs] to some cake! Not that much!
+- The cat is washing [itself|it's|its] on the dinner table.
 @ something, anyone, nobody | something, anyone, nobody | something, anyone, nobody
-= There's [something] in my eye.
-= I didn't see [anyone].
-- There isn't [anything|something|nothing] in the fridge.
-- [Nobody|Anybody|Somebody] knows the answer. It's a mystery.
-- I can't find my keys [anywhere|somewhere|nowhere].
-- She didn't say [anything|nothing|nobody].
-- [Someone|Anyone|No one] is at the door. Can you open it?
-- There's [nothing|anything|something] in the box. It's empty.
+= There's [something] in my soup. It's moving.
+= I didn't see [anyone]. It was a ghost.
+- There isn't [anything|something|nothing] in the fridge. Only a lemon.
+- [Nobody|Anybody|Somebody] knows where the remote is. It's a mystery.
+- I can't find my glasses [anywhere|somewhere|nowhere]. Oh, they're on my head.
+- She didn't say [anything|nothing|nobody]. She just looked at the cake.
+- [Someone|Anyone|No one] is at the door. It's a man with a goat.
+- There's [nothing|anything|something] in the box. It's empty, but the cat loves it.
 @ mine, yours, ours | Önálló birtokos névmások | mine, yours, ours
-= That pen is [mine].
-= Is this [yours]?
-- This isn't my bag. Mine is red. Is it [yours|your|you]?
-- The house is [theirs|their|theirs's].
-- That's not her coat. [Hers|Her|Her's] is longer.
-- These seats are [ours|our|ours's].
-- Is this bike [his|him|he's]?
-- Her eyes are blue and [mine|my|me] are brown.
+= That last cookie is [mine].
+= Is this sock [yours]? It was in the soup.
+- This isn't my sandwich. Mine had cheese. Is it [yours|your|you]?
+- The house with the pink goat is [theirs|their|theirs's].
+- That's not her hat. [Hers|Her|Her's] is bigger.
+- These seats are [ours|our|ours's]. Move, please.
+- Is this terrible poem [his|him|he's]?
+- Her jokes are bad, but [mine|my|me] are worse.
 @ one and ones | one és ones | one og ones
-= I like the red [one].
-= These shoes are nicer than the old [ones].
-- Which cake do you want? The big [one|ones|it].
-- I don't like these glasses. I want new [ones|one|them].
-- My phone is old. I need a new [one|ones|it].
-- The blue [ones|one|it] are cheaper.
-- Which is your car? The white [one|ones|it].
-- Those apples are good, but these [ones|one|it] are better.
+= I want the biggest [one].
+= These socks smell better than the old [ones].
+- Which cake do you want? The big [one|ones|it]. Obviously.
+- I don't like these glasses. I want funny [ones|one|them].
+- My brain is old. I need a new [one|ones|it].
+- The pink [ones|one|it] are the cheapest.
+- Which is your cat? The angry [one|ones|it].
+- Those jokes are bad, but these [ones|one|it] are worse.
 @ both, either, neither | both, either, neither | both, either, neither
-= [Both] my parents are teachers.
-= [Neither] of us can swim.
-- [Both|Either|Neither] of them are tall.
-- You can take [either|both|neither] bus. They both go there.
-- [Neither|Either|Both] Tom nor Sam came.
-- I like [both|either|neither] tea and coffee.
-- I don't want [either|neither|none] of them.
-- [Both|Neither|Either] answers are correct.
+= [Both] my cats hate me.
+= [Neither] of us can cook.
+- [Both|Either|Neither] of my parents are on TikTok.
+- You can take [either|both|neither] seat. They both have gum on them.
+- [Neither|Either|Both] the cat nor the dog ate the broccoli.
+- I like [both|either|neither] pizza and more pizza.
+- I don't want [either|neither|none] of these jokes.
+- [Both|Neither|Either] answers are wrong. Sorry.
 # Verb patterns | Igei szerkezetek | Verbalmønstre
 @ enjoy, finish, mind + -ing | enjoy, finish, mind + -ing | enjoy, finish, mind + -ing
-= I enjoy [cooking].
-= Have you finished [eating]?
-- She finished [reading|to read|read] the book.
-- Do you mind [opening|to open|open] the window?
-- I can't stop [laughing|laugh|laughed].
-- He enjoys [playing|to play|play] chess.
-- We kept [walking|to walk|walk] all day.
-- I don't mind [waiting|to wait|wait].
+= My cat enjoys [watching] me work.
+= Have you finished [eating] my cake?
+- She finished [reading|to read|read] my diary. Oops.
+- Do you mind [moving|to move|move]? You're on my cat.
+- I can't stop [laughing|laugh|laughed] at my own jokes.
+- He enjoys [singing|to sing|sing] at 6 a.m.
+- We kept [walking|to walk|walk]. We were lost.
+- I don't mind [waiting|to wait|wait]. I have snacks.
 @ decide, hope, want + to | decide, hope, want + to | decide, hope, want + to
-= I decided [to stay].
-= She hopes [to win].
-- We decided [to leave|leaving|leave] early.
-- He promised [to call|calling|call] me.
-- I need [to buy|buying|buy] milk.
-- They plan [to travel|travelling|travel] next year.
-- She forgot [to lock|locking|lock] the door.
-- I'd like [to try|trying|try] it.
+= I decided [to stay] in bed.
+= She hopes [to marry] a prince. Or a cat.
+- We decided [to leave|leaving|leave] before the karaoke.
+- He promised [to stop|stopping|stop] singing. He lied.
+- I need [to buy|buying|buy] a new brain.
+- They plan [to travel|travelling|travel] to the moon.
+- She forgot [to close|closing|close] the door. The goat came in.
+- I'd like [to try|trying|try] that pizza. All of it.
 @ bored or boring? | bored vagy boring? | bored eller boring?
-= The film was [boring].
-= I was [bored].
-- The lesson was [interesting|interested|interest].
-- I'm [interested|interesting|interest] in history.
-- That was a [tiring|tired|tire] day.
-- She felt very [tired|tiring|tire].
-- The news is [surprising|surprised|surprise].
-- We were [excited|exciting|excite] about the trip.
+= The lesson was so [boring], the teacher fell asleep.
+= I was [bored], so I talked to my plant.
+- My grandpa's stories are very [interesting|interested|interest]. And very long.
+- I'm [interested|interesting|interest] in your sandwich.
+- That was a [tiring|tired|tire] day. I did nothing.
+- The cat felt very [tired|tiring|tire] after sleeping all day.
+- The ending of the film was [surprising|surprised|surprise]. The dog was the killer.
+- We were [excited|exciting|excite] about free pizza.
 ~ The film was boring, | so I was bored.
 ~ The game was exciting, | so we were excited.
 ~ The walk was tiring, | so they were tired.
 @ good at, afraid of | good at, afraid of | good at, afraid of
-= She's good [at] maths.
-= I'm afraid [of] dogs.
-- He's interested [in|on|at] music.
-- I'm tired [of|from|at] waiting.
-- She's very good [at|in|on] tennis.
-- Are you afraid [of|from|for] spiders?
-- We're proud [of|on|for] you.
-- I'm bad [at|in|for] singing.
+= My cat is good [at] doing nothing.
+= I'm afraid [of] my grandma's driving.
+- He's interested [in|on|at] everybody's lunch.
+- I'm tired [of|from|at] your jokes.
+- She's very good [at|in|on] losing her keys.
+- Are you afraid [of|from|for] clowns?
+- We're proud [of|on|for] you. You made toast!
+- I'm bad [at|in|for] remembering names. Hi, er... you.
 @ If + present, will | Feltételes mód: If + jelen, will | If + nutid, will
-= If it rains, I['ll] stay home.
-= If you [study], you'll pass.
-- If you [hurry|will hurry|hurried], you'll catch the bus.
-- If she calls, I [will tell|tell|told] you.
-- We'll go to the beach if it [is|will be|was] sunny.
-- If you don't eat, you ['ll be|are|were] hungry.
-- What will you do if you [miss|will miss|missed] the train?
-- If I [see|will see|saw] him, I'll say hello.
-~ If it rains, | we'll stay at home.
-~ If you're tired, | you'll sleep well.
-~ If he's late, | he'll miss the film.
+= If you eat my pizza, I['ll] cry.
+= If you [touch] my phone, the cat will attack.
+- If you [hurry|will hurry|hurried], you'll catch the last cake.
+- If she calls, I [will tell|tell|told] her I'm in the shower.
+- We'll go to the beach if it [is|will be|was] sunny. So never.
+- If you don't eat, you ['ll be|are|were] angry.
+- What will you do if your cat [leaves|will leave|left] you?
+- If I [see|will see|saw] a spider, I'll move to another country.
+~ If it rains, | we'll stay in bed.
+~ If you're hungry, | you'll be angry.
+~ If he sings, | we'll leave.
 # Joining ideas | Gondolatok összekötése | At binde idéer sammen
 @ when, before, after + present | when, before, after + jelen | when, before, after + nutid
-= I'll call you when I [arrive].
-= Wash your hands before you [eat].
-- I'll tell her when she [comes|will come|came] home.
-- We'll leave after we [finish|will finish|finished] lunch.
-- Call me before you [go|will go|went].
-- When I [see|will see|saw] him, I'll ask him.
-- She'll be happy when she [hears|will hear|heard] the news.
-- After you [read|will read|reading] it, give it back.
+= I'll call you when I [wake] up. Maybe tomorrow.
+= Wash your hands before you [touch] my cake.
+- I'll clean my room when the cat [cleans|will clean|cleaned] hers.
+- We'll go home after Grandpa [finishes|will finish|finished] dancing.
+- Call me before you [eat|will eat|ate] the last cookie.
+- When I [find|will find|found] the remote, I'll be the boss.
+- She'll be happy when she [sees|will see|saw] her pink car.
+- After you [read|will read|reading] my diary, give it back!
 @ because and so | because és so | because og so
-= I stayed home [because] I was ill.
-= I was ill, [so] I stayed home.
-- She was tired, [so|because|but] she went to bed.
-- He's happy [because|so|or] he passed the test.
-- It was raining, [so|because|if] we took a taxi.
-- I can't come [because|so|and] I have to work.
-- The shop was closed, [so|because|or] we went home.
-- We left early [because|so|but] the film was boring.
-~ I was hungry, | so I made a sandwich.
-~ She's crying | because she's sad.
-~ It was cold, | so we stayed inside.
+= I stayed in bed [because] it was Monday.
+= It was Monday, [so] I stayed in bed.
+- She was hungry, [so|because|but] she ate my lunch.
+- He's happy [because|so|or] he found a chip in his pocket.
+- It was raining, [so|because|if] we danced in the street.
+- I can't come [because|so|and] my cat needs me.
+- The shop had no cake, [so|because|or] we cried.
+- We left early [because|so|but] Grandpa started singing.
+~ I was hungry, | so I ate my homework.
+~ She's laughing | because the dog is wearing her hat.
+~ It was cold, | so we hugged the cat.
 @ who, which, that | who, which, that | who, which, that
-= A man [who] lives next door.
-= The car [which] I bought.
-- The girl [who|which|what] won the race is my sister.
-- This is the book [which|who|what] I told you about.
-- He's the man [who|which|whose] fixed my car.
-- I lost the ring [that|who|what] she gave me.
-- People [who|which|what] smoke get ill.
-- Is this the bus [that|who|what] goes to town?
+= The man [who] lives next door has a goat.
+= The cake [which] I made is still on fire.
+- The girl [who|which|what] won the race is eight. I came last.
+- This is the sofa [which|who|what] the cat destroyed.
+- He's the man [who|which|whose] sings at 3 a.m.
+- I lost the ring [that|who|what] I found in my soup.
+- People [who|which|what] talk in the cinema are monsters.
+- Is this the bus [that|who|what] goes to the beach?
 @ Adverbs: quickly, well | Határozószók: quickly, well | Biord: quickly, well
-= She drives [carefully].
-= He speaks English [well].
-- He runs very [fast|fastly|fasts].
-- Please speak [quietly|quiet|quietely].
-- She sings [beautifully|beautiful|beautifuly].
-- They played [badly|bad|badily].
-- He works [hard|hardly|hardy].
-- You did it [well|good|goodly]!
+= My grandma drives very [fast].
+= My cat sleeps [well]. Twenty hours a day.
+- He runs very [fast|fastly|fasts] when he sees a dog.
+- Please eat [quietly|quiet|quietely]. I'm trying to sleep.
+- She sings [beautifully|beautiful|beautifuly]. In her dreams.
+- They danced [badly|bad|badily], but with love.
+- He works [hard|hardly|hardy]. At playing games.
+- You did it [well|good|goodly]! The kitchen is still there.
 @ If + present, present | Nulladik feltételes | If + nutid, nutid
-= If you heat ice, it [melts].
-= If I [drink] coffee late, I can't sleep.
-- If you mix red and blue, you [get|will get|got] purple.
-- Plants die if they [don't get|won't get|didn't get] water.
-- If it [rains|will rain|rained], the grass gets wet.
-- If you [press|will press|pressed] this button, the door opens.
-- Water [boils|will boil|boiled] if you heat it to 100 degrees.
-- If I eat too much, I [feel|will felt|felt] sick.
+= If you drop toast, it [lands] butter side down.
+= If I [eat] cheese at night, I dream about cows.
+- If you mix red and blue, you [get|will get|got] purple. And a mess.
+- Plants die if you [talk|will talk|talked] to them like my dad.
+- If it [rains|will rain|rained], my hair looks like a sheep.
+- If you [press|will press|pressed] this button, the cat runs away.
+- The cat [screams|will scream|screamed] if you open the fridge.
+- If I eat too much cake, I [feel|will felt|felt] happy and sick.
 ~ If you heat water to 100 degrees, | it boils.
 ~ If you drop a glass, | it breaks.
-~ If you don't water plants, | they die.
+~ If you open the fridge, | the cat appears.
 `);
