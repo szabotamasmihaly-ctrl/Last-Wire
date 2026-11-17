@@ -392,6 +392,10 @@ textarea.slot{height:100px;resize:none;display:block}
 .dsents li{display:flex;align-items:center;gap:12px;background:var(--graphite);color:#fff;border-radius:14px;padding:14px 16px}
 .dsents b{font:800 28px/1 var(--font-display);min-width:1.2em}
 .dsents .shown{font-size:20px;font-weight:600}
+.cpic{display:flex;align-items:center;gap:12px;font-size:48px;line-height:1}
+.cpic i{font-style:normal;font-size:30px;font-weight:800;color:var(--signal)}
+.cpic span{animation:wdpop .45s cubic-bezier(.2,1.6,.4,1) both}
+.cpic span:nth-of-type(2){animation-delay:.12s}.cpic span:nth-of-type(3){animation-delay:.3s}
 .tsteps{display:flex;gap:6px;margin:4px 0 14px}
 .tsteps i{flex:1;height:8px;border-radius:99px;background:var(--paper-2);transition:background .4s}
 .tsteps i.done{background:var(--ok)}
@@ -2723,9 +2727,41 @@ PACK.hu.verbs = verbBank(HU_VERBS, HU_VSENT, function (f) { return { en: f[3], d
   return (x[1] === 'E2' || x[1] === 'O2') && !!T[x[0]].plain;
 });
 
-PACK.da.comps = DA_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: x[3], clue: x[4], lv: x[5], gl: { da: x[2], en: x[6], hu: x[8] }, lit: { en: x[7], hu: x[9] } }; });
-PACK.en.comps = EN_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: '', clue: x[3], lv: x[4], gl: { en: x[2], hu: x[5], da: x[7] }, lit: { hu: x[6], da: x[8] } }; });
-PACK.hu.comps = HU_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: '', clue: x[3], lv: x[4], gl: { hu: x[2], en: x[5], da: x[7] }, lit: { en: x[6], da: x[8] } }; });
+/* pictures for compound words: each English part and each whole word as one emoji */
+var COMP_EMO = {
+  tooth: '🦷', brush: '🖌️', cool: '❄️', cooling: '❄️', cupboard: '🗄️', hand: '✋', cloth: '🧻', morning: '🌅', food: '🍲', birth: '👶', day: '📅',
+  sick: '🤒', illness: '🤒', house: '🏠', word: '🔤', book: '📖', foot: '🦶', ball: '⚽', sun: '☀️', 'to the sun': '☀️', glasses: '👓', glass: '🥛', sleep: '😴', sleeping: '😴',
+  room: '🚪', write: '✍️', table: '🪑', parcel: '📦', back: '🔙', sack: '🎒', wash: '🫧', washing: '🫧', machine: '⚙️', post: '📮', box: '📦', bike: '🚲',
+  path: '🛤️', ice: '🧊', bear: '🐻', earth: '🌍', berry: '🫐', rain: '🌧️', bow: '🏹', doctor: '🧑‍⚕️', summer: '🏖️', bird: '🐦', lightning: '⚡', lock: '🔒',
+  dust: '💨', sucker: '🌪️', far: '🔭', sight: '👁️', drawing: '🖍️', air: '🌬️', harbour: '⚓', track: '🛤️', yard: '🏡', council: '🏛️', play: '🤸',
+  place: '📍', children: '🧒', garden: '🌷', rubbish: '🗑️', bucket: '🪣', pocket: '👖', lantern: '🏮', wake: '⏰', waking: '⏰', clock: '🕰️', light: '💡',
+  crossing: '✖️', after: '⏭️', year: '🗓️', free: '🕊️', time: '⏳', fire: '🔥', man: '👨', green: '🟩', things: '🥕', up: '⬆️', flutter: '🪽',
+  mouse: '🐭', nose: '👃', horn: '🦏', shield: '🛡️', toad: '🐸', ink: '🖋️', squirter: '💦', stick: '🪵', pig: '🐷', water: '💧', lazy: '😪',
+  animal: '🐾', gold: '🥇', smith: '🔨', Mary: '👩', hen: '🐔', sea: '🌊', lady: '👩', round: '⭕', driving: '🚗', week: '📆', end: '🏁',
+  snow: '❄️', bath: '🛁', bus: '🚌', stop: '🛑', flying: '✈️', field: '🌾', calculating: '🧮', store: '🏪', extinguisher: '🧯', arm: '💪',
+  medicine: '💊', moving: '➡️', stairs: '🪜', electric: '⚡', pear: '🍐', road: '🛣️', letter: '✉️', finger: '☝️', body: '🧍', blood: '🩸',
+  iron: '🔩', sugar: '🍬', snail: '🐌', turning: '🔄', order: '📏', guard: '💂', cream: '🍦', eye: '👁️', bed: '🛏️', coat: '🧥', shop: '🛍️',
+  card: '🃏', home: '🏠', work: '💼', port: '⚓', key: '🔑', board: '🪵', note: '📝', news: '📰', paper: '📄', hair: '💇', cut: '✂️',
+  head: '🗣️', ache: '🤕', paste: '🧴', fighter: '🥊', bag: '👜', ear: '👂', ring: '💍', flower: '🌸', butter: '🧈', fly: '🪰', hedge: '🌳',
+  hog: '🐗', honey: '🍯', moon: '🌙', night: '🌃', mare: '🐴', dead: '💀', line: '➖', straw: '🌾', pine: '🌲', apple: '🍎', jelly: '🍮',
+  fish: '🐟', brain: '🧠', storm: '⛈️', cup: '☕', break: '💥', fast: '🍽️',
+  /* the whole words */
+  toothbrush: '🪥', fridge: '🧊', towel: '🧺', breakfast: '🥐', birthday: '🎂', hospital: '🏥', dictionary: '📕', football: '⚽', sunglasses: '🕶️',
+  bedroom: '🛏️', desk: '🖥️', 'packed lunch': '🥪', backpack: '🎒', 'washing machine': '🧺', letterbox: '📫', 'cycle path': '🚴', 'polar bear': '🐻‍❄️',
+  strawberry: '🍓', rainbow: '🌈', dentist: '🦷', butterfly: '🦋', zip: '🧥', 'vacuum cleaner': '🧹', television: '📺', wallet: '👛', airport: '🛫',
+  'railway station': '🚉', 'town hall': '🏛️', playground: '🛝', kindergarten: '🧸', bin: '🗑️', torch: '🔦', 'alarm clock': '⏰', 'traffic lights': '🚦',
+  autumn: '🍂', 'leisure time': '🎮', firefighter: '🧑‍🚒', vegetables: '🥦', 'washing-up': '🍽️', bat: '🦇', rhinoceros: '🦏', turtle: '🐢', octopus: '🐙',
+  hedgehog: '🦔', jellyfish: '🪼', sloth: '🦥', raccoon: '🦝', dragonfly: '🪰', ladybird: '🐞', mermaid: '🧜‍♀️', roundabout: '🔄', weekend: '🎉',
+  snowman: '⛄', bathroom: '🛁', 'bus stop': '🚏', handball: '🤾', computer: '💻', library: '📚', 'handkerchief, tissue': '🤧', wristwatch: '⌚',
+  pharmacy: '💊', escalator: '🛗', 'light bulb': '💡', passport: '🛂', toe: '🦶', sibling: '👫', railway: '🚆', liquorice: '🍬', 'spiral staircase': '🌀',
+  sunflower: '🌻', 'police officer': '👮', 'ice cream': '🍨', raincoat: '🧥', bookshop: '📚', postcard: '🏞️', homework: '📓', keyboard: '⌨️',
+  notebook: '📓', newspaper: '📰', haircut: '💇', headache: '🤕', toothpaste: '🪥', lighthouse: '🗼', seafood: '🦐', handbag: '👜', earring: '💎',
+  honeymoon: '💑', nightmare: '😱', deadline: '⏰', pineapple: '🍍', brainstorm: '💡', cupboard: '🗄️'
+};
+function compPic(parts, whole) { var p = String(parts).split(' + '); return [COMP_EMO[p[0]] || '', COMP_EMO[p[1]] || '', COMP_EMO[whole] || '']; }
+PACK.da.comps = DA_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: x[3], clue: x[4], lv: x[5], gl: { da: x[2], en: x[6], hu: x[8] }, lit: { en: x[7], hu: x[9] }, pic: compPic(x[7], x[6]) }; });
+PACK.en.comps = EN_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: '', clue: x[3], lv: x[4], gl: { en: x[2], hu: x[5], da: x[7] }, lit: { hu: x[6], da: x[8] }, pic: compPic(x[0] + ' + ' + x[1], x[2]) }; });
+PACK.hu.comps = HU_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2], g: '', clue: x[3], lv: x[4], gl: { hu: x[2], en: x[5], da: x[7] }, lit: { en: x[6], da: x[8] }, pic: compPic(x[6], x[5]) }; });
 PACK.da.texts = DA_TEXTS; PACK.en.texts = EN_TEXTS; PACK.hu.texts = HU_TEXTS;
 
 /* ---------- bombs and the code ---------- */
@@ -3127,7 +3163,7 @@ function genComp(r, level, ctx) {
     var x = pool[i];
     if (ua[x.a] || ub[x.b] || ua[x.b] || ub[x.a]) continue;
     ua[x.a] = 1; ub[x.b] = 1;
-    items.push({ a: x.a, b: x.b, word: x.word, g: x.g, clue: x.clue, gl: x.gl, lit: x.lit });
+    items.push({ a: x.a, b: x.b, word: x.word, g: x.g, clue: x.clue, gl: x.gl, lit: x.lit, pic: x.pic });
   }
   var idx = items.map(function (_, k) { return k; });
   return { items: items, aOrder: r.shuffle(idx), bOrder: r.shuffle(idx) };
@@ -4850,10 +4886,11 @@ var ES_PHRASES = [
   };
 
   /* ---- compound words ---- */
+  function compPicHTML(pic) { return pic && pic[0] && pic[1] && pic[2] ? '<p class="cpic" aria-hidden="true"><span>' + pic[0] + '</span><i>+</i><span>' + pic[1] + '</span><i>=</i><span>' + pic[2] + '</span></p>' : ''; }
   UI.comp.help = function (d, i, ms) {
     var p = Math.min(ms.step || 0, d.items.length - 1), it = d.items[p];
     return todo([t('h.comp.1'), t('h.comp.2'), t('h.comp.3')]) +
-      card(cnt('n.word', p + 1, d.items.length) + ' · ' + t('comp.def'), it.clue, sayBtn(it.clue) + stepNav(i, p, d.items.length)) + sayList('comp');
+      card(cnt('n.word', p + 1, d.items.length), '', compPicHTML(it.pic) + '<p class="card-big" lang="' + tl() + '">' + esc(it.clue) + '</p>' + sayBtn(it.clue) + stepNav(i, p, d.items.length)) + sayList('comp');
   };
   UI.comp.onHelp = function (k, v, d, ms) { if (stepMove(k, ms, d.items.length)) renderHelpBody(); };
   UI.comp.pos = function (d, st) { return st.idx; };
