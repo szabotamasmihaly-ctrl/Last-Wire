@@ -65,8 +65,8 @@ LWC('es', 2, `
 - De joven, ella siempre [iba|iban|ibas] en autobús.
 - De niños, desde nuestra ventana [veíamos|veímos|víamos] el mar.
 @ Preterite or imperfect? | Indefinido vagy imperfecto? | Indefinido eller imperfecto?
-= [Llovía] cuando salí. (background)
-= Ayer [llovió] mucho. (finished)
+= [Llovía] cuando salí.
+= Ayer [llovió] todo el día.
 - Ayer, cuando [llegué|llegue|llego] a casa, ella dormía.
 - [Era|Fue|Es] tarde y hacía frío.
 - Mientras [cocinaba|cociné|cocino], sonó el teléfono.
@@ -252,8 +252,8 @@ LWC('es', 2, `
 - [Habrá|Haberá|Hayrá] mucha gente.
 - Ellos [vendrán|venirán|venderán] el lunes.
 @ ir a or future? | ir a vagy jövő idő? | ir a eller futurum?
-= Esta tarde [voy a] estudiar. (plan)
-= Algún día [seré] rico. (future)
+= Esta tarde [voy a] estudiar.
+= Algún día [seré] rico.
 - Mira las nubes, [va a|irá|va] llover.
 - Mañana [voy a|voy|vaya a] ver a mis abuelos.
 - En el futuro, los coches [volarán|vuelan ayer|volaban].
@@ -261,7 +261,7 @@ LWC('es', 2, `
 - Creo que [ganará|ganó mañana|ganaba] el Madrid.
 - Ya tengo los billetes: [vamos a|vamos|vayamos a] ir a Roma.
 @ Present for near future | Jelen idő közeli jövőre | Nutid om nær fremtid
-= Mañana [trabajo]. (arranged)
+= Mañana [trabajo].
 = El tren [sale] a las cinco.
 - La película [empieza|empezó|empezar] a las nueve esta noche.
 - El lunes que viene [tengo|tuve|tener] una reunión.
@@ -298,8 +298,8 @@ LWC('es', 2, `
 - Hablo con ella [por|para|a] teléfono.
 - Gracias [por|para|de] tu ayuda.
 @ por or para? | por vagy para? | por eller para?
-= Lo hago [por] ti. (because of you)
-= Lo hago [para] ti. (for you to have)
+= Lo hago [por] ti.
+= Este regalo es [para] ti.
 - Fui al mercado [para|por|de] comprar fruta.
 - Caminamos [por|para|de] la playa.
 - El tren [para|por|de para] Sevilla sale a las tres.
@@ -411,8 +411,8 @@ LWC('es', 2, `
 - ¿Quién está [ahí|allí ahí|aquí allí]? Abre la puerta.
 - Siéntate [aquí|allí aquí|ahí allí], a mi lado.
 @ ser or estar with adjectives | ser vagy estar melléknévvel | ser eller estar med tillægsord
-= Ella [es] lista. (clever)
-= Ella [está] lista. (ready)
+= Ella [es] muy lista.
+= Ya [está] lista para salir.
 - El libro [es|está|son] aburrido. Me duermo leyéndolo.
 - Estoy [aburrido|aburrida es|aburro]. No hay nada que hacer.
 - La fruta no [está|es|son] madura todavía.

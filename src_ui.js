@@ -99,7 +99,6 @@
     var b = document.querySelector('.tw[data-w="' + k.replace(/["\\]/g, '\\$&') + '"]');
     if (b) { var f = document.createElement('span'); f.className = 'wd-pen'; f.setAttribute('aria-hidden', 'true'); f.textContent = t('pen', 3); b.appendChild(f); setTimeout(function () { if (f.parentNode) f.parentNode.removeChild(f); }, 1300); }
   }
-  function markEx(s) { return TW(s.replace(/[\[\]]/g, ''), s.replace(/[\[\]]/g, '')).replace(/\u0000/g, ''); }
   /* a model sentence with its point highlighted: the brackets become a mark */
   function exHTML(s) {
     var m = s.match(/^(.*?)\[([^\]]+)\](.*)$/), clean = s.replace(/[\[\]]/g, '');
@@ -303,7 +302,7 @@
       var col = UNIT_COL[ui % UNIT_COL.length];
       h += '<section class="unit" style="--uc:' + col[0] + ';--ucd:' + col[1] + '"><header class="ubanner"><small>' + CEFR[lv - 1] + ' · ' + t('p.unit', ui + 1) + '</small><b>' + esc(u.t[ui_()] || u.t.en) + '</b></header><div class="nodes">';
       u.st.forEach(function (st) {
-        var code = pathCode(L, lv, st.n), k = pos.list.indexOf(code), stars = starsOf(code), cur = k === pos.cur, lock = !stars && k > pos.cur;
+        var code = pathCode(L, lv, st.n), k = pos.list.indexOf(code), stars = starsOf(code), cur = k === pos.cur && !stars, lock = !stars && k > pos.cur;
         var x = off[gi++ % off.length] * 46;
         h += '<div class="node-w' + (cur ? ' cur' : '') + (S.justOpen === code ? ' fresh' : '') + '" style="--x:' + x + 'px" id="n-' + st.n + '">' +
           (cur ? '<span class="bubble">' + t('p.start') + '</span>' : '') +
@@ -395,7 +394,12 @@
 
   /* ---------- flashcards ---------- */
   function hiWord(ctx, k) {
-    return String(ctx).split(/(\s+)/).map(function (tok) { return wordKey(lwCore(tok)) === k && tok.trim() ? '<mark>' + esc(tok) + '</mark>' : esc(tok); }).join('');
+    return String(ctx).split(/(\s+)/).map(function (tok) {
+      var core = lwCore(tok);
+      if (!core || wordKey(core) !== k) return esc(tok);
+      var at = tok.indexOf(core);
+      return esc(tok.slice(0, at)) + '<mark>' + esc(core) + '</mark>' + esc(tok.slice(at + core.length));
+    }).join('');
   }
   function viewCards() {
     var F = S.fc, n = F.list.length, c = F.list[F.i], back = F.flip, g = glossFor(tl(), ui(), c.k) || '…';
@@ -455,7 +459,9 @@
   function viewPathResult() {
     var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok', st = spec.st;
     var stars = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, recap = '';
-    spec.modules.forEach(function (m, i) { var rows = UI[m.t].recap(m.data, g.ms[i]); if (rows.length) recap += learn(rows); });
+    var seen = {}, all = [];
+    spec.modules.forEach(function (m, i) { UI[m.t].recap(m.data, g.ms[i]).forEach(function (row) { if (!seen[row.tx]) { seen[row.tx] = 1; all.push(row); } }); });
+    if (all.length) recap = learn(all);
     var starH = ''; for (var k = 0; k < 3; k++) starH += '<i class="' + (k < stars ? 'on' : '') + '" style="animation-delay:' + (0.35 + k * 0.18) + 's">★</i>';
     var nxt = ok ? nextCode(spec.code) : null;
     return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">' + CEFR[spec.level - 1] + ' · ' + spec.station + ' · ' + esc(st.t[ui()] || st.t.en) + '</p>' +

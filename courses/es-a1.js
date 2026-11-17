@@ -22,8 +22,8 @@ LWC('es', 1, `
 - Yo [estoy|soy|está] en el trabajo.
 - Los niños [están|son|está] en el parque.
 @ ser or estar? | ser vagy estar? | ser eller estar?
-= Juan [es] alto. (always)
-= Juan [está] cansado. (now)
+= Juan [es] alto.
+= Hoy Juan [está] cansado.
 - La sopa [está|es|son] fría.
 - Mi casa [es|está|son] grande.
 - Hoy [estoy|soy|es] muy contento.
@@ -138,8 +138,8 @@ LWC('es', 1, `
 - [Nuestra|Nuestro|Nuestros] casa es pequeña.
 - ¿Son [tus|tu|tú] gafas?
 @ este, ese, aquel | Mutató névmások: este, ese, aquel | Påpegende stedord: este, ese, aquel
-= [Este] libro es mío. (here)
-= [Esa] chica es mi prima. (there)
+= [Este] libro de aquí es mío.
+= [Esa] chica de allí es mi prima.
 - [Esta|Este|Estos] casa es muy bonita.
 - [Estos|Estas|Este] zapatos son nuevos.
 - ¿Quién es [ese|esa|esos] chico?
