@@ -4527,12 +4527,10 @@ var ES_PHRASES = [
       return res.length ? '<ul class="minis" lang="' + tl() + '">' + res.map(function (ok, j) { return '<li class="' + (ok ? 'ok' : 'no') + '">' + esc(d.items[j].full) + '</li>'; }).join('') + '</ul>' : '';
     },
     bomb: function (d, st, i) {
-      var it = d.items[st.idx], long = Math.max(it.opts[0].length, it.opts[1].length) > 5;
+      var it = d.items[st.idx];
       var h = note([cnt('n.word', st.idx + 1, d.items.length)]);
       h += '<div class="bigword' + (it.w.length > 11 ? ' sm' : '') + '" lang="' + tl() + '">' + esc(it.w) + '</div>';
-      h += '<div class="lever' + (long ? ' col' : '') + '" role="group">' + it.opts.map(function (o, k) {
-        return '<button type="button" class="key big' + (long ? ' txt' : '') + '" data-a="m" data-i="' + i + '" data-k="pick" data-v="' + k + '" lang="' + tl() + '">' + kbd(k + 1) + esc(o) + '</button>';
-      }).join('') + '</div>';
+      h += lvBtns(i, it.opts.length);
       if (st.fb) h += fbBad('lever.bad', esc(st.fb));
       return h + UI.lever.minis(d, st.res);
     },
@@ -4560,7 +4558,7 @@ var ES_PHRASES = [
     bomb: function (d, st, i) {
       var rd = d.rounds[st.round], parts = rd.s.split('___');
       var h = note([cnt('n.sentence', st.round + 1, d.rounds.length)]);
-      h += '<p class="gapline" lang="' + tl() + '">' + esc(parts[0]) + '<span class="gap" role="img" aria-label="…"></span>' + esc(parts[1]) + ' <span class="inf">(' + esc(rd.show) + ')</span></p>';
+      h += '<p class="gapline" lang="' + tl() + '">' + esc(parts[0]) + '<span class="gap" role="img" aria-label="…"></span>' + esc(parts[1]) + '</p>';
       h += '<div class="row">' + field(i, st.value, t('verbs.ph')) + B(i, 'send', null, t('ok'), 'go') + '</div>' + lettersRow(i);
       if (st.fb === 'near') h += fbNear(); else if (st.fb) h += fbBad('verbs.bad', esc(st.fb));
       return h;
@@ -4976,9 +4974,17 @@ var ES_PHRASES = [
   UI.comp.pos = function (d, st) { return st.idx; };
 
   /* ---- two-way choice ---- */
-  UI.lever.help = function (d) {
-    var P = PK();
-    return todo([t('h.lever.1'), t('h.lever.2.' + tl()), t('h.lever.3')]) +
+  /* the bomb sees the word and two shapes; only the helper knows which shape is which ending */
+  function lvBtns(i, n) {
+    var h = '<div class="cbtns n' + n + '">';
+    for (var k = 0; k < n; k++) h += '<button type="button" class="cbtn c' + k + '" data-a="m" data-i="' + i + '" data-k="pick" data-v="' + k + '" aria-label="' + esc(PACK[tl()].colors[k].k) + '">' + kbd(k + 1) + '<span aria-hidden="true">' + P_SHAPE[k] + '</span></button>';
+    return h + '</div>';
+  }
+  UI.lever.pos = function (d, st) { return Math.min(st.idx, d.items.length - 1); };
+  UI.lever.onHelp = function (k, v, d, ms) { if (stepMove(k, ms, d.items.length)) renderHelpBody(); };
+  UI.lever.help = function (d, i, ms) {
+    var P = PK(), p = Math.min((ms && ms.step) || 0, d.items.length - 1);
+    return card(cnt('n.word', p + 1, d.items.length), '', cWords(d.items[p].opts) + stepNav(i, p, d.items.length, null, null, true)) +
       '<ul class="sents" lang="' + tl() + '">' + d.report.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul>' +
       '<div class="tbl-wrap"><table class="tbl"><thead><tr>' + P.leverHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody lang="' + tl() + '">' +
       P.leverRows.map(function (r) { return '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody></table></div>' +
@@ -4986,9 +4992,11 @@ var ES_PHRASES = [
   };
 
   /* ---- verbs ---- */
-  UI.verbs.help = function (d) {
-    var P = PK(), rows = d.table.slice().sort(function (a, b) { return a.inf.localeCompare(b.inf, tl()); });
-    return todo([t('h.verbs.1'), t('h.verbs.2'), t('h.verbs.3')]) +
+  UI.verbs.pos = function (d, st) { return Math.min(st.round, d.rounds.length - 1); };
+  UI.verbs.onHelp = function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); };
+  UI.verbs.help = function (d, i, ms) {
+    var P = PK(), rows = d.table.slice().sort(function (a, b) { return a.inf.localeCompare(b.inf, tl()); }), p = Math.min((ms && ms.step) || 0, d.rounds.length - 1);
+    return card(cnt('n.sentence', p + 1, d.rounds.length), d.rounds[p].show, stepNav(i, p, d.rounds.length, null, null, true)) +
       '<div class="tbl-wrap"><table class="tbl"><thead><tr><th>' + t('verbs.form') + '</th><th>' + t('verbs.sig') + '</th></tr></thead><tbody lang="' + tl() + '">' +
       P.verbSignals.map(function (r) { return '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; }).join('') + '</tbody></table></div>' +
       '<div class="tbl-wrap"><table class="tbl verbs"><thead><tr>' + P.verbHead.map(function (x) { return '<th lang="' + tl() + '">' + esc(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
