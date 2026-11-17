@@ -2579,7 +2579,7 @@ var PACK = {
     serial: 'ABDEFGHKLMNPRSTUVYÆØÅ', vowels: 'AEIOUYÆØÅ',
     colors: [{ k: 'rød', e: 'røde' }, { k: 'blå', e: 'blå' }, { k: 'gul', e: 'gule' }, { k: 'grøn', e: 'grønne' }, { k: 'hvid', e: 'hvide' }, { k: 'sort', e: 'sorte' }],
     ord: ['første', 'anden', 'tredje', 'fjerde', 'femte', 'sjette'], last: 'sidste',
-    mod: { wires: 'Ledninger', clock: 'Klokken', dict: 'Diktat', pics: 'Billeder', story: 'Historien', comp: 'Sammensatte ord', lever: 'En eller et', verbs: 'Verber', order: 'Ordstilling', read: 'Opslag' },
+    mod: { wires: 'Ledninger', clock: 'Klokken', dict: 'Diktat', pics: 'Billeder', story: 'Historien', comp: 'Sammensatte ord', lever: 'En eller et', verbs: 'Verber', order: 'Ordstilling', read: 'Opslag', joke: 'Vittigheder' },
     plate: { danger: 'Fare', bomb: 'Sprogbombe', front: 'Forside', back: 'Bagside', under: 'Underside', up: 'Denne side op', serial: 'Serienummer', bat: 'Batterier', clock: 'Ur', strikes: 'Fejl' },
     win: 'Desarmeret!', boom: 'Bum!', hello: 'Hej! Kan du høre mig? Bomben venter.',
     num: daNum,
@@ -2625,7 +2625,7 @@ var PACK = {
     serial: 'ABDEFGHKLMNPRSTUV', vowels: 'AEIOU',
     colors: [{ k: 'red' }, { k: 'blue' }, { k: 'yellow' }, { k: 'green' }, { k: 'white' }, { k: 'black' }],
     ord: ['first', 'second', 'third', 'fourth', 'fifth', 'sixth'], last: 'last',
-    mod: { wires: 'Wires', clock: 'The clock', dict: 'Dictation', pics: 'Pictures', story: 'The story', comp: 'Compound words', lever: 'Make or do', verbs: 'Verbs', order: 'Word order', read: 'Notice board' },
+    mod: { wires: 'Wires', clock: 'The clock', dict: 'Dictation', pics: 'Pictures', story: 'The story', comp: 'Compound words', lever: 'Make or do', verbs: 'Verbs', order: 'Word order', read: 'Notice board', joke: 'Jokes' },
     plate: { danger: 'Danger', bomb: 'Language bomb', front: 'Front', back: 'Back', under: 'Underside', up: 'This side up', serial: 'Serial number', bat: 'Batteries', clock: 'Timer', strikes: 'Mistakes' },
     win: 'Defused!', boom: 'Boom!', hello: 'Hello! Can you hear me? The bomb is waiting.',
     num: enNum,
@@ -2672,7 +2672,7 @@ var PACK = {
     serial: 'ABDEFGHKLMNPRSTUV', vowels: 'AEIOU',
     colors: [{ k: 'piros' }, { k: 'kék' }, { k: 'sárga' }, { k: 'zöld' }, { k: 'fehér' }, { k: 'fekete' }],
     ord: ['első', 'második', 'harmadik', 'negyedik', 'ötödik', 'hatodik'], last: 'utolsó',
-    mod: { wires: 'Drótok', clock: 'Az óra', dict: 'Diktálás', pics: 'Képek', story: 'A történet', comp: 'Összetett szavak', lever: 'Hol?', verbs: 'Igék', order: 'Szórend', read: 'Hirdetőtábla' },
+    mod: { wires: 'Drótok', clock: 'Az óra', dict: 'Diktálás', pics: 'Képek', story: 'A történet', comp: 'Összetett szavak', lever: 'Hol?', verbs: 'Igék', order: 'Szórend', read: 'Hirdetőtábla', joke: 'Viccek' },
     plate: { danger: 'Veszély', bomb: 'Nyelvbomba', front: 'Eleje', back: 'Hátulja', under: 'Alja', up: 'Ezzel felfelé', serial: 'Sorozatszám', bat: 'Elemek', clock: 'Időzítő', strikes: 'Hibák' },
     win: 'Hatástalanítva!', boom: 'Bumm!', hello: 'Szia! Hallasz engem? A bomba vár.',
     num: huNum,
@@ -2781,14 +2781,20 @@ PACK.hu.comps = HU_COMPS.map(function (x) { return { a: x[0], b: x[1], word: x[2
 PACK.da.texts = DA_TEXTS; PACK.en.texts = EN_TEXTS; PACK.hu.texts = HU_TEXTS;
 
 /* ---------- bombs and the code ---------- */
-var MODS = ['wires', 'clock', 'dict', 'pics', 'story', 'comp', 'lever', 'verbs', 'order', 'read'];
-var MOD_TIME = { wires: 110, clock: 420, dict: 280, pics: 190, story: 250, comp: 190, lever: 170, verbs: 220, order: 200, read: 200 };
+var JOKES = {"en": [[["What do you call a fish with no eyes?", "A fsh."], ["What do you call a sleeping dinosaur?", "A dino-snore."], ["What has hands but can't clap?", "A clock."], ["What do you call a dog in the sun?", "A hot dog."], ["What is a cat's favourite colour?", "Purr-ple."], ["Why are fish so clever?", "They live in schools."], ["What has a neck but no head?", "A bottle."], ["What has four legs but can't walk?", "A table."]], [["Why is the teacher wearing sunglasses?", "Her students are very bright."], ["Why did the student eat his homework?", "The teacher said it was a piece of cake."], ["What do you call a bear with no teeth?", "A gummy bear."], ["Why can't a bicycle stand up by itself?", "It's two tired."], ["What did the ocean say to the beach?", "Nothing. It just waved."], ["Why don't eggs tell jokes?", "They'd crack each other up."], ["What did one wall say to the other wall?", "I'll meet you at the corner."], ["What did the big chimney say to the little chimney?", "You're too young to smoke."]], [["I told my wife she was drawing her eyebrows too high.", "She looked surprised."], ["I'm reading a book about anti-gravity.", "It's impossible to put down."], ["Why don't skeletons fight each other?", "They don't have the guts."], ["I used to hate facial hair,", "but then it grew on me."], ["Why did the scarecrow win a prize?", "He was outstanding in his field."], ["My phone has to wear glasses now.", "It lost all its contacts."], ["Why do cows wear bells?", "Because their horns don't work."], ["I asked the librarian for books about paranoia.", "She whispered, \"They're right behind you.\""]], [["I'm on a seafood diet.", "I see food and I eat it."], ["I'd tell you a joke about construction,", "but I'm still working on it."], ["I used to be addicted to soap,", "but I'm clean now."], ["I wanted to be a doctor,", "but I didn't have the patience."], ["Time flies like an arrow;", "fruit flies like a banana."], ["I don't trust stairs.", "They're always up to something."], ["I'm scared of lifts,", "so I'm taking steps to avoid them."], ["If I got paid every time I was lazy,", "someone else would have to collect it."]], [["Had I known how the story would end,", "I'd have started reading from the back."], ["The man who invented the knock-knock joke", "should get a no-bell prize."], ["I asked my dog what two minus two is.", "He said nothing."], ["Never trust an atom;", "they make up everything."], ["Were it not for my alarm clock,", "I'd be living the dream."], ["I'd tell you a chemistry joke,", "but I know I wouldn't get a reaction."], ["Whoever stole my copy of Microsoft Office,", "I will find you. You have my Word."], ["A friend kept annoying me with bird puns,", "until I realised toucan play at that game."]], [["The past, the present and the future walked into a bar.", "It was tense."], ["Claustrophobic people are better at thinking", "outside the box."], ["I used to be a banker,", "but I lost interest."], ["A pessimist's blood type", "is always B-negative."], ["Velcro:", "what a rip-off."], ["The mathematician who's afraid of negative numbers", "will stop at nothing to avoid them."], ["I'm reading a horror story in Braille.", "Something bad is about to happen; I can feel it."], ["When the grammarian was arrested,", "he was given a long sentence."]]], "es": [[["¿Qué le dice un pez a otro pez?", "Nada."], ["¿Qué hace una abeja en el gimnasio?", "¡Zum-ba!"], ["¿Cuál es el café más peligroso del mundo?", "El ex-preso."], ["¿Qué le dice el número 1 al número 10?", "Para ser como yo, tienes que ser sin-cero."], ["¿Qué le dice una uva verde a una uva morada?", "¡Respira, respira!"], ["¿Qué hace un perro con un taladro?", "Taladrando."], ["¿Por qué está triste el libro de matemáticas?", "Porque tiene muchos problemas."], ["¿Qué le dice una iguana a su hermana gemela?", "Somos iguanitas."]], [["¿Por qué las focas miran siempre hacia arriba?", "Porque ahí están los focos."], ["¿Qué le dijo un semáforo a otro?", "No me mires, que me estoy cambiando."], ["¿Qué le dijo la luna al sol?", "Tan grande y no te dejan salir de noche."], ["Mamá, en el colegio me llaman despistado.", "Niño, vete a tu casa, que esta no es."], ["Doctor, tengo complejo de feo.", "¿Complejo? ¿Qué complejo?"], ["¿Qué le dice un jardinero a otro?", "Disfrutemos mientras podamos."], ["Camarero, ¡hay una mosca en mi sopa!", "No grite, que todos van a querer una."], ["¿Qué le dijo el cero al ocho?", "¡Qué cinturón tan bonito!"]], [["¿Cuál es el colmo de un electricista?", "Que su mujer se llame Luz y sus hijos le sigan la corriente."], ["¿Cuál es el colmo de un jardinero?", "Que su novia se llame Rosa y lo deje plantado."], ["Doctor, me duele cuando me toco aquí.", "Pues no se toque."], ["¿Cuál es tu plato favorito?", "El hondo, porque cabe más comida."], ["Papá, ¿qué se siente al tener un hijo tan guapo?", "No sé, pregúntale a tu abuelo."], ["¿Por qué los pájaros no usan Facebook?", "Porque ya tienen Twitter."], ["Camarero, este filete tiene muchos nervios.", "Normal, es la primera vez que se lo comen."], ["¿Qué hace un zombi en el gimnasio?", "Se pone en forma... de muerto."]], [["Ojalá el sueldo fuera como el colesterol:", "que subiera sin hacer nada."], ["Si el dinero no da la felicidad,", "dame el tuyo y sé feliz."], ["Si me hubieras dicho que era una fiesta de disfraces,", "no habría venido disfrazado de persona normal."], ["¿Qué harías si te tocara la lotería?", "Seguir trabajando... hasta que me llegara el dinero."], ["Me encantaría ir al gimnasio,", "pero no tengo ropa deportiva... ni ganas."], ["—¿Tu perro muerde? —No.", "—¡Ay! —Es que ese no es mi perro."], ["No es que sea vago,", "es que estoy en modo ahorro de energía."], ["Antes de que me lo preguntes:", "sí, ya lo he apagado y encendido."]], [["Cuanto más estudio, más sé; cuanto más sé, más olvido.", "Entonces, ¿para qué estudio?"], ["Por mucho que madrugues,", "no amanece más temprano."], ["Quien ríe el último", "es que no ha entendido el chiste."], ["Debe de ser muy tarde:", "hasta mi café está dormido."], ["Habiendo probado todas las dietas,", "he decidido aceptarme... con patatas."], ["Dime con quién andas", "y te diré si voy."], ["Más vale pájaro en mano", "que dar la mano a un pájaro."], ["Al que madruga, Dios le ayuda;", "al que no madruga, le ayuda el café."]], [["¿Cómo se despiden los químicos?", "Ácido un placer."], ["—¿Sabes que me han ascendido?", "—¿A qué piso?"], ["Diga lo que diga mi médico,", "el chocolate es fruta: viene del cacao."], ["Me compré un diccionario, pero todas las páginas estaban en blanco.", "No tengo palabras."], ["¿Cuál es el animal más antiguo?", "La cebra, porque está en blanco y negro."], ["Dicen que los optimistas viven más.", "Los pesimistas no se lo creen."], ["Como no dejes de contar chistes malos,", "te vas a quedar sin amigos... y sin chistes."], ["Así se caiga el mundo,", "yo los lunes no madrugo."]]], "hu": [[["Mit mond a nulla a nyolcasnak?", "Csinos az öved!"], ["Pistike, miért nem írtad meg a leckét?", "Mert apa nem ért rá."], ["Mi az: négy lába van, mégsem tud járni?", "Az asztal."], ["Mi az: fekete-fehér és piros?", "Egy elpirult zebra."], ["Mi az: tele van lyukkal, mégis tartja a vizet?", "A szivacs."], ["Melyik hónapban beszélnek a legkevesebbet az emberek?", "Februárban, mert az a legrövidebb."], ["Doktor úr, mindenki levegőnek néz!", "Következő!"], ["Miért nem jár iskolába a víz?", "Mert már folyékonyan beszél."]], [["Pincér, légy van a levesemben!", "Ne kiabáljon, mert mindenki azt fog kérni."], ["Mit mond a fal a másik falnak?", "Találkozunk a sarkon."], ["Miért szomorú a matekkönyv?", "Mert túl sok a problémája."], ["Pistike, ki volt Petőfi Sándor?", "Nem tudom, nem az én osztályomba járt."], ["Doktor úr, minden reggel fáj a fejem.", "Akkor keljen fel délben."], ["Miért viszi Pistike a vonalzót az ágyba?", "Hogy megmérje, mennyit alszik."], ["Miért vitte ki a szakács a tojást az udvarra?", "Hogy friss levegőt kapjon."], ["Mit mond a nagy kémény a kis kéménynek?", "Te még túl fiatal vagy a dohányzáshoz."]], [["Ha a pénz nem boldogít,", "add nekem a tiédet, és légy boldog."], ["Bárcsak a fizetésem olyan lenne, mint a koleszterinem:", "magától nőne."], ["Az orvos azt mondta, mozogjak többet.", "Most kétszer megyek ki a hűtőhöz."], ["Nem vagyok lusta,", "csak energiatakarékos üzemmódban vagyok."], ["Ha tudtam volna, hogy jelmezbál lesz,", "nem önmagamnak öltöztem volna be."], ["Mielőtt megkérdezed:", "igen, már ki- és bekapcsoltam."], ["Hétfőn kezdem a diétát.", "Csak azt nem mondtam meg, melyik hétfőn."], ["A feleségem szerint sosem figyelek rá.", "Legalábbis azt hiszem, ezt mondta."]]], "da": [[["Hvad siger nul til otte?", "Flot bælte!"], ["Hvad har fire ben, men kan ikke gå?", "Et bord."], ["Hvad er sort, hvidt og rødt?", "En zebra, der skammer sig."], ["Hvad har en hals, men intet hoved?", "En flaske."], ["Hvad er gult og kan ikke svømme?", "En gravko."], ["Doktor, jeg tror, jeg er usynlig!", "Næste!"], ["Hvorfor tog Ole en stige med i skole?", "Han ville op i næste klasse."], ["Hvad går og går, men kommer aldrig frem?", "Et ur."]], [["Tjener, der er en flue i min suppe!", "Ti stille, ellers vil alle have en."], ["Hvad sagde den ene væg til den anden?", "Vi ses på hjørnet."], ["Hvorfor er matematikbogen ked af det?", "Den har så mange problemer."], ["Doktor, det gør ondt, når jeg gør sådan her.", "Så lad være med at gøre sådan her."], ["Hvorfor kom du for sent i skole?", "Der stod på et skilt: Skole – kør langsomt."], ["Hvorfor tog kokken ægget med udenfor?", "Så det kunne få frisk luft."], ["Hvad sagde den store skorsten til den lille skorsten?", "Du er for ung til at ryge."], ["Hvad kalder man en bjørn uden tænder?", "En vingummibamse."]], [["Hvis penge ikke gør dig lykkelig,", "så giv mig dine og vær lykkelig."], ["Bare min løn var som mit kolesteroltal:", "den stiger helt af sig selv."], ["Lægen sagde, at jeg skulle motionere mere.", "Nu går jeg to gange til køleskabet."], ["Jeg er ikke doven,", "jeg er bare i energisparetilstand."], ["Hvis jeg havde vidst, at det var udklædningsfest,", "var jeg ikke kommet som mig selv."], ["Før du spørger:", "ja, jeg har prøvet at slukke og tænde den."], ["Jeg starter på kuren på mandag.", "Jeg sagde bare ikke hvilken mandag."], ["Min kone siger, at jeg aldrig lytter.", "Det var i hvert fald noget i den stil, hun sagde."]]]};
+function genJoke(r, lv, ctx) {
+  var L = JOKES[ctx.lang] || JOKES.en, pool = L[Math.max(0, Math.min(L.length, lv) - 1)];
+  var pick = r.sample(pool, 3), order = r.shuffle(pick.map(function (_, k) { return k; }));
+  return { joke: true, left: pick.map(function (p) { return p[0]; }), right: order.map(function (k) { return pick[k][1]; }), ans: pick.map(function (_, k) { return order.indexOf(k) + 1; }), full: pick.map(function (p) { return p[0] + ' ' + p[1]; }) };
+}
+var MODS = ['wires', 'clock', 'dict', 'pics', 'story', 'comp', 'lever', 'verbs', 'order', 'read', 'joke'];
+var MOD_TIME = { wires: 110, clock: 420, dict: 280, pics: 190, story: 250, comp: 190, lever: 170, verbs: 220, order: 200, read: 200, joke: 150 };
 var MISSIONS = [
-  { mods: ['wires', 'clock'] },
-  { mods: ['dict', 'pics'] },
-  { mods: ['story', 'comp'] },
-  { mods: ['lever', 'verbs'] },
-  { mods: ['order', 'read'] },
+  { mods: ['wires', 'clock', 'joke'] },
+  { mods: ['dict', 'pics', 'joke'] },
+  { mods: ['story', 'comp', 'joke'] },
+  { mods: ['lever', 'verbs', 'joke'] },
+  { mods: ['order', 'read', 'joke'] },
   { random: 2 },
   { random: 4 }
 ];
@@ -3194,7 +3200,7 @@ function genRead(r, level, ctx) {
   return { kind: t.kind, body: t.body, qs: qs };
 }
 
-var GEN = { wires: genWires, clock: genClock, dict: genDict, pics: genPics, story: genStory, comp: genComp, lever: genLever, verbs: genVerbs, order: genOrder, read: genRead };
+var GEN = { wires: genWires, clock: genClock, dict: genDict, pics: genPics, story: genStory, comp: genComp, lever: genLever, verbs: genVerbs, order: genOrder, read: genRead, joke: genJoke };
 
 function makeSpec(code) {
   if (/^P:/.test(String(code))) return makeStationSpec(code);
@@ -3634,6 +3640,7 @@ function makeStationSpec(code) {
   if (fix.length && (!hasPairs || p.lv >= 3)) mods.push({ t: 'fix', data: { rounds: fix, ex: st.ex } });
   if (hasPairs) mods.push({ t: 'match', data: genMatchP(r, st.pairs) });
   if (mods.length < 3 && fix.length) mods.push({ t: 'fix', data: { rounds: fix, ex: st.ex } });
+  mods.push({ t: 'joke', data: genJoke(r, p.lv, { lang: p.lang }) });
   var secs = 40;
   mods.forEach(function (m) {
     if (m.t === 'gap') secs += 32 * m.data.rounds.length;
@@ -3672,12 +3679,12 @@ PACK.es = {
   serial: 'ABCDEFGHJKLMNPRSTVXYZ', vowels: 'AEIOU',
   colors: [{ k: 'rojo', e: 'rojos' }, { k: 'azul', e: 'azules' }, { k: 'amarillo', e: 'amarillos' }, { k: 'verde', e: 'verdes' }, { k: 'blanco', e: 'blancos' }, { k: 'negro', e: 'negros' }],
   ord: ['primero', 'segundo', 'tercero', 'cuarto', 'quinto', 'sexto'], last: 'último',
-  mod: { gap: 'Hueco', listen: 'Escucha', fix: 'Corrige', match: 'Une' },
+  mod: { gap: 'Hueco', listen: 'Escucha', fix: 'Corrige', match: 'Une', joke: 'Chistes' },
   plate: { danger: 'Peligro', bomb: 'Bomba de idiomas', front: 'Frente', back: 'Detrás', under: 'Base', up: 'Este lado arriba', serial: 'Número de serie', bat: 'Pilas', clock: 'Reloj', strikes: 'Fallos' },
   win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
   num: esNum
 };
-PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Fix it'; PACK.en.mod.match = 'Match';
+PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Fix it'; PACK.en.mod.match = 'Match'; PACK.en.mod.joke = 'Jokes';
 PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Ret'; PACK.da.mod.match = 'Par';
 PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Javítsd'; PACK.hu.mod.match = 'Párosítsd';
 var ES_PHRASES = [
@@ -3699,10 +3706,11 @@ var ES_PHRASES = [
 (function () {
   var add = {
     'lang.es': ['Spanish', 'spanyol', 'spansk'], 'in.es': ['in Spanish', 'spanyolul', 'på spansk'],
-    'mod.gap': ['Gap', 'Hiány', 'Hul'], 'mod.listen': ['Listen', 'Hallgasd', 'Lyt'], 'mod.fix': ['Fix it', 'Javítsd', 'Ret'], 'mod.match': ['Match', 'Párosítsd', 'Par'],
+    'mod.gap': ['Gap', 'Hiány', 'Hul'], 'mod.listen': ['Listen', 'Hallgasd', 'Lyt'], 'mod.fix': ['Fix it', 'Javítsd', 'Ret'], 'mod.match': ['Match', 'Párosítsd', 'Par'], 'mod.joke': ['Jokes', 'Viccek', 'Vittigheder'],
     'cap.gap': ['Read the sentence aloud. Your partner has the words. Press their colour.', 'Olvasd fel a mondatot. A társadnál vannak a szavak. Nyomd meg a színt, amit mond.', 'Læs sætningen højt. Din makker har ordene. Tryk på farven.'],
     'cap.listen': ['Your partner reads a sentence. Build it.', 'A társad felolvas egy mondatot. Rakd ki.', 'Din makker læser en sætning op. Byg den.'],
     'cap.fix': ['Read it aloud. Tap the wrong word, then press your partner’s colour.', 'Olvasd fel. Koppints a hibás szóra, aztán a színre, amit a társad mond.', 'Læs den højt. Tryk på det forkerte ord og så på din makkers farve.'],
+    'cap.joke': ['Read each joke. Your partner has the punchlines.', 'Olvasd fel a vicceket. A társadnál vannak a csattanók.', 'Læs vittighederne. Din makker har pointerne.'],
     'cap.match': ['Read each beginning. Your partner has the endings. Set the numbers.', 'Olvasd fel a mondatkezdeteket. A társadnál vannak a befejezések. Állítsd be a számokat.', 'Læs hver begyndelse. Din makker har slutningerne. Sæt tallene.'],
     'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
     'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
@@ -5253,7 +5261,7 @@ var ES_PHRASES = [
       var n = d.right.length;
       var h = '<ol class="mt" lang="' + tl() + '">' + d.left.map(function (s, k) {
         var v = st.set[k];
-        return '<li class="' + (st.bad.indexOf(k) >= 0 ? 'bad' : '') + '"><span class="mt-s' + sizeCls(s) + '">' + TW(s, d.full[k]) + ' …</span><span class="mt-eq" aria-hidden="true">=</span>' +
+        return '<li class="' + (st.bad.indexOf(k) >= 0 ? 'bad' : '') + '"><span class="mt-s' + sizeCls(s) + '">' + TW(s, d.full[k]) + (d.joke ? '' : ' …') + '</span><span class="mt-eq" aria-hidden="true">=</span>' +
           '<button type="button" class="mt-n' + (v ? '' : ' empty') + '" data-a="m" data-i="' + i + '" data-k="n" data-v="' + k + '" aria-label="' + (v || '_') + '">' + (v || '') + '</button></li>';
       }).join('') + '</ol>';
       h += '<div class="mt-tray">' + d.right.map(function (_, j) {
@@ -5278,9 +5286,11 @@ var ES_PHRASES = [
     done: function (d) { return learn(UI.match.recap(d)); },
     recap: function (d) { return d.full.map(function (x) { return { tx: x }; }); },
     help: function (d) {
-      return '<ol class="mt-r" lang="' + tl() + '">' + d.right.map(function (s, k) { return '<li><b>' + (k + 1) + '</b><i class="mt-eq" aria-hidden="true">=</i><span>… ' + TW(s, s) + '</span>' + sayBtn(s, true) + '</li>'; }).join('') + '</ol>';
+      return '<ol class="mt-r" lang="' + tl() + '">' + d.right.map(function (s, k) { return '<li><b>' + (k + 1) + '</b><i class="mt-eq" aria-hidden="true">=</i><span>' + (d.joke ? '' : '… ') + TW(s, s) + '</span>' + sayBtn(s, true) + '</li>'; }).join('') + '</ol>';
     }
   };
+
+  UI.joke = UI.match;
 
   /* ---------- the path screen ---------- */
   var FLAG = { en: '🇬🇧', es: '🇪🇸' };
