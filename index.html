@@ -4042,35 +4042,55 @@ var ES_PHRASES = [
   }
   /* ---------- the two phones: the bomb tells the helper's phone which task and which question it is on ----------
      It goes through ntfy.sh, a free public message relay, on a channel named after the bomb. Only the step numbers are sent. */
-  var LINK_URL = 'https://ntfy.sh/', Link = { es: null, last: '', t: 0 };
+  var LINK_URL = 'https://ntfy.sh/', Link = { es: null, poll: null, last: '', n: 0, g: 0, seen: {} };
   function linkTopic(spec) { return 'lastwire-v1-' + hashSeed('lw-link:' + spec.code).toString(36); }
   function linkState() {
     var g = S.game; if (!g) return null;
     return { tab: nextTask(), steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '' };
   }
   function linkSend() {
-    if (!S.game || S.solo || !S.spec || typeof fetch !== 'function') return;
+    if (!S.game || !S.spec || typeof fetch !== 'function') return;
     var st = linkState(), sig = JSON.stringify(st);
     if (sig === Link.last) return;
     Link.last = sig;
-    try { fetch(LINK_URL + linkTopic(S.spec), { method: 'POST', body: sig }).catch(function () { Link.last = ''; }); } catch (e) { Link.last = ''; }
+    if (Link.g !== S.game) { Link.g = S.game; Link.id = Date.now().toString(36); Link.n = 0; }
+    st.g = Link.id; st.n = ++Link.n;
+    try { fetch(LINK_URL + linkTopic(S.spec), { method: 'POST', body: JSON.stringify(st) }).catch(function () { Link.last = ''; }); } catch (e) { Link.last = ''; }
   }
-  function linkStop() { if (Link.es) { try { Link.es.close(); } catch (e) {} } Link.es = null; S.linked = false; }
+  function linkStop() {
+    if (Link.es) { try { Link.es.close(); } catch (e) {} } Link.es = null;
+    if (Link.poll) clearInterval(Link.poll); Link.poll = null;
+    S.linked = false; Link.seen = {}; Link.cur = null;
+  }
   function linkListen(spec) {
     linkStop(); Link.last = '';
-    if (typeof EventSource !== 'function') return;
-    var since = Math.floor(Date.now() / 1000) - 600;
-    try { Link.es = new EventSource(LINK_URL + linkTopic(spec) + '/sse?since=' + since); } catch (e) { Link.es = null; return; }
-    Link.es.onmessage = function (ev) {
-      var m, st; try { m = JSON.parse(ev.data); st = JSON.parse(m.message); } catch (e) { return; }
+    var topic = LINK_URL + linkTopic(spec), since = Math.floor(Date.now() / 1000) - 600, ids = {}, errs = 0;
+    function take(m) {
+      var st; if (!m || m.event !== 'message' || ids[m.id]) return; ids[m.id] = 1;
+      try { st = JSON.parse(m.message); } catch (e) { return; }
       if (!st || !S.spec || S.spec.code !== spec.code || S.screen !== 'helper') return;
       if (m.time) since = Math.max(since, m.time);
+      /* the newest game wins; inside one game, only a later step counts */
+      if (st.g && Link.cur && st.g === Link.cur.g && st.n <= Link.cur.n) return;
+      if (st.g && Link.cur && st.g !== Link.cur.g && m.time && m.time < Link.cur.t) return;
+      Link.cur = { g: st.g, n: st.n || 0, t: m.time || 0 };
       var first = !S.linked; S.linked = true;
       var tab = st.tab >= 0 ? st.tab : S.tab, moved = tab !== S.tab;
       (st.steps || []).forEach(function (n, k) { if (S.spec.modules[k]) manState(k).step = n; });
       S.tab = tab;
       if (moved || first) { render(); var sc = $('.man-scroll'); if (sc) sc.scrollTop = 0; if (moved) window.scrollTo(0, 0); } else renderHelpBody();
-    };
+    }
+    function poll() {
+      if (typeof fetch !== 'function') return;
+      fetch(topic + '/json?poll=1&since=' + since).then(function (r) { return r.text(); }).then(function (txt) {
+        txt.split('\n').forEach(function (line) { if (line) { try { take(JSON.parse(line)); } catch (e) {} } });
+      }).catch(function () {});
+    }
+    function startPoll() { if (!Link.poll) { poll(); Link.poll = setInterval(poll, 4000); } }
+    if (typeof EventSource !== 'function') { startPoll(); return; }
+    try { Link.es = new EventSource(topic + '/sse?since=' + since); } catch (e) { Link.es = null; startPoll(); return; }
+    Link.es.onmessage = function (ev) { try { take(JSON.parse(ev.data)); } catch (e) {} };
+    Link.es.onerror = function () { if (++errs >= 2 || (Link.es && Link.es.readyState === 2)) startPoll(); };
   }
   function startLoop() { stopLoop(); tick = setInterval(loop, 200); }
   function stopLoop() { if (tick) clearInterval(tick); tick = null; }
@@ -4670,7 +4690,7 @@ var ES_PHRASES = [
   }
   /* quiet: the step is not finished yet, so "Next" is not the main button and nothing says "that was the last one" */
   function stepNav(i, pos, n, nextLabel, prevLabel, quiet) {
-    if (S.game || S.linked) return ''; /* the helper's page follows the bomb: on one screen, or through the link */
+    if (S.game || S.screen === 'helper') return ''; /* the helper's page only follows the bomb: on one screen, or through the link */
     return '<div class="stepnav">' + HB(i, 'prev', null, prevLabel || t('prev'), '', pos === 0) + '<span class="pos">' + (pos + 1) + ' / ' + n + '</span>' + HB(i, 'next', null, nextLabel || t('next'), quiet ? '' : 'go', pos >= n - 1) + '</div>' +
       '';
   }
@@ -5695,7 +5715,7 @@ var ES_PHRASES = [
     var n = spec.modules.length, dots = '<div class="tsteps" aria-label="' + (S.tab + 1) + ' / ' + n + '">' + spec.modules.map(function (m, k) {
       return '<i class="' + (k < S.tab ? 'done' : k === S.tab ? 'on' : '') + '"></i>';
     }).join('') + '</div>';
-    var nav = S.game || S.linked ? '' : '<div class="tnav">' + (S.tab > 0 ? '<button type="button" class="pbtn" data-a="tab" data-v="' + (S.tab - 1) + '" aria-label="' + esc(t('prev')) + '">←</button>' : '') +
+    var nav = S.game || S.screen === 'helper' ? '' : '<div class="tnav">' + (S.tab > 0 ? '<button type="button" class="pbtn" data-a="tab" data-v="' + (S.tab - 1) + '" aria-label="' + esc(t('prev')) + '">←</button>' : '') +
       (S.tab < n - 1 ? '<button type="button" class="pbtn go tnext" data-a="tab" data-v="' + (S.tab + 1) + '">' + esc(modName(spec.modules[S.tab + 1].t)) + ' →</button>' : '') + '</div>';
     var tabs0 = spec.modules.map(function (m, i) {
       return '<button type="button" role="tab" id="tab-' + i + '" class="tab' + (S.tab === i ? ' on' : '') + '" aria-selected="' + (S.tab === i) + '" data-a="tab" data-v="' + i + '"><small>' + t('help.task', i + 1) + '</small>' + TT(modName(m.t), 'b') + (ui() !== tl() ? '<small>' + modNameUi(m.t) + '</small>' : '') + '</button>';
