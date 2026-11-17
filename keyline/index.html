@@ -138,6 +138,24 @@ body.quake main{animation:shake .45s}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:3px;animation:fall linear forwards}
 @keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r))}}
 .toast{position:fixed;left:50%;top:14px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-weight:700;z-index:40;animation:pop .3s}
+/* modes */
+.modes{display:flex;flex-direction:column;gap:12px;width:100%;max-width:360px}
+.mode{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:18px;background:var(--card);border:2px solid var(--edge);border-bottom-width:6px;font-weight:800;font-size:17px;text-transform:uppercase;letter-spacing:.03em;text-align:left}
+.mode:active{transform:translateY(3px);border-bottom-width:3px}
+.mode .ic{display:flex;gap:4px;align-items:center;flex:none;width:92px;justify-content:center}
+.mode .ic svg{width:28px;height:28px}
+.mode .vs{font-family:var(--display);font-size:14px;color:var(--ink-2)}
+.pchip{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--ink);color:#fff;font-family:var(--display);font-size:18px}
+.side .robot{width:22px;height:22px;color:var(--ink)}
+.res .robot,.hdr .robot{width:20px;height:20px}
+/* blank pass-the-phone screen */
+.cover{position:fixed;inset:0;z-index:50;background:var(--ink);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.cover .n{font-family:var(--display);font-size:160px;line-height:1;animation:pop .9s cubic-bezier(.2,1.6,.4,1)}
+.cover svg{width:64px;height:64px;opacity:.6;animation:pass 1s ease-in-out infinite alternate}
+@keyframes pass{from{transform:translateX(-14px) rotate(-8deg)}to{transform:translateX(14px) rotate(8deg)}}
+.cw.live{color:var(--ink-2)}
+.cw.live::after{content:"";width:2px;height:22px;background:var(--me);margin-left:3px;animation:ring 1s infinite}
+@keyframes ring{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;transition-duration:.01s!important}}
 </style>
 </head>
@@ -147,8 +165,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',check:'Check',next:'Next',win:'You win!',lose:'They win!',draw:'Draw',again:'New game',home:'Home',copied:'Code copied',hold:'Hold'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',hold:'Tartsd'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',solo:'One phone',duo:'Two phones',vs:'Team vs team'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',solo:'Egy telefon',duo:'Két telefon',vs:'Csapat vs csapat'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -162,8 +180,70 @@ var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar
  'doctor nurse king queen baby police farmer pilot chef artist '+
  'hand foot head eye ear nose heart hair tooth '+
  'gold silver summer winter night birthday holiday ghost robot dragon castle tower circus zoo hospital church park city').split(' ');
-var ALPH='ABCDEFGHJKLMNPQRSTUVWXYZ', ROUNDS=8;
-var S = { lang:'en', scr:'home', room:'', team:'', ev:[], seen:{}, guess:[], show:false, linked:false, shown:'', prev:null };
+/* word families the computer uses to link clues to each other (it never sees your secret words) */
+var FAM = [
+ 'hot summer sun sunny beach sand sea swim swimming holiday vacation island tan sunglasses heat warm july august',
+ 'cold winter snow snowman ice frost freeze frozen ski skiing december january christmas scarf glove coat penguin polar',
+ 'rain cloud storm umbrella wet weather wind thunder lightning',
+ 'sky star moon night space planet rocket astronaut dark sleep dream bed',
+ 'sea ocean water wave boat ship sail fish whale shark beach island swim river lake',
+ 'tree forest wood leaf green nature flower garden grass plant park',
+ 'fire hot burn flame smoke candle fireplace red',
+ 'book read reading story page library novel write writer letter word paper pen pencil school teacher class lesson study homework exam test learn',
+ 'light lamp bulb bright shine glow candle torch sun electric',
+ 'music song sing singer dance band concert piano guitar drum radio listen sound noise',
+ 'movie film cinema actor tv television screen video watch camera photo picture',
+ 'phone call message text computer internet email laptop screen app game play',
+ 'food eat hungry cook kitchen restaurant meal breakfast lunch dinner plate fork spoon knife chef',
+ 'sweet sugar cake chocolate candy cookie honey dessert ice-cream icecream bee',
+ 'fruit apple banana lemon orange grape strawberry juice yellow',
+ 'bread cheese butter milk egg breakfast sandwich toast farm cow',
+ 'coffee tea cup drink hot morning',
+ 'pizza pasta italy italian cheese tomato',
+ 'dog puppy bark pet cat kitten meow mouse cheese tail',
+ 'farm farmer cow pig sheep chicken horse goat duck tractor milk egg',
+ 'zoo lion tiger bear monkey elephant zebra giraffe wild jungle africa',
+ 'bird owl wing feather fly nest egg sky',
+ 'insect bee spider fly ant web bug',
+ 'snake reptile poison long hiss',
+ 'house home door window roof wall room key lock family',
+ 'bed bedroom sleep tired night pillow dream',
+ 'chair table sofa desk sit furniture',
+ 'clock time watch hour minute late early alarm',
+ 'money bank coin cash rich pay price buy sell shop store market expensive cheap gold silver dollar euro',
+ 'gold silver ring jewel diamond queen king crown rich treasure',
+ 'king queen prince princess castle crown royal palace throne',
+ 'castle tower dragon knight sword prince princess fairy magic',
+ 'ghost scary halloween monster witch vampire night dark haunted',
+ 'robot machine metal computer future space',
+ 'circus clown acrobat show tent',
+ 'car drive driver road wheel engine taxi traffic fast race',
+ 'bus train station ticket travel trip journey rail',
+ 'plane pilot fly airport flight wing sky travel holiday',
+ 'bike bicycle cycle ride pedal wheel',
+ 'bridge river road city tower',
+ 'doctor nurse hospital sick ill medicine pill help ambulance health',
+ 'police thief crime jail prison gun law',
+ 'artist art paint painting draw picture color museum',
+ 'clothes wear hat shoe sock shirt dress coat jacket jeans boots fashion bag glove',
+ 'hand finger arm glove ring watch',
+ 'foot leg shoe sock walk run kick',
+ 'head hair hat face brain think',
+ 'eye see look glasses watch',
+ 'ear hear listen sound music',
+ 'nose smell',
+ 'mouth tooth teeth eat smile lips dentist',
+ 'heart love valentine red blood',
+ 'party birthday gift present balloon cake celebrate candle surprise',
+ 'holiday hanukah hanuka hanukkah christmas easter festival celebrate vacation',
+ 'red blue green yellow black white pink purple brown gray grey color colour orange',
+ 'sport ball football soccer tennis basketball goal team win race run',
+ 'baby child kid mother father family small',
+ 'city town street building park church museum shop',
+ 'mountain hill rock climb high peak'
+].map(function(f){ var o={}; f.split(' ').forEach(function(w){ o[w]=1; }); return o; });
+var ALPH='ABCDEFGHJKLMNPQRSTUVWXYZ', ROUNDS=8, COOP_TURNS=8;
+var S = { lang:'en', scr:'home', mode:'', room:'', team:'A', player:'1', ev:[], seen:{}, guess:[], linked:false, shown:'', live:{}, cover:0 };
 try{ var sv=JSON.parse(localStorage.getItem('kl-ui')||'{}'); if(sv.lang) S.lang=sv.lang; }catch(e){}
 function t(k){ return T[S.lang][k]; }
 function $(s){ return document.querySelector(s); }
@@ -172,36 +252,64 @@ function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&am
 function hash(s){ var h=2166136261>>>0; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619)>>>0; } return h>>>0; }
 function rng(seed){ var a=seed>>>0; return function(){ a=(a+0x6D2B79F5)>>>0; var x=a; x=Math.imul(x^(x>>>15),x|1); x^=x+Math.imul(x^(x>>>7),x|61); return ((x^(x>>>14))>>>0)/4294967296; }; }
 function shuffle(arr,r){ arr=arr.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(r()*(i+1)); var x=arr[i]; arr[i]=arr[j]; arr[j]=x; } return arr; }
-function other(x){ return x==='A'?'B':'A'; }
 function newRoom(){ var c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; return c; }
 function nextRoom(c){ var r=rng(hash('next:'+c)), o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; return o; }
-/* both phones build the same words and codes from the room code */
+function coop(){ return S.mode!=='vs'; }
+function online(){ return S.mode!=='solo'; }
+/* every phone builds the same words and codes from the room code */
 function makeGame(room){
   var r=rng(hash('kl1:'+room)), w=shuffle(WORDS,r);
   return { keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
 }
-function encoder(turn){ return turn%2===0?'A':'B'; }
-function roundOf(turn){ return Math.floor(turn/2)+1; }
-function canIntercept(turn){ return roundOf(turn)>=2; }
+function encoder(turn){ return coop()?'A':(turn%2===0?'A':'B'); }
+function opponent(team){ return coop()?'C':(team==='A'?'B':'A'); }
+function roundOf(turn){ return coop()?turn+1:Math.floor(turn/2)+1; }
+function canIntercept(turn){ return coop()?turn>=1:Math.floor(turn/2)>=1; }
+function giverOf(turn){ return turn%2===0?'1':'2'; }
+
+/* ---------- the computer: it only links today's clues to earlier clues and their numbers ---------- */
+function norm(w){ w=String(w).toLowerCase().replace(/[^a-z]/g,''); if(w.length>4 && /ies$/.test(w)) w=w.slice(0,-3)+'y'; else if(w.length>4 && /(ch|sh|x|s)es$/.test(w)) w=w.slice(0,-2); else if(w.length>3 && /s$/.test(w) && !/ss$/.test(w)) w=w.slice(0,-1); return w; }
+function sim(a,b){
+  a=norm(a); b=norm(b); if(!a||!b) return 0;
+  if(a===b) return 1;
+  if(a.length>=4 && b.length>=4 && (a.indexOf(b)>=0 || b.indexOf(a)>=0 || a.slice(0,5)===b.slice(0,5))) return .85;
+  for(var i=0;i<FAM.length;i++) if(FAM[i][a] && FAM[i][b]) return .6;
+  return 0;
+}
+function aiGuess(turns, i, clues){
+  var cols=[[],[],[],[]];
+  for(var j=0;j<i;j++){ var tt=turns[j]; if(tt && tt.done && tt.enc==='A') tt.clues.forEach(function(c,k){ cols[+tt.code[k]-1].push(c); }); }
+  var score=clues.map(function(c){ return cols.map(function(col){ var m=0, n=0; col.forEach(function(h){ var x=sim(c,h); m=Math.max(m,x); if(x) n++; }); return m+(n>1?.1*(n-1):0); }); });
+  score.forEach(function(row){ var best=Math.max.apply(null,row); if(best===0) cols.forEach(function(col,k){ if(!col.length) row[k]=.2; }); });
+  var r=rng(hash('ai:'+S.room+':'+i)), best=null, bs=-1, perms=[];
+  [1,2,3,4].forEach(function(a){ [1,2,3,4].forEach(function(b){ [1,2,3,4].forEach(function(c){ if(a!==b&&b!==c&&a!==c) perms.push([a,b,c]); }); }); });
+  shuffle(perms,r).forEach(function(p){ var s=score[0][p[0]-1]+score[1][p[1]-1]+score[2][p[2]-1]; if(s>bs){ bs=s; best=p; } });
+  return best.join('');
+}
 
 /* ---------- the whole game is rebuilt from the list of moves ---------- */
 function state(){
-  var G=S.game, turns=[], cur=0, st={star:{A:0,B:0},miss:{A:0,B:0},over:''};
+  var G=S.game, turns=[], cur=0, st={star:{A:0,B:0,C:0},miss:{A:0,B:0},over:''};
   S.ev.forEach(function(e){
     var tt=turns[e.t]=turns[e.t]||{};
     if(e.k==='clue' && !tt.clues) tt.clues=e.cl;
     else if(e.k==='guess' && !(tt['g'+e.by])) tt['g'+e.by]=e.g;
     else if(e.k==='next') tt.next=1;
   });
-  for(var i=0;;i++){
-    var tt=turns[i]||{}, E=encoder(i), O=other(E);
-    tt.code=G.code(i); tt.enc=E; tt.done=!!(tt.clues && tt['g'+E] && (tt['g'+O] || !canIntercept(i)));
+  for(var i=0;i<60;i++){
+    var tt=turns[i]||{}, E=encoder(i), O=opponent(E);
+    tt.code=G.code(i); tt.enc=E; tt.opp=O;
+    if(O==='C' && tt.clues && canIntercept(i)) tt.gC=aiGuess(turns,i,tt.clues);
+    tt.done=!!(tt.clues && tt['g'+E] && (tt['g'+O] || !canIntercept(i)));
     turns[i]=tt;
     if(tt.done){
       tt.ownOk=tt['g'+E]===tt.code; tt.intOk=canIntercept(i) && tt['g'+O]===tt.code;
       if(!tt.ownOk) st.miss[E]++;
       if(tt.intOk) st.star[O]++;
-      if(i%2===1){
+      if(coop()){
+        if(st.miss.A>=2||st.star.C>=2){ st.over='C'; cur=i; break; }
+        if(i+1>=COOP_TURNS){ st.over='A'; cur=i; break; }
+      } else if(i%2===1){
         var sc={A:st.star.A-st.miss.A,B:st.star.B-st.miss.B};
         if(st.star.A>=2||st.star.B>=2||st.miss.A>=2||st.miss.B>=2||roundOf(i)>=ROUNDS){ st.over=sc.A>sc.B?'A':(sc.B>sc.A?'B':'draw'); cur=i; break; }
       }
@@ -213,15 +321,17 @@ function state(){
 
 /* ---------- phones talk through ntfy.sh, a free public relay, on a channel named after the room code ---------- */
 var RELAY='https://ntfy.sh/', Link={es:null,poll:null,since:0,ids:{}};
-function topic(){ return 'keyline-v1-'+hash('kl-link:'+S.room).toString(36); }
-function store(){ try{ localStorage.setItem('kl-ev-'+S.room, JSON.stringify(S.ev)); }catch(e){} }
-function post(e){ if(typeof fetch!=='function') return; try{ fetch(RELAY+topic(),{method:'POST',body:JSON.stringify(e)}).catch(function(){}); }catch(x){} }
+function topic(){ return 'keyline-v1-'+hash('kl-link:'+S.mode+S.room).toString(36); }
+function store(){ try{ localStorage.setItem('kl-ev-'+S.mode+S.room, JSON.stringify(S.ev)); }catch(e){} }
+function post(e){ if(!online()||typeof fetch!=='function') return; try{ fetch(RELAY+topic(),{method:'POST',body:JSON.stringify(e)}).catch(function(){}); }catch(x){} }
 function addEv(e){ if(S.seen[e.id]) return false; S.seen[e.id]=1; S.ev.push(e); store(); return true; }
-function act(e){ e.id=Date.now().toString(36)+Math.random().toString(36).slice(2,6); e.c=S.room; addEv(e); post(e); update(); }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+function act(e){ e.id=uid(); e.c=S.room; addEv(e); post(e); update(); }
 function linkStop(){ if(Link.es){ try{Link.es.close();}catch(e){} } Link.es=null; if(Link.poll) clearInterval(Link.poll); Link.poll=null; S.linked=false; }
 function setLinked(){ if(S.linked) return; S.linked=true; var l=$('.link'); if(l) l.classList.add('on'); }
 function linkStart(){
-  linkStop(); Link.ids={}; Link.since=Math.floor(Date.now()/1000)-6*3600;
+  linkStop(); if(!online()) return;
+  Link.ids={}; Link.since=Math.floor(Date.now()/1000)-6*3600;
   var url=RELAY+topic(), room=S.room, errs=0;
   function take(m){
     if(!m||S.room!==room) return;
@@ -231,11 +341,12 @@ function linkStart(){
     var e; try{ e=JSON.parse(m.message); }catch(x){ return; }
     if(!e||e.c!==room||!e.id) return;
     setLinked();
-    if(e.k==='again'){ if(S.scr==='play') goPlay(nextRoom(room), S.team); return; }
+    if(e.k==='again'){ if(S.scr==='play') goPlay(nextRoom(room)); return; }
+    if(e.k==='type'){ if(e.by!==S.player && e.t===S.st.cur && Date.now()/1000-(m.time||0)<120){ S.live[e.t]=e.cl; paintLive(); } return; }
     if(addEv(e)) update(true);
   }
   function poll(){ fetch(url+'/json?poll=1&since='+Link.since).then(function(r){ setLinked(); return r.text(); }).then(function(x){ x.split('\n').forEach(function(l){ if(l){ try{take(JSON.parse(l));}catch(e){} } }); }).catch(function(){}); }
-  function startPoll(){ if(!Link.poll && typeof fetch==='function'){ poll(); Link.poll=setInterval(poll,3000); } }
+  function startPoll(){ if(!Link.poll && typeof fetch==='function'){ poll(); Link.poll=setInterval(poll,2500); } }
   if(typeof EventSource!=='function'){ startPoll(); return; }
   try{ Link.es=new EventSource(url+'/sse?since='+Link.since); }catch(e){ startPoll(); return; }
   Link.es.onopen=setLinked;
@@ -248,7 +359,7 @@ var AC=null;
 function beep(kind){
   try{
     AC=AC||new (window.AudioContext||window.webkitAudioContext)();
-    var seq={tap:[[660,.05]],send:[[880,.06],[1175,.08]],ok:[[523,.08],[784,.14]],no:[[300,.12],[200,.2]],star:[[784,.08],[988,.08],[1319,.18]],win:[[523,.1],[659,.1],[784,.1],[1047,.3]]}[kind]||[], at=AC.currentTime;
+    var seq={tap:[[660,.05]],tick:[[440,.06]],send:[[880,.06],[1175,.08]],ok:[[523,.08],[784,.14]],no:[[300,.12],[200,.2]],star:[[784,.08],[988,.08],[1319,.18]],win:[[523,.1],[659,.1],[784,.1],[1047,.3]]}[kind]||[], at=AC.currentTime;
     seq.forEach(function(s){
       var o=AC.createOscillator(), g=AC.createGain(); o.type='triangle'; o.frequency.value=s[0];
       g.gain.setValueAtTime(.18,at); g.gain.exponentialRampToValueAtTime(.001,at+s[1]+.05);
@@ -266,32 +377,41 @@ var I={
   star:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 6.6 7 .8-5.2 4.8 1.4 7L12 17.7 5.8 21.2l1.4-7L2 9.4l7-.8z"/></svg>',
   x:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
   ear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 9a5 5 0 0 1 10 0c0 3-3 4-3 7a3 3 0 0 1-6 0"/><path d="M10 10a2 2 0 0 1 4 0"/></svg>',
-  team:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="8" r="3.4"/><circle cx="16.5" cy="8" r="3.4"/><path d="M1.5 20c.5-4 3-6 6.5-6s6 2 6.5 6zM13 14.4c1-.3 2.2-.4 3.5-.4 3.5 0 6 2 6.5 6h-7"/></svg>'
+  team:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="8" cy="8" r="3.4"/><circle cx="16.5" cy="8" r="3.4"/><path d="M1.5 20c.5-4 3-6 6.5-6s6 2 6.5 6zM13 14.4c1-.3 2.2-.4 3.5-.4 3.5 0 6 2 6.5 6h-7"/></svg>',
+  phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3" stroke-linecap="round"/></svg>',
+  robot:'<svg class="robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1" fill="currentColor"/></svg>'
 };
-function sw(team){ return '<span class="sw" style="background:var(--'+team+')"></span>'; }
+function sw(team){ return team==='C'?I.robot:'<span class="sw" style="background:var(--'+team+')"></span>'; }
 
 /* ---------- screens ---------- */
 function topbar(left){
   return '<div class="top">'+left+'<div class="spacer"></div><button class="icon-btn lang" id="lang" aria-label="Language">'+(S.lang==='en'?'EN':'HU')+'</button></div>';
 }
 function render(){
-  var a=$('#app'), h='';
+  var a=$('#app'), h='', st=S.st;
   document.documentElement.lang=S.lang;
   document.body.classList.toggle('tB', S.team==='B' && S.scr==='play');
   if(S.scr==='home'){
     h=topbar('<a class="icon-btn" href="../" aria-label="'+t('home')+'">'+I.home+'</a>')+
       '<main><div class="hero"><div class="dial"><i><span>3</span></i><i><span style="animation-delay:.2s">1</span></i><i><span style="animation-delay:.4s">4</span></i></div>'+
       '<h1 class="logo"><span>KEY</span><em>LINE</em></h1>'+
-      '<div class="stack"><button class="big" id="new">'+t('newg')+'</button><div class="or">— '+t('code')+' —</div>'+
+      '<div class="modes">'+
+        '<button class="mode" data-m="solo"><span class="ic">'+I.phone+'<span class="vs">vs</span>'+I.robot+'</span>'+t('solo')+'</button>'+
+        '<button class="mode" data-m="duo"><span class="ic">'+I.phone+I.phone+'<span class="vs">vs</span>'+I.robot+'</span>'+t('duo')+'</button>'+
+        '<button class="mode" data-m="vs"><span class="ic"><span class="sw" style="width:22px;height:22px;border-radius:7px;background:var(--A)"></span><span class="vs">vs</span><span class="sw" style="width:22px;height:22px;border-radius:7px;background:var(--B)"></span></span>'+t('vs')+'</button>'+
+      '</div></div></main>';
+  } else if(S.scr==='room'){
+    h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
+      '<main><div class="hero"><div class="stack"><button class="big" id="new">'+t('newg')+'</button><div class="or">— '+t('code')+' —</div>'+
       '<div class="join"><input id="jc" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD" aria-label="'+t('code')+'"><button class="big" id="jb" aria-label="'+t('join')+'" disabled>'+I.go+'</button></div></div></div></main>';
   } else if(S.scr==='pick'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
       '<main><div class="hero"><button class="bigcode" id="copy" aria-label="'+t('code')+'">'+S.room+'</button>'+
       '<div class="teams"><button class="team A" data-t="A">'+I.team+t('A')+'</button><button class="team B" data-t="B">'+I.team+t('B')+'</button></div></div></main>';
   } else {
-    var st=S.st, G=S.game, me=S.team, cur=st.turns[st.cur];
-    h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button><span class="codechip"><span class="link'+(S.linked?' on':'')+'"></span>'+S.room+'</span>')+
-      '<main>'+scoreBar(st)+keysHtml(G.keys[me])+panel(st,cur)+history(st)+'</main>';
+    var G=S.game, cur=st.turns[st.cur];
+    h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>'+(online()?'<span class="codechip"><span class="link'+(S.linked?' on':'')+'"></span>'+S.room+'</span>':''))+
+      '<main>'+scoreBar(st)+keysHtml(G.keys[S.team])+panel(st,cur)+history(st)+'</main>';
   }
   var keep=$$('.crow input').map(function(x){ return x.value; }), fi=$$('.crow input').indexOf(document.activeElement);
   a.innerHTML=h; bind();
@@ -299,46 +419,69 @@ function render(){
   if(S.scr==='play' && st.over) showEnd();
 }
 function scoreBar(st){
-  function side(team){
-    return '<div class="side">'+sw(team)+
-      '<span class="tok star'+(st.star[team]>0?' on':'')+'">'+I.star+'</span><span class="tok star'+(st.star[team]>1?' on':'')+'">'+I.star+'</span>'+
-      '<span class="tok x'+(st.miss[team]>0?' on':'')+'">'+I.x+'</span><span class="tok x'+(st.miss[team]>1?' on':'')+'">'+I.x+'</span></div>';
+  function toks(team, star, miss){
+    var h='<div class="side">'+sw(team);
+    if(star) h+='<span class="tok star'+(st.star[team]>0?' on':'')+'">'+I.star+'</span><span class="tok star'+(st.star[team]>1?' on':'')+'">'+I.star+'</span>';
+    if(miss) h+='<span class="tok x'+(st.miss[team]>0?' on':'')+'">'+I.x+'</span><span class="tok x'+(st.miss[team]>1?' on':'')+'">'+I.x+'</span>';
+    return h+'</div>';
   }
-  return '<div class="score">'+side(S.team)+'<span class="round">'+Math.min(roundOf(st.cur),ROUNDS)+'/'+ROUNDS+'</span>'+side(other(S.team))+'</div>';
+  var total=coop()?COOP_TURNS:ROUNDS, now=Math.min(roundOf(st.cur),total);
+  if(coop()) return '<div class="score">'+toks('A',false,true)+'<span class="round">'+now+'/'+total+'</span>'+toks('C',true,false)+'</div>';
+  return '<div class="score">'+toks(S.team,true,true)+'<span class="round">'+now+'/'+total+'</span>'+toks(opponent(S.team),true,true)+'</div>';
 }
 function keysHtml(keys){
   return '<div class="keys">'+keys.map(function(k,i){ return '<div class="key" style="animation-delay:'+(i*.08)+'s"><b>'+(i+1)+'</b>'+esc(k)+'</div>'; }).join('')+'</div>';
 }
+/* what this screen does right now: give clues, guess, intercept, wait, or see the result */
+function roleNow(st,tt){
+  if(tt.done) return 'result';
+  var mineTeam=tt.enc===S.team;
+  if(S.mode==='duo'){
+    if(giverOf(st.cur)===S.player) return tt.clues?'wait':'give';
+    return tt['gA']?'wait':'guess';
+  }
+  if(mineTeam){ if(!tt.clues) return 'give'; return tt['g'+S.team]?'wait':'guess'; }
+  if(!tt.clues || !canIntercept(st.cur) || tt['g'+S.team]) return 'wait';
+  return 'guess';
+}
 function panel(st,tt){
-  var me=S.team, E=tt.enc, mine=E===me, P='<div class="panel '+(mine?'mine':'them')+'" data-turn="'+st.cur+'">';
+  var E=tt.enc, mine=E===S.team, role=roleNow(st,tt), P='<div class="panel '+(mine?'mine':'them')+'" data-turn="'+st.cur+'">';
   var waitDots='<div class="wait"><i></i><i></i><i></i></div>';
   if(st.over && !tt.done) return '';
-  if(!tt.clues){
-    if(!mine) return P+'<div class="who">'+sw(E)+I.ear+'</div>'+waitDots+'</div>';
+  var who=S.mode==='duo'?'<div class="who"><span class="pchip">'+giverOf(st.cur)+'</span></div>':'<div class="who">'+sw(E)+'</div>';
+  if(role==='give'){
     var code=tt.code.split('');
-    return P+'<div class="secret'+(S.show?'':' hid')+'" id="secret" aria-label="'+t('hold')+'">'+code.map(function(d){ return '<i>'+d+'</i>'; }).join('')+'</div>'+
-      code.map(function(d,i){ return '<div class="crow"><span class="dig fill'+(S.show?'':' hid')+'">'+d+'</span><input maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="clue '+(i+1)+'"></div>'; }).join('')+
-      '<button class="big" id="send">'+t('send')+'</button></div>';
+    return P+'<div class="secret">'+code.map(function(d,i){ return '<i style="animation:pop .5s '+(i*.12)+'s cubic-bezier(.2,1.6,.4,1) backwards">'+d+'</i>'; }).join('')+'</div>'+
+      code.map(function(d,i){ return '<div class="crow"><span class="dig fill">'+d+'</span><input maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="clue '+(i+1)+'"></div>'; }).join('')+
+      '<button class="big" id="send">'+(S.mode==='duo'?t('send'):t('ready'))+'</button></div>';
   }
-  var myGuess=tt['g'+me], guessing=(mine || canIntercept(st.cur));
-  if(tt.done){
+  if(role==='result'){
+    var O=tt.opp, gO=tt['g'+E], gI=tt['g'+O];
     var rows=tt.clues.map(function(c,i){
-      var d=tt.code[i], gO=tt['g'+E], gI=tt['g'+other(E)];
+      var d=tt.code[i];
       return '<div class="crow"><span class="cw">'+esc(c)+'</span>'+
         '<span class="res code" style="animation-delay:'+(i*.15)+'s">'+d+'</span>'+
         '<span class="res '+(gO[i]===d?'ok':'no')+'" style="animation-delay:'+(.45+i*.15)+'s">'+gO[i]+'</span>'+
         (gI?'<span class="res '+(gI[i]===d?'ok':'no')+'" style="animation-delay:'+(.9+i*.15)+'s">'+gI[i]+'</span>':'<span class="res none">–</span>')+'</div>';
     }).join('');
-    return P+'<div class="hdr"><span>'+I.eye+'</span><span>'+sw(E)+'</span><span>'+sw(other(E))+'</span></div>'+rows+(st.over?'':'<button class="big" id="next">'+t('next')+'</button>')+'</div>';
+    return P+'<div class="hdr"><span>'+I.eye+'</span><span>'+sw(E)+'</span><span>'+sw(O)+'</span></div>'+rows+(st.over?'':'<button class="big" id="next">'+t('next')+'</button>')+'</div>';
   }
-  if(!guessing || myGuess){
-    return P+'<div class="who">'+sw(E)+'</div>'+tt.clues.map(function(c,i){ return '<div class="crow"><span class="cw">'+esc(c)+'</span>'+(myGuess?'<span class="dig fill">'+myGuess[i]+'</span>':'')+'</div>'; }).join('')+waitDots+'</div>';
+  var clues=tt.clues||S.live[st.cur]||['','',''], live=!tt.clues;
+  if(role==='wait'){
+    if(!tt.clues && !(S.mode==='duo' && S.live[st.cur])) return P+who+waitDots+'</div>';
+    var myG=tt['g'+(S.mode==='duo'?'A':S.team)]||'';
+    return P+who+clues.map(function(c,i){ return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span>'+(myG?'<span class="dig fill">'+myG[i]+'</span>':'')+'</div>'; }).join('')+waitDots+'</div>';
   }
   var g=S.guess;
-  return P+'<div class="who">'+sw(E)+'</div>'+tt.clues.map(function(c,i){
-      return '<div class="crow"><span class="cw">'+esc(c)+'</span><button class="dig'+(g[i]?' fill':'')+'" data-slot="'+i+'">'+(g[i]||'')+'</button></div>'; }).join('')+
+  return P+who+clues.map(function(c,i){
+      return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span><button class="dig'+(g[i]?' fill':'')+'" data-slot="'+i+'">'+(g[i]||'')+'</button></div>'; }).join('')+
     '<div class="pad">'+[1,2,3,4].map(function(n){ return '<button data-n="'+n+'"'+(g.indexOf(String(n))>=0||g.length>=3?' disabled':'')+'>'+n+'</button>'; }).join('')+'</div>'+
-    '<button class="big" id="check"'+(g.length===3?'':' disabled')+'>'+t('check')+'</button></div>';
+    '<button class="big" id="check"'+(g.length===3&&!live?'':' disabled')+'>'+t('check')+'</button></div>';
+}
+function paintLive(){
+  var cl=S.live[S.st.cur]||[], rows=$$('.cw[data-row]');
+  if(!rows.length){ render(); return; }
+  rows.forEach(function(r,i){ if(r.classList.contains('live')) r.textContent=cl[i]||''; });
 }
 function history(st){
   function grid(team, mine){
@@ -348,36 +491,37 @@ function history(st){
       return '<div class="hcol"><div class="h">'+(mine?esc(S.game.keys[team][k]):(k+1))+'</div>'+col.map(function(x){ return '<div class="c'+(x.n?' new':'')+'">'+esc(x.c)+'</div>'; }).join('')+'</div>';
     }).join('')+'</div>';
   }
-  return '<div class="hist">'+grid(S.team,true)+grid(other(S.team),false)+'</div>';
+  return '<div class="hist">'+grid(S.team,true)+(coop()?'':grid(opponent(S.team),false))+'</div>';
 }
 function bind(){
   var l=$('#lang'); if(l) l.onclick=function(){ S.lang=S.lang==='en'?'hu':'en'; try{localStorage.setItem('kl-ui',JSON.stringify({lang:S.lang}));}catch(e){} render(); };
-  var b=$('#back'); if(b) b.onclick=function(){ closeEnd(); if(S.scr==='play'){ linkStop(); S.scr='pick'; } else S.scr='home'; setHash(''); render(); };
-  var nw=$('#new'); if(nw) nw.onclick=function(){ S.room=newRoom(); S.scr='pick'; beep('tap'); render(); };
+  var b=$('#back'); if(b) b.onclick=function(){ closeEnd(); linkStop(); if(S.scr==='play') S.scr=S.mode==='solo'?'home':(S.mode==='vs'?'pick':'room'); else if(S.scr==='pick') S.scr='room'; else S.scr='home'; setHash(''); render(); };
+  $$('.mode').forEach(function(x){ x.onclick=function(){ beep('tap'); S.mode=x.getAttribute('data-m'); if(S.mode==='solo'){ S.team='A'; goPlay(newRoom()); } else { S.scr='room'; render(); } }; });
+  var nw=$('#new'); if(nw) nw.onclick=function(){ beep('tap'); enterRoom(newRoom(),true); };
   var jc=$('#jc'), jb=$('#jb');
   if(jc){
     jc.oninput=function(){ jc.value=jc.value.toUpperCase().replace(/[^A-Z]/g,''); jb.disabled=jc.value.length!==4; };
     jc.onkeydown=function(e){ if(e.key==='Enter' && jc.value.length===4) jb.click(); };
-    jb.onclick=function(){ S.room=jc.value; S.scr='pick'; beep('tap'); render(); };
+    jb.onclick=function(){ beep('tap'); enterRoom(jc.value,false); };
   }
   var cp=$('#copy'); if(cp) cp.onclick=function(){ try{ navigator.clipboard.writeText(S.room); toast(t('copied')); }catch(e){} };
-  $$('.team').forEach(function(x){ x.onclick=function(){ beep('tap'); goPlay(S.room, x.getAttribute('data-t')); }; });
-  var sc=$('#secret');
-  if(sc){
-    var on=function(e){ e.preventDefault(); S.show=true; sc.classList.remove('hid'); $$('.dig').forEach(function(d){ d.classList.remove('hid'); }); };
-    var off=function(){ S.show=false; sc.classList.add('hid'); $$('.dig').forEach(function(d){ d.classList.add('hid'); }); };
-    sc.addEventListener('pointerdown',on); sc.addEventListener('pointerup',off); sc.addEventListener('pointerleave',off); sc.addEventListener('pointercancel',off);
-    sc.oncontextmenu=function(e){ e.preventDefault(); };
-  }
+  $$('.team').forEach(function(x){ x.onclick=function(){ beep('tap'); S.team=x.getAttribute('data-t'); goPlay(S.room); }; });
+  var tm=null;
   $$('.crow input').forEach(function(x,i,all){
-    x.oninput=function(){ x.classList.remove('bad'); };
+    x.oninput=function(){ x.classList.remove('bad');
+      if(S.mode==='duo'){ clearTimeout(tm); tm=setTimeout(function(){ post({k:'type',t:S.st.cur,by:S.player,cl:all.map(function(y){ return y.value.trim().toUpperCase(); }),c:S.room,id:uid()}); },350); } };
     x.onkeydown=function(e){ if(e.key==='Enter'){ if(all[i+1]) all[i+1].focus(); else sendClues(); } };
   });
   var sd=$('#send'); if(sd) sd.onclick=sendClues;
   $$('.pad button').forEach(function(p){ p.onclick=function(){ if(S.guess.length<3){ S.guess.push(p.getAttribute('data-n')); beep('tap'); render(); } }; });
   $$('button.dig[data-slot]').forEach(function(d){ d.onclick=function(){ var i=+d.getAttribute('data-slot'); if(S.guess[i]){ S.guess=S.guess.slice(0,i); render(); } }; });
-  var ck=$('#check'); if(ck) ck.onclick=function(){ if(S.guess.length===3){ var g=S.guess.join(''); S.guess=[]; beep('send'); act({k:'guess',t:S.st.cur,by:S.team,g:g}); } };
+  var ck=$('#check'); if(ck) ck.onclick=function(){ if(S.guess.length===3){ var g=S.guess.join(''); S.guess=[]; beep('send'); act({k:'guess',t:S.st.cur,by:coop()?'A':S.team,g:g}); } };
   var nx=$('#next'); if(nx) nx.onclick=function(){ beep('tap'); act({k:'next',t:S.st.cur}); };
+}
+function enterRoom(room, made){
+  S.room=room;
+  if(S.mode==='vs'){ S.scr='pick'; render(); return; }
+  S.team='A'; S.player=made?'1':'2'; goPlay(room);
 }
 function sendClues(){
   var ins=$$('.crow input'), keys=S.game.keys[S.team].map(function(k){ return k.toUpperCase(); }), ok=true, cl=[];
@@ -387,14 +531,24 @@ function sendClues(){
     cl.push(w);
   });
   if(!ok) return;
-  S.show=false; beep('send'); act({k:'clue',t:S.st.cur,cl:cl});
+  if(document.activeElement) document.activeElement.blur();
+  beep('send');
+  if(S.mode!=='duo') passPhone();
+  act({k:'clue',t:S.st.cur,cl:cl});
+}
+/* one phone: a blank screen counts down while the phone goes to the teammate */
+function passPhone(){
+  var c=document.createElement('div'), n=3; c.className='cover';
+  function draw(){ c.innerHTML=I.phone+'<div class="n">'+n+'</div>'; beep('tick'); }
+  draw(); document.body.appendChild(c); window.scrollTo(0,0);
+  var iv=setInterval(function(){ n--; if(n<=0){ clearInterval(iv); c.remove(); var p=$('.panel'); if(p) p.scrollIntoView({block:'center'}); return; } draw(); },1000);
 }
 /* sounds and effects when something new happens, then redraw */
 function update(remote){
   var old=S.st, st=S.st=state();
-  if(old && old.cur!==st.cur) S.guess=[];
+  if(old && old.cur!==st.cur){ S.guess=[]; S.live={}; }
   if(old){
-    var me=S.team, they=other(me);
+    var me=coop()?'A':S.team, they=opponent(me);
     var tt=st.turns[old.cur];
     if(tt && tt.done && !(old.turns[old.cur]||{}).done){
       var good=(tt.enc===me?tt.ownOk:!tt.intOk);
@@ -408,11 +562,13 @@ function bump(col){
   document.body.classList.remove('quake'); void document.body.offsetWidth; document.body.classList.add('quake');
   if(navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
 }
-function goPlay(room, team){
-  closeEnd(); S.room=room; S.team=team; S.game=makeGame(room); S.guess=[]; S.show=false; S.st=null;
-  try{ S.ev=JSON.parse(localStorage.getItem('kl-ev-'+room)||'[]'); }catch(e){ S.ev=[]; }
+function goPlay(room){
+  closeEnd(); S.room=room; S.game=makeGame(room); S.guess=[]; S.live={}; S.st=null;
+  try{ S.ev=JSON.parse(localStorage.getItem('kl-ev-'+S.mode+room)||'[]'); }catch(e){ S.ev=[]; }
   S.seen={}; S.ev.forEach(function(e){ S.seen[e.id]=1; });
-  S.scr='play'; S.shown=''; setHash(room+'-'+team); S.st=state(); render(); window.scrollTo(0,0); linkStart();
+  S.scr='play'; S.shown='';
+  setHash(S.mode+'-'+room+(S.mode==='vs'?'-'+S.team:(S.mode==='duo'?'-'+S.player:'')));
+  S.st=state(); render(); window.scrollTo(0,0); linkStart();
 }
 function setHash(h){ try{ history.replaceState(null,'',h?'#'+h:location.pathname); }catch(e){} }
 
@@ -423,12 +579,13 @@ function showEnd(){
 }
 function drawEnd(){
   if(S.scr!=='play'||!S.st.over||$('.veil')) return;
-  var o=S.st.over, res=o==='draw'?'draw':(o===S.team?'win':'lose'), v=document.createElement('div'); v.className='veil';
-  v.innerHTML='<div class="sheet '+res+'"><h2>'+t(res)+'</h2><button class="big" id="again">'+t('again')+'</button><button class="big ghost" id="look">'+I.eye+'</button></div>';
+  var o=S.st.over, me=coop()?'A':S.team, res=o==='draw'?'draw':(o===me?'win':'lose'), v=document.createElement('div'); v.className='veil';
+  var title=res==='lose'&&coop()?t('cpu'):t(res);
+  v.innerHTML='<div class="sheet '+res+'"><h2>'+title+'</h2><button class="big" id="again">'+t('again')+'</button><button class="big ghost" id="look">'+I.eye+'</button></div>';
   document.body.appendChild(v);
   if(res==='win'){ beep('win'); confetti(); }
-  $('#again').onclick=function(){ post({k:'again',c:S.room,id:'a'+Date.now().toString(36)}); goPlay(nextRoom(S.room), S.team); };
-  $('#look').onclick=function(){ closeEnd(); var them=other(S.team); $$('.hgrid.them .h').forEach(function(h,k){ h.textContent=S.game.keys[them][k]; h.style.fontFamily='var(--font)'; h.style.fontSize='12px'; h.style.padding='6px 2px'; }); };
+  $('#again').onclick=function(){ post({k:'again',c:S.room,id:'a'+uid()}); goPlay(nextRoom(S.room)); };
+  $('#look').onclick=function(){ closeEnd(); if(coop()) return; var them=opponent(S.team); $$('.hgrid.them .h').forEach(function(h,k){ h.textContent=S.game.keys[them][k]; h.style.fontFamily='var(--font)'; h.style.fontSize='12px'; h.style.padding='6px 2px'; }); };
 }
 function closeEnd(){ var v=$('.veil'); if(v) v.remove(); }
 function confetti(){
@@ -441,8 +598,8 @@ function confetti(){
 function toast(s){ var d=document.createElement('div'); d.className='toast'; d.textContent=s; document.body.appendChild(d); setTimeout(function(){ d.remove(); },1400); }
 
 /* reopen the same game after a reload */
-var m=/^#([A-Z]{4})-([AB])$/.exec(location.hash||'');
-if(m) goPlay(m[1], m[2]); else render();
+var m=/^#(solo|duo|vs)-([A-Z]{4})(?:-([AB12]))?$/.exec(location.hash||'');
+if(m){ S.mode=m[1]; if(m[1]==='vs') S.team=m[3]||'A'; else { S.team='A'; S.player=m[3]||'1'; } goPlay(m[2]); } else render();
 })();
 </script>
 </body>
