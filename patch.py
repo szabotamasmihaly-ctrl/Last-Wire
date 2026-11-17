@@ -1,5 +1,6 @@
 import re, sys
-src = open('index.html', encoding='utf-8').read()
+import subprocess
+src = subprocess.check_output(['git','show','origin/main:index.html']).decode('utf-8')
 core = open('src_core.js', encoding='utf-8').read()
 uiblk = open('src_ui.js', encoding='utf-8').read()
 strs = open('src_str.js', encoding='utf-8').read()
