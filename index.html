@@ -373,6 +373,12 @@ textarea.slot{height:100px;resize:none;display:block}
 @media (max-width:560px){.man-h{grid-template-columns:minmax(0,1fr)}.man-code{justify-items:start}.stamp{position:static;justify-self:start}}
 .man-code b{font:800 32px/1 var(--font-display);letter-spacing:.08em;white-space:nowrap}
 .man-tip{color:var(--ink-2)}
+.tsteps{display:flex;gap:6px;margin:4px 0 14px}
+.tsteps i{flex:1;height:8px;border-radius:99px;background:var(--paper-2);transition:background .4s}
+.tsteps i.done{background:var(--ok)}
+.tsteps i.on{background:var(--enamel)}
+.tnav{display:flex;gap:10px;justify-content:space-between;margin-top:22px}
+.tnav .tnext{margin-left:auto}
 .tabs{display:flex;gap:6px;overflow-x:auto;padding:3px 3px 0;margin:0 -3px;scrollbar-width:thin}
 .tab{flex:1 0 132px;display:grid;justify-items:start;align-content:center;gap:1px;text-align:left;background:var(--paper-2);color:var(--ink);border:2px solid var(--ink);border-bottom:0;border-radius:8px 8px 0 0;padding:9px 14px;min-height:46px;font-weight:700}
 .tab.on{background:var(--ink);color:var(--paper)}
@@ -4001,6 +4007,7 @@ var ES_PHRASES = [
     S.view = freshView();
     S.man = {}; S.tab = 0; S.soloView = 'bomb'; S.screen = 'bomb';
     save(); sfx('arm'); render(); startLoop(); window.scrollTo(0, 0);
+    var g0 = S.game; setTimeout(function () { if (S.game === g0 && !g0.started) goTask(0); }, 1700);
   }
   /* a short-lived class on the stage drives the strike flash and shake */
   function fx(cls, ms) {
@@ -4023,7 +4030,9 @@ var ES_PHRASES = [
   function solvedFx(i) {
     var g = S.game; sfx('ok'); paintHud();
     if (g.solved.every(Boolean)) { defuse(); return; }
-    setTimeout(function () { if (S.game === g && !g.over && S.view && S.view.focus === i) zoomOut(); }, 1100);
+    var nx = nextTask(); S.tab = nx;
+    if (helperVisible()) { render(); var sc2 = $('.man-scroll'); if (sc2) sc2.scrollTop = 0; }
+    setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
   function finish(boom) {
     stopLoop(); clearTimers();
@@ -4120,6 +4129,18 @@ var ES_PHRASES = [
     if (old != null) renderMod(old);
     renderMod(i); paintToolbar(); paintCaption(); applyView(true); sfx('zoom');
     if (!focusField(i)) { var el = document.getElementById('mod-' + i); if (el) { try { el.focus({ preventScroll: true }); } catch (e) {} } }
+  }
+  function nextTask() { var g = S.game; if (!g) return -1; for (var k = 0; k < g.solved.length; k++) if (!g.solved[k]) return k; return -1; }
+  /* the bomb always shows the task to solve now: the first one at the start, the next one after each success */
+  function goTask(i) {
+    var g = S.game, v = S.view; if (!g || g.over || g.paused || !v || !v.place || i < 0 || S.screen !== 'bomb') return;
+    if (S.solo && S.soloView === 'manual') return;
+    var face = v.place[i].face;
+    if (face !== v.face) {
+      if (v.focus != null) { var o = v.focus; v.focus = null; renderMod(o); }
+      v.face = face; paintToolbar(); paintCaption(); applyView(true); sfx('turn');
+      setTimeout(function () { if (S.game === g) setFocus(i); }, 700);
+    } else setFocus(i);
   }
   function zoomOut() {
     var v = S.view, old = v && v.focus; if (!v || old == null) return;
@@ -5236,6 +5257,7 @@ var ES_PHRASES = [
     S.view = freshView();
     S.man = {}; S.tab = 0; S.soloView = 'bomb'; S.screen = 'bomb';
     save(); sfx('arm'); render(); startLoop(); window.scrollTo(0, 0);
+    var g0 = S.game; setTimeout(function () { if (S.game === g0 && !g0.started) goTask(0); }, 1700);
   }
   function nextCode(code) { var p = parsePathCode(code), list = courseList(p.lang), k = list.indexOf(code); return list[Math.min(k + 1, list.length - 1)]; }
   /* the result of a station: stars, XP, the streak, and words that got stronger */
@@ -5356,8 +5378,7 @@ var ES_PHRASES = [
 
   function uiOptions() { return UI_ORDER.map(function (L) { return '<option value="' + L + '"' + (ui() === L ? ' selected' : '') + '>' + PACK[L].name + '</option>'; }).join(''); }
   function topbar() {
-    return '<div class="bar"><button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button><span class="bar-sp"></span>' +
-      (S.screen !== 'home' ? '<button type="button" class="bar-b ico" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') +
+    return '<div class="bar">' + (S.screen !== 'home' ? '<button type="button" class="bar-b ico bar-back" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') + '<button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button><span class="bar-sp"></span>' +
       '<label class="bar-sel">' + ICON_GLOBE + '<span class="sr">' + t('ui.label') + '</span><select data-a="uilang" id="ui-sel">' + uiOptions() + '</select></label>' +
       '<button type="button" class="bar-b ico" data-a="drawer" data-v="set" aria-label="' + esc(t('bar.settings')) + '">' + ICON_GEAR + '</button></div>';
   }
@@ -5525,15 +5546,21 @@ var ES_PHRASES = [
   function afterHTML(i) { var m = S.spec.modules[i]; return UI[m.t].after ? UI[m.t].after(m.data, i, manState(i)) : ''; }
   function helpHTML() {
     var spec = S.spec;
-    if (S.tab >= spec.modules.length) S.tab = 0;
-    var tabs = spec.modules.map(function (m, i) {
+    if (S.game && nextTask() >= 0) S.tab = nextTask();
+    if (S.tab >= spec.modules.length || S.tab < 0) S.tab = 0;
+    var n = spec.modules.length, dots = '<div class="tsteps" aria-label="' + (S.tab + 1) + ' / ' + n + '">' + spec.modules.map(function (m, k) {
+      return '<i class="' + (k < S.tab ? 'done' : k === S.tab ? 'on' : '') + '"></i>';
+    }).join('') + '</div>';
+    var nav = S.game ? '' : '<div class="tnav">' + (S.tab > 0 ? '<button type="button" class="pbtn" data-a="tab" data-v="' + (S.tab - 1) + '" aria-label="' + esc(t('prev')) + '">←</button>' : '') +
+      (S.tab < n - 1 ? '<button type="button" class="pbtn go tnext" data-a="tab" data-v="' + (S.tab + 1) + '">' + esc(modName(spec.modules[S.tab + 1].t)) + ' →</button>' : '') + '</div>';
+    var tabs0 = spec.modules.map(function (m, i) {
       return '<button type="button" role="tab" id="tab-' + i + '" class="tab' + (S.tab === i ? ' on' : '') + '" aria-selected="' + (S.tab === i) + '" data-a="tab" data-v="' + i + '"><small>' + t('help.task', i + 1) + '</small>' + TT(modName(m.t), 'b') + (ui() !== tl() ? '<small>' + modNameUi(m.t) + '</small>' : '') + '</button>';
     }).join('');
     var side = sideHTML(S.tab), after = afterHTML(S.tab);
     return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + (spec.path ? CEFR[spec.level - 1] + ' · ' + esc(spec.st.t[ui()] || spec.st.t.en) : LEVELS[spec.level - 1]) + '</p>' +
       '<div class="man-code"><span class="lbl">' + t('hud.code') + '</span><b>' + bombTag(spec) + '</b></div></header>' +
-      '<div class="tabs" role="tablist">' + tabs + '</div><div class="man-cols' + (side ? ' two' : '') + '" id="man-cols">' +
-      '<article class="chapter" id="man-body" role="tabpanel" aria-labelledby="tab-' + S.tab + '">' + chapterHTML(S.tab) + '</article>' +
+      dots + '<div class="man-cols' + (side ? ' two' : '') + '" id="man-cols">' +
+      '<article class="chapter" id="man-body">' + chapterHTML(S.tab) + '</article>' + nav +
       (side ? '<aside class="side" id="man-side" aria-label="' + esc(t('nb.title')) + '">' + side + '</aside>' : '') +
       (after ? '<div class="chapter after" id="man-after">' + after + '</div>' : '') + '</div></div>';
   }
@@ -5554,8 +5581,8 @@ var ES_PHRASES = [
   }
   function renderHelpSide() { var el = $('#man-side'); if (el && helperVisible()) el.innerHTML = sideHTML(S.tab); }
   function viewHelper() {
-    if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="dbtn ok" data-a="help-done">' + t('p.hdone') + '</button><button type="button" class="pbtn" data-a="home">' + t('p.path') + '</button></div></div>';
-    return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="pbtn" data-a="rejoin">' + t('help.other') + '</button></div></div>';
+    if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="dbtn ok" data-a="help-done">' + t('p.hdone') + '</button></div></div>';
+    return '<div class="paper-wrap">' + helpHTML() + '</div>';
   }
 
   /* ---------- result ---------- */
@@ -5698,7 +5725,7 @@ var ES_PHRASES = [
         var sc = $('.man-scroll'), keep = sc ? sc.scrollTop : 0;
         render();
         var sc2 = $('.man-scroll'); if (sc2) sc2.scrollTop = keep;
-        var tb = $('#tab-' + S.tab); if (tb) { try { tb.focus({ preventScroll: true }); } catch (e5) {} }
+        if (sc2) sc2.scrollTop = 0; window.scrollTo(0, 0);
         break;
       }
       case 'home': goHome(); break;
