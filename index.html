@@ -846,6 +846,14 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .node:active{transform:translateY(5px);box-shadow:0 2px 0 var(--ucd)}
 .node.lock{background:#e5e5e5;color:#b7b7b7;box-shadow:0 7px 0 #c9c9c9}
 .node.done{background:#FFC800;color:#fff;box-shadow:0 7px 0 #E0A100;font-size:34px;text-shadow:0 2px 0 rgba(0,0,0,.12)}
+.pairbig{display:flex;align-items:center;gap:12px;width:100%;margin:4px 0 2px;padding:14px 18px;border-radius:16px;border:0;background:#1CB0F6;color:#fff;box-shadow:0 5px 0 #1899D6;font:800 18px/1.1 var(--font-body,inherit);letter-spacing:.02em;text-align:left;transition:transform .08s}
+.pairbig:active{transform:translateY(3px);box-shadow:0 2px 0 #1899D6}
+.pairbig svg{width:30px;height:30px;flex:none}
+.pairbig b{flex:1;text-transform:uppercase}
+.pairbig .pb-go{font-size:22px}
+.pairbig.on{background:#fff;color:var(--ink);border:2px solid #e2e2e2;box-shadow:0 5px 0 #e2e2e2}
+.pairbig.on .pb-code{flex:none;font:900 26px/1 var(--font-display);letter-spacing:.14em;color:var(--enamel)}
+.pairbig .pb-st{flex:1;text-align:right;font-weight:700;font-size:15px}
 .pair-chip.on{display:inline-flex;align-items:center;gap:6px;padding:6px 11px;letter-spacing:.08em}
 .pair-chip b{font-weight:800}
 .pdot{width:9px;height:9px;border-radius:50%;background:#b0b0b0;display:inline-block;flex:none}
@@ -3831,7 +3839,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 6;
+  var BUILD = 7;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4284,9 +4292,15 @@ var ES_PHRASES = [
   }
   function pairPaint() {
     var c = document.querySelector('.bar .pair-chip'); if (c) c.outerHTML = pairChip();
+    var pb = document.querySelector('.pairbig'); if (pb) pb.outerHTML = pairBig();
     if (S.drawer === 'pair') { var d = document.querySelector('.drawer .pair'); if (d) d.outerHTML = pairHTML(); }
     if (S.sheet) renderDrawer();
     if (S.screen === 'result' && S.spec) { var w = document.querySelector('.ctas'); if (w && pairFollower() !== !!document.querySelector('.ctas .pair-wait')) render(); }
+  }
+  /* the big "Play together" button at the top of the start page */
+  function pairBig() {
+    if (!PAIR) return '<button type="button" class="pairbig" data-a="drawer" data-v="pair">' + ICON_PAIR + '<b>' + t('pair.title') + '</b><span class="pb-go" aria-hidden="true">→</span></button>';
+    return '<button type="button" class="pairbig on' + (PAIR.peer ? ' live' : '') + '" data-a="drawer" data-v="pair"><i class="pdot" aria-hidden="true"></i><b class="pb-code">' + PAIR.room + '</b><span class="pb-st">' + (PAIR.peer ? (PAIR.lead ? '👑 ' + t('pair.you') : '👑 ' + t('pair.they')) : waitDots()) + '</span></button>';
   }
   function waitDots() { return '<span class="wdots" aria-hidden="true"><i></i><i></i><i></i></span>'; }
   function pairHTML() {
@@ -5511,6 +5525,7 @@ var ES_PHRASES = [
     }).join('');
     var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
       '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>' +
+      pairBig() +
       '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button><button type="button" class="pbtn sm" data-a="snake">🐍 ' + t('p.snake') + '</button></div>';
     var Lv = C[lv - 1];
     if (!Lv) return h + '</div>';
