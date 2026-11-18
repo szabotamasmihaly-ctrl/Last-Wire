@@ -4169,7 +4169,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 18;
+  var BUILD = 19;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4480,6 +4480,8 @@ var ES_PHRASES = [
      The first phone on a channel holds it; the other connects to it. When there is no direct line yet,
      messages go through ntfy.sh, a free public relay, which also keeps listening as a backup. */
   var LINK_URL = 'https://ntfy.sh/';
+  /* the game's own database (Firebase Realtime Database); when set it replaces the public relay */
+  var LW_DB = 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
   function relayId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
   /* a tiny line in the pairing drawer that says how the phones are connected */
   function relayPaint() { var el = document.getElementById('pair-diag'); if (el && PL.relay) el.textContent = relayDiag(PL.relay); }
@@ -4601,6 +4603,56 @@ var ES_PHRASES = [
         try { c.send({ _hb: 1 }); } catch (e) {}
       });
     }, 6000);
+    /* own database: every message is written to rooms/<topic>; each phone streams new ones as they arrive */
+    var DB = (window.LW_DB_URL || LW_DB).replace(/\/$/, ''), me = relayId();
+    R.db = 0; R.dbSeen = 0; var from = (R.since - 5) * 1000;
+    function dbOne(v) {
+      if (!v || typeof v.m !== 'string' || v.f === me || (v.t && v.t < from)) return;
+      R.dbSeen = Date.now();
+      var t = v.t ? Math.floor(v.t / 1000) : 0; if (t) R.since = Math.max(R.since, t);
+      var o; try { o = JSON.parse(v.m); } catch (e) { return; }
+      if (o && o._hb) return;
+      deliver(o, t);
+    }
+    function dbEv(ev) {
+      var d; try { d = JSON.parse(ev.data); } catch (e) { return; }
+      if (!d || !d.data) return;
+      if (d.path === '/') Object.keys(d.data).forEach(function (k) { dbOne(d.data[k]); });
+      else if (/^\/[^\/]+$/.test(d.path)) dbOne(d.data);
+    }
+    function dbListen() {
+      if (R.closed) return;
+      if (R.es) { try { R.es.close(); } catch (e) {} }
+      var es; try { es = new EventSource(DB + '/rooms/' + hostId + '.json'); } catch (e) { later(dbListen, 5000); return; }
+      R.es = es;
+      es.onopen = function () { R.db = 1; R.rst = 'db ok'; relayPaint(); };
+      es.addEventListener('put', dbEv); es.addEventListener('patch', dbEv);
+      es.onerror = function () { R.db = 0; R.rst = 'db lost'; relayPaint(); if (es.readyState === 2 && R.es === es) later(dbListen, 4000); };
+    }
+    function dbPost(obj) {
+      var body = JSON.stringify({ m: JSON.stringify(obj), f: me, t: { '.sv': 'timestamp' } }), tries = 0;
+      (function send() {
+        if (R.closed) return;
+        try { fetch(DB + '/rooms/' + hostId + '.json', { method: 'POST', body: body }).then(function (r) { if (!r.ok) { R.rst = 'db ' + r.status; relayPaint(); throw 0; } }).catch(function () { if (++tries < 3) later(send, 1500 * tries); }); } catch (e) {}
+      })();
+    }
+    if (DB) {
+      var direct = R.live;
+      R.live = function () { return direct() || (R.db && Date.now() - R.dbSeen < 25000); };
+      /* direct line when it is up, otherwise the database; pings too, since the database has no daily cap */
+      R.post = function (obj) {
+        if (R.closed) return;
+        obj._id = obj._id || relayId();
+        var o = open();
+        if (o.length) { o.forEach(function (c) { try { c.send(obj); } catch (e) {} }); return; }
+        dbPost(obj);
+      };
+      R.dbBeat = setInterval(function () { if (!R.closed && !open().length) dbPost({ _hb: 1 }); }, 8000);
+      var close0 = R.close;
+      R.close = function () { clearInterval(R.dbBeat); close0(); };
+      dbListen(); dbPost({ _hb: 1 }); start();
+      return R;
+    }
     listen(); start();
     return R;
   }
