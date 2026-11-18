@@ -1069,6 +1069,136 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 @keyframes starin{0%{transform:scale(0) rotate(-40deg);opacity:0}100%{transform:none;opacity:1}}
 @keyframes flame{50%{transform:scale(1.35) translateY(-3px)}}
 @media (prefers-reduced-motion:reduce){.bubble,.node-w.cur .node::before,.node-w.fresh .node,.sheet,.fc-card.in,.bigstars i,.hole,.tw-g.pop{animation:none}.fc-in{transition:none}}
+/* ===== party bombs ===== */
+.pobs{display:grid;gap:9px;margin-top:auto}
+.pob{position:relative;min-height:54px;border:0;border-radius:14px;color:#fff;font-weight:800;font-size:20px;padding:8px 14px 8px 40px;text-align:left;box-shadow:0 5px 0 rgba(0,0,0,.45),inset 0 -5px 0 rgba(0,0,0,.18),inset 0 3px 0 rgba(255,255,255,.25);transition:transform .08s}
+.pob:active{transform:translateY(4px);box-shadow:0 1px 0 rgba(0,0,0,.45)}
+.pob kbd{position:absolute;left:10px;top:50%;transform:translateY(-50%)}
+.pobs.reply .pob{font-size:15px;font-weight:700;min-height:46px;line-height:1.25}
+.pobs.rec{grid-template-columns:repeat(3,minmax(0,1fr))}
+.pobs.rec .pob{aspect-ratio:1;border-radius:50%;padding:0;text-align:center;display:grid;place-items:center;font-size:17px;background-image:repeating-radial-gradient(circle at 50% 50%,rgba(0,0,0,.18) 0 2px,transparent 2px 6px);animation:recspin 6s linear infinite}
+.pobs.rec .pob span{background:rgba(0,0,0,.35);padding:3px 7px;border-radius:9px;animation:recspin 6s linear infinite reverse;display:inline-block}
+.pobs.rec .pob kbd{left:50%;top:6px;transform:translateX(-50%)}
+.pobs.rec .pob:nth-child(2),.pobs.rec .pob:nth-child(2) span{animation-duration:7.5s}
+.pobs.rec .pob:nth-child(3),.pobs.rec .pob:nth-child(3) span{animation-duration:5s}
+@keyframes recspin{to{transform:rotate(360deg)}}
+.turntable{display:flex;align-items:center;gap:14px;margin:2px 0 8px}
+.vinyl{width:58px;height:58px;border-radius:50%;background:repeating-radial-gradient(circle,#111 0 2px,#262626 2px 4px);display:grid;place-items:center;animation:recspin 1.8s linear infinite;box-shadow:0 0 0 3px #3a3f45}
+.vinyl i{width:18px;height:18px;border-radius:50%;background:var(--signal);box-shadow:inset 0 0 0 5px #D8263C}
+.eqz{display:flex;align-items:flex-end;gap:5px;height:42px;flex:1}
+.eqz i{flex:1;max-width:14px;background:linear-gradient(#FF4B4B,#FFC83D 50%,#58CC02);border-radius:3px;animation:eq .9s ease-in-out infinite alternate;height:30%}
+.eqz i:nth-child(2){animation-delay:-.3s}.eqz i:nth-child(3){animation-delay:-.6s}.eqz i:nth-child(4){animation-delay:-.15s}.eqz i:nth-child(5){animation-delay:-.45s}.eqz i:nth-child(6){animation-delay:-.75s}.eqz i:nth-child(7){animation-delay:-.2s}
+@keyframes eq{0%{height:15%}50%{height:85%}100%{height:40%}}
+.eqz.help{height:34px;justify-content:center;margin:4px 0 10px}
+.reel{display:flex;flex-direction:column;background:#0b0c0e;border-radius:10px;margin:2px 0 12px;overflow:hidden}
+.reel .holes{height:14px;background:repeating-linear-gradient(90deg,#0b0c0e 0 8px,#e8e6df 8px 18px,#0b0c0e 18px 26px);background-size:26px 100%;animation:reel 1s linear infinite;opacity:.8;margin:4px 0}
+@keyframes reel{to{background-position:26px 0}}
+.reel .emo{font-size:62px;text-align:center;padding:16px 6px;letter-spacing:6px;animation:flicker 2.6s infinite;background:radial-gradient(ellipse at center,rgba(255,240,190,.22),transparent 70%)}
+@keyframes flicker{0%,100%{opacity:1}48%{opacity:1}50%{opacity:.82}52%{opacity:1}76%{opacity:.93}}
+.kscreen{display:grid;gap:9px;background:radial-gradient(ellipse at top,#2a1b4a,#120b22);border-radius:12px;padding:12px;margin:2px 0 10px;box-shadow:inset 0 0 0 2px #CE82FF,0 0 18px rgba(206,130,255,.35)}
+.kline{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:0;border-radius:10px;color:#fff;font-weight:700;font-size:17px;text-align:left;padding:10px;min-height:52px;text-shadow:0 0 8px rgba(206,130,255,.8)}
+.kline .sw{flex:none}
+.kscreen.big{padding:26px 14px 18px}
+.ksing{position:relative;font-size:24px;font-weight:800;line-height:1.5;color:#fff;margin:0;text-align:center}
+.ksing span{animation:kword 3.6s infinite;display:inline-block}
+@keyframes kword{0%,8%{color:#FFC83D;text-shadow:0 0 12px #FFC83D;transform:translateY(-2px)}20%,100%{color:#fff;text-shadow:none;transform:none}}
+.kball{position:absolute;top:-16px;left:0;width:14px;height:14px;border-radius:50%;background:#FFC83D;box-shadow:0 0 12px #FFC83D;animation:kball 3.6s linear infinite}
+@keyframes kball{0%{left:0;top:-16px}5%{top:-4px}10%{top:-18px}15%{top:-4px}20%{top:-18px}25%{top:-4px}30%{top:-18px}35%{top:-4px}40%{top:-18px}45%{top:-4px}50%{top:-18px}55%{top:-4px}60%{top:-18px}65%{top:-4px}70%{top:-18px}75%{top:-4px}80%{top:-18px}85%{top:-4px}90%{top:-18px}100%{left:calc(100% - 14px);top:-4px}}
+.kmic{justify-content:center}
+.key.mic.big{width:88px;height:88px;border-radius:50%}
+.key.mic.big svg{width:40px;height:40px}
+.gauge{height:10px;border-radius:6px;background:#1a1d21;overflow:hidden;margin:2px 0 10px;box-shadow:inset 0 0 0 1px #3a3f45}
+.gauge i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#58CC02,#FFC83D 60%,#FF4B4B);transform-origin:left;animation:gauge 3s ease-in-out infinite alternate}
+@keyframes gauge{from{transform:scaleX(.15)}to{transform:scaleX(1)}}
+.tw-s{font-size:22px;font-weight:700;line-height:1.6;margin:0 0 10px}
+.tw-s.sm{font-size:19px}.tw-s.xs{font-size:16px}
+.tw-s .blank{display:inline-block;height:1.05em;vertical-align:-.15em;border-radius:6px;background:repeating-linear-gradient(45deg,#FFC83D 0 6px,#e0a100 6px 12px);animation:blankp 1.4s ease-in-out infinite alternate}
+@keyframes blankp{from{opacity:.55}to{opacity:1}}
+.safe{display:grid;justify-items:center;gap:8px}
+.safe .leds{display:flex;gap:10px}
+.safe .leds i{width:16px;height:16px;border-radius:50%;background:#3a1015;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
+.safe .leds i.now{background:#6b4d00;animation:pdot 1.4s infinite}
+.safe .leds i.on{background:#58CC02;box-shadow:0 0 10px #58CC02}
+.lcd{background:#0d1a10;color:#7CFF7C;border-radius:8px;padding:4px 16px;font:700 30px/1.1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;box-shadow:inset 0 0 0 2px #1f3a24;text-shadow:0 0 8px rgba(124,255,124,.7);min-width:96px;text-align:center}
+.dial{position:relative;width:196px;height:196px}
+.dial-face{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 40% 35%,#6c737b,#2b3036 70%);box-shadow:0 8px 0 #15181b,inset 0 0 0 6px #8a9199,inset 0 0 0 9px #2b3036;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.dial-face i{position:absolute;left:50%;top:6px;width:2px;height:8px;margin-left:-1px;background:#cfd4d8;transform-origin:1px 92px}
+.dial-face i.big{height:13px;width:3px;margin-left:-1.5px;transform-origin:1.5px 92px}
+.dial-face i b{position:absolute;top:14px;left:50%;width:24px;margin-left:-12px;text-align:center;font:700 12px/1 var(--font-body);color:#fff}
+.dial-mark{position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:#FF4B4B;font-size:16px}
+.dial-knob{position:absolute;left:50%;top:50%;width:62px;height:62px;margin:-31px 0 0 -31px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#b9c0c6,#4b5258);box-shadow:0 3px 8px rgba(0,0,0,.6)}
+.dialbtns{justify-content:center;flex-wrap:nowrap}
+.dialbtns .key{min-width:48px;font-size:22px}
+.radio{background:linear-gradient(#7a4a26,#5a3418);border-radius:14px;padding:12px;display:grid;gap:10px;box-shadow:inset 0 0 0 3px #3b2010,0 6px 0 #2a160a}
+.grill{height:30px;border-radius:8px;background:repeating-linear-gradient(90deg,#2a160a 0 3px,#c9a46a 3px 7px)}
+.radio-lcd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;min-height:56px}
+.radio-lcd small{font-size:13px;opacity:.75}
+.radio-lcd b{font-size:28px;letter-spacing:.04em}
+.radio-lcd.noise b{animation:noise .18s steps(2) infinite;opacity:.6}
+@keyframes noise{0%{transform:translateX(-2px);filter:blur(1px)}100%{transform:translateX(2px);filter:blur(0)}}
+.scale{position:relative;height:30px;background:#f1e3c2;border-radius:6px;box-shadow:inset 0 0 0 2px #3b2010}
+.scale i{position:absolute;bottom:4px;width:1px;height:8px;background:#5a3418}
+.scale i.st{height:16px;width:2px;background:#D8263C}
+.needle{position:absolute;top:2px;bottom:2px;width:3px;margin-left:-1.5px;background:#D8263C;box-shadow:0 0 6px #D8263C;transition:left .25s cubic-bezier(.3,1.4,.5,1)}
+.radio .key{background:#f1e3c2;color:#3b2010}
+.radio .key.go{background:var(--signal)}
+.iscene{display:flex;justify-content:center;gap:10px;font-size:54px;min-height:84px;align-items:center;margin:0 0 6px}
+.iscene span{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+.iscene span:first-child{animation-name:fall}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+@keyframes fall{0%{transform:translateY(-16px);opacity:.4}60%{transform:translateY(4px);opacity:1}100%{transform:translateY(-16px);opacity:.4}}
+.idm{font-size:22px;font-weight:800;text-align:center;margin:0 0 10px}
+.phone{background:#0b0c0e;border-radius:18px;padding:16px 12px;margin:0 0 10px;box-shadow:inset 0 0 0 3px #3a3f45;min-height:96px}
+.bub{display:inline-block;max-width:90%;background:#2F6FE4;color:#fff;border-radius:18px 18px 18px 4px;padding:10px 14px;font-size:19px;font-weight:600;position:relative}
+.bub .dots{position:absolute;left:14px;top:50%;margin-top:-4px;display:inline-flex;gap:4px;animation:fadeout .2s 1s forwards}
+.bub .dots i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.4;animation:wdot 1s infinite}
+.bub .dots i:nth-child(2){animation-delay:.15s}.bub .dots i:nth-child(3){animation-delay:.3s}
+.bub .msg{opacity:0;animation:fadein .3s 1.1s forwards}
+@keyframes fadeout{to{opacity:0}}
+@keyframes fadein{to{opacity:1}}
+.rwires{display:grid;gap:12px;margin:4px 0}
+.rw{position:relative;display:flex;align-items:center;height:56px;border:0;background:none;padding:0;color:inherit}
+.rw-a,.rw-b{flex:1;height:12px;border-radius:6px;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}
+.rw.w0 .rw-a,.rw.w0 .rw-b{background:#D8263C}.rw.w1 .rw-a,.rw.w1 .rw-b{background:#2F6FE4}.rw.w2 .rw-a,.rw.w2 .rw-b{background:#F4C430}.rw.w3 .rw-a,.rw.w3 .rw-b{background:#2FA35E}
+.rw-tag{flex:none;background:#f1efe8;color:#111;font-weight:800;font-size:19px;padding:6px 14px;border-radius:8px;box-shadow:0 3px 0 #9aa0a6;margin:0 -4px;z-index:1}
+.rw.cut .rw-a{transform:rotate(-14deg) translateY(10px)}
+.rw.cut .rw-b{transform:rotate(14deg) translateY(10px)}
+.rw.cut .rw-tag{opacity:.5}
+.rw .spark{position:absolute;left:50%;top:50%;font-size:40px;color:#FFC83D;transform:translate(-50%,-50%);animation:spark .7s ease-out forwards;text-shadow:0 0 14px #FFC83D;pointer-events:none}
+@keyframes spark{0%{transform:translate(-50%,-50%) scale(.2);opacity:1}100%{transform:translate(-50%,-50%) scale(2.4) rotate(90deg);opacity:0}}
+.rw.zap .rw-tag{animation:pshake .35s;background:#FFB4B4}
+.pcards{display:grid;gap:10px;margin:4px 0}
+.pcard{position:relative;height:96px;border:0;background:none;padding:0;perspective:600px;color:#111}
+.pcard .pc-f,.pcard .pc-b{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;transition:transform .6s cubic-bezier(.3,1.3,.5,1);display:flex;align-items:center;gap:14px;padding:0 16px}
+.pcard .pc-f{background:#fffaf0;box-shadow:0 4px 0 #b9ae95,inset 0 0 0 3px #fff,inset 0 0 0 4px #e3d5b5}
+.pcard .pc-b{background:#58CC02;color:#fff;font-size:40px;justify-content:center;transform:rotateY(180deg)}
+.pcard.flip .pc-f{transform:rotateY(180deg)}
+.pcard.flip .pc-b{transform:rotateY(360deg)}
+.pcard.p0{transform:rotate(-1.5deg)}.pcard.p1{transform:rotate(1deg)}.pcard.p2{transform:rotate(-.6deg)}
+.pcard.no .pc-f{animation:pshake .35s;background:#ffe0e0}
+.pc-e{font-size:46px}
+.pcard b{font-size:21px;font-weight:800;flex:1;text-align:left}
+.stamp{width:34px;height:40px;border:2px dashed #D8263C;border-radius:3px;background:linear-gradient(135deg,#ffd6d6,#fff)}
+.slangd{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:20px;margin:0}
+.slangd dt{font-weight:900;color:var(--enamel);font-family:ui-monospace,Menlo,monospace}
+.slangd dd{margin:0}
+/* the party screen */
+.party{display:grid;gap:14px;padding:6px var(--gut) 40px;max-width:720px;margin:0 auto}
+.party h1{font:900 44px/1 var(--font-display);text-transform:uppercase;margin:6px 0 0;color:var(--ink);display:flex;align-items:center;gap:10px}
+.pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pgame{position:relative;display:grid;justify-items:start;gap:6px;border:0;border-radius:18px;padding:16px 14px 14px;min-height:118px;text-align:left;color:#fff;font-weight:800;font-size:17px;line-height:1.15;box-shadow:0 6px 0 rgba(0,0,0,.25);overflow:hidden;animation:pgin .5s cubic-bezier(.2,1.5,.4,1) both;transition:transform .08s}
+.pgame:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.pgame .pi{font-size:40px;line-height:1;filter:drop-shadow(0 3px 0 rgba(0,0,0,.2));animation:bob 2.4s ease-in-out infinite}
+.pgame .pst{position:absolute;right:10px;top:10px;font-size:13px;color:#FFE27A;letter-spacing:1px}
+.pgame.mix{grid-column:1/-1;min-height:84px;grid-template-columns:auto 1fr;align-items:center;background:linear-gradient(90deg,#CE82FF,#1CB0F6,#58CC02,#FFC83D,#FF4B4B);background-size:300% 100%;animation:pgin .5s both,mixbg 6s linear infinite}
+@keyframes mixbg{to{background-position:300% 0}}
+@keyframes pgin{from{transform:scale(.7) translateY(20px);opacity:0}to{transform:none;opacity:1}}
+.g1{background:#FF4B4B}.g2{background:#1CB0F6}.g3{background:#CE82FF}.g4{background:#FF9600}.g5{background:#4B4B4B}.g6{background:#8B5A2B}.g7{background:#2B70C9}.g8{background:#58CC02}.g9{background:#E5B400;color:#3a2a00}.g10{background:#E5527A}
+.partybig{display:flex;align-items:center;gap:12px;width:100%;margin:2px 0;padding:14px 18px;border-radius:16px;border:0;color:#fff;box-shadow:0 5px 0 #A04ACB;background:linear-gradient(90deg,#CE82FF,#E5527A);font:800 18px/1.1 var(--font-body);text-align:left;transition:transform .08s}
+.partybig:active{transform:translateY(3px);box-shadow:0 2px 0 #A04ACB}
+.partybig .pb-i{font-size:28px;animation:bob 2s ease-in-out infinite}
+.partybig b{flex:1;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){.vinyl,.pobs.rec .pob,.pobs.rec .pob span,.eqz i,.reel .holes,.ksing span,.kball,.gauge i,.iscene span,.pgame,.pgame .pi,.partybig .pb-i{animation:none!important}}
 </style>
 </head>
 <body data-screen="home" data-view="hard">
@@ -3283,6 +3413,7 @@ var GEN = { wires: genWires, clock: genClock, dict: genDict, pics: genPics, stor
 
 function makeSpec(code) {
   if (/^P:/.test(String(code))) return makeStationSpec(code);
+  if (/^X:/.test(String(code))) return makePartySpec(code);
   var p = parseCode(code);
   if (!p) return null;
   var P = PACK[p.lang], M = MISSIONS[p.mission - 1];
@@ -3735,6 +3866,78 @@ function makeStationSpec(code) {
     serial: genSerial(r0, P), batteries: r0.int(4), modules: mods, time: Math.round(secs / 10) * 10, maxStrikes: 3
   };
 }
+/* ===== party bombs: ten games built around things people love about a language ===== */
+var PARTY_GAMES = ['song', 'film', 'karaoke', 'twister', 'safe', 'radio', 'idiom', 'slang', 'rhyme', 'post'];
+var PARTY_ICON = { song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
+var PARTY_LANGS = ['en', 'es', 'da'];
+/* X:lang:game:seed. Game 1..10 is that game with a partner; 11 mixes three. The seed makes every round new, and both phones get the same one. */
+function partyCode(lang, n, seed) { return 'X:' + lang + ':' + n + ':' + (seed == null ? Math.floor(Math.random() * 9000) + 1000 : seed); }
+function parsePartyCode(code) {
+  var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})$/.exec(String(code || ''));
+  if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || !(+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1)) return null;
+  return { lang: m[1], n: +m[2], seed: +m[3] };
+}
+function partyGames(n, r) {
+  if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
+  return r.sample(PARTY_GAMES, 3);
+}
+function shuf3(r, right, wrongs) {
+  var opts = [right].concat(wrongs.slice(0, 2)), perm = r.shuffle([0, 1, 2]);
+  return { words: perm.map(function (k) { return opts[k]; }), ans: perm.indexOf(0) };
+}
+var GENP = {
+  song: function (r, L) {
+    return { rounds: r.sample(PARTY[L].song, 3).map(function (x) { var o = shuf3(r, x[1], [x[2], x[3]]); return { line: x[0], words: o.words, ans: o.ans, full: x[0] + ' ' + x[1] }; }) };
+  },
+  film: function (r, L) {
+    var col = 1 + PARTY_LANGS.indexOf(L), pick = r.sample(PARTY.films, 9);
+    return { rounds: [0, 1, 2].map(function (k) { var f = pick[k * 3], o = shuf3(r, f[col], [pick[k * 3 + 1][col], pick[k * 3 + 2][col]]); return { emo: f[0], words: o.words, ans: o.ans, full: f[col] }; }) };
+  },
+  karaoke: function (r, L) {
+    var lines = r.sample(PARTY[L].karaoke, 6);
+    return { rounds: [0, 1].map(function (k) { var set = lines.slice(k * 3, k * 3 + 3), a = r.int(3); return { lines: set, ans: a, full: set[a] }; }) };
+  },
+  twister: function (r, L) {
+    return { rounds: r.sample(PARTY[L].twister, 2).map(function (x) {
+      var toks = x.split(/\s+/), order = toks.map(function (w, k) { return k; }).sort(function (a, b) { return toks[b].length - toks[a].length || a - b; });
+      var hide = order.slice(0, toks.length > 4 ? 2 : 1).sort(function (a, b) { return a - b; });
+      return { toks: toks, hide: hide, full: x };
+    }) };
+  },
+  safe: function (r) {
+    var nums = [], hi = 59;
+    while (nums.length < 3) { var v = r.range(11, hi); if (nums.indexOf(v) < 0) nums.push(v); }
+    return { nums: nums };
+  },
+  radio: function (r, L) {
+    return { rounds: r.sample(PARTY[L].radio, 3).map(function (set) { var st = r.shuffle(set); return { st: st, ans: r.int(st.length), full: '' }; }).map(function (x) { x.full = x.st[x.ans]; return x; }) };
+  },
+  idiom: function (r, L) {
+    return { rounds: r.sample(PARTY[L].idiom, 3).map(function (x) { var o = shuf3(r, x[2], [x[3], x[4]]); return { idiom: x[0], emo: x[1], words: o.words, ans: o.ans, full: x[0] + ' = ' + x[2] }; }) };
+  },
+  slang: function (r, L) {
+    return { rounds: r.sample(PARTY[L].slang, 2).map(function (x) { var o = shuf3(r, x[1], [x[2], x[3]]); return { msg: x[0], words: o.words, ans: o.ans, dict: x[4].split(';').map(function (p) { var at = p.indexOf('='); return [p.slice(0, at), p.slice(at + 1)]; }), full: x[0] + ' = ' + x[1] }; }) };
+  },
+  rhyme: function (r, L) {
+    return { rounds: r.sample(PARTY[L].rhyme, 2).map(function (x) { var wires = r.shuffle([x[1]].concat(r.sample(x.slice(2), 3))); return { heard: x[0], wires: wires, ans: wires.indexOf(x[1]), full: x[0] + ' – ' + x[1] }; }) };
+  },
+  post: function (r, L) {
+    var pick = r.sample(PARTY.places, 9);
+    return { rounds: [0, 1, 2].map(function (k) { var set = r.shuffle(pick.slice(k * 3, k * 3 + 3)), tgt = pick[k * 3]; return { cards: set.map(function (p) { return { e: p[0], name: p[1][L] }; }), ans: set.indexOf(tgt), desc: tgt[2][L], full: tgt[1][L] + ': ' + tgt[2][L] }; }) };
+  }
+};
+var PARTY_TIME = { song: 110, film: 120, karaoke: 130, twister: 130, safe: 110, radio: 120, idiom: 120, slang: 120, rhyme: 90, post: 110 };
+function makePartySpec(code) {
+  var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
+  var base = hashSeed('lwx:' + code), r = RU(mulberry32(base)), list = partyGames(p.n, r);
+  var modules = list.map(function (t, i) { return { t: t, data: GENP[t](RU(mulberry32((base ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang) }; });
+  var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
+  var r0 = RU(mulberry32(base ^ 0x5bd1e995));
+  return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
+    st: { t: { en: '', hu: '', da: '' }, ex: [], items: [], pairs: [] },
+    serial: genSerial(r0, PACK[p.lang]), batteries: r0.int(4), modules: modules, time: Math.round(secs / 10) * 10, maxStrikes: 3 };
+}
+
 /* every sentence a station uses: the words in it are the ones its flashcards look for */
 function stationTexts(st) {
   var out = st.ex.map(function (s) { return s.replace(/[\[\]]/g, ''); });
@@ -3765,6 +3968,10 @@ PACK.es = {
   win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
   num: esNum
 };
+PACK.en.mod.song = 'Finish the song'; PACK.en.mod.film = 'Emoji films'; PACK.en.mod.karaoke = 'Karaoke'; PACK.en.mod.twister = 'Tongue twister'; PACK.en.mod.safe = 'The safe'; PACK.en.mod.radio = 'Radio'; PACK.en.mod.idiom = 'Idioms'; PACK.en.mod.slang = 'Text slang'; PACK.en.mod.rhyme = 'Rhyme wires'; PACK.en.mod.post = 'Postcards';
+PACK.es.mod.song = 'Termina la canción'; PACK.es.mod.film = 'Pelis en emojis'; PACK.es.mod.karaoke = 'Karaoke'; PACK.es.mod.twister = 'Trabalenguas'; PACK.es.mod.safe = 'La caja fuerte'; PACK.es.mod.radio = 'La radio'; PACK.es.mod.idiom = 'Modismos'; PACK.es.mod.slang = 'Jerga de chat'; PACK.es.mod.rhyme = 'Cables que riman'; PACK.es.mod.post = 'Postales';
+PACK.da.mod.song = 'Syng færdig'; PACK.da.mod.film = 'Emoji-film'; PACK.da.mod.karaoke = 'Karaoke'; PACK.da.mod.twister = 'Tungebrækker'; PACK.da.mod.safe = 'Pengeskabet'; PACK.da.mod.radio = 'Radioen'; PACK.da.mod.idiom = 'Talemåder'; PACK.da.mod.slang = 'Chat-slang'; PACK.da.mod.rhyme = 'Rimledninger'; PACK.da.mod.post = 'Postkort';
+PACK.hu.mod.song = 'Fejezd be a dalt'; PACK.hu.mod.film = 'Emoji-filmek'; PACK.hu.mod.karaoke = 'Karaoke'; PACK.hu.mod.twister = 'Nyelvtörő'; PACK.hu.mod.safe = 'A széf'; PACK.hu.mod.radio = 'Rádió'; PACK.hu.mod.idiom = 'Szólások'; PACK.hu.mod.slang = 'Chat-szleng'; PACK.hu.mod.rhyme = 'Rímelő drótok'; PACK.hu.mod.post = 'Képeslapok';
 PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Hear it'; PACK.en.mod.match = 'Match'; PACK.en.mod.joke = 'Jokes';
 PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Hør efter'; PACK.da.mod.match = 'Par';
 PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Halld'; PACK.hu.mod.match = 'Párosítsd';
@@ -3829,7 +4036,12 @@ var ES_PHRASES = [
     'pair.linked': ['Connected', 'Összekapcsolva', 'Forbundet'],
     'pair.you': ['You choose', 'Te választasz', 'Du vælger'],
     'pair.they': ['Your partner chooses', 'A társad választ', 'Din makker vælger'],
-    'pair.leave': ['Leave', 'Kilépés', 'Forlad']
+    'pair.leave': ['Leave', 'Kilépés', 'Forlad'],
+    'party': ['Party bombs', 'Partibombák', 'Festbomber'],
+    'party.mix': ['Mix', 'Keverék', 'Mix'],
+    'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
+    'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'],
+    'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
   };
   for (var k in add) STR[k] = add[k];
 })();
@@ -3855,11 +4067,12 @@ var ES_PHRASES = [
 <script src="courses/da-c1.js"></script>
 <script src="courses/da-c2.js"></script>
 <script src="courses/gloss-da.js"></script>
+<script src="courses/party.js"></script>
 <script>
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 9;
+  var BUILD = 10;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4203,6 +4416,7 @@ var ES_PHRASES = [
       /* a finished game: the helper's page starts again from the top, and a defused bomb counts for the helper too */
       if (st.over) {
         if (followed && st.over === 'ok' && S.spec.path) { helperDone(); return; }
+        if (followed && st.over === 'ok' && S.spec.party) { var pk = progKey(S.spec); if (!S.prog[pk]) S.prog[pk] = 1; save(); sfx('win'); goHome(); return; }
         S.spec.modules.forEach(function (_, k) { manState(k).step = 0; });
         if (S.tab !== 0 || followed) { S.tab = 0; render(); }
         return;
@@ -4286,6 +4500,7 @@ var ES_PHRASES = [
     S.drawer = null; S.sheet = null; renderDrawer(); linkStop(); stopLoop(); clearTimers(); document.body.classList.remove('boom');
     S.solo = false; S.game = null;
     if (spec.path) { S.sel.course = spec.lang; S.sel.plv = spec.level; save(); play(cur.code, role); return; }
+    if (spec.party) { S.sel.course = spec.lang; save(); play(cur.code, role); return; }
     S.sel.lang = spec.lang; S.sel.level = spec.level; S.sel.mission = spec.mission; save();
     warmUp(spec, { a: role === 'bomb' ? 'get' : 'join' });
   }
@@ -4403,12 +4618,13 @@ var ES_PHRASES = [
     else { if (S.view.focus != null) zoomOut(); st.classList.add('safe'); setTimeout(go, 1600); }
   }
   function explode(why) { var g = S.game; if (g.over) return; g.over = 'boom'; g.why = why; sfx('boom'); if (S.spec.path) { pathLose(); save(); } finish(true); }
-  function progKey(spec) { return spec.path ? spec.code : spec.lang + '-' + spec.mission + '-' + spec.level; }
+  function progKey(spec) { return spec.path ? spec.code : spec.party ? 'X:' + spec.lang + ':' + spec.party : spec.lang + '-' + spec.mission + '-' + spec.level; }
   function defuse() {
     var g = S.game; g.over = 'ok'; sfx('win');
     var stars = g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1, key = progKey(S.spec);
     if (!(S.prog[key] >= stars)) S.prog[key] = stars;
     if (S.spec.path) pathWin(stars);
+    else if (S.spec.party) { addXp(10 + 5 * stars); px().played++; }
     save();
     finish(false);
   }
@@ -5614,6 +5830,311 @@ var ES_PHRASES = [
 
   UI.joke = UI.match;
 
+  /* ===== party bombs: the panels ===== */
+  /* three word buttons in the three colours */
+  function wBtns(i, words, cls, hide) {
+    return '<div class="pobs ' + (cls || '') + '">' + words.map(function (w, k) {
+      return '<button type="button" class="pob c' + k + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '" lang="' + tl() + '">' + kbd(k + 1) + '<span>' + esc(w) + '</span></button>';
+    }).join('') + '</div>';
+  }
+  /* what the helper listens to: the text is written out only when no voice can read it */
+  function earBox(i, key, text, ms, shownText) {
+    var has = Voice.has(), shown = !has || ms.rev[key];
+    return (has ? '<div class="lhelp"><span class="ear" aria-hidden="true">🎧</span>' + HB(i, 'play', key, SPK + t('hear'), 'go') + HB(i, 'slow', key, t('hear.slow')) + '</div>' : '') +
+      (shown ? '<p class="card-big ls" lang="' + tl() + '">' + esc(shownText || text) + '</p>' : '');
+  }
+  function pPos(d, st) { return st.r || 0; }
+  function pRecap(d) { return d.rounds.map(function (x) { return { tx: x.full }; }); }
+  function pickOn(k, v, d, st) {
+    var rd = d.rounds[st.r]; v = +v;
+    if (k !== 'c' || !(v >= 0 && v < 3)) return;
+    if (v !== rd.ans) { st.fb = true; return 'strike'; }
+    st.r++; st.fb = false;
+    return st.r >= d.rounds.length ? 'solved' : 'next';
+  }
+  function pickKey(e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= 3) { modAct(i, 'c', n - 1); return true; } }
+  /* a right answer that shows its animation first, then moves on */
+  function later(i, st, ms) {
+    st.lock = true;
+    setTimeout(function () {
+      var g = S.game; if (!g || g.over || g.ms[i] !== st) return;
+      st.lock = false;
+      var m = S.spec.modules[i], res = UI[m.t].on('adv', null, m.data, st, i);
+      if (res === 'solved') { g.solved[i] = true; renderMod(i); solvedFx(i); } else { sfx('step'); renderMod(i); }
+    }, ms || 750);
+  }
+  function advOn(d, st) { st.r++; st.pick = -1; st.bad = []; return st.r >= d.rounds.length ? 'solved' : 'next'; }
+  function earHelp(textOf) {
+    return {
+      help: function (d, i, ms) {
+        var n = d.rounds ? d.rounds.length : 1, p = Math.min(ms.step || 0, n - 1), x = textOf(d, p);
+        return card(d.rounds ? cnt('n.sentence', p + 1, n) : '', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's' + p, x.say, ms, x.show) + (x.after || '') + stepNav(i, p, n, null, null, true));
+      },
+      onHelp: function (k, v, d, ms, i) {
+        var n = d.rounds ? d.rounds.length : 1;
+        if (stepMove(k, ms, n)) { Voice.stop(); renderHelpBody(); return; }
+        helpCommon(k, v, ms, i, function (key) { var x = textOf(d, +String(key).slice(1)); return x ? x.say : null; });
+      }
+    };
+  }
+  /* emoji clusters: joined emojis (with zero-width joiners) stay together */
+  function emoParts(str) { var out = []; Array.from(str).forEach(function (c) { var cp = c.codePointAt(0), last = out.length ? out[out.length - 1] : ''; if (cp === 0xFE0F || cp === 0x200D || (last && last.codePointAt(last.length - 1) === 0x200D) || (cp >= 0x1F3FB && cp <= 0x1F3FF)) { if (out.length) out[out.length - 1] += c; else out.push(c); } else out.push(c); }); return out; }
+  function ext(o, more) { for (var k in more) o[k] = more[k]; return o; }
+
+  /* 🎵 finish the song: the helper hears the line, the bomb has three records */
+  UI.song = ext({
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<div class="turntable" aria-hidden="true"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>' +
+        '<p class="gp-s' + sizeCls(rd.line) + '" lang="' + tl() + '">' + esc(rd.line) + ' <span class="hole" aria-label="___"></span></p>' +
+        wBtns(i, rd.words, 'rec') + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+
+  /* 🎬 emoji films: the bomb sees emojis, the helper has the titles */
+  UI.film = {
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<div class="reel"><div class="holes" aria-hidden="true"></div><div class="emo">' + rd.emo + '</div><div class="holes" aria-hidden="true"></div></div>' +
+        cBtns(i, 3) + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: pickOn, key: pickKey, keys: function () { return t('keys.col'); }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) { var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1); return card(cnt('n.sentence', p + 1, n), '', cWords(d.rounds[p].words) + stepNav(i, p, n, null, null, true)); },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
+  };
+
+  /* 🎤 karaoke: the helper hears one of three lines, the bomb picks it and sings it */
+  UI.karaoke = ext({
+    init: function () { return { r: 0, picked: false, heard: '', tries: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
+      if (!st.picked) {
+        h += '<div class="kscreen">' + rd.lines.map(function (l, k) {
+          return '<button type="button" class="kline" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '" lang="' + tl() + '"><span class="sw c' + k + '" aria-hidden="true">' + P_SHAPE[k] + '</span><span>' + esc(l) + '</span></button>';
+        }).join('') + '</div>';
+        return h + (st.fb ? fbBad('p.bad') : '');
+      }
+      var ws = rd.full.split(/\s+/), rec = Mic.rec && Mic.at === i;
+      h += '<div class="kscreen big"><p class="ksing" lang="' + tl() + '" style="--n:' + ws.length + '">' + ws.map(function (w, k) { return '<span style="animation-delay:' + (k * 0.45) + 's">' + esc(w) + '</span>'; }).join(' ') + '<i class="kball" aria-hidden="true"></i></p></div>';
+      if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
+      h += '<div class="row kmic">' + '<button type="button" class="key mic big' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>' +
+        (st.tries ? B(i, 'skip', null, '→', 'go') : '') + '</div>';
+      return h;
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      var next = function () { st.r++; st.picked = false; st.heard = ''; st.tries = 0; st.fb = false; return st.r >= d.rounds.length ? 'solved' : 'next'; };
+      if (k === 'c' && !st.picked) {
+        v = +v; if (!(v >= 0 && v < 3)) return;
+        if (v !== rd.ans) { st.fb = true; return 'strike'; }
+        st.fb = false;
+        if (Mic.off) return next();
+        st.picked = true; return 're';
+      }
+      if (k === 'mic' && st.picked) { st.heard = ''; micToggle(i); return; }
+      if (k === 'said' && st.picked) { if (saidRight(v, rd.full.split(/\s+/))) return next(); st.heard = v[0]; st.tries++; return 're'; }
+      if (k === 'skip' && st.picked && st.tries) return next();
+    },
+    key: function (e, d, st, i) { if (!st.picked) return pickKey(e, d, st, i); },
+    keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+
+  /* 👅 tongue twisters: words are missing on the bomb; the helper hears it; the bomb says it or types the missing words */
+  UI.twister = ext({
+    init: function () { return { r: 0, value: '', heard: '', fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], rec = Mic.rec && Mic.at === i;
+      var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="gauge" aria-hidden="true"><i></i></div>' +
+        '<p class="tw-s' + sizeCls(rd.full) + '" lang="' + tl() + '">' + rd.toks.map(function (w, k) {
+          return rd.hide.indexOf(k) >= 0 ? '<span class="blank" style="width:' + Math.max(3, w.length) * 0.62 + 'em"></span>' : esc(w);
+        }).join(' ') + '</p>';
+      if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
+      h += '<div class="row">' + field(i, st.value || '', '⌨', { enter: 'send' }) + '</div>';
+      h += '<div class="row">' + (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
+        B(i, 'send', null, t('ck.check'), 'go wide') + '</div>';
+      return h + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      var next = function () { st.r++; st.value = ''; st.heard = ''; st.fb = false; return st.r >= d.rounds.length ? 'solved' : 'next'; };
+      if (k === 'mic') { st.heard = ''; st.fb = false; micToggle(i); return; }
+      if (k === 'said') { if (saidRight(v, rd.full.split(/\s+/))) return next(); st.heard = v[0]; return 're'; }
+      if (k === 'send') {
+        var got = lsWords(st.value), want = lsWords(rd.hide.map(function (h) { return rd.toks[h]; }).join(' '));
+        if (!got.length) return;
+        if (got.join(' ') === want.join(' ') || lsWords(st.value).join(' ') === lsWords(rd.full).join(' ')) return next();
+        st.fb = true; st.value = ''; return 'strike';
+      }
+    },
+    keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+
+  /* 🔐 the safe: the helper hears three numbers, the bomb turns the dial */
+  function safeDial(st) { return 'transform:rotate(' + (-st.rot * 6) + 'deg)'; }
+  function safePaint(i, st) {
+    var el = document.getElementById('mod-' + i); if (!el) return;
+    var f = el.querySelector('.dial-face'), l = el.querySelector('.lcd b');
+    if (f) f.setAttribute('style', safeDial(st));
+    if (l) l.textContent = (st.v < 10 ? '0' : '') + st.v;
+  }
+  UI.safe = {
+    init: function () { return { k: 0, v: 0, rot: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var ticks = '';
+      for (var n = 0; n < 60; n++) ticks += '<i style="transform:rotate(' + (n * 6) + 'deg)"' + (n % 5 ? '' : ' class="big"') + '>' + (n % 10 ? '' : '<b style="transform:rotate(' + (-n * 6) + 'deg)">' + n + '</b>') + '</i>';
+      var leds = d.nums.map(function (_, k) { return '<i class="' + (k < st.k ? 'on' : k === st.k ? 'now' : '') + '"></i>'; }).join('');
+      return '<div class="safe"><div class="leds" aria-hidden="true">' + leds + '</div><div class="lcd"><b>' + (st.v < 10 ? '0' : '') + st.v + '</b></div>' +
+        '<div class="dial"><div class="dial-face" style="' + safeDial(st) + '">' + ticks + '</div><span class="dial-mark" aria-hidden="true">▼</span><span class="dial-knob" aria-hidden="true"></span></div>' +
+        '<div class="row dialbtns">' + B(i, 'd', -10, '«') + B(i, 'd', -1, '‹') + B(i, 'set', null, '🔓', 'go') + B(i, 'd', 1, '›') + B(i, 'd', 10, '»') + '</div></div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      if (k === 'd') { v = +v; st.rot += v; st.v = ((st.v + v) % 60 + 60) % 60; st.fb = false; sfx('tick'); safePaint(i, st); return; }
+      if (k === 'set') {
+        if (st.v !== d.nums[st.k]) { st.fb = true; return 'strike'; }
+        st.k++; st.fb = false;
+        return st.k >= d.nums.length ? 'solved' : 'next';
+      }
+    },
+    key: function (e, d, st, i) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { modAct(i, 'd', e.shiftKey ? 10 : 1); return true; }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { modAct(i, 'd', e.shiftKey ? -10 : -1); return true; }
+      if (e.key === 'Enter') { modAct(i, 'set'); return true; }
+    },
+    keys: function () { return ''; }, pos: function () { return 0; },
+    recap: function (d) { return [{ tx: d.nums.map(function (n) { return n + ' = ' + PK().num(n); }).join(' · ') }]; },
+    done: function (d) { return learn(UI.safe.recap(d)); },
+    help: function (d, i, ms) { return card('', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.nums.join(' … '), ms, d.nums.map(function (n) { return PK().num(n); }).join(' · '))); },
+    onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function () { return d.nums.join(' … '); }); }
+  };
+
+  /* 📻 radio: the helper hears a word, the bomb tunes through the static until it finds it */
+  var RADIO_STEPS = 20;
+  function radioAt(pos) { return pos >= 2 && (pos - 2) % 4 === 0 ? (pos - 2) / 4 : -1; }
+  function radioScreen(rd, st) {
+    var k = radioAt(st.pos);
+    return '<div class="lcd radio-lcd' + (k < 0 ? ' noise' : '') + '"><small>' + (88 + st.pos).toFixed(1) + ' FM</small><b lang="' + tl() + '">' + (k < 0 ? '∿∿∿∿' : esc(rd.st[k])) + '</b></div>';
+  }
+  function radioPaint(i, st, rd) {
+    var el = document.getElementById('mod-' + i); if (!el) return;
+    var s = el.querySelector('.radio-lcd'), n = el.querySelector('.needle');
+    if (s) s.outerHTML = radioScreen(rd, st);
+    if (n) n.style.left = (100 * st.pos / RADIO_STEPS) + '%';
+  }
+  UI.radio = ext({
+    init: function () { return { r: 0, pos: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], marks = '';
+      for (var p = 0; p <= RADIO_STEPS; p++) marks += '<i style="left:' + (100 * p / RADIO_STEPS) + '%"' + (radioAt(p) >= 0 ? ' class="st"' : '') + '></i>';
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="radio"><div class="grill" aria-hidden="true"></div>' + radioScreen(rd, st) +
+        '<div class="scale" aria-hidden="true">' + marks + '<span class="needle" style="left:' + (100 * st.pos / RADIO_STEPS) + '%"></span></div>' +
+        '<div class="row dialbtns">' + B(i, 'd', -1, '‹') + B(i, 'lock', null, '📻', 'go') + B(i, 'd', 1, '›') + '</div></div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'd') { st.pos = Math.max(0, Math.min(RADIO_STEPS, st.pos + (+v))); st.fb = false; sfx('tick'); radioPaint(i, st, rd); return; }
+      if (k === 'lock') {
+        var at = radioAt(st.pos); if (at < 0) return;
+        if (at !== rd.ans) { st.fb = true; return 'strike'; }
+        st.r++; st.pos = 0; st.fb = false;
+        return st.r >= d.rounds.length ? 'solved' : 'next';
+      }
+    },
+    key: function (e, d, st, i) {
+      if (e.key === 'ArrowRight') { modAct(i, 'd', 1); return true; }
+      if (e.key === 'ArrowLeft') { modAct(i, 'd', -1); return true; }
+      if (e.key === 'Enter') { modAct(i, 'lock'); return true; }
+    },
+    keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+
+  /* 🌧️ idioms: the bomb sees the idiom as a picture, the helper has the meanings */
+  UI.idiom = {
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], parts = emoParts(rd.emo);
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<div class="iscene" aria-hidden="true">' + parts.map(function (c, k) { return '<span style="animation-delay:' + (k * 0.25) + 's">' + c + '</span>'; }).join('') + '</div>' +
+        '<p class="idm" lang="' + tl() + '">' + TW(rd.idiom, rd.idiom) + '</p>' + cBtns(i, 3) + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: pickOn, key: pickKey, keys: function () { return t('keys.col'); }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) { var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1); return card(cnt('n.sentence', p + 1, n), '', cWords(d.rounds[p].words) + stepNav(i, p, n, null, null, true)); },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
+  };
+
+  /* 📱 text slang: a chat message on the bomb, the slang list with the helper */
+  UI.slang = {
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<div class="phone"><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="msg" lang="' + tl() + '">' + esc(rd.msg) + '</span></div></div>' +
+        wBtns(i, rd.words, 'reply') + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) {
+      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1);
+      return card(cnt('n.sentence', p + 1, n), '', '<dl class="slangd" lang="' + tl() + '">' + d.rounds[p].dict.map(function (x) { return '<dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd>'; }).join('') + '</dl>' + stepNav(i, p, n, null, null, true));
+    },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
+  };
+
+  /* ✂️ rhyme wires: the helper hears a word, the bomb cuts the wire that rhymes with it */
+  UI.rhyme = ext({
+    init: function () { return { r: 0, pick: -1, bad: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="rwires">' + rd.wires.map(function (w, k) {
+        var cut = st.pick === k, bad = st.bad.indexOf(k) >= 0;
+        return '<button type="button" class="rw w' + k + (cut ? ' cut' : '') + (bad ? ' zap' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (cut || st.lock ? ' disabled' : '') + '>' +
+          '<span class="rw-a"></span><span class="rw-tag" lang="' + tl() + '">' + esc(w) + '</span><span class="rw-b"></span>' + (cut ? '<span class="spark" aria-hidden="true">✦</span>' : '') + '</button>';
+      }).join('') + '</div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') return advOn(d, st);
+      if (k !== 'c' || st.lock) return; v = +v; if (!(v >= 0 && v < rd.wires.length)) return;
+      if (v !== rd.ans) { if (st.bad.indexOf(v) < 0) st.bad.push(v); st.fb = true; return 'strike'; }
+      st.pick = v; st.fb = false; sfx('tick'); later(i, st, 800); return 're';
+    },
+    key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= 4) { modAct(i, 'c', n - 1); return true; } },
+    keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.heard }; }));
+
+  /* 🗼 postcards: the helper hears about a place, the bomb picks its postcard */
+  UI.post = ext({
+    init: function () { return { r: 0, pick: -1, bad: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="pcards">' + rd.cards.map(function (c, k) {
+        return '<button type="button" class="pcard p' + k + (st.pick === k ? ' flip' : '') + (st.bad.indexOf(k) >= 0 ? ' no' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (st.lock ? ' disabled' : '') + '>' +
+          '<span class="pc-f"><span class="pc-e" aria-hidden="true">' + c.e + '</span><b lang="' + tl() + '">' + esc(c.name) + '</b><i class="stamp" aria-hidden="true"></i></span><span class="pc-b" aria-hidden="true">✓</span></button>';
+      }).join('') + '</div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') return advOn(d, st);
+      if (k !== 'c' || st.lock) return; v = +v; if (!(v >= 0 && v < rd.cards.length)) return;
+      if (v !== rd.ans) { if (st.bad.indexOf(v) < 0) st.bad.push(v); st.fb = true; return 'strike'; }
+      st.pick = v; st.fb = false; later(i, st, 900); return 're';
+    },
+    key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); }
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.desc }; }));
+
+
   /* ---------- the path screen ---------- */
   var FLAG = { en: '🇬🇧', es: '🇪🇸', da: '🇩🇰' };
   var ICON_FIRE = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 2c1 4 5 5.5 5 11a5 5 0 0 1-10 0c0-2.5 1.2-4 2.5-5 .2 2 1 3 2 3.5C11 9 11 5 12 2z" fill="currentColor"/></svg>';
@@ -5642,7 +6163,7 @@ var ES_PHRASES = [
     }).join('');
     var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
       '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>' +
-      pairBig() +
+      pairBig() + (PARTY_LANGS.indexOf(L) >= 0 ? partyBig() : '') +
       '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button><button type="button" class="pbtn sm" data-a="snake">🐍 ' + t('p.snake') + '</button></div>';
     var Lv = C[lv - 1];
     if (!Lv) return h + '</div>';
@@ -5675,7 +6196,32 @@ var ES_PHRASES = [
   }
 
   /* ---------- the station card that slides up from below ---------- */
+  function partySheet() {
+    var p = parsePartyCode(S.sheet); if (!p) return '';
+    var g = PARTY_GAMES[p.n - 1], name = g ? PACK[p.lang].mod[g] : t('party.mix');
+    return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
+      '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
+      (pairFollower() ? pairWaitHTML() + '</aside>' :
+      '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
+      '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
+      (pairOn() ? '' : '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button>') + '</div></aside>');
+  }
+  /* ---------- the party screen: ten games, and a mix ---------- */
+  function partyStars(L, n) { return S.prog['X:' + L + ':' + n] || 0; }
+  function viewParty() {
+    var L = PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en';
+    var courses = PARTY_LANGS.map(function (c) { return '<button type="button" data-a="course" data-v="' + c + '" aria-pressed="' + (L === c) + '" lang="' + c + '"><span aria-hidden="true">' + FLAG[c] + '</span>' + PACK[c].name + '</button>'; }).join('');
+    var h = '<div class="party"><div class="course" role="group">' + courses + '</div>' + pairBig() + '<h1><span aria-hidden="true">🎉</span>' + t('party') + '</h1><div class="pgrid">';
+    PARTY_GAMES.forEach(function (g, k) {
+      var st = partyStars(L, k + 1);
+      h += '<button type="button" class="pgame g' + (k + 1) + '" data-a="pnode" data-v="' + (k + 1) + '" style="animation-delay:' + (k * 0.04) + 's" lang="' + L + '"><span class="pi" aria-hidden="true">' + PARTY_ICON[g] + '</span>' + esc(PACK[L].mod[g]) + (st ? '<span class="pst" aria-label="' + st + ' / 3">' + stars3(st) + '</span>' : '') + '</button>';
+    });
+    h += '<button type="button" class="pgame mix" data-a="pnode" data-v="' + (PARTY_GAMES.length + 1) + '"><span class="pi" aria-hidden="true">🎲</span>' + t('party.mix') + '</button></div></div>';
+    return h;
+  }
+  function partyBig() { return '<button type="button" class="partybig" data-a="party"><span class="pb-i" aria-hidden="true">🎉</span><b>' + t('party') + '</b><span class="pb-go" aria-hidden="true">→</span></button>'; }
   function sheetHTML() {
+    if (/^X:/.test(String(S.sheet || ''))) return partySheet();
     var p = parsePathCode(S.sheet), st = p && stationOf(p.lang, p.lv, p.n); if (!st) return '';
     var stars = starsOf(S.sheet), due = cardsFor(makeStationSpec(S.sheet)).length;
     var ex = st.ex[0] || (st.items[0] && st.items[0].full) || '';
@@ -5750,7 +6296,7 @@ var ES_PHRASES = [
   }
 
   /* ---------- launching a station: the warm-up, the word cards, then the bomb or the helper's page ---------- */
-  function play(code, role) { var spec = makeSpec(code); if (!spec) return; S.sheet = null; renderDrawer(); warmUp(spec, { path: true, code: code, role: role }); }
+  function play(code, role) { var spec = makeSpec(code); if (!spec) return; S.sheet = null; renderDrawer(); if (spec.party) { stopLoop(); clearTimers(); go(code, role); return; } warmUp(spec, { path: true, code: code, role: role }); }
   function play2(code, role) {
     var spec = makeSpec(code); if (!spec) return;
     S.sheet = null; renderDrawer();
@@ -6027,7 +6573,7 @@ var ES_PHRASES = [
       '';
   }
 
-  function bombTag(spec) { if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
+  function bombTag(spec) { if (spec.party) return '🎉' + (spec.party > PARTY_GAMES.length ? '?' : spec.party); if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
   function openCode() {
     var spec = makeSpec(S.codeInput);
     if (!spec) { S.codeErr = true; render(); return; }
@@ -6174,7 +6720,7 @@ var ES_PHRASES = [
       return '<button type="button" role="tab" id="tab-' + i + '" class="tab' + (S.tab === i ? ' on' : '') + '" aria-selected="' + (S.tab === i) + '" data-a="tab" data-v="' + i + '"><small>' + t('help.task', i + 1) + '</small>' + TT(modName(m.t), 'b') + (ui() !== tl() ? '<small>' + modNameUi(m.t) + '</small>' : '') + '</button>';
     }).join('');
     var side = sideHTML(S.tab), after = afterHTML(S.tab);
-    return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + (spec.path ? CEFR[spec.level - 1] + ' · ' + esc(spec.st.t[ui()] || spec.st.t.en) : LEVELS[spec.level - 1]) + '</p>' +
+    return '<div class="manual' + (side ? ' wide' : '') + '"><header class="man-h"><h1>' + t('help.title') + '</h1><p class="man-sub">' + cap(t('lang.' + spec.lang)) + ' ' + (spec.path ? CEFR[spec.level - 1] + ' · ' + esc(spec.st.t[ui()] || spec.st.t.en) : spec.party ? '🎉 ' + spec.modules.map(function (m) { return esc(modName(m.t)); }).join(' + ') : LEVELS[spec.level - 1]) + '</p>' +
       '<div class="man-code"><span class="lbl">' + t('hud.code') + '</span><b>' + bombTag(spec) + '</b></div></header>' +
       dots + '<div class="man-cols' + (side ? ' two' : '') + '" id="man-cols">' +
       '<article class="chapter" id="man-body">' + chapterHTML(S.tab) + '</article>' + nav +
@@ -6203,7 +6749,22 @@ var ES_PHRASES = [
   }
 
   /* ---------- result ---------- */
+  function viewPartyResult() {
+    var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok';
+    var stars = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, all = [];
+    spec.modules.forEach(function (m, i) { all = all.concat(UI[m.t].recap(m.data, g.ms[i])); });
+    var starH = ''; for (var k = 0; k < 3; k++) starH += '<i class="' + (k < stars ? 'on' : '') + '" style="animation-delay:' + (0.35 + k * 0.18) + 's">★</i>';
+    return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">🎉 ' + spec.modules.map(function (m) { return esc(modName(m.t)); }).join(' + ') + '</p>' +
+      '<h1 data-fit lang="' + spec.lang + '">' + (ok ? P.win : P.boom) + '</h1>' +
+      (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
+      '<div class="ctas">' + (pairFollower() ? pairWaitHTML() :
+        (ok && spec.party <= PARTY_GAMES.length ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
+        '<button type="button" class="' + (ok && spec.party <= PARTY_GAMES.length ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
+      '<button type="button" class="hb big" data-a="party">🎉 ' + t('party') + '</button></div>' +
+      (all.length ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + learn(all) + '</section></div>' : '') + '</div>';
+  }
   function viewResult() {
+    if (S.spec.party) return viewPartyResult();
     if (S.spec.path) return viewPathResult();
     var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok';
     var st = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, recap = '';
@@ -6269,8 +6830,8 @@ var ES_PHRASES = [
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' || S.screen === 'snake' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'snake' && S.sn ? viewSnake() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'party' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' || S.screen === 'snake' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'party' ? viewParty() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'snake' && S.sn ? viewSnake() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -6299,6 +6860,7 @@ var ES_PHRASES = [
   try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); } catch (e) {}
   function goHome() {
     linkStop();
+    if (S.spec && S.spec.party && S.screen !== 'party') { stopLoop(); clearTimers(); micStop(); document.body.classList.remove('boom'); S.game = null; S.spec = null; S.solo = false; S.screen = 'party'; render(); window.scrollTo(0, 0); return; }
     if (S.spec && S.spec.path && S.screen !== 'home' && S.screen !== 'classic') { goPath(); return; }
     var back = S.spec && !S.spec.path && S.screen !== 'home' && S.screen !== 'classic' ? 'classic' : 'home';
     stopLoop(); clearTimers(); document.body.classList.remove('boom'); S.game = null; S.spec = back === 'home' ? null : S.spec; S.screen = back; S.solo = false; S.fc = null; render(); window.scrollTo(0, 0);
@@ -6350,7 +6912,7 @@ var ES_PHRASES = [
       }
       case 'home': goHome(); break;
       case 'brand': if (S.screen === 'bomb' && g && !g.over) { g.quitAsk = true; paintToolbar(); } else if (S.screen !== 'home') goHome(); break;
-      case 'course': S.sel.course = ds.v; S.sel.plv = 0; save(); render(); scrollToNode(); break;
+      case 'course': S.sel.course = ds.v; S.sel.plv = 0; save(); render(); if (S.screen === 'home') scrollToNode(); break;
       case 'plv': S.sel.plv = +ds.v; save(); rerenderKeep('[data-a="plv"][data-v="' + ds.v + '"]'); window.scrollTo(0, 0); break;
       case 'node': openSheet(ds.v); break;
       case 'ptest': ptStart(); break;
@@ -6374,6 +6936,8 @@ var ES_PHRASES = [
       case 'sn-peek': S.sn.peek = !S.sn.peek; render(); break;
       case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
+      case 'party': if (PARTY_LANGS.indexOf(S.sel.course) < 0) S.sel.course = 'en'; S.screen = 'party'; S.spec = null; S.game = null; render(); window.scrollTo(0, 0); break;
+      case 'pnode': openSheet(partyCode(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
       case 'help-done': helperDone(); break;
       case 'pcont': goPath(); break;
       case 'pnext': { if (pairFollower()) break; var nc = nextCode(S.spec.code); S.justOpen = null; if (!S.solo) pairLead(nc, 'bomb'); play(nc, S.solo ? 'solo' : 'bomb'); break; }
@@ -6386,8 +6950,12 @@ var ES_PHRASES = [
         /* alone on one screen: the helper's cards open at the step the bomb is on */
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
-      case 'next': if (pairFollower()) break; if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
-      case 'again': if (pairFollower()) break; if (!S.solo) pairLead(S.spec.code, 'bomb'); if (S.spec.path) { launch(makeSpec(S.spec.code), S.solo); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
+      case 'next': if (pairFollower()) break;
+        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyCode(pp.lang, pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
+        if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
+      case 'again': if (pairFollower()) break;
+        if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyCode(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }
+        if (!S.solo) pairLead(S.spec.code, 'bomb'); if (S.spec.path) { launch(makeSpec(S.spec.code), S.solo); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
       case 'sfx': S.set.sfx = !!el.checked; save(); if (S.set.sfx) sfx('step'); break;
       case 'voice': S.set.voice = el.value; save(); voiceChanged(); break;
       case 'voice-test': Voice.speak(PK().hello, 1).then(function (ok) { if (!ok) voiceChanged(); }); break;
@@ -6526,6 +7094,9 @@ var ES_PHRASES = [
   }
   function boot(data) {
     load(); Voice.init(); pairRestore();
+    /* used by the automated play-through tests to stand in for the microphone */
+    window.__modSaid = function (i, alts) { modAct(i, 'said', alts); };
+    window.__curCode = function () { return S.spec ? S.spec.code : null; };
     try { restore(data); } catch (e) { S.screen = 'home'; S.game = null; S.spec = null; }
     render();
   }
