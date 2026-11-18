@@ -883,6 +883,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .pair-wait{border:0;background:none;color:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:26px;padding:14px;min-height:56px}
 .song-t{text-align:center}
 .artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
+.mysongs textarea{width:100%;min-height:110px;font:inherit;font-size:15px;padding:10px;resize:vertical}
 .pair-diag{font-size:11px;color:#aaa;text-align:center;margin:0}
 .pair-wait .pw-t{font-size:17px;font-weight:700}
 .pair-wbox{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
@@ -3888,13 +3889,16 @@ var PARTY_LANGS = ['en', 'es', 'da'];
    the offsets say how far each game has got through its content, so the next bomb brings new things. Both phones get the same code. */
 function partyCode(lang, n, seed) { return 'X:' + lang + ':' + n + ':' + (seed == null ? Math.floor(Math.random() * 9000) + 1000 : seed); }
 function parsePartyCode(code) {
-  var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})(?::(\d{1,4}(?:\.\d{1,4}){0,2}))?$/.exec(String(code || ''));
+  var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})(?::(\d{1,4}(?:\.\d{1,4}){0,2}))?(?::h([a-z0-9]{1,9}))?$/.exec(String(code || ''));
   if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || !(+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1)) return null;
-  return { lang: m[1], n: +m[2], seed: +m[3], offs: m[4] ? m[4].split('.').map(Number) : [], base: 'X:' + m[1] + ':' + m[2] + ':' + m[3] };
+  return { lang: m[1], n: +m[2], seed: +m[3], offs: m[4] ? m[4].split('.').map(Number) : [], h: m[5] || '', base: 'X:' + m[1] + ':' + m[2] + ':' + m[3] };
 }
 function partyGames(n, r) {
   if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
-  return r.sample(PARTY_GAMES, 3);
+  var mix = r.sample(PARTY_GAMES.filter(function (g) { return g !== 'karaoke'; }), 3);
+  /* the song and the karaoke share their lines, so a mix holds at most one of them */
+  if (mix.indexOf('song') < 0 && r.chance(0.3)) mix[r.int(3)] = 'karaoke';
+  return mix;
 }
 /* the games a code holds, worked out before its offsets are known */
 function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))) : []; }
@@ -3911,6 +3915,29 @@ function deckTake(key, pool, off, k) {
   }
   return out;
 }
+/* 🎵 my songs: lines a player pastes in settings. They stay on that device; in a paired game the leader's
+   phone hands them to the other phone over the direct line, and the code carries a fingerprint so both match. */
+var MYSONG_KEY = 'last-wire-mysongs', SONG_BANK = {};
+function mySongs(L) { try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}'); return (o && Array.isArray(o[L]) ? o[L] : []).filter(function (x) { return typeof x === 'string' && x.trim().split(/\s+/).length >= 3; }).slice(0, 200); } catch (e) { return []; } }
+function songHash(lines) { return lines.length ? hashSeed('lwsongs:' + lines.join('\n')).toString(36) : ''; }
+/* a pasted line becomes a song row: the longest word in the middle goes missing; the two wrong words come from other lines */
+function songRow(line, k, all) {
+  var ws = line.trim().split(/\s+/), core = function (w) { return w.replace(/^[^\wÀ-ÿ']+|[^\wÀ-ÿ']+$/g, ''); };
+  var best = -1, bl = 0;
+  ws.forEach(function (w, i) { var c = core(w), edge = i === 0 || i === ws.length - 1 ? 0.5 : 1; if (c.length * edge > bl) { bl = c.length * edge; best = i; } });
+  var word = core(ws[best]), lead = ws[best].slice(0, ws[best].indexOf(word)), tail = ws[best].slice(ws[best].indexOf(word) + word.length);
+  ws[best] = lead + '[' + word + ']' + tail;
+  var pool = [], seen = {}; seen[word.toLowerCase()] = 1;
+  all.concat(['love', 'night', 'heart', 'dream', 'light', 'baby', 'dance']).forEach(function (l) { l.split(/\s+/).forEach(function (w) { var c = core(w); if (c.length >= 3 && !seen[c.toLowerCase()]) { seen[c.toLowerCase()] = 1; pool.push(c); } }); });
+  pool.sort(function (a, b) { return Math.abs(a.length - word.length) - Math.abs(b.length - word.length) || (hashSeed(a + k) % 7) - (hashSeed(b + k) % 7); });
+  return ['🎵', ws.join(' '), pool[0] || 'love', pool[1] || 'night'];
+}
+/* the song list a bomb uses: the built-in songs, plus the pasted ones that match the code's fingerprint */
+function songPool(L, h) {
+  var base = PARTY[L].song, lines = null;
+  if (h) { var own = mySongs(L); lines = songHash(own) === h ? own : SONG_BANK[h] || null; }
+  return lines ? base.concat(lines.map(function (l, k) { return songRow(l, k, lines); })) : base;
+}
 function shuf3(r, right, wrongs) {
   var opts = [right].concat(wrongs.slice(0, 2)), perm = r.shuffle([0, 1, 2]);
   return { words: perm.map(function (k) { return opts[k]; }), ans: perm.indexOf(0) };
@@ -3919,11 +3946,11 @@ function shuf3(r, right, wrongs) {
 function gapParts(s) { var m = /^(.*?)\[(.+?)\](.*)$/.exec(s); return m ? { pre: m[1], word: m[2], post: m[3], plain: m[1] + m[2] + m[3] } : { pre: s, word: '', post: '', plain: s }; }
 function others(r, pool, not, k) { return r.sample(pool.filter(function (_, i) { return not.indexOf(i) < 0; }), k); }
 var GENP = {
-  song: function (r, L, off) {
-    var pool = PARTY[L].song;
+  song: function (r, L, off, h) {
+    var pool = songPool(L, h);
     return { rounds: deckTake(L + ':song', pool, off, 3).map(function (i) {
       var x = pool[i], g = gapParts(x[1]), o = shuf3(r, g.word, [x[2], x[3]]);
-      return { artist: x[0], pre: g.pre, post: g.post, words: o.words, ans: o.ans, full: x[4], title: g.plain };
+      return { song: x[0], pre: g.pre, post: g.post, words: o.words, ans: o.ans, full: g.plain, title: g.plain };
     }) };
   },
   film: function (r, L, off) {
@@ -3933,8 +3960,8 @@ var GENP = {
       return { emo: f[0], words: o.words, ans: o.ans, full: f[col] };
     }) };
   },
-  karaoke: function (r, L, off) {
-    var pool = PARTY[L].karaoke;
+  karaoke: function (r, L, off, h) {
+    var pool = songPool(L, h).map(function (x) { return gapParts(x[1]).plain; });
     return { rounds: deckTake(L + ':karaoke', pool, off, 2).map(function (i) {
       var set = r.shuffle([pool[i]].concat(others(r, pool, [i], 2)));
       return { lines: set, ans: set.indexOf(pool[i]), full: pool[i] };
@@ -3988,7 +4015,7 @@ var PARTY_TIME = { song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, 
 function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
   var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
-  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, p.offs[i] || 0) }; });
+  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, p.offs[i] || 0, p.h) }; });
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
   var r0 = RU(mulberry32(base ^ 0x5bd1e995));
   return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
@@ -4096,6 +4123,7 @@ var ES_PHRASES = [
     'pair.they': ['Your partner chooses', 'A társad választ', 'Din makker vælger'],
     'pair.leave': ['Leave', 'Kilépés', 'Forlad'],
     'pair.alone': ['Play alone', 'Egyedül játszom', 'Spil alene'],
+    'set.songs': ['My songs (one line each)', 'Saját dalok (soronként egy)', 'Mine sange (én linje hver)'],
     'party': ['Party bombs', 'Partibombák', 'Festbomber'],
     'party.mix': ['Mix', 'Keverék', 'Mix'],
     'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
@@ -4132,7 +4160,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 15;
+  var BUILD = 16;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4673,6 +4701,7 @@ var ES_PHRASES = [
   /* the follower takes the other role on the station the leader chose */
   function pairFollow(cur, soft) {
     if (!cur || !cur.code) return;
+    if (cur.songs && cur.songs.length) { var hh = songHash(cur.songs); SONG_BANK[hh] = cur.songs; }
     if (soft === 'ping' && (cur.n === PAIR.done || Date.now() - cur.n > 15 * 60 * 1000)) return;
     if (soft && cur.n === PAIR.done && S.screen !== 'home' && S.screen !== 'classic') return;
     var spec = makeSpec(cur.code); if (!spec) return;
@@ -4688,7 +4717,9 @@ var ES_PHRASES = [
   /* the leader's choice goes to the other phone */
   function pairLead(code, role) {
     if (!pairLeader() || !code) return;
-    PAIR.cur = { code: code, role: role, n: Date.now() }; pairSave();
+    PAIR.cur = { code: code, role: role, n: Date.now() };
+    var pp = parsePartyCode(code); if (pp && pp.h && songHash(mySongs(pp.lang)) === pp.h) PAIR.cur.songs = mySongs(pp.lang);
+    pairSave();
     pairPost({ k: 'go', cur: PAIR.cur });
   }
   function pairStart(room, lead, me) {
@@ -6073,7 +6104,7 @@ var ES_PHRASES = [
       var rd = d.rounds[st.r];
       return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
         '<div class="turntable" aria-hidden="true"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>' +
-        '<p class="artist">🎤 ' + esc(rd.artist) + '</p><p class="gp-s song-t' + sizeCls(rd.title) + '" lang="' + tl() + '">' + esc(rd.pre) + '<span class="hole" aria-label="___"></span>' + esc(rd.post) + '</p>' +
+        '<p class="artist">' + (rd.song === '🎵' ? '🎵' : '🎵 ' + esc(rd.song)) + '</p><p class="gp-s song-t' + sizeCls(rd.title) + '" lang="' + tl() + '">' + esc(rd.pre) + '<span class="hole" aria-label="___"></span>' + esc(rd.post) + '</p>' +
         wBtns(i, rd.words, 'rec') + (st.fb ? fbBad('p.bad') : '');
     },
     on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
@@ -6483,7 +6514,10 @@ var ES_PHRASES = [
   /* ---------- launching a station: the warm-up, the word cards, then the bomb or the helper's page ---------- */
   /* party bombs remember how far each game has got, so the next bomb brings content not seen yet */
   function deckN(L, g) { var d = S.prog._deck; return d && d[L + ':' + g] || 0; }
-  function partyNew(L, n) { var base = partyCode(L, n); return base + ':' + partyList(base).map(function (g) { return deckN(L, g); }).join('.'); }
+  function partyNew(L, n) {
+    var base = partyCode(L, n), list = partyList(base), h = songHash(mySongs(L));
+    return base + ':' + list.map(function (g) { return deckN(L, g); }).join('.') + (h && (list.indexOf('song') >= 0 || list.indexOf('karaoke') >= 0) ? ':h' + h : '');
+  }
   function deckBump(spec) {
     if (!S.prog._deck || typeof S.prog._deck !== 'object') S.prog._deck = {};
     spec.modules.forEach(function (m) { var k = spec.lang + ':' + m.t; if (!(S.prog._deck[k] > m.off)) S.prog._deck[k] = (m.off || 0) + 1; });
@@ -7035,7 +7069,14 @@ var ES_PHRASES = [
       opt('off', t('set.v.off'), '') + '</fieldset>' +
       '<div class="vstat"><p>' + (Voice.has(L) ? t('set.v.now', PACK[L].name, Voice.label(L)) : t('set.v.nonow', t('lang.' + L))) + '</p>' +
       (Voice.has(L) ? '<button type="button" class="pbtn" data-a="voice-test">' + t('set.v.test') + '</button>' : '') + '</div>' +
+      mySongsBox() +
       '<p class="ver">' + t('set.ver', BUILD) + '</p>';
+  }
+  function mySongsBox() {
+    var L = PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en';
+    return '<label class="field mysongs"><span class="flabel">🎵 ' + FLAG[L] + ' ' + t('set.songs') + '</span>' +
+      '<textarea class="sel" id="mysongs" data-l="' + L + '" rows="5" lang="' + L + '" spellcheck="false">' + esc(mySongs(L).join('\n')) + '</textarea>' +
+      '<span class="gl" id="mysongs-n">' + mySongs(L).length + '</span></label>';
   }
   function renderDrawer() {
     var el = $('#overlay');
@@ -7220,6 +7261,11 @@ var ES_PHRASES = [
   document.addEventListener('input', function (e) {
     var el = e.target; if (!el) return;
     if (el.id === 'sn-in') { snTyped(el); return; }
+    if (el.id === 'mysongs') {
+      try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}') || {}; o[el.getAttribute('data-l')] = el.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean).slice(0, 200); localStorage.setItem(MYSONG_KEY, JSON.stringify(o)); } catch (e) {}
+      var nn = document.getElementById('mysongs-n'); if (nn) nn.textContent = mySongs(el.getAttribute('data-l')).length;
+      return;
+    }
     if (el.id === 'pair-in') { var pv = el.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4); if (pv !== el.value) el.value = pv; return; }
     if (el.id === 'code-in') {
       S.codeInput = el.value.replace(/\D/g, '').slice(0, 4); el.value = S.codeInput;
