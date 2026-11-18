@@ -881,6 +881,8 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .wdots i:nth-child(2){animation-delay:.2s}.wdots i:nth-child(3){animation-delay:.4s}
 @keyframes wdot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-5px)}}
 .pair-wait{border:0;background:none;color:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:26px;padding:14px;min-height:56px}
+.pair-wait .pw-t{font-size:17px;font-weight:700}
+.pair-wbox{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
 .node.done:after{content:"↻";position:absolute;right:-4px;bottom:-6px;width:24px;height:24px;border-radius:50%;background:#fff;color:#E0A100;font:900 15px/24px system-ui,sans-serif;box-shadow:0 2px 0 #E0A100;text-shadow:none}
 .node-w.cur .node::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:5px solid var(--uc);opacity:.35;animation:pulse 1.6s ease-out infinite}
 .bubble{position:absolute;bottom:calc(100% + 14px);left:50%;background:#fff;border:2px solid #e5e5e5;color:var(--uc);font-weight:900;text-transform:uppercase;letter-spacing:.05em;padding:7px 14px;border-radius:12px;white-space:nowrap;z-index:3;animation:bob 1.3s ease-in-out infinite;box-shadow:0 3px 0 #e5e5e5}
@@ -4037,6 +4039,7 @@ var ES_PHRASES = [
     'pair.you': ['You choose', 'Te választasz', 'Du vælger'],
     'pair.they': ['Your partner chooses', 'A társad választ', 'Din makker vælger'],
     'pair.leave': ['Leave', 'Kilépés', 'Forlad'],
+    'pair.alone': ['Play alone', 'Egyedül játszom', 'Spil alene'],
     'party': ['Party bombs', 'Partibombák', 'Festbomber'],
     'party.mix': ['Mix', 'Keverék', 'Mix'],
     'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
@@ -4072,7 +4075,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 10;
+  var BUILD = 11;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4449,6 +4452,11 @@ var ES_PHRASES = [
   function pairOn() { return !!PAIR; }
   function pairFollower() { return !!PAIR && !PAIR.lead; }
   function pairLeader() { return !!PAIR && PAIR.lead; }
+  /* the other phone counts as here only while it keeps saying so */
+  var PAIR_LIVE = 45000;
+  function pairLive() { return !!PAIR && PAIR.peer && Date.now() - (PAIR.seen || 0) < PAIR_LIVE; }
+  /* a follower waits for the leader only while the leader is really there */
+  function pairBlocked() { return pairFollower() && pairLive(); }
   function pairPost(m) {
     if (!PAIR || typeof fetch !== 'function') return;
     m.c = PAIR.room; m.by = PAIR.me; m.id = PAIR.me + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
@@ -4457,11 +4465,17 @@ var ES_PHRASES = [
   function pairStop() {
     if (PL.es) { try { PL.es.close(); } catch (e) {} } PL.es = null;
     if (PL.poll) clearInterval(PL.poll); PL.poll = null;
+    if (PL.ping) clearInterval(PL.ping); PL.ping = null;
   }
   function pairListen() {
     pairStop();
     var room = PAIR.room, url = LINK_URL + pairTopic(), errs = 0;
     PL.since = Math.floor(Date.now() / 1000) - 5; PL.ids = {};
+    PL.ping = setInterval(function () {
+      if (!PAIR || PAIR.room !== room) return;
+      pairPost({ k: 'ping' });
+      if (PAIR.peer && !pairLive()) { PAIR.peer = false; pairPaint(); }
+    }, 15000);
     function take(m) {
       var x; if (!m || m.event !== 'message' || PL.ids[m.id] || !PAIR || PAIR.room !== room) return; PL.ids[m.id] = 1;
       if (m.time) PL.since = Math.max(PL.since, m.time);
@@ -4484,7 +4498,8 @@ var ES_PHRASES = [
     var was = PAIR.peer;
     /* the leader left: the other phone is free again */
     if (x.k === 'bye') { if (x.lead && !PAIR.lead) { pairStop(); PAIR = null; pairSave(); pairPaint(); return; } PAIR.peer = false; pairPaint(); return; }
-    PAIR.peer = true;
+    PAIR.peer = true; PAIR.seen = Date.now();
+    if (x.k === 'ping') { if (!was) pairPaint(); return; }
     if (x.k === 'hi') pairPost(PAIR.lead ? { k: 'here', cur: PAIR.cur } : { k: 'here' });
     if (!PAIR.lead && x.cur && (x.k === 'go' || x.k === 'here' || x.k === 'hi')) pairFollow(x.cur, x.k !== 'go');
     if (!was) { sfx('ok'); setTimeout(function () { if (S.drawer === 'pair' && PAIR && PAIR.peer) { S.drawer = null; renderDrawer(); } }, 1400); }
@@ -4532,19 +4547,19 @@ var ES_PHRASES = [
   var ICON_PAIR = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="8.5" cy="8" r="3.4" fill="currentColor"/><circle cx="16.5" cy="9" r="2.8" fill="currentColor" opacity=".75"/><path d="M2 20c0-3.8 2.9-6.4 6.5-6.4S15 16.2 15 20z" fill="currentColor"/><path d="M14.6 14.2c.6-.2 1.2-.3 1.9-.3 3 0 5.5 2.2 5.5 5.6h-5.4" fill="currentColor" opacity=".75"/></svg>';
   function pairChip() {
     if (!PAIR) return '<button type="button" class="bar-b ico pair-chip" data-a="drawer" data-v="pair" aria-label="' + esc(t('pair.title')) + '" title="' + esc(t('pair.title')) + '">' + ICON_PAIR + '</button>';
-    return '<button type="button" class="bar-b pair-chip on' + (PAIR.peer ? ' live' : '') + '" data-a="drawer" data-v="pair" aria-label="' + esc(t('pair.title') + ' ' + PAIR.room) + '"><i class="pdot" aria-hidden="true"></i>' + (PAIR.lead ? '<span aria-hidden="true">👑</span>' : '') + '<b>' + PAIR.room + '</b></button>';
+    return '<button type="button" class="bar-b pair-chip on' + (pairLive() ? ' live' : '') + '" data-a="drawer" data-v="pair" aria-label="' + esc(t('pair.title') + ' ' + PAIR.room) + '"><i class="pdot" aria-hidden="true"></i>' + (PAIR.lead ? '<span aria-hidden="true">👑</span>' : '') + '<b>' + PAIR.room + '</b></button>';
   }
   function pairPaint() {
     var c = document.querySelector('.bar .pair-chip'); if (c) c.outerHTML = pairChip();
     var pb = document.querySelector('.pairbig'); if (pb) pb.outerHTML = pairBig();
     if (S.drawer === 'pair') { var d = document.querySelector('.drawer .pair'); if (d) d.outerHTML = pairHTML(); }
     if (S.sheet) renderDrawer();
-    if (S.screen === 'result' && S.spec) { var w = document.querySelector('.ctas'); if (w && pairFollower() !== !!document.querySelector('.ctas .pair-wait')) render(); }
+    if (S.screen === 'result' && S.spec) { var w = document.querySelector('.ctas'); if (w && pairBlocked() !== !!document.querySelector('.ctas .pair-wait')) render(); }
   }
   /* the big "Play together" button at the top of the start page */
   function pairBig() {
     if (!PAIR) return '<button type="button" class="pairbig" data-a="drawer" data-v="pair">' + ICON_PAIR + '<b>' + t('pair.title') + '</b><span class="pb-go" aria-hidden="true">→</span></button>';
-    return '<button type="button" class="pairbig on' + (PAIR.peer ? ' live' : '') + '" data-a="drawer" data-v="pair"><i class="pdot" aria-hidden="true"></i><b class="pb-code">' + PAIR.room + '</b><span class="pb-st">' + (PAIR.peer ? (PAIR.lead ? '👑 ' + t('pair.you') : '👑 ' + t('pair.they')) : waitDots()) + '</span></button>';
+    return '<button type="button" class="pairbig on' + (pairLive() ? ' live' : '') + '" data-a="drawer" data-v="pair"><i class="pdot" aria-hidden="true"></i><b class="pb-code">' + PAIR.room + '</b><span class="pb-st">' + (pairLive() ? (PAIR.lead ? '👑 ' + t('pair.you') : '👑 ' + t('pair.they')) : waitDots()) + '</span></button>';
   }
   function waitDots() { return '<span class="wdots" aria-hidden="true"><i></i><i></i><i></i></span>'; }
   function pairHTML() {
@@ -4554,11 +4569,11 @@ var ES_PHRASES = [
       '<div class="pair-join"><input id="pair-in" class="pair-in" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD" aria-label="' + esc(t('pair.code')) + '"><button type="button" class="dbtn ok" data-a="pair-join">' + t('pair.join') + '</button></div></div>';
     return '<div class="pair"><h2>' + t('pair.title') + '</h2>' +
       '<button type="button" class="pair-code" data-a="pair-copy" aria-label="' + esc(t('pair.code')) + '">' + PAIR.room + '</button>' +
-      '<p class="pair-st' + (PAIR.peer ? ' live' : '') + '">' + (PAIR.peer ? '<i class="pdot" aria-hidden="true"></i>' + t('pair.linked') : waitDots()) + '</p>' +
+      '<p class="pair-st' + (pairLive() ? ' live' : '') + '">' + (pairLive() ? '<i class="pdot" aria-hidden="true"></i>' + t('pair.linked') : waitDots()) + '</p>' +
       '<p class="pair-role">👑 ' + t(PAIR.lead ? 'pair.you' : 'pair.they') + '</p>' +
       '<button type="button" class="link" data-a="pair-leave">' + t('pair.leave') + '</button></div>';
   }
-  function pairWaitHTML() { return '<button type="button" class="pair-wait" data-a="drawer" data-v="pair"><span aria-hidden="true">👑</span>' + waitDots() + '<span class="sr">' + t('pair.they') + '</span></button>'; }
+  function pairWaitHTML() { return '<div class="pair-wbox"><button type="button" class="pair-wait" data-a="drawer" data-v="pair"><span aria-hidden="true">👑</span><span class="pw-t">' + t('pair.they') + '</span>' + waitDots() + '</button><button type="button" class="link" data-a="pair-alone">' + t('pair.alone') + '</button></div>'; }
   function startLoop() { stopLoop(); tick = setInterval(loop, 200); }
   function stopLoop() { if (tick) clearInterval(tick); tick = null; }
   function clearTimers() {
@@ -6201,7 +6216,7 @@ var ES_PHRASES = [
     var g = PARTY_GAMES[p.n - 1], name = g ? PACK[p.lang].mod[g] : t('party.mix');
     return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
       '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
-      (pairFollower() ? pairWaitHTML() + '</aside>' :
+      (pairBlocked() ? pairWaitHTML() + '</aside>' :
       '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
       '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
       (pairOn() ? '' : '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button>') + '</div></aside>');
@@ -6230,7 +6245,7 @@ var ES_PHRASES = [
       '<h2 id="sh-t">' + esc(st.t[ui()] || st.t.en) + '</h2>' +
       '<p class="sh-ex" lang="' + p.lang + '">' + exHTML(ex) + '</p>' +
       (due ? '<p class="sh-due">' + ICON_CARDS + t('p.due', due) + '</p>' : '') +
-      (pairFollower() ? pairWaitHTML() + '</aside>' :
+      (pairBlocked() ? pairWaitHTML() + '</aside>' :
       '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
       '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
       (pairOn() ? '' : '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button>') + '</div></aside>');
@@ -6519,7 +6534,7 @@ var ES_PHRASES = [
       (ok ? '<div class="chips"><span class="chip xp">' + ICON_BOLT + '<b data-count="' + g.xp + '">+' + g.xp + '</b> XP</span>' +
         '<span class="chip fire' + (g.streakUp ? ' up' : '') + '">' + ICON_FIRE + '<b>' + streakNow() + '</b> ' + t('p.days') + '</span>' +
         (g.learned ? '<span class="chip wd">' + ICON_CARDS + '<b>+' + g.learned + '</b> ' + t('p.learned') + '</span>' : '') + '</div>' : '') +
-      (pairFollower() ? '<div class="ctas">' + pairWaitHTML() + '<button type="button" class="hb big" data-a="pcont">' + t('p.path') + '</button></div>' :
+      (pairBlocked() ? '<div class="ctas">' + pairWaitHTML() + '<button type="button" class="hb big" data-a="pcont">' + t('p.path') + '</button></div>' :
       '<div class="ctas">' + (ok ? '<button type="button" class="cta" data-a="pcont">' + t('p.cont') + '</button>' : '<button type="button" class="cta" data-a="again">' + t('res.retry') + '</button>') +
       (ok && nxt !== spec.code ? '<button type="button" class="hb big" data-a="pnext">' + t('res.next') + '</button>' : '') +
       (ok ? '<button type="button" class="hb big" data-a="again">' + t('res.again') + '</button>' : '<button type="button" class="hb big" data-a="pcont">' + t('p.path') + '</button>') + '</div>') +
@@ -6757,7 +6772,7 @@ var ES_PHRASES = [
     return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">🎉 ' + spec.modules.map(function (m) { return esc(modName(m.t)); }).join(' + ') + '</p>' +
       '<h1 data-fit lang="' + spec.lang + '">' + (ok ? P.win : P.boom) + '</h1>' +
       (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
-      '<div class="ctas">' + (pairFollower() ? pairWaitHTML() :
+      '<div class="ctas">' + (pairBlocked() ? pairWaitHTML() :
         (ok && spec.party <= PARTY_GAMES.length ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
         '<button type="button" class="' + (ok && spec.party <= PARTY_GAMES.length ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
       '<button type="button" class="hb big" data-a="party">🎉 ' + t('party') + '</button></div>' +
@@ -6782,7 +6797,7 @@ var ES_PHRASES = [
       stat(t('hud.mist'), t('x.of.y', g.strikes, spec.maxStrikes)) +
       stat(t('res.solved'), t('x.of.y', g.solved.filter(Boolean).length, g.solved.length)) +
       (g.hints ? stat(t('res.hints'), g.hints) : '') + '</div>' +
-      '<div class="ctas">' + (pairFollower() ? pairWaitHTML() : (canNext ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
+      '<div class="ctas">' + (pairBlocked() ? pairWaitHTML() : (canNext ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
       '<button type="button" class="' + (canNext ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
       '<button type="button" class="hb big" data-a="home">' + t('bar.home') + '</button></div>' +
       (pairOn() ? '' : '<p class="tipline">' + t('res.swap') + '</p>') +
@@ -6897,7 +6912,7 @@ var ES_PHRASES = [
       case 'level': S.sel.level = +ds.v; save(); rerenderKeep('[data-a="level"][data-v="' + ds.v + '"]'); break;
       case 'calm': S.sel.calm = !!el.checked; save(); break;
       case 'get': case 'solo': case 'join':
-        if (a !== 'solo' && pairFollower()) { S.drawer = 'pair'; renderDrawer(); break; }
+        if (a !== 'solo' && pairBlocked()) { S.drawer = 'pair'; renderDrawer(); break; }
         if (a !== 'solo') pairLead(fixedCode(S.sel.lang, S.sel.mission, S.sel.level), a === 'get' ? 'bomb' : 'help');
         warmUp(makeSpec(fixedCode(S.sel.lang, S.sel.mission, S.sel.level)), { a: a }); break;
       case 'warm-go': warmGo(); break;
@@ -6919,10 +6934,11 @@ var ES_PHRASES = [
       case 'pta': ptAnswer(+ds.v); break;
       case 'ptgo': S.sel.plv = +ds.v; S.pt = null; save(); S.screen = 'home'; render(); window.scrollTo(0, 0); break;
       case 'sheet-close': closeSheet(); break;
-      case 'play': if (pairFollower()) break; if (ds.v !== 'solo') pairLead(S.sheet, ds.v === 'bomb' ? 'bomb' : 'help'); play(S.sheet, ds.v); break;
+      case 'play': if (pairBlocked()) break; if (ds.v !== 'solo') pairLead(S.sheet, ds.v === 'bomb' ? 'bomb' : 'help'); play(S.sheet, ds.v); break;
       case 'pair-new': pairCreate(); break;
       case 'pair-join': pairJoin(); break;
       case 'pair-leave': pairLeave(); break;
+      case 'pair-alone': pairLeave(); if (S.screen === 'result') render(); break;
       case 'pair-copy': try { var cp = navigator.clipboard && navigator.clipboard.writeText(PAIR.room); if (cp && cp.catch) cp.catch(function () {}); el.classList.add('copied'); setTimeout(function () { el.classList.remove('copied'); }, 900); } catch (e7) {} break;
       case 'wt': wordTap(ds.w, ds.s); break;
       case 'fc-flip': S.fc.flip = true; render(); { var fb = $('.fc-btns .ok'); if (fb) { try { fb.focus({ preventScroll: true }); } catch (e6) {} } } break;
@@ -6940,7 +6956,7 @@ var ES_PHRASES = [
       case 'pnode': openSheet(partyCode(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
       case 'help-done': helperDone(); break;
       case 'pcont': goPath(); break;
-      case 'pnext': { if (pairFollower()) break; var nc = nextCode(S.spec.code); S.justOpen = null; if (!S.solo) pairLead(nc, 'bomb'); play(nc, S.solo ? 'solo' : 'bomb'); break; }
+      case 'pnext': { if (pairBlocked()) break; var nc = nextCode(S.spec.code); S.justOpen = null; if (!S.solo) pairLead(nc, 'bomb'); play(nc, S.solo ? 'solo' : 'bomb'); break; }
       case 'quit': g.quitAsk = true; paintToolbar(); break;
       case 'quit-no': g.quitAsk = false; paintToolbar(); break;
       case 'quit-yes': goHome(); break;
@@ -6950,10 +6966,10 @@ var ES_PHRASES = [
         /* alone on one screen: the helper's cards open at the step the bomb is on */
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
-      case 'next': if (pairFollower()) break;
+      case 'next': if (pairBlocked()) break;
         if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyCode(pp.lang, pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
         if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
-      case 'again': if (pairFollower()) break;
+      case 'again': if (pairBlocked()) break;
         if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyCode(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }
         if (!S.solo) pairLead(S.spec.code, 'bomb'); if (S.spec.path) { launch(makeSpec(S.spec.code), S.solo); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
       case 'sfx': S.set.sfx = !!el.checked; save(); if (S.set.sfx) sfx('step'); break;
