@@ -171,8 +171,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -302,7 +302,7 @@ function state(){
     else if(e.k==='guess' && !(tt['g'+e.by])) tt['g'+e.by]=e.g;
     else if(e.k==='next') tt.next=1;
   });
-  for(var i=0;i<60;i++){
+  for(var i=0;i<1000;i++){
     var tt=turns[i]||{}, E=encoder(i), O=opponent(E);
     tt.code=G.code(i); tt.enc=E; tt.opp=O;
     if(O==='C' && tt.clues && canIntercept(i)) tt.gC=aiGuess(turns,i,tt.clues);
@@ -313,8 +313,7 @@ function state(){
       if(!tt.ownOk) st.miss[E]++;
       if(tt.intOk) st.star[O]++;
       if(coop()){
-        if(st.miss.A>=2||st.star.C>=2){ st.over='C'; cur=i; break; }
-        if(i+1>=COOP_TURNS){ st.over='A'; cur=i; break; }
+        if(st.star.C>=1){ st.over='C'; cur=i; break; }
       } else if(i%2===1){
         var sc={A:st.star.A-st.miss.A,B:st.star.B-st.miss.B};
         if(st.star.A>=2||st.star.B>=2||st.miss.A>=2||st.miss.B>=2||roundOf(i)>=ROUNDS){ st.over=sc.A>sc.B?'A':(sc.B>sc.A?'B':'draw'); cur=i; break; }
@@ -412,7 +411,7 @@ function render(){
   } else if(S.scr==='room'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
       '<main><div class="hero"><div class="stack"><button class="big" id="new">'+t('newg')+'</button><div class="or">'+t('got')+'</div>'+
-      '<div class="join"><input id="jc" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD" aria-label="'+t('code')+'"><button class="big" id="jb" aria-label="'+t('join')+'" disabled>'+I.go+'</button></div></div></div></main>';
+      '<div class="join"><input id="jc" maxlength="12" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD" aria-label="'+t('code')+'"><button class="big" id="jb" aria-label="'+t('join')+'" disabled>'+I.go+'</button></div></div></div></main>';
   } else if(S.scr==='pick'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
       '<main><div class="hero"><button class="bigcode" id="copy" aria-label="'+t('code')+'">'+S.room+'</button>'+
@@ -431,6 +430,7 @@ function shareCard(){
   if(!online() || Object.keys(S.peers||{}).length) return '';
   return '<div class="share"><div class="slabel">'+t(S.mode==='duo'?'shareduo':'sharevs')+'</div><button class="bigcode" id="copy" aria-label="'+t('code')+'">'+S.room+'</button><div class="wait"><i></i><i></i><i></i></div></div>';
 }
+function getBest(){ try{ return +(localStorage.getItem('kl-best-'+S.mode)||0); }catch(e){ return 0; } }
 function scoreBar(st){
   function toks(team, star, miss){
     var h='<div class="side">'+sw(team);
@@ -439,7 +439,7 @@ function scoreBar(st){
     return h+'</div>';
   }
   var total=coop()?COOP_TURNS:ROUNDS, now=Math.min(roundOf(st.cur),total);
-  if(coop()) return '<div class="score">'+toks('A',false,true)+'<span class="round">'+now+'/'+total+'</span>'+toks('C',true,false)+'</div>';
+  if(coop()) return '<div class="score"><div class="side">'+sw('A')+'<span class="round" style="color:var(--ink)">'+st.cur+'</span></div><span class="round">'+I.star.replace('<svg','<svg style="width:18px;height:18px;color:var(--gold);vertical-align:-2px"')+' '+getBest()+'</span><div class="side">'+I.robot+'</div></div>';
   return '<div class="score">'+toks(S.team,true,true)+'<span class="round">'+now+'/'+total+'</span>'+toks(opponent(S.team),true,true)+'</div>';
 }
 function keysHtml(keys){
@@ -516,9 +516,11 @@ function bind(){
   var nw=$('#new'); if(nw) nw.onclick=function(){ beep('tap'); enterRoom(newRoom(),true); };
   var jc=$('#jc'), jb=$('#jb');
   if(jc){
-    jc.oninput=function(){ jc.value=jc.value.toUpperCase().replace(/[^A-Z]/g,''); jb.disabled=jc.value.length!==4; };
-    jc.onkeydown=function(e){ if(e.key==='Enter' && jc.value.length===4) jb.click(); };
-    jb.onclick=function(){ beep('tap'); enterRoom(jc.value,false); };
+    /* never rewrite the box while typing: phone keyboards lose letters when the text is changed under them */
+    var val=function(){ return jc.value.toUpperCase().replace(/[^A-Z]/g,''); };
+    jc.oninput=function(){ jb.disabled=val().length!==4; };
+    jc.onkeydown=function(e){ if(e.key==='Enter' && val().length===4) jb.click(); };
+    jb.onclick=function(){ if(val().length!==4) return; beep('tap'); enterRoom(val(),false); };
   }
   var cp=$('#copy'); if(cp) cp.onclick=function(){ try{ navigator.clipboard.writeText(S.room); toast(t('copied')); }catch(e){} };
   $$('.team').forEach(function(x){ x.onclick=function(){ beep('tap'); S.team=x.getAttribute('data-t'); goPlay(S.room); }; });
@@ -596,8 +598,14 @@ function showEnd(){
 function drawEnd(){
   if(S.scr!=='play'||!S.st.over||$('.veil')) return;
   var o=S.st.over, me=coop()?'A':S.team, res=o==='draw'?'draw':(o===me?'win':'lose'), v=document.createElement('div'); v.className='veil';
-  var title=res==='lose'&&coop()?t('cpu'):t(res);
-  v.innerHTML='<div class="sheet '+res+'"><h2>'+title+'</h2><button class="big" id="again">'+t('again')+'</button><button class="big ghost" id="look">'+I.eye+'</button></div>';
+  var title=t(res), extra='';
+  if(coop()){
+    var sc=S.st.cur, best=getBest(), nb=sc>best;
+    if(nb) try{ localStorage.setItem('kl-best-'+S.mode,String(sc)); }catch(e){}
+    title=t('cracked'); res=nb?'win':'lose';
+    extra='<div class="bigcode" style="font-size:96px">'+sc+'</div><div class="who">'+(nb?t('newbest'):t('best')+': '+best)+'</div>';
+  }
+  v.innerHTML='<div class="sheet '+res+'"><h2>'+title+'</h2>'+extra+'<button class="big" id="again">'+t('again')+'</button><button class="big ghost" id="look">'+I.eye+'</button></div>';
   document.body.appendChild(v);
   if(res==='win'){ beep('win'); confetti(); }
   $('#again').onclick=function(){ post({k:'again',c:S.room,id:'a'+uid()}); goPlay(nextRoom(S.room)); };
