@@ -962,7 +962,24 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .cbtn kbd{position:absolute;left:8px;top:8px}
 .c0{background:#D8263C}.c1{background:#2F6FE4}.c2{background:#F4C430;color:#3a2a00}.c3{background:#2FA35E}
 .lb{height:auto;min-height:94px;max-height:150px}
+/* listen: everything fits on the panel, nothing scrolls */
+.build.lw{flex:1 1 0;height:auto;min-height:48px;max-height:none;overflow:hidden}
+.panel .tray.lt{flex:none;max-height:none;overflow:visible}
+.tray.lt.sm .tile,.build.lw.sm .tile{font-size:15px;padding:3px 8px;min-height:32px}
+.tray.lt.xs .tile,.build.lw.xs .tile{font-size:13.5px;padding:2px 6px;min-height:28px}
+.tray.lt.xs,.build.lw.xs{gap:4px}
+.panel .tile{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+.key.mic{position:relative;padding:0;width:52px;font-size:22px;-webkit-user-select:none;user-select:none}
+.key.mic svg{width:22px;height:22px;display:block;margin:auto}
+.key.mic.rec{background:#FF4B4B;color:#fff;box-shadow:0 3px 0 #a3191d}
+.key.mic.rec::after{content:'';position:absolute;inset:0;border-radius:9px;border:3px solid #FF4B4B;animation:pulse 1s ease-out infinite}
+.heard{flex:none;margin:0;color:#ff9a9e;font-size:14px;text-decoration:line-through;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.lhelp{display:flex;align-items:center;gap:14px;padding:10px 0 4px}
+.lhelp .ear{font-size:44px;line-height:1}
+.lhelp .key{min-height:56px;font-size:18px}
 .pz{font-weight:700;font-size:18px;color:#c7cdd2;align-self:center}
+.ltype{width:100%;font-size:17px;padding:9px 12px;min-height:44px}
+.build .tile.odd{background:transparent;color:#FFB4B4;border:2px dashed #FF6B6B;box-shadow:none}
 .panel .tray{max-height:150px;overflow-y:auto}
 .fx-s{font-size:18px;line-height:1.3;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .fx-s.sm .tile{font-size:15px;padding:4px 8px}.fx-s.xs .tile{font-size:14px;padding:3px 7px;min-height:32px}
@@ -3619,12 +3636,14 @@ function lwCore(w) { return w.replace(LW_LEAD, '').replace(LW_TAIL, ''); }
 var LW_NAMES = {};
 function lwNames(lang) {
   if (LW_NAMES[lang]) return LW_NAMES[lang];
-  var N = LW_NAMES[lang] = { I: 1 };
+  var N = LW_NAMES[lang] = { I: 1 }, low = {};
   (COURSE[lang] || []).forEach(function (L) {
     if (L) L.list.forEach(function (st) {
-      st.items.forEach(function (it) { lwWords(it.full).forEach(function (w, k) { var c = lwCore(w); if (k > 0 && /^[A-ZÁÉÍÓÚÑ]/.test(c) && !/[.?!]$/.test(lwWords(it.full)[k - 1] || '')) N[c] = 1; }); });
+      st.items.forEach(function (it) { lwWords(it.full).forEach(function (w, k) { var c = lwCore(w); if (/^[a-záéíóúñæøå]/.test(c)) low[c] = 1; else if (k > 0 && /^[A-ZÁÉÍÓÚÑ]/.test(c) && !/[.?!]$/.test(lwWords(it.full)[k - 1] || '')) N[c] = 1; }); });
     });
   });
+  /* "Let It Be" must not turn every "it" into a name */
+  Object.keys(N).forEach(function (c) { if (c !== 'I' && low[c.charAt(0).toLowerCase() + c.slice(1)]) delete N[c]; });
   return N;
 }
 function lwTile(w, first, lang) {
@@ -3741,14 +3760,14 @@ PACK.es = {
   serial: 'ABCDEFGHJKLMNPRSTVXYZ', vowels: 'AEIOU',
   colors: [{ k: 'rojo', e: 'rojos' }, { k: 'azul', e: 'azules' }, { k: 'amarillo', e: 'amarillos' }, { k: 'verde', e: 'verdes' }, { k: 'blanco', e: 'blancos' }, { k: 'negro', e: 'negros' }],
   ord: ['primero', 'segundo', 'tercero', 'cuarto', 'quinto', 'sexto'], last: 'último',
-  mod: { gap: 'Hueco', listen: 'Escucha', fix: 'Corrige', match: 'Une', joke: 'Chistes' },
+  mod: { gap: 'Hueco', listen: 'Escucha', fix: 'Oye', match: 'Une', joke: 'Chistes' },
   plate: { danger: 'Peligro', bomb: 'Bomba de idiomas', front: 'Frente', back: 'Detrás', under: 'Base', up: 'Este lado arriba', serial: 'Número de serie', bat: 'Pilas', clock: 'Reloj', strikes: 'Fallos' },
   win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
   num: esNum
 };
-PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Fix it'; PACK.en.mod.match = 'Match'; PACK.en.mod.joke = 'Jokes';
-PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Ret'; PACK.da.mod.match = 'Par';
-PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Javítsd'; PACK.hu.mod.match = 'Párosítsd';
+PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Hear it'; PACK.en.mod.match = 'Match'; PACK.en.mod.joke = 'Jokes';
+PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Hør efter'; PACK.da.mod.match = 'Par';
+PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Halld'; PACK.hu.mod.match = 'Párosítsd';
 var ES_PHRASES = [
   ['¿Me oyes?', 'Can you hear me?', 'Hallasz?', 'Kan du høre mig?'],
   ['¿Puedes repetirlo?', 'Can you say it again?', 'Megismételnéd?', 'Kan du sige det igen?'],
@@ -3768,7 +3787,7 @@ var ES_PHRASES = [
 (function () {
   var add = {
     'lang.es': ['Spanish', 'spanyol', 'spansk'], 'in.es': ['in Spanish', 'spanyolul', 'på spansk'],
-    'mod.gap': ['Gap', 'Hiány', 'Hul'], 'mod.listen': ['Listen', 'Hallgasd', 'Lyt'], 'mod.fix': ['Fix it', 'Javítsd', 'Ret'], 'mod.match': ['Match', 'Párosítsd', 'Par'], 'mod.joke': ['Jokes', 'Viccek', 'Vittigheder'],
+    'mod.gap': ['Gap', 'Hiány', 'Hul'], 'mod.listen': ['Listen', 'Hallgasd', 'Lyt'], 'mod.fix': ['Hear it', 'Halld', 'Hør efter'], 'mod.match': ['Match', 'Párosítsd', 'Par'], 'mod.joke': ['Jokes', 'Viccek', 'Vittigheder'],
     'cap.gap': ['Read the sentence aloud. Your partner has the words. Press their colour.', 'Olvasd fel a mondatot. A társadnál vannak a szavak. Nyomd meg a színt, amit mond.', 'Læs sætningen højt. Din makker har ordene. Tryk på farven.'],
     'cap.listen': ['Your partner reads a sentence. Build it.', 'A társad felolvas egy mondatot. Rakd ki.', 'Din makker læser en sætning op. Byg den.'],
     'cap.fix': ['Read it aloud. Tap the wrong word, then press your partner’s colour.', 'Olvasd fel. Koppints a hibás szóra, aztán a színre, amit a társad mond.', 'Læs den højt. Tryk på det forkerte ord og så på din makkers farve.'],
@@ -3776,6 +3795,7 @@ var ES_PHRASES = [
     'cap.match': ['Read each beginning. Your partner has the endings. Set the numbers.', 'Olvasd fel a mondatkezdeteket. A társadnál vannak a befejezések. Állítsd be a számokat.', 'Læs hver begyndelse. Din makker har slutningerne. Sæt tallene.'],
     'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
     'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
+    'mic': ['Say it', 'Mondd ki', 'Sig det'],
     'p.start': ['Start', 'Kezdés', 'Start'],
     'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
     'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
@@ -3839,7 +3859,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 8;
+  var BUILD = 9;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -5380,36 +5400,125 @@ var ES_PHRASES = [
   };
 
   /* ---- listen: the helper reads, the bomb builds ---- */
+  /* say the sentence instead of building it: the browser's speech recognition, where there is one */
+  var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var Mic = { rec: null, at: null, off: !SpeechRec || window.isSecureContext === false };
+  var MIC_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var CONTR = { "i'm": 'i am', "you're": 'you are', "we're": 'we are', "they're": 'they are', "he's": 'he is', "she's": 'she is', "it's": 'it is', "that's": 'that is', "there's": 'there is', "what's": 'what is', "isn't": 'is not', "aren't": 'are not', "wasn't": 'was not', "weren't": 'were not', "don't": 'do not', "doesn't": 'does not', "didn't": 'did not', "can't": 'can not', 'cannot': 'can not', "won't": 'will not', "wouldn't": 'would not', "haven't": 'have not', "hasn't": 'has not', "hadn't": 'had not', "mustn't": 'must not', "couldn't": 'could not', "shouldn't": 'should not', "i've": 'i have', "i'll": 'i will', "i'd": 'i would', "we'll": 'we will', "you'll": 'you will', "let's": 'let us', 'gonna': 'going to', 'okay': 'ok' };
+  function sayWords(s) {
+    var out = [];
+    String(s).toLowerCase().replace(/[’‘`]/g, "'").replace(/[.,!?;:"“”„«»…¿¡()\-–—]/g, ' ').split(/\s+/).forEach(function (w) {
+      if (!w) return; w = w.replace(/^'+|'+$/g, '');
+      (CONTR[w] || w).split(' ').forEach(function (x) { if (x) out.push(x); });
+    });
+    return out;
+  }
+  function wordDist(a, b) {
+    var prev = [], cur, i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) { cur = [i]; for (j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; }
+    return prev[b.length];
+  }
+  /* a recogniser mishears now and then, so a long sentence may miss one word */
+  function saidRight(alts, want) {
+    var w = sayWords(want.join(' ')), slack = Math.floor(w.length / 6);
+    return alts.some(function (a) { return wordDist(sayWords(a), w) <= slack; });
+  }
+  function micStop() { if (Mic.rec) { try { Mic.rec.abort(); } catch (e) {} } Mic.rec = null; Mic.at = null; }
+  function micToggle(i) {
+    if (Mic.off) return;
+    if (Mic.rec) { var was = Mic.at; micStop(); if (S.game) renderMod(was); return; }
+    var rec, heard = null;
+    try { rec = new SpeechRec(); } catch (e) { Mic.off = true; renderMod(i); return; }
+    rec.lang = PACK[tl()].bcp; rec.interimResults = false; rec.continuous = false; rec.maxAlternatives = 5;
+    rec.onresult = function (e) { var r = e.results[0], a = []; for (var k = 0; r && k < r.length; k++) a.push(r[k].transcript); if (a.length) heard = a; };
+    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'language-not-supported') Mic.off = true; };
+    rec.onend = function () {
+      if (Mic.rec !== rec) return;
+      Mic.rec = null; Mic.at = null;
+      if (heard) modAct(i, 'said', heard); else if (S.game) renderMod(i);
+    };
+    Mic.rec = rec; Mic.at = i;
+    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; }
+    renderMod(i);
+  }
+  /* tiles get smaller as the sentence grows, so the whole tray always fits on the panel */
+  function tileSize(words) {
+    var n = 0; words.forEach(function (w) { n += String(w).length + 2; });
+    return n > 105 ? ' xs' : n > 72 ? ' sm' : '';
+  }
+
+  /* ---- listen: the helper reads, the bomb builds ---- */
+  /* the sentence the bomb is building lives in one line of text: tapping a tile adds its word, typing works too.
+     Each typed word that matches a tile takes that tile out of the tray. */
+  function lsWords(text) { return String(text || '').toLowerCase().replace(/[.,!?;:¿¡"«»“”…]/g, ' ').split(/\s+/).filter(Boolean); }
+  function lsMap(rd, text) {
+    var used = [], out = [];
+    lsWords(text).forEach(function (w) {
+      var hit = -1;
+      for (var ti = 0; ti < rd.tiles.length; ti++) if (used.indexOf(ti) < 0 && rd.tiles[ti].toLowerCase() === w) { hit = ti; break; }
+      if (hit >= 0) used.push(hit);
+      out.push({ w: w, ti: hit });
+    });
+    return { words: out, used: used };
+  }
+  function lsBuild(rd, st, i) {
+    var M = lsMap(rd, st.value), sz = tileSize(rd.tiles);
+    return '<div class="build lw' + sz + '" role="group">' + (rd.start && M.words.length ? '<span class="pz">' + rd.start + '</span>' : '') + (M.words.length ? M.words.map(function (x, pos) {
+      var txt = x.ti >= 0 ? rd.tiles[x.ti] : x.w;
+      return '<button type="button" class="tile in' + (x.ti < 0 ? ' odd' : '') + '" data-a="m" data-i="' + i + '" data-k="rm" data-v="' + pos + '" lang="' + tl() + '">' + esc(pos === 0 ? cap(txt) : txt) + '</button>';
+    }).join('') + '<span class="pz">' + esc(rd.end) + '</span>' : '<span class="build-empty">🎧</span>') + '</div>';
+  }
+  function lsTray(rd, st, i) {
+    var M = lsMap(rd, st.value), sz = tileSize(rd.tiles);
+    return '<div class="tray lt' + sz + '" role="group">' + rd.tiles.map(function (x, ti) {
+      return M.used.indexOf(ti) >= 0 ? '<span class="tile ghost" aria-hidden="true">' + esc(x) + '</span>' : '<button type="button" class="tile" data-a="m" data-i="' + i + '" data-k="add" data-v="' + ti + '" lang="' + tl() + '">' + esc(x) + '</button>';
+    }).join('') + '</div>';
+  }
+  function lsPaint(i) {
+    var el = document.getElementById('mod-' + i); if (!el || !S.game) return;
+    var d = S.spec.modules[i].data, st = S.game.ms[i], rd = d.rounds[st.r]; if (!rd) return;
+    var b = el.querySelector('.build'), tr = el.querySelector('.tray');
+    if (b) b.outerHTML = lsBuild(rd, st, i);
+    if (tr) tr.outerHTML = lsTray(rd, st, i);
+    var empty = !lsWords(st.value).length;
+    el.querySelectorAll('[data-k="clear"],[data-k="send"]').forEach(function (x) { x.disabled = empty; });
+  }
   UI.listen = {
-    init: function () { return { r: 0, placed: [], fb: false }; },
+    init: function () { return { r: 0, value: '', fb: false }; },
     bomb: function (d, st, i) {
-      var rd = d.rounds[st.r];
-      var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
-      h += '<div class="build lb" role="group">' + (rd.start && st.placed.length ? '<span class="pz">' + rd.start + '</span>' : '') + (st.placed.length ? st.placed.map(function (ti, pos) {
-        var x = rd.tiles[ti];
-        return '<button type="button" class="tile in" data-a="m" data-i="' + i + '" data-k="rm" data-v="' + pos + '" lang="' + tl() + '">' + esc(pos === 0 ? cap(x) : x) + '</button>';
-      }).join('') + '<span class="pz">' + esc(rd.end) + '</span>' : '<span class="build-empty">🎧</span>') + '</div>';
-      h += '<div class="tray" role="group">' + rd.tiles.map(function (x, ti) {
-        return st.placed.indexOf(ti) >= 0 ? '<span class="tile ghost" aria-hidden="true">' + esc(x) + '</span>' : '<button type="button" class="tile" data-a="m" data-i="' + i + '" data-k="add" data-v="' + ti + '" lang="' + tl() + '">' + esc(x) + '</button>';
-      }).join('') + '</div>';
-      h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', !st.placed.length) + B(i, 'send', null, t('ck.check'), 'go wide', !st.placed.length) + '</div>';
+      var rd = d.rounds[st.r], rec = Mic.rec && Mic.at === i, empty = !lsWords(st.value).length;
+      var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + lsBuild(rd, st, i);
+      if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
+      h += lsTray(rd, st, i);
+      h += '<div class="row">' + field(i, st.value || '', '⌨', { enter: 'send', cls: 'ltype' }) + '</div>';
+      h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', empty) +
+        (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
+        B(i, 'send', null, t('ck.check'), 'go wide', empty) + '</div>';
       return h + (st.fb ? fbBad('p.bad') : '');
     },
-    on: function (k, v, d, st) {
-      var rd = d.rounds[st.r];
-      if (k === 'add') { v = +v; if (v >= 0 && v < rd.tiles.length && st.placed.indexOf(v) < 0) st.placed.push(v); st.fb = false; return 're'; }
-      if (k === 'rm') { st.placed.splice(+v, 1); st.fb = false; return 're'; }
-      if (k === 'clear') { st.placed = []; st.fb = false; return 're'; }
+    typed: function (st, i) { st.fb = false; st.heard = ''; lsPaint(i); },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r], ws = lsWords(st.value);
+      var next = function () { st.r++; st.value = ''; st.fb = false; st.heard = ''; return st.r >= d.rounds.length ? 'solved' : 'next'; };
+      if (k === 'add') { v = +v; if (v >= 0 && v < rd.tiles.length && lsMap(rd, st.value).used.indexOf(v) < 0) { st.value = (ws.concat([rd.tiles[v].toLowerCase()])).join(' ') + ' '; } st.fb = false; st.heard = ''; return 're'; }
+      if (k === 'rm') { ws.splice(+v, 1); st.value = ws.length ? ws.join(' ') + ' ' : ''; st.fb = false; return 're'; }
+      if (k === 'clear') { st.value = ''; st.fb = false; st.heard = ''; return 're'; }
+      if (k === 'mic') { st.fb = false; st.heard = ''; micToggle(i); return; }
+      if (k === 'said') {
+        /* a misheard sentence costs nothing: what the phone heard is shown, struck out */
+        if (saidRight(v, rd.ans)) return next();
+        st.heard = v[0]; return 're';
+      }
       if (k === 'send') {
-        if (!st.placed.length) return;
-        var got = st.placed.map(function (ti) { return rd.tiles[ti].toLowerCase(); }).join(' '), want = rd.ans.map(function (x) { return x.toLowerCase(); }).join(' ');
-        if (got === want) { st.r++; st.placed = []; st.fb = false; return st.r >= d.rounds.length ? 'solved' : 'next'; }
-        st.fb = true; st.placed = []; return 'strike';
+        if (!ws.length) return;
+        if (ws.join(' ') === lsWords(rd.ans.join(' ')).join(' ')) return next();
+        st.fb = true; st.value = ''; return 'strike';
       }
     },
     key: function (e, d, st, i, onCtl) {
-      if (e.key === 'Backspace') { if (st.placed.length) modAct(i, 'rm', st.placed.length - 1); return true; }
-      if (e.key === 'Enter' && !onCtl && st.placed.length) { modAct(i, 'send'); return true; }
+      if (e.key === 'Backspace') { var n = lsWords(st.value).length; if (n) modAct(i, 'rm', n - 1); return true; }
+      if (e.key === 'Enter' && !onCtl && lsWords(st.value).length) { modAct(i, 'send'); return true; }
     },
     keys: function () { return ''; },
     done: function (d) { return learn(UI.listen.recap(d)); },
@@ -5417,8 +5526,11 @@ var ES_PHRASES = [
     pos: function (d, st) { return st.r; },
     help: function (d, i, ms) {
       var p = Math.min(ms.step || 0, d.rounds.length - 1), rd = d.rounds[p], has = Voice.has();
-      return card(cnt('n.sentence', p + 1, d.rounds.length), '', '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' +
-        (has ? '<div class="row">' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+      /* a listening task: the sentence is only written out when no voice can read it */
+      var shown = !has || ms.rev['s' + p];
+      return card(cnt('n.sentence', p + 1, d.rounds.length), '',
+        (has ? '<div class="lhelp"><span class="ear" aria-hidden="true">🎧</span>' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+        (shown ? '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' : '') +
         stepNav(i, p, d.rounds.length, null, null, true));
     },
     onHelp: function (k, v, d, ms, i) {
@@ -5427,45 +5539,41 @@ var ES_PHRASES = [
     }
   };
 
-  /* ---- fix: find the wrong word, then the helper's colour mends it ---- */
+  /* ---- hear it: one word is missing on the bomb; the helper hears the whole sentence and picks its colour from three words ---- */
   UI.fix = {
-    init: function () { return { r: 0, found: false, miss: [], fb: false }; },
+    init: function () { return { r: 0, fb: false }; },
     bomb: function (d, st, i) {
-      var rd = d.rounds[st.r];
+      var rd = d.rounds[st.r], hole = false;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
-      h += '<div class="fx-s' + sizeCls(rd.toks.join(' ')) + '" lang="' + tl() + '">' + rd.toks.map(function (w, k) {
-        var bad = rd.bad.indexOf(k) >= 0;
-        if (st.found && bad) return '<span class="tile fx-bad">' + esc(w) + '</span>';
-        if (st.miss.indexOf(k) >= 0) return '<span class="tile fx-miss">' + esc(w) + '</span>';
-        return st.found ? '<span class="fx-w">' + esc(w) + '</span>' : '<button type="button" class="tile fx-t" data-a="m" data-i="' + i + '" data-k="tap" data-v="' + k + '">' + esc(w) + '</button>';
-      }).join(' ') + '</div>';
-      if (st.found) h += cBtns(i, rd.words.length);
-      return h + (st.fb ? fbBad('p.bad') : '');
+      h += '<p class="gp-s' + sizeCls(rd.full) + '" lang="' + tl() + '">' + rd.toks.map(function (w, k) {
+        if (rd.bad.indexOf(k) >= 0) { if (hole) return ''; hole = true; return '<span class="hole" aria-label="___"></span>'; }
+        return esc(w);
+      }).filter(Boolean).join(' ') + '</p>';
+      return h + cBtns(i, rd.words.length) + (st.fb ? fbBad('p.bad') : '');
     },
     on: function (k, v, d, st) {
       var rd = d.rounds[st.r]; v = +v;
-      if (k === 'tap' && !st.found) {
-        if (rd.bad.indexOf(v) >= 0) { st.found = true; st.fb = false; return 'next'; }
-        if (st.miss.indexOf(v) < 0) st.miss.push(v);
-        st.fb = true; return 'strike';
-      }
-      if (k === 'c' && st.found) {
-        if (!(v >= 0 && v < rd.words.length)) return;
-        if (v !== rd.ans) { st.fb = true; return 'strike'; }
-        st.r++; st.found = false; st.miss = []; st.fb = false;
-        return st.r >= d.rounds.length ? 'solved' : 'next';
-      }
+      if (k !== 'c' || !(v >= 0 && v < rd.words.length)) return;
+      if (v !== rd.ans) { st.fb = true; return 'strike'; }
+      st.r++; st.fb = false;
+      return st.r >= d.rounds.length ? 'solved' : 'next';
     },
-    key: function (e, d, st, i) { var n = digitOf(e); if (st.found && n >= 1 && n <= d.rounds[st.r].words.length) { modAct(i, 'c', n - 1); return true; } },
+    key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= d.rounds[st.r].words.length) { modAct(i, 'c', n - 1); return true; } },
     keys: function () { return ''; },
     done: function (d) { return learn(UI.fix.recap(d)); },
     recap: function (d) { return d.rounds.map(function (x) { return { tx: x.full }; }); },
     pos: function (d, st) { return st.r; },
     help: function (d, i, ms) {
-      var p = Math.min(ms.step || 0, d.rounds.length - 1);
-      return exBox(d.ex) + card(cnt('n.sentence', p + 1, d.rounds.length), '', cWords(d.rounds[p].words) + stepNav(i, p, d.rounds.length, null, null, true));
+      var p = Math.min(ms.step || 0, d.rounds.length - 1), rd = d.rounds[p], has = Voice.has(), shown = !has || ms.rev['s' + p];
+      return card(cnt('n.sentence', p + 1, d.rounds.length), '',
+        (has ? '<div class="lhelp"><span class="ear" aria-hidden="true">🎧</span>' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+        (shown ? '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' : '') +
+        cWords(rd.words) + stepNav(i, p, d.rounds.length, null, null, true));
     },
-    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); else if (k === 'play') Voice.speak(v, 0.9); }
+    onHelp: function (k, v, d, ms, i) {
+      if (stepMove(k, ms, d.rounds.length)) { Voice.stop(); renderHelpBody(); return; }
+      helpCommon(k, v, ms, i, function (key) { var rd = d.rounds[+String(key).slice(1)]; return rd ? rd.full : null; });
+    }
   };
 
   /* ---- match: beginnings on the bomb, endings with the helper ---- */
