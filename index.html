@@ -883,6 +883,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .pair-wait{border:0;background:none;color:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:26px;padding:14px;min-height:56px}
 .song-t{text-align:center}
 .artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
+.pair-diag{font-size:11px;color:#aaa;text-align:center;margin:0}
 .pair-wait .pw-t{font-size:17px;font-weight:700}
 .pair-wbox{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
 .node.done:after{content:"↻";position:absolute;right:-4px;bottom:-6px;width:24px;height:24px;border-radius:50%;background:#fff;color:#E0A100;font:900 15px/24px system-ui,sans-serif;box-shadow:0 2px 0 #E0A100;text-shadow:none}
@@ -4131,7 +4132,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 14;
+  var BUILD = 15;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4443,8 +4444,11 @@ var ES_PHRASES = [
      messages go through ntfy.sh, a free public relay, which also keeps listening as a backup. */
   var LINK_URL = 'https://ntfy.sh/';
   function relayId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  /* a tiny line in the pairing drawer that says how the phones are connected */
+  function relayPaint() { var el = document.getElementById('pair-diag'); if (el && PL.relay) el.textContent = relayDiag(PL.relay); }
+  function relayDiag(R) { return (typeof Peer === 'function' ? 'P2P ' + R.st : 'P2P missing') + (R.live() ? ' ✓' : '') + (R.rst ? ' · relay ' + R.rst : ''); }
   function Relay(topic, onMsg, onJoin, since) {
-    var R = { conns: [], peer: null, host: false, closed: false, es: null, poll: null, ids: {}, q: [], since: since || Math.floor(Date.now() / 1000) - 5, onDrop: null, timers: [] };
+    var R = { st: 'start', rst: '', conns: [], peer: null, host: false, closed: false, es: null, poll: null, ids: {}, q: [], since: since || Math.floor(Date.now() / 1000) - 5, onDrop: null, timers: [] };
     var url = LINK_URL + topic, hostId = topic.replace(/[^A-Za-z0-9_-]/g, '');
     var cfg = window.LW_PEER_CFG || { debug: 0 };
     function later(fn, ms) { var t = setTimeout(function () { if (!R.closed) fn(); }, ms); R.timers.push(t); }
@@ -4459,7 +4463,7 @@ var ES_PHRASES = [
       var dead = false;
       c.on('open', function () {
         if (R.closed) return;
-        c.rx = Date.now(); R.conns.push(c);
+        c.rx = Date.now(); R.conns.push(c); R.st = 'linked'; relayPaint();
         var q = R.q; R.q = []; q.forEach(function (o) { try { c.send(o); } catch (e) {} });
         if (onJoin) onJoin();
       });
@@ -4486,10 +4490,12 @@ var ES_PHRASES = [
       R.host = false; R.conns = [];
       var p; try { p = new Peer(hostId, cfg); } catch (e) { return; }
       R.peer = p; own(p);
-      p.on('open', function () { if (R.peer === p) R.host = true; });
+      p.on('open', function () { if (R.peer === p) { R.host = true; R.st = 'host'; relayPaint(); } });
       p.on('connection', function (c) { if (R.peer === p) addConn(c); });
       p.on('error', function (e) {
         if (R.peer !== p) return;
+        try { console.warn('[LW] peer', e && e.type, e && e.message); } catch (x) {}
+        R.st = 'err:' + (e && e.type); relayPaint();
         if (e && e.type === 'unavailable-id') guest(); else later(start, 5000);
       });
     }
@@ -4499,11 +4505,12 @@ var ES_PHRASES = [
       R.peer = p; R.host = false; own(p);
       p.on('open', function () {
         if (R.peer !== p) return;
+        R.st = 'guest'; relayPaint();
         var c = p.connect(hostId, { reliable: true }); addConn(c);
         later(function () { if (R.peer === p && !c.open) start(); }, 12000);
       });
       /* the holder left: try to hold the channel ourselves */
-      p.on('error', function (e) { if (R.peer === p) later(start, e && e.type === 'peer-unavailable' ? 800 : 5000); });
+      p.on('error', function (e) { if (R.peer !== p) return; try { console.warn('[LW] guest', e && e.type, e && e.message); } catch (x) {} R.st = 'gerr:' + (e && e.type); relayPaint(); later(start, e && e.type === 'peer-unavailable' ? 800 : 5000); });
     }
     /* the backup: listen on the public relay */
     function take(m) {
@@ -4539,7 +4546,7 @@ var ES_PHRASES = [
       var body = JSON.stringify(obj), tries = 0;
       (function send() {
         if (R.closed || R.live()) return;
-        try { fetch(url, { method: 'POST', body: body }).then(function (r) { if (!r.ok) throw 0; }).catch(function () { if (++tries < 3) later(send, 2000 * tries); }); } catch (e) {}
+        try { fetch(url, { method: 'POST', body: body }).then(function (r) { R.rst = String(r.status); relayPaint(); if (!r.ok) throw 0; }).catch(function () { if (++tries < 3) later(send, 2000 * tries); }); } catch (e) {}
       })();
     };
     R.close = function () {
@@ -4730,6 +4737,7 @@ var ES_PHRASES = [
       '<button type="button" class="pair-code" data-a="pair-copy" aria-label="' + esc(t('pair.code')) + '">' + PAIR.room + '</button>' +
       '<p class="pair-st' + (pairLive() ? ' live' : '') + '">' + (pairLive() ? '<i class="pdot" aria-hidden="true"></i>' + t('pair.linked') : waitDots()) + '</p>' +
       '<p class="pair-role">👑 ' + t(PAIR.lead ? 'pair.you' : 'pair.they') + '</p>' +
+      '<p class="pair-diag" id="pair-diag">' + (PL.relay ? esc(relayDiag(PL.relay)) : '') + '</p>' +
       '<button type="button" class="link" data-a="pair-leave">' + t('pair.leave') + '</button></div>';
   }
   function pairWaitHTML() { return '<div class="pair-wbox"><button type="button" class="pair-wait" data-a="drawer" data-v="pair"><span aria-hidden="true">👑</span><span class="pw-t">' + t('pair.they') + '</span>' + waitDots() + '</button><button type="button" class="link" data-a="pair-alone">' + t('pair.alone') + '</button></div>'; }
