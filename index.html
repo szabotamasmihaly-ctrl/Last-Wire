@@ -887,6 +887,10 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 @keyframes wdot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-5px)}}
 .pair-wait{border:0;background:none;color:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:26px;padding:14px;min-height:56px}
 .song-t{text-align:center}
+.turntable.mel{border:0;background:none;color:inherit;cursor:pointer;position:relative;padding:0}
+.turntable.mel .mel-p{position:absolute;left:28px;top:50%;transform:translateY(-50%);font-size:18px;color:#fff;text-shadow:0 1px 3px #000}
+.turntable.mel.on .mel-p{opacity:0}
+.turntable.mel:not(.on) .vinyl{animation-play-state:paused}
 .artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
 .mysongs textarea{width:100%;min-height:110px;font:inherit;font-size:15px;padding:10px;resize:vertical}
 .pair-diag{font-size:11px;color:#aaa;text-align:center;margin:0}
@@ -4165,7 +4169,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 17;
+  var BUILD = 18;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4828,6 +4832,7 @@ var ES_PHRASES = [
     setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
   function finish(boom) {
+    melStop();
     if (pairLeader() && PAIR.cur && S.spec && PAIR.cur.code === S.spec.code) { PAIR.cur = null; pairSave(); }
     linkSend(); stopLoop(); clearTimers();
     var go = function () { document.body.classList.remove('boom'); S.screen = 'result'; render(); window.scrollTo(0, 0); };
@@ -6102,17 +6107,37 @@ var ES_PHRASES = [
   function emoParts(str) { var out = []; Array.from(str).forEach(function (c) { var cp = c.codePointAt(0), last = out.length ? out[out.length - 1] : ''; if (cp === 0xFE0F || cp === 0x200D || (last && last.codePointAt(last.length - 1) === 0x200D) || (cp >= 0x1F3FB && cp <= 0x1F3FF)) { if (out.length) out[out.length - 1] += c; else out.push(c); } else out.push(c); }); return out; }
   function ext(o, more) { for (var k in more) o[k] = more[k]; return o; }
 
+  /* 🎵 the tune of the song, when a free recording exists: tap the record to play it */
+  var Mel = { a: null, title: '' };
+  function melStop() { if (Mel.a) { try { Mel.a.pause(); } catch (e) {} } Mel.a = null; Mel.title = ''; var v = document.querySelector('.turntable.mel'); if (v) v.classList.remove('on'); }
+  function melToggle(title) {
+    if (Mel.a && Mel.title === title) { melStop(); return; }
+    melStop();
+    var urls = (typeof PARTY !== 'undefined' && PARTY.melody && PARTY.melody[title]) || null; if (!urls) return;
+    var k = 0, a = new Audio();
+    a.volume = 0.5; a.preload = 'auto';
+    a.onerror = function () { if (Mel.a === a && ++k < urls.length) { a.src = urls[k]; a.play().catch(function () {}); } };
+    a.onended = function () { if (Mel.a === a) melStop(); };
+    a.src = urls[0]; Mel.a = a; Mel.title = title;
+    a.play().catch(function () {});
+    var v = document.querySelector('.turntable.mel'); if (v) v.classList.add('on');
+  }
   /* 🎵 finish the song: the helper hears the line, the bomb has three records */
   UI.song = ext({
     init: function () { return { r: 0, fb: false }; },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r];
       return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
-        '<div class="turntable" aria-hidden="true"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>' +
+        (PARTY.melody && PARTY.melody[rd.song] ? '<button type="button" class="turntable mel' + (Mel.title === rd.song ? ' on' : '') + '" data-a="m" data-i="' + i + '" data-k="mel" aria-label="▶ ' + esc(rd.song) + '"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="mel-p" aria-hidden="true">▶</span></button>' :
+        '<div class="turntable" aria-hidden="true"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>') +
         '<p class="artist">' + (rd.song === '🎵' ? '🎵' : '🎵 ' + esc(rd.song)) + '</p><p class="gp-s song-t' + sizeCls(rd.title) + '" lang="' + tl() + '">' + esc(rd.pre) + '<span class="hole" aria-label="___"></span>' + esc(rd.post) + '</p>' +
         wBtns(i, rd.words, 'rec') + (st.fb ? fbBad('p.bad') : '');
     },
-    on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    on: function (k, v, d, st, i) {
+      if (k === 'mel') { melToggle(d.rounds[st.r].song); return; }
+      var res = pickOn(k, v, d, st, i); if (res === 'next' || res === 'solved') melStop(); return res;
+    },
+    key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
 

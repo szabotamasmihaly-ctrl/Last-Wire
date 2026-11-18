@@ -344,3 +344,29 @@ PARTY.da = {
   ],
   safe: ['Drej først hjulet til {0}, gå så til {1}, og stop til sidst ved {2}, før tiden løber ud.', 'Koden starter med {0}, det midterste tal er {1}, og det sidste er {2} på dette pengeskab.']
 };
+
+
+/* 🎵 the tune: public-domain recordings on Wikimedia Commons (1888 cylinder; NASA Gemini VI, 1965; U.S. Army,
+   Marine and Navy bands). Each song gets an mp3 copy first and the original Ogg file as a fallback. */
+PARTY.melody = {
+  "Twinkle, Twinkle, Little Star": [
+    "https://upload.wikimedia.org/wikipedia/commons/transcoded/1/1f/Twinkle%2C_twinkle_little_star_1_%281888%29.ogg/Twinkle%2C_twinkle_little_star_1_%281888%29.ogg.mp3",
+    "https://upload.wikimedia.org/wikipedia/commons/1/1f/Twinkle%2C_twinkle_little_star_1_%281888%29.ogg"
+  ],
+  "Jingle Bells": [
+    "https://upload.wikimedia.org/wikipedia/commons/transcoded/9/91/Gemini_VI_Jingle_Bells.ogg/Gemini_VI_Jingle_Bells.ogg.mp3",
+    "https://upload.wikimedia.org/wikipedia/commons/9/91/Gemini_VI_Jingle_Bells.ogg"
+  ],
+  "Auld Lang Syne": [
+    "https://upload.wikimedia.org/wikipedia/commons/transcoded/d/d4/Auld_Lang_Syne_-_U.S._Army_Band.ogg/Auld_Lang_Syne_-_U.S._Army_Band.ogg.mp3",
+    "https://upload.wikimedia.org/wikipedia/commons/d/d4/Auld_Lang_Syne_-_U.S._Army_Band.ogg"
+  ],
+  "Amazing Grace": [
+    "https://upload.wikimedia.org/wikipedia/commons/transcoded/2/21/Amazing_Grace_US_Marine_Band.ogg/Amazing_Grace_US_Marine_Band.ogg.mp3",
+    "https://upload.wikimedia.org/wikipedia/commons/2/21/Amazing_Grace_US_Marine_Band.ogg"
+  ],
+  "Der er et yndigt land": [
+    "https://upload.wikimedia.org/wikipedia/commons/transcoded/0/06/United_States_Navy_Band_-_Der_er_et_yndigt_land.ogg/United_States_Navy_Band_-_Der_er_et_yndigt_land.ogg.mp3",
+    "https://upload.wikimedia.org/wikipedia/commons/0/06/United_States_Navy_Band_-_Der_er_et_yndigt_land.ogg"
+  ]
+};
