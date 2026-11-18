@@ -299,7 +299,7 @@ function state(){
   S.ev.forEach(function(e){
     var tt=turns[e.t]=turns[e.t]||{};
     if(e.k==='clue' && !tt.clues) tt.clues=e.cl;
-    else if(e.k==='guess' && !(tt['g'+e.by])) tt['g'+e.by]=e.g;
+    else if(e.k==='guess' && !(tt['g'+e.by])){ tt['g'+e.by]=e.g; if(!tt.clues && e.cl) tt.clues=e.cl; }
     else if(e.k==='next') tt.next=1;
   });
   for(var i=0;i<1000;i++){
@@ -492,12 +492,13 @@ function panel(st,tt){
   return P+who+clues.map(function(c,i){
       return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span><button class="dig'+(g[i]?' fill':'')+'" data-slot="'+i+'">'+(g[i]||'')+'</button></div>'; }).join('')+
     '<div class="pad">'+[1,2,3,4].map(function(n){ return '<button data-n="'+n+'"'+(g.indexOf(String(n))>=0||g.length>=3?' disabled':'')+'>'+n+'</button>'; }).join('')+'</div>'+
-    '<button class="big" id="check"'+(g.length===3&&!live?'':' disabled')+'>'+t('check')+'</button></div>';
+    '<button class="big" id="check"'+(g.length===3&&(!live||clues.every(function(c){ return c; }))?'':' disabled')+'>'+t('check')+'</button></div>';
 }
 function paintLive(){
   var cl=S.live[S.st.cur]||[], rows=$$('.cw[data-row]');
   if(!rows.length){ render(); return; }
   rows.forEach(function(r,i){ if(r.classList.contains('live')) r.textContent=cl[i]||''; });
+  var ck=$('#check'); if(ck && rows[0].classList.contains('live')) ck.disabled=!(S.guess.length===3 && [0,1,2].every(function(i){ return cl[i]; }));
 }
 function history(st){
   function grid(team, mine){
@@ -533,7 +534,7 @@ function bind(){
   var sd=$('#send'); if(sd) sd.onclick=sendClues;
   $$('.pad button').forEach(function(p){ p.onclick=function(){ if(S.guess.length<3){ S.guess.push(p.getAttribute('data-n')); beep('tap'); render(); } }; });
   $$('button.dig[data-slot]').forEach(function(d){ d.onclick=function(){ var i=+d.getAttribute('data-slot'); if(S.guess[i]){ S.guess=S.guess.slice(0,i); render(); } }; });
-  var ck=$('#check'); if(ck) ck.onclick=function(){ if(S.guess.length===3){ var g=S.guess.join(''); S.guess=[]; beep('send'); act({k:'guess',t:S.st.cur,by:coop()?'A':S.team,g:g}); } };
+  var ck=$('#check'); if(ck) ck.onclick=function(){ if(S.guess.length===3){ var g=S.guess.join(''); S.guess=[]; beep('send'); var ev={k:'guess',t:S.st.cur,by:coop()?'A':S.team,g:g}, tt=S.st.turns[S.st.cur]; if(!tt.clues && S.live[S.st.cur]) ev.cl=S.live[S.st.cur].slice(); act(ev); } };
   var nx=$('#next'); if(nx) nx.onclick=function(){ beep('tap'); act({k:'next',t:S.st.cur}); };
 }
 function enterRoom(room, made){
