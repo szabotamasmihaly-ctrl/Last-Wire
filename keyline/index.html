@@ -84,6 +84,10 @@ main{flex:1;width:100%;max-width:620px;margin:0 auto;padding:0 16px 28px;display
 .who{display:flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.06em;color:var(--ink-2)}
 .who .sw{width:14px;height:14px;border-radius:5px}
 .who svg{width:20px;height:20px;flex:none}
+.share{background:var(--card);border:3px solid var(--me);border-radius:20px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:6px;animation:pop .4s cubic-bezier(.2,1.4,.4,1)}
+.share .slabel{font-weight:800;font-size:16px;color:var(--ink-2);text-align:center}
+.share .bigcode{font-size:clamp(60px,20vw,96px)}
+.share .wait{padding:4px 0}
 .wlabel{text-align:center;font-weight:800;font-size:17px;color:var(--ink-2);padding-top:6px}
 .secret{display:flex;gap:10px;justify-content:center;user-select:none;-webkit-user-select:none;touch-action:none}
 .secret i{width:58px;height:70px;border-radius:14px;background:var(--ink);color:#fff;font-style:normal;font-family:var(--display);font-size:46px;display:grid;place-items:center;border-bottom:5px solid #000;transition:transform .3s}
@@ -167,8 +171,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -325,9 +329,10 @@ function state(){
 var RELAY='https://ntfy.sh/', Link={es:null,poll:null,since:0,ids:{}};
 function topic(){ return 'keyline-v1-'+hash('kl-link:'+S.mode+S.room).toString(36); }
 function store(){ try{ localStorage.setItem('kl-ev-'+S.mode+S.room, JSON.stringify(S.ev)); }catch(e){} }
-function post(e){ if(!online()||typeof fetch!=='function') return; try{ fetch(RELAY+topic(),{method:'POST',body:JSON.stringify(e)}).catch(function(){}); }catch(x){} }
+function post(e){ if(!online()||typeof fetch!=='function') return; e.dev=DEV; try{ fetch(RELAY+topic(),{method:'POST',body:JSON.stringify(e)}).catch(function(){}); }catch(x){} }
 function addEv(e){ if(S.seen[e.id]) return false; S.seen[e.id]=1; S.ev.push(e); store(); return true; }
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
+var DEV=(function(){ try{ var d=sessionStorage.getItem('kl-dev'); if(!d){ d=Math.random().toString(36).slice(2,10); sessionStorage.setItem('kl-dev',d); } return d; }catch(e){ return Math.random().toString(36).slice(2,10); } })();
 function act(e){ e.id=uid(); e.c=S.room; addEv(e); post(e); update(); }
 function linkStop(){ if(Link.es){ try{Link.es.close();}catch(e){} } Link.es=null; if(Link.poll) clearInterval(Link.poll); Link.poll=null; S.linked=false; }
 function setLinked(){ if(S.linked) return; S.linked=true; var l=$('.link'); if(l) l.classList.add('on'); }
@@ -343,6 +348,8 @@ function linkStart(){
     var e; try{ e=JSON.parse(m.message); }catch(x){ return; }
     if(!e||e.c!==room||!e.id) return;
     setLinked();
+    if(e.dev && e.dev!==DEV && !S.peers[e.dev]){ var first=!Object.keys(S.peers).length; S.peers[e.dev]=1; if(first && S.scr==='play'){ toast(t('joined')); beep('ok'); render(); } }
+    if(e.k==='hi') return;
     if(e.k==='again'){ if(S.scr==='play') goPlay(nextRoom(room)); return; }
     if(e.k==='type'){ if(e.by!==S.player && e.t===S.st.cur && Date.now()/1000-(m.time||0)<120){ S.live[e.t]=e.cl; paintLive(); } return; }
     if(addEv(e)) update(true);
@@ -404,7 +411,7 @@ function render(){
       '</div></div></main>';
   } else if(S.scr==='room'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
-      '<main><div class="hero"><div class="stack"><button class="big" id="new">'+t('newg')+'</button><div class="or">— '+t('code')+' —</div>'+
+      '<main><div class="hero"><div class="stack"><button class="big" id="new">'+t('newg')+'</button><div class="or">'+t('got')+'</div>'+
       '<div class="join"><input id="jc" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCD" aria-label="'+t('code')+'"><button class="big" id="jb" aria-label="'+t('join')+'" disabled>'+I.go+'</button></div></div></div></main>';
   } else if(S.scr==='pick'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
@@ -413,12 +420,16 @@ function render(){
   } else {
     var G=S.game, cur=st.turns[st.cur];
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>'+(online()?'<span class="codechip"><span class="link'+(S.linked?' on':'')+'"></span>'+S.room+'</span>':''))+
-      '<main>'+scoreBar(st)+keysHtml(G.keys[S.team])+panel(st,cur)+history(st)+'</main>';
+      '<main>'+shareCard()+scoreBar(st)+keysHtml(G.keys[S.team])+panel(st,cur)+history(st)+'</main>';
   }
   var keep=$$('.crow input').map(function(x){ return x.value; }), fi=$$('.crow input').indexOf(document.activeElement);
   a.innerHTML=h; bind();
   var ins=$$('.crow input'); if(keep.length===ins.length) ins.forEach(function(x,i){ x.value=keep[i]; if(i===fi) x.focus(); });
   if(S.scr==='play' && st.over) showEnd();
+}
+function shareCard(){
+  if(!online() || Object.keys(S.peers||{}).length) return '';
+  return '<div class="share"><div class="slabel">'+t(S.mode==='duo'?'shareduo':'sharevs')+'</div><button class="bigcode" id="copy" aria-label="'+t('code')+'">'+S.room+'</button><div class="wait"><i></i><i></i><i></i></div></div>';
 }
 function scoreBar(st){
   function toks(team, star, miss){
@@ -573,7 +584,7 @@ function goPlay(room){
   S.seen={}; S.ev.forEach(function(e){ S.seen[e.id]=1; });
   S.scr='play'; S.shown='';
   setHash(S.mode+'-'+room+(S.mode==='vs'?'-'+S.team:(S.mode==='duo'?'-'+S.player:'')));
-  S.st=state(); render(); window.scrollTo(0,0); linkStart();
+  S.peers={}; S.st=state(); render(); window.scrollTo(0,0); linkStart(); post({k:'hi',c:room,id:uid()});
 }
 function setHash(h){ try{ history.replaceState(null,'',h?'#'+h:location.pathname); }catch(e){} }
 
