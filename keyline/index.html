@@ -273,20 +273,214 @@ function roundOf(turn){ return coop()?turn+1:Math.floor(turn/2)+1; }
 function canIntercept(turn){ return coop()?true:Math.floor(turn/2)>=1; }
 function giverOf(turn){ return turn%2===0?'1':'2'; }
 
-/* ---------- the computer: it only links today's clues to earlier clues and their numbers ---------- */
-function norm(w){ w=String(w).toLowerCase().replace(/[^a-z]/g,''); if(w.length>4 && /ies$/.test(w)) w=w.slice(0,-3)+'y'; else if(w.length>4 && /(ch|sh|x|s)es$/.test(w)) w=w.slice(0,-2); else if(w.length>3 && /s$/.test(w) && !/ss$/.test(w)) w=w.slice(0,-1); return w; }
+/* what each possible secret word makes people think of */
+var ASSOC_SRC='apple:fruit red green tree pie juice orchard newton iphone mac computer core seed worm eve adam snow white teacher healthy crunchy cider vitamin doctor bite|'+
+ 'bread:toast butter bakery baker loaf sandwich slice flour wheat dough yeast crust breakfast jam roll baguette food oven crumb|'+
+ 'cheese:mouse milk cow pizza swiss holes yellow cheddar dairy smile photo say sandwich fondue goat wine burger|'+
+ 'egg:chicken hen bird nest easter omelette breakfast yolk shell boil fried white yellow bacon dinosaur round|'+
+ 'milk:cow white dairy drink cereal breakfast glass cheese cream calcium baby cat bottle shake cookie|'+
+ 'pizza:italy italian cheese tomato slice pepperoni delivery round oven dough napoli fastfood party box|'+
+ 'soup:spoon bowl hot tomato chicken vegetable noodle lunch dinner kitchen cook liquid broth goulash winter sick|'+
+ 'cake:birthday candle sweet chocolate cream party wedding bake oven sugar dessert slice piece icing|'+
+ 'coffee:cup mug morning caffeine bean black milk espresso latte cafe starbucks tea hot drink energy awake brown|'+
+ 'chocolate:sweet cocoa brown candy dessert bar milk dark cake belgium swiss easter valentine sugar|'+
+ 'sugar:sweet white cube candy cake honey diabetes sugarcane tea coffee spoon salt dessert|'+
+ 'lemon:yellow sour fruit juice lime citrus lemonade tea vitamin tree acid squeeze|'+
+ 'banana:yellow fruit monkey peel split tropical potassium smoothie bunch slip minion|'+
+ 'potato:chips fries french mashed vegetable earth farm couch baked soil starch ireland ketchup|'+
+ 'honey:bee sweet yellow golden hive bear pooh sticky sugar flower tea darling sweetheart|'+
+ 'dog:puppy bark pet bone walk loyal friend tail leash wolf cat paw fetch woof|'+
+ 'cat:kitten meow pet mouse milk whiskers purr tail paw lion dog fur garfield claw|'+
+ 'horse:ride rider saddle farm pony gallop race cowboy stable hay horseshoe mane hoof knight zebra carriage|'+
+ 'cow:milk farm moo grass beef cheese field leather udder bull calf india cattle|'+
+ 'sheep:wool farm lamb baa white flock shepherd sleep count field cloud dolly|'+
+ 'chicken:egg hen farm bird rooster nugget wing feather coward fried kfc soup chick|'+
+ 'fish:sea ocean water swim fin aquarium nemo gold goldfish fishing net shark whale chips salmon tuna river scale|'+
+ 'bird:fly wing feather nest sky egg tweet sing beak twitter eagle parrot pigeon owl|'+
+ 'mouse:cheese cat small computer mickey trap rat click squeak tail hole|'+
+ 'rabbit:bunny carrot ears hop easter magic hat jump fast fluffy pet hole alice|'+
+ 'lion:king jungle africa mane roar cat zoo savanna brave leo pride simba|'+
+ 'tiger:stripes cat jungle orange india zoo wild roar claws tail asia|'+
+ 'bear:honey teddy brown polar forest grizzly hug winter sleep cave panda pooh fur|'+
+ 'monkey:banana tree jungle zoo ape climb tail funny gorilla chimp swing|'+
+ 'snake:hiss poison venom cobra python reptile long slither scales snakebite egypt harry slytherin|'+
+ 'frog:green pond jump prince kiss toad lake croak leap tadpole|'+
+ 'bee:honey sting buzz flower hive yellow black insect queen bumble pollen|'+
+ 'spider:web eight legs insect scary halloween spiderman bite black silk|'+
+ 'whale:ocean sea big huge blue fish swim moby water dolphin giant|'+
+ 'shark:ocean sea teeth jaws fish bite swim danger fin attack|'+
+ 'owl:night bird wise wisdom eyes hoot harry potter tree dark|'+
+ 'house:home door roof window family wall live building room garden key address|'+
+ 'door:open close key knock lock handle entrance exit house room wood|'+
+ 'window:glass open view house curtain light microsoft frame wall|'+
+ 'kitchen:cook food oven stove fridge knife table chef dinner sink plate|'+
+ 'garden:flower plant tree grass green rose vegetable park soil water gnome backyard|'+
+ 'bed:sleep night pillow bedroom blanket dream tired rest sheet mattress|'+
+ 'chair:sit table seat furniture desk wood leg sofa armchair throne|'+
+ 'table:chair dinner wood desk furniture eat kitchen tennis leg plate|'+
+ 'mirror:reflection glass face look snow white vanity selfie image broken bathroom|'+
+ 'clock:time hour minute tick alarm watch wall second late morning|'+
+ 'key:lock door open house car secret code chain piano keyboard|'+
+ 'box:package gift present cardboard square container shipping pandora boxing cube|'+
+ 'bag:handbag shopping school paper plastic pocket carry backpack purse suitcase|'+
+ 'knife:cut kitchen sharp blade fork spoon steel cook meat weapon|'+
+ 'car:drive driver road wheel engine fast race traffic garage petrol gas ford tesla|'+
+ 'bus:school stop driver ticket public transport yellow city ride station|'+
+ 'train:rail railway station track ticket travel locomotive steam metro subway|'+
+ 'plane:fly flight airport pilot wing sky travel jet airplane holiday ticket|'+
+ 'boat:sail sea water lake river ship fishing row captain float harbor|'+
+ 'bike:bicycle ride cycle pedal wheel helmet tour motorcycle|'+
+ 'ship:sea ocean sail boat captain titanic cruise pirate port anchor navy|'+
+ 'road:street car drive way path highway traffic map asphalt trip|'+
+ 'bridge:river cross water golden gate london city tower crossing|'+
+ 'station:train bus police fire gas platform ticket wait metro|'+
+ 'ticket:train bus plane cinema movie concert pay entry pass lottery fine|'+
+ 'map:world road direction travel country city atlas compass treasure gps|'+
+ 'school:teacher student class lesson book learn homework exam test pupil classroom|'+
+ 'teacher:school student class lesson learn book board pupil exam homework|'+
+ 'book:read story page library novel author writer paper chapter word|'+
+ 'pen:write ink paper pencil letter signature blue ballpoint desk|'+
+ 'paper:write white sheet pen book page newspaper tree print origami|'+
+ 'bell:ring sound church school door jingle christmas alarm tower|'+
+ 'sun:hot summer light day yellow sky star warm beach sunny shine solar|'+
+ 'moon:night sky star space full astronaut month crescent light planet wolf cheese|'+
+ 'star:sky night shine light famous celebrity space wish sun twinkle|'+
+ 'rain:water wet cloud umbrella storm weather drop rainbow grey autumn|'+
+ 'snow:winter cold white ice snowman ski christmas flake frozen mountain|'+
+ 'wind:air blow storm breeze weather kite sail windmill cold fresh turbine hurricane|'+
+ 'cloud:sky rain white grey weather fluffy storm computer icloud data heaven nine|'+
+ 'sea:ocean water beach wave salt fish ship swim blue sailor|'+
+ 'river:water flow bridge fish boat stream lake bank danube nile|'+
+ 'beach:sand sea sun summer holiday swim wave surf ocean vacation|'+
+ 'island:sea ocean beach palm tropical holiday treasure deserted sand coconut pirate robinson castaway hawaii lonely survivor|'+
+ 'mountain:hill high climb peak snow rock alps hike everest top|'+
+ 'forest:tree wood green nature animal hike wild jungle bear wolf deer mushroom camping woods hunter|'+
+ 'tree:leaf wood green forest branch root apple oak christmas nest fruit trunk climb|'+
+ 'flower:rose garden spring petal bloom smell plant bee bouquet tulip daisy sunflower pollen gift vase|'+
+ 'leaf:tree green autumn fall plant branch nature maple brown tea|'+
+ 'rock:stone hard music roll mountain heavy band guitar concert pebble boulder cliff granite|'+
+ 'fire:hot burn flame smoke red danger heat fireplace camp firefighter firework candle match alarm|'+
+ 'ice:cold frozen winter snow cube freezer skate hockey drink cream|'+
+ 'phone:call mobile ring talk text message smartphone apple number contact cell iphone android app|'+
+ 'computer:laptop keyboard mouse internet screen code program game windows apple mac software monitor desktop pc|'+
+ 'camera:photo picture film lens flash selfie video photographer zoom shoot instagram tourist|'+
+ 'radio:music station listen song news frequency broadcast dj fm am car speaker|'+
+ 'music:song sing listen band concert sound melody instrument notes headphones dance rhythm spotify|'+
+ 'piano:keys music play instrument black white concert classical mozart beethoven pianist chord|'+
+ 'guitar:rock music strings play band instrument acoustic chord elvis electric guitarist|'+
+ 'drum:beat rock music band loud sticks rhythm drummer snare cymbal percussion bang|'+
+ 'movie:film cinema actor watch popcorn hollywood screen director oscar theater star trailer netflix|'+
+ 'game:play fun board video win lose team player sport chess cards dice level console nintendo|'+
+ 'ball:round play football soccer tennis kick throw bounce basketball goal net catch dance prom|'+
+ 'party:fun dance music celebrate friends birthday drink balloon cake disco invitation guest celebration|'+
+ 'gift:present box birthday christmas surprise ribbon wrap santa bow card thanks|'+
+ 'letter:mail post write envelope stamp alphabet word abc postman postcard pen paper send|'+
+ 'money:cash coin bank rich pay dollar euro buy wallet gold salary expensive cheap price|'+
+ 'bank:money cash account loan safe savings vault atm credit card river robbery|'+
+ 'shop:buy store market sell shopping price sale cashier cart customer open closed mall|'+
+ 'hat:head cap wear sun magician cowboy top winter wizard witch sombrero|'+
+ 'shoe:foot wear walk sock heel boot sneaker lace nike shop size leather run|'+
+ 'shirt:wear clothes button tshirt collar sleeve cotton tie jeans pants polo|'+
+ 'dress:wear clothes girl woman party wedding skirt fashion gown bride red elegant|'+
+ 'coat:winter warm jacket wear cold clothes fur rain zip hood pocket|'+
+ 'ring:finger gold wedding diamond marriage jewel circle bell phone boxing lord engagement|'+
+ 'watch:time clock wrist hour see look wrist rolex tv movie guard band|'+
+ 'glove:hand winter warm finger boxing baseball cold mitten leather snow ski|'+
+ 'doctor:hospital sick medicine nurse health patient clinic stethoscope pill injection white|'+
+ 'nurse:hospital doctor care sick patient injection medicine ambulance bandage white|'+
+ 'king:queen crown throne castle royal prince kingdom palace lion chess rule power gold|'+
+ 'queen:king crown royal palace england throne princess bee chess elizabeth gold jewel|'+
+ 'baby:small child cry milk mother born infant cute diaper bottle toy crib cradle|'+
+ 'police:officer cop crime law thief jail siren gun handcuffs badge detective car|'+
+ 'farmer:farm field cow tractor harvest crop animals pig sheep chicken barn hay|'+
+ 'pilot:plane fly airport cockpit sky captain flight airline uniform wing|'+
+ 'chef:cook kitchen food restaurant knife recipe hat cookbook menu oven|'+
+ 'artist:paint art picture draw museum painter creative canvas brush gallery music singer|'+
+ 'hand:finger arm glove palm hold wave touch shake clap ring five|'+
+ 'foot:leg shoe sock toe walk football kick feet step run barefoot|'+
+ 'head:hair brain face hat think skull neck helmet cap boss|'+
+ 'eye:see look vision blue glasses tears eyebrow lens wink cry|'+
+ 'ear:hear listen sound music earring noise hearing ring headphones deaf|'+
+ 'nose:smell face breath sneeze perfume flower cold red mouth|'+
+ 'heart:love valentine red blood beat feeling doctor pulse emoji kiss|'+
+ 'hair:head long short blonde brown haircut barber comb brush wig shampoo|'+
+ 'tooth:teeth dentist smile mouth white bite brush toothpaste fairy|'+
+ 'gold:yellow rich money medal silver treasure jewel ring coin olympic|'+
+ 'silver:medal metal gold money coin grey ring spoon jewelry|'+
+ 'summer:hot sun holiday beach vacation july warm swim sunglasses ice cream festival|'+
+ 'winter:cold snow ice christmas december ski coat scarf glove frost|'+
+ 'night:dark moon star sleep bed evening midnight owl dream nightmare|'+
+ 'birthday:cake candle party gift celebrate age present balloon candles wish|'+
+ 'holiday:vacation beach travel trip summer christmas rest hotel suitcase flight passport|'+
+ 'ghost:scary halloween spirit dead haunted boo white casper sheet scream|'+
+ 'robot:machine metal future android computer ai terminator steel mechanic|'+
+ 'dragon:fire fly castle knight legend monster myth treasure wings china|'+
+ 'castle:king queen tower knight princess medieval palace wall moat dragon|'+
+ 'tower:tall high eiffel castle building bell paris london pisa|'+
+ 'circus:clown acrobat show tent juggle elephant lion magician tiger|'+
+ 'zoo:animals lion tiger monkey cage visit keeper giraffe elephant bear|'+
+ 'hospital:doctor nurse sick patient ambulance health medicine emergency|'+
+ 'church:god pray priest wedding bell religion cross candle choir|'+
+ 'park:tree grass walk green picnic bench playground swing dog bike|'+
+ 'city:town street building urban people capital new york paris london budapest|'+
+ 'sky:blue cloud sun star bird plane fly high heaven air moon space';
+/* ---------- the computer ----------
+   It sees only the clues you shared and which number each one belonged to. It also knows the public list of
+   possible secret words below, so it works out which word is most likely behind each number, then matches
+   today's clues to those words and to the earlier clues. */
+var ASSOC={}, FAMOF={};
+ASSOC_SRC.split('|').forEach(function(l){ var p=l.split(':'), o={}; p[1].split(' ').forEach(function(w){ o[norm(w)]=1; }); ASSOC[p[0]]=o; });
+FAM.forEach(function(g,i){ for(var w in g){ var n=norm(w); (FAMOF[n]=FAMOF[n]||[]).push(i); } });
+function norm(w){
+  w=String(w); if(w.normalize) w=w.normalize('NFD').replace(/[̀-ͯ]/g,'');
+  w=w.toLowerCase().replace(/[^a-z]/g,'');
+  if(w.length>4 && /ies$/.test(w)) w=w.slice(0,-3)+'y'; else if(w.length>4 && /(ch|sh|x|s)es$/.test(w)) w=w.slice(0,-2); else if(w.length>3 && /s$/.test(w) && !/(ss|us|is)$/.test(w)) w=w.slice(0,-1);
+  return w;
+}
+function variants(c){ var v=[c]; if(c.length>5 && /ing$/.test(c)){ v.push(c.slice(0,-3)); v.push(c.slice(0,-3)+'e'); } if(c.length>4 && /ed$/.test(c)){ v.push(c.slice(0,-2)); v.push(c.slice(0,-1)); } if(c.length>4 && /er$/.test(c)) v.push(c.slice(0,-2)); if(c.length>4 && /y$/.test(c)) v.push(c.slice(0,-1)); return v; }
+function famShare(a,b){ var fa=FAMOF[a], fb=FAMOF[b]; if(!fa||!fb) return false; for(var i=0;i<fa.length;i++) if(fb.indexOf(fa[i])>=0) return true; return false; }
+/* how strongly a clue points to a possible secret word */
+function rel(c,w){
+  var best=0, vs=variants(c), A=ASSOC[w]||{};
+  for(var i=0;i<vs.length;i++){
+    var x=vs[i]; if(!x) continue;
+    if(x===w || A[x] || (ASSOC[x] && ASSOC[x][w])) return 1;
+    if(x.length>=4 && w.length>=4 && (x.indexOf(w)>=0 || w.indexOf(x)>=0)) best=Math.max(best,.9);
+    if(x.length>=5){ var x5=x.slice(0,5); for(var k in A) if(k.length>=5 && k.slice(0,5)===x5){ best=Math.max(best,.8); break; } }
+    if(famShare(x,w)) best=Math.max(best,.4);
+  }
+  return best;
+}
+/* how close two clues are to each other */
 function sim(a,b){
-  a=norm(a); b=norm(b); if(!a||!b) return 0;
+  if(!a||!b) return 0;
   if(a===b) return 1;
   if(a.length>=4 && b.length>=4 && (a.indexOf(b)>=0 || b.indexOf(a)>=0 || a.slice(0,5)===b.slice(0,5))) return .85;
-  for(var i=0;i<FAM.length;i++) if(FAM[i][a] && FAM[i][b]) return .6;
-  return 0;
+  if((ASSOC[a] && ASSOC[a][b]) || (ASSOC[b] && ASSOC[b][a])) return .7;
+  return famShare(a,b)?.5:0;
 }
 function aiGuess(turns, i, clues){
-  var cols=[[],[],[],[]];
-  for(var j=0;j<i;j++){ var tt=turns[j]; if(tt && tt.done && tt.enc==='A') tt.clues.forEach(function(c,k){ cols[+tt.code[k]-1].push(c); }); }
-  var score=clues.map(function(c){ return cols.map(function(col){ var m=0, n=0; col.forEach(function(h){ var x=sim(c,h); m=Math.max(m,x); if(x) n++; }); return m+(n>1?.1*(n-1):0); }); });
-  score.forEach(function(row){ var best=Math.max.apply(null,row); if(best===0) cols.forEach(function(col,k){ if(!col.length) row[k]=.2; }); });
+  var cols=[[],[],[],[]], N=WORDS.length;
+  for(var j=0;j<i;j++){ var tt=turns[j]; if(tt && tt.done && tt.enc==='A') tt.clues.forEach(function(c,k){ cols[+tt.code[k]-1].push(norm(c)); }); }
+  var cl=clues.map(norm);
+  /* which secret word is behind each number, judged from that number's earlier clues */
+  var post=cols.map(function(col){
+    if(!col.length) return null;
+    var ws=WORDS.map(function(w){ var s=0; col.forEach(function(h){ if(h===w) s-=5; else s+=rel(h,w); }); if(s<0) return 0; var b=.15+s; return b*b*b*b; });
+    var z=ws.reduce(function(a,b){ return a+b; },0)||1; return ws.map(function(x){ return x/z; });
+  });
+  var claim=WORDS.map(function(w,j){ var m=0; post.forEach(function(p){ if(p) m=Math.max(m,p[j]); }); return m; });
+  var pri=WORDS.map(function(w,j){ return Math.max(0,1-3*claim[j]); }), pz=pri.reduce(function(a,b){ return a+b; },0)||1;
+  pri=pri.map(function(x){ return x/pz; });
+  var score=cl.map(function(c){
+    var fit=WORDS.map(function(w){ return rel(c,w); });
+    return cols.map(function(col,k){
+      var P=post[k]||pri, s=0; for(var j=0;j<N;j++) if(fit[j]) s+=P[j]*fit[j];
+      var m=0; col.forEach(function(h){ m=Math.max(m,sim(c,h)); });
+      s+=.5*m+(col.length?0:.002);
+      return Math.round(s*1e6);
+    });
+  });
   var r=rng(hash('ai:'+S.room+':'+i)), best=null, bs=-1, perms=[];
   [1,2,3,4].forEach(function(a){ [1,2,3,4].forEach(function(b){ [1,2,3,4].forEach(function(c){ if(a!==b&&b!==c&&a!==c) perms.push([a,b,c]); }); }); });
   shuffle(perms,r).forEach(function(p){ var s=score[0][p[0]-1]+score[1][p[1]-1]+score[2][p[2]-1]; if(s>bs){ bs=s; best=p; } });
@@ -296,12 +490,15 @@ function aiGuess(turns, i, clues){
 /* ---------- the whole game is rebuilt from the list of moves ---------- */
 function state(){
   var G=S.game, turns=[], cur=0, st={star:{A:0,B:0,C:0},miss:{A:0,B:0},over:''};
-  S.ev.forEach(function(e){
+  /* every phone sorts the moves the same way (by time-based id), so all phones agree on the game */
+  var evs=S.ev.slice().sort(function(a,b){ return a.id<b.id?-1:(a.id>b.id?1:0); });
+  evs.forEach(function(e){
     var tt=turns[e.t]=turns[e.t]||{};
     if(e.k==='clue' && !tt.clues) tt.clues=e.cl;
-    else if(e.k==='guess' && !(tt['g'+e.by])){ tt['g'+e.by]=e.g; if(!tt.clues && e.cl) tt.clues=e.cl; }
+    else if(e.k==='guess' && !(tt['g'+e.by])){ tt['g'+e.by]=e.g; if(e.cl && !tt.gcl) tt.gcl=e.cl; }
     else if(e.k==='next') tt.next=1;
   });
+  turns.forEach(function(tt){ if(tt && !tt.clues && tt.gcl) tt.clues=tt.gcl; });
   for(var i=0;i<1000;i++){
     var tt=turns[i]||{}, E=encoder(i), O=opponent(E);
     tt.code=G.code(i); tt.enc=E; tt.opp=O;
@@ -328,7 +525,11 @@ function state(){
 var RELAY='https://ntfy.sh/', Link={es:null,poll:null,since:0,ids:{}};
 function topic(){ return 'keyline-v1-'+hash('kl-link:'+S.mode+S.room).toString(36); }
 function store(){ try{ localStorage.setItem('kl-ev-'+S.mode+S.room, JSON.stringify(S.ev)); }catch(e){} }
-function post(e){ if(!online()||typeof fetch!=='function') return; e.dev=DEV; try{ fetch(RELAY+topic(),{method:'POST',body:JSON.stringify(e)}).catch(function(){}); }catch(x){} }
+function post(e, tries){
+  if(!online()||typeof fetch!=='function') return; e.dev=DEV; tries=tries||0;
+  var url=RELAY+topic(), body=JSON.stringify(e), again=function(){ if(e.k!=='type' && tries<5) setTimeout(function(){ post(e,tries+1); },1500*(tries+1)); };
+  try{ fetch(url,{method:'POST',body:body}).then(function(r){ if(!r.ok) again(); }).catch(again); }catch(x){ again(); }
+}
 function addEv(e){ if(S.seen[e.id]) return false; S.seen[e.id]=1; S.ev.push(e); store(); return true; }
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 var DEV=(function(){ try{ var d=sessionStorage.getItem('kl-dev'); if(!d){ d=Math.random().toString(36).slice(2,10); sessionStorage.setItem('kl-dev',d); } return d; }catch(e){ return Math.random().toString(36).slice(2,10); } })();
@@ -477,7 +678,7 @@ function panel(st,tt){
         '<span class="res '+(gO[i]===d?'ok':'no')+'" style="animation-delay:'+(.45+i*.15)+'s">'+gO[i]+'</span>'+
         (gI?'<span class="res '+(gI[i]===d?'ok':'no')+'" style="animation-delay:'+(.9+i*.15)+'s">'+gI[i]+'</span>':'<span class="res none">–</span>')+'</div>';
     }).join('');
-    return P+'<div class="hdr"><span>'+I.eye+'</span><span>'+sw(E)+'</span><span>'+sw(O)+'</span></div>'+rows+(st.over?'':'<button class="big" id="next">'+t('next')+'</button>')+'</div>';
+    return P+'<div class="hdr"><span>'+I.eye+'</span><span>'+sw(E)+'</span><span>'+sw(O)+'</span></div>'+rows+(st.over?'<button class="big" id="again2">'+t('again')+'</button>':'<button class="big" id="next">'+t('next')+'</button>')+'</div>';
   }
   var clues=tt.clues||S.live[st.cur]||['','',''], live=!tt.clues;
   if(role==='wait'){
@@ -528,13 +729,14 @@ function bind(){
   var tm=null;
   $$('.crow input').forEach(function(x,i,all){
     x.oninput=function(){ x.classList.remove('bad');
-      if(S.mode==='duo'){ clearTimeout(tm); tm=setTimeout(function(){ post({k:'type',t:S.st.cur,by:S.player,cl:all.map(function(y){ return y.value.trim().toUpperCase(); }),c:S.room,id:uid()}); },350); } };
+      if(S.mode==='duo'){ clearTimeout(tm); tm=setTimeout(function(){ var cl=all.map(function(y){ return y.value.trim().toUpperCase(); }), sig=S.st.cur+cl.join('|'); if(sig===S.lastType) return; S.lastType=sig; post({k:'type',t:S.st.cur,by:S.player,cl:cl,c:S.room,id:uid()}); },900); } };
     x.onkeydown=function(e){ if(e.key==='Enter'){ if(all[i+1]) all[i+1].focus(); else sendClues(); } };
   });
   var sd=$('#send'); if(sd) sd.onclick=sendClues;
   $$('.pad button').forEach(function(p){ p.onclick=function(){ if(S.guess.length<3){ S.guess.push(p.getAttribute('data-n')); beep('tap'); render(); } }; });
   $$('button.dig[data-slot]').forEach(function(d){ d.onclick=function(){ var i=+d.getAttribute('data-slot'); if(S.guess[i]){ S.guess=S.guess.slice(0,i); render(); } }; });
   var ck=$('#check'); if(ck) ck.onclick=function(){ if(S.guess.length===3){ var g=S.guess.join(''); S.guess=[]; beep('send'); var ev={k:'guess',t:S.st.cur,by:coop()?'A':S.team,g:g}, tt=S.st.turns[S.st.cur]; if(!tt.clues && S.live[S.st.cur]) ev.cl=S.live[S.st.cur].slice(); act(ev); } };
+  var ag=$('#again2'); if(ag) ag.onclick=playAgain;
   var nx=$('#next'); if(nx) nx.onclick=function(){ beep('tap'); act({k:'next',t:S.st.cur}); };
 }
 function enterRoom(room, made){
@@ -543,10 +745,10 @@ function enterRoom(room, made){
   S.team='A'; S.player=made?'1':'2'; goPlay(room);
 }
 function sendClues(){
-  var ins=$$('.crow input'), keys=S.game.keys[S.team].map(function(k){ return k.toUpperCase(); }), ok=true, cl=[];
+  var ins=$$('.crow input'), keys=S.game.keys[S.team].map(norm), ok=true, cl=[];
   ins.forEach(function(x){
     var w=x.value.trim().replace(/\s+/g,' ').toUpperCase();
-    if(!w || keys.indexOf(w)>=0){ ok=false; x.classList.remove('bad'); void x.offsetWidth; x.classList.add('bad'); }
+    if(!w || keys.indexOf(norm(w))>=0){ ok=false; x.classList.remove('bad'); void x.offsetWidth; x.classList.add('bad'); }
     cl.push(w);
   });
   if(!ok) return;
@@ -582,7 +784,7 @@ function bump(col){
   if(navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
 }
 function goPlay(room){
-  closeEnd(); S.room=room; S.game=makeGame(room); S.guess=[]; S.live={}; S.st=null;
+  closeEnd(); S.endHidden=false; S.endInfo=null; S.lastType=''; S.room=room; S.game=makeGame(room); S.guess=[]; S.live={}; S.st=null;
   try{ S.ev=JSON.parse(localStorage.getItem('kl-ev-'+S.mode+room)||'[]'); }catch(e){ S.ev=[]; }
   S.seen={}; S.ev.forEach(function(e){ S.seen[e.id]=1; });
   S.scr='play'; S.shown='';
@@ -593,7 +795,7 @@ function setHash(h){ try{ history.replaceState(null,'',h?'#'+h:location.pathname
 
 /* ---------- the end ---------- */
 function showEnd(){
-  var key=S.room+S.st.over; if(S.shown===key){ if(!$('.veil')) drawEnd(); return; }
+  var key=S.room+S.st.over; if(S.shown===key){ if(!$('.veil') && !S.endHidden) drawEnd(); return; }
   S.shown=key; setTimeout(drawEnd, 2600);
 }
 function drawEnd(){
@@ -601,17 +803,18 @@ function drawEnd(){
   var o=S.st.over, me=coop()?'A':S.team, res=o==='draw'?'draw':(o===me?'win':'lose'), v=document.createElement('div'); v.className='veil';
   var title=t(res), extra='';
   if(coop()){
-    var sc=S.st.cur, best=getBest(), nb=sc>best;
-    if(nb) try{ localStorage.setItem('kl-best-'+S.mode,String(sc)); }catch(e){}
+    if(!S.endInfo || S.endInfo.key!==S.shown){ var b0=getBest(), sc0=S.st.cur; S.endInfo={key:S.shown,best:b0,nb:sc0>b0}; if(sc0>b0) try{ localStorage.setItem('kl-best-'+S.mode,String(sc0)); }catch(e){} }
+    var sc=S.st.cur, best=S.endInfo.best, nb=S.endInfo.nb;
     title=t('cracked'); res=nb?'win':'lose';
     extra='<div class="bigcode" style="font-size:96px">'+sc+'</div><div class="who">'+(nb?t('newbest'):t('best')+': '+best)+'</div>';
   }
   v.innerHTML='<div class="sheet '+res+'"><h2>'+title+'</h2>'+extra+'<button class="big" id="again">'+t('again')+'</button><button class="big ghost" id="look">'+I.eye+'</button></div>';
   document.body.appendChild(v);
   if(res==='win'){ beep('win'); confetti(); }
-  $('#again').onclick=function(){ post({k:'again',c:S.room,id:'a'+uid()}); goPlay(nextRoom(S.room)); };
-  $('#look').onclick=function(){ closeEnd(); if(coop()) return; var them=opponent(S.team); $$('.hgrid.them .h').forEach(function(h,k){ h.textContent=S.game.keys[them][k]; h.style.fontFamily='var(--font)'; h.style.fontSize='12px'; h.style.padding='6px 2px'; }); };
+  $('#again').onclick=playAgain;
+  $('#look').onclick=function(){ closeEnd(); S.endHidden=true; render(); if(coop()) return; var them=opponent(S.team); $$('.hgrid.them .h').forEach(function(h,k){ h.textContent=S.game.keys[them][k]; h.style.fontFamily='var(--font)'; h.style.fontSize='12px'; h.style.padding='6px 2px'; }); };
 }
+function playAgain(){ post({k:'again',c:S.room,id:'a'+uid()}); goPlay(nextRoom(S.room)); }
 function closeEnd(){ var v=$('.veil'); if(v) v.remove(); }
 function confetti(){
   var c=document.createElement('div'), cols=['#22B573','#FFC83D','#2F80ED','#FF4B55','#F2994A']; c.className='confetti';
@@ -622,6 +825,8 @@ function confetti(){
 }
 function toast(s){ var d=document.createElement('div'); d.className='toast'; d.textContent=s; document.body.appendChild(d); setTimeout(function(){ d.remove(); },1400); }
 
+/* used by the automated tests */
+window.KeylineTest={aiGuess:function(turns,i,clues,room){ S.room=room||"TEST"; return aiGuess(turns,i,clues); },norm:norm,rel:rel};
 /* reopen the same game after a reload */
 var m=/^#(solo|duo|vs)-([A-Z]{4})(?:-([AB12]))?$/.exec(location.hash||'');
 if(m){ S.mode=m[1]; if(m[1]==='vs') S.team=m[3]||'A'; else { S.team='A'; S.player=m[3]||'1'; } goPlay(m[2]); } else render();
