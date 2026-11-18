@@ -4481,7 +4481,7 @@ var ES_PHRASES = [
      messages go through ntfy.sh, a free public relay, which also keeps listening as a backup. */
   var LINK_URL = 'https://ntfy.sh/';
   /* the game's own database (Firebase Realtime Database); when set it replaces the public relay */
-  var LW_DB = '';
+  var LW_DB = 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
   function relayId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
   /* a tiny line in the pairing drawer that says how the phones are connected */
   function relayPaint() { var el = document.getElementById('pair-diag'); if (el && PL.relay) el.textContent = relayDiag(PL.relay); }
