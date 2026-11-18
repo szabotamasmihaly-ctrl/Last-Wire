@@ -83,6 +83,8 @@ main{flex:1;width:100%;max-width:620px;margin:0 auto;padding:0 16px 28px;display
 .panel.mine{border-color:var(--me)}
 .who{display:flex;align-items:center;gap:8px;font-weight:800;text-transform:uppercase;font-size:14px;letter-spacing:.06em;color:var(--ink-2)}
 .who .sw{width:14px;height:14px;border-radius:5px}
+.who svg{width:20px;height:20px;flex:none}
+.wlabel{text-align:center;font-weight:800;font-size:17px;color:var(--ink-2);padding-top:6px}
 .secret{display:flex;gap:10px;justify-content:center;user-select:none;-webkit-user-select:none;touch-action:none}
 .secret i{width:58px;height:70px;border-radius:14px;background:var(--ink);color:#fff;font-style:normal;font-family:var(--display);font-size:46px;display:grid;place-items:center;border-bottom:5px solid #000;transition:transform .3s}
 .secret.hid i{color:transparent;background:repeating-linear-gradient(45deg,#2A3138 0 6px,#1E2329 6px 12px)}
@@ -165,8 +167,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',solo:'One phone',duo:'Two phones',vs:'Team vs team'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',solo:'Egy telefon',duo:'Két telefon',vs:'Csapat vs csapat'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -264,7 +266,7 @@ function makeGame(room){
 function encoder(turn){ return coop()?'A':(turn%2===0?'A':'B'); }
 function opponent(team){ return coop()?'C':(team==='A'?'B':'A'); }
 function roundOf(turn){ return coop()?turn+1:Math.floor(turn/2)+1; }
-function canIntercept(turn){ return coop()?turn>=1:Math.floor(turn/2)>=1; }
+function canIntercept(turn){ return coop()?true:Math.floor(turn/2)>=1; }
 function giverOf(turn){ return turn%2===0?'1':'2'; }
 
 /* ---------- the computer: it only links today's clues to earlier clues and their numbers ---------- */
@@ -468,6 +470,9 @@ function panel(st,tt){
   }
   var clues=tt.clues||S.live[st.cur]||['','',''], live=!tt.clues;
   if(role==='wait'){
+    var name=S.mode==='duo'?t('player').replace('{n}',tt.clues?(giverOf(st.cur)==='1'?'2':'1'):giverOf(st.cur)):(tt.clues?t(opponent(S.team)):t(E));
+    var label='<div class="wlabel">'+esc(t(tt.clues?'guessing':'writing').replace('{x}',name))+'</div>';
+    waitDots=label+waitDots;
     if(!tt.clues && !(S.mode==='duo' && S.live[st.cur])) return P+who+waitDots+'</div>';
     var myG=tt['g'+(S.mode==='duo'?'A':S.team)]||'';
     return P+who+clues.map(function(c,i){ return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span>'+(myG?'<span class="dig fill">'+myG[i]+'</span>':'')+'</div>'; }).join('')+waitDots+'</div>';
