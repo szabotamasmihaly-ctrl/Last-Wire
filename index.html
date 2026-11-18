@@ -4058,6 +4058,7 @@ var ES_PHRASES = [
   for (var k in add) STR[k] = add[k];
 })();
 </script>
+<script src="vendor/peerjs.min.js"></script>
 <script src="courses/en-a1.js"></script>
 <script src="courses/en-a2.js"></script>
 <script src="courses/en-b1.js"></script>
@@ -4084,7 +4085,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 12;
+  var BUILD = 13;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4390,41 +4391,166 @@ var ES_PHRASES = [
     }
     paintTimer();
   }
-  /* ---------- the two phones: the bomb tells the helper's phone which task and which question it is on ----------
-     It goes through ntfy.sh, a free public message relay, on a channel named after the bomb. Only the step numbers are sent. */
-  var LINK_URL = 'https://ntfy.sh/', Link = { es: null, poll: null, last: '', n: 0, g: 0, seen: {} };
+  /* ---------- the line between two phones ----------
+     Phones talk straight to each other (WebRTC, through the free PeerJS service that only introduces them).
+     The first phone on a channel holds it; the other connects to it. When there is no direct line yet,
+     messages go through ntfy.sh, a free public relay, which also keeps listening as a backup. */
+  var LINK_URL = 'https://ntfy.sh/';
+  function relayId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+  function Relay(topic, onMsg, onJoin, since) {
+    var R = { conns: [], peer: null, host: false, closed: false, es: null, poll: null, ids: {}, q: [], since: since || Math.floor(Date.now() / 1000) - 5, onDrop: null, timers: [] };
+    var url = LINK_URL + topic, hostId = topic.replace(/[^A-Za-z0-9_-]/g, '');
+    var cfg = window.LW_PEER_CFG || { debug: 0 };
+    function later(fn, ms) { var t = setTimeout(function () { if (!R.closed) fn(); }, ms); R.timers.push(t); }
+    function deliver(obj, time) {
+      if (R.closed || !obj || typeof obj !== 'object') return;
+      if (obj._id) { if (R.ids[obj._id]) return; R.ids[obj._id] = 1; }
+      onMsg(obj, time || Math.floor(Date.now() / 1000));
+    }
+    /* a line counts only while the other end keeps talking: both ends send a beat every few seconds */
+    function open() { var now = Date.now(); return R.conns.filter(function (c) { return c.open && now - (c.rx || 0) < 20000; }); }
+    function addConn(c) {
+      var dead = false;
+      c.on('open', function () {
+        if (R.closed) return;
+        c.rx = Date.now(); R.conns.push(c);
+        var q = R.q; R.q = []; q.forEach(function (o) { try { c.send(o); } catch (e) {} });
+        if (onJoin) onJoin();
+      });
+      c.on('data', function (d) {
+        c.rx = Date.now();
+        if (d && d._hb) return;
+        if (R.host) open().forEach(function (o) { if (o !== c) { try { o.send(d); } catch (e) {} } });
+        deliver(d);
+      });
+      function gone() {
+        if (dead) return; dead = true;
+        var k = R.conns.indexOf(c); if (k >= 0) R.conns.splice(k, 1);
+        if (R.onDrop) R.onDrop();
+        if (!R.host) later(start, 1200 + Math.random() * 1500);
+      }
+      c.on('close', gone); c.on('error', gone);
+    }
+    function own(p) {
+      p.on('disconnected', function () { if (R.peer === p && !R.closed) { try { p.reconnect(); } catch (e) {} } });
+    }
+    function start() {
+      if (R.closed || typeof Peer !== 'function') return;
+      if (R.peer) { try { R.peer.destroy(); } catch (e) {} }
+      R.host = false; R.conns = [];
+      var p; try { p = new Peer(hostId, cfg); } catch (e) { return; }
+      R.peer = p; own(p);
+      p.on('open', function () { if (R.peer === p) R.host = true; });
+      p.on('connection', function (c) { if (R.peer === p) addConn(c); });
+      p.on('error', function (e) {
+        if (R.peer !== p) return;
+        if (e && e.type === 'unavailable-id') guest(); else later(start, 5000);
+      });
+    }
+    function guest() {
+      if (R.peer) { try { R.peer.destroy(); } catch (e) {} }
+      var p; try { p = new Peer(cfg); } catch (e) { return; }
+      R.peer = p; R.host = false; own(p);
+      p.on('open', function () {
+        if (R.peer !== p) return;
+        var c = p.connect(hostId, { reliable: true }); addConn(c);
+        later(function () { if (R.peer === p && !c.open) start(); }, 12000);
+      });
+      /* the holder left: try to hold the channel ourselves */
+      p.on('error', function (e) { if (R.peer === p) later(start, e && e.type === 'peer-unavailable' ? 800 : 5000); });
+    }
+    /* the backup: listen on the public relay */
+    function take(m) {
+      if (!m || m.event !== 'message') return;
+      if (m.time) R.since = Math.max(R.since, m.time);
+      var o; try { o = JSON.parse(m.message); } catch (e) { return; }
+      deliver(o, m.time);
+    }
+    function poll() {
+      if (R.closed || typeof fetch !== 'function') return;
+      fetch(url + '/json?poll=1&since=' + R.since).then(function (r) { return r.text(); }).then(function (txt) {
+        txt.split('\n').forEach(function (line) { if (line) { try { take(JSON.parse(line)); } catch (e) {} } });
+      }).catch(function () {});
+    }
+    function startPoll() { if (!R.poll && !R.closed) { poll(); R.poll = setInterval(poll, 8000); } }
+    function listen() {
+      if (typeof EventSource !== 'function') { startPoll(); return; }
+      var errs = 0;
+      try { R.es = new EventSource(url + '/sse?since=' + R.since); } catch (e) { R.es = null; startPoll(); return; }
+      R.es.onmessage = function (ev) { try { take(JSON.parse(ev.data)); } catch (e) {} };
+      R.es.onerror = function () { if (++errs >= 3 || (R.es && R.es.readyState === 2)) startPoll(); };
+    }
+    R.live = function () { return open().length > 0; };
+    /* direct when the line is up; otherwise through the relay (direct-only messages are just dropped) */
+    R.post = function (obj, directOnly) {
+      if (R.closed) return;
+      obj._id = obj._id || relayId();
+      var o = open();
+      if (o.length) { o.forEach(function (c) { try { c.send(obj); } catch (e) {} }); return; }
+      if (directOnly) return;
+      R.q.push(obj); if (R.q.length > 6) R.q.shift();
+      if (typeof fetch !== 'function') return;
+      var body = JSON.stringify(obj), tries = 0;
+      (function send() {
+        if (R.closed || R.live()) return;
+        try { fetch(url, { method: 'POST', body: body }).then(function (r) { if (!r.ok) throw 0; }).catch(function () { if (++tries < 3) later(send, 2000 * tries); }); } catch (e) {}
+      })();
+    };
+    R.close = function () {
+      R.closed = true; clearInterval(R.beat);
+      R.timers.forEach(clearTimeout); R.timers = [];
+      if (R.peer) { try { R.peer.destroy(); } catch (e) {} } R.peer = null; R.conns = [];
+      if (R.es) { try { R.es.close(); } catch (e) {} } R.es = null;
+      if (R.poll) clearInterval(R.poll); R.poll = null;
+    };
+    R.beat = setInterval(function () {
+      var now = Date.now();
+      R.conns.slice().forEach(function (c) {
+        if (!c.open) return;
+        if (now - (c.rx || 0) > 20000) { try { c.close(); } catch (e) {} return; }
+        try { c.send({ _hb: 1 }); } catch (e) {}
+      });
+    }, 6000);
+    listen(); start();
+    return R;
+  }
+
+  /* ---------- the two phones: the bomb tells the helper's phone which task and which question it is on ---------- */
+  var Link = { relay: null, topic: '', last: '', n: 0, g: 0, seen: {} };
   function linkTopic(spec) { return 'lastwire-v1-' + hashSeed('lw-link:' + spec.code + (PAIR ? ':' + PAIR.room : '')).toString(36); }
   function linkState() {
     var g = S.game; if (!g) return null;
     return { tab: nextTask(), steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '' };
   }
+  function linkOpen(topic, onMsg, since) {
+    if (Link.relay && Link.topic === topic) return Link.relay;
+    if (Link.relay) Link.relay.close();
+    Link.topic = topic;
+    Link.relay = Relay(topic, onMsg || function () {}, function () { if (S.screen === 'bomb') { Link.last = ''; linkSend(); } }, since);
+    return Link.relay;
+  }
   function linkSend() {
-    if (!S.game || !S.spec || S.solo || typeof fetch !== 'function') return;
+    if (!S.game || !S.spec || S.solo) return;
     var st = linkState(), sig = JSON.stringify(st);
     if (sig === Link.last) return;
     Link.last = sig;
     if (Link.g !== S.game) { Link.g = S.game; Link.id = Date.now().toString(36); Link.n = 0; }
     st.g = Link.id; st.n = ++Link.n;
-    try { fetch(LINK_URL + linkTopic(S.spec), { method: 'POST', body: JSON.stringify(st) }).catch(function () { Link.last = ''; }); } catch (e) { Link.last = ''; }
+    linkOpen(linkTopic(S.spec)).post(st);
   }
   function linkStop() {
-    if (Link.es) { try { Link.es.close(); } catch (e) {} } Link.es = null;
-    if (Link.poll) clearInterval(Link.poll); Link.poll = null;
+    if (Link.relay) Link.relay.close(); Link.relay = null; Link.topic = '';
     S.linked = false; Link.seen = {}; Link.cur = null;
   }
   function linkListen(spec) {
     linkStop(); Link.last = '';
-    var topic = LINK_URL + linkTopic(spec), since = Math.floor(Date.now() / 1000) - 600, ids = {}, errs = 0;
-    function take(m) {
-      var st; if (!m || m.event !== 'message' || ids[m.id]) return; ids[m.id] = 1;
-      try { st = JSON.parse(m.message); } catch (e) { return; }
+    linkOpen(linkTopic(spec), function (st, time) {
       if (!st || !S.spec || S.spec.code !== spec.code || S.screen !== 'helper') return;
-      if (m.time) since = Math.max(since, m.time);
       /* the newest game wins; inside one game, only a later step counts */
       if (st.g && Link.cur && st.g === Link.cur.g && st.n <= Link.cur.n) return;
-      if (st.g && Link.cur && st.g !== Link.cur.g && m.time && m.time < Link.cur.t) return;
+      if (st.g && Link.cur && st.g !== Link.cur.g && time && time < Link.cur.t) return;
       var followed = Link.cur && st.g && st.g === Link.cur.g && !Link.cur.over;
-      Link.cur = { g: st.g, n: st.n || 0, t: m.time || 0, over: !!st.over };
+      Link.cur = { g: st.g, n: st.n || 0, t: time || 0, over: !!st.over };
       /* a finished game: the helper's page starts again from the top, and a defused bomb counts for the helper too */
       if (st.over) {
         if (followed && st.over === 'ok' && S.spec.path) { helperDone(); return; }
@@ -4438,77 +4564,54 @@ var ES_PHRASES = [
       (st.steps || []).forEach(function (n, k) { if (S.spec.modules[k]) manState(k).step = n; });
       S.tab = tab;
       if (moved || first) { render(); var sc = $('.man-scroll'); if (sc) sc.scrollTop = 0; if (moved) window.scrollTo(0, 0); } else renderHelpBody();
-    }
-    function poll() {
-      if (typeof fetch !== 'function') return;
-      fetch(topic + '/json?poll=1&since=' + since).then(function (r) { return r.text(); }).then(function (txt) {
-        txt.split('\n').forEach(function (line) { if (line) { try { take(JSON.parse(line)); } catch (e) {} } });
-      }).catch(function () {});
-    }
-    function startPoll() { if (!Link.poll) { poll(); Link.poll = setInterval(poll, 4000); } }
-    if (typeof EventSource !== 'function') { startPoll(); return; }
-    try { Link.es = new EventSource(topic + '/sse?since=' + since); } catch (e) { Link.es = null; startPoll(); return; }
-    Link.es.onmessage = function (ev) { try { take(JSON.parse(ev.data)); } catch (e) {} };
-    Link.es.onerror = function () { if (++errs >= 2 || (Link.es && Link.es.readyState === 2)) startPoll(); };
+    }, Math.floor(Date.now() / 1000) - 600);
   }
   /* ---------- playing together: two phones pair with a room code; the one who made the code is the leader ----------
      The leader picks the station and the role. The other phone follows at once and takes the other role.
      Messages go through the same public relay, on a channel named after the room code. */
   var PAIR_KEY = 'last-wire-pair', PAIR_ABC = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-  var PAIR = null, PL = { es: null, poll: null, since: 0, ids: {} };
+  var PAIR = null, PL = { relay: null, ping: null };
   function pairTopic() { return 'lastwire-pair-v1-' + hashSeed('lw-pair:' + PAIR.room).toString(36); }
   function pairSave() { try { if (PAIR) localStorage.setItem(PAIR_KEY, JSON.stringify({ room: PAIR.room, lead: PAIR.lead, me: PAIR.me, cur: PAIR.cur, done: PAIR.done, t: Date.now() })); else localStorage.removeItem(PAIR_KEY); } catch (e) {} }
   function pairOn() { return !!PAIR; }
   function pairFollower() { return !!PAIR && !PAIR.lead; }
   function pairLeader() { return !!PAIR && PAIR.lead; }
   /* the other phone counts as here only while it keeps saying so */
-  var PAIR_LIVE = 45000;
-  function pairLive() { return !!PAIR && PAIR.peer && Date.now() - (PAIR.seen || 0) < PAIR_LIVE; }
+  var PAIR_LIVE = 35000;
+  function pairLive() { return !!PAIR && ((PL.relay && PL.relay.live()) || (PAIR.peer && Date.now() - (PAIR.seen || 0) < PAIR_LIVE)); }
   /* a follower waits for the leader only while the leader is really there */
   function pairBlocked() { return pairFollower() && pairLive(); }
-  function pairPost(m) {
-    if (!PAIR || typeof fetch !== 'function') return;
-    m.c = PAIR.room; m.by = PAIR.me; m.id = PAIR.me + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5);
-    try { fetch(LINK_URL + pairTopic(), { method: 'POST', body: JSON.stringify(m) }).catch(function () {}); } catch (e) {}
+  function pairPost(m, directOnly) {
+    if (!PAIR || !PL.relay) return;
+    m.c = PAIR.room; m.by = PAIR.me; m._id = PAIR.me + '-' + relayId();
+    PL.relay.post(m, directOnly);
   }
   function pairStop() {
-    if (PL.es) { try { PL.es.close(); } catch (e) {} } PL.es = null;
-    if (PL.poll) clearInterval(PL.poll); PL.poll = null;
+    if (PL.relay) PL.relay.close(); PL.relay = null;
     if (PL.ping) clearInterval(PL.ping); PL.ping = null;
   }
   function pairListen() {
     pairStop();
-    var room = PAIR.room, url = LINK_URL + pairTopic(), errs = 0;
-    PL.since = Math.floor(Date.now() / 1000) - 5; PL.ids = {};
+    var room = PAIR.room;
+    PL.relay = Relay(pairTopic(), function (x) {
+      if (!PAIR || PAIR.room !== room || !x || x.c !== room || x.by === PAIR.me) return;
+      pairGot(x);
+    }, function () { if (PAIR && PAIR.room === room) pairPost({ k: 'hi' }); });
+    PL.relay.onDrop = function () { setTimeout(pairPaint, 50); };
+    /* over the direct line the phones keep saying they are there; the leader repeats its choice */
     PL.ping = setInterval(function () {
       if (!PAIR || PAIR.room !== room) return;
-      pairPost({ k: 'ping' });
+      pairPost(PAIR.lead && PAIR.cur ? { k: 'ping', cur: PAIR.cur } : { k: 'ping' }, true);
       if (PAIR.peer && !pairLive()) { PAIR.peer = false; pairPaint(); }
-    }, 15000);
-    function take(m) {
-      var x; if (!m || m.event !== 'message' || PL.ids[m.id] || !PAIR || PAIR.room !== room) return; PL.ids[m.id] = 1;
-      if (m.time) PL.since = Math.max(PL.since, m.time);
-      try { x = JSON.parse(m.message); } catch (e) { return; }
-      if (!x || x.c !== room || x.by === PAIR.me) return;
-      pairGot(x);
-    }
-    function poll() {
-      fetch(url + '/json?poll=1&since=' + PL.since).then(function (r) { return r.text(); }).then(function (txt) {
-        txt.split('\n').forEach(function (line) { if (line) { try { take(JSON.parse(line)); } catch (e) {} } });
-      }).catch(function () {});
-    }
-    function startPoll() { if (!PL.poll && typeof fetch === 'function') { poll(); PL.poll = setInterval(poll, 2500); } }
-    if (typeof EventSource !== 'function') { startPoll(); return; }
-    try { PL.es = new EventSource(url + '/sse?since=' + PL.since); } catch (e) { PL.es = null; startPoll(); return; }
-    PL.es.onmessage = function (ev) { try { take(JSON.parse(ev.data)); } catch (e) {} };
-    PL.es.onerror = function () { if (++errs >= 2 || (PL.es && PL.es.readyState === 2)) startPoll(); };
+    }, 8000);
   }
   function pairGot(x) {
     var was = PAIR.peer;
     /* the leader left: the other phone is free again */
     if (x.k === 'bye') { if (x.lead && !PAIR.lead) { pairStop(); PAIR = null; pairSave(); pairPaint(); return; } PAIR.peer = false; pairPaint(); return; }
     PAIR.peer = true; PAIR.seen = Date.now();
-    if (x.k === 'ping') { if (!was) pairPaint(); return; }
+    /* the leader keeps repeating its choice, so a phone that missed the start still joins */
+    if (x.k === 'ping') { if (!PAIR.lead && x.cur) pairFollow(x.cur, 'ping'); if (!was) pairPaint(); return; }
     if (x.k === 'hi') pairPost(PAIR.lead ? { k: 'here', cur: PAIR.cur } : { k: 'here' });
     if (!PAIR.lead && x.cur && (x.k === 'go' || x.k === 'here' || x.k === 'hi')) pairFollow(x.cur, x.k !== 'go');
     if (!was) { sfx('ok'); setTimeout(function () { if (S.drawer === 'pair' && PAIR && PAIR.peer) { S.drawer = null; renderDrawer(); } }, 1400); }
@@ -4517,6 +4620,7 @@ var ES_PHRASES = [
   /* the follower takes the other role on the station the leader chose */
   function pairFollow(cur, soft) {
     if (!cur || !cur.code) return;
+    if (soft === 'ping' && (cur.n === PAIR.done || Date.now() - cur.n > 15 * 60 * 1000)) return;
     if (soft && cur.n === PAIR.done && S.screen !== 'home' && S.screen !== 'classic') return;
     var spec = makeSpec(cur.code); if (!spec) return;
     PAIR.done = cur.n; pairSave();
@@ -4634,6 +4738,7 @@ var ES_PHRASES = [
     setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
   function finish(boom) {
+    if (pairLeader() && PAIR.cur && S.spec && PAIR.cur.code === S.spec.code) { PAIR.cur = null; pairSave(); }
     linkSend(); stopLoop(); clearTimers();
     var go = function () { document.body.classList.remove('boom'); S.screen = 'result'; render(); window.scrollTo(0, 0); };
     var st = $('#stage');
@@ -7147,6 +7252,8 @@ var ES_PHRASES = [
   }
   function boot(data) {
     load(); Voice.init(); pairRestore();
+    /* a phone that comes back from the background listens again and says hello */
+    document.addEventListener('visibilitychange', function () { if (!document.hidden && PAIR && !(PL.relay && PL.relay.live())) { pairListen(); pairPost({ k: 'hi' }); } });
     /* used by the automated play-through tests to stand in for the microphone */
     window.__modSaid = function (i, alts) { modAct(i, 'said', alts); };
     window.__curCode = function () { return S.spec ? S.spec.code : null; };
