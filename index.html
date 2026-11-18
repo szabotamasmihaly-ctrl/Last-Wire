@@ -881,6 +881,8 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .wdots i:nth-child(2){animation-delay:.2s}.wdots i:nth-child(3){animation-delay:.4s}
 @keyframes wdot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-5px)}}
 .pair-wait{border:0;background:none;color:inherit;width:100%;display:flex;align-items:center;justify-content:center;gap:12px;font-size:26px;padding:14px;min-height:56px}
+.song-t{text-align:center}
+.artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
 .pair-wait .pw-t{font-size:17px;font-weight:700}
 .pair-wbox{display:flex;flex-direction:column;align-items:center;gap:4px;width:100%}
 .node.done:after{content:"↻";position:absolute;right:-4px;bottom:-6px;width:24px;height:24px;border-radius:50%;background:#fff;color:#E0A100;font:900 15px/24px system-ui,sans-serif;box-shadow:0 2px 0 #E0A100;text-shadow:none}
@@ -3881,67 +3883,111 @@ function makeStationSpec(code) {
 var PARTY_GAMES = ['song', 'film', 'karaoke', 'twister', 'safe', 'radio', 'idiom', 'slang', 'rhyme', 'post'];
 var PARTY_ICON = { song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
 var PARTY_LANGS = ['en', 'es', 'da'];
-/* X:lang:game:seed. Game 1..10 is that game with a partner; 11 mixes three. The seed makes every round new, and both phones get the same one. */
+/* X:lang:game:seed:offsets. Game 1..10 is that game with a partner; 11 mixes three. The seed picks the mix;
+   the offsets say how far each game has got through its content, so the next bomb brings new things. Both phones get the same code. */
 function partyCode(lang, n, seed) { return 'X:' + lang + ':' + n + ':' + (seed == null ? Math.floor(Math.random() * 9000) + 1000 : seed); }
 function parsePartyCode(code) {
-  var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})$/.exec(String(code || ''));
+  var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})(?::(\d{1,4}(?:\.\d{1,4}){0,2}))?$/.exec(String(code || ''));
   if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || !(+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1)) return null;
-  return { lang: m[1], n: +m[2], seed: +m[3] };
+  return { lang: m[1], n: +m[2], seed: +m[3], offs: m[4] ? m[4].split('.').map(Number) : [], base: 'X:' + m[1] + ':' + m[2] + ':' + m[3] };
 }
 function partyGames(n, r) {
   if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
   return r.sample(PARTY_GAMES, 3);
 }
+/* the games a code holds, worked out before its offsets are known */
+function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))) : []; }
+/* how many items each game takes per bomb */
+var PARTY_PER = { song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
+/* each game's content in a fixed shuffled order per language: bomb k takes the next items; only after all of them does a new order begin */
+function deckTake(key, pool, off, k) {
+  var len = pool.length, out = [], seen = {}, idx = off * k, guard = 0, cyc = -1, d = null;
+  while (out.length < Math.min(k, len) && guard++ < 4 * len + 8) {
+    var c = Math.floor(idx / len);
+    if (c !== cyc) { cyc = c; d = RU(mulberry32(hashSeed('lwdeck:' + key + ':' + c))).shuffle(pool.map(function (_, i) { return i; })); }
+    var it = d[idx % len]; idx++;
+    if (!seen[it]) { seen[it] = 1; out.push(it); }
+  }
+  return out;
+}
 function shuf3(r, right, wrongs) {
   var opts = [right].concat(wrongs.slice(0, 2)), perm = r.shuffle([0, 1, 2]);
   return { words: perm.map(function (k) { return opts[k]; }), ans: perm.indexOf(0) };
 }
+/* a sentence with one [word] marked: the parts around it */
+function gapParts(s) { var m = /^(.*?)\[(.+?)\](.*)$/.exec(s); return m ? { pre: m[1], word: m[2], post: m[3], plain: m[1] + m[2] + m[3] } : { pre: s, word: '', post: '', plain: s }; }
+function others(r, pool, not, k) { return r.sample(pool.filter(function (_, i) { return not.indexOf(i) < 0; }), k); }
 var GENP = {
-  song: function (r, L) {
-    return { rounds: r.sample(PARTY[L].song, 3).map(function (x) { var o = shuf3(r, x[1], [x[2], x[3]]); return { line: x[0], words: o.words, ans: o.ans, full: x[0] + ' ' + x[1] }; }) };
+  song: function (r, L, off) {
+    var pool = PARTY[L].song;
+    return { rounds: deckTake(L + ':song', pool, off, 3).map(function (i) {
+      var x = pool[i], g = gapParts(x[1]), o = shuf3(r, g.word, [x[2], x[3]]);
+      return { artist: x[0], pre: g.pre, post: g.post, words: o.words, ans: o.ans, full: x[4], title: g.plain };
+    }) };
   },
-  film: function (r, L) {
-    var col = 1 + PARTY_LANGS.indexOf(L), pick = r.sample(PARTY.films, 9);
-    return { rounds: [0, 1, 2].map(function (k) { var f = pick[k * 3], o = shuf3(r, f[col], [pick[k * 3 + 1][col], pick[k * 3 + 2][col]]); return { emo: f[0], words: o.words, ans: o.ans, full: f[col] }; }) };
+  film: function (r, L, off) {
+    var col = 1 + PARTY_LANGS.indexOf(L), pool = PARTY.films;
+    return { rounds: deckTake(L + ':film', pool, off, 3).map(function (i) {
+      var f = pool[i], o = shuf3(r, f[col], others(r, pool, [i], 2).map(function (x) { return x[col]; }));
+      return { emo: f[0], words: o.words, ans: o.ans, full: f[col] };
+    }) };
   },
-  karaoke: function (r, L) {
-    var lines = r.sample(PARTY[L].karaoke, 6);
-    return { rounds: [0, 1].map(function (k) { var set = lines.slice(k * 3, k * 3 + 3), a = r.int(3); return { lines: set, ans: a, full: set[a] }; }) };
+  karaoke: function (r, L, off) {
+    var pool = PARTY[L].karaoke;
+    return { rounds: deckTake(L + ':karaoke', pool, off, 2).map(function (i) {
+      var set = r.shuffle([pool[i]].concat(others(r, pool, [i], 2)));
+      return { lines: set, ans: set.indexOf(pool[i]), full: pool[i] };
+    }) };
   },
-  twister: function (r, L) {
-    return { rounds: r.sample(PARTY[L].twister, 2).map(function (x) {
-      var toks = x.split(/\s+/), order = toks.map(function (w, k) { return k; }).sort(function (a, b) { return toks[b].length - toks[a].length || a - b; });
+  twister: function (r, L, off) {
+    var pool = PARTY[L].twister;
+    return { rounds: deckTake(L + ':twister', pool, off, 2).map(function (i) {
+      var x = pool[i], toks = x.split(/\s+/), order = toks.map(function (w, k) { return k; }).sort(function (a, b) { return toks[b].length - toks[a].length || a - b; });
       var hide = order.slice(0, toks.length > 4 ? 2 : 1).sort(function (a, b) { return a - b; });
       return { toks: toks, hide: hide, full: x };
     }) };
   },
-  safe: function (r) {
-    var nums = [], hi = 59;
-    while (nums.length < 3) { var v = r.range(11, hi); if (nums.indexOf(v) < 0) nums.push(v); }
-    return { nums: nums };
+  safe: function (r, L) {
+    var nums = [];
+    while (nums.length < 3) { var v = r.range(11, 59); if (nums.indexOf(v) < 0) nums.push(v); }
+    var tpl = r.pick(PARTY[L].safe);
+    return { nums: nums, tpl: tpl, say: tpl.replace(/\{(\d)\}/g, function (_, k) { return nums[+k]; }) };
   },
-  radio: function (r, L) {
-    return { rounds: r.sample(PARTY[L].radio, 3).map(function (set) { var st = r.shuffle(set); return { st: st, ans: r.int(st.length), full: '' }; }).map(function (x) { x.full = x.st[x.ans]; return x; }) };
+  radio: function (r, L, off) {
+    var pool = PARTY[L].radio;
+    return { rounds: deckTake(L + ':radio', pool, off, 2).map(function (i) {
+      var st = r.shuffle(pool[i]), a = r.int(st.length);
+      return { st: st.map(function (x) { return x[0]; }), ans: a, full: st[a][1], word: st[a][0] };
+    }) };
   },
-  idiom: function (r, L) {
-    return { rounds: r.sample(PARTY[L].idiom, 3).map(function (x) { var o = shuf3(r, x[2], [x[3], x[4]]); return { idiom: x[0], emo: x[1], words: o.words, ans: o.ans, full: x[0] + ' = ' + x[2] }; }) };
+  idiom: function (r, L, off) {
+    var pool = PARTY[L].idiom;
+    return { rounds: deckTake(L + ':idiom', pool, off, 2).map(function (i) { var x = pool[i], o = shuf3(r, x[2], [x[3], x[4]]); return { idiom: x[0], emo: x[1], words: o.words, ans: o.ans, full: x[0] + ' = ' + x[2] }; }) };
   },
-  slang: function (r, L) {
-    return { rounds: r.sample(PARTY[L].slang, 2).map(function (x) { var o = shuf3(r, x[1], [x[2], x[3]]); return { msg: x[0], words: o.words, ans: o.ans, dict: x[4].split(';').map(function (p) { var at = p.indexOf('='); return [p.slice(0, at), p.slice(at + 1)]; }), full: x[0] + ' = ' + x[1] }; }) };
+  slang: function (r, L, off) {
+    var pool = PARTY[L].slang;
+    return { rounds: deckTake(L + ':slang', pool, off, 2).map(function (i) { var x = pool[i], o = shuf3(r, x[1], [x[2], x[3]]); return { msg: x[0], words: o.words, ans: o.ans, dict: x[4].split(';').map(function (p) { var at = p.indexOf('='); return [p.slice(0, at), p.slice(at + 1)]; }), full: x[0] + ' = ' + x[1] }; }) };
   },
-  rhyme: function (r, L) {
-    return { rounds: r.sample(PARTY[L].rhyme, 2).map(function (x) { var wires = r.shuffle([x[1]].concat(r.sample(x.slice(2), 3))); return { heard: x[0], wires: wires, ans: wires.indexOf(x[1]), full: x[0] + ' – ' + x[1] }; }) };
+  rhyme: function (r, L, off) {
+    var pool = PARTY[L].rhyme;
+    return { rounds: deckTake(L + ':rhyme', pool, off, 2).map(function (i) {
+      var x = pool[i], g = gapParts(x[0]), wires = r.shuffle([g.word].concat(x.slice(1, 4)));
+      return { pre: g.pre, post: g.post, wires: wires, ans: wires.indexOf(g.word), full: g.plain };
+    }) };
   },
-  post: function (r, L) {
-    var pick = r.sample(PARTY.places, 9);
-    return { rounds: [0, 1, 2].map(function (k) { var set = r.shuffle(pick.slice(k * 3, k * 3 + 3)), tgt = pick[k * 3]; return { cards: set.map(function (p) { return { e: p[0], name: p[1][L] }; }), ans: set.indexOf(tgt), desc: tgt[2][L], full: tgt[1][L] + ': ' + tgt[2][L] }; }) };
+  post: function (r, L, off) {
+    var pool = PARTY.places;
+    return { rounds: deckTake(L + ':post', pool, off, 3).map(function (i) {
+      var tgt = pool[i], set = r.shuffle([tgt].concat(others(r, pool, [i], 2)));
+      return { cards: set.map(function (p) { return { e: p[0], name: p[1][L] }; }), ans: set.indexOf(tgt), desc: tgt[2][L], full: tgt[1][L] + ': ' + tgt[2][L] };
+    }) };
   }
 };
-var PARTY_TIME = { song: 110, film: 120, karaoke: 130, twister: 130, safe: 110, radio: 120, idiom: 120, slang: 120, rhyme: 90, post: 110 };
+var PARTY_TIME = { song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
 function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
-  var base = hashSeed('lwx:' + code), r = RU(mulberry32(base)), list = partyGames(p.n, r);
-  var modules = list.map(function (t, i) { return { t: t, data: GENP[t](RU(mulberry32((base ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang) }; });
+  var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
+  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, p.offs[i] || 0) }; });
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
   var r0 = RU(mulberry32(base ^ 0x5bd1e995));
   return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
@@ -4085,7 +4131,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 13;
+  var BUILD = 14;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -5499,7 +5545,9 @@ var ES_PHRASES = [
   };
   UI.dict.pos = function (d, st) { var p = 0; for (var s = 0; s < st.s && s < d.items.length; s++) p += d.items[s].t.split(' ').length; return p + st.w; };
 
-  /* ---- pictures: every word says its number ---- */
+  /* ---- pictures: every word says its number, always inside a sentence ---- */
+  var NUM_SAY = { en: 'The number you need is {n}, so remember it.', hu: 'A keresett szám: {n}, jegyezd meg jól.', da: 'Det tal, du skal bruge, er {n}, så husk det.', es: 'El número que buscas es el {n}, recuérdalo bien.' };
+  function numSay(n) { return (NUM_SAY[tl()] || NUM_SAY.en).replace('{n}', n); }
   UI.pics.help = function (d, i, ms) {
     var has = Voice.has();
     var rows = d.items.map(function (it, k) { return { k: k, w: it.w }; }).sort(function (a, b) { return a.w.localeCompare(b.w, tl()); });
@@ -5516,7 +5564,7 @@ var ES_PHRASES = [
   };
   UI.pics.onHelp = function (k, v, d, ms, i) {
     if (k === 'play') { ms.last = v; renderHelpBody(); }
-    helpCommon(k, v, ms, i, function (key) { return PK().num(d.nums[+key.slice(1)]); });
+    helpCommon(k, v, ms, i, function (key) { return numSay(PK().num(d.nums[+key.slice(1)])); });
   };
 
   /* ---- story ---- */
@@ -6017,7 +6065,7 @@ var ES_PHRASES = [
       var rd = d.rounds[st.r];
       return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
         '<div class="turntable" aria-hidden="true"><div class="vinyl"><i></i></div><div class="eqz"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>' +
-        '<p class="gp-s' + sizeCls(rd.line) + '" lang="' + tl() + '">' + esc(rd.line) + ' <span class="hole" aria-label="___"></span></p>' +
+        '<p class="artist">🎤 ' + esc(rd.artist) + '</p><p class="gp-s song-t' + sizeCls(rd.title) + '" lang="' + tl() + '">' + esc(rd.pre) + '<span class="hole" aria-label="___"></span>' + esc(rd.post) + '</p>' +
         wBtns(i, rd.words, 'rec') + (st.fb ? fbBad('p.bad') : '');
     },
     on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
@@ -6141,11 +6189,11 @@ var ES_PHRASES = [
     keys: function () { return ''; }, pos: function () { return 0; },
     recap: function (d) { return [{ tx: d.nums.map(function (n) { return n + ' = ' + PK().num(n); }).join(' · ') }]; },
     done: function (d) { return learn(UI.safe.recap(d)); },
-    help: function (d, i, ms) { return card('', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.nums.join(' … '), ms, d.nums.map(function (n) { return PK().num(n); }).join(' · '))); },
-    onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function () { return d.nums.join(' … '); }); }
+    help: function (d, i, ms) { return card('', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.say, ms, d.tpl.replace(/\{(\d)\}/g, function (_, k) { return PK().num(d.nums[+k]); }))); },
+    onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function () { return d.say; }); }
   };
 
-  /* 📻 radio: the helper hears a word, the bomb tunes through the static until it finds it */
+  /* 📻 radio: the helper hears a sentence, the bomb tunes through close-sounding words until it finds the one in it */
   var RADIO_STEPS = 20;
   function radioAt(pos) { return pos >= 2 && (pos - 2) % 4 === 0 ? (pos - 2) / 4 : -1; }
   function radioScreen(rd, st) {
@@ -6219,12 +6267,12 @@ var ES_PHRASES = [
     onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
   };
 
-  /* ✂️ rhyme wires: the helper hears a word, the bomb cuts the wire that rhymes with it */
+  /* ✂️ rhyme wires: the helper hears a sentence, the bomb cuts the wire with the missing word; all the wires rhyme */
   UI.rhyme = ext({
     init: function () { return { r: 0, pick: -1, bad: [], fb: false }; },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r];
-      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="rwires">' + rd.wires.map(function (w, k) {
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<p class="gp-s' + sizeCls(rd.full) + '" lang="' + tl() + '">' + esc(rd.pre) + '<span class="hole" aria-label="___"></span>' + esc(rd.post) + '</p><div class="rwires">' + rd.wires.map(function (w, k) {
         var cut = st.pick === k, bad = st.bad.indexOf(k) >= 0;
         return '<button type="button" class="rw w' + k + (cut ? ' cut' : '') + (bad ? ' zap' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (cut || st.lock ? ' disabled' : '') + '>' +
           '<span class="rw-a"></span><span class="rw-tag" lang="' + tl() + '">' + esc(w) + '</span><span class="rw-b"></span>' + (cut ? '<span class="spark" aria-hidden="true">✦</span>' : '') + '</button>';
@@ -6240,7 +6288,7 @@ var ES_PHRASES = [
     key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= 4) { modAct(i, 'c', n - 1); return true; } },
     keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); }
-  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.heard }; }));
+  }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
 
   /* 🗼 postcards: the helper hears about a place, the bomb picks its postcard */
   UI.post = ext({
@@ -6425,7 +6473,15 @@ var ES_PHRASES = [
   }
 
   /* ---------- launching a station: the warm-up, the word cards, then the bomb or the helper's page ---------- */
-  function play(code, role) { var spec = makeSpec(code); if (!spec) return; S.sheet = null; renderDrawer(); if (spec.party) { stopLoop(); clearTimers(); go(code, role); return; } warmUp(spec, { path: true, code: code, role: role }); }
+  /* party bombs remember how far each game has got, so the next bomb brings content not seen yet */
+  function deckN(L, g) { var d = S.prog._deck; return d && d[L + ':' + g] || 0; }
+  function partyNew(L, n) { var base = partyCode(L, n); return base + ':' + partyList(base).map(function (g) { return deckN(L, g); }).join('.'); }
+  function deckBump(spec) {
+    if (!S.prog._deck || typeof S.prog._deck !== 'object') S.prog._deck = {};
+    spec.modules.forEach(function (m) { var k = spec.lang + ':' + m.t; if (!(S.prog._deck[k] > m.off)) S.prog._deck[k] = (m.off || 0) + 1; });
+    save();
+  }
+  function play(code, role) { var spec = makeSpec(code); if (!spec) return; S.sheet = null; renderDrawer(); if (spec.party) { deckBump(spec); stopLoop(); clearTimers(); go(code, role); return; } warmUp(spec, { path: true, code: code, role: role }); }
   function play2(code, role) {
     var spec = makeSpec(code); if (!spec) return;
     S.sheet = null; renderDrawer();
@@ -7093,7 +7149,7 @@ var ES_PHRASES = [
       case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
       case 'party': if (PARTY_LANGS.indexOf(S.sel.course) < 0) S.sel.course = 'en'; S.screen = 'party'; S.spec = null; S.game = null; render(); window.scrollTo(0, 0); break;
-      case 'pnode': openSheet(partyCode(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
+      case 'pnode': openSheet(partyNew(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
       case 'help-done': helperDone(); break;
       case 'pcont': goPath(); break;
       case 'pnext': { if (pairBlocked()) break; var nc = nextCode(S.spec.code); S.justOpen = null; if (!S.solo) pairLead(nc, 'bomb'); play(nc, S.solo ? 'solo' : 'bomb'); break; }
@@ -7107,10 +7163,10 @@ var ES_PHRASES = [
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
       case 'next': if (pairBlocked()) break;
-        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyCode(pp.lang, pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
+        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyNew(pp.lang, pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
         if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
       case 'again': if (pairBlocked()) break;
-        if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyCode(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }
+        if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyNew(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }
         if (!S.solo) pairLead(S.spec.code, 'bomb'); if (S.spec.path) { launch(makeSpec(S.spec.code), S.solo); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = S.spec.mission; newBomb(S.solo); break;
       case 'sfx': S.set.sfx = !!el.checked; save(); if (S.set.sfx) sfx('step'); break;
       case 'voice': S.set.voice = el.value; save(); voiceChanged(); break;
