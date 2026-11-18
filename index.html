@@ -912,6 +912,15 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .sn-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .sn-btns .dbtn,.sn .dbtn.go{font-size:28px}
 .sn-eye{justify-self:center}
+.sn-btns.one{grid-template-columns:1fr;justify-items:center}.sn-btns.one .dbtn{width:auto;min-width:120px;font-size:22px;min-height:48px}
+.sn-in{width:100%;font:inherit;font-size:26px;font-weight:800;text-align:center;padding:14px;border-radius:16px;border:2px solid #e5e5e5;box-shadow:0 4px 0 #e5e5e5;background:#fff;color:var(--ink);outline:none}
+.sn-in:focus{border-color:#58CC02;box-shadow:0 4px 0 #46A302}
+.sn-in.no{border-color:#FF4B4B;box-shadow:0 4px 0 #EA2B2B;animation:shake .3s}
+.sn-seg:not(.up){background:#fff;border:2px dashed #b9e39a;box-shadow:none}
+.sn-seg.cur{border-style:solid;border-color:#58CC02;animation:snpulse 1.2s ease-in-out infinite}
+.sn-seg.flip{animation:snflip .5s cubic-bezier(.2,1.3,.4,1)}
+@keyframes snflip{0%{transform:rotateY(90deg)}100%{transform:rotateY(0)}}
+@keyframes snpulse{50%{transform:scale(1.12)}}
 .sn-win{text-align:center;display:grid;gap:8px;justify-items:center}
 .sn-win .sn-p{flex:none;min-width:120px;font-size:30px}
 .sn-list{list-style:none;margin:0;padding:0;display:grid;gap:6px}
@@ -4075,7 +4084,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 11;
+  var BUILD = 12;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6484,10 +6493,36 @@ var ES_PHRASES = [
   function snPlayers(turn) {
     return '<div class="sn-top"><span class="sn-p p0' + (turn === 0 ? ' on' : '') + '">1</span><span class="sn-vs" aria-hidden="true">🐍</span><span class="sn-p p1' + (turn === 1 ? ' on' : '') + '">2</span></div>';
   }
-  function snBody(show, fresh) {
+  /* typed words count only when every letter is right; case and stray spaces don't matter */
+  function snNorm(v) { return String(v || '').toLowerCase().replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim(); }
+  function snBody(show, fresh, got) {
     var Z = S.sn, h = '<div class="sn-body" lang="' + Z.lang + '">';
-    Z.chain.forEach(function (k, i) { h += '<span class="sn-seg' + (fresh && i === Z.chain.length - 1 ? ' new' : '') + '">' + (show ? esc(Z.deck[k]) : '') + '</span>'; });
+    Z.chain.forEach(function (k, i) {
+      var open = show || (got != null && i < got);
+      h += '<span class="sn-seg' + (fresh && i === Z.chain.length - 1 ? ' new' : '') + (got != null && open ? ' up' : '') + (got != null && i === got - 1 && Z.flipNow ? ' flip' : '') + (got != null && i === got ? ' cur' : '') + '">' + (open ? esc(Z.deck[k]) : '') + '</span>';
+    });
     return h + '<span class="sn-head" aria-hidden="true">🐍</span></div>';
+  }
+  function snFocus() { var f = document.getElementById('sn-in'); if (f) { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } } }
+  /* each word flips over the moment it is spelled right; the whole chain flipped hands the turn on */
+  function snTyped(el) {
+    var Z = S.sn; if (!Z || Z.phase !== 'say') return;
+    var want = Z.deck[Z.chain[Z.got]], v = snNorm(el.value);
+    if (v === want) {
+      Z.got++; Z.flipNow = true; sfx('ok');
+      if (Z.got >= Z.chain.length) {
+        render();
+        setTimeout(function () { if (S.sn !== Z || Z.phase !== 'say') return; Z.flipNow = false; Z.phase = Z.chain.length >= Z.deck.length ? 'over' : 'flip'; if (Z.phase === 'over') Z.win = Z.turn; render(); }, 700);
+        return;
+      }
+      /* swap the snake in place so the keyboard stays open */
+      var body = document.querySelector('.sn .sn-body'), cnt = document.querySelector('.sn .sn-n');
+      if (body) body.outerHTML = snBody(false, false, Z.got);
+      if (cnt) cnt.textContent = Z.got + ' / ' + Z.chain.length;
+      el.value = ''; el.classList.remove('no'); el.setAttribute('aria-label', Z.got + 1);
+      return;
+    }
+    el.classList.toggle('no', v.length >= want.length);
   }
   function viewSnake() {
     var Z = S.sn, L = Z.lang, n = Z.chain.length;
@@ -6500,9 +6535,9 @@ var ES_PHRASES = [
     }
     h += snPlayers(Z.turn);
     if (Z.phase === 'say') {
-      h += snBody(Z.peek, false) + '<p class="sn-n">' + n + '</p>' +
-        '<button type="button" class="pbtn sm sn-eye" data-a="sn-peek" aria-pressed="' + Z.peek + '">' + (Z.peek ? '🙈' : '👁') + '</button>' +
-        '<div class="sn-btns"><button type="button" class="dbtn bad" data-a="sn-judge" data-v="0" aria-label="✗">✗</button><button type="button" class="dbtn ok" data-a="sn-judge" data-v="1" aria-label="✓">✓</button></div>';
+      h += snBody(false, false, Z.got) + '<p class="sn-n">' + Z.got + ' / ' + n + '</p>' +
+        '<input id="sn-in" class="sn-in" lang="' + L + '" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" enterkeyhint="next" aria-label="' + (Z.got + 1) + '">' +
+        '<div class="sn-btns one"><button type="button" class="dbtn bad" data-a="sn-judge" data-v="0" aria-label="✗">✗</button></div>';
     } else if (Z.phase === 'flip') {
       h += snBody(false, false) + '<button type="button" class="sn-card back" data-a="sn-flip" aria-label="' + esc(t('fc.show')) + '">?</button>';
     } else {
@@ -6948,7 +6983,7 @@ var ES_PHRASES = [
       case 'practise': practise(); break;
       case 'snake': snStart(); break;
       case 'sn-flip': S.sn.phase = 'shown'; S.sn.chain.push(S.sn.chain.length); sfx('ok'); render(); break;
-      case 'sn-pass': S.sn.turn = 1 - S.sn.turn; S.sn.phase = 'say'; S.sn.peek = false; render(); break;
+      case 'sn-pass': S.sn.turn = 1 - S.sn.turn; S.sn.phase = 'say'; S.sn.peek = false; S.sn.got = 0; S.sn.flipNow = false; render(); snFocus(); break;
       case 'sn-peek': S.sn.peek = !S.sn.peek; render(); break;
       case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
@@ -7015,6 +7050,7 @@ var ES_PHRASES = [
   });
   document.addEventListener('input', function (e) {
     var el = e.target; if (!el) return;
+    if (el.id === 'sn-in') { snTyped(el); return; }
     if (el.id === 'pair-in') { var pv = el.value.toUpperCase().replace(/[^A-Z]/g, '').slice(0, 4); if (pv !== el.value) el.value = pv; return; }
     if (el.id === 'code-in') {
       S.codeInput = el.value.replace(/\D/g, '').slice(0, 4); el.value = S.codeInput;
@@ -7040,6 +7076,7 @@ var ES_PHRASES = [
       return;
     }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === 'Enter' && el && el.id === 'sn-in') { e.preventDefault(); el.classList.remove('no'); void el.offsetWidth; el.classList.add('no'); return; }
     if (e.key === 'Enter' && el && el.id === 'pair-in') { e.preventDefault(); pairJoin(); return; }
     if (e.key === 'Enter' && el && el.id === 'code-in') { e.preventDefault(); openCode(); return; }
     if (e.key === 'Enter' && inField && el.getAttribute('data-hin') != null) { e.preventDefault(); helperTyped(el); act('hm', { i: el.getAttribute('data-hin'), k: 'check', v: el.getAttribute('data-p') }, el); return; }
