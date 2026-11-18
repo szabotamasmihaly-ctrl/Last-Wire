@@ -501,4 +501,65 @@ LWC('en', 1, `
 ~ I'm hungry. | Let's eat.
 ~ I'm bored. | Let's dance.
 ~ It's sunny. | Let's go to the beach.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: am, is, are | Dalok: am, is, are | Sange: am, is, are
+= My grandma [is] the Dancing Queen.
+= We [are] the champions of washing up.
+- My cat [is|are|am] a Thriller fan. She hides under the bed.
+- I [am|is|are] on the Highway to Hell. It's called Monday.
+- You [are|is|am] my Wonderwall. And my wifi password.
+- The neighbours [are|is|am] angry. Dad sings Bohemian Rhapsody at 3 a.m.
+- My dog [is|are|am] a real Rolling Stone. He never stays home.
+- We [are|is|am] in a Yellow Submarine. Well, in the bath.
+~ My dad is | the Dancing King. He thinks.
+~ Grandma's car is | a Yellow Submarine.
+~ The cat is | Happy. The fridge is open.
+@ Songs: can and can't | Dalok: can és can't | Sange: can og can't
+= I [can't] stop. Don't Stop Me Now is on!
+= My parrot [can] sing Hey Jude.
+- My grandpa [can|cans|can to] dance to Uptown Funk.
+- I [can't|don't can|not can] sing Halo. The windows break.
+- Our dog [can|cans|can to] howl Billie Jean.
+- We [can't|doesn't can|not can] find the umbrella. It's raining.
+- [Can|Do|Are] you play Wonderwall? Everybody can.
+- My teacher [can|cans|is can] moonwalk. Nobody knows why.
+~ Can you | imagine a school with no homework?
+~ My cat can't | sing, but she tries.
+~ Grandma can | rock you. We will see.
+@ Songs: like, likes, don't, doesn't | Dalok: like, likes, don't, doesn't | Sange: like, likes, don't, doesn't
+= My mum [likes] Dancing Queen.
+= My dad [doesn't] like Bad Guy.
+- Grandma [loves|love|loving] Thriller. She does the zombie dance.
+- My little brother [plays|play|playing] Wonderwall every day.
+- I [don't|doesn't|not] like Bad Romance. It's too loud for my hamster.
+- My dog [doesn't|don't|not] like Thunderstruck. He hides.
+- We [sing|sings|singing] Hey Jude in the car. Every day.
+- [Does|Do|Is] your cat like Shake It Off? Mine does.
+~ My hamster likes | Uptown Funk.
+~ Dad doesn't like | Toxic. Mum does.
+~ Do you like | Roar? My cat does.
+@ Songs: there is, there are | Dalok: there is, there are | Sange: there is, there are
+= There [is] a Yellow Submarine in my bath.
+= There [are] two Billie Jeans in my class.
+- There [is|are|be] a hotel called Hotel California in my town. It's awful.
+- There [are|is|be] fifty people in our kitchen. It's a Bohemian Rhapsody party.
+- There [isn't|aren't|not is] an umbrella in the car. Again.
+- [Is|Are|Be] there a Dancing Queen in your family?
+- There [are|is|am] ten cats on my stairs. Dad calls it Stairway to Heaven.
+- There [is|are|have] a karaoke machine at school. Bad news for Hey Jude.
+~ There is | a Wonderwall in my room. It's just a wall.
+~ There are | three Dancing Queens at Grandma's party.
+~ Is there | a song about pizza?
+@ Songs: Don't stop! | Dalok: Don't stop! | Sange: Don't stop!
+= [Don't] stop me now. I'm eating.
+= [Let] it be. It's only a scratch.
+- [Don't|Not|No] look back in anger. Look at the pizza.
+- [Shake|Shakes|Shaking] it off! It's only homework.
+- [Don't|Doesn't|Not] go breaking my heart. Or my phone.
+- [Imagine|Imagines|Imagining] no homework. Nice, right?
+- Please [don't|not|no] sing Bohemian Rhapsody in the library.
+- [Help|Helps|Helping]! The cat is on the roof.
+~ Let it | go, Grandma. It's just a sock.
+~ Shake it | off. It's only spaghetti.
+~ Don't worry, | be happy.
 `);

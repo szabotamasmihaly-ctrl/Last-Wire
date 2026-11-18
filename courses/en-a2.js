@@ -498,4 +498,65 @@ LWC('en', 2, `
 ~ If you heat water to 100 degrees, | it boils.
 ~ If you drop a glass, | it breaks.
 ~ If you open the fridge, | the cat appears.
+# 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
+@ Songs: past simple | Dalok: múlt idő | Sange: datid
+= Yesterday I [sang] Hey Jude in the shower.
+= My cat [ate] my Purple Rain CD.
+- Grandma [danced|dances|danceded] to Thriller at my wedding.
+- We [went|goed|go] to Hotel California. The beds were awful.
+- Dad [didn't|don't|not] know the words to Bohemian Rhapsody, but he sang it anyway.
+- The dog [ran|runned|run] away when I played Highway to Hell.
+- [Did|Do|Was] you hear Uncle Bob sing Toxic?
+- My brother [broke|breaked|broken] the Wonderwall. It was a real wall.
+~ Grandma sang | Shake It Off at the bus stop.
+~ We danced | to Mamma Mia until 4 a.m.
+~ Did you see | Dad's moonwalk?
+@ Songs: was singing, were dancing | Dalok: was singing, were dancing | Sange: was singing, were dancing
+= I [was] singing Halo when the window broke.
+= We [were] dancing to Waterloo when the police came.
+- My dog [was|were|is] howling Hey Jude when the neighbours called.
+- They [were|was|did] playing Wonderwall again when I left.
+- I [was singing|sang singing|was sing] Bad Romance when my boss walked in.
+- What [were|was|did] you doing when Bohemian Rhapsody came on?
+- Grandma [was|were|had] moonwalking when she lost her teeth.
+- The cat [wasn't|weren't|didn't] sleeping. She was listening to Roar.
+~ I was singing | in the rain. Without an umbrella.
+~ The neighbours were dancing | to Thriller at midnight.
+~ What was Grandpa doing | on the roof?
+@ Songs: going to | Dalok: going to | Sange: going to
+= I'm [going to] sing Let It Go at the wedding.
+= My dad is going to [learn] the Thriller dance.
+- We [are going to|go to|going to] play Mamma Mia all night.
+- Grandma [is going to|going to|is go to] wear a Purple Rain jacket.
+- I'm [not going to|going not to|don't going to] sing Toxic in church again.
+- [Are you going to|You are going to|Do you going to] play Wonderwall? Please don't.
+- The band [is going to|are go to|going] play Africa. Everybody is going to cry.
+- It's [going to|go to|goes to] rain. Time for Here Comes the Rain Again.
+~ I'm going to | imagine my homework is done.
+~ We're going to | rock you tomorrow.
+~ Are you going to | dance? Dancing Queen is on!
+@ Songs: louder, the best | Dalok: louder, the best | Sange: louder, the best
+= Uptown Funk is [louder] than my alarm.
+= Grandpa is [the best] Dancing Queen in town.
+- My cat's voice is [worse|badder|more bad] than Bohemian Rhapsody on a broken radio.
+- This karaoke bar is [better|gooder|more good] than Hotel California. You can leave.
+- Stairway to Heaven is [longer|more long|longest] than my homework.
+- Thriller is [the scariest|the most scary|scarier] song at Grandma's party.
+- My brother sings [louder|more loud|loudlier] than the fire alarm.
+- Dad's Billie Jean is [the funniest|the most funny|funnier] thing on TikTok.
+~ Bohemian Rhapsody is longer | than my maths test.
+~ Dad is the worst | dancer in the world.
+~ My hamster is happier | than a Happy song.
+@ Songs: some, any, much, many | Dalok: some, any, much, many | Sange: some, any, much, many
+= Are there [any] Abba songs on your phone?
+= I don't have [much] time. Waterloo starts in a minute.
+- How [many|much|lot] times can you play Wonderwall in one day?
+- We don't know [any|some|no] songs about pizza.
+- I need [some|any|many] coffee before Bohemian Rhapsody.
+- How [much|many|lots] time do we have? Thriller is next.
+- There are [a lot of|a lot|many of] Dancing Queens at this party.
+- This shop hasn't got [any|some|none] yellow submarines.
+~ How many Beatles | songs do you know?
+~ There isn't much | room in the Yellow Submarine.
+~ Have you got any | songs about cats?
 `);

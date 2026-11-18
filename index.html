@@ -962,6 +962,21 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .cbtn kbd{position:absolute;left:8px;top:8px}
 .c0{background:#D8263C}.c1{background:#2F6FE4}.c2{background:#F4C430;color:#3a2a00}.c3{background:#2FA35E}
 .lb{height:auto;min-height:94px;max-height:150px}
+/* listen: everything fits on the panel, nothing scrolls */
+.build.lw{flex:1 1 0;height:auto;min-height:48px;max-height:none;overflow:hidden}
+.panel .tray.lt{flex:none;max-height:none;overflow:visible}
+.tray.lt.sm .tile,.build.lw.sm .tile{font-size:15px;padding:3px 8px;min-height:32px}
+.tray.lt.xs .tile,.build.lw.xs .tile{font-size:13.5px;padding:2px 6px;min-height:28px}
+.tray.lt.xs,.build.lw.xs{gap:4px}
+.panel .tile{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+.key.mic{position:relative;padding:0;width:52px;font-size:22px;-webkit-user-select:none;user-select:none}
+.key.mic svg{width:22px;height:22px;display:block;margin:auto}
+.key.mic.rec{background:#FF4B4B;color:#fff;box-shadow:0 3px 0 #a3191d}
+.key.mic.rec::after{content:'';position:absolute;inset:0;border-radius:9px;border:3px solid #FF4B4B;animation:pulse 1s ease-out infinite}
+.heard{flex:none;margin:0;color:#ff9a9e;font-size:14px;text-decoration:line-through;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.lhelp{display:flex;align-items:center;gap:14px;padding:10px 0 4px}
+.lhelp .ear{font-size:44px;line-height:1}
+.lhelp .key{min-height:56px;font-size:18px}
 .pz{font-weight:700;font-size:18px;color:#c7cdd2;align-self:center}
 .panel .tray{max-height:150px;overflow-y:auto}
 .fx-s{font-size:18px;line-height:1.3;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -3619,12 +3634,14 @@ function lwCore(w) { return w.replace(LW_LEAD, '').replace(LW_TAIL, ''); }
 var LW_NAMES = {};
 function lwNames(lang) {
   if (LW_NAMES[lang]) return LW_NAMES[lang];
-  var N = LW_NAMES[lang] = { I: 1 };
+  var N = LW_NAMES[lang] = { I: 1 }, low = {};
   (COURSE[lang] || []).forEach(function (L) {
     if (L) L.list.forEach(function (st) {
-      st.items.forEach(function (it) { lwWords(it.full).forEach(function (w, k) { var c = lwCore(w); if (k > 0 && /^[A-ZÁÉÍÓÚÑ]/.test(c) && !/[.?!]$/.test(lwWords(it.full)[k - 1] || '')) N[c] = 1; }); });
+      st.items.forEach(function (it) { lwWords(it.full).forEach(function (w, k) { var c = lwCore(w); if (/^[a-záéíóúñæøå]/.test(c)) low[c] = 1; else if (k > 0 && /^[A-ZÁÉÍÓÚÑ]/.test(c) && !/[.?!]$/.test(lwWords(it.full)[k - 1] || '')) N[c] = 1; }); });
     });
   });
+  /* "Let It Be" must not turn every "it" into a name */
+  Object.keys(N).forEach(function (c) { if (c !== 'I' && low[c.charAt(0).toLowerCase() + c.slice(1)]) delete N[c]; });
   return N;
 }
 function lwTile(w, first, lang) {
@@ -3776,6 +3793,7 @@ var ES_PHRASES = [
     'cap.match': ['Read each beginning. Your partner has the endings. Set the numbers.', 'Olvasd fel a mondatkezdeteket. A társadnál vannak a befejezések. Állítsd be a számokat.', 'Læs hver begyndelse. Din makker har slutningerne. Sæt tallene.'],
     'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
     'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
+    'mic': ['Say it', 'Mondd ki', 'Sig det'],
     'p.start': ['Start', 'Kezdés', 'Start'],
     'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
     'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
@@ -5380,30 +5398,88 @@ var ES_PHRASES = [
   };
 
   /* ---- listen: the helper reads, the bomb builds ---- */
+  /* say the sentence instead of building it: the browser's speech recognition, where there is one */
+  var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  var Mic = { rec: null, at: null, off: !SpeechRec || window.isSecureContext === false };
+  var MIC_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor"/><path d="M6 11a6 6 0 0 0 12 0M12 17v4M9 21h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  var CONTR = { "i'm": 'i am', "you're": 'you are', "we're": 'we are', "they're": 'they are', "he's": 'he is', "she's": 'she is', "it's": 'it is', "that's": 'that is', "there's": 'there is', "what's": 'what is', "isn't": 'is not', "aren't": 'are not', "wasn't": 'was not', "weren't": 'were not', "don't": 'do not', "doesn't": 'does not', "didn't": 'did not', "can't": 'can not', 'cannot': 'can not', "won't": 'will not', "wouldn't": 'would not', "haven't": 'have not', "hasn't": 'has not', "hadn't": 'had not', "mustn't": 'must not', "couldn't": 'could not', "shouldn't": 'should not', "i've": 'i have', "i'll": 'i will', "i'd": 'i would', "we'll": 'we will', "you'll": 'you will', "let's": 'let us', 'gonna': 'going to', 'okay': 'ok' };
+  function sayWords(s) {
+    var out = [];
+    String(s).toLowerCase().replace(/[’‘`]/g, "'").replace(/[.,!?;:"“”„«»…¿¡()\-–—]/g, ' ').split(/\s+/).forEach(function (w) {
+      if (!w) return; w = w.replace(/^'+|'+$/g, '');
+      (CONTR[w] || w).split(' ').forEach(function (x) { if (x) out.push(x); });
+    });
+    return out;
+  }
+  function wordDist(a, b) {
+    var prev = [], cur, i, j;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    for (i = 1; i <= a.length; i++) { cur = [i]; for (j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; }
+    return prev[b.length];
+  }
+  /* a recogniser mishears now and then, so a long sentence may miss one word */
+  function saidRight(alts, want) {
+    var w = sayWords(want.join(' ')), slack = Math.floor(w.length / 6);
+    return alts.some(function (a) { return wordDist(sayWords(a), w) <= slack; });
+  }
+  function micStop() { if (Mic.rec) { try { Mic.rec.abort(); } catch (e) {} } Mic.rec = null; Mic.at = null; }
+  function micToggle(i) {
+    if (Mic.off) return;
+    if (Mic.rec) { var was = Mic.at; micStop(); if (S.game) renderMod(was); return; }
+    var rec, heard = null;
+    try { rec = new SpeechRec(); } catch (e) { Mic.off = true; renderMod(i); return; }
+    rec.lang = PACK[tl()].bcp; rec.interimResults = false; rec.continuous = false; rec.maxAlternatives = 5;
+    rec.onresult = function (e) { var r = e.results[0], a = []; for (var k = 0; r && k < r.length; k++) a.push(r[k].transcript); if (a.length) heard = a; };
+    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'language-not-supported') Mic.off = true; };
+    rec.onend = function () {
+      if (Mic.rec !== rec) return;
+      Mic.rec = null; Mic.at = null;
+      if (heard) modAct(i, 'said', heard); else if (S.game) renderMod(i);
+    };
+    Mic.rec = rec; Mic.at = i;
+    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; }
+    renderMod(i);
+  }
+  /* tiles get smaller as the sentence grows, so the whole tray always fits on the panel */
+  function tileSize(words) {
+    var n = 0; words.forEach(function (w) { n += String(w).length + 2; });
+    return n > 105 ? ' xs' : n > 72 ? ' sm' : '';
+  }
+
+  /* ---- listen: the helper reads, the bomb builds ---- */
   UI.listen = {
     init: function () { return { r: 0, placed: [], fb: false }; },
     bomb: function (d, st, i) {
-      var rd = d.rounds[st.r];
+      var rd = d.rounds[st.r], sz = tileSize(rd.tiles), rec = Mic.rec && Mic.at === i;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
-      h += '<div class="build lb" role="group">' + (rd.start && st.placed.length ? '<span class="pz">' + rd.start + '</span>' : '') + (st.placed.length ? st.placed.map(function (ti, pos) {
+      h += '<div class="build lw' + sz + '" role="group">' + (rd.start && st.placed.length ? '<span class="pz">' + rd.start + '</span>' : '') + (st.placed.length ? st.placed.map(function (ti, pos) {
         var x = rd.tiles[ti];
         return '<button type="button" class="tile in" data-a="m" data-i="' + i + '" data-k="rm" data-v="' + pos + '" lang="' + tl() + '">' + esc(pos === 0 ? cap(x) : x) + '</button>';
       }).join('') + '<span class="pz">' + esc(rd.end) + '</span>' : '<span class="build-empty">🎧</span>') + '</div>';
-      h += '<div class="tray" role="group">' + rd.tiles.map(function (x, ti) {
+      if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
+      h += '<div class="tray lt' + sz + '" role="group">' + rd.tiles.map(function (x, ti) {
         return st.placed.indexOf(ti) >= 0 ? '<span class="tile ghost" aria-hidden="true">' + esc(x) + '</span>' : '<button type="button" class="tile" data-a="m" data-i="' + i + '" data-k="add" data-v="' + ti + '" lang="' + tl() + '">' + esc(x) + '</button>';
       }).join('') + '</div>';
-      h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', !st.placed.length) + B(i, 'send', null, t('ck.check'), 'go wide', !st.placed.length) + '</div>';
+      h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', !st.placed.length) +
+        (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
+        B(i, 'send', null, t('ck.check'), 'go wide', !st.placed.length) + '</div>';
       return h + (st.fb ? fbBad('p.bad') : '');
     },
-    on: function (k, v, d, st) {
+    on: function (k, v, d, st, i) {
       var rd = d.rounds[st.r];
-      if (k === 'add') { v = +v; if (v >= 0 && v < rd.tiles.length && st.placed.indexOf(v) < 0) st.placed.push(v); st.fb = false; return 're'; }
+      if (k === 'add') { v = +v; if (v >= 0 && v < rd.tiles.length && st.placed.indexOf(v) < 0) st.placed.push(v); st.fb = false; st.heard = ''; return 're'; }
       if (k === 'rm') { st.placed.splice(+v, 1); st.fb = false; return 're'; }
-      if (k === 'clear') { st.placed = []; st.fb = false; return 're'; }
+      if (k === 'clear') { st.placed = []; st.fb = false; st.heard = ''; return 're'; }
+      if (k === 'mic') { st.fb = false; st.heard = ''; micToggle(i); return; }
+      if (k === 'said') {
+        /* a misheard sentence costs nothing: what the phone heard is shown, struck out */
+        if (saidRight(v, rd.ans)) { st.r++; st.placed = []; st.fb = false; st.heard = ''; return st.r >= d.rounds.length ? 'solved' : 'next'; }
+        st.heard = v[0]; return 're';
+      }
       if (k === 'send') {
         if (!st.placed.length) return;
         var got = st.placed.map(function (ti) { return rd.tiles[ti].toLowerCase(); }).join(' '), want = rd.ans.map(function (x) { return x.toLowerCase(); }).join(' ');
-        if (got === want) { st.r++; st.placed = []; st.fb = false; return st.r >= d.rounds.length ? 'solved' : 'next'; }
+        if (got === want) { st.r++; st.placed = []; st.fb = false; st.heard = ''; return st.r >= d.rounds.length ? 'solved' : 'next'; }
         st.fb = true; st.placed = []; return 'strike';
       }
     },
@@ -5417,8 +5493,11 @@ var ES_PHRASES = [
     pos: function (d, st) { return st.r; },
     help: function (d, i, ms) {
       var p = Math.min(ms.step || 0, d.rounds.length - 1), rd = d.rounds[p], has = Voice.has();
-      return card(cnt('n.sentence', p + 1, d.rounds.length), '', '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' +
-        (has ? '<div class="row">' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+      /* a listening task: the sentence is only written out when no voice can read it */
+      var shown = !has || ms.rev['s' + p];
+      return card(cnt('n.sentence', p + 1, d.rounds.length), '',
+        (has ? '<div class="lhelp"><span class="ear" aria-hidden="true">🎧</span>' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
+        (shown ? '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' : '') +
         stepNav(i, p, d.rounds.length, null, null, true));
     },
     onHelp: function (k, v, d, ms, i) {
