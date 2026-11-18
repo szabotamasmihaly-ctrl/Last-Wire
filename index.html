@@ -892,6 +892,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .turntable.mel.on .mel-p{opacity:0}
 .turntable.mel:not(.on) .vinyl{animation-play-state:paused}
 .artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
+.mysongs-file{position:relative;display:inline-block;overflow:hidden;margin-left:8px;cursor:pointer}.mysongs-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .mysongs textarea{width:100%;min-height:110px;font:inherit;font-size:15px;padding:10px;resize:vertical}
 .pair-diag{font-size:11px;color:#aaa;text-align:center;margin:0}
 .pair-wait .pw-t{font-size:17px;font-weight:700}
@@ -3927,10 +3928,13 @@ function deckTake(key, pool, off, k) {
 /* 🎵 my songs: lines a player pastes in settings. They stay on that device; in a paired game the leader's
    phone hands them to the other phone over the direct line, and the code carries a fingerprint so both match. */
 var MYSONG_KEY = 'last-wire-mysongs', SONG_BANK = {};
-function mySongs(L) { try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}'); return (o && Array.isArray(o[L]) ? o[L] : []).filter(function (x) { return typeof x === 'string' && x.trim().split(/\s+/).length >= 3; }).slice(0, 200); } catch (e) { return []; } }
+function mySongs(L) { try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}'); return (o && Array.isArray(o[L]) ? o[L] : []).filter(function (x) { return typeof x === 'string' && songSplit(x).line.split(/\s+/).length >= 3; }).slice(0, 300); } catch (e) { return []; } }
+/* "Artist – Title | the line" shows the singer above the line; a plain line shows 🎵 */
+function songSplit(x) { var k = x.indexOf('|'); return k > 0 ? { who: x.slice(0, k).trim(), line: x.slice(k + 1).trim() } : { who: '', line: x.trim() }; }
 function songHash(lines) { return lines.length ? hashSeed('lwsongs:' + lines.join('\n')).toString(36) : ''; }
 /* a pasted line becomes a song row: the longest word in the middle goes missing; the two wrong words come from other lines */
-function songRow(line, k, all) {
+function songRow(raw, k, all) {
+  var sp = songSplit(raw), line = sp.line; all = all.map(function (x) { return songSplit(x).line; });
   var ws = line.trim().split(/\s+/), core = function (w) { return w.replace(/^[^\wÀ-ÿ']+|[^\wÀ-ÿ']+$/g, ''); };
   var best = -1, bl = 0;
   ws.forEach(function (w, i) { var c = core(w), edge = i === 0 || i === ws.length - 1 ? 0.5 : 1; if (c.length * edge > bl) { bl = c.length * edge; best = i; } });
@@ -3939,13 +3943,16 @@ function songRow(line, k, all) {
   var pool = [], seen = {}; seen[word.toLowerCase()] = 1;
   all.concat(['love', 'night', 'heart', 'dream', 'light', 'baby', 'dance']).forEach(function (l) { l.split(/\s+/).forEach(function (w) { var c = core(w); if (c.length >= 3 && !seen[c.toLowerCase()]) { seen[c.toLowerCase()] = 1; pool.push(c); } }); });
   pool.sort(function (a, b) { return Math.abs(a.length - word.length) - Math.abs(b.length - word.length) || (hashSeed(a + k) % 7) - (hashSeed(b + k) % 7); });
-  return ['🎵', ws.join(' '), pool[0] || 'love', pool[1] || 'night'];
+  return [sp.who || '🎵', ws.join(' '), pool[0] || 'love', pool[1] || 'night'];
 }
 /* the song list a bomb uses: the built-in songs, plus the pasted ones that match the code's fingerprint */
 function songPool(L, h) {
   var base = PARTY[L].song, lines = null;
   if (h) { var own = mySongs(L); lines = songHash(own) === h ? own : SONG_BANK[h] || null; }
-  return lines ? base.concat(lines.map(function (l, k) { return songRow(l, k, lines); })) : base;
+  if (!lines) return base;
+  var mine = lines.map(function (l, k) { return songRow(l, k, lines); });
+  /* enough own lines: only those play */
+  return mine.length >= 6 ? mine : base.concat(mine);
 }
 function shuf3(r, right, wrongs) {
   var opts = [right].concat(wrongs.slice(0, 2)), perm = r.shuffle([0, 1, 2]);
@@ -4169,7 +4176,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 19;
+  var BUILD = 20;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -7158,7 +7165,8 @@ var ES_PHRASES = [
     var L = PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en';
     return '<label class="field mysongs"><span class="flabel">🎵 ' + FLAG[L] + ' ' + t('set.songs') + '</span>' +
       '<textarea class="sel" id="mysongs" data-l="' + L + '" rows="5" lang="' + L + '" spellcheck="false">' + esc(mySongs(L).join('\n')) + '</textarea>' +
-      '<span class="gl" id="mysongs-n">' + mySongs(L).length + '</span></label>';
+      '<span class="gl" id="mysongs-n">' + mySongs(L).length + '</span>' +
+      '<span class="mysongs-file pbtn">📄<input type="file" id="mysongs-file" accept=".txt,text/plain"></span></label>';
   }
   function renderDrawer() {
     var el = $('#overlay');
@@ -7340,11 +7348,17 @@ var ES_PHRASES = [
     var el = e.target;
     if (el && el.getAttribute && el.getAttribute('data-a') && (el.tagName === 'SELECT' || (el.tagName === 'INPUT' && (el.type === 'checkbox' || el.type === 'radio')))) act(el.getAttribute('data-a'), el.dataset, el);
   });
+  document.addEventListener('change', function (e) {
+    var el = e.target; if (!el || el.id !== 'mysongs-file' || !el.files || !el.files[0] || typeof FileReader !== 'function') return;
+    var fr = new FileReader();
+    fr.onload = function () { var ta = document.getElementById('mysongs'); if (!ta) return; ta.value = String(fr.result || '').replace(/\r/g, ''); ta.dispatchEvent(new Event('input', { bubbles: true })); };
+    fr.readAsText(el.files[0]);
+  });
   document.addEventListener('input', function (e) {
     var el = e.target; if (!el) return;
     if (el.id === 'sn-in') { snTyped(el); return; }
     if (el.id === 'mysongs') {
-      try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}') || {}; o[el.getAttribute('data-l')] = el.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean).slice(0, 200); localStorage.setItem(MYSONG_KEY, JSON.stringify(o)); } catch (e) {}
+      try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}') || {}; o[el.getAttribute('data-l')] = el.value.split('\n').map(function (x) { return x.trim(); }).filter(Boolean).slice(0, 300); localStorage.setItem(MYSONG_KEY, JSON.stringify(o)); } catch (e) {}
       var nn = document.getElementById('mysongs-n'); if (nn) nn.textContent = mySongs(el.getAttribute('data-l')).length;
       return;
     }
