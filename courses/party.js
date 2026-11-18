@@ -1,6 +1,6 @@
 /* ===== Last Wire: party bombs — content =====
-   Every sentence here is original. Songs appear only by singer and title (titles are facts, not lyrics):
-   no real lyrics anywhere. Film titles and place names are facts, not quotes. */
+   Song lines are real lyrics, but only from songs in the public domain (traditional songs and songs whose
+   copyright has run out). Every other sentence is original. Film titles and place names are facts, not quotes. */
 var PARTY = {};
 
 /* 🎬 emoji films: the emojis, then the title in each course language */
@@ -53,45 +53,28 @@ PARTY.places = [
 
 /* the rest is per course language */
 PARTY.en = {
-  /* 🎵 famous songs: the singer, the real title with one [word] missing, two words that sound close, and an original sentence the helper hears */
+  /* 🎵 real lyrics from famous songs that are free to use (public domain): the song, the line with one [word] missing, two words that sound close */
   song: [
-    ['Lady Gaga', 'Bad [Romance]', 'Romans', 'Ramen', 'At every party my aunt sings Bad Romance by Lady Gaga until midnight.'],
-    ['Lady Gaga', 'Poker [Face]', 'Phase', 'Vase', 'My little brother dances to Poker Face in the kitchen every morning.'],
-    ['Justin Bieber', 'What Do You [Mean]', 'Mine', 'Main', 'The whole bus started singing What Do You Mean when it came on the radio.'],
-    ['Dua Lipa', 'New [Rules]', 'Roles', 'Rulers', 'My best friend plays New Rules by Dua Lipa in the car all the time.'],
-    ['Dua Lipa', "Don't Start [Now]", 'No', 'Night', "We heard Don't Start Now at the wedding and everybody jumped up."],
-    ['Ed Sheeran', '[Shape] of You', 'Ship', 'Sheep', 'The baker hums Shape of You by Ed Sheeran while he makes the bread.'],
-    ['Taylor Swift', 'Shake It [Off]', 'Of', 'Up', 'My grandma sang Shake It Off at the talent show and won a cake.'],
-    ['Adele', 'Rolling in the [Deep]', 'Dip', 'Deal', 'My mum sings Rolling in the Deep in the shower every single day.'],
-    ['Michael Jackson', 'Billie [Jean]', 'Gin', 'Jane', 'The DJ played Billie Jean and my dad did the moonwalk on the table.'],
-    ['Queen', 'Bohemian [Rhapsody]', 'Rap City', 'Rhapsodies', 'In the car we always scream Bohemian Rhapsody at the top of our lungs.'],
-    ['Bruno Mars', 'Uptown [Funk]', 'Fun', 'Punk', 'The teacher put on Uptown Funk and the whole class started dancing.'],
-    ['The Weeknd', 'Blinding [Lights]', 'Lies', 'Likes', 'My neighbour plays Blinding Lights so loud that I know every word.'],
-    ['Billie Eilish', 'Bad [Guy]', 'Buy', 'Guide', 'My cousin whispers Bad Guy by Billie Eilish to scare her cat.'],
-    ['Harry Styles', 'As It [Was]', 'Is', 'Wars', 'Everyone in the café sang As It Was by Harry Styles together.'],
-    ['Beyoncé', 'Crazy in [Love]', 'Life', 'Laugh', 'The bride danced to Crazy in Love by Beyoncé with her dog.'],
-    ['Coldplay', 'Viva la [Vida]', 'Vita', 'Diva', 'The football fans sang Viva la Vida by Coldplay after the match.'],
-    ['Katy Perry', '[Roar]', 'Raw', 'Rear', 'My little sister sings Roar by Katy Perry to the neighbours dog.'],
-    ['Rihanna', '[Umbrella]', 'Umbrellas', 'Cinderella', 'When it rains, my uncle sings Umbrella by Rihanna on the bus.']
-  ],
-  /* 🎤 karaoke: original lines built around famous songs */
-  karaoke: [
-    'We danced to Dancing Queen by ABBA all night',
-    'My dad sings Bohemian Rhapsody in the shower',
-    'The whole bus sang Hey Jude by the Beatles',
-    'Grandma loves Billie Jean by Michael Jackson',
-    'We played Shape of You at the school party',
-    'My cat falls asleep when I play Hello by Adele',
-    'The DJ put on Uptown Funk and we went crazy',
-    'I learned Let It Be on the piano last summer',
-    'My sister screams Shake It Off in the car',
-    'We heard Bad Romance by Lady Gaga at the wedding',
-    'The football fans sang We Are the Champions',
-    'My teacher hums Imagine by John Lennon every morning',
-    'Our neighbours dance to Despacito on the balcony',
-    'I fell asleep listening to Someone Like You',
-    'The kids sang Let It Go from Frozen again',
-    'We sang Sweet Caroline at the top of our lungs'
+    ['Twinkle, Twinkle, Little Star', 'Twinkle, twinkle, little [star], how I wonder what you are', 'car', 'stair'],
+    ['Twinkle, Twinkle, Little Star', 'Up above the [world] so high, like a diamond in the sky', 'word', 'whirl'],
+    ['Jingle Bells', 'Dashing through the [snow] in a one-horse open sleigh', 'slow', 'show'],
+    ['Jingle Bells', 'Oh what fun it is to [ride] in a one-horse open sleigh', 'write', 'hide'],
+    ['Happy Birthday', 'Happy [birthday] to you, happy birthday to you', 'Thursday', 'Earth day'],
+    ['Row, Row, Row Your Boat', 'Gently down the [stream], merrily, merrily, merrily, merrily', 'dream', 'scream'],
+    ['Old MacDonald', 'Old MacDonald had a [farm], E-I-E-I-O', 'arm', 'form'],
+    ['Mary Had a Little Lamb', 'Mary had a little [lamb], its fleece was white as snow', 'lamp', 'jam'],
+    ['London Bridge', 'London Bridge is falling [down], falling down, falling down', 'town', 'gown'],
+    ['Auld Lang Syne', 'Should auld acquaintance be [forgot] and never brought to mind', 'forget', 'forgive'],
+    ['Silent Night', 'Silent night, holy [night], all is calm, all is bright', 'nine', 'kite'],
+    ['Amazing Grace', 'Amazing grace, how sweet the [sound] that saved a wretch like me', 'sand', 'round'],
+    ['Oh! Susanna', 'Oh, Susanna, oh don\'t you [cry] for me', 'try', 'fly'],
+    ['Yankee Doodle', 'Yankee Doodle went to [town] a-riding on a pony', 'down', 'gown'],
+    ['Take Me Out to the Ball Game', 'Take me out to the ball [game], take me out with the crowd', 'gate', 'name'],
+    ['Daisy Bell', 'Daisy, Daisy, give me your [answer], do', 'anchor', 'dancer'],
+    ['Itsy Bitsy Spider', 'Down came the [rain] and washed the spider out', 'train', 'lane'],
+    ['My Bonnie', 'My Bonnie lies over the [ocean], my Bonnie lies over the sea', 'motion', 'potion'],
+    ['When the Saints Go Marching In', 'Oh when the [saints] go marching in', 'sense', 'sins'],
+    ['Drunken Sailor', 'What shall we do with the drunken [sailor] early in the morning', 'tailor', 'sailing']
   ],
   /* 👅 tongue twisters */
   twister: [
@@ -173,44 +156,26 @@ PARTY.en = {
 };
 
 PARTY.es = {
-  /* 🎵 canciones famosas: el título real con una [palabra] que falta */
+  /* 🎵 letras reales de canciones famosas libres de derechos (dominio público) */
   song: [
-    ['Luis Fonsi', '[Despacito]', 'Despacio', 'Espacio', 'Mi abuela baila Despacito en todas las bodas de la familia.'],
-    ['Shakira', 'La [Tortura]', 'Tortuga', 'Tortilla', 'En el coche siempre cantamos La Tortura de Shakira muy alto.'],
-    ['Shakira', 'Ojos [Así]', 'Asia', 'Hice', 'Mi profesora de baile pone Ojos Así de Shakira cada lunes.'],
-    ['Enrique Iglesias', '[Bailando]', 'Bajando', 'Bañando', 'Toda la playa cantó Bailando de Enrique Iglesias al atardecer.'],
-    ['Rosalía', 'Con [Altura]', 'Alturas', 'Hartura', 'Mi prima canta Con Altura de Rosalía mientras cocina.'],
-    ['Bad Bunny', '[Tití] Me Preguntó', 'Tía', 'Tito', 'En la fiesta pusieron Tití Me Preguntó y nadie se quedó sentado.'],
-    ['Bad Bunny', 'Me Porto [Bonito]', 'Bonita', 'Bendito', 'Mi hermano escucha Me Porto Bonito mientras hace los deberes.'],
-    ['Karol G', '[Tusa]', 'Tuya', 'Musa', 'Las chicas del autobús cantaban Tusa de Karol G a gritos.'],
-    ['Ricky Martin', '[María]', 'Mía', 'Marina', 'Mi padre baila María de Ricky Martin cuando está contento.'],
-    ['Juanes', 'La [Camisa] Negra', 'Camino', 'Cama', 'El camarero canta La Camisa Negra mientras sirve los cafés.'],
-    ['Los del Río', '[Macarena]', 'Magdalena', 'Marena', 'En el colegio bailamos Macarena de Los del Río en el patio.'],
-    ['Daddy Yankee', '[Gasolina]', 'Golosina', 'Gaseosa', 'El DJ puso Gasolina de Daddy Yankee y todos saltaron.'],
-    ['Alejandro Sanz', '[Corazón] Partío', 'Razón', 'Colchón', 'Mi tío canta Corazón Partío de Alejandro Sanz en el karaoke.'],
-    ['Enrique Iglesias', '[Héroe]', 'Hierro', 'Huevo', 'Mi madre llora cuando suena Héroe de Enrique Iglesias en la radio.'],
-    ['Camilo', 'Vida de [Rico]', 'Rizo', 'Rito', 'Mis amigos cantan Vida de Rico de Camilo en el parque.'],
-    ['Marc Anthony', 'Vivir Mi [Vida]', 'Viña', 'Vía', 'Los vecinos bailan Vivir Mi Vida de Marc Anthony en el balcón.'],
-    ['Shakira', '[Whenever], Wherever', 'Whatever', 'Wherever', 'En el gimnasio ponen Whenever, Wherever de Shakira cada mañana.'],
-    ['Ricky Martin', 'Livin\' la Vida [Loca]', 'Lola', 'Poca', 'Mi tío canta Livin\' la Vida Loca de Ricky Martin en todas las fiestas.']
-  ],
-  karaoke: [
-    'Bailamos Despacito en la boda de mi prima',
-    'Mi padre canta La Bamba mientras cocina',
-    'Toda la clase bailó Macarena en el patio',
-    'Mi abuela escucha Bésame Mucho cada domingo',
-    'En el coche cantamos Bailando de Enrique Iglesias',
-    'Mi hermana grita La Tortura de Shakira en la ducha',
-    'El DJ puso Gasolina y todos saltaron',
-    'Mi gato duerme cuando suena Corazón Partío',
-    'Los vecinos bailan Vivir Mi Vida en el balcón',
-    'Aprendí Cielito Lindo con la guitarra',
-    'En la fiesta sonó Tusa de Karol G tres veces',
-    'Mi tío canta Livin\' la Vida Loca en el karaoke',
-    'Los niños cantan Waka Waka en el autobús',
-    'Mi madre llora con Héroe de Enrique Iglesias',
-    'Mis amigos bailan La Camisa Negra en el parque',
-    'Toda la playa cantó Me Porto Bonito al atardecer'
+    ['Cielito Lindo', 'Ay, ay, ay, ay, canta y no [llores]', 'flores', 'llueves'],
+    ['Cielito Lindo', 'De la Sierra Morena, cielito lindo, vienen [bajando]', 'bailando', 'bañando'],
+    ['La Cucaracha', 'La cucaracha, la cucaracha, ya no puede [caminar]', 'cantar', 'cocinar'],
+    ['Las Mañanitas', 'Estas son las mañanitas que cantaba el rey [David]', 'Daniel', 'Madrid'],
+    ['Las Mañanitas', 'Despierta, mi bien, despierta, mira que ya [amaneció]', 'anocheció', 'amaestró'],
+    ['De Colores', 'De colores se visten los campos en la [primavera]', 'primera', 'pradera'],
+    ['Arroz con leche', 'Arroz con leche, me quiero [casar] con una señorita de San Nicolás', 'cazar', 'cansar'],
+    ['Los pollitos dicen', 'Los pollitos dicen pío, pío, pío, cuando tienen [hambre], cuando tienen frío', 'hombre', 'alambre'],
+    ['Estrellita', 'Estrellita, ¿dónde estás? Me pregunto qué [serás]', 'será', 'verás'],
+    ['Los peces en el río', 'Pero mira cómo beben los [peces] en el río', 'pecas', 'veces'],
+    ['Campana sobre campana', 'Campana sobre campana, y sobre campana [una]', 'luna', 'cuna'],
+    ['La Bamba', 'Para bailar la [bamba] se necesita una poca de gracia', 'banda', 'rampa'],
+    ['El patio de mi casa', 'El patio de mi casa es [particular], cuando llueve se moja como los demás', 'popular', 'peculiar'],
+    ['Cumpleaños feliz', 'Cumpleaños feliz, te [deseamos] a ti', 'deseo', 'dejamos'],
+    ['Noche de paz', 'Noche de paz, noche de [amor], todo duerme en derredor', 'humor', 'color'],
+    ['Los elefantes', 'Un elefante se balanceaba sobre la tela de una [araña]', 'cabaña', 'mañana'],
+    ['Debajo un botón', 'Debajo un botón, ton, ton, que encontró Martín, tin, tin, había un [ratón]', 'balcón', 'montón'],
+    ['Tengo una muñeca', 'Tengo una muñeca vestida de [azul]', 'abril', 'baúl']
   ],
   twister: [
     'Tres tristes tigres tragaban trigo en un trigal',
@@ -286,44 +251,26 @@ PARTY.es = {
 };
 
 PARTY.da = {
-  /* 🎵 kendte sange: den rigtige titel med et [ord], der mangler */
+  /* 🎵 rigtige sangtekster fra kendte sange, der er frie at bruge (fri af ophavsret) */
   song: [
-    ['Kim Larsen', 'Midt om [natten]', 'nakken', 'hatten', 'Min far synger Midt om natten af Kim Larsen, hver gang han laver mad.'],
-    ["Gasolin'", 'Kvinde [min]', 'mild', 'mit', "Til festen spillede bandet Kvinde min af Gasolin', og alle sang med."],
-    ['Medina', 'Kun for [mig]', 'mild', 'mod', 'Min storesøster synger Kun for mig af Medina i badet hver morgen.'],
-    ['Rasmus Seebach', '[Engel]', 'Enkel', 'Angel', 'Til brylluppet dansede de til Engel af Rasmus Seebach.'],
-    ['Lukas Graham', '7 [Years]', 'Ears', 'Yours', 'Hele klassen sang 7 Years af Lukas Graham til afslutningen.'],
-    ['Aqua', 'Barbie [Girl]', 'Gold', 'Curl', 'Min mormor danser til Barbie Girl af Aqua i stuen.'],
-    ['Shu-bi-dua', 'Den røde [tråd]', 'tår', 'træ', 'Onkel Bent spiller Den røde tråd af Shu-bi-dua på sin guitar.'],
-    ['TV-2', 'Det er mig, der står herude og [banker] på', 'danser', 'tanker', 'I bilen synger vi Det er mig, der står herude og banker på af TV-2.'],
-    ['Brødrene Olsen', 'Fly on the [Wings] of Love', 'Winks', 'Things', 'Til Melodi Grand Prix sang alle Fly on the Wings of Love med Brødrene Olsen.'],
-    ['Emmelie de Forest', 'Only [Teardrops]', 'Teacups', 'Treetops', 'Min lillebror øver Only Teardrops af Emmelie de Forest på klaveret.'],
-    ['Ed Sheeran', '[Shape] of You', 'Ship', 'Sheep', 'Bageren nynner Shape of You af Ed Sheeran, mens han bager brød.'],
-    ['Dua Lipa', 'New [Rules]', 'Roles', 'Rulers', 'Min bedste ven spiller New Rules af Dua Lipa i bilen hele tiden.'],
-    ['Lady Gaga', 'Poker [Face]', 'Phase', 'Vase', 'Min lillebror danser til Poker Face af Lady Gaga i køkkenet hver morgen.'],
-    ['Michael Jackson', 'Billie [Jean]', 'Gin', 'Jane', 'DJ\'en spillede Billie Jean af Michael Jackson, og min far lavede moonwalk.'],
-    ['Kim Larsen', '[Papirsklip]', 'Papirklip', 'Papskilt', 'Min morfar synger Papirsklip af Kim Larsen, når han maler.'],
-    ['Medina', '[Vi to]', 'Vito', 'Fido', 'Til festen sang alle Vi to af Medina i køkkenet.'],
-    ['Taylor Swift', 'Shake It [Off]', 'Of', 'Up', 'Min mormor sang Shake It Off af Taylor Swift til talentshowet.'],
-    ['Queen', 'Bohemian [Rhapsody]', 'Rap City', 'Rhapsodies', 'I bilen skriger vi altid Bohemian Rhapsody af Queen af fuld hals.']
-  ],
-  karaoke: [
-    'Vi dansede til Barbie Girl af Aqua hele natten',
-    'Min far synger Midt om natten i køkkenet',
-    'Hele bussen sang Kvinde min af Gasolin\'',
-    'Mormor elsker Dancing Queen af ABBA',
-    'Til festen spillede de Engel af Rasmus Seebach',
-    'Min kat falder i søvn, når jeg spiller Kun for mig',
-    'Vi sang Den røde tråd ved lejrbålet',
-    'Min lærer nynner Shape of You hver morgen',
-    'Hele klassen sang 7 Years til afslutningen',
-    'Fodboldfansene sang We Are the Champions',
-    'Min søster synger Let It Go fra Frost igen',
-    'Vi hørte Bohemian Rhapsody i bilen til Skagen',
-    'Naboerne danser til Despacito på altanen',
-    'Min bror spiller Billie Jean på guitar',
-    'Til brylluppet sang alle Only Teardrops',
-    'Vi sang Fly on the Wings of Love i Tivoli'
+    ['Der er et yndigt land', 'Der er et yndigt [land], det står med brede bøge', 'lam', 'sand'],
+    ['I østen stiger solen op', 'I østen stiger [solen] op, den spreder guld på sky', 'sålen', 'stolen'],
+    ['Glade jul', 'Glade jul, dejlige [jul], engle daler ned i skjul', 'hjul', 'hul'],
+    ['Glade jul', 'Engle daler ned i [skjul], hid de flyve med paradisgrønt', 'skud', 'stjal'],
+    ['Højt fra træets grønne top', 'Højt fra træets grønne top stråler [julens] pragt', 'jordens', 'gulvets'],
+    ['Mester Jakob', 'Mester Jakob, mester Jakob, [sover] du, sover du?', 'soler', 'sukker'],
+    ['Mester Jakob', 'Hører du [klokken]? Hører du klokken?', 'kokken', 'flokken'],
+    ['Bjørnen sover', 'Bjørnen sover, bjørnen sover i sit lune [hi]', 'ni', 'ski'],
+    ['Nu er det jul igen', 'Og julen varer lige til [påske]', 'pause', 'faste'],
+    ['Kong Christian stod ved højen mast', 'Kong Christian stod ved højen [mast] i røg og damp', 'hast', 'last'],
+    ['Jeg er havren', 'Jeg er [havren], jeg har bjælder på', 'haven', 'hagen'],
+    ['Den danske sang', 'Den danske sang er en ung, blond [pige]', 'pibe', 'stige'],
+    ['Danmark, dejligst vang og vænge', 'Danmark, dejligst vang og [vænge], lukt med bølgen blå', 'penge', 'enge'],
+    ['Jeg gik mig over sø og land', 'Jeg gik mig over [sø] og land, der mødte mig en gammel mand', 'sne', 'ø'],
+    ['Et barn er født i Betlehem', 'Et barn er født i [Betlehem], thi glæde sig Jerusalem', 'Betania', 'bedstemor'],
+    ['Dejlig er jorden', 'Dejlig er [jorden], prægtig er Guds himmel', 'morgen', 'ordet'],
+    ['Nu falmer skoven', 'Nu falmer [skoven] trindt om land', 'skolen', 'stoven'],
+    ['Lysets engel', 'Lysets [engel] går med glans gennem himlens sale', 'enkel', 'hængsel']
   ],
   twister: [
     'Rødgrød med fløde',
