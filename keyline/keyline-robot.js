@@ -70,26 +70,40 @@ function build(b) {
   return null;
 }
 
-/* find Claude Code on this computer, so it can run without a shell (safe for any text) */
+/* find Claude Code on this computer */
 function findClaude() {
   if (process.env.KEYLINE_CLAUDE) return { cmd: process.env.KEYLINE_CLAUDE, pre: [] };
-  if (process.platform === 'win32') {
-    const exe = path.join(os.homedir(), '.local', 'bin', 'claude.exe');
-    if (fs.existsSync(exe)) return { cmd: exe, pre: [] };
-    try {
-      const root = cp.execSync('npm root -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
-      const js = path.join(root, '@anthropic-ai', 'claude-code', 'cli.js');
-      if (fs.existsSync(js)) return { cmd: process.execPath, pre: [js] };
-    } catch (e) {}
-    return null;
-  }
-  return { cmd: 'claude', pre: [] };
+  if (process.platform !== 'win32') return { cmd: 'claude', pre: [] };
+  const exe = path.join(os.homedir(), '.local', 'bin', 'claude.exe');
+  if (fs.existsSync(exe)) return { cmd: exe, pre: [] };
+  /* installed with npm: read where the package's own program is */
+  try {
+    const root = cp.execSync('npm root -g', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    const dir = path.join(root, '@anthropic-ai', 'claude-code');
+    const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8'));
+    const bin = typeof pkg.bin === 'string' ? pkg.bin : (pkg.bin || {}).claude;
+    if (bin) {
+      const f = path.join(dir, bin);
+      if (fs.existsSync(f) && /\.(c?js|mjs)$/i.test(f)) return { cmd: process.execPath, pre: [f] };
+      if (fs.existsSync(f) && /\.exe$/i.test(f)) return { cmd: f, pre: [] };
+    }
+  } catch (e) {}
+  /* last try: whatever "claude" means in this window */
+  try {
+    const where = cp.execSync('where claude', { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split(/\r?\n/).filter(Boolean);
+    const e2 = where.find(function (w) { return /\.exe$/i.test(w); });
+    if (e2) return { cmd: e2, pre: [] };
+    if (where.length) return { cmd: 'claude', pre: [], shell: true };
+  } catch (e) {}
+  return null;
 }
 
+function quote(a) { return '"' + String(a).replace(/"/g, "'") + '"'; }
 function askClaude(claude, prompt) {
   return new Promise(function (resolve, reject) {
-    const args = claude.pre.concat(['-p', '--model', MODEL, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
-    const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true });
+    let args = claude.pre.concat(['-p', '--model', MODEL, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
+    if (claude.shell) args = args.map(quote);
+    const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true, shell: !!claude.shell });
     let out = '', err = '';
     const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, 45000);
     p.stdout.on('data', function (d) { out += d; });
