@@ -1004,6 +1004,25 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .key.mic.rec::after{content:'';position:absolute;inset:0;border-radius:9px;border:3px solid #FF4B4B;animation:pulse 1s ease-out infinite}
 .heard{flex:none;margin:0;color:#ff9a9e;font-size:14px;text-decoration:line-through;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
 .heard.mic-live{color:#fff;text-decoration:none;white-space:normal}
+.guide{margin:0 0 10px;display:flex;flex-direction:column;gap:6px}
+.guide .gx{margin:0;font-size:14px;line-height:1.35;opacity:.85}
+.guide .who{margin:0;align-self:flex-start;padding:5px 10px;border-radius:999px;font-size:14px;font-weight:700;line-height:1.3}
+.guide .who.wait{background:rgba(255,200,60,.22);color:#7a5200;animation:whoPulse 1.8s ease-in-out infinite}
+.guide .who.talk{background:rgba(60,200,120,.18);color:#127a43}
+.guide .who.both{background:rgba(60,120,255,.14);color:#1f4fbf}
+.g-bomb .who.wait{color:#ffd56a}.g-bomb .who.talk{color:#7ee2a8}.g-bomb .who.both{color:#9db8ff}
+.g-bomb .gx{color:#d9dde3}
+@keyframes whoPulse{50%{opacity:.7}}
+.hwait{display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:14px 16px;border-radius:14px;background:#fff4d6;border:2px solid #f2c14e;color:#5a4300;font-weight:700;font-size:17px}
+.hwait p{margin:0}
+.hwait .dots{display:flex;gap:5px}.hwait .dots i{width:9px;height:9px;border-radius:50%;background:#e0a100;animation:whoDot 1.2s infinite}
+.hwait .dots i:nth-child(2){animation-delay:.2s}.hwait .dots i:nth-child(3){animation-delay:.4s}
+@keyframes whoDot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.guide .who.wait,.hwait .dots i{animation:none}}
+/* touch: every target is at least 44px to the finger; small ones get an invisible margin that still counts as a tap */
+.tb,.key,.pbtn,.pbtn.sm,.hb{min-height:44px}
+.bar-b,.tile,.pst,.cbtn{position:relative}
+.bar-b::after,.tile::after,.pst::after,.cbtn::after{content:'';position:absolute;inset:-5px -3px}
 .mic-err{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:rgba(255,200,60,.14);color:#ffd977;font-size:14px;line-height:1.35}
 .lhelp{display:flex;align-items:center;gap:14px;padding:10px 0 4px}
 .lhelp .ear{font-size:44px;line-height:1}
@@ -4218,6 +4237,13 @@ var ES_PHRASES = [
     'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
     'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
     'mic': ['Say it', 'Mondd ki', 'Sig det'],
+    'who.bw': ['⏳ Wait for your helper: they have the info.', '⏳ Várj a segítődre: nála van az infó.', '⏳ Vent på din hjælper: hjælperen har infoen.'],
+    'who.bt': ['🗣️ Your turn: read it out to your helper.', '🗣️ Te jössz: olvasd fel a segítődnek.', '🗣️ Din tur: læs det højt for din hjælper.'],
+    'who.ht': ['🗣️ Your turn: play it and tell your partner.', '🗣️ Te jössz: játszd le, és mondd el a társadnak.', '🗣️ Din tur: afspil det og fortæl det til din makker.'],
+    'who.hw': ['⏳ Wait: your partner reads it to you first.', '⏳ Várj: először a társad olvassa fel neked.', '⏳ Vent: din makker læser det op for dig først.'],
+    'who.x': ['🔁 You each have half: talk it through.', '🔁 Mindkettőtöknél a fele van: beszéljétek meg.', '🔁 I har hver halvdelen: snak jer frem til det.'],
+    'who.lock': ['⏳ Wait: your partner types the title or opens the choices.', '⏳ Várj: a társad beírja a címet, vagy kinyitja a lehetőségeket.', '⏳ Vent: din makker skriver titlen eller åbner valgene.'],
+    'who.start': ['Waiting for your partner to start the bomb. Same bomb on both phones: {0}', 'Várjuk, hogy a társad elindítsa a bombát. Mindkét telefonon ugyanaz a bomba: {0}', 'Venter på, at din makker starter bomben. Samme bombe på begge telefoner: {0}'],
     'mic.deny': ['🎤🚫 Allow the microphone: tap 🔒 next to the web address → Microphone → Allow, then reload.', '🎤🚫 Engedd a mikrofont: koppints a webcím melletti 🔒-ra → Mikrofon → Engedélyezés, aztán töltsd újra.', '🎤🚫 Tillad mikrofonen: tryk på 🔒 ved webadressen → Mikrofon → Tillad, og genindlæs.'],
     'mic.net': ['🎤 Speech needs Chrome or Safari (not Brave, Firefox or in-app browsers).', '🎤 A beszédfelismeréshez Chrome vagy Safari kell (nem Brave, Firefox vagy appon belüli böngésző).', '🎤 Tale kræver Chrome eller Safari (ikke Brave, Firefox eller app-browsere).'],
     'mic.quiet': ['🎤 …? Nothing heard. Tap and speak right away.', '🎤 …? Nem hallottam semmit. Koppints és rögtön beszélj.', '🎤 …? Intet hørt. Tryk og tal med det samme.'],
@@ -4296,7 +4322,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 39;
+  var BUILD = 40;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6489,6 +6515,7 @@ var ES_PHRASES = [
       key: function (e, d, st, i) { if (st.show) return pickKey(e, d, st, i); },
       keys: function () { return ''; },
       pos: function (d, st) { return 2 * (st.r || 0) + (st.show ? 1 : 0); },
+      hwait: function (d, ms) { return (ms.step || 0) % 2 === 0 ? 'who.lock' : null; },
       recap: pRecap, done: function (d) { return learn(pRecap(d)); },
       help: function (d, i, ms) {
         var n = d.rounds.length, s = ms.step || 0, p = Math.min(Math.floor(s / 2), n - 1), open = s % 2 === 1;
@@ -7331,10 +7358,21 @@ var ES_PHRASES = [
       '<span class="segs big">' + seg7('b0') + seg7('b1') + '<i class="colon"></i>' + seg7('b2') + seg7('b3') + '</span>' +
       '<div class="tl"><span class="lbl" lang="' + tl() + '">' + P.plate.strikes + '</span><span class="lamps big" id="bomb-lamps">' + lampsHTML() + '</span></div></div></section>';
   }
+  /* one sentence per game, and who waits for whom: h = the helper has the info, b = the bomb has it, otherwise both hold half */
+  var GX = {"boss": ["The bomb tunes the stations, the helper hears what each one says.", "A bomba állomásokat hangol, a segítő hallja, mit mond mindegyik.", "Bomben stiller ind på stationer, hjælperen hører, hvad hver af dem siger."], "clock": ["Set the clock to the time the clues point to.", "Állítsd az órát arra az időre, amire a nyomok utalnak.", "Stil uret til det tidspunkt, sporene peger på."], "comp": ["The helper describes a word, the bomb builds it from two parts.", "A segítő körülír egy szót, a bomba két részből rakja össze.", "Hjælperen beskriver et ord, bomben sætter det sammen af to dele."], "dict": ["The helper plays a sentence, the bomb types it word by word.", "A segítő lejátszik egy mondatot, a bomba szóról szóra begépeli.", "Hjælperen afspiller en sætning, bomben skriver den ord for ord."], "film": ["The bomb guesses the film from emojis, the helper has the titles.", "A bomba emojikból találja ki a filmet, a segítőnél vannak a címek.", "Bomben gætter filmen ud fra emojis, hjælperen har titlerne."], "fix": ["The helper hears the sentence, the bomb fixes the wrong word.", "A segítő hallja a mondatot, a bomba kijavítja a rossz szót.", "Hjælperen hører sætningen, bomben retter det forkerte ord."], "gap": ["The bomb reads the sentence, the helper says which colour fills the gap.", "A bomba felolvassa a mondatot, a segítő megmondja, melyik szín illik a hiányba.", "Bomben læser sætningen, hjælperen siger, hvilken farve passer i hullet."], "idiom": ["The bomb sees the idiom as a picture, the helper has the meanings.", "A bomba képként látja a szólást, a segítőnél vannak a jelentések.", "Bomben ser talemåden som et billede, hjælperen har betydningerne."], "match": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."], "karaoke": ["The helper hears a line, the bomb picks it and sings it.", "A segítő hall egy sort, a bomba kiválasztja és elénekli.", "Hjælperen hører en linje, bomben vælger den og synger den."], "lever": ["Pick the right word of two for each sentence.", "Válaszd ki a két szó közül a jót minden mondathoz.", "Vælg det rigtige af to ord til hver sætning."], "listen": ["The helper hears a sentence, the bomb builds it from the tiles.", "A segítő hall egy mondatot, a bomba kirakja a kártyákból.", "Hjælperen hører en sætning, bomben bygger den af brikkerne."], "order": ["Put the words in the right order.", "Tedd a szavakat helyes sorrendbe.", "Sæt ordene i den rigtige rækkefølge."], "pics": ["The bomb names the picture, the helper says its number.", "A bomba megnevezi a képet, a segítő megmondja a számát.", "Bomben siger, hvad billedet viser, hjælperen siger dets nummer."], "plot": ["The bomb reads a tricky movie riddle and types the title, the helper has six titles.", "A bomba felolvas egy trükkös filmrejtvényt és beírja a címet, a segítőnél hat cím van.", "Bomben læser en drilsk filmgåde og skriver titlen, hjælperen har seks titler."], "post": ["The helper hears about a place, the bomb picks its postcard.", "A segítő hall egy helyről, a bomba kiválasztja a képeslapját.", "Hjælperen hører om et sted, bomben vælger dets postkort."], "radio": ["The helper hears a sentence, the bomb tunes in to the missing word.", "A segítő hall egy mondatot, a bomba ráhangol a hiányzó szóra.", "Hjælperen hører en sætning, bomben stiller ind på det manglende ord."], "read": ["The helper reads a notice, the bomb answers questions about it.", "A segítő elolvas egy hirdetményt, a bomba kérdésekre válaszol róla.", "Hjælperen læser en meddelelse, bomben svarer på spørgsmål om den."], "rhyme": ["The helper hears a sentence, the bomb cuts the wire with the missing word.", "A segítő hall egy mondatot, a bomba elvágja a hiányzó szó drótját.", "Hjælperen hører en sætning, bomben klipper ledningen med det manglende ord."], "safe": ["The helper hears three numbers, the bomb turns the dial to open the safe.", "A segítő hall három számot, a bomba a tárcsával kinyitja a széfet.", "Hjælperen hører tre tal, bomben drejer skiven og åbner pengeskabet."], "slang": ["The bomb reads a chat message, the helper has the slang list.", "A bomba felolvas egy chatüzenetet, a segítőnél van a szlenglista.", "Bomben læser en chatbesked, hjælperen har slanglisten."], "song": ["The helper hears the song, the bomb picks the missing words.", "A segítő hallja a dalt, a bomba kiválasztja a hiányzó szavakat.", "Hjælperen hører sangen, bomben vælger de manglende ord."], "story": ["Fill the gaps in the story with words from the helper's list.", "Töltsd ki a történet hiányait a segítő listájának szavaival.", "Udfyld hullerne i historien med ord fra hjælperens liste."], "twister": ["The helper hears a tongue twister, the bomb fills the gaps or says it.", "A segítő hall egy nyelvtörőt, a bomba kitölti a hiányokat vagy kimondja.", "Hjælperen hører en tungebrækker, bomben udfylder hullerne eller siger den."], "verbs": ["Put the verb in the right form; the helper has the signal words.", "Tedd az igét a helyes alakba; a segítőnél vannak a jelzőszavak.", "Sæt verbet i den rigtige form; hjælperen har signalordene."], "wires": ["The bomb describes the wires, the helper says which one to cut.", "A bomba leírja a drótokat, a segítő megmondja, melyiket kell elvágni.", "Bomben beskriver ledningerne, hjælperen siger, hvilken der skal klippes."], "joke": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."]};
+  var GROLE = {};
+  'comp dict fix karaoke listen post radio read rhyme safe song twister'.split(' ').forEach(function (k) { GROLE[k] = 'h'; }); 'wires film plot idiom slang gap pics'.split(' ').forEach(function (k) { GROLE[k] = 'b'; });
+  function gx(type) { var r = GX[type]; return r ? r[UIX[ui()]] : ''; }
+  /* the line on the bomb panel and on the helper's card: what the game is, then who is waiting */
+  function guideHTML(type, side, waitKey) {
+    var role = GROLE[type] || 'x', wait = waitKey || (role === 'x' ? 'who.x' : side === 'bomb' ? (role === 'h' ? 'who.bw' : 'who.bt') : (role === 'h' ? 'who.ht' : 'who.hw'));
+    var cls = /w$/.test(wait) || waitKey ? 'wait' : wait === 'who.x' ? 'both' : 'talk';
+    return '<div class="guide g-' + side + '"><p class="gx">' + esc(gx(type)) + '</p><p class="who ' + cls + '" role="status">' + esc(t(wait)) + '</p></div>';
+  }
   function modHTML(i) {
     var g = S.game, v = S.view, m = S.spec.modules[i], name = modName(m.t), solved = g.solved[i], focus = v.focus === i, body;
     if (solved) body = '<p class="okline">' + t('solved') + '</p><div class="donebox">' + (UI[m.t].done ? UI[m.t].done(m.data, g.ms[i], i) : '') + '</div>';
-    else body = UI[m.t].bomb(m.data, g.ms[i], i);
+    else body = (focus ? guideHTML(m.t, 'bomb') : '') + UI[m.t].bomb(m.data, g.ms[i], i);
     return '<section class="panel mod m-' + m.t + (solved ? ' solved' : '') + (focus ? ' focus' : '') + '" id="mod-' + i + '" tabindex="-1" style="' + cellStyle(v.place[i].cell) + '" aria-label="' + esc(name) + '">' +
       '<header class="p-h"><h3 lang="' + tl() + '">' + esc(name) + '</h3><span class="led" role="img" aria-label="' + esc(t(solved ? 'solved' : 'unsolved')) + '"></span></header>' +
       '<div class="p-b"' + (focus ? '' : ' inert') + '>' + body + '</div>' +
@@ -7420,7 +7458,9 @@ var ES_PHRASES = [
   function manState(i) { return S.man[i] || (S.man[i] = { step: 0, rev: {}, cd: null }); }
   function chapterHTML(i) {
     var m = S.spec.modules[i];
-    return '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + UI[m.t].help(m.data, i, manState(i));
+    var hw = UI[m.t].hwait ? UI[m.t].hwait(m.data, manState(i)) : null;
+    var waitTop = S.screen === 'helper' && !S.linked ? '<div class="hwait" role="status"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><p>' + esc(t('who.start', bombTag(S.spec).replace(/<[^>]*>/g, ''))) + '</p></div>' : '';
+    return waitTop + '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + guideHTML(m.t, 'help', hw) + UI[m.t].help(m.data, i, manState(i));
   }
   /* a task can also have a column beside its page (the notes) and a part below it */
   function sideHTML(i) { var m = S.spec.modules[i]; return UI[m.t].side ? UI[m.t].side(m.data, i, manState(i)) : ''; }
