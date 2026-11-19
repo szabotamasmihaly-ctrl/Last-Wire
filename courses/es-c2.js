@@ -273,7 +273,7 @@ LWC('es', 6, `
 - [Con respecto|Con respeto|En respecto] al contrato, el perro se lo comió.
 - En cuanto [a|de|en] los niños, se quedan con la abuela. Pobre abuela.
 @ so pena de, a fin de, con vistas a | so pena de, a fin de, con vistas a | so pena de, a fin de, con vistas a
-= Hay que devolver el táper, [so pena de] perder a la abuela.
+= Hay que devolver el táper, [so pena de] perder el autobús.
 = Lo hicimos [a fin de] ahorrar. Ahora tenemos un yate.
 - A fin de [que|de que|como] el gato nos entienda, hablamos en maullidos.
 - Ahorramos con [vistas|vista|visto] a comprar una isla.
@@ -281,7 +281,7 @@ LWC('es', 6, `
 - Se reunieron a fin [de|a|en] decidir la pizza.
 - Va al gimnasio con vistas [a|de|en] el verano. De 2040.
 - A fin de que [puedan|pueden|poder] dormir, quitamos el gallo.
-~ So pena de | perder a la abuela.
+~ So pena de | perder el autobús.
 ~ En aras de | la paz.
 ~ A raíz del | karaoke.
 @ no obstante, ahora bien, es más | no obstante, ahora bien, es más | no obstante, ahora bien, es más

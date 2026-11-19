@@ -124,10 +124,10 @@ LWC('da', 2, `
 - Jeg sætter [mig|jeg|selv] på sofaen. Den knirker.
 - Skynd [dig|du|din]! Kagen bliver kold.
 - Vi glæder [os|vi|vores] til sommerferien. Det er december.
-- Katten gemmer [sig|den|selv] i vaskemaskinen.
+- Katten gemmer [sig|den|selv] under sengen.
 ~ Jeg glæder mig | til fredag.
 ~ Skynd dig! | Bussen kører.
-~ Katten gemmer sig | i vaskemaskinen.
+~ Katten gemmer sig | under sengen.
 @ egen, eget, egne | egen, eget, egne | egen, eget, egne
 = Min hund har sin [egen] seng. Jeg har ikke min egen.
 = Hun bor i sit [eget] hus. Med sit eget spøgelse.

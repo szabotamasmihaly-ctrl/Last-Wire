@@ -263,7 +263,7 @@ LWC('da', 1, `
 @ der er, det er | der er, det er | der er, det er
 = [Der er] en edderkop i min sko.
 = [Det er] min sko. Og min edderkop.
-- [Der er|Der har|Den er] en mand i mit køleskab.
+- [Der er|Der har|Den er] en kage i mit køleskab.
 - [Der er|Der har|Den er] ingen kaffe. Det er en katastrofe.
 - [Det er|Der har|Den er] mandag. Igen.
 - [Der er|Der har|Den er] tre katte på taget.
