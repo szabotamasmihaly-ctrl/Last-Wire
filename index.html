@@ -962,6 +962,29 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 /* the station card */
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:#fff;color:var(--ink);border-radius:22px 22px 0 0;padding:20px var(--gut) calc(22px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.25);max-width:620px;margin:0 auto;display:grid;gap:12px;animation:sheetin .32s cubic-bezier(.2,1.2,.4,1)}
 .sheet h2{font-size:22px;line-height:1.25}
+.fbbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;border-radius:14px;border:2px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);color:#fff;font-weight:800;font-size:18px}
+.fbbtn svg{width:24px;height:24px}
+.fb-ask{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:59;display:flex;align-items:center;gap:4px;background:#1CB0F6;color:#fff;border-radius:999px;box-shadow:0 4px 0 #1180b5,0 12px 24px -8px rgba(0,0,0,.5);animation:fbpop .4s cubic-bezier(.2,1.4,.4,1)}
+.fb-ask button{background:none;border:0;color:#fff;font-weight:800;font-size:17px;min-height:48px;padding:0 10px 0 18px}
+.fb-ask .fb-x{padding:0 16px 0 6px;font-size:20px;opacity:.85}
+@keyframes fbpop{from{transform:translateX(-50%) scale(.6);opacity:0}}
+.fb-sheet{position:fixed;left:0;right:0;bottom:0;z-index:71;background:#fff;color:var(--ink);border-radius:22px 22px 0 0;padding:18px var(--gut,16px) calc(22px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.25);max-width:620px;margin:0 auto;display:grid;gap:14px;justify-items:center;animation:sheetin .32s cubic-bezier(.2,1.2,.4,1)}
+.fb-scrim{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.45)}
+.fb-sheet h2{font-size:24px;line-height:1.2;text-align:center}
+.fb-sheet .fb-close{justify-self:end;margin:-6px -4px -10px 0;background:none;border:0;font-size:24px;min-width:44px;min-height:44px;color:var(--ink-2)}
+.fb-mic{width:112px;height:112px;border-radius:50%;border:0;background:#1CB0F6;color:#fff;display:grid;place-items:center;box-shadow:0 6px 0 #1180b5;transition:transform .08s}
+.fb-mic svg{width:52px;height:52px}
+.fb-mic:active{transform:translateY(4px);box-shadow:0 2px 0 #1180b5}
+.fb-mic.on{background:var(--bad);box-shadow:0 6px 0 #b8363b;animation:fbpulse 1.2s ease-in-out infinite}
+@keyframes fbpulse{0%,100%{box-shadow:0 6px 0 #b8363b,0 0 0 0 rgba(255,91,97,.55)}50%{box-shadow:0 6px 0 #b8363b,0 0 0 18px rgba(255,91,97,0)}}
+.fb-lbl{font-weight:700;color:var(--ink-2);min-height:1.3em;text-align:center}
+.fb-sheet textarea{width:100%;min-height:110px;border:2px solid #e2e2e2;border-radius:14px;padding:12px;font:inherit;font-size:17px;resize:vertical;color:var(--ink);background:#fafafa}
+.fb-sheet textarea:focus{outline:none;border-color:#1CB0F6}
+.fb-sheet .dbtn{max-width:420px}
+.fb-err{color:#c0262c;font-weight:700;text-align:center}
+.fb-ok{font-size:72px;line-height:1;color:#58CC02;animation:fbpop2 .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes fbpop2{from{transform:scale(.3);opacity:0}}
+@media (prefers-reduced-motion:reduce){.fb-mic.on,.fb-ask,.fb-ok,.fb-sheet{animation:none}}
 .sh-tag{font-weight:800;color:var(--enamel);letter-spacing:.05em}
 .sh-ex{font-size:19px;background:#f4f4f1;border-radius:12px;padding:10px 14px}
 .sh-ex mark,.pex mark{background:rgba(255,200,61,.55);color:inherit;border-radius:4px;padding:0 2px}
@@ -1282,6 +1305,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 <body data-screen="home" data-view="hard">
 <div id="app"></div>
 <div id="overlay"></div>
+<div id="fb"></div>
 <button type="button" id="vstop" data-a="voice-stop" hidden>Stop</button>
 <noscript><p style="padding:24px;font:18px system-ui;color:#fff">This game needs JavaScript. Ehhez a játékhoz JavaScript kell. Spillet skal bruge JavaScript.</p></noscript>
 <script>
@@ -3736,6 +3760,11 @@ var STR = {
   'res.lose': ['Try the same tasks again with a new bomb.', 'Próbáljátok meg újra ugyanezeket a feladatokat egy új bombával.', 'Prøv de samme opgaver igen med en ny bombe.'],
   'res.stars': ['Stars', 'Csillagok', 'Stjerner'], 'res.solved': ['Tasks solved', 'Megoldott feladatok', 'Løste opgaver'], 'res.hints': ['Words written down', 'Leírt szavak', 'Ord skrevet ned'],
   'x.of.y': ['{0} of {1}', '{0} / {1}', '{0} af {1}'],
+  'fb.btn': ['Give feedback', 'Visszajelzés', 'Giv feedback'], 'fb.title': ['How was it?', 'Milyen volt?', 'Hvordan var det?'],
+  'fb.tap': ['Tap and talk', 'Koppints, és mondd', 'Tryk og tal'], 'fb.stop': ['Listening… tap to stop', 'Hallgatlak… koppints, ha kész', 'Jeg lytter… tryk for at stoppe'],
+  'fb.ph': ['…or type here', '…vagy írd ide', '…eller skriv her'], 'fb.send': ['Send', 'Küldés', 'Send'], 'fb.sending': ['Sending…', 'Küldés…', 'Sender…'],
+  'fb.done': ['Thanks! Claude got it.', 'Köszi! Claude megkapta.', 'Tak! Claude har fået den.'], 'fb.fail': ['Not sent. Check the internet and try again.', 'Nem ment el. Nézd meg a netet, és próbáld újra.', 'Ikke sendt. Tjek internettet og prøv igen.'],
+  'fb.ask': ['Feedback?', 'Visszajelzés?', 'Feedback?'],
   'res.next': ['Next bomb', 'Következő bomba', 'Næste bombe'], 'res.again': ['Play again', 'Még egyszer', 'Spil igen'], 'res.retry': ['Try again', 'Újra', 'Prøv igen'],
   'res.swap': ['Swap roles next time, so that you both get to speak and to listen.', 'Legközelebb cseréljetek szerepet, hogy mindketten beszéljetek és figyeljetek is.', 'Byt roller næste gang, så I begge både taler og lytter.'],
   'res.recap': ['What you practised', 'Ezt gyakoroltátok', 'Det øvede I'],
@@ -4322,7 +4351,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 40;
+  var BUILD = 41;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4857,6 +4886,7 @@ var ES_PHRASES = [
       Link.cur = { g: st.g, n: st.n || 0, t: time || 0, over: !!st.over };
       /* a finished game: the helper's page starts again from the top, and a defused bomb counts for the helper too */
       if (st.over) {
+        if (followed) { FB.last = fbCtx('helper', st.over); FB.ask = true; }
         if (followed && st.over === 'ok' && S.spec.path) { helperDone(); return; }
         if (followed && st.over === 'ok' && S.spec.party) { var pk = progKey(S.spec); if (!S.prog[pk]) S.prog[pk] = 1; save(); sfx('win'); goHome(); return; }
         S.spec.modules.forEach(function (_, k) { manState(k).step = 0; });
@@ -5056,7 +5086,7 @@ var ES_PHRASES = [
     setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
   function finish(boom) {
-    melStop();
+    melStop(); FB.last = fbCtx();
     if (pairLeader() && PAIR.cur && S.spec && PAIR.cur.code === S.spec.code) { PAIR.cur = null; pairSave(); }
     linkSend(); stopLoop(); clearTimers();
     var go = function () { document.body.classList.remove('boom'); S.screen = 'result'; render(); window.scrollTo(0, 0); };
@@ -7269,6 +7299,7 @@ var ES_PHRASES = [
       '<div class="ctas">' + (ok ? '<button type="button" class="cta" data-a="pcont">' + t('p.cont') + '</button>' : '<button type="button" class="cta" data-a="again">' + t('res.retry') + '</button>') +
       (ok && nxt !== spec.code ? '<button type="button" class="hb big" data-a="pnext">' + t('res.next') + '</button>' : '') +
       (ok ? '<button type="button" class="hb big" data-a="again">' + t('res.again') + '</button>' : '<button type="button" class="hb big" data-a="pcont">' + t('p.path') + '</button>') + '</div>') +
+      '<button type="button" class="fbbtn" data-a="fb">' + MIC_SVG + t('fb.btn') + '</button>' +
       (recap ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + recap + '</section></div>' : '') + '</div>';
   }
   function countUp() {
@@ -7522,6 +7553,7 @@ var ES_PHRASES = [
         (ok && hasNext ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
         '<button type="button" class="' + (ok && hasNext ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
       (boss ? '<button type="button" class="hb big" data-a="deadair">📻 Dead Air</button>' : '<button type="button" class="hb big" data-a="party">🎉 ' + t('party') + '</button>') + '</div>' +
+      '<button type="button" class="fbbtn" data-a="fb">' + MIC_SVG + t('fb.btn') + '</button>' +
       (all.length ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + learn(all) + '</section></div>' : '') + '</div>';
   }
   function viewResult() {
@@ -7546,6 +7578,7 @@ var ES_PHRASES = [
       '<div class="ctas">' + (pairBlocked() ? pairWaitHTML() : (canNext ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
       '<button type="button" class="' + (canNext ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
       '<button type="button" class="hb big" data-a="home">' + t('bar.home') + '</button></div>' +
+      '<button type="button" class="fbbtn" data-a="fb">' + MIC_SVG + t('fb.btn') + '</button>' +
       (pairOn() ? '' : '<p class="tipline">' + t('res.swap') + '</p>') +
       (recap ? '<div class="recap"><h2>' + t('res.recap') + '</h2>' + recap + '</div>' : '') + '</div>';
   }
@@ -7595,6 +7628,86 @@ var ES_PHRASES = [
     el.innerHTML = '<div class="scrim" data-a="drawer-close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="' + esc(name) + '"><button type="button" class="pbtn x" data-a="drawer-close">' + t('close') + '</button>' + (S.drawer === 'parlor' ? parlor() : S.drawer === 'pair' ? pairHTML() : settings()) + '</aside>';
   }
 
+
+  /* ---------- feedback after a game: talk (or type), check it, send. It lands in the game's own
+     database (rooms/lw-feedback-v1); a GitHub Action turns each one into an issue for Claude. ---------- */
+  var FB = { open: false, ask: false, last: null, ctx: null, text: '', rec: null, state: '', err: '' };
+  var FB_PATH = '/rooms/lw-feedback-v1.json';
+  function fbCtx(role, result) {
+    var s = S.spec, g = S.game, o = { build: BUILD, ui: ui(), lang: tl(), screen: S.screen, paired: pairOn() };
+    try {
+      o.role = role || (S.solo ? 'solo' : S.screen === 'helper' ? 'helper' : s ? 'bomb' : 'menu');
+      if (s) {
+        o.code = s.code || ''; o.kind = s.path ? 'path' : s.party ? 'party' : 'classic';
+        if (s.path) { o.level = CEFR[s.level - 1]; o.station = s.station; if (s.st && s.st.t) o.title = s.st.t.en || ''; }
+        else if (s.level) o.level = s.level;
+        o.modules = (s.modules || []).map(function (m) { return m.t; });
+      }
+      if (g) { o.result = g.over || 'playing'; o.strikes = g.strikes; o.seconds = Math.round((g.elapsed || 0) / 1000); o.solved = g.solved ? g.solved.filter(Boolean).length + '/' + g.solved.length : ''; }
+      else if (result) o.result = result;
+      o.device = (navigator.userAgent || '').slice(0, 180); o.screenSize = innerWidth + 'x' + innerHeight;
+    } catch (e) {}
+    return o;
+  }
+  function fbOpen() { FB.ctx = FB.last || fbCtx(); FB.open = true; FB.ask = false; FB.state = ''; FB.err = ''; fbPaint(); }
+  function fbClose() { fbMicStop(); FB.open = false; if (FB.state === 'sent') FB.text = ''; FB.state = ''; fbPaint(); }
+  function fbCanMic() { return !!SpeechRec && window.isSecureContext !== false && !navigator.brave; }
+  function fbPaint() {
+    var el = document.getElementById('fb'); if (!el) return;
+    if (!FB.open) {
+      var show = FB.ask && S.screen !== 'bomb' && S.screen !== 'warm' && !S.drawer && !S.sheet;
+      el.innerHTML = show ? '<div class="fb-ask" role="status"><button type="button" data-a="fb">🎤 ' + t('fb.ask') + '</button><button type="button" class="fb-x" data-a="fb-x" aria-label="' + esc(t('close')) + '">×</button></div>' : '';
+      return;
+    }
+    var h = '<div class="fb-scrim" data-a="fb-close"></div><aside class="fb-sheet" role="dialog" aria-modal="true" aria-labelledby="fb-t"><button type="button" class="fb-close" data-a="fb-close" aria-label="' + esc(t('close')) + '">×</button>';
+    if (FB.state === 'sent') h += '<div class="fb-ok" aria-hidden="true">✓</div><h2 id="fb-t">' + t('fb.done') + '</h2>';
+    else {
+      h += '<h2 id="fb-t">' + t('fb.title') + '</h2>';
+      if (fbCanMic()) h += '<button type="button" class="fb-mic' + (FB.rec ? ' on' : '') + '" data-a="fb-mic" aria-pressed="' + (FB.rec ? 'true' : 'false') + '" aria-label="' + esc(t(FB.rec ? 'fb.stop' : 'fb.tap')) + '">' + MIC_SVG + '</button><p class="fb-lbl" id="fb-lbl">' + t(FB.rec ? 'fb.stop' : 'fb.tap') + '</p>';
+      h += '<textarea id="fb-in" maxlength="2000" placeholder="' + esc(t('fb.ph')) + '" aria-label="' + esc(t('fb.title')) + '"></textarea>';
+      if (FB.err) h += '<p class="fb-err" role="alert">' + esc(FB.err) + '</p>';
+      h += '<button type="button" class="dbtn go" id="fb-send" data-a="fb-send"' + (FB.text.trim() && FB.state !== 'sending' ? '' : ' disabled') + '>' + t(FB.state === 'sending' ? 'fb.sending' : 'fb.send') + '</button>';
+    }
+    el.innerHTML = h + '</aside>';
+    var ta = document.getElementById('fb-in');
+    if (ta) { ta.value = FB.text; ta.addEventListener('input', function () { FB.text = ta.value; fbSendBtn(); }); }
+  }
+  function fbSendBtn() { var b = document.getElementById('fb-send'); if (b) b.disabled = !FB.text.trim() || FB.state === 'sending'; }
+  function fbMicStop() { if (FB.rec) { var r = FB.rec; FB.rec = null; try { r.stop(); } catch (e) {} } }
+  function fbMic() {
+    if (FB.rec) { fbMicStop(); fbPaint(); return; }
+    var rec; try { rec = new SpeechRec(); } catch (e) { FB.err = t('mic.deny'); fbPaint(); return; }
+    var base = FB.text.trim(), done = '';
+    rec.lang = (PACK[ui()] || PACK.en).bcp; rec.interimResults = true; rec.continuous = true;
+    rec.onresult = function (ev) {
+      var live = '';
+      for (var k = ev.resultIndex; k < ev.results.length; k++) { var r = ev.results[k]; if (r.isFinal) done += r[0].transcript + ' '; else live += r[0].transcript; }
+      FB.text = ((base ? base + ' ' : '') + done + live).replace(/\s+/g, ' ').trim();
+      var ta = document.getElementById('fb-in'); if (ta) ta.value = FB.text; fbSendBtn();
+    };
+    rec.onerror = function (ev) {
+      var c = ev && ev.error; if (c === 'aborted') return;
+      FB.err = t(c === 'not-allowed' || c === 'service-not-allowed' || c === 'audio-capture' ? 'mic.deny' : c === 'network' ? 'mic.net' : 'mic.quiet');
+    };
+    rec.onend = function () { if (FB.rec === rec) FB.rec = null; FB.text = FB.text.trim(); if (FB.open && FB.state !== 'sent') fbPaint(); };
+    FB.err = ''; FB.rec = rec;
+    try { rec.start(); } catch (e2) { FB.rec = null; FB.err = t('mic.deny'); }
+    fbPaint();
+  }
+  function fbSend() {
+    var txt = FB.text.trim().slice(0, 2000); if (!txt || FB.state === 'sending') return;
+    fbMicStop();
+    var DB = (window.LW_DB_URL || LW_DB || '').replace(/\/$/, '');
+    if (!DB) { FB.err = t('fb.fail'); fbPaint(); return; }
+    FB.state = 'sending'; FB.err = ''; fbPaint();
+    var body = JSON.stringify({ text: txt, ctx: FB.ctx || fbCtx(), at: { '.sv': 'timestamp' } });
+    fetch(DB + FB_PATH, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      FB.state = 'sent'; FB.text = ''; FB.last = null; sfx('win'); fbPaint();
+      setTimeout(function () { if (FB.open && FB.state === 'sent') fbClose(); }, 2200);
+    }).catch(function () { FB.state = ''; FB.err = t('fb.fail'); fbPaint(); });
+  }
+
   /* ---------- render ---------- */
   function render() {
     var de = document.documentElement;
@@ -7608,6 +7721,8 @@ var ES_PHRASES = [
       if (S.view.intro && $('#bomb')) { S.view.intro = false; intro(); }
     }
     if (S.screen === 'result') countUp();
+    if (S.screen === 'bomb' || S.screen === 'warm') FB.ask = false;
+    fbPaint();
     if (S.screen === 'cards' && S.fc) S.fc.fresh = false;
     fit();
   }
@@ -7718,7 +7833,12 @@ var ES_PHRASES = [
       case 'danode': openSheet(partyNew('en', +ds.v)); break;
       case 'party': if (PARTY_LANGS.indexOf(S.sel.course) < 0) S.sel.course = 'en'; S.screen = 'party'; S.spec = null; S.game = null; render(); window.scrollTo(0, 0); break;
       case 'pnode': openSheet(partyNew(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
-      case 'help-done': helperDone(); break;
+      case 'help-done': FB.last = fbCtx('helper', 'ok'); FB.ask = true; helperDone(); break;
+      case 'fb': fbOpen(); break;
+      case 'fb-x': FB.ask = false; fbPaint(); break;
+      case 'fb-close': fbClose(); break;
+      case 'fb-mic': fbMic(); break;
+      case 'fb-send': fbSend(); break;
       case 'pcont': goPath(); break;
       case 'pnext': { if (pairBlocked()) break; var nc = nextCode(S.spec.code); S.justOpen = null; if (!S.solo) pairLead(nc, 'bomb'); play(nc, S.solo ? 'solo' : 'bomb'); break; }
       case 'quit': g.quitAsk = true; paintToolbar(); break;

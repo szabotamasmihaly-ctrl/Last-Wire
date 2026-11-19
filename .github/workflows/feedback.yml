@@ -1,0 +1,26 @@
+# Feedback from players: the game saves it in its Firebase database; this job runs every 10 minutes,
+# turns each new message into a GitHub issue labelled "feedback", then removes it from the database.
+# Free for public repositories. Uses only GitHub's built-in token, so no secrets are needed.
+name: Feedback to issues
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch:
+permissions:
+  issues: write
+concurrency:
+  group: feedback
+  cancel-in-progress: false
+jobs:
+  move:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/scripts
+      - run: node .github/scripts/feedback-to-issues.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          DB: https://last-wire-default-rtdb.europe-west1.firebasedatabase.app
