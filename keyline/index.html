@@ -647,22 +647,21 @@ function robotDecode(team, i, turns, clues){
 
 /* ---------- the robot can think with Claude ----------
    keyline-robot.js runs on a computer with Claude Code. It shows a robot code; once that code is typed in here,
-   the robot's turns go through the same free relay to that computer, and Claude answers them.
+   the robot's turns go through the game's database to that computer, and Claude answers them.
    With no code, or when the computer does not answer, the robot uses the word lists above.
    One phone asks, then shares the answer as a normal move, so every phone sees the same robot moves. */
 var AI={busy:{},since:{},off:0,ok:false};
 try{ AI.code=localStorage.getItem('kl-bot')||''; }catch(e){ AI.code=''; }
-function botTopic(){ return RELAY+'keyline-bot-'+AI.code.toLowerCase(); }
-/* send one message to the robot computer and wait for its answer */
-/* one open connection to the robot computer's channel (polling would hit the relay's rate limit) */
+function botTopic(){ return 'keyline-bot-'+AI.code.toLowerCase()+'-'+new Date().toISOString().slice(0,10).replace(/-/g,''); }
+/* one open connection to the robot computer's channel */
 var BotLink={es:null,wait:{}};
 function botClose(){ if(BotLink.es){ try{ BotLink.es.close(); }catch(e){} } BotLink.es=null; }
 function botListen(){
-  if(BotLink.es || !AI.code || typeof EventSource!=='function') return;
-  try{ BotLink.es=new EventSource(botTopic()+'/sse?since='+(Math.floor(Date.now()/1000)-10)); }catch(e){ BotLink.es=null; return; }
-  BotLink.es.onmessage=function(ev){
-    try{ var e=JSON.parse(JSON.parse(ev.data).message), id=e && (e.a||e.pong), f=id && BotLink.wait[id]; if(f) f(e); }catch(x){}
-  };
+  if(BotLink.es && BotLink.ch===botTopic()) return;
+  botClose();
+  if(!AI.code || typeof EventSource!=='function') return;
+  BotLink.ch=botTopic();
+  try{ BotLink.es=dbStream(BotLink.ch, function(e){ var id=e && (e.a||e.pong), f=id && BotLink.wait[id]; if(f) f(e); }); }catch(e){ BotLink.es=null; }
 }
 /* send one message to the robot computer and wait for its answer */
 function botAsk(msg, wait, cb){
@@ -671,7 +670,7 @@ function botAsk(msg, wait, cb){
   var to=setTimeout(function(){ end(null); },wait);
   BotLink.wait[id]=end; botListen();
   if(msg.ping) msg.ping=id; else msg.q=id;
-  fetch(botTopic(),{method:'POST',body:JSON.stringify(msg)}).catch(function(){ end(null); });
+  dbSend(botTopic(), msg).catch(function(){ end(null); });
 }
 function botPing(cb){
   if(!AI.code || typeof fetch!=='function'){ AI.ok=false; if(cb) cb(); return; }
@@ -773,31 +772,41 @@ function state(){
   st.turns=turns; st.cur=cur; return st;
 }
 
-/* ---------- phones talk through ntfy.sh, a free public relay, on a channel named after the room code ---------- */
-var RELAY='https://ntfy.sh/', Link={es:null,poll:null,since:0,ids:{}};
+/* ---------- phones talk through the game's own database (Firebase Realtime Database), like the bomb game ----------
+   every move is added under rooms/<channel>; each phone keeps one open stream and gets new moves as they arrive */
+var DB='https://last-wire-default-rtdb.europe-west1.firebasedatabase.app', Link={es:null,ids:{}};
+function dbUrl(ch){ return DB+'/rooms/'+String(ch).replace(/[^A-Za-z0-9_-]/g,'')+'.json'; }
+function dbSend(ch, obj){ return fetch(dbUrl(ch),{method:'POST',body:JSON.stringify({m:JSON.stringify(obj),f:DEV,t:{'.sv':'timestamp'}})}).then(function(r){ if(!r.ok) throw new Error('db '+r.status); return r; }); }
+/* calls each(obj, key, timeSeconds) for every stored and every new message */
+function dbStream(ch, each){
+  var es=new EventSource(dbUrl(ch));
+  function one(k,v){ if(!v || typeof v.m!=='string') return; var o; try{ o=JSON.parse(v.m); }catch(e){ return; } each(o,k,v.t?Math.floor(v.t/1000):0); }
+  function ev(x){ var d; try{ d=JSON.parse(x.data); }catch(e){ return; } if(!d || !d.data) return;
+    if(d.path==='/'){ Object.keys(d.data).forEach(function(k){ one(k,d.data[k]); }); } else if(/^\/[^\/]+$/.test(d.path)) one(d.path.slice(1),d.data); }
+  es.addEventListener('put',ev); es.addEventListener('patch',ev);
+  return es;
+}
 function topic(){ return 'keyline-v1-'+hash('kl-link:'+S.mode+S.room).toString(36); }
 function store(){ try{ localStorage.setItem('kl-ev-'+S.mode+S.room, JSON.stringify(S.ev)); }catch(e){} }
 function post(e, tries){
   if(!online()||typeof fetch!=='function') return; e.dev=DEV; tries=tries||0;
-  var url=RELAY+topic(), body=JSON.stringify(e), again=function(){ if(e.k!=='type' && tries<5) setTimeout(function(){ post(e,tries+1); },1500*(tries+1)); };
-  try{ fetch(url,{method:'POST',body:body}).then(function(r){ if(!r.ok) again(); }).catch(again); }catch(x){ again(); }
+  var again=function(){ if(e.k!=='type' && tries<5) setTimeout(function(){ post(e,tries+1); },1500*(tries+1)); };
+  try{ dbSend(topic(), e).catch(again); }catch(x){ again(); }
 }
 function addEv(e){ if(S.seen[e.id]) return false; S.seen[e.id]=1; S.ev.push(e); store(); return true; }
 function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,6); }
 var DEV=(function(){ try{ var d=sessionStorage.getItem('kl-dev'); if(!d){ d=Math.random().toString(36).slice(2,10); sessionStorage.setItem('kl-dev',d); } return d; }catch(e){ return Math.random().toString(36).slice(2,10); } })();
 function act(e){ e.id=uid(); e.c=S.room; addEv(e); post(e); update(); }
-function linkStop(){ if(Link.es){ try{Link.es.close();}catch(e){} } Link.es=null; if(Link.poll) clearInterval(Link.poll); Link.poll=null; S.linked=false; }
+function linkStop(){ if(Link.es){ try{Link.es.close();}catch(e){} } Link.es=null; S.linked=false; }
 function setLinked(){ if(S.linked) return; S.linked=true; var l=$('.link'); if(l) l.classList.add('on'); }
 function linkStart(){
   linkStop(); if(!online()) return;
-  Link.ids={}; Link.since=Math.floor(Date.now()/1000)-6*3600;
-  var url=RELAY+topic(), room=S.room, errs=0;
+  Link.ids={};
+  var room=S.room;
   function take(m){
     if(!m||S.room!==room) return;
-    if(m.event==='open'){ setLinked(); return; }
-    if(m.event!=='message'||Link.ids[m.id]) return; Link.ids[m.id]=1;
-    if(m.time) Link.since=Math.max(Link.since,m.time);
-    var e; try{ e=JSON.parse(m.message); }catch(x){ return; }
+    if(Link.ids[m.id]) return; Link.ids[m.id]=1;
+    var e=m.obj;
     if(!e||e.c!==room||!e.id) return;
     setLinked();
     if(e.dev && e.dev!==DEV && !S.peers[e.dev]){ var first=!Object.keys(S.peers).length; S.peers[e.dev]=1; if(first && S.scr==='play'){ toast(t('joined')); beep('ok'); render(); } }
@@ -806,13 +815,9 @@ function linkStart(){
     if(e.k==='type'){ if(e.by!==S.player && e.t===S.st.cur && Date.now()/1000-(m.time||0)<120){ S.live[e.t]=e.cl; paintLive(); } return; }
     if(addEv(e)) update(true);
   }
-  function poll(){ fetch(url+'/json?poll=1&since='+Link.since).then(function(r){ setLinked(); return r.text(); }).then(function(x){ x.split('\n').forEach(function(l){ if(l){ try{take(JSON.parse(l));}catch(e){} } }); }).catch(function(){}); }
-  function startPoll(){ if(!Link.poll && typeof fetch==='function'){ poll(); Link.poll=setInterval(poll,2500); } }
-  if(typeof EventSource!=='function'){ startPoll(); return; }
-  try{ Link.es=new EventSource(url+'/sse?since='+Link.since); }catch(e){ startPoll(); return; }
+  if(typeof EventSource!=='function') return;
+  try{ Link.es=dbStream(topic(), function(o,k,tm){ take({id:k,obj:o,time:tm}); }); }catch(e){ return; }
   Link.es.onopen=setLinked;
-  Link.es.onmessage=function(ev){ try{ take(JSON.parse(ev.data)); }catch(e){} };
-  Link.es.onerror=function(){ if(++errs>=2 || (Link.es&&Link.es.readyState===2)) startPoll(); };
 }
 
 /* ---------- sound ---------- */
