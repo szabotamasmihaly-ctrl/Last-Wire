@@ -892,6 +892,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .turntable.mel.on .mel-p{opacity:0}
 .turntable.mel:not(.on) .vinyl{animation-play-state:paused}
 .artist{text-align:center;font-weight:800;color:#FFC83D;font-size:18px;margin:4px 0 -4px}
+#ytdock{position:fixed;right:12px;bottom:12px;z-index:60;width:240px;height:200px;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 8px 24px rgba(0,0,0,.35);display:none}#ytdock.on{display:block}#ytdock .ytx{position:absolute;top:4px;right:4px;z-index:2;width:28px;height:28px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:14px;cursor:pointer}
 .mysongs-file{position:relative;display:inline-block;overflow:hidden;margin-left:8px;cursor:pointer}.mysongs-file input{position:absolute;inset:0;opacity:0;cursor:pointer}
 .mysongs textarea{width:100%;min-height:110px;font:inherit;font-size:15px;padding:10px;resize:vertical}
 .pair-diag{font-size:11px;color:#aaa;text-align:center;margin:0}
@@ -4000,9 +4001,17 @@ function deckTake(key, pool, off, k) {
 /* 🎵 my songs: lines a player pastes in settings. They stay on that device; in a paired game the leader's
    phone hands them to the other phone over the direct line, and the code carries a fingerprint so both match. */
 var MYSONG_KEY = 'last-wire-mysongs', SONG_BANK = {};
-function mySongs(L) { try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}'); return (o && Array.isArray(o[L]) ? o[L] : []).filter(function (x) { return typeof x === 'string' && songSplit(x).line.split(/\s+/).length >= 3; }).slice(0, 300); } catch (e) { return []; } }
+function mySongs(L) { try { var o = JSON.parse(localStorage.getItem(MYSONG_KEY) || '{}'); return (o && Array.isArray(o[L]) ? o[L] : []).filter(function (x) { if (typeof x !== 'string') return false; var sp = songSplit(x); return sp.yt || sp.line.split(/\s+/).length >= 3; }).slice(0, 300); } catch (e) { return []; } }
+/* a YouTube link in any common form: the 11-character video id */
+function ytId(u) { var m = /(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/.exec(String(u || '')); return m ? m[1] : ''; }
 /* "Artist – Title | the line" shows the singer above the line; a plain line shows 🎵 */
-function songSplit(x) { var k = x.indexOf('|'); return k > 0 ? { who: x.slice(0, k).trim(), line: x.slice(k + 1).trim() } : { who: '', line: x.trim() }; }
+function songSplit(x) {
+  var k = x.indexOf('|'), who = k > 0 ? x.slice(0, k).trim() : '', line = (k > 0 ? x.slice(k + 1) : x).trim(), t = null;
+  var tm = /\s*\|\s*(\d{1,2}):(\d{2}(?:\.\d+)?)\s*$/.exec(line);
+  if (tm) { t = 60 * +tm[1] + +tm[2]; line = line.slice(0, tm.index).trim(); }
+  var id = /^https?:\/\/\S+$/.test(line) ? ytId(line) : '';
+  return { who: who, line: line, t: t, yt: id };
+}
 function songHash(lines) { return lines.length ? hashSeed('lwsongs:' + lines.join('\n')).toString(36) : ''; }
 /* a pasted line becomes a song row: the longest word in the middle goes missing; the two wrong words come from other lines */
 function songRow(raw, k, all) {
@@ -4015,14 +4024,15 @@ function songRow(raw, k, all) {
   var pool = [], seen = {}; seen[word.toLowerCase()] = 1;
   all.concat(['love', 'night', 'heart', 'dream', 'light', 'baby', 'dance']).forEach(function (l) { l.split(/\s+/).forEach(function (w) { var c = core(w); if (c.length >= 3 && !seen[c.toLowerCase()]) { seen[c.toLowerCase()] = 1; pool.push(c); } }); });
   pool.sort(function (a, b) { return Math.abs(a.length - word.length) - Math.abs(b.length - word.length) || (hashSeed(a + k) % 7) - (hashSeed(b + k) % 7); });
-  return [sp.who || '🎵', ws.join(' '), pool[0] || 'love', pool[1] || 'night'];
+  return [sp.who || '🎵', ws.join(' '), pool[0] || 'love', pool[1] || 'night', sp.t];
 }
 /* the song list a bomb uses: the built-in songs, plus the pasted ones that match the code's fingerprint */
 function songPool(L, h) {
   var base = PARTY[L].song, lines = null;
   if (h) { var own = mySongs(L); lines = songHash(own) === h ? own : SONG_BANK[h] || null; }
   if (!lines) return base;
-  var mine = lines.map(function (l, k) { return songRow(l, k, lines); });
+  var links = {}, lyr = lines.filter(function (l) { var sp = songSplit(l); if (sp.yt) { if (sp.who) links[sp.who] = sp.yt; return false; } return true; });
+  var mine = lyr.map(function (l, k) { var row = songRow(l, k, lyr); row.yt = links[row[0]] || ''; return row; });
   /* enough own lines: only those play */
   return mine.length >= 6 ? mine : base.concat(mine);
 }
@@ -4048,11 +4058,16 @@ var GENP = {
     var st = r.shuffle([row].concat(r.sample(rest, 3))), opts = r.shuffle(row.slice(1));
     return { e: tp.e, title: tp.t, st: st.map(function (x) { return x[0]; }), ans: st.indexOf(row), opts: opts, oa: opts.indexOf(row[1]), word: row[1], q: row[0], lvl: lvl };
   },
+  /* one song per bomb: three of its lines in order, when the list has enough songs with three lines */
   song: function (r, L, off, h) {
-    var pool = songPool(L, h);
-    return { rounds: deckTake(L + ':song', pool, off, 3).map(function (i) {
+    var pool = songPool(L, h), by = {}, names = [];
+    pool.forEach(function (x, i) { if (x[0] === '🎵') return; if (!by[x[0]]) { by[x[0]] = []; names.push(x[0]); } by[x[0]].push(i); });
+    var full = names.filter(function (n) { return by[n].length >= 3; }), pick;
+    if (full.length >= 4) { var nm = full[deckTake(L + ':songset', full, off, 1)[0]], all = by[nm], st = all.length > 3 ? r.int(all.length - 2) : 0; pick = all.slice(st, st + 3); }
+    else pick = deckTake(L + ':song', pool, off, 3);
+    return { rounds: pick.map(function (i) {
       var x = pool[i], g = gapParts(x[1]), o = shuf3(r, g.word, [x[2], x[3]]);
-      return { song: x[0], pre: g.pre, post: g.post, words: o.words, ans: o.ans, full: g.plain, title: g.plain };
+      return { song: x[0], pre: g.pre, post: g.post, words: o.words, ans: o.ans, full: g.plain, title: g.plain, yt: x.yt || '', t: x[4] == null ? null : x[4] };
     }) };
   },
   film: function (r, L, off) {
@@ -4276,7 +4291,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 35;
+  var BUILD = 36;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6320,6 +6335,64 @@ var ES_PHRASES = [
     a.play().catch(function () {});
     var v = document.querySelector('.turntable.mel'); if (v) v.classList.add('on');
   }
+  /* ▶️ the original recording: YouTube's own player, started at the second the line is sung.
+     The second comes from the line itself ("| 1:23") or from LRCLIB's synced lyrics; without either, the voice reads it. */
+  var YTP = { p: null, wait: [], loading: false, stopT: 0 };
+  function ytApi(cb) {
+    if (window.YT && window.YT.Player) return cb(true);
+    YTP.wait.push(cb);
+    if (YTP.loading) return; YTP.loading = true;
+    var prev = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function () { if (prev) try { prev(); } catch (e) {} var w = YTP.wait; YTP.wait = []; w.forEach(function (f) { f(true); }); };
+    var sc = document.createElement('script'); sc.src = 'https://www.youtube.com/iframe_api'; sc.onerror = function () { YTP.loading = false; var w = YTP.wait; YTP.wait = []; w.forEach(function (f) { f(false); }); };
+    document.head.appendChild(sc);
+    setTimeout(function () { if (!(window.YT && window.YT.Player) && YTP.wait.length) { var w = YTP.wait; YTP.wait = []; w.forEach(function (f) { f(false); }); } }, 8000);
+  }
+  function ytDock() {
+    var d = document.getElementById('ytdock');
+    if (!d) { d = document.createElement('div'); d.id = 'ytdock'; d.innerHTML = '<button type="button" class="ytx" aria-label="✕">✕</button><div id="ytp"></div>'; document.body.appendChild(d); d.querySelector('.ytx').onclick = ytStop; }
+    d.classList.add('on'); return d;
+  }
+  function ytStop() { clearTimeout(YTP.stopT); try { if (YTP.p && YTP.p.pauseVideo) YTP.p.pauseVideo(); } catch (e) {} var d = document.getElementById('ytdock'); if (d) d.classList.remove('on'); }
+  function ytPlay(id, a, b, fail) {
+    ytApi(function (ok) {
+      if (!ok) return fail();
+      ytDock(); clearTimeout(YTP.stopT);
+      var go = function () { YTP.stopT = setTimeout(function () { try { YTP.p.pauseVideo(); } catch (e) {} }, (b - a) * 1000 + 15000); };
+      if (!YTP.p) {
+        YTP.p = new YT.Player('ytp', { width: 240, height: 200, videoId: id, playerVars: { start: Math.floor(a), end: Math.ceil(b), playsinline: 1, rel: 0, modestbranding: 1 },
+          events: { onReady: function (e) { try { e.target.seekTo(a, true); e.target.playVideo(); } catch (x) {} go(); }, onError: function () { ytStop(); fail(); } } });
+      } else { try { YTP.p.loadVideoById({ videoId: id, startSeconds: a, endSeconds: b }); go(); } catch (e) { fail(); } }
+    });
+  }
+  function lrcWords(x) { return String(x).toLowerCase().replace(/[^a-z0-9à-ÿ' ]+/g, ' ').split(/\s+/).filter(Boolean); }
+  function lrcFind(who, line, cb) {
+    var key = 'lw-lrc:' + who + '|' + line;
+    try { var c = localStorage.getItem(key); if (c) return cb(JSON.parse(c)); } catch (e) {}
+    var parts = who.split(/\s+[–—-]\s+/), url = 'https://lrclib.net/api/search?' + (parts.length > 1 ? 'artist_name=' + encodeURIComponent(parts[0]) + '&track_name=' + encodeURIComponent(parts.slice(1).join(' ')) : 'q=' + encodeURIComponent(who));
+    if (typeof fetch !== 'function') return cb(null);
+    fetch(url).then(function (r) { return r.json(); }).then(function (list) {
+      var want = lrcWords(line), best = null;
+      (list || []).forEach(function (it) {
+        if (!it || !it.syncedLyrics) return;
+        var rows = it.syncedLyrics.split('\n').map(function (l) { var m = /^\[(\d+):(\d+(?:\.\d+)?)\]\s*(.*)$/.exec(l); return m ? { t: 60 * +m[1] + +m[2], w: lrcWords(m[3]) } : null; }).filter(Boolean);
+        rows.forEach(function (row, k) {
+          if (!row.w.length) return;
+          var hit = want.filter(function (w) { return row.w.indexOf(w) >= 0; }).length, sc = hit / Math.max(want.length, row.w.length);
+          if (!best || sc > best.sc) best = { sc: sc, a: row.t, b: rows[k + 1] ? rows[k + 1].t : row.t + 6 };
+        });
+      });
+      var res = best && best.sc >= 0.5 ? { a: Math.max(0, best.a - 0.4), b: Math.min(best.b + 0.6, best.a + 12) } : null;
+      if (res) try { localStorage.setItem(key, JSON.stringify(res)); } catch (e) {}
+      cb(res);
+    }).catch(function () { cb(null); });
+  }
+  function songPlay(rd, fail) {
+    if (!rd || !rd.yt) return fail();
+    if (rd.t != null) return ytPlay(rd.yt, Math.max(0, rd.t - 0.3), rd.t + 7, fail);
+    lrcFind(rd.song, rd.full, function (r) { if (r) ytPlay(rd.yt, r.a, r.b, fail); else fail(); });
+  }
+
   /* 🎵 finish the song: the helper hears the line, the bomb has three records */
   UI.song = ext({
     init: function () { return { r: 0, fb: false }; },
@@ -6338,6 +6411,15 @@ var ES_PHRASES = [
     key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+  (function () {
+    var baseHelp = UI.song.help, baseOn = UI.song.onHelp;
+    UI.song.help = function (d, i, ms) { if (d.rounds.some(function (x) { return x.yt; })) ytApi(function () {}); return baseHelp(d, i, ms); };
+    UI.song.onHelp = function (k, v, d, ms, i) {
+      if (k === 'play') { var rd = d.rounds[+String(v).slice(1)]; if (rd && rd.yt) { Voice.stop(); songPlay(rd, function () { baseOn(k, v, d, ms, i); }); return true; } }
+      if (k === 'next' || k === 'prev') ytStop();
+      return baseOn(k, v, d, ms, i);
+    };
+  })();
 
   /* 🎬 emoji films: the bomb sees emojis, the helper has the titles */
   UI.film = {
@@ -7408,7 +7490,8 @@ var ES_PHRASES = [
     return '<label class="field mysongs"><span class="flabel">🎵 ' + FLAG[L] + ' ' + t('set.songs') + '</span>' +
       '<textarea class="sel" id="mysongs" data-l="' + L + '" rows="5" lang="' + L + '" spellcheck="false">' + esc(mySongs(L).join('\n')) + '</textarea>' +
       '<span class="gl" id="mysongs-n">' + mySongs(L).length + '</span>' +
-      '<span class="mysongs-file pbtn">📄<input type="file" id="mysongs-file" accept=".txt,text/plain"></span></label>';
+      '<span class="mysongs-file pbtn">📄<input type="file" id="mysongs-file" accept=".txt,text/plain"></span>' +
+      (PARTY.starter && PARTY.starter[L] ? '<button type="button" class="pbtn" data-a="songstart" aria-label="🎸 YouTube">🎸</button>' : '') + '</label>';
   }
   function renderDrawer() {
     var el = $('#overlay');
@@ -7529,6 +7612,13 @@ var ES_PHRASES = [
       case 'sn-peek': S.sn.peek = !S.sn.peek; render(); break;
       case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
+      case 'songstart': {
+        var ta0 = document.getElementById('mysongs'), L0 = ta0 && ta0.getAttribute('data-l'), st0 = (PARTY.starter && PARTY.starter[L0]) || [];
+        if (!ta0) break;
+        var have0 = ta0.value.split('\n'), add0 = st0.map(function (x) { return x[0] + ' | https://youtu.be/' + x[1]; }).filter(function (x) { return have0.indexOf(x) < 0; });
+        if (add0.length) { ta0.value = (ta0.value.trim() ? ta0.value.trim() + '\n' : '') + add0.join('\n'); ta0.dispatchEvent(new Event('input', { bubbles: true })); }
+        break;
+      }
       case 'deadair': stopLoop(); clearTimers(); linkStop(); S.screen = 'deadair'; S.spec = null; S.game = null; S.solo = false; render(); window.scrollTo(0, 0); break;
       case 'danode': openSheet(partyNew('en', +ds.v)); break;
       case 'party': if (PARTY_LANGS.indexOf(S.sel.course) < 0) S.sel.course = 'en'; S.screen = 'party'; S.spec = null; S.game = null; render(); window.scrollTo(0, 0); break;

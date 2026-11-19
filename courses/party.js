@@ -57,24 +57,50 @@ PARTY.en = {
   song: [
     ['Twinkle, Twinkle, Little Star', 'Twinkle, twinkle, little [star], how I wonder what you are', 'car', 'stair'],
     ['Twinkle, Twinkle, Little Star', 'Up above the [world] so high, like a diamond in the sky', 'word', 'whirl'],
+    ['Twinkle, Twinkle, Little Star', 'When the blazing [sun] is gone, when he nothing shines upon', 'son', 'sum'],
     ['Jingle Bells', 'Dashing through the [snow] in a one-horse open sleigh', 'slow', 'show'],
     ['Jingle Bells', 'Oh what fun it is to [ride] in a one-horse open sleigh', 'write', 'hide'],
+    ['Jingle Bells', 'O\'er the [fields] we go, laughing all the way', 'feels', 'wheels'],
     ['Happy Birthday', 'Happy [birthday] to you, happy birthday to you', 'Thursday', 'Earth day'],
+    ['Row, Row, Row Your Boat', 'Row, row, row your [boat], gently down the stream', 'goat', 'coat'],
     ['Row, Row, Row Your Boat', 'Gently down the [stream], merrily, merrily, merrily, merrily', 'dream', 'scream'],
+    ['Row, Row, Row Your Boat', 'Merrily, merrily, merrily, merrily, life is but a [dream]', 'cream', 'team'],
     ['Old MacDonald', 'Old MacDonald had a [farm], E-I-E-I-O', 'arm', 'form'],
+    ['Old MacDonald', 'And on that farm he had a [cow], E-I-E-I-O', 'cat', 'car'],
+    ['Old MacDonald', 'With a moo moo [here] and a moo moo there', 'hair', 'year'],
     ['Mary Had a Little Lamb', 'Mary had a little [lamb], its fleece was white as snow', 'lamp', 'jam'],
+    ['Mary Had a Little Lamb', 'And everywhere that Mary [went], the lamb was sure to go', 'want', 'wind'],
+    ['Mary Had a Little Lamb', 'It followed her to [school] one day, which was against the rule', 'pool', 'stool'],
     ['London Bridge', 'London Bridge is falling [down], falling down, falling down', 'town', 'gown'],
+    ['London Bridge', 'London Bridge is falling down, my fair [lady]', 'baby', 'lazy'],
+    ['London Bridge', 'Build it up with [wood] and clay, wood and clay, wood and clay', 'food', 'wool'],
     ['Auld Lang Syne', 'Should auld acquaintance be [forgot] and never brought to mind', 'forget', 'forgive'],
     ['Silent Night', 'Silent night, holy [night], all is calm, all is bright', 'nine', 'kite'],
     ['Amazing Grace', 'Amazing grace, how sweet the [sound] that saved a wretch like me', 'sand', 'round'],
+    ['Amazing Grace', 'I once was [lost], but now am found', 'last', 'cost'],
+    ['Amazing Grace', 'Was blind, but now I [see]', 'sea', 'tea'],
     ['Oh! Susanna', 'Oh, Susanna, oh don\'t you [cry] for me', 'try', 'fly'],
+    ['Oh! Susanna', 'Oh, I come from Alabama with a [banjo] on my knee', 'mango', 'bingo'],
+    ['Oh! Susanna', 'I\'m going to Louisiana, my true [love] for to see', 'glove', 'dove'],
     ['Yankee Doodle', 'Yankee Doodle went to [town] a-riding on a pony', 'down', 'gown'],
     ['Take Me Out to the Ball Game', 'Take me out to the ball [game], take me out with the crowd', 'gate', 'name'],
+    ['Take Me Out to the Ball Game', 'Buy me some peanuts and Cracker [Jack]', 'snack', 'black'],
+    ['Take Me Out to the Ball Game', 'I don\'t care if I never get [back]', 'black', 'pack'],
     ['Daisy Bell', 'Daisy, Daisy, give me your [answer], do', 'anchor', 'dancer'],
+    ['Daisy Bell', 'I\'m half [crazy] all for the love of you', 'lazy', 'daisy'],
+    ['Daisy Bell', 'It won\'t be a stylish [marriage], I can\'t afford a carriage', 'garage', 'message'],
+    ['Itsy Bitsy Spider', 'The itsy bitsy spider climbed up the water [spout]', 'sprout', 'scout'],
     ['Itsy Bitsy Spider', 'Down came the [rain] and washed the spider out', 'train', 'lane'],
+    ['Itsy Bitsy Spider', 'Out came the [sun] and dried up all the rain', 'son', 'fun'],
     ['My Bonnie', 'My Bonnie lies over the [ocean], my Bonnie lies over the sea', 'motion', 'potion'],
+    ['My Bonnie', 'Bring back, bring back, oh bring back my [Bonnie] to me', 'money', 'bunny'],
+    ['My Bonnie', 'Last night as I lay on my [pillow]', 'willow', 'yellow'],
     ['When the Saints Go Marching In', 'Oh when the [saints] go marching in', 'sense', 'sins'],
-    ['Drunken Sailor', 'What shall we do with the drunken [sailor] early in the morning', 'tailor', 'sailing']
+    ['When the Saints Go Marching In', 'Oh Lord, I want to be in that [number]', 'summer', 'lumber'],
+    ['When the Saints Go Marching In', 'Oh when the [sun] refuse to shine', 'son', 'sign'],
+    ['Drunken Sailor', 'What shall we do with the drunken [sailor] early in the morning', 'tailor', 'sailing'],
+    ['Drunken Sailor', 'Way hay and up she [rises], early in the morning', 'prizes', 'sizes'],
+    ['Drunken Sailor', 'Put him in the long [boat] till he\'s sober', 'coat', 'goat']
   ],
   /* 👅 tongue twisters */
   twister: [
@@ -168,22 +194,38 @@ PARTY.es = {
   song: [
     ['Cielito Lindo', 'Ay, ay, ay, ay, canta y no [llores]', 'flores', 'llueves'],
     ['Cielito Lindo', 'De la Sierra Morena, cielito lindo, vienen [bajando]', 'bailando', 'bañando'],
+    ['Cielito Lindo', 'Porque cantando se alegran, cielito lindo, los [corazones]', 'canciones', 'cajones'],
     ['La Cucaracha', 'La cucaracha, la cucaracha, ya no puede [caminar]', 'cantar', 'cocinar'],
     ['Las Mañanitas', 'Estas son las mañanitas que cantaba el rey [David]', 'Daniel', 'Madrid'],
     ['Las Mañanitas', 'Despierta, mi bien, despierta, mira que ya [amaneció]', 'anocheció', 'amaestró'],
+    ['Las Mañanitas', 'Hoy por ser día de tu [santo] te las cantamos aquí', 'canto', 'llanto'],
     ['De Colores', 'De colores se visten los campos en la [primavera]', 'primera', 'pradera'],
     ['Arroz con leche', 'Arroz con leche, me quiero [casar] con una señorita de San Nicolás', 'cazar', 'cansar'],
+    ['Arroz con leche', 'Que sepa [coser], que sepa bordar', 'comer', 'correr'],
+    ['Arroz con leche', 'Que sepa abrir la [puerta] para ir a jugar', 'puerto', 'huerta'],
     ['Los pollitos dicen', 'Los pollitos dicen pío, pío, pío, cuando tienen [hambre], cuando tienen frío', 'hombre', 'alambre'],
+    ['Los pollitos dicen', 'La gallina busca el [maíz] y el trigo', 'país', 'raíz'],
+    ['Los pollitos dicen', 'Les da la comida y les presta [abrigo]', 'amigo', 'trigo'],
     ['Estrellita', 'Estrellita, ¿dónde estás? Me pregunto qué [serás]', 'será', 'verás'],
+    ['Estrellita', 'En el cielo o en el [mar], un diamante de verdad', 'bar', 'par'],
+    ['Estrellita', 'Estrellita, ¿dónde estás? Me pregunto qué serás, un [diamante] de verdad', 'estudiante', 'elefante'],
     ['Los peces en el río', 'Pero mira cómo beben los [peces] en el río', 'pecas', 'veces'],
+    ['Los peces en el río', 'Pero mira cómo beben por ver a Dios [nacer]', 'hacer', 'nadar'],
+    ['Los peces en el río', 'Beben y beben y vuelven a [beber]', 'volver', 'barrer'],
     ['Campana sobre campana', 'Campana sobre campana, y sobre campana [una]', 'luna', 'cuna'],
     ['La Bamba', 'Para bailar la [bamba] se necesita una poca de gracia', 'banda', 'rampa'],
+    ['La Bamba', 'Yo no soy [marinero], soy capitán, soy capitán', 'carnicero', 'panadero'],
+    ['La Bamba', 'Arriba y arriba, y arriba y arriba, por ti [seré]', 'sería', 'sabré'],
     ['El patio de mi casa', 'El patio de mi casa es [particular], cuando llueve se moja como los demás', 'popular', 'peculiar'],
     ['Cumpleaños feliz', 'Cumpleaños feliz, te [deseamos] a ti', 'deseo', 'dejamos'],
     ['Noche de paz', 'Noche de paz, noche de [amor], todo duerme en derredor', 'humor', 'color'],
     ['Los elefantes', 'Un elefante se balanceaba sobre la tela de una [araña]', 'cabaña', 'mañana'],
+    ['Los elefantes', 'Como veía que [resistía], fue a llamar a otro elefante', 'existía', 'insistía'],
+    ['Los elefantes', 'Dos elefantes se [balanceaban] sobre la tela de una araña', 'bañaban', 'bajaban'],
     ['Debajo un botón', 'Debajo un botón, ton, ton, que encontró Martín, tin, tin, había un [ratón]', 'balcón', 'montón'],
-    ['Tengo una muñeca', 'Tengo una muñeca vestida de [azul]', 'abril', 'baúl']
+    ['Tengo una muñeca', 'Tengo una muñeca vestida de [azul]', 'abril', 'baúl'],
+    ['Tengo una muñeca', 'Con su [camisita] y su canesú', 'camiseta', 'cajita'],
+    ['Tengo una muñeca', 'La saqué a [paseo], se me constipó', 'pasillo', 'pasear']
   ],
   twister: [
     'Tres tristes tigres tragaban trigo en un trigal',
@@ -449,3 +491,18 @@ PARTY.plots = [
   ['Despicable Me', 'A man who wants to steal the moon adopts three girls to help with the plan, and his small yellow workers love bananas.'],
   ['Pirates of the Caribbean', 'A sailor who has lost his ship and is never quite sober helps a blacksmith save a governor\'s daughter from a crew of skeletons.']
 ];
+
+/* 🎸 starter songs for My songs: the official recordings on YouTube. Only the links live here;
+   the lines come from the player, written under each song as "Artist – Title | the line". */
+PARTY.starter = {
+  en: [
+    ['The Clash – London Calling', 'XN7iEFVLf5c'],
+    ['The Mamas & The Papas – California Dreamin\'', 'oU6uUEwZ8FM'],
+    ['Creedence Clearwater Revival – Fortunate Son', 'xImsdvr9Mx4'],
+    ['Roy Orbison – Oh, Pretty Woman', '3KFvoDDs0XM'],
+    ['Ben E. King – Stand By Me', 'hwZNL7QVJjE'],
+    ['John Denver – Take Me Home, Country Roads', '1vrEljMfXYo'],
+    ['Bob Marley & The Wailers – Three Little Birds', 'HNBCVM4KbUM'],
+    ['The Beatles – Let It Be', 'QDYfEBY9NM4']
+  ]
+};
