@@ -1219,6 +1219,9 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 @keyframes mixbg{to{background-position:300% 0}}
 @keyframes pgin{from{transform:scale(.7) translateY(20px);opacity:0}to{transform:none;opacity:1}}
 .g1{background:#FF4B4B}.g2{background:#1CB0F6}.g3{background:#CE82FF}.g4{background:#FF9600}.g5{background:#4B4B4B}.g6{background:#8B5A2B}.g7{background:#2B70C9}.g8{background:#58CC02}.g9{background:#E5B400;color:#3a2a00}.g10{background:#E5527A}
+.hopts{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.hopts li{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.hopts .bub{background:#2f6fe4;color:#fff;border-radius:16px 16px 16px 4px;padding:10px 14px;font-weight:600;font-size:17px;flex:1}
 .plot-c{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#fff8e6;color:#2a1a00;border-radius:14px;padding:12px 14px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
 .plot-c p{margin:0;font-size:18px;line-height:1.3;font-weight:600}
 .plot-i{font-size:34px;animation:bob 2.4s ease-in-out infinite}
@@ -4050,7 +4053,11 @@ var GENP = {
   },
   slang: function (r, L, off) {
     var pool = PARTY[L].slang;
-    return { rounds: deckTake(L + ':slang', pool, off, 2).map(function (i) { var x = pool[i], o = shuf3(r, x[1], [x[2], x[3]]); return { msg: x[0], words: o.words, ans: o.ans, dict: x[4].split(';').map(function (p) { var at = p.indexOf('='); return [p.slice(0, at), p.slice(at + 1)]; }), full: x[0] + ' = ' + x[1] }; }) };
+    return { rounds: deckTake(L + ':slang', pool, off, 2).map(function (i) {
+      var x = pool[i], o = shuf3(r, x[1], [x[2], x[3]]);
+      /* the helper gets three meanings too: only the right one is on both phones */
+      var more = r.sample(pool.filter(function (y, j) { return j !== i && [x[1], x[2], x[3]].indexOf(y[1]) < 0; }).map(function (y) { return y[1]; }), 2);
+      return { msg: x[0], words: o.words, ans: o.ans, hw: r.shuffle([x[1]].concat(more)), dict: x[4].split(';').map(function (p) { var at = p.indexOf('='); return [p.slice(0, at), p.slice(at + 1)]; }), full: x[0] + ' = ' + x[1] }; }) };
   },
   rhyme: function (r, L, off) {
     var pool = PARTY[L].rhyme;
@@ -4217,7 +4224,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 21;
+  var BUILD = 22;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6484,7 +6491,7 @@ var ES_PHRASES = [
     done: function (d) { return learn(pRecap(d)); },
     help: function (d, i, ms) {
       var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1);
-      return card(cnt('n.sentence', p + 1, n), '', '<dl class="slangd" lang="' + tl() + '">' + d.rounds[p].dict.map(function (x) { return '<dt>' + esc(x[0]) + '</dt><dd>' + esc(x[1]) + '</dd>'; }).join('') + '</dl>' + stepNav(i, p, n, null, null, true));
+      return card(cnt('n.sentence', p + 1, n), '', '<ul class="hopts" lang="' + tl() + '">' + d.rounds[p].hw.map(function (w) { return '<li><span class="bub">' + esc(w) + '</span>' + sayBtn(w, true) + '</li>'; }).join('') + '</ul>' + stepNav(i, p, n, null, null, true));
     },
     onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
   };
