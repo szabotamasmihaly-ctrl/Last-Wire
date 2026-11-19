@@ -26,7 +26,7 @@ LWC('da', 2, `
 = Han har [drukket] ti kopper kaffe. Nu kan han høre farver.
 - Har du [sovet|sov|sove] godt? Du ligner en zombie.
 - Min mor har [skrevet|skrev|skrive] en bog om mig. Den er ikke sød.
-- Vi har [fået|fik|få] en ny nabo. Han har en papegøje.
+- Vi har [fået|fik|få] en ny nabo. Han er meget flink.
 - Har du [givet|gav|give] hunden min pizza?
 - Hun har [sagt|sagde|sige] ja! Til en anden.
 - De har [fundet|fandt|finde] en mus i køleskabet. Den er glad.
@@ -45,7 +45,7 @@ LWC('da', 2, `
 ~ Vi har | spist kagen.
 @ aldrig, lige, allerede | aldrig, lige, allerede | aldrig, lige, allerede
 ! Jeg har allerede spist.
-= Jeg har [aldrig] set et spøgelse. Før i går.
+= Jeg har [aldrig] været i Paris.
 = Hun er [lige] gået. Med min jakke.
 - Har du [nogensinde|nogensinden|nogsinde] spist snegle?
 - Vi har [allerede|alleredet|alrede] spist. Hunden også.
@@ -87,13 +87,13 @@ LWC('da', 2, `
 @ har lyst til, glæder sig til | har lyst til, glæder sig til | har lyst til, glæder sig til
 ! Jeg glæder mig til at se dig.
 = Jeg [har lyst] til at spise kage. Altid.
-= Vi tænker [på] at købe en ged.
+= Vi tænker [på] at købe en bil.
 - Har du lyst [til|på|for] at danse? Nej? Du danser alligevel.
 - Jeg tænker på [at|og|af] flytte til månen.
 - Hun har ikke [lyst|lyster|lystet] til at stå op.
 - Vi glæder os [til|på|for] at holde ferie.
 - Min hund har lyst [til|på|for] at spise postbuddet.
-- Han tænker [på|til|for] at blive klovn. Hans mor græder.
+- Han tænker [på|til|for] at blive kok. Hans mor er glad.
 @ hvis: if | hvis: ha | hvis: hvis
 ! Hvis du er sulten, laver jeg mad.
 = [Hvis] det regner, bliver vi i sengen.
@@ -144,7 +144,7 @@ LWC('da', 2, `
 @ egen, eget, egne | egen, eget, egne | egen, eget, egne
 ! Jeg har mit eget værelse.
 = Min hund har sin [egen] seng. Jeg har ikke min egen.
-= Hun bor i sit [eget] hus. Med sit eget spøgelse.
+= Hun bor i sit [eget] hus nu.
 - Jeg vil have mit [eget|egen|egne] værelse!
 - Katten har sine [egne|egen|eget] regler.
 - Han kører i sin [egen|eget|egne] bil. Uden hjul.
@@ -171,7 +171,7 @@ LWC('da', 2, `
 - Min mor siger, at jeg [er|være|ere] hendes yndlingsbarn. Hun siger det til alle.
 - Vi synes, [at|af|og] pizza er en grøntsag.
 - Han lover, at han [kommer|komme|kommet] til tiden. Han lyver.
-- Jeg tror, at min nabo [er|være|ere] en vampyr.
+- Jeg tror, at min nabo [er|være|ere] forelsket.
 @ ikke before the verb: hvis du ikke kommer | ikke az ige előtt: hvis du ikke kommer | ikke før udsagnsordet: hvis du ikke kommer
 ! Ring, hvis du ikke kan komme.
 = Jeg spiser kage, når jeg [ikke er] glad. Og når jeg er glad.
@@ -185,7 +185,7 @@ LWC('da', 2, `
 @ Når jeg er træt, spiser jeg | Når jeg er træt, spiser jeg | Når jeg er træt, spiser jeg
 ! Når jeg er træt, bliver jeg sur.
 = Når jeg er træt, [spiser jeg] chokolade.
-= Da jeg var lille, [var jeg] bange for klovne. Nu er jeg en.
+= Da jeg var lille, [var jeg] bange for mørke.
 - Hvis det regner, [bliver vi|vi bliver|bliver os] hjemme.
 - Da jeg kom hjem, [sov hunden|hunden sov|sov hund] i min seng.
 - Når min mor ringer, [gemmer jeg mig|jeg gemmer mig|gemmer mig jeg].
@@ -251,7 +251,7 @@ LWC('da', 2, `
 = Min hund er [lige så] stor som en hest.
 = Kaffen er lige så kold [som] min chef.
 - Han er lige så gammel [som|end|da] min farmor. Næsten.
-- Hun synger [lige så|lige som|så lige] godt som en ged.
+- Hun synger [lige så|lige som|så lige] godt som sin mor.
 - Min bil er lige så hurtig [som|end|da] en snegl.
 - Den kage er ikke [lige så|lige som|så lige] god som min mors.
 - Jeg er lige så træt [som|end|da] en mandag.
@@ -293,7 +293,7 @@ LWC('da', 2, `
 @ Det er sjovt | Det er sjovt | Det er sjovt
 ! Det er sjovt!
 = Det er [sjovt] at danse i regnen.
-= Det var [koldt] i går. Pingvinen var glad.
+= Det var [koldt] i går. Jeg frøs.
 - Det er [dyrt|dyr|dyre] at bo i København. Også i en kasse.
 - Det er [vigtigt|vigtig|vigtige] at drikke kaffe.
 - Er det [farligt|farlig|farlige] at spise svampe fra skoven?
@@ -307,7 +307,7 @@ LWC('da', 2, `
 - Hunden er træt. Katten er [også|heller ikke|heller].
 - Jeg har ikke penge. Min bror har [heller ikke|også ikke|ikke også] penge.
 - Hun taler ikke tysk. Hun taler [heller ikke|også ikke|ikke heller] fransk.
-- Vi kan godt lide sne. Pingvinerne kan [også|heller ikke|ikke også].
+- Vi kan godt lide sne. Børnene kan [også|heller ikke|ikke også].
 - Han drikker ikke kaffe. Han drikker [heller ikke|også ikke|ikke også] te. Kun sodavand.
 - Min mor danser. Min farmor danser [også|heller ikke|heller]. Hele natten.
 @ Ja, det gør jeg | Ja, det gør jeg | Ja, det gør jeg
@@ -346,7 +346,7 @@ LWC('da', 2, `
 - I går [måtte|må|måttet] jeg gå hjem. Mine bukser revnede.
 @ burde | burde (kellene) | burde
 ! Du burde gå til lægen.
-= Du [burde] sove mere. Du ligner en zombie.
+= Du [burde] spise flere grøntsager.
 = Vi burde [spise] flere grøntsager. Pizza er en grøntsag.
 - Han burde [ringe|ringer|at ringe] til sin mor.
 - Du [burde|burder|burde at] ikke spise min kage.
@@ -509,7 +509,7 @@ LWC('da', 2, `
 = Det [blæser] så meget, at min hat er i Sverige.
 - Det [sner|snor|sneer] i april. Selvfølgelig.
 - I dag [skinner|skinne|skinnet] solen! Alle er i chok.
-- Det [er|har|blive] koldt. Pingvinen har en jakke på.
+- Det [er|har|blive] koldt. Husk din jakke.
 - [Om|I|På] vinteren er det mørkt klokken fire.
 - [Om|I|På] sommeren regner det. Om vinteren regner det også.
 - Det [tordner|tordne|tordnet], og hunden er under sengen.

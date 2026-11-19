@@ -23,7 +23,7 @@ LWC('es', 6, `
 @ no bien, recién, al poco de | no bien, recién, al poco de | no bien, recién, al poco de
 ! Recién llegamos.
 = [No bien] llegó a la oficina, se echó una siesta.
-= Al poco de [casarse], se compraron dos gatos y un loro.
+= Al poco de [casarse], se compraron una casa.
 - No [bien|mal|más] salió el sol, el gallo empezó a gritar.
 - Al poco [de|a|que] empezar la dieta, se comió una pizza.
 - [Recién|Reciente|Recientes] llegado de vacaciones, ya quería irse otra vez.
@@ -120,8 +120,8 @@ LWC('es', 6, `
 - A poco que [haga|haciendo|hacer] sol, mi tío se quita la camiseta.
 @ a condición de que, en el supuesto de que | a condición de que, en el supuesto de que | a condición de que, en el supuesto de que
 ! Te lo presto a condición de que me lo devuelvas.
-= Te presto el coche [a condición de que] no lleves a la cabra.
-= En el supuesto de que [haya] zombis, nos vemos en el supermercado.
+= Te presto el coche [a condición de que] me lo devuelvas limpio.
+= En el supuesto de que [haya] huelga, trabajaremos desde casa.
 - Me caso a condición de que [pongan|poniendo|poner] croquetas.
 - En el [supuesto|supuestos|suponer] de que el gato hable, no lo grabes.
 - Acepto el trabajo, a condición [de|a|en] que pueda llevar pijama.
@@ -146,7 +146,7 @@ LWC('es', 6, `
 - De no [haber|habido|habiendo] sido por el gato, habría dormido bien.
 - No hay explicación para ese corte de pelo, como no [sea|es|ser] una apuesta.
 - [De no ser|De no siendo|De no es] así, devuélveme el gato.
-- Nadie lo sabe, como no [sea|es|ser] el loro.
+- Nadie lo sabe, como no [sea|es|ser] su madre.
 - De no ser por [ella|la|le], la fiesta habría sido aburrida.
 @ con solo, con que | con solo, con que | con solo, con que
 ! Con que me llames, es suficiente.
@@ -181,7 +181,7 @@ LWC('es', 6, `
 - Llegaron más primos [de los que|de lo que los|que los] conocíamos.
 - Cocinar es menos fácil [de lo que|que lo que|de que] parece en los vídeos.
 - Comió más churros [de los que|de lo que los|que los] debía.
-- El loro sabe más [de lo que|de que|que lo que] aparenta.
+- Mi abuela sabe más [de lo que|de que|que lo que] aparenta.
 @ cada vez más, cada día menos | cada vez más, cada día menos | cada vez más, cada día menos
 ! Cada vez hace más calor.
 = Me parezco [cada vez más] a mi padre. Socorro.
@@ -221,7 +221,7 @@ LWC('es', 6, `
 = Es café [lo que] necesito. Mucho café.
 = Fue el perro [quien] se comió la tarta.
 - Es por tu forma de cantar [por lo que|lo que por|que por lo] me fui.
-- Fueron mis tíos [quienes|quien|los cuales que] trajeron la cabra.
+- Fueron mis tíos [quienes|quien|los cuales que] trajeron la tarta.
 - Es aquí [donde|que donde|lo que] escondo el chocolate.
 - Fue en la cola del baño [cuando|que cuando|lo cual] nos conocimos.
 - Es así [como|que como|lo como] se dobla una sábana. Creo.
@@ -231,7 +231,7 @@ LWC('es', 6, `
 = ¿Que mi gato es malo? ¡[Si] lo sabré yo!
 = ¿Que si es caro? ¡[Vaya] si lo es! Cuesta un riñón.
 - ¡Si [será|sea|ser] tonto! Ha lavado el móvil.
-- ¿Que si vino a la fiesta? ¡Vaya [si|que|como] vino! Con su cabra.
+- ¿Que si vino a la fiesta? ¡Vaya [si|que|como] vino! Y bailó toda la noche.
 - ¡Pero [si|que|como] ya te dije que no tocaras el botón!
 - ¡Si es que no [aprendes|aprendas|aprender]! Otra vez el dedo en el enchufe.
 - ¿Que [si|que si|qué] me gusta la tarta? ¡Me la como entera!
@@ -252,7 +252,7 @@ LWC('es', 6, `
 = ¿Me pasas la sal? ¡Faltaría [más]!
 - ¿Me prestas el coche para ir a la luna? ¡Ni [hablar|hablas|hablo]!
 - ¿Te molesta mi trompeta? ¡Qué [va|van|vas]! Me encanta. A las tres de la mañana.
-- ¿Puedo traer a mi cabra? ¡Faltaría [más|menos|mucho]!
+- ¿Puedo traer a mi novia? ¡Faltaría [más|menos|mucho]!
 - ¿Vas a ir a la fiesta de disfraces? ¡Por [supuesto|supuestos|suponer]!
 - ¿Te pones ese bañador? ¡Ni [loco|loca de|locos de]!
 - ¿Vas a limpiar tu cuarto? ¡Ni en [sueños|sueño de|soñar]!
@@ -277,7 +277,7 @@ LWC('es', 6, `
 - Habida cuenta [de|a|en] que no hay café, se suspende el lunes.
 - En vista de [que|lo que|como] nadie vino a mi fiesta, me comí la tarta.
 - [Habida|Habido|Habiendo] cuenta del precio, nos compramos un pato de goma.
-- En [vista|visto|vistas] de lo ocurrido con la cabra, se cancela la boda.
+- En [vista|visto|vistas] de lo ocurrido, se cancela el partido.
 - Habida cuenta de [lo|el|la] difícil que es, dejamos de doblar sábanas.
 - En vista de que no [contestas|contestes|contestar], me como tu postre.
 @ en aras de, a raíz de | en aras de, a raíz de | en aras de, a raíz de
@@ -297,7 +297,7 @@ LWC('es', 6, `
 - En lo que respecta [a|de|en] mí, la tarta es para todos. Menos para ti.
 - En [cuanto|cuando|tanto] al horario, el bar decide.
 - [Por lo que|Por el que|Para lo que] se refiere a la boda, nadie quiere hablar.
-- En lo [que|cual|cuanto] concierne a la cabra, ya hablaremos.
+- En lo [que|cual|cuanto] concierne al dinero, ya hablaremos.
 - [Con respecto|Con respeto|En respecto] al contrato, el perro se lo comió.
 - En cuanto [a|de|en] los niños, se quedan con la abuela. Pobre abuela.
 @ so pena de, a fin de, con vistas a | so pena de, a fin de, con vistas a | so pena de, a fin de, con vistas a
@@ -306,7 +306,7 @@ LWC('es', 6, `
 = Lo hicimos [a fin de] ahorrar. Ahora tenemos un yate.
 - A fin de [que|de que|como] el gato nos entienda, hablamos en maullidos.
 - Ahorramos con [vistas|vista|visto] a comprar una isla.
-- [So|Sin|Su] pena de multa, no deje la cabra en el ascensor.
+- [So|Sin|Su] pena de multa, no aparque aquí.
 - Se reunieron a fin [de|a|en] decidir la pizza.
 - Va al gimnasio con vistas [a|de|en] el verano. De 2040.
 - A fin de que [puedan|pueden|poder] dormir, quitamos el gallo.
@@ -319,7 +319,7 @@ LWC('es', 6, `
 = No me gusta el karaoke; [es más], lo odio.
 - No es fácil; [ahora bien|ahora mal|ahora bueno], es posible con tarta.
 - No lo creo. Es [más|mucho|tanto], creo que el perro miente.
-- El plan es bueno. [No obstante|No obstantes|Sin obstante], hay una cabra.
+- El plan es bueno. [No obstante|No obstantes|Sin obstante], es caro.
 - Es caro. Ahora [bien|bueno|buen], es un sombrero que habla.
 - No estoy cansado; es más, [podría|pudiera de|podré de] bailar horas.
 - Tienes razón. [Con todo|Con toda|Con todos], no te doy mi pizza.
@@ -388,7 +388,7 @@ LWC('es', 6, `
 - [Conocí|Conocía|Conocido] a mi mujer en la cola del baño.
 - De niño ya [conocía|conocí|conociera] a todos los perros del barrio.
 - Anoche [supimos|sabíamos de|sabido] que la abuela tiene novio.
-- ¿Desde cuándo [sabías|supiste de|sabido] lo de la cabra?
+- ¿Desde cuándo [sabías|supiste de|sabido] lo de la boda?
 - Lo [conocí|conocía de|conocido] en un karaoke. Cantaba fatal.
 - No [sabía|supe de|sabido] nada de la fiesta hasta que vi las fotos.
 @ quise / no quise, pude / no pude | quise / no quise, pude / no pude | quise / no quise, pude / no pude
@@ -397,15 +397,15 @@ LWC('es', 6, `
 = Por fin [pude] abrir el bote de pepinillos.
 - [Quise|Quería de|Querido] abrir la puerta, pero el gato estaba encima.
 - Lo intenté, pero no [pude|podía de|podido] terminar la pizza gigante.
-- Me ofrecieron un loro y no lo [quise|quería de|querido].
+- Me ofrecieron el trabajo y no lo [quise|quería de|querido].
 - Después de dos horas, [pudimos|podíamos de|podido] salir del ascensor.
 - Mi hijo no [quiso|quería de|querido] comer nada verde ayer.
 - ¿[Pudiste|Podías de|Podido] dormir con el gallo?
 @ Polite imperfect: quería pedirte | Udvarias imperfecto: quería pedirte | Høflig imperfektum: quería pedirte
 ! Quería pedirte un favor.
-= [Quería] pedirte un favor. ¿Me cuidas la cabra?
+= [Quería] pedirte un favor. ¿Me cuidas al perro?
 = ¿Qué [deseaba], señora? ¿Otra tarta?
-- [Venía|Vine de|Venido] a preguntar por el piso. ¿Aceptan cabras?
+- [Venía|Vine de|Venido] a preguntar por el piso. ¿Sigue libre?
 - [Quería|Querido|Quise de] saber si hay mesa para dos y un gato.
 - ¿Qué [quería|querido|quise de] usted? ¿Ver al gerente?
 - [Llamaba|Llamado|Llamé de] para cancelar la cita con el dentista. Para siempre.
@@ -454,7 +454,7 @@ LWC('es', 6, `
 - La [educación|educadad|educeza] de mi perro fue un desastre.
 - Admiro la [sencillez|sencillidad|sencillación] de mi abuelo. Come pan y es feliz.
 - La [pobreza|pobredad|pobración] de mi nevera es preocupante.
-- Necesito más [información|informedad|informeza] sobre esa cabra.
+- Necesito más [información|informedad|informeza] sobre el curso.
 ~ triste | tristeza
 ~ libre | libertad
 ~ informar | información
@@ -474,7 +474,7 @@ LWC('es', 6, `
 = Se comió la tarta [rápidamente].
 - Explicó [lenta|lento|lentas] y claramente por qué el gato es el jefe.
 - El perro roba rápida y [eficazmente|eficaz|eficazmenta].
-- [Afortunadamente|Afortunadamenta|Afortunademente], la cabra no se comió el anillo.
+- [Afortunadamente|Afortunadamenta|Afortunademente], el perro no se comió el anillo.
 - Contestó [amable|amablemente y|amabla] y educadamente que no.
 - Lo dijo [tranquila|tranquilo y|tranquilamente y] y firmemente: no limpio.
 - [Sinceramente|Sinceramenta|Sincerámente], tu sombrero me da miedo.
@@ -494,7 +494,7 @@ LWC('es', 6, `
 = No es un perro, [sino] un gato muy grande.
 = [Si no] vienes, me como tu tarta.
 - No quiero café, [sino|si no|sino que] dormir.
-- [Si no|Sino|Si no que] estudias, el loro aprobará antes que tú.
+- [Si no|Sino|Si no que] estudias, no aprobarás.
 - No solo es guapo, [sino|si no|sino que] también rico. Es mi gato.
 - Llámame; [si no|sino|si no que], te mando a la abuela.
 - No fue el perro, [sino|si no|sino que] el abuelo.
@@ -506,7 +506,7 @@ LWC('es', 6, `
 - Nadie sabe [por qué|porque|porqué] el gato odia los martes.
 - Me fui de la fiesta [porque|por qué|porqué] cantaba mi tío.
 - Nadie entiende el [porqué|por qué|porque] de su sombrero.
-- ¿[Por qué|Porque|Porqué] hay una cabra en el baño?
+- ¿[Por qué|Porque|Porqué] no me llamaste?
 - No fui a clase [porque|por qué|porqué] el perro se comió mis zapatos.
 - Dime [por qué|porque|porqué] hay un pato en la bañera.
 @ haber / a ver, hay / ahí / ay | haber / a ver, hay / ahí / ay | haber / a ver, hay / ahí / ay
@@ -515,7 +515,7 @@ LWC('es', 6, `
 = Tiene que [haber] un error. Mi factura dice un millón.
 - Vamos [a ver|haber|a haber] si el perro sabe nadar.
 - Debe de [haber|a ver|haver] alguien en el armario.
-- [Hay|Ahí|Ay] una cabra en el ascensor.
+- [Hay|Ahí|Ay] mucha gente en el ascensor.
 - El mando está [ahí|hay|ay], debajo del gato.
 - ¡[Ay|Hay|Ahí], me he sentado en el cactus!
 - [A ver|Haber|A haber] si este año aprendo a cocinar.
@@ -526,7 +526,7 @@ LWC('es', 6, `
 - ¿Qué le has [hecho|echo|hechado] a tu pelo?
 - Le [echo|hecho|hecho de] azúcar a la sopa. Por error.
 - ¡[Vaya|Valla|Baya] sombrero!
-- La cabra saltó la [valla|vaya|balla] del jardín.
+- El perro saltó la [valla|vaya|balla] del jardín.
 - Espero que te [vaya|valla|baya] bien en la boda. Ánimo.
 - Me han [echado|hechado|hecho] del karaoke.
 @ conque / con que / con qué | conque / con que / con qué | conque / con que / con qué

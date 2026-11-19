@@ -8,8 +8,8 @@ LWC('da', 5, `
 - [Kun sjældent ser man|Kun sjældent man ser|Kun sjældent ser man ser] en kat i jakkesæt.
 - [Ingen steder er der|Ingen steder der er|Ingen steder er det der] så mange cykler som i min stue.
 - [Næppe var han kommet|Næppe han var kommet|Næppe var han komme] ind, før hunden spiste hans sko.
-- [Først i går fandt jeg|Først i går jeg fandt|Først i går fandt jeg fandt] ud af, at min nabo er en ged.
-- [Sjældent har jeg|Sjældent jeg har|Sjældent har jeg havde] mødt en så høflig papegøje.
+- [Først i går fandt jeg|Først i går jeg fandt|Først i går fandt jeg fandt] ud af, at min nabo er dansker.
+- [Sjældent har jeg|Sjældent jeg har|Sjældent har jeg havde] mødt en så høflig tjener.
 @ Det vidste jeg ikke | Det vidste jeg ikke | Det vidste jeg ikke
 ! Det vidste jeg ikke.
 = [Det vidste jeg] ikke. Min mormor har en podcast.
@@ -30,7 +30,7 @@ LWC('da', 5, `
 - [Havde jeg haft|Hvis havde jeg haft|Havde jeg have] penge, havde jeg købt en ø.
 - [Var vi gået|Vi var gået|Var vi gå] tidligere, havde vi undgået karaoken.
 - [Havde du spurgt|Du havde spurgt|Havde du spørge], havde jeg sagt nej.
-- [Skulle du få|Skulle du får|Du skulle få] brug for en lama, så ring.
+- [Skulle du få|Skulle du får|Du skulle få] brug for hjælp, så ring.
 - [Var katten ikke|Katten var ikke|Var ikke katten] faldet i søvn, havde den spist fisken.
 - [Havde de læst|De havde læst|Havde de læse] manualen, var ovnen ikke eksploderet.
 @ Det var hende, der... | Det var hende, der... | Det var hende, der...
@@ -42,7 +42,7 @@ LWC('da', 5, `
 - [Det var i Paris, at|Det var i Paris, der|Det var i Paris, hvem] jeg mistede min hat.
 - [Det var ikke mig, der|Det var ikke jeg, hvem|Det var ikke mig, hvem] spiste den sidste croissant.
 - [Er det dig, der|Er det dig, hvem|Er det dig, hvad] har parkeret en traktor i haven?
-- [Det var i går, at|Det var i går, der|Det var i går, hvem] papegøjen lærte at bande.
+- [Det var i går, at|Det var i går, der|Det var i går, hvem] jeg fandt ud af det.
 @ Hvad angår... | Hvad angår... | Hvad angår...
 ! Hvad angår prisen, så er den fin.
 = [Hvad angår] maden, så var den brændt. Men stemningen var god.
@@ -62,7 +62,7 @@ LWC('da', 5, `
 - Vi har [jo|jos|joen] ingen penge. Så vi spiser nudler igen.
 - Det [er da|da er|er das] fint. Tag bare den sidste kage.
 - Du [kan da|da kan|kan das] ikke gå i pyjamas til jobsamtalen.
-- Hun [har jo|jo har|har jos] tre katte og en ged.
+- Hun [har jo|jo har|har jos] tre børn.
 - Det [var da|da var|var das] sjovt. Lad os gøre det igen.
 @ vel, nok | vel, nok | vel, nok
 ! Det går nok.
@@ -187,7 +187,7 @@ LWC('da', 5, `
 - Du [skulle have været|skulle have være|skulle være været] der. Det var vildt.
 - Han [skulle have|skulle havde|skulle har] købt den rigtige mælk.
 - I [skulle have|skulle har|skulle havet] hørt min mormor rappe.
-- Vi [skulle aldrig have|skulle aldrig har|skulle have aldrig havt] givet papegøjen kaffe.
+- Vi [skulle aldrig have|skulle aldrig har|skulle have aldrig havt] givet børnene kaffe.
 - De [skulle have|skulle har|skulled have] booket bord. Nu spiser de i bilen.
 @ burde have gjort | burde have gjort | burde have gjort
 ! Du burde have ringet.
@@ -244,7 +244,7 @@ LWC('da', 5, `
 ! Skynd dig, toget kører!
 = Jeg [glæder mig] til weekenden. Jeg skal sove.
 = Skynd [dig]! Pizzaen bliver kold.
-- Vi [glæder os|glæder vi|glæder sig] til at se jeres nye lama.
+- Vi [glæder os|glæder vi|glæder sig] til at se jeres nye hus.
 - Hun [skyndte sig|skyndte hende|skyndte sin] ud af døren.
 - [Skynd jer|Skynd I|Skynd sig], børn! Bussen kører nu.
 - Jeg [keder mig|keder jeg|keder sig]. Selv katten keder sig.
@@ -263,7 +263,7 @@ LWC('da', 5, `
 # Verbs with fixed partners | Állandó vonzatú igék | Verber med faste præpositioner
 @ tro på, tænke på | tro på, tænke på | tro på, tænke på
 ! Jeg tror på dig.
-= Jeg [tror på] spøgelser. Især dem i køleskabet.
+= Jeg [tror på] dig.
 = Hun [tænker på] pizza hele tiden.
 - Tror du [på|om|af] kærlighed ved første swipe?
 - Jeg tænker ofte [på|om|af] min første kat.
@@ -274,7 +274,7 @@ LWC('da', 5, `
 @ glæde sig til, se frem til | glæde sig til, se frem til | glæde sig til, se frem til
 ! Jeg ser frem til weekenden.
 = Vi glæder os [til] sommerferien. Vi skal sove på en strand.
-= Jeg ser frem [til] at møde din lama.
+= Jeg ser frem [til] at møde din kæreste.
 - Børnene glæder sig [til|på|af] jul. Mest til gaverne.
 - Hun ser frem [til|på|om] at gå på pension. Hun er 32.
 - Jeg har lyst [til|på at|om] en is. Eller fem.
@@ -359,7 +359,7 @@ LWC('da', 5, `
 - Hun drikker te af en [kaffekop|kop kaffe kop|kaffekoppen kop]. Hun er rebel.
 - Vi har en [hundeseng|hundsseng|hundenseng]. Hunden sover i min.
 - Hvor er [fjernbetjeningen|fjernbetjeningenen|fjernbetjenings]? Den er i køleskabet.
-- Min [fødselsdagsgave|fødselsdaggave|fødselsdagengave] var en lama.
+- Min [fødselsdagsgave|fødselsdaggave|fødselsdagengave] var en cykel.
 - Han har [tandpine|tændspine|tandenpine], fordi han spiser kage til morgenmad.
 - Vi bor i et [lejlighedskompleks|lejlighedkompleks|lejlighedenkompleks] med 200 katte.
 # Formal Danish | Választékos dán | Formelt dansk
@@ -377,7 +377,7 @@ LWC('da', 5, `
 ! Vi har kaffe samt kage.
 = Medbring venligst pas [samt] en kage.
 = Både børn [såvel som] voksne skal have hjelm på. Også katten.
-- Prisen inkluderer morgenmad [samt|samts|samten] en gratis lama.
+- Prisen inkluderer morgenmad [samt|samts|samten] parkering.
 - Hun taler dansk [såvel som|så vel at|såvel end] klingonsk.
 - Vi tilbyder kaffe [samt|samme|samtidig at] en plads i køen.
 - Ansøgningen skal indeholde CV [samt|samts|samtlig] et billede af Deres hund.
@@ -400,14 +400,14 @@ LWC('da', 5, `
 - Hvordan har [De|Dem|Deres] det, Deres Majestæt?
 - Må jeg tilbyde [Dem|De|Deres] en kop te?
 - Er dette [Deres|Dem|De] hund? Den spiser min avis.
-- Vi skriver til [Dem|De|Deres] angående Deres papegøje.
+- Vi skriver til [Dem|De|Deres] angående Deres regning.
 - Hvis [De|Dem|Deres] har spørgsmål, så kontakt receptionen.
 - Tak for [Deres|De|Dem] henvendelse. Vi svarer i 2031.
 @ hermed, hvorfor | hermed, hvorfor | hermed, hvorfor
 ! Hermed sender jeg billederne.
 = Jeg sender [hermed] fakturaen for de 40 pizzaer.
 = Toget var forsinket, [hvorfor] mødet blev udsat.
-- Vi bekræfter [hermed|herme|hermedt] Deres reservation af elefanten.
+- Vi bekræfter [hermed|herme|hermedt] Deres reservation.
 - Der var ingen kaffe, [hvorfor|hvorfore|hvorforat] mødet blev aflyst.
 - Jeg erklærer [hermed|hermedet|hermeds] festen for åbnet.
 - Hunden var syg, [hvorfor|hvorfors|hvorfor at] jeg ikke kom på arbejde.
@@ -441,7 +441,7 @@ LWC('da', 5, `
 - Jeg [har kendt|kender har|har kende] hende i ti år.
 - Hun [har arbejdet|arbejder har|har arbejde] der siden 1999. Hun har aldrig set chefen.
 - Vi [har ikke set|ikke har set|har set ikke] hinanden i tyve år. Du ser ens ud.
-- Hvor længe [har du haft|du har haft|har du have] den papegøje?
+- Hvor længe [har du haft|du har haft|har du have] den bil?
 - Han [har gået|har gå|er gået i] på det kursus i fem år. Han er stadig dårlig.
 - Det [har regnet|er regnet|har regne] i fire dage. Fiskene er glade.
 @ ville, skulle (planer i fortiden) | ville, skulle | ville, skulle
@@ -499,11 +499,11 @@ LWC('da', 5, `
 ! Han spurgte, om jeg ikke ville med.
 = Hun spurgte, om jeg [ikke ville] have kage. Selvfølgelig ville jeg.
 = Jeg ved ikke, hvorfor han [altid synger] i elevatoren.
-- Han spurgte, om jeg [ikke kunne|kunne ikke|ikke kunne ikke] passe hans slange.
+- Han spurgte, om jeg [ikke kunne|kunne ikke|ikke kunne ikke] passe hans hund.
 - Vi forstår ikke, hvorfor katten [altid sover|sover altid|altid sov sover] i vasken.
 - Ved du, om hun [stadig bor|bor stadig|stadig boede bor] med sin ekskæreste?
 - Jeg undrer mig over, hvorfor du [aldrig ringer|ringer aldrig|aldrig ringede ringer].
-- De spurgte, om vi [ikke havde|havde ikke|ikke havde havde] set deres papegøje.
+- De spurgte, om vi [ikke havde|havde ikke|ikke havde havde] set deres kat.
 - Hun vil vide, hvorfor jeg [ikke spiste|spiste ikke|ikke spiste spiste] hendes suppe.
 @ Jeg siger, at jeg ikke gider | at jeg ikke gider | at jeg ikke gider
 ! Jeg gider ikke i dag.

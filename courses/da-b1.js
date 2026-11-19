@@ -48,7 +48,7 @@ LWC('da', 3, `
 - Jeg [synes|syner|syne], at pizza er en grøntsag.
 - Det [lykkes|lykker|lykke] aldrig for mig at folde et lagen.
 - De [skændes|skænder|skænde] om fjernbetjeningen hver aften.
-- [Findes|Finder|Finde] der spøgelser? Spørg min farmor.
+- [Findes|Finder|Finde] der en bager her i nærheden?
 - Hvad [synes|syner|syne] du om min nye hat?
 ~ Vi ses | i morgen.
 ~ Vi mødes | ved kirken.
@@ -219,7 +219,7 @@ LWC('da', 3, `
 = Kvinden, hvis [kat] har sin egen Instagram, bor her.
 - Det er barnet, [hvis|hvem|hvems] mor er astronaut.
 - Jeg kender en mand, [hvis|hvem|hvad] bil kører på ost.
-- Det er naboen, [hvis|hvems|hvad] papegøje bander.
+- Det er naboen, [hvis|hvems|hvad] hund gør hele natten.
 - Hvor er pigen, [hvis|hvem|hvems] telefon ringer i køleskabet?
 - Han er forfatteren, [hvis|hvem|hvad] bøger ingen læser.
 - Det er firmaet, [hvis|hvem|hvems] chef er en hund.
@@ -229,7 +229,7 @@ LWC('da', 3, `
 = Det er restauranten, hvor [vi] mødtes. Den er lukket nu.
 - Det var på stranden, [hvor|hvem|hvad] jeg mistede mine badebukser.
 - Kender du et sted, [hvor|hvem|hvad] man kan sove i fred?
-- Huset, [hvor|hvem|hvad] vi bor, har et spøgelse.
+- Huset, [hvor|hvem|hvad] vi bor, har en stor have.
 - Det var den dag, [hvor|hvem|hvad] katten lærte at åbne døren.
 - Det er skolen, [hvor|hvem|hvad] min mor var lærer. Desværre for mig.
 - Vi fandt en café, [hvor|hvem|hvad] hunde må komme ind.
@@ -256,7 +256,7 @@ LWC('da', 3, `
 @ hvilken, hvilket, hvilke | hvilken, hvilket, hvilke | hvilken, hvilket, hvilke
 ! Hvilken vil du have?
 = [Hvilken] kage vil du have? Alle?
-= Hvilket [hus] bor du i? Det gule eller det med spøgelset?
+= Hvilket [hus] bor du i? Det gule eller det røde?
 - [Hvilke|Hvilken|Hvilket] bukser skal jeg tage på? Begge er grimme.
 - [Hvilket|Hvilken|Hvilke] tog skal vi tage? Det, der kører.
 - [Hvilken|Hvilket|Hvilke] dag er det i dag? Mandag. Desværre.
@@ -424,7 +424,7 @@ LWC('da', 3, `
 - [Rejsen|Rejsningen|Rejsehed] til Paris var lang. Vi kørte forkert.
 - [Begyndelsen|Begyndningen|Begyndhed] af filmen var god. Så sov jeg.
 - Hvad var [spørgsmålet|spørgningen|spørghed]? Jeg sov.
-- [Salget|Sælgningen|Salghed] af huset gik godt. Spøgelset blev.
+- [Salget|Sælgningen|Salghed] af huset gik godt.
 # Feelings and prepositions | Érzések és elöljárók | Følelser og forholdsord
 @ interesseret i, god til | interesseret i, god til | interesseret i, god til
 ! Er du interesseret i at komme med?

@@ -15,7 +15,7 @@ LWC('en', 6, `
 = I [was wondering] if you could stop playing the trumpet at 3 a.m.
 = I [wanted] to ask you something. Is that my jumper?
 - I was [hoping|hope|hoped] you might lend me your car. And your house.
-- We [were wondering|are wonder|wondered if] whether you'd feed our snake.
+- We [were wondering|are wonder|wondered if] whether you'd water our plants.
 - I [wondered|wonder did|wondering] if you had a moment. Or a sandwich.
 - Did you [want|wanted|wanting] anything else, sir? Apart from the whole cake?
 - I was [thinking|think|thought] we could skip the gym and get pizza.
@@ -48,7 +48,7 @@ LWC('en', 6, `
 - The cheese festival [opens|will opening|is open] next Friday.
 - Let me know when you've [decided|decide|will decide] which cat to adopt.
 - My flight [departs|is depart|will departing] at 5 a.m. Why do I do this?
-- Don't open your eyes until the clown [has gone|will go|goes will].
+- Don't open your eyes until I [have gone|will go|go will].
 - As soon as the pizza [arrives|will arrive|arrive], nobody talks.
 # Bold inversions | Merész inverziók | Dristige inversioner
 @ So great was ... that | So great was ... that | So great was ... that
@@ -76,7 +76,7 @@ LWC('en', 6, `
 = He didn't call, [nor did] he send the pizza.
 = I can't dance, [nor can] my dad. He tries anyway.
 - She doesn't cook, [nor does she|nor she does|nor she] wash up.
-- The dog hadn't been invited, [nor had|nor have|nor] the clown.
+- My ex hadn't been invited, [nor had|nor have|nor] his brother.
 - I won't apologise, [nor will I|nor I will|nor I'll] give back your chips.
 - He didn't understand the joke, [neither did|neither he did|neither] he laugh.
 - We weren't told about the party, [nor were|nor was|nor] we given cake.
@@ -88,7 +88,7 @@ LWC('en', 6, `
 - [Were it not|Was it not|If it were not to] for my mum, I'd eat cake for dinner.
 - [Had it not been|Hadn't it been|If it had not be] for the cat, I'd have slept.
 - Were it [not for|for not|not of] the price, I'd buy a castle.
-- Had it not been [for|of|by] the goat, the wedding would have been normal.
+- Had it not been [for|of|by] the rain, the wedding would have been perfect.
 - [Were it not|Weren't it|If were it not] for the neighbours, this flat would be perfect.
 - Had [it not been|it been not|not it been] for my alarm, I'd still be in bed.
 @ Only by, Only in, Only with | Only by, Only in, Only with | Only by, Only in, Only with
@@ -106,7 +106,7 @@ LWC('en', 6, `
 ! It's odd that she should say that.
 = It's strange that the cat [should] bring me a sock every morning.
 = I'm surprised that you [should] think pineapple belongs on pizza.
-- It's odd that the parrot [should|would|shall] know my password.
+- It's odd that she [should|would|shall] know my password.
 - It's a pity that the cake [should|shall|must] look so much better than it tastes.
 - It's only natural that you [should|shall|must to] cry at the end of the film.
 - I find it shocking that anyone [should|shall|would to] put ketchup on pasta.
@@ -137,7 +137,7 @@ LWC('en', 6, `
 = As [might have been] expected, the dog ate the birthday cake.
 = It [should have been] obvious. The cake was on the floor.
 - As [might be|might|may being] expected, the free pizza disappeared fast.
-- He [could have been|could been|could have be] eaten by the goat.
+- He [could have been|could been|could have be] killed. Thank God he wore a helmet.
 - That [must have been|must been|must have be] the worst first date ever.
 - As [was|were|is being] predicted, the diet failed.
 - The dishes [ought to have been|ought have been|ought to been] done last week.
@@ -148,14 +148,14 @@ LWC('en', 6, `
 = We [ought to have] checked the oven before we went on holiday.
 - You ought [to see|see|seeing] a doctor about that singing.
 - She [ought not to|ought to not|oughtn't] have told grandma about the tattoo.
-- They ought [to have|have|to has] known the goat would eat the cake.
+- They ought [to have|have|to has] known the shop would be closed.
 - [Ought|Should to|Must to] we to wake the dog?
 - He ought to [be told|told|tell be] about the spinach in his teeth.
 - You [ought to have|ought have|ought to] warned me about your mother.
 # Complex relative structures | Összetett vonatkozó szerkezetek | Komplekse relativsætninger
 @ Preposition + whom, which | Elöljárószó + whom, which | Præposition + whom, which
 ! To whom it may concern.
-= The man [to whom] I sold my car was a clown.
+= The man [to whom] I sold my car was my old teacher.
 = The box [in which] the cat sleeps cost two euros. The bed cost two hundred.
 - The friend [with whom|with who|whom with] I went camping still owes me a tent.
 - The company [for which|which for|for that] my uncle works sells invisible paint.
@@ -168,7 +168,7 @@ LWC('en', 6, `
 = I have three cats, [all of whom] hate me.
 = He gave me ten books, [none of which] I've opened.
 - She has four sons, [all of whom|all of them|all of who] are called Kevin.
-- We watched six films, [most of which|most of them|most of what] had sharks in them.
+- We watched six films, [most of which|most of them|most of what] were terrible.
 - I met a lot of people at the party, [some of whom|some of them|some of who] were dogs.
 - He made two cakes, [neither of which|neither of them|neither of what] was edible.
 - They have four cars, [one of which|one of them|one of what] actually works.
@@ -177,7 +177,7 @@ LWC('en', 6, `
 ! What with work and the kids, I'm exhausted.
 = [What with] work and the cat, I haven't slept since 2019.
 = [For all] his money, he still steals my chips.
-- What [with|for|by] the rain and the goat, the wedding was a disaster.
+- What [with|for|by] the rain and the traffic, we were two hours late.
 - For all [her|she|hers] cooking classes, she still burns water.
 - [What with|What for|With what] one thing and another, I forgot my own birthday.
 - [For all|For every|With all of] its faults, I love my ugly car.
@@ -220,7 +220,7 @@ LWC('en', 6, `
 = He's a terrible singer. [Be that as it may], he's my dad.
 - I'll be at your wedding, [come what may|come what might|what may come]. With snacks.
 - The cake is burnt. [Be that as it may|Be it as it may be|That be as it may], we're eating it.
-- [Suffice it to say|Suffice to say it|Suffices it to say] that the goat ate the bride's flowers.
+- [Suffice it to say|Suffice to say it|Suffices it to say] that we won't go back there.
 - [Far be it from me|Far it be from me|Be it far from me] to criticise, but your soup is moving.
 - [So be it|Be so it|It be so]. The cat sleeps in our bed.
 - [If need be|If needs is|If need is], we'll eat the cake with our hands.
@@ -232,7 +232,7 @@ LWC('en', 6, `
 - [Whether|If|Either] the cat agrees or not, we're moving.
 - Every pizza, [be it|is it|it be] big or small, disappears in minutes.
 - I'll finish this cake, [whether or not|whether not or|if or not] it kills me.
-- Any pet, [be it|be|being it] a snake or a hamster, must stay outside.
+- Any pet, [be it|be|being it] a dog or a cat, must stay outside.
 - [Whether|If|Either] by bus or by camel, we'll be late.
 @ however much, no matter how | however much, no matter how | however much, no matter how
 ! No matter how hard I try, I can't do it.
@@ -263,7 +263,7 @@ LWC('en', 6, `
 - The stairs [are|is|was] my gym.
 - His clothes [were|was|is] covered in cat hair.
 - I need [a pair of|a|an] jeans that fit after pizza.
-- The police [have|has|is] arrested a goat.
+- The police [have|has|is] arrested two men.
 - Your earnings [are|is|was] lower than your cat's.
 @ Collective nouns: the team is or are | Gyűjtőnevek | Kollektive navneord
 ! The team is playing well this season.
@@ -287,10 +287,10 @@ LWC('en', 6, `
 - [The evidence|The evidences|An evidence] was clear: chocolate on the dog's face.
 @ Adjective order | Melléknevek sorrendje | Tillægsordenes rækkefølge
 ! She's got beautiful long black hair.
-= a [lovely old] goat
+= a [lovely old] house
 = a [small pink plastic] crown
 - She wore [a beautiful red silk|a red beautiful silk|a silk red beautiful] dress to the supermarket.
-- They live in [a big old stone|a stone old big|an old stone big] house with a ghost.
+- They live in [a big old stone|a stone old big|an old stone big] house by the lake.
 - He has [a little grey Persian|a Persian grey little|a grey Persian little] cat called Darth.
 - I want [a nice new wooden|a wooden new nice|a new wooden nice] table. The cat ate the old one.
 - He sat on [an ugly old plastic|a plastic old ugly|an old plastic ugly] chair like a king.
@@ -333,7 +333,7 @@ LWC('en', 6, `
 - I've been eating a lot of cake [lately|late|latest].
 - He arrived [late|lately|later on lately] to his own wedding.
 - I could [hardly|hard|hardy] breathe in those jeans.
-- The prize was [justly|just|justify] given to the goat.
+- The prize was [justly|just|justify] given to the youngest team.
 - My grandma's cake was [highly|high|highs] praised by the dog.
 - He's [nearly|near|nearby] finished his tenth pizza.
 @ affect or effect, rise or raise | affect vagy effect, rise vagy raise | affect eller effect, rise eller raise
@@ -362,7 +362,7 @@ LWC('en', 6, `
 = My grandma insisted [on] paying in coins.
 = My cat is capable [of] anything.
 - They accused the dog [of|for|with] eating the cake.
-- I object [to|against|for] being woken up by a parrot.
+- I object [to|against|for] being woken up at 6 a.m. on a Sunday.
 - She succeeded [in|on|at] opening the jar. After an hour.
 - He's not aware [of|about|for] the spinach in his teeth.
 - We congratulated her [on|for|of] surviving the wedding.
@@ -380,13 +380,13 @@ LWC('en', 6, `
 @ make, do, take, have | make, do, take, have | make, do, take, have
 ! Could you do me a favour?
 = [Make] a decision. Pizza or pizza?
-= [Do] me a favour and feed the snake.
+= [Do] me a favour and close the window.
 - Could you [do|make|take] me a favour and hide this cake?
 - We need to [make|do|have] an effort with your mother.
 - She [took|made|did] a deep breath and ate the chilli.
 - Let's [have|make|do] a look in the fridge.
 - He [made|did|took] a mistake. He sat on the cake.
-- I'll [take|make|do] care of the goat.
+- I'll [take|make|do] care of the kids tonight.
 @ Strong collocations | Erős kollokációk | Stærke kollokationer
 ! I'm in a hurry.
 = [Heavy] rain at my wedding
@@ -404,7 +404,7 @@ LWC('en', 6, `
 - Don't [beat|hit|strike] around the bush. Did you eat my cake?
 - I'm [feeling under|feeling below|feeling on] the weather. Too much cake. (a bit ill)
 - That song [rings|sounds|calls] a bell. Was it at your wedding? (I remember it)
-- The parrot [let|put|gave] the cat out of the bag. (told the secret)
+- My little brother [let|put|gave] the cat out of the bag. (told the secret)
 - We're [in|on|at] the same boat. We both forgot her birthday. (same situation)
 - You've [hit|beat|struck] the nail on the head. It's the cat's fault. (exactly right)
 # Cohesion | Szövegkohézió | Sammenhæng
@@ -446,14 +446,14 @@ LWC('en', 6, `
 - "Is the cat plotting something?" "I believe [so|it|that so]."
 - "Is the soup supposed to be blue?" "I trust [not|no|don't]."
 - I prefer the ugly [one|ones|it] to the pretty one.
-- "Did the goat eat the flowers?" "Apparently [so|it|that]."
+- "Did they break up?" "Apparently [so|it|that]."
 - "Will grandma bring her famous soup?" "I expect [so|it|that so]."
 @ Linking across sentences | Mondatokon átívelő kapcsolás | Forbindelser på tværs af sætninger
 ! In other words, no.
 = My flatmate is messy. [What's more], he eats my food.
 = The cake is burnt. [Even so], I'll eat it.
-- The hotel had no wifi. [On top of that|On top of|Top of that], there was a goat in the lift.
-- It was raining frogs. [Even so|Even|So even], we went out.
+- The hotel had no wifi. [On top of that|On top of|Top of that], the lift was broken.
+- It was pouring with rain. [Even so|Even|So even], we went out.
 - The cat is clever. [That said|That saying|Said that], he fell in the toilet.
 - He's exhausted. [All the same|All same|Same all], he keeps dancing.
 - The shoes are ugly. [Then again|Again then|Then], they're very cheap.
@@ -467,7 +467,7 @@ LWC('en', 6, `
 - [Whilst|Whilest|While's] some like pineapple on pizza, others are correct.
 - [Nevertheless|Never the less|Nevertheless of], the party will continue.
 - [Consequently|Consequent|Consequence], the cake was banned.
-- [Accordingly|According|Accordance], the goat was removed from the wedding.
+- [Accordingly|According|Accordance], the meeting was moved to Monday.
 - [Notwithstanding|Not withstanding|Notwithstand] the rain, the picnic went ahead.
 @ Hedging: would appear, tend to | Óvatos fogalmazás | Forbehold: would appear, tend to
 ! It would appear that we're lost.
@@ -475,7 +475,7 @@ LWC('en', 6, `
 = Cats [tend to] sit on your keyboard.
 - It [would seem|would seems|seem would] that someone has eaten the cake.
 - The results [suggest|suggests|suggesting] that coffee makes us happy.
-- There [appears|appear|appearing] to be a goat in the office.
+- There [appears|appear|appearing] to be a mistake on the bill.
 - Dads [tend to|tend|tends to] tell terrible jokes.
 - This [may indicate|may indicates|may to indicate] that the dog is the thief.
 - It is [likely|like|liking] that pizza will be ordered.
@@ -488,7 +488,7 @@ LWC('en', 6, `
 - It [could be argued|could argued|could be argue] that pizza is a vegetable.
 - It [should be noted|should noted|should be note] that the cat bites.
 - It [is often said|is often say|often is said] that money can't buy happiness. It buys cake.
-- It [must be stressed|must stressed|must be stress] that the goat is not a guest.
+- It [must be stressed|must stressed|must be stress] that this is only a test.
 @ Nominal style: the arrival of | Névszói stílus | Nominal stil
 ! Upon arrival, please call me.
 = On [his arrival], the dog was arrested.
@@ -504,7 +504,7 @@ LWC('en', 6, `
 = My brother is [not unlike] a bear in the morning.
 = He's [not the most] patient man. He shouts at toasters.
 - The soup was [not bad|not good bad|no bad] at all. For blue soup.
-- The goat is [not unattractive|not attractive un|unnot attractive].
+- The offer is [not unattractive|not attractive un|unnot attractive].
 - The wedding was [not without|not with|without not] its problems.
 - He's [not exactly|not exact|exactly not] a genius. He microwaved a fork.
 - The test was [not too|not to|too not] difficult. I only cried twice.

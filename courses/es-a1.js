@@ -38,7 +38,7 @@ LWC('es', 1, `
 ~ Estoy | en el lugar equivocado.
 @ Saying no: no + verb | Tagadás: no + ige | Nægtelse: no + verbum
 ! No entiendo.
-= Yo [no] soy un robot.
+= Yo [no] soy de aquí.
 = Mi perro [no] habla inglés.
 - Nosotros [no somos|somos no|no son] perezosos. Estamos descansando.
 - Él [no baila|baila no|no bailo] bien, pero baila mucho.
@@ -55,7 +55,7 @@ LWC('es', 1, `
 - Tú y yo llegamos tarde. [Nosotros|Vosotros|Ellos] tenemos que correr.
 - Mi madre es profesora. [Ella|Él|Usted] lo sabe todo.
 - Juan y Pedro son primos. [Ellos|Ellas|Nosotros] roban galletas.
-- Señor, ¿[usted|tú|vosotros] es el payaso de la fiesta?
+- Señor, ¿[usted|tú|vosotros] es el dueño del restaurante?
 # People and things | Emberek és tárgyak | Mennesker og ting
 @ el, la, los, las | Határozott névelő: el, la, los, las | Bestemt artikel: el, la, los, las
 ! ¿Dónde está el baño?
@@ -72,9 +72,9 @@ LWC('es', 1, `
 = Quiero [un] dragón.
 = Es [una] idea terrible. ¡Me encanta!
 - Quiero [una|un|unos] pizza grande. Muy grande.
-- Hay [un|una|unas] elefante en la cocina.
+- Hay [un|una|unas] problema con mi habitación.
 - Necesito [unos|unas|un] calcetines limpios. Urgente.
-- Mi tía tiene [una|un|unos] serpiente en casa.
+- Mi tía tiene [una|un|unos] casa en la playa.
 - Vivo en [un|una|unos] piso con cuatro gatos.
 - Mi abuelo lleva [unas|unos|una] gafas de sol por la noche.
 @ Plurals: -s and -es | Többes szám: -s, -es | Flertal: -s og -es
@@ -101,7 +101,7 @@ LWC('es', 1, `
 ! ¿Hay wifi aquí?
 = [Hay] un gato en mi teclado.
 = ¿[Hay] pizza?
-- [Hay|Está|Es] una cabra en el jardín.
+- [Hay|Está|Es] una farmacia en esta calle.
 - En mi casa [hay|están|son] veinte gatos.
 - No [hay|está|es] café. Es el fin del mundo.
 - ¿Qué [hay|está|es] en la caja? ¿Se mueve?
@@ -114,7 +114,7 @@ LWC('es', 1, `
 = Mi gato [tiene] más amigos que yo.
 - Nosotros [tenemos|tienen|tenéis] un vecino muy ruidoso.
 - ¿Tú [tienes|tiene|tengo] un dragón?
-- Ellos [tienen|tenemos|tiene] una serpiente que se llama Kevin.
+- Ellos [tienen|tenemos|tiene] un perro que se llama Kevin.
 - Mi abuela [tiene|tienes|tengo] noventa años y una moto.
 - Yo no [tengo|tiene|tienes] tiempo. Ni ganas.
 - ¿Vosotros [tenéis|tienen|tenemos] chocolate?
@@ -137,7 +137,7 @@ LWC('es', 1, `
 - A mi gato le [gusta|gustan|gusto] mi teclado.
 - No me [gustan|gusta|gustas] los lunes.
 - A nosotros nos [gusta|gustan|gustamos] la pizza con piña.
-- ¿Le [gustan|gusta|gustas] los payasos?
+- ¿Le [gustan|gusta|gustas] los tacos?
 ~ Me gusta | el chocolate.
 ~ Me gustan | los perros.
 ~ Me gusta | dormir.
@@ -157,7 +157,7 @@ LWC('es', 1, `
 = [Esa] nube de allí parece un pato.
 - [Esta|Este|Estos] pizza es mía. Toda.
 - [Estos|Estas|Este] calcetines no huelen. Toma, mira.
-- ¿Quién es [ese|esa|esos] payaso?
+- ¿Quién es [ese|esa|esos] chico?
 - [Aquella|Aquel|Aquellos] vaca nos mira raro.
 - Me gustan [estas|estos|esta] galletas. ¿Hay más?
 - [Esos|Esas|Ese] niños están pintando al perro.
@@ -181,7 +181,7 @@ LWC('es', 1, `
 - Tú [lees|lee|leo] mis mensajes. ¡Lo sé!
 - Nosotros [comemos|comen|comimos] pizza los lunes.
 - Yo [abro|abre|abres] la nevera cada cinco minutos.
-- ¿Dónde [vive|vives|vivo] tu serpiente?
+- ¿Dónde [vive|vives|vivo] tu hermano?
 @ e → ie: quiero, pienso | Tőhangváltás e → ie | Vokalskift e → ie
 ! Quiero un café.
 = Yo [quiero] un perro y una vida tranquila.
@@ -219,7 +219,7 @@ LWC('es', 1, `
 = Mi abuelo [se] ducha con música a todo volumen.
 - Tú [te|se|me] llamas Kevin, ¿verdad?
 - Nosotros [nos|os|se] acostamos a las cuatro. ¡Malo!
-- Mis hermanos [se|nos|te] visten como payasos.
+- Mis hermanos [se|nos|te] levantan muy tarde.
 - Yo [me|te|se] lavo los dientes. Los cuatro.
 - ¿A qué hora [te|se|me] despiertas? ¿A mediodía?
 - Mi perro [se|me|te] sienta en mi silla.
@@ -326,7 +326,7 @@ LWC('es', 1, `
 - ¿[Dónde|Qué|Quién] están mis llaves? ¿En la nevera?
 - ¿[Quién|Qué|Dónde] es ese hombre en mi cocina?
 - ¿[Qué|Dónde|Quién] hora es? Hora de pizza.
-- ¿[Quiénes|Quién|Qué] son esos payasos?
+- ¿[Quiénes|Quién|Qué] son esas chicas?
 - ¿De [dónde|qué|quién] eres? ¿De la luna?
 @ cuándo, por qué, cómo | cuándo, por qué, cómo | cuándo, por qué, cómo
 ! ¿Cómo estás?
@@ -347,7 +347,7 @@ LWC('es', 1, `
 - ¿[Cuántos|Cuántas|Cuánto] años tiene el pan? Está verde.
 - ¿[Cuánta|Cuánto|Cuántas] azúcar tiene este pastel?
 - ¿[Cuántas|Cuántos|Cuánta] horas duerme tu gato?
-- ¿[Cuánto|Cuántos|Cuánta] cuestan dos dragones?
+- ¿[Cuánto|Cuántos|Cuánta] cuestan dos entradas?
 @ cuál or qué? | cuál vagy qué? | cuál eller qué?
 ! ¿Cuál es tu número?
 = ¿[Cuál] es tu pizza favorita?
@@ -477,11 +477,11 @@ LWC('es', 1, `
 @ me gustaría | me gustaría | me gustaría
 ! Me gustaría una mesa para dos.
 = Me [gustaría] vivir en la luna.
-= ¿Te gustaría [conocer] a mi serpiente?
+= ¿Te gustaría [conocer] a mis padres?
 - Me gustaría [un|una|unos] helado del tamaño de mi cabeza.
 - ¿Te gustaría [cenar|cenas|cenando] con mi abuela?
 - A mi perro le [gustaría|gustarían|gusta ría] ser un gato.
-- Nos gustaría [visitar|visitamos|visitando] a los pingüinos.
+- Nos gustaría [visitar|visitamos|visitando] el museo.
 - ¿Qué te gustaría [hacer|haces|haciendo]? Nada.
 - Me gustaría [aprender|aprendo|aprendiendo] a volar.
 ~ ¿Te gustaría un café? | Diez, gracias.
@@ -510,7 +510,7 @@ LWC('es', 1, `
 @ Imperative: ¡Abre la puerta! | Felszólítás: ¡Abre! | Bydeform: ¡Abre!
 ! ¡Para, que molesta!
 = [Abre] la puerta. ¡El gato quiere salir!
-= ¡[Mira]! ¡Un pingüino!
+= ¡[Mira]! ¡Está nevando!
 - [Cierra|Cerra|Cierras] la puerta. ¡El gato quiere entrar!
 - [Come|Comes|Comer] tus verduras. Y las mías.
 - [Escucha|Escuchas|Escuchar] esto. Es mi gato cantando.
@@ -525,6 +525,6 @@ LWC('es', 1, `
 - ¡Mucho [gusto|gustar|gusta]! ¿Tú eres el dragón?
 - [Encantado|Encantar|Encanto] de conocerte, Kevin.
 - ¡Hasta [luego|después luego|lugar], cocodrilo!
-- ¿Qué [tal|tan|tales]? ¿Y tu serpiente?
+- ¿Qué [tal|tan|tales]? ¿Y tu familia?
 - [Buenas|Buenos|Bueno] tardes. ¿Hay pizza?
 `);
