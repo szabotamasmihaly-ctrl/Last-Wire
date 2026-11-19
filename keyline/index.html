@@ -654,17 +654,24 @@ var AI={busy:{},since:{},off:0,ok:false};
 try{ AI.code=localStorage.getItem('kl-bot')||''; }catch(e){ AI.code=''; }
 function botTopic(){ return RELAY+'keyline-bot-'+AI.code.toLowerCase(); }
 /* send one message to the robot computer and wait for its answer */
+/* one open connection to the robot computer's channel (polling would hit the relay's rate limit) */
+var BotLink={es:null,wait:{}};
+function botClose(){ if(BotLink.es){ try{ BotLink.es.close(); }catch(e){} } BotLink.es=null; }
+function botListen(){
+  if(BotLink.es || !AI.code || typeof EventSource!=='function') return;
+  try{ BotLink.es=new EventSource(botTopic()+'/sse?since='+(Math.floor(Date.now()/1000)-10)); }catch(e){ BotLink.es=null; return; }
+  BotLink.es.onmessage=function(ev){
+    try{ var e=JSON.parse(JSON.parse(ev.data).message), id=e && (e.a||e.pong), f=id && BotLink.wait[id]; if(f) f(e); }catch(x){}
+  };
+}
+/* send one message to the robot computer and wait for its answer */
 function botAsk(msg, wait, cb){
-  var id=uid(), t0=Math.floor(Date.now()/1000)-2, over=false, iv;
-  var end=function(r){ if(over) return; over=true; clearInterval(iv); clearTimeout(to); cb(r); };
+  var id=uid(), over=false;
+  var end=function(r){ if(over) return; over=true; delete BotLink.wait[id]; clearTimeout(to); cb(r); };
   var to=setTimeout(function(){ end(null); },wait);
+  BotLink.wait[id]=end; botListen();
   if(msg.ping) msg.ping=id; else msg.q=id;
   fetch(botTopic(),{method:'POST',body:JSON.stringify(msg)}).catch(function(){ end(null); });
-  iv=setInterval(function(){
-    fetch(botTopic()+'/json?poll=1&since='+t0).then(function(r){ return r.text(); }).then(function(x){
-      x.split('\n').forEach(function(l){ if(!l) return; try{ var e=JSON.parse(JSON.parse(l).message); if(e && (e.a===id || e.pong===id)) end(e); }catch(y){} });
-    }).catch(function(){});
-  },1500);
 }
 function botPing(cb){
   if(!AI.code || typeof fetch!=='function'){ AI.ok=false; if(cb) cb(); return; }
@@ -1107,10 +1114,10 @@ function botSheet(){
     v.querySelector('#bcon').onclick=function(){
       var x=v.querySelector('#bc').value.toUpperCase().replace(/[^A-Z0-9]/g,'');
       if(x.length!==8){ beep('no'); return; }
-      AI.code=x; try{ localStorage.setItem('kl-bot',x); }catch(e){}
+      botClose(); AI.code=x; try{ localStorage.setItem('kl-bot',x); }catch(e){}
       draw(true); botPing(function(){ beep(AI.ok?'ok':'no'); draw(false); render(); });
     };
-    var off=v.querySelector('#boff'); if(off) off.onclick=function(){ AI.code=''; AI.ok=false; try{ localStorage.removeItem('kl-bot'); }catch(e){} v.remove(); render(); };
+    var off=v.querySelector('#boff'); if(off) off.onclick=function(){ botClose(); AI.code=''; AI.ok=false; try{ localStorage.removeItem('kl-bot'); }catch(e){} v.remove(); render(); };
   }
   v.onclick=function(e){ if(e.target===v) v.remove(); };
   draw(false); document.body.appendChild(v);
