@@ -3875,7 +3875,7 @@ function genFixP(r, items) {
   items.forEach(function (it) {
     if (out.length >= 2) return;
     var right = it.opts[0], wrongs = it.opts.slice(1).filter(function (o) { return o !== '—'; });
-    if (!wrongs.length) return;
+    if (!wrongs.length || right === '—') return;
     var wrong = r.pick(wrongs), sp = lwSplitGap(it.pre, wrong, it.post);
     if (!it.pre && sp.toks.length) sp.toks[0] = sp.toks[0].charAt(0).toUpperCase() + sp.toks[0].slice(1);
     var opts = it.opts.slice(0, 3), perm = r.shuffle(opts.map(function (_, k) { return k; }));
@@ -4240,7 +4240,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 28;
+  var BUILD = 29;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6142,8 +6142,9 @@ var ES_PHRASES = [
   };
 
   /* ---- hear it: one word is missing on the bomb; the helper hears the whole sentence and picks its colour from three words ---- */
+  /* 🎧 hear it: the helper hears the sentence, the bomb types the missing words (the gap module already has the choosing) */
   UI.fix = {
-    init: function () { return { r: 0, fb: false }; },
+    init: function () { return { r: 0, value: '', fb: false }; },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r], hole = false;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
@@ -6151,16 +6152,17 @@ var ES_PHRASES = [
         if (rd.bad.indexOf(k) >= 0) { if (hole) return ''; hole = true; return '<span class="hole" aria-label="___"></span>'; }
         return esc(w);
       }).filter(Boolean).join(' ') + '</p>';
-      return h + cBtns(i, rd.words.length) + (st.fb ? fbBad('p.bad') : '');
+      return h + '<div class="row">' + field(i, st.value || '', '✍️ ' + lsWords(rd.right).map(function () { return '____'; }).join(' '), { enter: 'send' }) + '</div>' +
+        '<div class="row">' + B(i, 'send', null, t('ck.check'), 'go wide') + '</div>' + (st.fb ? fbBad('p.bad') : '');
     },
     on: function (k, v, d, st) {
-      var rd = d.rounds[st.r]; v = +v;
-      if (k !== 'c' || !(v >= 0 && v < rd.words.length)) return;
-      if (v !== rd.ans) { st.fb = true; return 'strike'; }
-      st.r++; st.fb = false;
+      var rd = d.rounds[st.r];
+      if (k !== 'send') return;
+      var got = lsWords(st.value); if (!got.length) return;
+      if (!nearWords(got, lsWords(rd.right))) { st.fb = true; st.value = ''; return 'strike'; }
+      st.r++; st.value = ''; st.fb = false;
       return st.r >= d.rounds.length ? 'solved' : 'next';
     },
-    key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= d.rounds[st.r].words.length) { modAct(i, 'c', n - 1); return true; } },
     keys: function () { return ''; },
     done: function (d) { return learn(UI.fix.recap(d)); },
     recap: function (d) { return d.rounds.map(function (x) { return { tx: x.full }; }); },
@@ -6170,7 +6172,7 @@ var ES_PHRASES = [
       return card(cnt('n.sentence', p + 1, d.rounds.length), '',
         (has ? '<div class="lhelp"><span class="ear" aria-hidden="true">🎧</span>' + HB(i, 'play', 's' + p, SPK + t('hear'), 'go') + HB(i, 'slow', 's' + p, t('hear.slow')) + '</div>' : '') +
         (shown ? '<p class="card-big ls" lang="' + tl() + '">' + TW(rd.full, rd.full) + '</p>' : '') +
-        cWords(rd.words) + stepNav(i, p, d.rounds.length, null, null, true));
+        stepNav(i, p, d.rounds.length, null, null, true));
     },
     onHelp: function (k, v, d, ms, i) {
       if (stepMove(k, ms, d.rounds.length)) { Voice.stop(); renderHelpBody(); return; }

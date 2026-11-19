@@ -4,7 +4,7 @@ LWC('en', 6, `
 = I knew the cat [would] hate the new sofa. He loves it.
 = The boy who ate glue at school was [to become] prime minister.
 - I had no idea the meeting [would|will|is going] last four hours.
-- The little girl who bit me was [to become|becoming|become] my boss.
+- The quiet intern was [to become|becoming|become] the boss ten years later.
 - I thought the diet [was going to|is going to|will] be easy. It lasted until lunch.
 - Little did he know that he [would|will|shall] never see his sandwich again.
 - We were [about to|about|to about] kiss when her dad opened the door.
