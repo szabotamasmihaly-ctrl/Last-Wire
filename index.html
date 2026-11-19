@@ -903,6 +903,9 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .bubble::after{content:"";position:absolute;left:50%;top:100%;width:12px;height:12px;background:#fff;border-right:2px solid #e5e5e5;border-bottom:2px solid #e5e5e5;transform:translate(-50%,-6px) rotate(45deg)}
 .nlabel{min-height:18px;margin-top:10px}
 .nst{color:#E0A100;font-size:14px;letter-spacing:1px}
+.ntake{display:block;max-width:170px;margin-top:4px;font-size:12px;font-weight:700;line-height:1.25;color:var(--ink);text-align:center}
+.pbadge{display:inline-flex;align-items:center;gap:10px;margin:14px auto 0;padding:10px 16px;border-radius:16px;background:#FFF4CC;color:#3a2a00;font-weight:800;font-size:18px;animation:unlock .9s cubic-bezier(.2,1.5,.4,1) both}
+.pbadge span{font-size:26px}
 .node-w.fresh .node{animation:unlock .9s cubic-bezier(.2,1.5,.4,1) both}
 .lvnext{display:flex;justify-content:center;padding:20px 0}
 .ptest{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:0 0 6px}
@@ -3782,6 +3785,7 @@ function LWC(lang, lv, text) {
     }
     if (!st) return;
     if (c === '=') st.ex.push(body);
+    else if (c === '!') st.take = body;
     else if (c === '-') { var it = lwItem(body); if (it) st.items.push(it); }
     else if (c === '~') { var p = body.split('|'); if (p.length === 2) st.pairs.push([lwTrim(p[0]), lwTrim(p[1])]); }
   });
@@ -3799,6 +3803,16 @@ function LWG(lang, text) {
 function wordKey(w) { return String(w).toLowerCase().replace(/[’‘]/g, "'").replace(/^[¿¡"«“„(\[']+|[.,!?;:"»”)\]…]+$/g, ''); }
 function glossFor(lang, ui, w) { var G = GLOSS[lang], e = G && G[wordKey(w)]; return e && ui !== lang ? (e[ui] || '') : ''; }
 
+/* the takeaway of a station: its "!" line, else its first full example sentence. Won stations show it as a badge. */
+function takeOf(st) {
+  if (!st) return '';
+  if (st.take) return st.take;
+  var plain = function (x) { return lwTrim(String(x).replace(/\[([^\]|]*)[^\]]*\]/g, '$1').replace(/\s*\([^)]*\)\s*$/, '')); };
+  var ok = function (x) { return /^[A-ZÆØÅÁÉÍÓÚÑ¿¡"]/.test(x) && /[.!?]$/.test(x) && lwWords(x).length >= 3; };
+  for (var k = 0; k < st.ex.length; k++) { var x = plain(st.ex[k]); if (ok(x)) return x; }
+  for (var j = 0; j < st.items.length; j++) if (ok(st.items[j].full)) return st.items[j].full;
+  return st.items[0] ? st.items[0].full : '';
+}
 function stationOf(lang, lv, n) { var C = COURSE[lang], L = C && C[lv - 1]; return (L && L.list[n - 1]) || null; }
 function pathCode(lang, lv, n) { return 'P:' + lang + ':' + lv + ':' + n; }
 function parsePathCode(code) {
@@ -3919,7 +3933,9 @@ function makeStationSpec(code) {
   if (!listenI.length) listenI = [gapI[0]];
   var fixI = rest.filter(function (k) { return listenI.indexOf(k) < 0; }).concat(gapI.slice().reverse());
   var at = function (list) { return list.map(function (k) { return st.items[k]; }); };
-  var mods = [{ t: 'gap', data: { rounds: genGapP(r, at(gapI)), ex: st.ex } }, { t: 'listen', data: { rounds: genListenP(r, at(listenI), p.lang) } }];
+  var lItems = at(listenI);
+  if (p.n >= 4 && p.n % 3 === 1) { var old = takeOf(stationOf(p.lang, p.lv, 1 + r.int(p.n - 1))); if (old) lItems = lItems.slice(0, 1).concat([{ full: old, opts: [old], pre: '' }]); }
+  var mods = [{ t: 'gap', data: { rounds: genGapP(r, at(gapI)), ex: st.ex } }, { t: 'listen', data: { rounds: genListenP(r, lItems, p.lang) } }];
   var fix = genFixP(r, at(fixI)), hasPairs = st.pairs.length >= 3;
   if (fix.length && (!hasPairs || p.lv >= 3)) mods.push({ t: 'fix', data: { rounds: fix, ex: st.ex } });
   if (hasPairs) mods.push({ t: 'match', data: genMatchP(r, st.pairs) });
@@ -4260,7 +4276,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 30;
+  var BUILD = 31;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6692,7 +6708,7 @@ var ES_PHRASES = [
           (cur ? '<span class="bubble">' + t('p.start') + '</span>' : '') +
           '<button type="button" class="node' + (stars ? ' done' : '') + (lock ? ' lock' : '') + (cur ? ' now' : '') + '" data-a="node" data-v="' + code + '" aria-label="' + esc(CEFR[lv - 1] + ' ' + st.n + ': ' + (st.t[ui_()] || st.t.en)) + '">' +
           (stars ? '<span aria-hidden="true">★</span>' : lock ? '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2.6"/><rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor"/></svg>' : '<span aria-hidden="true">' + st.n + '</span>') + '</button>' +
-          '<span class="nlabel">' + (stars ? '<span class="nst" aria-hidden="true">' + stars3(stars) + '</span>' : '') + '</span></div>';
+          '<span class="nlabel">' + (stars ? '<span class="nst" aria-hidden="true">' + stars3(stars) + '</span><span class="ntake" lang="' + L + '">🏅 ' + esc(takeOf(st)) + '</span>' : '') + '</span></div>';
       });
       h += '</div></section>';
     });
@@ -7081,7 +7097,7 @@ var ES_PHRASES = [
     var nxt = ok ? nextCode(spec.code) : null;
     return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">' + CEFR[spec.level - 1] + ' · ' + spec.station + ' · ' + esc(st.t[ui()] || st.t.en) + '</p>' +
       '<h1 data-fit lang="' + spec.lang + '">' + (ok ? P.win : P.boom) + '</h1>' +
-      (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
+      (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div><div class="pbadge"><span aria-hidden="true">🏅</span><b lang="' + spec.lang + '">' + esc(takeOf(st)) + '</b></div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
       (ok ? '<div class="chips"><span class="chip xp">' + ICON_BOLT + '<b data-count="' + g.xp + '">+' + g.xp + '</b> XP</span>' +
         '<span class="chip fire' + (g.streakUp ? ' up' : '') + '">' + ICON_FIRE + '<b>' + streakNow() + '</b> ' + t('p.days') + '</span>' +
         (g.learned ? '<span class="chip wd">' + ICON_CARDS + '<b>+' + g.learned + '</b> ' + t('p.learned') + '</span>' : '') + '</div>' : '') +

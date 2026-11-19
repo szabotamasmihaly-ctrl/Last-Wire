@@ -1,6 +1,7 @@
 LWC('en', 1, `
 # Me and you | Én és te | Mig og dig
 @ "be": I am, you are | A „be” ige: I am, you are | "be": I am, you are
+! I'm on my way.
 = I [am] a genius. Sometimes.
 = My cat [is] the boss here.
 - I [am|is|are] tired, and it's only Monday.
@@ -13,6 +14,7 @@ LWC('en', 1, `
 ~ The cat is | on the fridge. Again.
 ~ My grandma is | faster than me.
 @ Questions with "be" | Kérdés a „be” igével | Spørgsmål med "be"
+! Are you okay?
 = [Are] you a robot?
 = [Is] it Friday yet?
 - [Are|Is|Am] you serious?
@@ -25,6 +27,7 @@ LWC('en', 1, `
 ~ Is it | lunch time yet?
 ~ Where are | my glasses? On my head?
 @ "be" with "not" | Tagadás: not | Nægtelse med "not"
+! I'm not sure.
 = I [am not] a morning person.
 = It [isn't] my fault!
 - I [am not|not am|no am] lazy. I'm in energy-saving mode.
@@ -34,6 +37,7 @@ LWC('en', 1, `
 - They [aren't|isn't|not] my kids. I don't know them.
 - He [isn't|aren't|not is] a cat. He's a dog in a cat costume.
 @ I, you, he, she, it, we, they | Személyes névmások | Personlige stedord
+! They're with me.
 = My grandma is 80. [She] plays video games.
 = Tom and I are friends. [We] share pizza, not chips.
 - My cat is fat. [She|He|It] eats my breakfast.
@@ -43,6 +47,7 @@ LWC('en', 1, `
 - You and I are late. [We|They|You] must run!
 - The bananas are black. [They|It|We] are not happy.
 @ my, your, his, her | Birtokos névmások: my, your | Ejestedord: my, your
+! Is this your phone?
 = This is [my] chair. Move!
 = Is that [your] dog? He's eating my sandwich.
 - She talks to [her|his|she] plants every day.
@@ -53,6 +58,7 @@ LWC('en', 1, `
 - I can't find [my|me|I] phone. Oh, it's in my hand.
 # Things around me | Tárgyak körülöttem | Ting omkring mig
 @ a or an | a vagy an | a eller an
+! I need a minute.
 = I want [a] dragon.
 = She has [an] octopus.
 - My uncle is [an|a|—] astronaut. Or so he says.
@@ -62,6 +68,7 @@ LWC('en', 1, `
 - I need [an|a|—] umbrella and a holiday.
 - That is [a|an|—] very strange hat.
 @ Plurals: -s and -es | Többes szám: -s, -es | Flertal: -s og -es
+! Two coffees, please.
 = two [cats], zero dogs
 = three [boxes] of pizza
 - I have seven [cousins|cousin|cousines]. Help.
@@ -71,6 +78,7 @@ LWC('en', 1, `
 - He wears two [watches|watch|watchs]. He's never late.
 - My mum has three [phones|phone|phonees] and no time.
 @ Irregular plurals | Rendhagyó többes szám | Uregelmæssigt flertal
+! My feet hurt.
 = one man, two [men]
 = one child, ten [children]. Help!
 - Two [women|womans|woman] are dancing on the table.
@@ -83,6 +91,7 @@ LWC('en', 1, `
 ~ one foot | two feet
 ~ one child | two children
 @ this, that, these, those | this, that, these, those | this, that, these, those
+! Is this seat free?
 = [This] pizza is mine. (here)
 = [Those] birds are laughing at me. (there)
 - [These|This|That] socks don't smell. Here, try.
@@ -92,6 +101,7 @@ LWC('en', 1, `
 - Is [this|these|those] your sandwich? Not anymore.
 - [These|This|That] cookies are mine. All of them.
 @ there is, there are | there is, there are | there is, there are
+! Is there a toilet here?
 = [There is] a cat on my keyboard.
 = [There are] two spiders in the bath.
 - [There is|There are|It are] a goat in our garden.
@@ -102,6 +112,7 @@ LWC('en', 1, `
 - [There aren't|There isn't|They aren't] any normal people in my family.
 # Having and describing | Birtoklás és leírás | Have og beskrivelser
 @ have and has | have és has | have og has
+! I have no idea.
 = I [have] a plan. It's a bad plan.
 = My cat [has] a fan club.
 - He [has|have|haves] three girlfriends. Not for long.
@@ -111,6 +122,7 @@ LWC('en', 1, `
 - My dog [has|have|is] more friends than me.
 - You [have|has|are] spinach in your teeth.
 @ have got | have got | have got
+! Have you got a charger?
 = I['ve got] an idea!
 = He [hasn't got] a clue.
 - She [has got|have got|is got] green hair this week.
@@ -120,6 +132,7 @@ LWC('en', 1, `
 - [Has|Have|Is] he got a girlfriend? Really?
 - We [haven't got|hasn't got|don't got] time for this.
 @ Adjectives before nouns | Melléknév a főnév előtt | Tillægsord før navneord
+! It's a long story.
 = a [lazy] cat
 = an [old] joke
 - It is [a big|a bigs|big a] mistake.
@@ -129,6 +142,7 @@ LWC('en', 1, `
 - He drives [a pink car|a car pink|pink a car].
 - We live in [a small flat|a flat small|small a flat] with four cats.
 @ Possessive 's | Birtokos 's | Ejefald med 's
+! It's my friend's birthday.
 = This is [Tom's] secret.
 = My [parents'] car is older than me.
 - Who ate [Anna's|Annas|Anna] cake?
@@ -138,6 +152,7 @@ LWC('en', 1, `
 - The [children's|childrens'|childrens] toys are in my shoes.
 - It's my [cat's|cats|cat] birthday. She's not impressed.
 @ Colours and "What colour" | Színek: What colour | Farver: What colour
+! I like the red one.
 = [What colour] is your hair today?
 = It's [green]. Don't laugh.
 - [What colour|What colours|Which colour is] are his socks? Different!
@@ -148,6 +163,7 @@ LWC('en', 1, `
 - My bananas [are|is|has] black. Banana bread!
 # Present simple | Egyszerű jelen | Nutid
 @ I work, you work | I work, you work | I work, you work
+! I live here.
 = I [work] from my bed.
 = We [eat] cake for breakfast.
 - I [love|loves|loving] Mondays. Just kidding.
@@ -157,6 +173,7 @@ LWC('en', 1, `
 - I [get up|gets up|getting up] at noon on Sundays.
 - My neighbours [dance|dances|dancing] at 3 a.m.
 @ He works, she works: -s | He works: -s végződés | He works: -s i 3. person
+! It depends.
 = My cat [watches] me when I sleep.
 = My dad [tells] the same joke every day.
 - He [drinks|drink|drinking] ten coffees a day.
@@ -166,6 +183,7 @@ LWC('en', 1, `
 - Grandma [goes|go|gos] to the gym. I don't.
 - It [rains|rain|raining] every time I wash my car.
 @ don't and doesn't | don't és doesn't | don't og doesn't
+! I don't know.
 = I [don't] do mornings.
 = My cat [doesn't] like me. It's mutual.
 - We [don't|doesn't|not] have a TV. We have a cat.
@@ -175,6 +193,7 @@ LWC('en', 1, `
 - I [don't|doesn't|am not] understand my homework. Or my teacher.
 - My computer [doesn't|don't|isn't] work. I kicked it.
 @ Questions: do and does | Kérdés: do és does | Spørgsmål: do og does
+! Do you speak English?
 = [Do] you like pineapple on pizza?
 = [Does] your dog speak English?
 - [Do|Does|Are] your parents know about this?
@@ -187,6 +206,7 @@ LWC('en', 1, `
 ~ Where does your cat | sleep?
 ~ What time do you | wake up on Sundays?
 @ Short answers | Rövid válaszok | Korte svar
+! Yes, I do.
 = Do you like Mondays? No, I [don't].
 = Is he a robot? Yes, he [is].
 - Do you have a dragon? Yes, I [do|am|have].
@@ -200,6 +220,7 @@ LWC('en', 1, `
 ~ Are they aliens? | Yes, they are.
 # Every day | Mindennap | Hver dag
 @ always, often, never | always, often, never | always, often, never
+! I always forget.
 = I [always] lose my keys.
 = My cat is [never] wrong.
 - He [always gets|gets always|always get] up late.
@@ -209,6 +230,7 @@ LWC('en', 1, `
 - My dog is [usually|use|usual] asleep.
 - My dad [never says|says never|never say] sorry.
 @ at, on, in for time | Időhatározók: at, on, in | Tid: at, on, in
+! See you on Monday.
 = [at] three in the morning
 = [on] my birthday
 - I never go to the beach [in|on|at] August. Too many people.
@@ -221,6 +243,7 @@ LWC('en', 1, `
 ~ on | Monday morning
 ~ in | December
 @ in, on, under | in, on, under | in, on, under
+! It's in my bag.
 = The cat is [under] the bed with my sock.
 = My phone is [in] the fridge. Why?
 - Don't put your feet [on|in|at] the table!
@@ -230,6 +253,7 @@ LWC('en', 1, `
 - The milk is [in|on|at] the fridge. The cookies are gone.
 - My homework is [under|in|on] the dog.
 @ can and can't | can és can't | can og can't
+! Can I pet your dog?
 = My grandma [can] dance on her head.
 = I [can't] cook. Not even toast.
 - My dog [can|cans|can to] open the fridge.
@@ -239,6 +263,7 @@ LWC('en', 1, `
 - My dad [can't|doesn't can|not can] use his phone.
 - My cat [can|can to|is can] open doors. It's scary.
 @ Can you...? | Can you...? kérdések | Can you...? spørgsmål
+! Can you help me?
 = [Can] you keep a secret?
 = [Can] I have your fries?
 - [Can|Do|Are] you whistle?
@@ -252,6 +277,7 @@ LWC('en', 1, `
 ~ Can she cook? | Only cereal.
 # Right now | Éppen most | Lige nu
 @ I am working: -ing now | Folyamatos jelen: -ing | Udvidet nutid: -ing
+! I'm looking for the station.
 = I [am hiding] from my boss.
 = The kids [are painting] the dog.
 - Shh! The baby [is sleeping|sleeping|is sleep] at last.
@@ -261,6 +287,7 @@ LWC('en', 1, `
 - The cats [are fighting|is fighting|fighting] in the garden.
 - It [is raining|rain|raining]. Of course it is.
 @ -ing spelling | Az -ing helyesírása | Stavning af -ing
+! I'm getting ready.
 = make → [making] a mess
 = run → [running] late
 - She is [writing|writeing|writting] a love letter.
@@ -270,6 +297,7 @@ LWC('en', 1, `
 - We are [shopping|shoping|shopeing] for a new cat.
 - He is [lying|lieing|lyeing]. Look at his nose!
 @ Not now: isn't -ing | Tagadás: isn't -ing | Nægtelse: isn't -ing
+! I'm not joking.
 = I['m not] sleeping. I'm thinking.
 = He [isn't] listening. He never is.
 - She [isn't|aren't|don't] working. She's on YouTube.
@@ -279,6 +307,7 @@ LWC('en', 1, `
 - We [aren't|isn't|not] laughing at you. OK, we are.
 - You [aren't|isn't|don't] listening to me!
 @ What are you doing? | Mit csinálsz éppen? | Hvad laver du?
+! What are you doing tonight?
 = What [are] you doing in my room?
 = [Is] the dog wearing my hat?
 - [Are|Is|Do] you eating my chips?
@@ -288,6 +317,7 @@ LWC('en', 1, `
 - Why [are|is|do] you laughing?
 - [Is|Are|Do] your brother sleeping on the roof?
 @ Every day or now? | Mindennap vagy most? | Hver dag eller nu?
+! I'm just looking, thanks.
 = My cat [sleeps] all day.
 = Look! My cat [is running]!
 - She [eats|is eating|eat] pizza every Monday.
@@ -301,6 +331,7 @@ LWC('en', 1, `
 ~ Look, | the dog is driving the car!
 # Asking questions | Kérdezés | At spørge
 @ What, where, who | What, where, who | What, where, who
+! Where is the toilet?
 = [Where] is my sandwich?
 = [Who] ate my sandwich?
 - [What|Who|Where] is your cat's name? Mr Fluffy.
@@ -313,6 +344,7 @@ LWC('en', 1, `
 ~ Who | is that clown?
 ~ What | is that smell?
 @ When, why, how | When, why, how | When, why, how
+! How are you?
 = [When] is lunch?
 = [Why] is the cat wet?
 - [Why|How|When] are you wearing two hats? Because it's cold.
@@ -322,6 +354,7 @@ LWC('en', 1, `
 - [How|When|Why] old is your grandma? Ninety-nine.
 - [When|How|Why] do you wake up? At noon.
 @ How many, how much | How many, how much | How many, how much
+! How much is it?
 = [How many] cats do you have? Too many.
 = [How much] is this? What! For a sandwich?
 - [How many|How much|How lot] cookies did you eat?
@@ -331,6 +364,7 @@ LWC('en', 1, `
 - [How much|How many|What many] sugar is in this cake?
 - [How many|How much|How] socks are under your bed?
 @ Whose? | Kié? | Hvis?
+! Whose turn is it?
 = [Whose] sock is this?
 = It's not [mine]!
 - [Whose|Who's|Who] phone is ringing in the cinema?
@@ -340,6 +374,7 @@ LWC('en', 1, `
 - These cookies are [ours|our|us]. Go away.
 - Is this snake [yours|your|you]?
 @ Question word order | Szórend kérdésben | Ordstilling i spørgsmål
+! What do you mean?
 = Where [do you] hide the chocolate?
 = What [is the cat] eating?
 - Where [do you live|you live|you do live]? In a box?
@@ -350,6 +385,7 @@ LWC('en', 1, `
 - Where [is the toilet|the toilet is|toilet is the]? Quick!
 # How much and how many | Mennyiség | Mængde
 @ some and any | some és any | some og any
+! Do you have any questions?
 = I have [some] good news and some bad news.
 = Have you got [any] chocolate?
 - There is [some|any|a] cake in the fridge. Not for you.
@@ -359,6 +395,7 @@ LWC('en', 1, `
 - My cat hasn't got [any|some|no] friends.
 - Can I have [some|any|a] of your pizza?
 @ Countable and uncountable | Megszámlálható vagy sem | Tællelig eller ikke
+! Can I have some water?
 = a cookie, ten [cookies]
 = some [chocolate]
 - I need [some money|a money|some moneys]. A lot.
@@ -368,6 +405,7 @@ LWC('en', 1, `
 - I bought [an egg|an bread|a rice].
 - We need [some help|a help|helps]. Now!
 @ a lot of | a lot of | a lot of
+! Thanks a lot.
 = My dog has [a lot of] girlfriends.
 = There's [a lot of] cat hair on my jacket.
 - He drinks [a lot of|a lot|lot of] cola.
@@ -377,6 +415,7 @@ LWC('en', 1, `
 - We don't have [a lot of|a lot|lot] time. Run!
 - My aunt has [a lot of|a lots|lot] cats. Twenty-two.
 @ me, him, her, us, them | Tárgyas névmások | Genstandsled: me, him
+! Call me later.
 = My cat hates [me].
 = Can you help [us]? We're lost.
 - I know [him|he|his]. He's the man with the goat.
@@ -389,6 +428,7 @@ LWC('en', 1, `
 ~ I like Anna. | I like her.
 ~ I like the cats. | The cats don't like me.
 @ Imperatives: Sit down! | Felszólítás: Sit down! | Bydeform: Sit down!
+! Stop it, it's annoying.
 = [Stop] eating my fries!
 = [Don't] feed the teacher!
 - [Close|Closes|Closing] the door! The cat is escaping!
@@ -399,6 +439,7 @@ LWC('en', 1, `
 - Please [sit|sits|sitting] down. Not on the cat!
 # Yesterday | Tegnap | I går
 @ was and were | was és were | was og were
+! It was fun.
 = I [was] a cat in my last life.
 = The pizzas [were] gone in five minutes.
 - She [was|were|is] very tired after the party.
@@ -408,6 +449,7 @@ LWC('en', 1, `
 - My parents [were|was|is] cool. In 1995.
 - I [was|were|am] ill on Monday. Very ill. Cough.
 @ wasn't, weren't and questions | wasn't, weren't, kérdések | wasn't, weren't og spørgsmål
+! Were you there?
 = [Were] you at the party? I didn't see you.
 = He [wasn't] at school. He was at the beach.
 - [Was|Were|Did] the clown at the wedding?
@@ -420,6 +462,7 @@ LWC('en', 1, `
 ~ Was it expensive? | Don't ask.
 ~ Where were you? | Under the table.
 @ Past simple: -ed | Múlt idő: -ed | Datid: -ed
+! I missed the bus.
 = I [watched] ten films in one day.
 = She [danced] on the table.
 - We [visited|visit|visiting] my aunt and her 20 cats.
@@ -429,6 +472,7 @@ LWC('en', 1, `
 - She [studied|studyed|studies] all day and then forgot everything.
 - The film [started|starts|start] without me.
 @ Past simple: went, saw, had | Rendhagyó múlt: went, saw | Uregelmæssig datid: went, saw
+! I had a great time.
 = I [went] to the shop in my pyjamas.
 = We [had] cake for dinner.
 - She [saw|seed|see] a ghost in the kitchen. It was Dad.
@@ -441,6 +485,7 @@ LWC('en', 1, `
 ~ see | saw
 ~ eat | ate
 @ didn't and did? | didn't és did? | didn't og did?
+! Did you get my message?
 = I [didn't] do it!
 = [Did] you eat my cake?
 - She [didn't|doesn't|wasn't] laugh at my joke.
@@ -451,6 +496,7 @@ LWC('en', 1, `
 - What [did|do|was] the dog eat? My homework.
 # Plans and wishes | Tervek és vágyak | Planer og ønsker
 @ like, love, hate + -ing | like, love, hate + -ing | like, love, hate + -ing
+! I love hanging out with you.
 = I like [sleeping]. A lot.
 = She hates [losing].
 - My cat loves [sitting|sit|sits] on my laptop.
@@ -460,6 +506,7 @@ LWC('en', 1, `
 - Do you like [singing|sing|sings] in the car?
 - She loves [eating|eat|eats] ice cream in winter.
 @ want to | want to | want to
+! Do you want to come?
 = I [want to] be a cat.
 = She [wants] a dragon for her birthday.
 - I want [to go|go|going] home and sleep.
@@ -469,6 +516,7 @@ LWC('en', 1, `
 - She wants [a|to|an] pet shark.
 - We want [to see|see|seeing] a real penguin.
 @ would like | would like | would like
+! I'd like a table for two.
 = I['d like] a pizza the size of my head, please.
 = [Would] you like some cake? Too late, I ate it.
 - I'd like [a|to|an] holiday. A long one.
@@ -481,6 +529,7 @@ LWC('en', 1, `
 ~ What would you like? | Everything.
 ~ Would you like to dance? | I'd love to!
 @ going to for plans | going to: tervek | going to: planer
+! I'm going to be late.
 = I'm [going to] sleep all weekend.
 = Are you [going to] eat that?
 - She [is going|are going|going] to buy a horse.
@@ -490,6 +539,7 @@ LWC('en', 1, `
 - He is going to [be|is|been] famous. He says.
 - Look at the sky. It's going [to rain|rain|raining].
 @ Let's | Let's | Let's
+! Let's go!
 = [Let's] party!
 = Let's [have] dessert first.
 - Let's [eat|eating|to eat] pizza for breakfast.
@@ -503,6 +553,7 @@ LWC('en', 1, `
 ~ It's sunny. | Let's go to the beach.
 # 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
 @ Songs: am, is, are | Dalok: am, is, are | Sange: am, is, are
+! I'm so happy for you.
 = My grandma [is] the Dancing Queen.
 = We [are] the champions of washing up.
 - My cat [is|are|am] a Thriller fan. She hides under the bed.
@@ -515,6 +566,7 @@ LWC('en', 1, `
 ~ Grandma's car is | a Yellow Submarine.
 ~ The cat is | Happy. The fridge is open.
 @ Songs: can and can't | Dalok: can és can't | Sange: can og can't
+! I can't wait!
 = I [can't] stop. Don't Stop Me Now is on!
 = My parrot [can] sing Hey Jude.
 - My grandpa [can|cans|can to] dance to Uptown Funk.
@@ -527,6 +579,7 @@ LWC('en', 1, `
 ~ My cat can't | sing, but she tries.
 ~ Grandma can | rock you. We will see.
 @ Songs: like, likes, don't, doesn't | Dalok: like, likes, don't, doesn't | Sange: like, likes, don't, doesn't
+! He likes you!
 = My mum [likes] Dancing Queen.
 = My dad [doesn't] like Bad Guy.
 - Grandma [loves|love|loving] Thriller. She does the zombie dance.
@@ -539,6 +592,7 @@ LWC('en', 1, `
 ~ Dad doesn't like | Toxic. Mum does.
 ~ Do you like | Roar? My cat does.
 @ Songs: there is, there are | Dalok: there is, there are | Sange: there is, there are
+! There's no way!
 = There [is] a Yellow Submarine in my bath.
 = There [are] two Billie Jeans in my class.
 - There [is|are|be] a hotel called Hotel California in my town. It's awful.
@@ -551,6 +605,7 @@ LWC('en', 1, `
 ~ There are | three Dancing Queens at Grandma's party.
 ~ Is there | a song about pizza?
 @ Songs: Don't stop! | Dalok: Don't stop! | Sange: Don't stop!
+! Don't worry, be happy.
 = [Don't] stop me now. I'm eating.
 = [Let] it be. It's only a scratch.
 - [Don't|Not|No] look back in anger. Look at the pizza.
