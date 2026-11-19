@@ -134,7 +134,15 @@ PARTY.en = {
     ['idk tbh, maybe tmrw', 'I do not know, to be honest, maybe tomorrow', 'I know the answer, see you today', 'I am tired, bye forever', 'idk=I don\'t know;tbh=to be honest;tmrw=tomorrow'],
     ['lol that pic is fire', 'Haha, that photo is amazing', 'Help, the photo is burning', 'That picture is too hot to touch', 'lol=laughing out loud;pic=picture;fire=amazing'],
     ['np, ty for the help', 'No problem, thank you for the help', 'No phone, try the help desk', 'I need help, call me', 'np=no problem;ty=thank you'],
-    ['ikr, the bus is sooo slow', 'I know, right? The bus is very slow', 'I am in the bus, it is fast', 'The bus is gone, I am sad', 'ikr=I know, right?;sooo=very']
+    ['ikr, the bus is sooo slow', 'I know, right? The bus is very slow', 'I am in the bus, it is fast', 'The bus is gone, I am sad', 'ikr=I know, right?;sooo=very'],
+    ['smh, he forgot my bday again', 'I am disappointed, he forgot my birthday again', 'He sent me a birthday cake again', 'I am smiling, it is his birthday', 'smh=shaking my head;bday=birthday'],
+    ['that test was a W', 'The test went really well', 'The test had a lot of W words', 'I failed the test', 'W=a win'],
+    ['she ghosted me after one date', 'She stopped answering me after one date', 'She dressed up as a ghost on our date', 'She was scared on our date', 'ghosted=stopped replying'],
+    ['jk, I\'m not mad', 'Just kidding, I am not angry', 'I am very angry with you', 'I am not mad, I am crazy', 'jk=just kidding;mad=angry'],
+    ['dm me the deets', 'Send me the details in a private message', 'Delete my details', 'Do not message me', 'dm=direct message;deets=details'],
+    ['bruh, my phone is at 1%', 'Oh no, my phone battery is almost empty', 'My brother has my phone', 'My phone costs one euro', 'bruh=oh no, really?;1%=battery almost dead'],
+    ['wyd? wanna hang out?', 'What are you doing? Do you want to meet?', 'Why did you hang up?', 'Where is your dad? He wants to go out', 'wyd=what (are) you doing;wanna=want to;hang out=spend time together'],
+    ['fyi the store closes at 8', 'For your information, the shop closes at 8', 'The shop opens at 8 for you', 'Find your shop before 8', 'fyi=for your information']
   ],
   /* ✂️ the helper hears the sentence; the bomb cuts the wire with the missing [word] among words that rhyme */
   rhyme: [
