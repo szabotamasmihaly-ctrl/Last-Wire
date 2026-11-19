@@ -1,6 +1,7 @@
 LWC('en', 6, `
 # Fine shades of time | Az igeidők finom árnyalatai | Tidernes fine nuancer
 @ Future in the past | Jövő a múltban | Fremtid i fortiden
+! I was going to say the same thing.
 = I knew the cat [would] hate the new sofa. He loves it.
 = The boy who ate glue at school was [to become] prime minister.
 - I had no idea the meeting [would|will|is going] last four hours.
@@ -10,6 +11,7 @@ LWC('en', 6, `
 - We were [about to|about|to about] kiss when her dad opened the door.
 - The selfie that [was to|is to|was] ruin his career was taken at a wedding.
 @ Polite past: I was wondering | Udvarias múlt: I was wondering | Høflig datid: I was wondering
+! I was wondering if you could help me.
 = I [was wondering] if you could stop playing the trumpet at 3 a.m.
 = I [wanted] to ask you something. Is that my jumper?
 - I was [hoping|hope|hoped] you might lend me your car. And your house.
@@ -19,6 +21,7 @@ LWC('en', 6, `
 - I was [thinking|think|thought] we could skip the gym and get pizza.
 - I [just wanted|just want did|was just want] to say sorry about your car.
 @ Perfect infinitive: seems to have | Befejezett főnévi igenév: seems to have | Perfektum infinitiv: seems to have
+! He seems to have forgotten.
 = The dog [seems to have] eaten my homework. Again.
 = My uncle claims [to have] met a dinosaur.
 - The thief appears [to have entered|to enter have|having enter] through the cat flap.
@@ -28,6 +31,7 @@ LWC('en', 6, `
 - My parents seem [to have been|to be have|having be] arguing about the remote.
 - I'd love [to have seen|to see have|having saw] your face when the cake exploded!
 @ always -ing for annoyance | always -ing: bosszúság | always -ing: irritation
+! You're always interrupting me!
 = My flatmate is [always eating] my yoghurt!
 = Grandad was [forever telling] the same joke.
 - You're always [interrupting|interrupt|interrupted] my naps!
@@ -37,6 +41,7 @@ LWC('en', 6, `
 - Why are you always [stealing|steal|stolen] my chips?
 - The cat is [continually|continual|continuous] knocking things off the table.
 @ Present tenses for the future | Jelen idő jövő értelemben | Nutid om fremtiden
+! My flight leaves at six tomorrow.
 = My diet [starts] tomorrow. It always does.
 = I'll call you when I['ve finished] this pizza.
 - I'll give you the book once I've [read|reading|will read] the last page. In 2040.
@@ -47,6 +52,7 @@ LWC('en', 6, `
 - As soon as the pizza [arrives|will arrive|arrive], nobody talks.
 # Bold inversions | Merész inverziók | Dristige inversioner
 @ So great was ... that | So great was ... that | So great was ... that
+! So good was the food that we came back the next day.
 = [So loud was] his snoring that the neighbours called the police.
 = So hungry [was she] that she ate the menu.
 - So strong [was the wind|the wind was|was wind] that my hat is now in France.
@@ -56,6 +62,7 @@ LWC('en', 6, `
 - So expensive [was the coffee|the coffee was|was coffee] that we just smelled it.
 - So little [did they know|they knew|knew they] about cooking that they boiled the pizza.
 @ Such was ... that | Such was ... that | Such was ... that
+! Such was the noise that nobody could sleep.
 = [Such was] his fear of spiders that he moved house.
 = Such [was] the smell that the cat left.
 - Such [was the force|the force was|force was] of his sneeze that the candles went out.
@@ -65,6 +72,7 @@ LWC('en', 6, `
 - [Such|So|Too] was the heat that my chocolate became soup.
 - Such [was|is being|were] the noise that nobody heard the fire alarm.
 @ Nor, neither + inversion | Nor, neither + inverzió | Nor, neither + inversion
+! I don't like it, and neither does she.
 = He didn't call, [nor did] he send the pizza.
 = I can't dance, [nor can] my dad. He tries anyway.
 - She doesn't cook, [nor does she|nor she does|nor she] wash up.
@@ -74,6 +82,7 @@ LWC('en', 6, `
 - We weren't told about the party, [nor were|nor was|nor] we given cake.
 - My cat can't sing, [nor can she|nor she can|nor she] dance. She does both.
 @ Were it not for, Had it not been for | Were it not for, Had it not been for | Were it not for, Had it not been for
+! Were it not for you, I'd be lost.
 = [Were it not for] coffee, I'd be asleep under my desk.
 = [Had it not been for] the GPS, we'd be in Spain. We wanted Scotland.
 - [Were it not|Was it not|If it were not to] for my mum, I'd eat cake for dinner.
@@ -83,6 +92,7 @@ LWC('en', 6, `
 - [Were it not|Weren't it|If were it not] for the neighbours, this flat would be perfect.
 - Had [it not been|it been not|not it been] for my alarm, I'd still be in bed.
 @ Only by, Only in, Only with | Only by, Only in, Only with | Only by, Only in, Only with
+! Only by working together can we win.
 = [Only by] bribing the cat [can we] sit on the sofa.
 = Only in my house [does the] dog own the bed.
 - Only by asking grandma [did I find out|I found out|found I out] the cake recipe.
@@ -93,6 +103,7 @@ LWC('en', 6, `
 - Only with great difficulty [was he|he was|was] able to leave the buffet.
 # Nuances of modality | A modalitás árnyalatai | Modalitetens nuancer
 @ Putative should: odd that he should | Feltételezett should | Antagende should
+! It's odd that she should say that.
 = It's strange that the cat [should] bring me a sock every morning.
 = I'm surprised that you [should] think pineapple belongs on pizza.
 - It's odd that the parrot [should|would|shall] know my password.
@@ -102,6 +113,7 @@ LWC('en', 6, `
 - It's surprising that the groom [should|shall|ought] have left with the band.
 - That my brother [should|shall|must to] win the dance contest was a shock.
 @ will for habits and character | will: szokás és jellem | will: vaner og karakter
+! Boys will be boys.
 = My dad [will] fall asleep in any film.
 = Cats [will] be cats.
 - My aunt will [talk|talking|talks] for hours about her tomatoes.
@@ -111,6 +123,7 @@ LWC('en', 6, `
 - My car [won't|willn't|doesn't will] start when I'm late.
 - My grandma will [insist|insists|insisting] on feeding you until you explode.
 @ shall in formal rules | shall: formális előírás | shall: formelle regler
+! Passengers shall remain seated.
 = The tenant [shall] not keep a horse in the bathroom.
 = [Shall] we dance? You first.
 - The hotel [shall|should to|will to] not be responsible for lost socks.
@@ -120,6 +133,7 @@ LWC('en', 6, `
 - The contract [shall|shall be|shalls] end when the cat says so.
 - Let's eat the cake now, [shall we|will we|should we]?
 @ might have been expected | might have been expected | might have been expected
+! That might have been expected.
 = As [might have been] expected, the dog ate the birthday cake.
 = It [should have been] obvious. The cake was on the floor.
 - As [might be|might|may being] expected, the free pizza disappeared fast.
@@ -129,6 +143,7 @@ LWC('en', 6, `
 - The dishes [ought to have been|ought have been|ought to been] done last week.
 - The waiter [needn't have been|needn't been|needn't have be] so rude about my hat.
 @ ought to, ought to have | ought to, ought to have | ought to, ought to have
+! You ought to have called first.
 = You [ought to] apologise to the cat.
 = We [ought to have] checked the oven before we went on holiday.
 - You ought [to see|see|seeing] a doctor about that singing.
@@ -139,6 +154,7 @@ LWC('en', 6, `
 - You [ought to have|ought have|ought to] warned me about your mother.
 # Complex relative structures | Összetett vonatkozó szerkezetek | Komplekse relativsætninger
 @ Preposition + whom, which | Elöljárószó + whom, which | Præposition + whom, which
+! To whom it may concern.
 = The man [to whom] I sold my car was a clown.
 = The box [in which] the cat sleeps cost two euros. The bed cost two hundred.
 - The friend [with whom|with who|whom with] I went camping still owes me a tent.
@@ -148,6 +164,7 @@ LWC('en', 6, `
 - The chair [on which|which on|on what] the king sat was a toilet.
 - The people [of whom|of who|whom of] I spoke are behind you.
 @ some of whom, all of which | some of whom, all of which | some of whom, all of which
+! I met three friends, all of whom were late.
 = I have three cats, [all of whom] hate me.
 = He gave me ten books, [none of which] I've opened.
 - She has four sons, [all of whom|all of them|all of who] are called Kevin.
@@ -157,6 +174,7 @@ LWC('en', 6, `
 - They have four cars, [one of which|one of them|one of what] actually works.
 - My cousins, [many of whom|many of them|many of who] are strange, came for Christmas.
 @ what with, for all | what with, for all | what with, for all
+! What with work and the kids, I'm exhausted.
 = [What with] work and the cat, I haven't slept since 2019.
 = [For all] his money, he still steals my chips.
 - What [with|for|by] the rain and the goat, the wedding was a disaster.
@@ -166,6 +184,7 @@ LWC('en', 6, `
 - What with [the snoring|snoring is|snore is] and the heat, I couldn't sleep.
 - For all [I know|I knowing|knowing], the dog is driving my car now.
 @ wherein, whence, whereupon | wherein, whence, whereupon | wherein, whence, whereupon
+! He paid the bill, whereupon he left.
 = He called her cake "interesting", [whereupon] she threw it at him.
 = The drawer [wherein] my socks disappear.
 - She told him the price, [whereupon|whereby|wherein] he fainted.
@@ -175,6 +194,7 @@ LWC('en', 6, `
 - A system [whereby|whereupon|whence] the dog walks itself.
 - The pub [wherein|whence|whereupon] my grandparents met is now a gym.
 @ the extent to which, the way in which | the extent to which, the way in which | the extent to which, the way in which
+! I love the way in which she tells stories.
 = I'm amazed at [the extent to which] my cat ignores me.
 = I love [the way in which] my dad dances. Nobody else does.
 - Nobody knows the extent [to which|which to|to what that] my brother is lazy.
@@ -185,6 +205,7 @@ LWC('en', 6, `
 - The rate [at which|which at|at what] I lose umbrellas is worrying.
 # Fixed formal expressions | Rögzült választékos kifejezések | Faste formelle udtryk
 @ lest + subjunctive | lest + kötőmód | lest + konjunktiv
+! Speak quietly, lest you wake the baby.
 = He ate the cake in the dark [lest] his wife see him.
 = Lest we [forget] the dog's birthday.
 - She hid the chocolate lest the kids [find|finds|found] it.
@@ -194,6 +215,7 @@ LWC('en', 6, `
 - He kept quiet at dinner lest he [say|says|said] something about the soup.
 - Hold the rail [lest|unless|if] you fall into the fountain again.
 @ Come what may, Be that as it may | Come what may, Be that as it may | Come what may, Be that as it may
+! Come what may, I'll be there.
 = [Come what may], I'm eating this pizza.
 = He's a terrible singer. [Be that as it may], he's my dad.
 - I'll be at your wedding, [come what may|come what might|what may come]. With snacks.
@@ -203,6 +225,7 @@ LWC('en', 6, `
 - [So be it|Be so it|It be so]. The cat sleeps in our bed.
 - [If need be|If needs is|If need is], we'll eat the cake with our hands.
 @ whether ... or not, be it ... or | whether ... or not, be it ... or | whether ... or not, be it ... or
+! Rain or shine, we're going.
 = Everyone, [be it] human or dog, gets cake.
 = I'm singing, [whether] you like it or not.
 - All guests, [be they|are they|they be] cats or dogs, must wear a hat.
@@ -212,6 +235,7 @@ LWC('en', 6, `
 - Any pet, [be it|be|being it] a snake or a hamster, must stay outside.
 - [Whether|If|Either] by bus or by camel, we'll be late.
 @ however much, no matter how | however much, no matter how | however much, no matter how
+! No matter how hard I try, I can't do it.
 = [No matter how] hard I try, the cat wins.
 = [However much] I clean, the dog finds mud.
 - No matter [what|which that|whatever that] you say, I'm wearing the hat.
@@ -221,6 +245,7 @@ LWC('en', 6, `
 - [However much|However many|Whatever much] I eat, I'm still hungry.
 - No matter [who|whom that|whoever that] calls, I'm in the shower.
 @ as it were, so to speak | as it were, so to speak | as it were, so to speak
+! He's a bit of a genius, so to speak.
 = The cat is the boss, [so to speak].
 = After the haircut he became, [as it were], a new man. A worse one.
 - My grandma is, [as it were|as it was|as were it], a walking newspaper.
@@ -231,6 +256,7 @@ LWC('en', 6, `
 - It's a fresh start, [so to speak|as to speak|so to spoke]. New year, same pizza.
 # Nouns with a twist | Különleges főnevek | Navneord med et twist
 @ Plural-only nouns | Csak többes számú főnevek | Navneord kun i flertal
+! Where are my glasses?
 = My trousers [are] in the fridge. Don't ask.
 = These scissors [don't] cut. They just chew.
 - Where [are|is|was] my glasses? Oh, on my face.
@@ -240,6 +266,7 @@ LWC('en', 6, `
 - The police [have|has|is] arrested a goat.
 - Your earnings [are|is|was] lower than your cat's.
 @ Collective nouns: the team is or are | Gyűjtőnevek | Kollektive navneord
+! The team is playing well this season.
 = The team [are] crying in the changing room. (the players)
 = The team [is] the worst in Europe. (one unit)
 - The family [are|is being|be] arguing about who ate the cake.
@@ -249,6 +276,7 @@ LWC('en', 6, `
 - The government [has|have it|having] announced a new tax on socks.
 - The jury [are|is being|be] still eating the evidence.
 @ Uncountable nouns: luggage, research | Megszámlálhatatlan főnevek | Utællelige navneord
+! How much luggage do you have?
 = I've done some [research]. It's called YouTube.
 = Her [knowledge] of cheese is frightening.
 - My grandma gave me [a useful piece of|a useful|an useful] advice: never trust a cat.
@@ -258,6 +286,7 @@ LWC('en', 6, `
 - She did [a lot of|many|a] research on why cats hate Mondays.
 - [The evidence|The evidences|An evidence] was clear: chocolate on the dog's face.
 @ Adjective order | Melléknevek sorrendje | Tillægsordenes rækkefølge
+! She's got beautiful long black hair.
 = a [lovely old] goat
 = a [small pink plastic] crown
 - She wore [a beautiful red silk|a red beautiful silk|a silk red beautiful] dress to the supermarket.
@@ -267,6 +296,7 @@ LWC('en', 6, `
 - He sat on [an ugly old plastic|a plastic old ugly|an old plastic ugly] chair like a king.
 - Grandma wore [long black leather|leather black long|black leather long] boots to church.
 @ Nouns from adjectives | Melléknévből képzett főnevek | Navneord af tillægsord
+! Honesty is the best policy.
 = We admire the cat's [honesty]. He hates everyone equally.
 = The [kindness] of strangers paid for my pizza.
 - I can't stand my brother's [rudeness|rudity|rudeship] at dinner.
@@ -277,6 +307,7 @@ LWC('en', 6, `
 - The [length|longness|longity] of the wedding speech was a crime.
 # Building words | Szóképzés | Orddannelse
 @ Negative prefixes: un-, in-, im-, ir- | Fosztóképzők: un-, in-, im-, ir- | Nægtende forstavelser: un-, in-, im-, ir-
+! Sorry, that's impossible!
 = Folding a fitted sheet is [impossible].
 = Leaving a toddler with a cake is [irresponsible].
 - The GPS is [incorrect|uncorrect|imcorrect]. We're in a lake.
@@ -286,6 +317,7 @@ LWC('en', 6, `
 - I'm [unable|inable|imable] to come. I'm in my pyjamas.
 - High heels at the beach are [impractical|unpractical|inpractical].
 @ -ise, -ify, -en | -ise, -ify, -en | -ise, -ify, -en
+! We need to simplify this.
 = Can you [simplify] this? I'm a dog person.
 = We must [widen] the cat flap. The cat had Christmas.
 - Let me [clarify|clearise|clearen]: I did not eat your cake. The dog did.
@@ -295,6 +327,7 @@ LWC('en', 6, `
 - Please [summarise|summarify|summaren] the film. I slept.
 - This shortcut will [shorten|shortify|shortise] the journey. Or get us lost.
 @ hard or hardly, late or lately | hard vagy hardly, late vagy lately | hard eller hardly, late eller lately
+! I've hardly slept.
 = My cat works [hard]. At sleeping.
 = I [hardly] know my neighbours. I know their dog.
 - I've been eating a lot of cake [lately|late|latest].
@@ -304,6 +337,7 @@ LWC('en', 6, `
 - My grandma's cake was [highly|high|highs] praised by the dog.
 - He's [nearly|near|nearby] finished his tenth pizza.
 @ affect or effect, rise or raise | affect vagy effect, rise vagy raise | affect eller effect, rise eller raise
+! The weather really affects my mood.
 = Mondays [affect] my mood.
 = Prices [rose] again. My salary didn't.
 - The new cat will [affect|effect|affection] everyone's sleep.
@@ -313,6 +347,7 @@ LWC('en', 6, `
 - Don't [lie|lay|laid] on the sofa all day.
 - Can you [lay|lie|lain] the table? The dog is hungry.
 @ Compound nouns | Összetett főnevek | Sammensatte navneord
+! Can you take out the rubbish?
 = a [bus stop] where nobody stops
 = my [sister-in-law] who talks to plants
 - My [brothers-in-law|brother-in-laws|brothers-in-laws] are all called Kevin.
@@ -323,6 +358,7 @@ LWC('en', 6, `
 - We met the three [runners-up|runner-ups|runners-ups] of the ugly dog contest.
 # Collocation and prepositions | Kollokációk és elöljárószók | Kollokationer og præpositioner
 @ Dependent prepositions | Vonzatos elöljárószók | Faste præpositioner
+! It depends on the price.
 = My grandma insisted [on] paying in coins.
 = My cat is capable [of] anything.
 - They accused the dog [of|for|with] eating the cake.
@@ -332,6 +368,7 @@ LWC('en', 6, `
 - We congratulated her [on|for|of] surviving the wedding.
 - My mood depends [on|of|from] the coffee.
 @ Phrasal verbs, advanced | Elöljárós igék, haladó | Partikelverber, avanceret
+! Let's call it a day.
 = I can't [put up with] the neighbour's karaoke.
 = We've [run out of] chocolate. This is an emergency.
 - She [came up with|came with up|came up] a plan to steal the cake.
@@ -341,6 +378,7 @@ LWC('en', 6, `
 - My cat [looks down on|looks on down|looks down] the dog.
 - I'll [catch up with|catch with up|catch up] you later. I'm slow.
 @ make, do, take, have | make, do, take, have | make, do, take, have
+! Could you do me a favour?
 = [Make] a decision. Pizza or pizza?
 = [Do] me a favour and feed the snake.
 - Could you [do|make|take] me a favour and hide this cake?
@@ -350,6 +388,7 @@ LWC('en', 6, `
 - He [made|did|took] a mistake. He sat on the cake.
 - I'll [take|make|do] care of the goat.
 @ Strong collocations | Erős kollokációk | Stærke kollokationer
+! I'm in a hurry.
 = [Heavy] rain at my wedding
 = [Strong] coffee at 5 a.m.
 - There was [heavy|strong|big] traffic, so I walked. With my car.
@@ -359,6 +398,7 @@ LWC('en', 6, `
 - It was a [narrow|thin|small] escape from the dentist.
 - You're in [deep|heavy|strong] trouble. The cat saw everything.
 @ Idioms in context | Idiómák szövegkörnyezetben | Idiomer i kontekst
+! It's not my cup of tea.
 = Eating cake is [a piece of] cake. (very easy)
 = Let's [call it] a day. The pizza is here. (stop working)
 - Don't [beat|hit|strike] around the bush. Did you eat my cake?
@@ -369,6 +409,7 @@ LWC('en', 6, `
 - You've [hit|beat|struck] the nail on the head. It's the cat's fault. (exactly right)
 # Cohesion | Szövegkohézió | Sammenhæng
 @ Ellipsis: I might, I'd love to | Ellipszis: I might, I'd love to | Ellipse: I might, I'd love to
+! I'd love to!
 = "Are you eating that?" "I [might]."
 = "Do you want to dance?" "I'd love [to]. My feet wouldn't."
 - "Have you cleaned the kitchen?" "Not [yet|yet finish|finished yet not]."
@@ -378,6 +419,7 @@ LWC('en', 6, `
 - "Did the dog eat it?" "I'm afraid [so|it|yes so]."
 - He said he'd cook, and he [did|called it|did it so]. We ordered pizza.
 @ do so, do it, do that | do so, do it, do that | do so, do it, do that
+! Do so at your own risk.
 = He promised to diet, but he didn't [do so].
 = If you want to sing, [do so] outside.
 - She wanted to quit her job by email, and she [did so|did|done so] in capitals.
@@ -387,6 +429,7 @@ LWC('en', 6, `
 - You may scream if you wish to [do so|so do|do it so].
 - He was told to leave the buffet but failed to [do so|so do|did so].
 @ Much as, Try as I might | Much as, Try as I might | Much as, Try as I might
+! Much as I'd like to, I can't.
 = [Much as] I love you, the last chip is mine.
 = [Try as] I might, I couldn't fold the map.
 - [Much as|As much|So much] I'd like to help you move, my back hurts. Suddenly.
@@ -396,6 +439,7 @@ LWC('en', 6, `
 - [Much as|So much|As much as] it pains me, I must eat this cake alone.
 - [Try as|Trying|As try as] we might, we couldn't find the remote.
 @ Substitution: one, ones, so, not | Helyettesítés: one, so, not | Substitution: one, so, not
+! I think so, but I'm not sure.
 = The dog ate my phone, so I bought a new [one].
 = "Is your mother coming?" "I hope [not]."
 - These socks have holes. I need new [ones|one|them ones].
@@ -405,6 +449,7 @@ LWC('en', 6, `
 - "Did the goat eat the flowers?" "Apparently [so|it|that]."
 - "Will grandma bring her famous soup?" "I expect [so|it|that so]."
 @ Linking across sentences | Mondatokon átívelő kapcsolás | Forbindelser på tværs af sætninger
+! In other words, no.
 = My flatmate is messy. [What's more], he eats my food.
 = The cake is burnt. [Even so], I'll eat it.
 - The hotel had no wifi. [On top of that|On top of|Top of that], there was a goat in the lift.
@@ -415,6 +460,7 @@ LWC('en', 6, `
 - My boss is strange. [Having said that|Having saying that|Have said that], he buys us pizza.
 # Register and style | Regiszter és stílus | Register og stil
 @ Formal linking: moreover, whilst | Választékos kötőszavak | Formelle bindeord
+! Moreover, it's free.
 = [Moreover], the cat has rejected the new food.
 = [Whilst] I appreciate the offer, I will not eat your soup.
 - [Furthermore|Further more|Farther more], the dog has eaten the contract.
@@ -424,6 +470,7 @@ LWC('en', 6, `
 - [Accordingly|According|Accordance], the goat was removed from the wedding.
 - [Notwithstanding|Not withstanding|Notwithstand] the rain, the picnic went ahead.
 @ Hedging: would appear, tend to | Óvatos fogalmazás | Forbehold: would appear, tend to
+! It would appear that we're lost.
 = It [would appear] that the cat has eaten the fish.
 = Cats [tend to] sit on your keyboard.
 - It [would seem|would seems|seem would] that someone has eaten the cake.
@@ -433,6 +480,7 @@ LWC('en', 6, `
 - This [may indicate|may indicates|may to indicate] that the dog is the thief.
 - It is [likely|like|liking] that pizza will be ordered.
 @ Impersonal: it has been argued | Személytelen: it has been argued | Upersonligt: it has been argued
+! It has been argued that money can't buy happiness.
 = [It has been argued] that cats are better than people.
 = It [is widely accepted] that Mondays are terrible.
 - It [has been suggested|has suggested|have been suggested] that we hide the cake.
@@ -442,6 +490,7 @@ LWC('en', 6, `
 - It [is often said|is often say|often is said] that money can't buy happiness. It buys cake.
 - It [must be stressed|must stressed|must be stress] that the goat is not a guest.
 @ Nominal style: the arrival of | Névszói stílus | Nominal stil
+! Upon arrival, please call me.
 = On [his arrival], the dog was arrested.
 = [The failure] of the diet surprised nobody.
 - [The introduction|The introducing|The introduce] of a cat changed everything.
@@ -451,6 +500,7 @@ LWC('en', 6, `
 - [His departure|His depart|His departing of] from the buffet was sudden.
 - [The discovery|The discover|The discovering] of chocolate changed my life.
 @ Understatement: not unlike, not bad | Szerény fogalmazás | Underdrivelse
+! The food wasn't bad at all.
 = My brother is [not unlike] a bear in the morning.
 = He's [not the most] patient man. He shouts at toasters.
 - The soup was [not bad|not good bad|no bad] at all. For blue soup.
@@ -461,6 +511,7 @@ LWC('en', 6, `
 - It's [hardly|hard|hardly not] surprising that the cat left.
 # 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
 @ Songs: were it not for... | Dalok: were it not for... | Sange: were it not for...
+! Were it not for music, life would be boring.
 = Were it not for Abba, Grandma [would] never dance.
 = Had it not been for the DJ, we [would have] gone home early.
 - [Were|Are|If] it not for Wonderwall, my brother would never have learned the guitar.
@@ -473,6 +524,7 @@ LWC('en', 6, `
 ~ Should Grandma request Thriller, | clear the dance floor.
 ~ Had we left earlier, | we would have missed Uncle Bob's Toxic.
 @ Songs: I insist that he sing | Dalok: I insist that he sing | Sange: I insist that he sing
+! I insist that he come with us.
 = Grandma insists that the DJ [play] Dancing Queen.
 = It is essential that nobody [sing] Let It Go tonight.
 - I suggest that he [practise|practising|to practising] Bohemian Rhapsody before the wedding.
@@ -485,6 +537,7 @@ LWC('en', 6, `
 ~ It's crucial that she | not hear the Thriller remix.
 ~ They asked that the DJ | be fired after Africa.
 @ Songs: having sung... | Dalok: having sung... | Sange: having sung...
+! Having said that, I'd do it again.
 = [Having] sung Bohemian Rhapsody, Dad needed a nap.
 = Played too often, Wonderwall [becomes] torture.
 - [Having heard|Heard having|Having hear] Toxic five times, we left the party.
@@ -497,6 +550,7 @@ LWC('en', 6, `
 ~ Recorded in 1982, | Thriller still sounds fresh.
 ~ Not wanting to be rude, | we clapped after Uncle Bob's Toxic.
 @ Songs: I do love it | Dalok: I do love it | Sange: I do love it
+! I do love a good song.
 = I [do] love Abba. Really.
 = She [did] warn us about Dad's Toxic.
 - He [does|do|is] know all the words to Bohemian Rhapsody. Sadly.
@@ -509,6 +563,7 @@ LWC('en', 6, `
 ~ He did say | he'd sing only one song.
 ~ We do want | to hear Hey Jude. Once.
 @ Songs: so do I, neither can I | Dalok: so do I, neither can I | Sange: so do I, neither can I
+! I can't dance. Neither can I.
 = I love Abba, and so [does] Grandma.
 = Dad can't sing Halo, and [neither] can I.
 - I adore Dancing Queen, and so [does|do|is] my cat.

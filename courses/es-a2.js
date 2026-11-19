@@ -1,6 +1,7 @@
 LWC('es', 2, `
 # The past: preterite | Múlt idő: pretérito indefinido | Datid: pretérito indefinido
 @ Preterite -ar: hablé, hablaste | Pretérito -ar: hablé, hablaste | Pretérito -ar: hablé, hablaste
+! Ya te llamé.
 = Ayer [hablé] con mi gato. No contestó.
 = Mi abuela [bailó] hasta las cinco.
 - Ayer yo [compré|compró|compro] un pato. No sé por qué.
@@ -10,6 +11,7 @@ LWC('es', 2, `
 - Ella [cocinó|cociné|cocina] paella. Vinieron los bomberos.
 - Yo [llegué|llegé|llegó] tarde a mi propia fiesta.
 @ Preterite -er, -ir: comí, viví | Pretérito -er, -ir: comí, viví | Pretérito -er, -ir: comí, viví
+! Comí demasiado.
 = Anoche [comí] tres cenas.
 = Mis abuelos [vivieron] en un barco diez años.
 - Mi gato [escribió|escribí|escribe] un correo a mi jefe. Con la cola.
@@ -19,6 +21,7 @@ LWC('es', 2, `
 - Los niños [aprendieron|aprendimos|aprendió] a abrir la nevera.
 - Mi perro [nació|nací|nace] un viernes 13.
 @ fui: ser and ir in the past | fui: a „ser” és az „ir” múltja | fui: ser og ir i datid
+! Fue increíble.
 = Ayer [fui] al supermercado en pijama. (ir)
 = Fue el peor corte de pelo de mi vida. (ser)
 - Nosotros [fuimos|fueron|fue] a la playa en enero. Mala idea.
@@ -28,6 +31,7 @@ LWC('es', 2, `
 - Yo [fui|fue|era] a Madrid en un tren muy lento.
 - ¿Cómo [fue|fui|está fue] tu cita? ¿Tan mal?
 @ hice, tuve, estuve | hice, tuve, estuve | hice, tuve, estuve
+! Tuve un día horrible.
 = Ayer [hice] un pastel. El perro no lo quiso.
 = [Tuve] un sueño raro con una vaca.
 - ¿Qué [hiciste|haciste|hizo] con mi móvil?
@@ -37,6 +41,7 @@ LWC('es', 2, `
 - Yo [estuve|estí|estuvo] enfermo dos días. Bueno, uno.
 - Ellos [tuvieron|tenieron|tuvimos] suerte. El oso no tenía hambre.
 @ pude, puse, dije, vine | pude, puse, dije, vine | pude, puse, dije, vine
+! Te lo dije.
 = No [pude] dormir. Mi gato roncaba.
 = ¿Qué [dijiste]? Tenía la boca llena.
 - Mi loro [dijo|decí|dijió] una palabra muy fea delante de la abuela.
@@ -47,6 +52,7 @@ LWC('es', 2, `
 - El profesor [vino|venió|vine] en monopatín.
 # Describing the past | A múlt leírása | At beskrive fortiden
 @ Imperfect: hablaba, comía | Imperfecto: hablaba, comía | Imperfecto: hablaba, comía
+! Cuando era niño, vivía en el campo.
 = De niño [comía] arena.
 = Antes [teníamos] una cabra que se llamaba Pepe.
 - Cuando era pequeño, [creía|creyó|creo] que los gatos hablaban.
@@ -56,6 +62,7 @@ LWC('es', 2, `
 - Antes no [había|hubo|hay] internet. ¿Qué hacía la gente?
 - Los niños [jugaban|jugábamos|jugaba] con las gallinas.
 @ era, iba, veía | era, iba, veía | era, iba, veía
+! Antes iba al gimnasio.
 = Mi primer coche [era] rosa.
 = [Iba] al colegio en burro. Bueno, en bici.
 - Cuando [era|fui|soy] niño, quería ser un dinosaurio.
@@ -65,6 +72,7 @@ LWC('es', 2, `
 - De joven, mi abuela [iba|iban|ibas] a todas las fiestas.
 - De niños, desde nuestra ventana [veíamos|veímos|víamos] al vecino bailar.
 @ Preterite or imperfect? | Indefinido vagy imperfecto? | Indefinido eller imperfecto?
+! Estaba durmiendo cuando llamaste.
 = [Dormía] cuando el gato saltó encima de mí.
 = Ayer [llovió] dentro de mi tienda de campaña.
 - Ayer, cuando [llegué|llegue|llego] a casa, el perro veía la tele.
@@ -77,6 +85,7 @@ LWC('es', 2, `
 ~ Hacía sol | y fuimos a la playa sin crema.
 ~ Mientras dormía, | el gato se comió mi bocadillo.
 @ Time words for the past: ayer, anoche | Időhatározók a múltban | Tidsord i fortiden
+! Anoche no dormí nada.
 = [Ayer] empecé una dieta. Hoy ya no.
 = [Hace] dos horas comí. Tengo hambre otra vez.
 - [Anoche|Ayer noche|La noche ayer] soñé con una pizza gigante.
@@ -86,6 +95,7 @@ LWC('es', 2, `
 - [La semana pasada|La pasada semana pasada|La semana pasado] mi abuela se compró una moto.
 - Mi padre contó ese chiste [hace|desde|antes] diez años. Y ayer.
 @ Reflexives in the past | Visszaható igék múlt időben | Refleksive verber i datid
+! Me quedé dormido.
 = Ayer [me levanté] a las dos de la tarde.
 = Mi abuelo [se acostó] a las cinco. ¡Qué fiesta!
 - Nosotros [nos divertimos|nos divirtimos|se divertimos] mucho en el funeral del pez.
@@ -96,6 +106,7 @@ LWC('es', 2, `
 - ¿[Os|Se|Nos] lavasteis las manos? ¿Con jabón?
 # The present perfect | Pretérito perfecto | Pretérito perfecto
 @ he hablado, has comido | he hablado, has comido | he hablado, has comido
+! ¿Has comido?
 = Hoy [he dormido] doce horas. Estoy cansado.
 = ¿[Has comido] mi pastel?
 - Esta semana [he visto|he veído|ha visto] la misma película cinco veces.
@@ -105,6 +116,7 @@ LWC('es', 2, `
 - Mi gata [ha aprendido|he aprendido|ha aprendida] a abrir puertas.
 - Yo nunca [he probado|he probé|ha probado] la sopa de mi padre. Ni quiero.
 @ Irregular participles: hecho, visto, dicho | Rendhagyó participiumok | Uregelmæssige participier
+! ¿Lo has visto?
 = ¿Qué [has hecho] con mi pelo?
 = No [he visto] nada. Yo no estaba.
 - ¿Has [escrito|escribido|escrebido] una canción para tu gato?
@@ -114,6 +126,7 @@ LWC('es', 2, `
 - No me has [dicho|decido|dichado] que tu novio es un payaso.
 - Mis hermanos han [puesto|ponido|ponesto] un pez en la bañera.
 @ ya, todavía no | ya, todavía no | ya, todavía no
+! Todavía no he terminado.
 = [Ya] me he comido el postre. Y el tuyo.
 = [Todavía no] he empezado los deberes.
 - ¿[Ya|Todavía|Aún] has limpiado tu habitación? ¿De verdad?
@@ -123,6 +136,7 @@ LWC('es', 2, `
 - ¿Has perdonado al gato [ya|todavía|aún no]?
 - [Todavía no|Ya no todavía|Todavía] hemos decidido el nombre del pez.
 @ Perfect or preterite? | Perfecto vagy indefinido? | Perfecto eller indefinido?
+! Hoy he trabajado mucho.
 = Hoy [he roto] mi móvil.
 = Ayer [rompí] mi móvil. Soy un experto.
 - Esta mañana [he desayunado|desayuné ayer|desayunaba] pizza fría.
@@ -132,6 +146,7 @@ LWC('es', 2, `
 - ¿Alguna vez [has bailado|bailaste ayer|bailabas] con un desconocido?
 - Anoche [cené|he cenado|ceno] tres veces.
 @ acabar de + infinitive | acabar de + főnévi igenév | acabar de + infinitiv
+! Acabo de llegar.
 = [Acabo de] despertarme. Son las cuatro de la tarde.
 = El gato acaba [de] romper otro vaso.
 - Acabamos de [pedir|pedido|pidiendo] pizza. ¡Escondeos!
@@ -142,6 +157,7 @@ LWC('es', 2, `
 - Acabo de [terminar|terminado|terminando] la serie. ¿Y ahora qué hago?
 # Pronouns | Névmások | Stedord
 @ lo, la, los, las | Tárgyas névmások: lo, la | Genstandsstedord: lo, la
+! Lo tengo.
 = ¿El pastel? Ya [lo] he comido.
 = ¿La pizza? El perro [la] tiene.
 - ¿Tienes mis calcetines? Sí, [los|las|lo] tengo puestos.
@@ -151,6 +167,7 @@ LWC('es', 2, `
 - ¿Ves a las gallinas? No, no [las|los|la] veo. ¡Se escaparon!
 - Este pastel está horrible. ¿[Lo|La|Los] has hecho tú?
 @ le, les | Részes névmások: le, les | Hensynsled: le, les
+! Le escribo mañana.
 = [Le] regalé calcetines a mi abuelo. Otra vez.
 = [Les] escribo cartas a mis gatos.
 - [Le|Lo|La] dije la verdad a mamá. Ahora estoy castigado.
@@ -160,6 +177,7 @@ LWC('es', 2, `
 - ¿Qué [le|lo|la] pasa a Ana? Ha visto una araña.
 - [Les|Le|Los] explico los deberes a los perros.
 @ se lo, se la | se lo, se la | se lo, se la
+! Ahora te lo doy.
 = ¿El secreto? [Se lo] conté a todo el mundo.
 = ¿La pizza? Te [la] doy si me das la tuya.
 - ¿Le diste el pastel a Juan? Sí, [se lo|le lo|lo le] di. Bueno, la mitad.
@@ -169,6 +187,7 @@ LWC('es', 2, `
 - Quiero esta camisa de flores. ¿Me [la|lo|las] envuelve?
 - ¿Le das las llaves al perro? Sí, [se las|le las|se los] doy. Conduce bien.
 @ Pronouns with infinitive | Névmás a főnévi igenévvel | Stedord med infinitiv
+! Voy a llamarte.
 = Quiero [comerlo]. Todo.
 = Voy a [contártelo]. Pero es un secreto.
 - Tengo que [llamarla|la llamar|llamar la]. Es mi madre y son las tres.
@@ -178,6 +197,7 @@ LWC('es', 2, `
 - Queremos [invitarte|te invitar|invitar te] a la boda del gato.
 - Prefiero no [saberlo|lo saber|saber lo].
 @ alguien, nadie, algo, nada | alguien, nadie, algo, nada | alguien, nadie, algo, nada
+! No pasa nada.
 = ¿Hay [alguien] en el armario?
 = No hay [nada] en la nevera. Solo un limón triste.
 - No conozco a [nadie|alguien|ninguno] en esta boda. ¿Es la mía?
@@ -188,6 +208,7 @@ LWC('es', 2, `
 - ¿Tienes [algún|alguno|algo] chiste nuevo? Los tuyos son viejos.
 # Comparing | Összehasonlítás | Sammenligning
 @ más ... que, menos ... que | más ... que, menos ... que | más ... que, menos ... que
+! Es más barato que un taxi.
 = Mi gato es [más] listo [que] mi hermano.
 = Mi coche es [menos] rápido que mi abuela.
 - Mi perro es [más grande que|más grande de|grande más que] mi coche.
@@ -197,6 +218,7 @@ LWC('es', 2, `
 - Tengo más de [cien|ciento|que cien] calcetines y ninguno hace pareja.
 - El café de mi padre es [más fuerte que|más fuerte de|fuerte más que] un caballo.
 @ tan ... como, tanto ... como | tan ... como, tanto ... como | tan ... como, tanto ... como
+! No es tan fácil como parece.
 = Mi perro es [tan] grande [como] un caballo.
 = Tengo [tantos] gatos como tú. Demasiados.
 - Mi abuela es [tan|tanto|tanta] rápida como un coche.
@@ -206,6 +228,7 @@ LWC('es', 2, `
 - No duermo [tanto|tan|tantos] como mi gato. Nadie puede.
 - Este chiste no es [tan|tanto|tanta] malo como el tuyo.
 @ el más ..., la más ... | Felsőfok: el más ... | Superlativ: el más ...
+! Es la mejor pizza del mundo.
 = Es el gato [más] perezoso del mundo.
 = Es la idea [más] tonta de mi vida.
 - Es el bocadillo [más caro|más caro que|carísimo más] de la ciudad.
@@ -215,6 +238,7 @@ LWC('es', 2, `
 - Mis gatos son los [más|mucho|muy] vagos del barrio.
 - Es la película [más aburrida|aburrida más|más aburrido] que he visto. Dormí bien.
 @ mejor, peor, mayor, menor | mejor, peor, mayor, menor | mejor, peor, mayor, menor
+! Cada vez mejor.
 = Mi gato cocina [mejor] que mi padre.
 = Mi hermano es [mayor] que yo, pero no lo parece.
 - Hoy canto [mejor|más bueno|más bien] que ayer. Los vecinos no opinan igual.
@@ -224,6 +248,7 @@ LWC('es', 2, `
 - Este corte de pelo es [peor|más malo de|malísimo que] que el otro.
 - Los [mayores|más mayores de|mayor] siempre dicen "en mis tiempos".
 @ -ísimo | -ísimo: nagyon | -ísimo: meget
+! ¡Está buenísimo!
 = La pizza está [buenísima].
 = Este bocadillo es [carísimo].
 - La película es [larguísima|larguísimo|largísima]. Tengo barba.
@@ -234,6 +259,7 @@ LWC('es', 2, `
 - Este chiste es [malísimo|malisimo|muy malísimo]. Cuéntalo otra vez.
 # The future | Jövő idő | Fremtid
 @ Simple future: hablaré | Egyszerű jövő: hablaré | Futurum: hablaré
+! Te llamaré.
 = Mañana [lloverán] gatos.
 = [Viviré] en la luna.
 - El año que viene [estudiaré|estudiaba|estudié] para ser un gato.
@@ -243,6 +269,7 @@ LWC('es', 2, `
 - Te [llamaré|llamé ayer|llamaba] cuando me despierte. El martes.
 - Mi hermana [será|serás|fue ayer] presidenta. Ya manda mucho.
 @ Irregular future: tendré, haré, podré | Rendhagyó jövő: tendré, haré | Uregelmæssig futurum: tendré, haré
+! Lo haré mañana.
 = [Tendré] diez gatos. Como mínimo.
 = ¿Qué [harás] con todo ese queso?
 - Mañana [podré|poderé|podería] ayudarte. Hoy estoy en el sofá.
@@ -252,6 +279,7 @@ LWC('es', 2, `
 - [Habrá|Haberá|Hayrá] pizza para todos. Bueno, para mí.
 - Mis primos [vendrán|venirán|venderán] con su cabra.
 @ ir a or future? | ir a vagy jövő idő? | ir a eller futurum?
+! Va a llover.
 = Esta tarde [voy a] dormir la siesta. Tres horas.
 = Algún día [seré] famoso. O no.
 - Mira esa gaviota. [Va a|Irá|Va] robar tu bocadillo.
@@ -261,6 +289,7 @@ LWC('es', 2, `
 - Creo que mi perro [ganará|ganó mañana|ganaba] el concurso de baile.
 - Ya tengo los billetes: [vamos a|vamos|vayamos a] ir al concierto de la abuela.
 @ Present for near future | Jelen idő közeli jövőre | Nutid om nær fremtid
+! Mañana trabajo.
 = Mañana [trabajo]. Qué triste.
 = El tren [sale] a las cinco. Yo salgo a las cinco y diez.
 - La película [empieza|empezó|empezar] a medianoche. Traemos almohadas.
@@ -270,6 +299,7 @@ LWC('es', 2, `
 - La boda del gato [es|fue|ser] el sábado que viene.
 - Mañana el avión [llega|llegó|llegar] a las diez. Mi maleta no sé.
 @ Time words for the future | Időhatározók a jövőben | Tidsord om fremtiden
+! Hasta la próxima semana.
 = [Mañana] empiezo la dieta. Seguro.
 = [El año que viene] aprenderé a cocinar. Como cada año.
 - [Pasado mañana|Después mañana|Mañana pasado] es mi cumpleaños. ¿Y mi regalo?
@@ -280,6 +310,7 @@ LWC('es', 2, `
 - [Mañana por la mañana|Mañana de la mañana|Mañana en mañana] no existo.
 # Por and para, first steps | Por és para, első lépések | Por og para, første skridt
 @ para: purpose and destination | para: cél és irány | para: formål og mål
+! Es para ti.
 = Este calcetín es [para] ti. Feliz cumpleaños.
 = Como chocolate [para] ser feliz.
 - Salgo [para|por|a] la playa. Adiós, trabajo.
@@ -289,6 +320,7 @@ LWC('es', 2, `
 - [Para|Por|A] mí, la pizza fría es la mejor.
 - Ahorro [para|por|a] comprar un dragón.
 @ por: through, because, time | por: át, miatt, idő | por: igennem, på grund af, tid
+! Gracias por todo.
 = Paseo [por] el parque con mi gato.
 = Gracias [por] la pizza.
 - Bailamos [por|para|de] la calle toda la noche.
@@ -298,6 +330,7 @@ LWC('es', 2, `
 - Hablo con mi gato [por|para|a] teléfono.
 - Gracias [por|para|de] nada.
 @ por or para? | por vagy para? | por eller para?
+! Lo hago por ti.
 = Lo hago [por] ti. Y por el pastel.
 = Este pastel es [para] ti. Bueno, la mitad.
 - Fui al mercado [para|por|de] comprar una gallina.
@@ -310,6 +343,7 @@ LWC('es', 2, `
 ~ Este pastel es | para ti.
 ~ Paseamos | por el centro.
 @ Imperative tú: ¡ven!, ¡haz! | Felszólítás tú: ¡ven!, ¡haz! | Bydeform tú: ¡ven!, ¡haz!
+! ¡Ven aquí!
 = [Ven] aquí. ¡Hay pizza!
 = [Haz] los deberes. Y los míos.
 - [Pon|Pone|Pones] la mesa. El gato no la va a poner.
@@ -319,6 +353,7 @@ LWC('es', 2, `
 - [Ve|Va|Vas] a tu habitación. Y no salgas hasta el jueves.
 - [Sé|Es|Eres] bueno con la abuela. Conduce ella.
 @ Imperative usted: hable, coma | Felszólítás usted: hable, coma | Bydeform usted: hable, coma
+! Pase, por favor.
 = [Pase], por favor. Cuidado con el gato.
 = [Siéntese] aquí. No, ahí no. Ahí está el perro.
 - [Hable|Habla|Hablas] más despacio, por favor. Soy de otro planeta.
@@ -329,6 +364,7 @@ LWC('es', 2, `
 - [Espere|Espera|Esperas] un momento, por favor. Unas tres horas.
 # Habits and duration | Szokások és időtartam | Vaner og varighed
 @ soler + infinitive | soler + főnévi igenév | soler + infinitiv
+! Suelo cenar tarde.
 = [Suelo] cantar en la ducha. Muy alto.
 = ¿Qué [sueles] hacer los domingos? ¿Nada?
 - Mi gato suele [dormir|duerme|durmiendo] en mi cara.
@@ -338,6 +374,7 @@ LWC('es', 2, `
 - Mis vecinos [suelen|solen|suelan] bailar a las tres de la mañana.
 - No suelo [madrugar|madrugo|madrugando]. Nunca.
 @ llevar + time + -ando | llevar + idő + gerundium | llevar + tid + gerundium
+! Llevo una hora esperando.
 = [Llevo] dos horas buscando las gafas. Están en mi cabeza.
 = ¿Cuánto tiempo [llevas] mirando la nevera?
 - Llevo una hora [esperando|esperar|espero] la pizza.
@@ -347,6 +384,7 @@ LWC('es', 2, `
 - Mis padres [llevan|llevamos|lleva] cuarenta años discutiendo por la tele.
 - Llevo meses [buscando|buscar|busco] mi otro calcetín.
 @ hace ... que, desde hace | hace ... que, desde hace | hace ... que, desde hace
+! Hace años que no te veo.
 = [Hace] tres días [que] no me ducho. Es broma.
 = Hablo con mi planta [desde hace] años.
 - Hace mucho tiempo [que|de|desde] no limpio mi habitación.
@@ -356,6 +394,7 @@ LWC('es', 2, `
 - No como verduras [desde hace|hace de|desde que hace] un año.
 - Estoy a dieta [desde|desde hace|hace] esta mañana.
 @ volver a, dejar de | volver a, dejar de | volver a, dejar de
+! He dejado de fumar.
 = [Dejé de] comer chocolate. Duró una hora.
 = El perro [volvió a] comerse mis zapatos.
 - He dejado [de|a|por] cantar en la ducha. Los vecinos lloran de alegría.
@@ -365,6 +404,7 @@ LWC('es', 2, `
 - Mi abuela dejó [de|a|por] trabajar y empezó a ir de discotecas.
 - El gato volvió [a|de|en] romper el jarrón.
 @ empezar a, terminar de | empezar a, terminar de | empezar a, terminar de
+! Empiezo a trabajar a las nueve.
 = El perro empezó [a] cantar a las tres.
 = Terminé [de] comer. Ahora el postre.
 - Empieza [a|de|por] llover. Y yo sin paraguas.
@@ -375,6 +415,7 @@ LWC('es', 2, `
 - Terminamos [de|a|por] cenar a las once y empezamos a cenar otra vez.
 # Quantity and place | Mennyiség és hely | Mængde og sted
 @ demasiado, suficiente | demasiado, suficiente | demasiado, suficiente
+! Es demasiado caro.
 = Hay [demasiados] gatos en esta casa.
 = No tengo [suficiente] paciencia para esto.
 - Hablas [demasiado|demasiada|demasiados]. Y muy alto.
@@ -384,6 +425,7 @@ LWC('es', 2, `
 - ¿Tienes [suficiente|suficientes|suficienta] valor para probar mi sopa?
 - Mi padre bebe [demasiada|demasiado|demasiadas] leche. Es un gato.
 @ ningún, ninguna | ningún, ninguna | ningún, ninguna
+! No hay ningún problema.
 = No tengo [ningún] plan. Solo dormir.
 = No hay [ninguna] galleta. ¿Quién fue?
 - No conozco [ninguna|ningún|ninguno] canción buena de mi padre.
@@ -393,6 +435,7 @@ LWC('es', 2, `
 - No veo [ningún|ninguno|ninguna] coche. Ni el mío.
 - ¿Alguno de tus gatos habla? No, [ninguno|ningún|nadie ningún]. Todavía.
 @ Location: cerca de, delante de | Helyhatározók: cerca de, delante de | Sted: cerca de, delante de
+! Está cerca de aquí.
 = Mi cama está [cerca de] la nevera. Perfecto.
 = Hay una cabra [delante de] mi casa.
 - La pizzería está [al lado del|al lado el|lado del] gimnasio. Qué suerte.
@@ -402,6 +445,7 @@ LWC('es', 2, `
 - Nos vemos [enfrente de|enfrente|en frente a] la heladería.
 - El gato duerme [encima de|encima|arriba de la] la tele.
 @ aquí, ahí, allí | aquí, ahí, allí | aquí, ahí, allí
+! Está allí.
 = Ven [aquí]. Tengo galletas.
 = Mi suegra vive [allí], muy lejos. ¡Qué bien!
 - Este pastel de [aquí|allí|ahí allí] es mío.
@@ -411,6 +455,7 @@ LWC('es', 2, `
 - ¿Quién está [ahí|allí ahí|aquí allí]? ¿Eres tú, gato?
 - Siéntate [aquí|allí aquí|ahí allí], a mi lado. No muerdo.
 @ ser or estar with adjectives | ser vagy estar melléknévvel | ser eller estar med tillægsord
+! Estoy listo.
 = Mi gato [es] muy listo.
 = Ya [estoy] listo. Bueno, me falta un zapato.
 - La película [es|está|son] aburrida. Me dormí en el minuto dos.
@@ -421,6 +466,7 @@ LWC('es', 2, `
 - ¿[Estás|Eres|Es] lista? La abuela ya está en la moto.
 # Feelings and opinions | Érzések és vélemények | Følelser og meninger
 @ doler: me duele | doler: me duele | doler: me duele
+! Me duele la cabeza.
 = Me [duele] la cabeza. Mi hermano canta.
 = Me [duelen] los pies. Bailé toda la noche.
 - ¿Te [duele|duelen|dueles] la tripa? ¿Cuántas pizzas comiste?
@@ -430,6 +476,7 @@ LWC('es', 2, `
 - ¿Qué te [duele|duelen|dueles]? El orgullo.
 - Al perro le [duele|duelen|duela] la barriga. Se comió un calcetín.
 @ me parece, me interesa | me parece, me interesa | me parece, me interesa
+! Me parece bien.
 = Me [parece] una idea terrible. ¡Vamos!
 = Me [interesan] los gatos con sombrero.
 - ¿Qué te [parece|pareces|parecen] mi nuevo corte de pelo? Sé sincero.
@@ -439,6 +486,7 @@ LWC('es', 2, `
 - ¿Te [interesan|interesa|interesas] los dinosaurios?
 - No me [importa|importan|importo] nada. Estoy de vacaciones.
 @ creo que, pienso que | creo que, pienso que | creo que, pienso que
+! Creo que sí.
 = [Creo que] mi gato me odia.
 = Pienso [que] la pizza es comida sana.
 - Creo [que|de|qué] el perro se ha comido el mando.
@@ -448,6 +496,7 @@ LWC('es', 2, `
 - ¿Hay pizza? Creo [que sí|que si|sí que]. Huele a pizza.
 - ¿Limpias tú hoy? Pienso [que no|que nada|no que].
 @ estar de acuerdo | estar de acuerdo | estar de acuerdo
+! Estoy de acuerdo.
 = [Estoy de acuerdo] contigo. La pizza es vida.
 = No [estamos] de acuerdo. Mi gato quiere el sofá.
 - ¿[Estás|Eres|Tienes] de acuerdo? ¿Pizza para desayunar?
@@ -460,6 +509,7 @@ LWC('es', 2, `
 ~ Creo que es caro. | Estoy de acuerdo.
 ~ ¿Te parece bien? | Me parece perfecto.
 @ ¡Qué ...! exclamations | Felkiáltások: ¡Qué ...! | Udråb: ¡Qué ...!
+! ¡Qué bonito!
 = ¡[Qué] horror!
 = ¡Qué [hambre] tengo!
 - ¡[Qué|Cómo|Cuál] perro tan grande! ¿Es un caballo?

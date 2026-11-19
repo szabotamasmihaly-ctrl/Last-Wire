@@ -1,6 +1,7 @@
 LWC('es', 5, `
 # Guessing and probability | Találgatás és valószínűség | Gæt og sandsynlighed
 @ Future of probability: estará en casa | Valószínűség jövő idővel: estará en casa | Sandsynlighed med futurum: estará en casa
+! Estará en casa.
 = El gato no contesta. [Estará] durmiendo, como siempre.
 = ¿Qué hora es? [Serán] las tres. Mi estómago lo sabe.
 - ¿Dónde está el perro? [Estará|Esté|Estar] en la cocina, cerca del jamón.
@@ -10,6 +11,7 @@ LWC('es', 5, `
 - Mira qué yate. [Ganará|Gane|Ganar] mucho dinero vendiendo calcetines.
 - ¿Cuánto [costará|cueste|costar] un castillo con wifi?
 @ Conditional of probability: serían las diez | Valószínűség feltételes móddal: serían las diez | Sandsynlighed med konditionalis: serían las diez
+! Serían las tres cuando llegó.
 = Cuando llegué a la fiesta, [serían] las seis de la mañana.
 = No vino a la boda. [Estaría] escondido en el baño.
 - Ayer el jefe no gritó. [Estaría|Esté|Estar] de vacaciones.
@@ -19,6 +21,7 @@ LWC('es', 5, `
 - No contestó el teléfono. [Estaría|Esté|Estar] cantando en la ducha.
 - ¿Por qué [diría|diga|decir] el loro esa palabra delante de la abuela?
 @ habrá llegado: guessing about the past | habrá llegado: találgatás a múltról | habrá llegado: gæt om fortiden
+! Se habrá quedado dormido.
 = La pizza no está. El perro se la [habrá] comido.
 = ¿Dónde está mi móvil? Lo habré [dejado] en la nevera otra vez.
 - Ya [habrán|hayan|haber] llegado al hotel. O a otro país.
@@ -28,6 +31,7 @@ LWC('es', 5, `
 - ¡Qué contento está el vecino! Le [habrá|haya|haber] tocado la lotería.
 - El suelo está mojado. El perro [habrá|haya|haber] visto la bañera.
 @ deber de, a lo mejor, seguramente | deber de, a lo mejor, seguramente | deber de, a lo mejor, seguramente
+! Debe de estar cansado.
 = El pingüino [debe de] tener calor en Sevilla.
 = [Seguramente] el taxi llegue tarde. Es lunes.
 - Debe [de|a|en] ser muy tarde. El gallo ya canta.
@@ -40,6 +44,7 @@ LWC('es', 5, `
 ~ El perro se la | habrá comido.
 ~ Serían | las seis de la mañana.
 @ Future perfect: habré terminado | Befejezett jövő: habré terminado | Førfutur: habré terminado
+! Para el viernes, ya habré terminado.
 = Para el lunes ya [habré] terminado la serie. Las ocho temporadas.
 = En 2090 [habremos] pagado el piso.
 - Cuando llegues, ya me [habré|haya|había] comido tu postre.
@@ -50,6 +55,7 @@ LWC('es', 5, `
 - Mañana a esta hora ya [habréis|hayáis|habíais] llegado a la luna.
 # Conditions | Feltételek | Betingelser
 @ con tal de que | con tal de que | con tal de que
+! Te ayudo con tal de que me invites a comer.
 = Te dejo mi coche [con tal de que] no lo pintes de rosa.
 = Haré lo que sea con tal de no [cocinar].
 - Iré a tu boda con tal de que [haya|hay|habrá] tarta.
@@ -59,6 +65,7 @@ LWC('es', 5, `
 - Con tal de que [sea|es|será] gratis, me lo como.
 - Te perdono con tal de que no se [repita|repite|repetirá] lo del karaoke.
 @ a no ser que, salvo que | a no ser que, salvo que | a no ser que, salvo que
+! Iremos, a no ser que llueva.
 = Saldremos a correr, [a no ser que] haga sol. O lluvia. O viento.
 = No me llames, salvo que [sea] una pizza.
 - No iré a la reunión, a no ser que [haya|hay|habrá] croissants.
@@ -68,6 +75,7 @@ LWC('es', 5, `
 - Lo hago yo, salvo que [prefieras|prefieres|preferirás] hacerlo mal tú.
 - No contestes, a no ser que [conozcas|conoces|conocerás] el número. Es tu jefe.
 @ siempre y cuando | siempre y cuando | siempre y cuando
+! Puedes salir, siempre y cuando vuelvas temprano.
 = Te presto mis zapatos, [siempre y cuando] no bailes con ellos.
 = Siempre y cuando [estudies], el loro no se lo dirá a tus padres.
 - Puedes usar el coche siempre y cuando [tengas|tienes|tendrás] carné.
@@ -77,6 +85,7 @@ LWC('es', 5, `
 - Me caso siempre y cuando [pongan|ponen|pondrán] reguetón.
 - Iremos siempre y cuando los niños [duerman|duermen|dormirán] en el coche.
 @ como + subjunctive: warning | como + kötőmód: figyelmeztetés | como + konjunktiv: advarsel
+! ¡Como llegues tarde otra vez, me voy sin ti!
 = [Como] toques mi chocolate, te muerdo.
 = Como no [limpies] tu cuarto, el gato se muda.
 - Como [llegues|llegas|llegarás] tarde, me como tu pizza.
@@ -89,6 +98,7 @@ LWC('es', 5, `
 ~ Como no limpies tu cuarto, | el gato se muda.
 ~ Como vuelvas a cantar, | llamo a la policía.
 @ Conditions without si | Feltétel si nélkül | Betingelser uden si
+! De haberlo sabido, no habría venido.
 = [De] saberlo, habría traído más pizza.
 = [Con] estudiar un poco, aprobarás. Con dormir, no.
 - De [haber|habido|habiendo] sabido lo del karaoke, no habría venido.
@@ -99,6 +109,7 @@ LWC('es', 5, `
 - De no [ser|siendo|sea] por el gato, habría dormido bien.
 # Advanced relatives | Haladó vonatkozó névmások | Avancerede relativer
 @ cuyo, cuya | cuyo, cuya | cuyo, cuya
+! Tengo un amigo cuyo padre es chef.
 = Es el vecino [cuya] gallina canta a las cinco.
 = El chico cuyo [perro] habla inglés vive aquí.
 - La empresa, [cuyo|cuya|cuyos] director duerme en la oficina, va mal.
@@ -108,6 +119,7 @@ LWC('es', 5, `
 - La casa [cuyo|cuya|cuyos] tejado voló está en el jardín del vecino.
 - Es un restaurante [cuya|cuyo|cuyas] sopa está fría a propósito.
 @ el cual, la cual, lo cual | el cual, la cual, lo cual | el cual, la cual, lo cual
+! No llamó, lo cual me preocupó.
 = El perro se comió mis deberes, [lo cual] fue muy útil.
 = La razón por la [cual] llegué tarde es mi cama.
 - No me invitó a la boda, [lo cual|el cual|la cual] me ahorró dinero.
@@ -117,6 +129,7 @@ LWC('es', 5, `
 - Es la empresa para la [cual|cuyo|cuales] trabaja mi gato.
 - Tiene dos loros, los [cuales|cual|cuyos] hablan más que él.
 @ quien, quienes | quien, quienes | quien, quienes
+! Quien quiera venir, que venga.
 = [Quien] ríe el último, no entendió el chiste.
 = Fue mi hermano [quien] se comió la tarta.
 - [Quien|Quienes|El quien] quiera tarta, que lave los platos.
@@ -126,6 +139,7 @@ LWC('es', 5, `
 - Los amigos con [quienes|quien|cuales] viajé ya no me hablan.
 - [Quien|Quienes|Cual] canta en la ducha, canta en el autobús.
 @ quienquiera, dondequiera, cualquiera que | quienquiera, dondequiera, cualquiera que | quienquiera, dondequiera, cualquiera que
+! Cualquiera que sea la respuesta, te apoyo.
 = [Quienquiera] que sea, que traiga pizza.
 = Dondequiera que [vayas], el perro te seguirá.
 - [Cualquiera|Cualquier|Cualesquiera] que sea la razón, no se baila en un funeral.
@@ -138,6 +152,7 @@ LWC('es', 5, `
 ~ Dondequiera que vayas, | el perro te seguirá.
 ~ Cualquiera que sea tu decisión, | el gato no está de acuerdo.
 @ donde, cuando, como as relatives | donde, cuando, como mint vonatkozó szók | donde, cuando, como som relativer
+! Hazlo como quieras.
 = Fue en la boda [cuando] el abuelo bailó en la mesa.
 = Lo cociné [como] dice el vídeo. Y explotó.
 - Es aquí [donde|cuando|como] escondo el chocolate.
@@ -148,6 +163,7 @@ LWC('es', 5, `
 - Eran las cuatro de la mañana [cuando|donde|como] el vecino empezó a tocar la batería.
 # Gerunds and infinitives | Határozói igenév és főnévi igenév | Gerundium og infinitiv
 @ al + infinitive | al + főnévi igenév | al + infinitiv
+! Al salir, cierra la puerta.
 = [Al] salir, cierra la nevera. El gato vigila.
 = Al [verme] con bigote, mi madre gritó.
 - Al [llegar|llegando|llegado] a casa, encontré al perro en mi cama.
@@ -157,6 +173,7 @@ LWC('es', 5, `
 - Al no [contestar|contestando|contesta] nadie, me comí la tarta.
 - Ten cuidado al [cruzar|cruzando|cruzas] la calle con patines.
 @ habiendo terminado | habiendo terminado | habiendo terminado
+! Habiendo terminado el trabajo, nos fuimos.
 = [Habiendo] comido tres pizzas, pidió el postre.
 = Habiendo [estudiado] toda la noche, se durmió en el examen.
 - [Habiendo|Habido|Haber] dicho eso, se marchó corriendo.
@@ -166,6 +183,7 @@ LWC('es', 5, `
 - [Habiendo|Habido|Haberse] ido todos, el gato se comió la cena.
 - Habiendo [hecho|hacido|haciendo] los deberes, el perro se los comió.
 @ llevar, seguir + gerund | llevar, seguir + határozói igenév | llevar, seguir + gerundium
+! Sigo pensando en ti.
 = [Llevo] tres horas buscando las gafas. Están en mi cabeza.
 = El vecino sigue [cantando]. Son las cuatro.
 - Llevamos una hora [esperando|esperar|esperado] la pizza.
@@ -175,6 +193,7 @@ LWC('es', 5, `
 - ¿Sigues [trabajando|trabajar|trabajado] en pijama?
 - Llevaba dos días sin [dormir|durmiendo|dormido] por la serie.
 @ ir, venir, andar + gerund | ir, venir, andar + határozói igenév | ir, venir, andar + gerundium
+! Ando buscando piso.
 = Poco a poco [voy] entendiendo a mi gato.
 = Te lo vengo [diciendo] desde hace meses. El sofá es mío.
 - Mi español va [mejorando|mejorar|mejorado]. Ya pido dos cervezas.
@@ -187,6 +206,7 @@ LWC('es', 5, `
 ~ Llevo tres horas | buscando las gafas.
 ~ Sigo sin | entender el final.
 @ estar a punto de, echarse a, ponerse a | estar a punto de, echarse a, ponerse a | estar a punto de, echarse a, ponerse a
+! Estaba a punto de llamarte.
 = Estaba [a punto de] dormirme cuando el gato saltó.
 = Al ver la factura, se [echó] a llorar.
 - El tren está a punto [de|a|en] salir sin mí.
@@ -197,6 +217,7 @@ LWC('es', 5, `
 - Al ver la avispa, se echaron [a|de|en] correr.
 # Intensity and contrast | Intenzitás és ellentét | Intensitet og kontrast
 @ por mucho que, por más que | por mucho que, por más que | por mucho que, por más que
+! Por mucho que lo intento, no me sale.
 = [Por mucho que] estudie, el gato aprueba y yo no.
 = Por más que lo [intento], la tortilla sale cuadrada.
 - Por mucho que [insistas|insistir|insistiendo], no voy a cantar.
@@ -206,6 +227,7 @@ LWC('es', 5, `
 - Por mucho que me lo [expliques|explicar|explicando], no entiendo el fútbol.
 - Por más que [busqué|buscar|buscando], no encontré el mando.
 @ por + adjective + que | por + melléknév + que | por + adjektiv + que
+! Por muy difícil que sea, lo conseguiremos.
 = Por [difícil] que sea, voy a aprender a bailar.
 = Por muy listo que [sea], el perro no sabe abrir la nevera.
 - Por [raro|raramente|rara] que parezca, mi gato ladra.
@@ -215,6 +237,7 @@ LWC('es', 5, `
 - Por muy rico que [fuera|ser|siendo], no le daría mi pizza.
 - Por [tarde|tardes|tardía] que llegues, tráeme churros.
 @ tan ... que, tanto ... que | tan ... que, tanto ... que | tan ... que, tanto ... que
+! Estaba tan cansado que me dormí en el metro.
 = Estaba [tan] cansado que me dormí en el ascensor.
 = Comió [tanto] que tuvieron que llevarlo en carrito.
 - Hablaba [tan|tanto|tanta] rápido que el loro se rindió.
@@ -224,6 +247,7 @@ LWC('es', 5, `
 - Llovió [tanto|tan|tanta] que los patos pidieron paraguas.
 - Había [tantas|tantos|tan] personas que alguien se sentó en mí.
 @ de lo más, la mar de | de lo más, la mar de | de lo más, la mar de
+! La fiesta estuvo de lo más divertida.
 = La reunión fue [de lo más] aburrida. Hasta el jefe se durmió.
 = Estamos [la mar de] contentos con el perro nuevo. Él no.
 - Mi suegra es una persona de [lo|la|el] más simpática. A veces.
@@ -236,6 +260,7 @@ LWC('es', 5, `
 ~ Estamos | la mar de contentos.
 ~ Bailar en el supermercado es | de lo más normal.
 @ ni siquiera, ni ... ni | ni siquiera, ni ... ni | ni siquiera, ni ... ni
+! Ni siquiera me saludó.
 = [Ni siquiera] el perro se comió mi tortilla.
 = No quiero [ni] té ni café. Quiero tarta.
 - No tengo tiempo [ni|ni siquiera de|o] para mirar memes.
@@ -246,6 +271,7 @@ LWC('es', 5, `
 - No ha venido nadie, ni [siquiera|siquiere|ya] la novia.
 # Time clauses | Időhatározói mellékmondatok | Tidsbisætninger
 @ a medida que, conforme | a medida que, conforme | a medida que, conforme
+! Conforme pasan los años, más te quiero.
 = [A medida que] pasa el tiempo, me parezco más a mi gato.
 = Conforme [lleguen], dales un sombrero.
 - A medida que [crecía|creciendo|crecer], el perro se parecía más al vecino.
@@ -255,6 +281,7 @@ LWC('es', 5, `
 - Conforme [vayan|ir|yendo] llegando, escóndelos detrás del sofá.
 - A medida que [subes|subir|subiendo] la montaña, el bocadillo pesa más.
 @ nada más + infinitive | nada más + főnévi igenév | nada más + infinitiv
+! Nada más llegar, me llamó.
 = [Nada más] llegar a la playa, empezó a llover.
 = Nada más [verla], el perro se enamoró.
 - Nada más [salir|salido|saliendo] de casa, me acordé del horno.
@@ -264,6 +291,7 @@ LWC('es', 5, `
 - [Nada más|Nada de|Más nada] conocernos, me pidió dinero.
 - Nada más [abrir|abriendo|abierto] la tienda, entró una cabra.
 @ apenas, en cuanto | apenas, en cuanto | apenas, en cuanto
+! En cuanto lo vi, lo supe.
 = [Apenas] se sentó, la silla se rompió.
 = En cuanto [sepa] algo del gato, te aviso.
 - Apenas [salimos|salir|saliendo], empezó a granizar.
@@ -273,6 +301,7 @@ LWC('es', 5, `
 - En [cuanto|cuando|tanto] me paguen, te invito a un churro.
 - Apenas [puedo|poder|pudiendo] creer que comiste todo eso.
 @ cada vez que, siempre que | cada vez que, siempre que | cada vez que, siempre que
+! Cada vez que te veo, sonrío.
 = [Cada vez que] canto, el perro aúlla.
 = Cada vez que [vengas], tráeme churros.
 - Cada vez que [llueve|llover|lloviendo], mi gato me culpa a mí.
@@ -285,6 +314,7 @@ LWC('es', 5, `
 ~ Nada más llegar a la playa, | empezó a llover.
 ~ A medida que pasa el tiempo, | me parezco más a mi gato.
 @ desde que, hasta que, mientras tanto | desde que, hasta que, mientras tanto | desde que, hasta que, mientras tanto
+! Desde que te conozco, soy más feliz.
 = [Desde que] tengo gato, no tengo sofá.
 = No te muevas hasta que el perro se [duerma].
 - Desde que [dejó|deje|dejar] el azúcar, está de mal humor.
@@ -295,6 +325,7 @@ LWC('es', 5, `
 - No pararé hasta [conseguirlo|que conseguirlo|lo conseguir]. O hasta la cena.
 # Cause and consequence | Ok és következmény | Årsag og følge
 @ ya que, puesto que, dado que | ya que, puesto que, dado que | ya que, puesto que, dado que
+! Ya que estás aquí, ayúdame.
 = [Ya que] estás aquí, lava los platos.
 = Dado que no hay café, [nos volvemos] a la cama.
 - Puesto que [insistes|insistas|insistir], te cantaré otra canción.
@@ -304,6 +335,7 @@ LWC('es', 5, `
 - Ya que no [puedes|puedas|poder] venir, me quedo con tu regalo.
 - Dado que [es|sea|ser] lunes, nadie sonríe.
 @ como at the start: como llovía | como a mondat elején: como llovía | como først i sætningen: como llovía
+! Como no contestabas, me fui.
 = [Como] llovía, bailamos en el garaje.
 = Como no [tenía] dinero, pagué con una canción.
 - [Como|Así|Pues] estaba cansado, me dormí en el cine.
@@ -313,6 +345,7 @@ LWC('es', 5, `
 - Como no me [contestó|contestara|contestar], le mandé cien emojis.
 - Como no [hay|haya|haber] pan, comemos tarta.
 @ debido a, gracias a, por culpa de | debido a, gracias a, por culpa de | debido a, gracias a, por culpa de
+! Gracias a ti, lo conseguí.
 = [Debido a] un pato, se suspendió el partido.
 = Aprobé [gracias a] mi gato. Me despertó a las cinco.
 - Llegamos tarde por [culpa|culpable|culpas] del GPS.
@@ -322,6 +355,7 @@ LWC('es', 5, `
 - Perdimos por [culpa de|culpa a|culpable de] un portero dormido.
 - Gracias a [que|de que|—] llegaste, el perro no se comió la tarta.
 @ de ahí que + subjunctive | de ahí que + kötőmód | de ahí que + konjunktiv
+! No ha dormido, de ahí que esté de mal humor.
 = Ve series hasta las cuatro; [de ahí que] esté tan cansado.
 = Vive en el sofá; de ahí que [llegue] tarde a todo.
 - Es muy tímido; de ahí que solo [hable|habla|hablar] con su gato.
@@ -331,6 +365,7 @@ LWC('es', 5, `
 - Es su primer día; de ahí que [lleve|lleva|llevar] corbata y pijama.
 - Se compró un yate; de ahí que no [tenga|tiene|tener] dinero para pan.
 @ así que, de modo que, por consiguiente | así que, de modo que, por consiguiente | así que, de modo que, por consiguiente
+! No había nadie, así que me fui.
 = No había nadie en la fiesta, [así que] bailé con la planta.
 = El jefe se ha dormido; por [consiguiente], nadie trabaja.
 - No me invitaste, de [modo|manera de|forma de] que no te traigo regalo.
@@ -344,6 +379,7 @@ LWC('es', 5, `
 ~ Debido a un pato, | se suspendió el partido.
 # Pronouns in depth | Névmások mélyebben | Stedord i dybden
 @ Accidents: se me olvidó | Véletlenek: se me olvidó | Uheld: se me olvidó
+! Se me olvidó.
 = [Se me] olvidó el cumpleaños de mi madre. Otra vez.
 = Al camarero se le [cayó] la tarta encima del novio.
 - Se me [olvidaron|olvidó|olvidé] los pantalones.
@@ -353,6 +389,7 @@ LWC('es', 5, `
 - Se me [cayeron|cayó|caí] las gafas en la sopa.
 - A los vecinos se les [quemó|quemaron|quemé] el pavo. Otra vez.
 @ Double pronouns: se lo | Kettős névmás: se lo | Dobbelte stedord: se lo
+! Ya se lo he dicho.
 = Le di la pizza al perro. → [Se la] di.
 = Les envié las fotos de la boda. → Se [las] envié.
 - ¿Le diste el regalo al gato? Sí, [se lo|le lo|lo le] di. No le gustó.
@@ -365,6 +402,7 @@ LWC('es', 5, `
 ~ Les compré flores. | Se las compré.
 ~ Te presto el coche. | Te lo presto.
 @ Reciprocal se: nos queremos | Kölcsönös se: nos queremos | Gensidigt se: nos queremos
+! Nos queremos mucho.
 = El gato y yo no nos [queremos]. Nos toleramos.
 = Se conocieron [en] una cola del supermercado.
 - El perro y el gato se [odian|odia|odiamos] desde hace años.
@@ -374,6 +412,7 @@ LWC('es', 5, `
 - Mi suegra y yo nos [llevamos|llevan|llevo] muy bien. Por teléfono.
 - Se [miraron|miró|miramos] y se rieron del jefe.
 @ Emphatic se: me lo comí todo | Nyomatékos se: me lo comí todo | Eftertrykkeligt se: me lo comí todo
+! ¡Me lo comí todo!
 = [Me] comí la pizza entera. Y la caja.
 = El perro se [bebió] el agua de las flores.
 - [Se|Lo|Te se] leyó el libro en una noche y ahora no duerme.
@@ -383,6 +422,7 @@ LWC('es', 5, `
 - Me [aprendí|aprendió|aprendimos] la canción de memoria. Por desgracia.
 - Ella se lo [gastó|gasté|gastaste] todo en zapatos para el gato.
 @ lo de, lo que, lo + adverb | lo de, lo que, lo + határozószó | lo de, lo que, lo + adverbium
+! Lo de ayer fue increíble.
 = ¿Te has enterado de [lo de] la boda? El novio no fue.
 = No sabes [lo] mal que canta mi tío.
 - [Lo|El|La] de ayer en el karaoke fue increíble.
@@ -393,6 +433,7 @@ LWC('es', 5, `
 - Olvida [lo|el|la] que viste en la cocina.
 # Subtle subjunctive | A kötőmód finomságai | Konjunktivens nuancer
 @ el hecho de que | el hecho de que | el hecho de que
+! El hecho de que no llames me preocupa.
 = [El hecho de que] el gato sonría es preocupante.
 = El hecho de que [seas] rico no te da mi pizza.
 - El hecho de que [llegues|llegar|llegando] tarde a tu boda me molesta.
@@ -402,6 +443,7 @@ LWC('es', 5, `
 - El hecho de que no [haya|haber|habiendo] llamado el jefe es buena señal.
 - El hecho de que [tengas|tener|teniendo] razón no te da derecho a cantar.
 @ que yo sepa, que yo recuerde | que yo sepa, que yo recuerde | que yo sepa, que yo recuerde
+! Que yo sepa, no.
 = Que yo [sepa], el gato no paga alquiler.
 = Que yo [recuerde], nunca dije eso. Estaba dormido.
 - Que yo [sepa|sé|saber], mi primo está soltero. Y por algo será.
@@ -411,6 +453,7 @@ LWC('es', 5, `
 - Que yo [vea|veo|ver], todo está limpio. Menos la cocina.
 - Que [sepamos|sabemos|saber], nadie se ha quejado del karaoke.
 @ lo que sea, sea como sea | lo que sea, sea como sea | lo que sea, sea como sea
+! Sea como sea, lo haremos.
 = Haré [lo que sea] por un churro.
 = [Sea] como sea, tenemos que esconder la tarta.
 - Pase lo que [pase|pasa|pasar], no cantes.
@@ -423,6 +466,7 @@ LWC('es', 5, `
 ~ Cueste lo que cueste, | compro ese sombrero.
 ~ Sea como sea, | tenemos que esconder la tarta.
 @ no es que ... sino que | no es que ... sino que | no es que ... sino que
+! No es que no quiera, sino que no puedo.
 = No es que no [quiera] bailar, es que mis pies no quieren.
 = No es que [sea] feo, es que es muy original.
 - No es que [esté|estoy|estar] gordo, es que el espejo es pequeño.
@@ -432,6 +476,7 @@ LWC('es', 5, `
 - No es que me [moleste|molesta|molestar], pero tu gato está en mi sopa.
 - No es que no [sepa|sé|saber] cocinar, es que el horno me odia.
 @ el que + subjunctive | el que + kötőmód | el que + konjunktiv
+! El que llegue primero, gana.
 = [El que] llegue primero, elige pizza.
 = Los que [quieran] cantar, que se vayan a otro bar.
 - El que [termine|termina|terminar] antes, lava los platos.
@@ -442,6 +487,7 @@ LWC('es', 5, `
 - Los que [sepan|saben|saber] dónde está el gato, que hablen.
 # Everyday expressions | Hétköznapi kifejezések | Hverdagsudtryk
 @ hacer falta | hacer falta | hacer falta
+! No hace falta.
 = Me [hace falta] café. Mucho café.
 = No hace falta que [cantes], gracias.
 - Nos [hacen|hace|hacemos] falta dos sillas más para los gatos.
@@ -451,6 +497,7 @@ LWC('es', 5, `
 - A los profes les [hacen|hace|hacemos] falta unas vacaciones.
 - No hacía falta que [trajeras|traes|traigas] a tu ex.
 @ dar: dar igual, dar pena, dar vergüenza | dar: dar igual, dar pena, dar vergüenza | dar: dar igual, dar pena, dar vergüenza
+! Me da igual.
 = Al gato le [da] igual todo.
 = Me da [vergüenza] bailar delante de mi madre.
 - Me [da|doy|dan] pena el perro. Lleva un jersey de Navidad.
@@ -460,6 +507,7 @@ LWC('es', 5, `
 - Me [da|dan|doy] mucha rabia que me roben las patatas.
 - A los niños les da [igual|iguales|igualmente] el regalo. Prefieren la caja.
 @ echar: echar de menos, echar la culpa | echar: echar de menos, echar la culpa | echar: echar de menos, echar la culpa
+! Te echo de menos.
 = [Echo] de menos mi cama. Llevo dos horas en el trabajo.
 = Mi hermano siempre le echa la [culpa] al perro.
 - Echo [de|a|en] menos la comida de mi abuela.
@@ -469,6 +517,7 @@ LWC('es', 5, `
 - Al ver mi corte de pelo, se echó [a|de|en] reír.
 - Le echaron una [bronca|bronco|broncos] por dormir en la reunión.
 @ tener: tener en cuenta, tener ganas | tener: tener en cuenta, tener ganas | tener: tener en cuenta, tener ganas
+! Tengo ganas de verte.
 = Tengo [ganas] de vacaciones. Y de pizza.
 = Ten [en cuenta] que el perro muerde.
 - Hay que tener [en|a|de] cuenta que el gato manda.
@@ -481,6 +530,7 @@ LWC('es', 5, `
 ~ Tengo ganas | de vacaciones.
 ~ Al gato le da | igual todo.
 @ quedar: quedar bien, quedarse con | quedar: quedar bien, quedarse con | quedar: quedar bien, quedarse con
+! Me quedo con este.
 = Ese sombrero te [queda] fatal. Cómpralo.
 = ¿Te [quedas] con el gato o con el perro?
 - ¿A qué hora [quedamos|quedemos|quedar] para no estudiar?
