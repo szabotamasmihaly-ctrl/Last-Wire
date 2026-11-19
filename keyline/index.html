@@ -27,6 +27,9 @@ button{cursor:pointer;border:0;background:none;padding:0}
 .icon-btn{width:44px;height:44px;border-radius:14px;background:var(--card);border:2px solid var(--edge);border-bottom-width:4px;display:grid;place-items:center;flex:none;text-decoration:none;color:var(--ink)}
 .icon-btn:active{transform:translateY(2px);border-bottom-width:2px}
 .icon-btn svg{width:22px;height:22px}
+.botb{position:relative}.botb.on::after{content:'';position:absolute;top:5px;right:5px;width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--card)}
+.bstat{font-weight:700;text-align:center;color:var(--ink-2);max-width:360px}.bstat.on{color:var(--ok-deep)}
+.sheet .join{width:100%;max-width:400px}.sheet h3{margin:0;font-size:22px;display:flex;align-items:center;gap:8px}.sheet h3 svg{width:28px;height:28px}
 .lang{font-weight:800;font-size:14px;letter-spacing:.04em}
 .spacer{flex:1}
 .codechip{font-family:var(--display);font-size:20px;letter-spacing:.12em;padding:4px 10px;border-radius:10px;background:var(--card);border:2px solid var(--edge);display:flex;align-items:center;gap:8px}
@@ -194,8 +197,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',level:'Level',crack:"Crack {x}'s code!",sharebots:'Your opponent types this code',players:'Players',robo:'Me + robot',d_robo:'You and a robot take turns giving clues, and the computer tries to crack your code.',d_solo:'Share one phone: one of you gives clues, the other guesses, and the computer tries to crack the code.',d_duo:'The same on two phones: your teammate sees your clues as you type them.',d_bots:'You and a robot against your friend and a robot, each on your own phone.',d_vs3:'Two of you share a phone, and the third player gets a robot teammate.',d_vs4:"Two teams of two, one phone per team: crack the other team's code.",pick:'Pick your team',two:'2 of us',mebot:'Me + robot',alone:'Alone on this phone? Pick Me + robot.',giveh:'Give a clue for each number',guessh:'Guess the code',robgave:'Your robot gave clues. Guess the code',robdec:'Your robot is guessing your code',wwrite:'Waiting for {x} to write clues',wguess:'Waiting for {x} to guess',tA:'Blue team',tC:'the computer',tB:'Orange team',pl:'Player {n}',yourturn:'Your turn',errEmpty:'Write a clue in every box',errSecret:"Don't use your secret words",pass:'Pass the phone',pass2:'Clue giver, look away',sendcl:'Send clues',checkc:'Check code',nextr:'Next round',startg:'Start a new game',joinh:'Or type the code your friend got',wjoin:'Waiting for {x} to join. They type this code:',yourmate:'your teammate',otherteam:'the other team',youropp:'your opponent',robthink:'Your robot is thinking of clues',p1:'You are Player 1',p2:'You are Player 2'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',level:'Szint',crack:'Törd fel a {x} csapat kódját!',sharebots:'Az ellenfeled ezt a kódot írja be',players:'Játékosok',robo:'Én + robot',d_robo:'Te és egy robot felváltva adtok jeleket, a gép pedig próbálja feltörni a kódotokat.',d_solo:'Egy telefonon: egyikőtök jeleket ad, a másik tippel, a gép pedig próbálja feltörni a kódot.',d_duo:'Ugyanez két telefonon: a társad gépelés közben látja a jeleidet.',d_bots:'Te és egy robot a barátod és egy robot ellen, mindenki a saját telefonján.',d_vs3:'Ketten egy telefont használtok, a harmadik játékos robot csapattársat kap.',d_vs4:'Két kétfős csapat, csapatonként egy telefon: törjétek fel a másik csapat kódját.',pick:'Válassz csapatot',two:'Ketten vagyunk',mebot:'Én + robot',alone:'Egyedül vagy ezen a telefonon? Válaszd: Én + robot.',giveh:'Adj egy jelet minden számhoz',guessh:'Találd ki a kódot',robgave:'A robotod jeleket adott. Találd ki a kódot',robdec:'A robotod tippeli a kódodat',wwrite:'Várjuk, hogy {x} megírja a jeleket',wguess:'Várjuk, hogy {x} tippeljen',tA:'a Kék csapat',tC:'a gép',tB:'a Narancs csapat',pl:'a {n}. játékos',yourturn:'Te jössz',errEmpty:'Írj jelet minden mezőbe',errSecret:'Ne használd a titkos szavakat',pass:'Add át a telefont',pass2:'Jeladó, ne nézz oda',sendcl:'Jelek küldése',checkc:'Kód ellenőrzése',nextr:'Következő kör',startg:'Új játék indítása',joinh:'Vagy írd be a kódot, amit a barátod kapott',wjoin:'Várjuk, hogy {x} belépjen. Ezt a kódot írja be:',yourmate:'a csapattársad',otherteam:'a másik csapat',youropp:'az ellenfeled',robthink:'A robotod jeleken gondolkodik',p1:'Te vagy az 1. játékos',p2:'Te vagy a 2. játékos'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',level:'Level',crack:"Crack {x}'s code!",sharebots:'Your opponent types this code',players:'Players',robo:'Me + robot',d_robo:'You and a robot take turns giving clues, and the computer tries to crack your code.',d_solo:'Share one phone: one of you gives clues, the other guesses, and the computer tries to crack the code.',d_duo:'The same on two phones: your teammate sees your clues as you type them.',d_bots:'You and a robot against your friend and a robot, each on your own phone.',d_vs3:'Two of you share a phone, and the third player gets a robot teammate.',d_vs4:"Two teams of two, one phone per team: crack the other team's code.",pick:'Pick your team',two:'2 of us',mebot:'Me + robot',alone:'Alone on this phone? Pick Me + robot.',giveh:'Give a clue for each number',guessh:'Guess the code',robgave:'Your robot gave clues. Guess the code',robdec:'Your robot is guessing your code',wwrite:'Waiting for {x} to write clues',wguess:'Waiting for {x} to guess',tA:'Blue team',tC:'the computer',tB:'Orange team',pl:'Player {n}',yourturn:'Your turn',errEmpty:'Write a clue in every box',errSecret:"Don't use your secret words",pass:'Pass the phone',pass2:'Clue giver, look away',sendcl:'Send clues',checkc:'Check code',nextr:'Next round',startg:'Start a new game',joinh:'Or type the code your friend got',wjoin:'Waiting for {x} to join. They type this code:',yourmate:'your teammate',otherteam:'the other team',youropp:'your opponent',robthink:'Your robot is thinking of clues',bot:'Claude robot',botcon:'Connect',botok:'Connected: the robot thinks with Claude',botno:'Not connected. Start the robot on your computer and type its code here.',botoff:'Disconnect',botwait:'Connecting…',p1:'You are Player 1',p2:'You are Player 2'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',level:'Szint',crack:'Törd fel a {x} csapat kódját!',sharebots:'Az ellenfeled ezt a kódot írja be',players:'Játékosok',robo:'Én + robot',d_robo:'Te és egy robot felváltva adtok jeleket, a gép pedig próbálja feltörni a kódotokat.',d_solo:'Egy telefonon: egyikőtök jeleket ad, a másik tippel, a gép pedig próbálja feltörni a kódot.',d_duo:'Ugyanez két telefonon: a társad gépelés közben látja a jeleidet.',d_bots:'Te és egy robot a barátod és egy robot ellen, mindenki a saját telefonján.',d_vs3:'Ketten egy telefont használtok, a harmadik játékos robot csapattársat kap.',d_vs4:'Két kétfős csapat, csapatonként egy telefon: törjétek fel a másik csapat kódját.',pick:'Válassz csapatot',two:'Ketten vagyunk',mebot:'Én + robot',alone:'Egyedül vagy ezen a telefonon? Válaszd: Én + robot.',giveh:'Adj egy jelet minden számhoz',guessh:'Találd ki a kódot',robgave:'A robotod jeleket adott. Találd ki a kódot',robdec:'A robotod tippeli a kódodat',wwrite:'Várjuk, hogy {x} megírja a jeleket',wguess:'Várjuk, hogy {x} tippeljen',tA:'a Kék csapat',tC:'a gép',tB:'a Narancs csapat',pl:'a {n}. játékos',yourturn:'Te jössz',errEmpty:'Írj jelet minden mezőbe',errSecret:'Ne használd a titkos szavakat',pass:'Add át a telefont',pass2:'Jeladó, ne nézz oda',sendcl:'Jelek küldése',checkc:'Kód ellenőrzése',nextr:'Következő kör',startg:'Új játék indítása',joinh:'Vagy írd be a kódot, amit a barátod kapott',wjoin:'Várjuk, hogy {x} belépjen. Ezt a kódot írja be:',yourmate:'a csapattársad',otherteam:'a másik csapat',youropp:'az ellenfeled',robthink:'A robotod jeleken gondolkodik',bot:'Claude robot',botcon:'Csatlakozás',botok:'Csatlakozva: a robot Claude-dal gondolkodik',botno:'Nincs kapcsolat. Indítsd el a robotot a gépeden, és írd be ide a kódját.',botoff:'Leválasztás',botwait:'Csatlakozás…',p1:'Te vagy az 1. játékos',p2:'Te vagy a 2. játékos'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -641,11 +644,30 @@ function robotDecode(team, i, turns, clues){
 }
 
 /* ---------- the robot can think with Claude ----------
-   AI_URL is the little Cloudflare Worker in robot-worker.js. When it is empty or does not answer,
-   the robot uses the word lists above instead. One phone asks, then shares the answer as a normal move,
-   so every phone sees the same robot clues and guesses. */
-var AI_URL='';
-var AI={busy:{},since:{},off:0};
+   keyline-robot.js runs on a computer with Claude Code. It shows a robot code; once that code is typed in here,
+   the robot's turns go through the same free relay to that computer, and Claude answers them.
+   With no code, or when the computer does not answer, the robot uses the word lists above.
+   One phone asks, then shares the answer as a normal move, so every phone sees the same robot moves. */
+var AI={busy:{},since:{},off:0,ok:false};
+try{ AI.code=localStorage.getItem('kl-bot')||''; }catch(e){ AI.code=''; }
+function botTopic(){ return RELAY+'keyline-bot-'+AI.code.toLowerCase(); }
+/* send one message to the robot computer and wait for its answer */
+function botAsk(msg, wait, cb){
+  var id=uid(), t0=Math.floor(Date.now()/1000)-2, over=false, iv;
+  var end=function(r){ if(over) return; over=true; clearInterval(iv); clearTimeout(to); cb(r); };
+  var to=setTimeout(function(){ end(null); },wait);
+  if(msg.ping) msg.ping=id; else msg.q=id;
+  fetch(botTopic(),{method:'POST',body:JSON.stringify(msg)}).catch(function(){ end(null); });
+  iv=setInterval(function(){
+    fetch(botTopic()+'/json?poll=1&since='+t0).then(function(r){ return r.text(); }).then(function(x){
+      x.split('\n').forEach(function(l){ if(!l) return; try{ var e=JSON.parse(JSON.parse(l).message); if(e && (e.a===id || e.pong===id)) end(e); }catch(y){} });
+    }).catch(function(){});
+  },1500);
+}
+function botPing(cb){
+  if(!AI.code || typeof fetch!=='function'){ AI.ok=false; if(cb) cb(); return; }
+  botAsk({ping:1},8000,function(r){ AI.ok=!!r; if(r) AI.off=0; if(cb) cb(); });
+}
 function aiOwner(kind, team){ if(!online()) return true; return kind==='crack' ? S.player==='1' : S.team===team; }
 function teamName(team){ return team==='A'?'Blue':(team==='B'?'Orange':'Computer'); }
 function aiCols(H){ return H.cols.map(function(c){ return c.slice(-12); }); }
@@ -655,25 +677,28 @@ function aiEvent(kind, team, i, val){
 }
 /* returns the robot's answer, or undefined while it is still thinking */
 function viaAI(kind, team, i, turns, data, local){
-  if(!AI_URL || typeof fetch!=='function') return local();
+  if(typeof fetch!=='function') return local();
   var k=S.room+':'+kind+':'+team+':'+i, room=S.room;
-  /* Claude did not answer three times in a row: use the word lists, but still share the answer */
-  if(AI.off>=3 && aiOwner(kind,team)){ var v0=local(); if(!AI.busy[k]){ AI.busy[k]=1; setTimeout(function(){ if(S.room===room) aiEvent(kind,team,i,v0); },0); } return v0; }
   if(!aiOwner(kind,team)){
-    /* the asking phone shares the answer; if it never comes, work it out here */
+    /* online: the phone that owns this robot move shares it; if it never comes, work it out here */
     if(!AI.since[k]){ AI.since[k]=Date.now(); setTimeout(function(){ if(S.room===room) update(); },20500); }
     if(Date.now()-AI.since[k]>20000){ if(!AI.busy[k]){ AI.busy[k]=1; var v=local(); setTimeout(function(){ if(S.room===room) aiEvent(kind,team,i,v); },0); } }
     return undefined;
+  }
+  /* no robot computer (or it stopped answering): use the word lists, and share the move with the other phones */
+  if(!AI.code || !AI.ok || AI.off>=3){
+    var v0=local(); if(!online()) return v0;
+    if(!AI.busy[k]){ AI.busy[k]=1; setTimeout(function(){ if(S.room===room) aiEvent(kind,team,i,v0); },0); }
+    return v0;
   }
   if(AI.busy[k]) return undefined;
   AI.busy[k]=1;
   var fb=local(), done=false, finish=function(v){ if(done) return; done=true; if(S.room===room && S.scr==='play') aiEvent(kind,team,i,v); };
   data.task=kind; data.team=teamName(team); data.level=levelOf(S.room);
-  var timer=setTimeout(function(){ AI.off++; finish(fb); },12000);
-  fetch(AI_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-    .then(function(r){ return r.ok?r.json():null; })
-    .then(function(j){ clearTimeout(timer); if(!j){ AI.off++; return finish(fb); } AI.off=0; finish(kind==='give' ? aiCheckClues(j.clues,team,i,turns,fb) : (/^[1-4]{3}$/.test(j.code||'') && new Set(j.code).size===3 ? j.code : fb)); })
-    .catch(function(){ clearTimeout(timer); AI.off++; finish(fb); });
+  botAsk(data,40000,function(j){
+    if(!j || j.err){ if(!j) AI.off++; return finish(fb); }
+    AI.off=0; finish(kind==='give' ? aiCheckClues(j.clues,team,i,turns,fb) : (/^[1-4]{3}$/.test(j.code||'') && new Set(j.code).size===3 ? j.code : fb));
+  });
   return undefined;
 }
 /* keep a Claude clue only if it is one word, new, and not a secret word; otherwise use the word-list clue */
@@ -829,7 +854,7 @@ function render(){
   document.documentElement.lang=S.lang;
   document.body.classList.toggle('tB', S.team==='B' && S.scr==='play');
   if(S.scr==='home'){
-    h=topbar('<a class="icon-btn" href="../" aria-label="'+t('home')+'">'+I.home+'</a>')+
+    h=topbar('<a class="icon-btn" href="../" aria-label="'+t('home')+'">'+I.home+'</a><button class="icon-btn botb'+(AI.ok?' on':'')+'" id="bot" aria-label="'+t('bot')+'">'+I.robot+'</button>')+
       '<main><div class="hero"><div class="dial"><i><span>3</span></i><i><span style="animation-delay:.2s">1</span></i><i><span style="animation-delay:.4s">4</span></i></div>'+
       '<h1 class="logo"><span>KEY</span><em>LINE</em></h1>'+
       '<div class="levels">'+[1,2,3].map(function(l){ return '<button class="lv'+(S.level===l?' on':'')+'" data-l="'+l+'" aria-label="'+t('level')+' '+l+'">'+stars(l)+'</button>'; }).join('')+'</div>'+
@@ -960,6 +985,7 @@ function history(st){
 function bind(){
   var l=$('#lang'); if(l) l.onclick=function(){ S.lang=S.lang==='en'?'hu':'en'; saveUI(); render(); };
   var b=$('#back'); if(b) b.onclick=function(){ closeEnd(); linkStop(); if(S.scr==='play') S.scr=!online()?'home':(S.mode==='vs'?'pick':'room'); else if(S.scr==='pick') S.scr='room'; else S.scr='home'; setHash(''); render(); };
+  var bb=$('#bot'); if(bb) bb.onclick=function(){ beep('tap'); botSheet(); };
   $$('.lv').forEach(function(x){ x.onclick=function(){ S.level=+x.getAttribute('data-l'); saveUI(); beep('tap'); render(); }; });
   $$('.npb').forEach(function(x){ x.onclick=function(){ S.np=+x.getAttribute('data-np'); saveUI(); beep('tap'); render(); }; });
   $$('.sg').forEach(function(x){ x.onclick=function(){ S.withBot=x.getAttribute('data-b')==='1'; beep('tap'); render(); }; });
@@ -1064,6 +1090,27 @@ function drawEnd(){
   $('#again').onclick=playAgain;
   $('#look').onclick=function(){ closeEnd(); S.endHidden=true; render(); if(coop()) return; var them=opponent(S.team); $$('.hgrid.them .h').forEach(function(h,k){ h.textContent=S.game.keys[them][k]; h.style.fontFamily='var(--font)'; h.style.fontSize='12px'; h.style.padding='6px 2px'; }); };
 }
+/* connect the robot computer: type the code that keyline-robot.js shows */
+function botSheet(){
+  closeEnd(); var v=document.createElement('div'); v.className='veil';
+  function draw(wait){
+    var c=AI.code?AI.code.slice(0,4)+'-'+AI.code.slice(4):'';
+    v.innerHTML='<div class="sheet"><h3>'+I.robot+esc(t('bot'))+'</h3>'+
+      '<div class="join"><input id="bc" maxlength="9" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX" value="'+esc(c)+'" aria-label="'+esc(t('bot'))+'"></div>'+
+      '<div class="bstat'+(AI.ok?' on':'')+'" role="status" aria-live="polite">'+esc(wait?t('botwait'):(AI.ok?t('botok'):t('botno')))+'</div>'+
+      '<button class="big" id="bcon"'+(wait?' disabled':'')+'>'+esc(t('botcon'))+'</button>'+
+      (AI.code?'<button class="big ghost" id="boff">'+esc(t('botoff'))+'</button>':'')+'</div>';
+    v.querySelector('#bcon').onclick=function(){
+      var x=v.querySelector('#bc').value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+      if(x.length!==8){ beep('no'); return; }
+      AI.code=x; try{ localStorage.setItem('kl-bot',x); }catch(e){}
+      draw(true); botPing(function(){ beep(AI.ok?'ok':'no'); draw(false); render(); });
+    };
+    var off=v.querySelector('#boff'); if(off) off.onclick=function(){ AI.code=''; AI.ok=false; try{ localStorage.removeItem('kl-bot'); }catch(e){} v.remove(); render(); };
+  }
+  v.onclick=function(e){ if(e.target===v) v.remove(); };
+  draw(false); document.body.appendChild(v);
+}
 function playAgain(){ post({k:'again',c:S.room,id:'a'+uid()}); goPlay(nextRoom(S.room)); }
 function closeEnd(){ var v=$('.veil'); if(v) v.remove(); }
 function confetti(){
@@ -1079,6 +1126,7 @@ function toast(s){ var d=document.createElement('div'); d.className='toast'; d.t
 window.KeylineTest={robotClues:function(){ return robotClues.apply(null,arguments); },aiGuess:function(turns,i,clues,room,lv){ S.room=room||"TEST"; S.game={pool:LEVELS[(lv||1)-1]}; return aiGuess(turns,i,clues); },norm:norm,rel:rel};
 /* reopen the same game after a reload */
 var m=/^#(solo|duo|vs|bots|robo)-([A-Z]{4})(?:-([AB12]))?$/.exec(location.hash||'');
+botPing(function(){ if(S.scr==='home') render(); });
 if(m){ S.mode=m[1]; if(m[1]==='vs'||m[1]==='bots') S.team=m[3]||'A'; else { S.team='A'; S.player=m[3]||'1'; } goPlay(m[2]); } else render();
 })();
 </script>
