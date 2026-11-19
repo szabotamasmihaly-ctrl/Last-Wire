@@ -1003,6 +1003,8 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .key.mic.rec{background:#FF4B4B;color:#fff;box-shadow:0 3px 0 #a3191d}
 .key.mic.rec::after{content:'';position:absolute;inset:0;border-radius:9px;border:3px solid #FF4B4B;animation:pulse 1s ease-out infinite}
 .heard{flex:none;margin:0;color:#ff9a9e;font-size:14px;text-decoration:line-through;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.heard.mic-live{color:#fff;text-decoration:none;white-space:normal}
+.mic-err{margin:8px 0 0;padding:8px 10px;border-radius:10px;background:rgba(255,200,60,.14);color:#ffd977;font-size:14px;line-height:1.35}
 .lhelp{display:flex;align-items:center;gap:14px;padding:10px 0 4px}
 .lhelp .ear{font-size:44px;line-height:1}
 .lhelp .key{min-height:56px;font-size:18px}
@@ -4216,6 +4218,9 @@ var ES_PHRASES = [
     'keys.col': ['Keyboard: 1, 2 or 3.', 'Billentyűzet: 1, 2 vagy 3.', 'Tastatur: 1, 2 eller 3.'],
     'p.bad': ['Not that one.', 'Nem ez.', 'Ikke den.'],
     'mic': ['Say it', 'Mondd ki', 'Sig det'],
+    'mic.deny': ['🎤🚫 Allow the microphone: tap 🔒 next to the web address → Microphone → Allow, then reload.', '🎤🚫 Engedd a mikrofont: koppints a webcím melletti 🔒-ra → Mikrofon → Engedélyezés, aztán töltsd újra.', '🎤🚫 Tillad mikrofonen: tryk på 🔒 ved webadressen → Mikrofon → Tillad, og genindlæs.'],
+    'mic.net': ['🎤 Speech needs Chrome or Safari (not Brave, Firefox or in-app browsers).', '🎤 A beszédfelismeréshez Chrome vagy Safari kell (nem Brave, Firefox vagy appon belüli böngésző).', '🎤 Tale kræver Chrome eller Safari (ikke Brave, Firefox eller app-browsere).'],
+    'mic.quiet': ['🎤 …? Nothing heard. Tap and speak right away.', '🎤 …? Nem hallottam semmit. Koppints és rögtön beszélj.', '🎤 …? Intet hørt. Tryk og tal med det samme.'],
     'p.start': ['Start', 'Kezdés', 'Start'],
     'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
     'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
@@ -4291,7 +4296,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 38;
+  var BUILD = 39;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4846,7 +4851,7 @@ var ES_PHRASES = [
   var PAIR_KEY = 'last-wire-pair', PAIR_ABC = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
   var PAIR = null, PL = { relay: null, ping: null };
   function pairTopic() { return 'lastwire-pair-v1-' + hashSeed('lw-pair:' + PAIR.room).toString(36); }
-  function pairSave() { try { if (PAIR) localStorage.setItem(PAIR_KEY, JSON.stringify({ room: PAIR.room, lead: PAIR.lead, me: PAIR.me, cur: PAIR.cur, done: PAIR.done, t: Date.now() })); else localStorage.removeItem(PAIR_KEY); } catch (e) {} }
+  function pairSave() { try { if (PAIR) localStorage.setItem(PAIR_KEY, JSON.stringify({ room: PAIR.room, lead: PAIR.lead, me: PAIR.me, cur: PAIR.cur, done: PAIR.done, top: PAIR.top || 0, t: Date.now() })); else localStorage.removeItem(PAIR_KEY); } catch (e) {} }
   function pairOn() { return !!PAIR; }
   function pairFollower() { return !!PAIR && !PAIR.lead; }
   function pairLeader() { return !!PAIR && PAIR.lead; }
@@ -4887,7 +4892,9 @@ var ES_PHRASES = [
     /* the leader keeps repeating its choice, so a phone that missed the start still joins */
     if (x.k === 'ping') { if (!PAIR.lead && x.cur) pairFollow(x.cur, 'ping'); if (!was) pairPaint(); return; }
     if (x.k === 'hi') pairPost(PAIR.lead ? { k: 'here', cur: PAIR.cur } : { k: 'here' });
-    if (!PAIR.lead && x.cur && (x.k === 'go' || x.k === 'here' || x.k === 'hi')) pairFollow(x.cur, x.k !== 'go');
+    /* whoever picks a bomb last, the other phone follows: the leader too, when the other phone picked */
+    if (x.cur && x.k === 'go') { if (PAIR.lead && !(x.cur.n < (PAIR.top || 0))) PAIR.cur = x.cur; pairFollow(x.cur, false); }
+    else if (!PAIR.lead && x.cur && (x.k === 'here' || x.k === 'hi')) pairFollow(x.cur, true);
     if (!was) { sfx('ok'); setTimeout(function () { if (S.drawer === 'pair' && PAIR && PAIR.peer) { S.drawer = null; renderDrawer(); } }, 1400); }
     pairPaint();
   }
@@ -4897,8 +4904,10 @@ var ES_PHRASES = [
     if (cur.songs && cur.songs.length) { var hh = songHash(cur.songs); SONG_BANK[hh] = cur.songs; }
     if (soft === 'ping' && (cur.n === PAIR.done || Date.now() - cur.n > 15 * 60 * 1000)) return;
     if (soft && cur.n === PAIR.done && S.screen !== 'home' && S.screen !== 'classic') return;
+    /* an older choice never pulls a phone back from a newer bomb */
+    if (cur.n < (PAIR.top || 0)) return;
     var spec = makeSpec(cur.code); if (!spec) return;
-    PAIR.done = cur.n; pairSave();
+    PAIR.done = cur.n; PAIR.top = cur.n; pairSave();
     var role = cur.role === 'bomb' ? 'help' : 'bomb';
     S.drawer = null; S.sheet = null; renderDrawer(); linkStop(); stopLoop(); clearTimers(); document.body.classList.remove('boom');
     S.solo = false; S.game = null;
@@ -4909,15 +4918,18 @@ var ES_PHRASES = [
   }
   /* the leader's choice goes to the other phone */
   function pairLead(code, role) {
-    if (!pairLeader() || !code) return;
-    PAIR.cur = { code: code, role: role, n: Date.now() };
+    if (!PAIR || !code) return;
+    var n = Math.max(Date.now(), (PAIR.top || 0) + 1);
+    PAIR.cur = { code: code, role: role, n: n }; PAIR.top = n; PAIR.done = n;
     var pp = parsePartyCode(code); if (pp && pp.h && songHash(mySongs(pp.lang)) === pp.h) PAIR.cur.songs = mySongs(pp.lang);
     pairSave();
     pairPost({ k: 'go', cur: PAIR.cur });
   }
   function pairStart(room, lead, me) {
     pairStop();
-    PAIR = { room: room, lead: lead, me: me || Date.now().toString(36) + Math.random().toString(36).slice(2, 6), peer: false, cur: null, done: null };
+    PAIR = { room: room, lead: lead, me: me || Date.now().toString(36) + Math.random().toString(36).slice(2, 6), peer: false, cur: null, done: null, top: 0 };
+    /* each browser tab is its own phone, even when two tabs share the saved pairing */
+    try { sessionStorage.setItem(PAIR_KEY + '-me', JSON.stringify({ me: PAIR.me, lead: !!lead, room: room })); } catch (e) {}
     pairSave(); pairListen(); pairPost({ k: 'hi' });
   }
   function pairCreate() { var c = ''; for (var i = 0; i < 4; i++) c += PAIR_ABC[Math.floor(Math.random() * PAIR_ABC.length)]; pairStart(c, true); renderDrawer(); pairPaint(); }
@@ -4931,7 +4943,9 @@ var ES_PHRASES = [
     try {
       var o = JSON.parse(localStorage.getItem(PAIR_KEY) || 'null');
       if (!o || !o.room || Date.now() - (o.t || 0) > 12 * 3600 * 1000) return;
-      pairStart(o.room, !!o.lead, o.me); PAIR.cur = o.cur || null; PAIR.done = o.done || null; pairSave();
+      var mine = null; try { mine = JSON.parse(sessionStorage.getItem(PAIR_KEY + '-me') || 'null'); } catch (e) {}
+      if (mine && mine.room !== o.room) mine = null;
+      pairStart(o.room, mine ? mine.lead : !!o.lead, mine ? mine.me : null); PAIR.cur = o.cur || null; PAIR.done = o.done || null; PAIR.top = o.top || 0; pairSave();
     } catch (e) {}
   }
   var ICON_PAIR = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="8.5" cy="8" r="3.4" fill="currentColor"/><circle cx="16.5" cy="9" r="2.8" fill="currentColor" opacity=".75"/><path d="M2 20c0-3.8 2.9-6.4 6.5-6.4S15 16.2 15 20z" fill="currentColor"/><path d="M14.6 14.2c.6-.2 1.2-.3 1.9-.3 3 0 5.5 2.2 5.5 5.6h-5.4" fill="currentColor" opacity=".75"/></svg>';
@@ -6046,15 +6060,32 @@ var ES_PHRASES = [
     return prev[b.length];
   }
   /* a recogniser mishears now and then, so a long sentence may miss one word */
+  /* the sentence counts when it is somewhere in what was heard: extra words before or after (a cough, "yep") are free */
+  function wordDistIn(a, b) {
+    var prev = [], cur, i, j, best;
+    for (j = 0; j <= b.length; j++) prev[j] = j;
+    best = prev[b.length];
+    for (i = 1; i <= a.length; i++) { cur = [0]; for (j = 1; j <= b.length; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; best = Math.min(best, cur[b.length]); }
+    return best;
+  }
   function saidRight(alts, want) {
-    var w = sayWords(want.join(' ')), slack = Math.floor(w.length / 6);
-    return alts.some(function (a) { return wordDist(sayWords(a), w) <= slack; });
+    var w = sayWords(want.join(' ')), slack = Math.floor(w.length / 5);
+    return alts.some(function (a) { return wordDistIn(sayWords(a), w) <= slack; });
+  }
+  /* why the microphone gave nothing, shown under the module until the next try */
+  function micErr(i) {
+    if (Mic.errAt !== i || !Mic.err) return '';
+    var k = Mic.err === 'not-allowed' || Mic.err === 'service-not-allowed' || Mic.err === 'audio-capture' ? 'mic.deny' : Mic.err === 'network' ? 'mic.net' : 'mic.quiet';
+    return '<p class="mic-err" role="status">' + esc(t(k)) + '</p>';
   }
   function micStop() { if (Mic.rec) { try { Mic.rec.abort(); } catch (e) {} } Mic.rec = null; Mic.at = null; Mic.done = null; }
   /* listens until the player stops talking: the words show as they come, the right sentence counts at once,
      and an answer that arrives after the task has moved on is dropped */
   function micToggle(i) {
     if (Mic.off) return;
+    Mic.err = ''; Mic.errAt = null;
+    /* Brave has the speech button but no speech service behind it */
+    if (navigator.brave) { Mic.err = 'network'; Mic.errAt = i; micFail(i); return; }
     if (Mic.rec) { var was = Mic.at, r0 = Mic.rec; if (Mic.done) Mic.done(); else { micStop(); if (S.game) renderMod(was); } return; }
     var rec, fin = '', alts = [], step = S.game && S.game.ms[i] ? JSON.stringify([S.game.ms[i].r, S.game.ms[i].s]) : '', quiet = null, cap = null, over = false;
     try { rec = new SpeechRec(); } catch (e) { Mic.off = true; renderMod(i); return; }
@@ -6072,7 +6103,8 @@ var ES_PHRASES = [
       try { rec.stop(); } catch (e) {}
       var said = [fin.trim()].concat(alts).filter(function (x, k, a) { return x && a.indexOf(x) === k; });
       if (!same()) return;
-      if (said.length) modAct(i, 'said', said); else if (S.game) renderMod(i);
+      if (said.length) modAct(i, 'said', said);
+      else { if (!Mic.err) Mic.err = 'no-speech'; Mic.errAt = i; micFail(i); }
     }
     rec.onresult = function (e) {
       var interim = ''; fin = ''; alts = [];
@@ -6087,11 +6119,17 @@ var ES_PHRASES = [
       if (want && saidRight([(fin + ' ' + interim).trim()], want)) { fin = (fin + ' ' + interim).trim(); finish(); return; }
       clearTimeout(quiet); quiet = setTimeout(function () { if (!interim.trim()) finish(); else { fin = (fin + ' ' + interim).trim(); finish(); } }, 2200);
     };
-    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'language-not-supported') Mic.off = true; };
+    rec.onerror = function (e) { if (e.error === 'language-not-supported') Mic.off = true; else if (e.error !== 'aborted') Mic.err = e.error || 'no-speech'; };
     rec.onend = function () { if (!over) finish(); };
     Mic.rec = rec; Mic.at = i; Mic.done = finish;
     cap = setTimeout(finish, 20000);
-    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; Mic.done = null; return; }
+    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; Mic.done = null; Mic.err = 'not-allowed'; Mic.errAt = i; micFail(i); return; }
+    renderMod(i);
+  }
+  /* a try that heard nothing: the module says why, and karaoke offers its way on */
+  function micFail(i) {
+    if (!S.game) return;
+    var m = S.spec.modules[i]; if (m && UI[m.t].on) UI[m.t].on('nohear', null, m.data, S.game.ms[i], i);
     renderMod(i);
   }
   /* tiles get smaller as the sentence grows, so the whole tray always fits on the panel */
@@ -6147,7 +6185,7 @@ var ES_PHRASES = [
       h += '<div class="row">' + field(i, st.value || '', '⌨', { enter: 'send', cls: 'ltype' }) + '</div>';
       h += '<div class="row">' + B(i, 'clear', null, t('order.clear'), '', empty) +
         (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
-        B(i, 'send', null, t('ck.check'), 'go wide', empty) + '</div>';
+        B(i, 'send', null, t('ck.check'), 'go wide', empty) + '</div>' + micErr(i);
       return h + (st.fb ? fbBad('p.bad') : '');
     },
     typed: function (st, i) { st.fb = false; st.heard = ''; lsPaint(i); },
@@ -6478,7 +6516,7 @@ var ES_PHRASES = [
       h += '<div class="kscreen big"><p class="ksing" lang="' + tl() + '" style="--n:' + ws.length + '">' + ws.map(function (w, k) { return '<span style="animation-delay:' + (k * 0.45) + 's">' + esc(w) + '</span>'; }).join(' ') + '<i class="kball" aria-hidden="true"></i></p></div>';
       if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
       h += '<div class="row kmic">' + '<button type="button" class="key mic big' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>' +
-        (st.tries ? B(i, 'skip', null, '→', 'go') : '') + '</div>';
+        (st.tries ? B(i, 'skip', null, '→', 'go') : '') + '</div>' + micErr(i);
       return h;
     },
     on: function (k, v, d, st, i) {
@@ -6492,6 +6530,7 @@ var ES_PHRASES = [
         st.picked = true; return 're';
       }
       if (k === 'mic' && st.picked) { st.heard = ''; micToggle(i); return; }
+      if (k === 'nohear' && st.picked) { st.tries++; return; }
       if (k === 'said' && st.picked) { if (saidRight(v, rd.full.split(/\s+/))) return next(); st.heard = v[0]; st.tries++; return 're'; }
       if (k === 'skip' && st.picked && st.tries) return next();
     },
@@ -6513,7 +6552,7 @@ var ES_PHRASES = [
       if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
       h += '<div class="row">' + field(i, st.value || '', '✍️ ' + rd.hide.map(function () { return '____'; }).join(' '), { enter: 'send' }) + '</div>';
       h += '<div class="row">' + (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
-        B(i, 'send', null, t('ck.check'), 'go wide') + '</div>';
+        B(i, 'send', null, t('ck.check'), 'go wide') + '</div>' + micErr(i);
       return h + (st.fb ? fbBad('p.bad') : '');
     },
     on: function (k, v, d, st, i) {
