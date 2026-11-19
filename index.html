@@ -1150,7 +1150,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .sstep i{width:12px;height:12px;border-radius:50%;background:#3a1015;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
 .sstep.now{color:#fff;background:rgba(255,200,61,.22)}.sstep.now i{background:#6b4d00;animation:pdot 1.4s infinite}
 .sstep.on i{background:#58CC02;box-shadow:0 0 10px #58CC02}
-.safe-rule{margin:0 0 6px;font-weight:800;font-size:15px;color:#FFC83D}
+.safe-rule{margin:0 0 14px;padding:0;list-style:none;font-weight:800;font-size:20px;line-height:1.35;color:#FFC83D}.safe-rule li{margin:0 0 6px}.safe-rule li.warn{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(255,80,80,.18);color:#fff;font-size:18px}
 .safe .sreset{min-width:40px;min-height:34px;font-size:16px;padding:2px 6px}
 .lcd{background:#0d1a10;color:#7CFF7C;border-radius:8px;padding:4px 16px;font:700 30px/1.1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;box-shadow:inset 0 0 0 2px #1f3a24;text-shadow:0 0 8px rgba(124,255,124,.7);min-width:96px;text-align:center}
 .dial{position:relative;width:196px;height:196px}
@@ -4257,7 +4257,7 @@ var ES_PHRASES = [
     'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
     'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'], 'mod.boss': ['Dead Air', 'Dead Air', 'Dead Air'],
     'safe.r': ['right', 'jobbra', 'højre'], 'safe.l': ['left', 'balra', 'venstre'], 'safe.way': ['Wrong way round.', 'Rossz irányba.', 'Den forkerte vej.'], 'safe.again': ['Turned too far. Start again.', 'Túltekerted. Kezdd újra.', 'Drejet for langt. Start forfra.'],
-    'safe.rule': ['1 ↻ right · 2 ↺ left · 3 ↻ right. Turned too far? Start again: 🔄', '1 ↻ jobbra · 2 ↺ balra · 3 ↻ jobbra. Túltekerted? Kezdd újra: 🔄', '1 ↻ højre · 2 ↺ venstre · 3 ↻ højre. Drejet for langt? Start forfra: 🔄'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
+    'safe.rule': ['1st number: turn ↻ right|2nd number: turn ↺ left|3rd number: turn ↻ right|⚠️ You can\'t go past the number and turn back. Too far = start again 🔄', '1. szám: tekerd ↻ jobbra|2. szám: tekerd ↺ balra|3. szám: tekerd ↻ jobbra|⚠️ Nem tekerheted túl és vissza. Túltekerted = kezdd újra 🔄', '1. tal: drej ↻ til højre|2. tal: drej ↺ til venstre|3. tal: drej ↻ til højre|⚠️ Du kan ikke dreje forbi tallet og tilbage. For langt = start forfra 🔄'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
     'boss.warn': ['⚠️ Skip = no way back', '⚠️ Ha továbblépsz, nincs visszaút', '⚠️ Springer du over, er der ingen vej tilbage'],
     'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
   };
@@ -4291,7 +4291,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 37;
+  var BUILD = 38;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6564,7 +6564,7 @@ var ES_PHRASES = [
       var leds = d.nums.map(function (_, k) { return '<span class="sstep' + (k < st.k ? ' on' : k === st.k ? ' now' : '') + '"><i></i>' + (k % 2 ? '↺ ' + t('safe.l') : '↻ ' + t('safe.r')) + '</span>'; }).join('');
       return '<div class="safe"><div class="leds">' + leds + '<button type="button" class="key sreset" data-a="m" data-i="' + i + '" data-k="reset" aria-label="reset">🔄</button></div><div class="lcd"><b>' + (st.v < 10 ? '0' : '') + st.v + '</b></div>' +
         '<div class="dial"><div class="dial-face" style="' + safeDial(st) + '">' + ticks + '</div><span class="dial-mark" aria-hidden="true">▼</span><span class="dial-knob" aria-hidden="true"></span></div>' +
-        '<div class="row dialbtns">' + B(i, 'd', -10, '↻↻') + B(i, 'd', -1, '↻') + B(i, 'set', null, '🔓', 'go') + B(i, 'd', 1, '↺') + B(i, 'd', 10, '↺↺') + '</div></div>' + (st.fb ? fbBad(st.fb === 'way' ? 'safe.way' : st.fb === 'again' ? 'safe.again' : 'p.bad') : '');
+        '<div class="row dialbtns">' + B(i, 'd', -5, '↻ 5') + B(i, 'd', -1, '↻ 1') + B(i, 'set', null, '🔓', 'go') + B(i, 'd', 1, '↺ 1') + B(i, 'd', 5, '↺ 5') + '</div></div>' + (st.fb ? fbBad(st.fb === 'way' ? 'safe.way' : st.fb === 'again' ? 'safe.again' : 'p.bad') : '');
     },
     on: function (k, v, d, st, i) {
       /* turning right (clockwise) brings the numbers down to the mark, turning left brings them up */
@@ -6580,14 +6580,14 @@ var ES_PHRASES = [
       }
     },
     key: function (e, d, st, i) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { modAct(i, 'd', e.shiftKey ? 10 : 1); return true; }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { modAct(i, 'd', e.shiftKey ? -10 : -1); return true; }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { modAct(i, 'd', e.shiftKey ? 5 : 1); return true; }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { modAct(i, 'd', e.shiftKey ? -5 : -1); return true; }
       if (e.key === 'Enter') { modAct(i, 'set'); return true; }
     },
     keys: function () { return ''; }, pos: function () { return 0; },
     recap: function (d) { return [{ tx: d.nums.map(function (n) { return n + ' = ' + PK().num(n); }).join(' · ') }]; },
     done: function (d) { return learn(UI.safe.recap(d)); },
-    help: function (d, i, ms) { return card('', '', '<p class="safe-rule">' + esc(t('safe.rule')) + '</p><div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.say, ms, d.tpl.replace(/\{(\d)\}/g, function (_, k) { return PK().num(d.nums[+k]); }))); },
+    help: function (d, i, ms) { return card('', '', '<ol class="safe-rule">' + t('safe.rule').split('|').map(function (x) { return '<li' + (/^⚠️/.test(x) ? ' class="warn"' : '') + '>' + esc(x) + '</li>'; }).join('') + '</ol><div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.say, ms, d.tpl.replace(/\{(\d)\}/g, function (_, k) { return PK().num(d.nums[+k]); }))); },
     onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function () { return d.say; }); }
   };
 
