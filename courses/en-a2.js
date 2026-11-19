@@ -31,7 +31,7 @@ LWC('en', 2, `
 - [Did|Was|Do] they enjoy the trip? They came home early.
 - When did the cat [learn|learned|learns] to open the fridge?
 - Why [did|was|were] you wear a suit to the beach?
-- Did you [see|saw|seen] the man with the goat on the bus?
+- Did you [see|saw|seen] the message I sent you?
 - How [did|was|were] you get on the roof?
 @ Past negatives | Tagadás múlt időben | Nægtelse i datid
 ! I didn't mean it.
@@ -57,13 +57,13 @@ LWC('en', 2, `
 @ was -ing, were -ing | Folyamatos múlt | Udvidet datid
 ! Sorry, I wasn't listening.
 = I [was sleeping] in the meeting.
-= The cats [were having] a party in the kitchen.
+= The kids [were having] a party when we got home.
 - She [was singing|were singing|was sing] when the bus stopped.
 - We [were watching|was watching|were watch] a horror film. Then the lights went out.
 - It [was raining|were raining|was rain] inside the tent.
 - What [were|was|did] you doing on the roof at 3 a.m.?
 - He [wasn't listening|weren't listening|didn't listening]. He was playing a game.
-- The children [were painting|was painting|painting] the dog.
+- The children [were playing|was playing|playing] outside all day.
 @ when and while | when és while | when og while
 ! You called while I was driving.
 = I was dancing [when] my boss walked in.
@@ -203,22 +203,22 @@ LWC('en', 2, `
 - Look at the baby's face. She['s going to|going to|is go to] cry.
 @ Present continuous for arrangements | Folyamatos jelen: megbeszélt tervek | Udvidet nutid: aftaler
 ! What are you doing this weekend?
-= I['m meeting] the Queen of cats tomorrow.
+= I['m meeting] my friends for dinner tomorrow.
 = What [are] you doing on Saturday? Nothing? Great!
 - We['re flying|fly|will flying] to Rome on Friday. The cat is coming too.
 - My grandma [is starting|starts will|start] dance school next week.
 - [Are|Do|Will] you coming to my pizza party?
 - I['m seeing|see|saw] the dentist at three. Help me.
-- They [are getting|get|will getting] married in a zoo.
-- What time [is|does|will] the clown arriving?
+- They [are getting|get|will getting] married in June.
+- What time [is|does|will] your train leaving?
 @ might and may | might és may | might og may
 ! I might be a bit late.
 = I [might] be late. Or I might not come.
-= It [may] rain fish today. Who knows?
+= It [may] rain later. Take an umbrella.
 - We might [go|going|to go] to the beach in January.
 - She [might not|mightn't to|not might] come. She's still in bed.
 - It may [be|is|being] true. My cat never lies.
-- I might [buy|buying|bought] a llama.
+- I might [buy|buying|bought] a new laptop.
 - They [may not|don't may|may not to] know about the party.
 - He might [call|calls|to call] you later. Or never.
 # Comparing | Összehasonlítás | Sammenligning
@@ -281,21 +281,21 @@ LWC('en', 2, `
 = You [must] feed the cat. Now.
 = You [mustn't] tell Mum.
 - I must [go|to go|going]. My pizza is getting cold.
-- You [mustn't|don't must|not must] feed the teacher.
+- You [mustn't|don't must|not must] smoke in here.
 - Guests must [take|to take|taking] off their shoes. And socks.
 - We [mustn't|don't must|must not to] laugh. He's serious.
 - You must [try|tries|to try] Grandma's soup. She's watching.
 - Children [mustn't|don't must|not must] drive the bus.
 @ have to and don't have to | have to és don't have to | have to og don't have to
 ! You don't have to pay.
-= I [have to] walk my neighbour's goat.
+= I [have to] walk the dog. Back in ten minutes.
 = You [don't have to] laugh at my jokes.
 - She [has to|have to|must to] wear a hat at work. A big one.
 - We [don't have to|mustn't|haven't to] pay. The dog paid.
 - Do you [have to|has to|must] wear a tie to the beach?
 - He [doesn't have to|don't have to|hasn't to] cook tonight. Thank goodness.
 - I [had to|must|have to] wait for the bus for two hours yesterday.
-- They [have to|has to|having to] clean the cat's piano.
+- They [have to|has to|having to] get up at six every day.
 ~ It's free, | so you don't have to pay.
 ~ It's a crocodile, | so you mustn't touch it.
 ~ It's the law, | so you have to stop.
@@ -305,7 +305,7 @@ LWC('en', 2, `
 = You [shouldn't] eat yellow snow.
 - You should [try|to try|trying] this cake. I made it with salt.
 - He [shouldn't|doesn't should|not should] sing in public.
-- What [should|do should|shall to] I wear to a cat's wedding?
+- What [should|do should|shall to] I wear to the wedding?
 - We should [leave|to leave|leaving] before Grandpa starts dancing.
 - You [shouldn't|should not to|don't should] text your ex at night.
 - [Should|Do|Must to] I tell him about the spinach in his teeth?
@@ -341,7 +341,7 @@ LWC('en', 2, `
 - There isn't [much|many|lot] coffee left. It's an emergency.
 - Did you buy [many|much|lot] things? Just one boat.
 - We don't have [much|many|lots] time. The pizza is burning.
-- Are there [many|much|a lot] sharks in this pool?
+- Are there [many|much|a lot] people at the party?
 - I didn't eat [much|many|lot]. Just three dinners.
 @ a few and a little | a few és a little | a few og a little
 ! Just a little, thanks.
@@ -389,7 +389,7 @@ LWC('en', 2, `
 = I cut my hair [myself]. Can you tell?
 = Did you make this cake [yourself]? Really?
 - She talks to [herself|she|hers] in the mirror.
-- We enjoyed [ourselves|us|ourself] at the cat show.
+- We enjoyed [ourselves|us|ourself] at the party.
 - He locked [himself|he|hisself] out. In his pyjamas.
 - They painted the house [themselves|them|theirselves]. In pink.
 - Help [yourself|you|yourselfs] to some cake! Not that much!
@@ -402,14 +402,14 @@ LWC('en', 2, `
 - [Nobody|Anybody|Somebody] knows where the remote is. It's a mystery.
 - I can't find my glasses [anywhere|somewhere|nowhere]. Oh, they're on my head.
 - She didn't say [anything|nothing|nobody]. She just looked at the cake.
-- [Someone|Anyone|No one] is at the door. It's a man with a goat.
+- [Someone|Anyone|No one] is at the door. Can you get it?
 - There's [nothing|anything|something] in the box. It's empty, but the cat loves it.
 @ mine, yours, ours | Önálló birtokos névmások | mine, yours, ours
 ! Is this yours?
 = That last cookie is [mine].
 = Is this sock [yours]? It was in the soup.
 - This isn't my sandwich. Mine had cheese. Is it [yours|your|you]?
-- The house with the pink goat is [theirs|their|theirs's].
+- The house with the red door is [theirs|their|theirs's].
 - That's not her hat. [Hers|Her|Her's] is bigger.
 - These seats are [ours|our|ours's]. Move, please.
 - Is this terrible poem [his|him|he's]?
@@ -448,12 +448,12 @@ LWC('en', 2, `
 @ decide, hope, want + to | decide, hope, want + to | decide, hope, want + to
 ! I've decided to stay.
 = I decided [to stay] in bed.
-= She hopes [to marry] a prince. Or a cat.
+= She hopes [to find] a job in London.
 - We decided [to leave|leaving|leave] before the karaoke.
 - He promised [to stop|stopping|stop] singing. He lied.
 - I need [to buy|buying|buy] a new brain.
-- They plan [to travel|travelling|travel] to the moon.
-- She forgot [to close|closing|close] the door. The goat came in.
+- They plan [to travel|travelling|travel] around Japan.
+- She forgot [to close|closing|close] the door. The cat ran out.
 - I'd like [to try|trying|try] that pizza. All of it.
 @ bored or boring? | bored vagy boring? | bored eller boring?
 ! This is so boring.
@@ -517,7 +517,7 @@ LWC('en', 2, `
 ~ It was cold, | so we hugged the cat.
 @ who, which, that | who, which, that | who, which, that
 ! That's the place that I told you about.
-= The man [who] lives next door has a goat.
+= The man [who] lives next door is really nice.
 = The cake [which] I made is still on fire.
 - The girl [who|which|what] won the race is eight. I came last.
 - This is the sofa [which|who|what] the cat destroyed.
