@@ -4,12 +4,12 @@
    It prints a robot code. Type that code once in Keyline (the robot button at the top of the start page).
 
    How it works: the game sends the robot's turn (its team, its job, its words when its team may know them,
-   and the clues so far) through the same free relay the phones already use. This script asks Claude Code
+   and the clues so far) through the game's own database, the same one the phones use. This script asks Claude Code
    for one answer, with a system prompt that holds only the Keyline rules and no tools, and sends it back. */
 'use strict';
 const fs = require('fs'), path = require('path'), os = require('os'), cp = require('child_process');
 
-const RELAY = process.env.KEYLINE_RELAY || 'https://ntfy.sh/';
+const DB = process.env.KEYLINE_DB || 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
 const MODEL = 'haiku';
 const DIR = path.join(os.homedir(), '.keyline-robot');
 const MAX_AT_ONCE = 3;
@@ -123,8 +123,9 @@ function parse(kind, text) {
   return cl.length === 3 && cl.every(word) ? { clues: cl } : null;
 }
 
-function send(topic, obj) {
-  return fetch(RELAY + topic, { method: 'POST', body: JSON.stringify(obj) }).catch(function () {});
+function dbUrl(ch) { return DB + '/rooms/' + ch + '.json'; }
+function send(ch, obj) {
+  return fetch(dbUrl(ch), { method: 'POST', body: JSON.stringify({ m: JSON.stringify(obj), f: 'robot', t: { '.sv': 'timestamp' } }) }).catch(function () {});
 }
 
 function robotCode() {
@@ -138,7 +139,9 @@ function robotCode() {
 }
 
 async function main() {
-  const code = robotCode(), topic = 'keyline-bot-' + code.toLowerCase();
+  const code = robotCode();
+  /* a fresh channel every day (UTC), the same one the game uses, so it never grows big */
+  function channel() { return 'keyline-bot-' + code.toLowerCase() + '-' + new Date().toISOString().slice(0, 10).replace(/-/g, ''); }
   const claude = findClaude();
   console.log('\n  KEYLINE ROBOT\n');
   if (!claude) { console.log('  I could not find Claude Code. Install it first:  npm install -g @anthropic-ai/claude-code\n'); process.exit(1); }
@@ -149,7 +152,7 @@ async function main() {
   console.log('  Type this code in Keyline: the robot button at the top of the start page.');
   console.log('  Keep this window open while you play. Close it to stop the robot.\n');
 
-  let since = String(Math.floor(Date.now() / 1000) - 5), busy = 0;
+  const start = Date.now(); let busy = 0, topic = channel();
   const seen = new Set(), queue = [];
   function next() {
     while (busy < MAX_AT_ONCE && queue.length) {
@@ -166,11 +169,11 @@ async function main() {
       }).then(function () { busy--; next(); });
     }
   }
-  function take(m) {
-    if (!m || m.event !== 'message' || seen.has(m.id)) return;
-    seen.add(m.id); since = m.id;
-    if (Date.now() / 1000 - (m.time || 0) > 60) return;
-    let e; try { e = JSON.parse(m.message); } catch (x) { return; }
+  function take(key, v) {
+    if (!v || typeof v.m !== 'string' || seen.has(key)) return;
+    seen.add(key);
+    if ((v.t || 0) < start - 60000 || v.f === 'robot') return;
+    let e; try { e = JSON.parse(v.m); } catch (x) { return; }
     if (!e) return;
     if (e.ping) { send(topic, { pong: e.ping }); console.log('  ' + new Date().toLocaleTimeString() + '  Keyline connected'); return; }
     if (!e.q) return;
@@ -178,23 +181,35 @@ async function main() {
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
     job.id = e.q; queue.push(job); next();
   }
-  /* one long open connection to the relay; asking again and again would hit its rate limit
-     and could block the phones on this network too */
+  function event(block) {
+    let name = '', data = '';
+    block.split('\n').forEach(function (l) { if (l.indexOf('event:') === 0) name = l.slice(6).trim(); else if (l.indexOf('data:') === 0) data += l.slice(5).trim(); });
+    if (name !== 'put' && name !== 'patch') return;
+    let d; try { d = JSON.parse(data); } catch (x) { return; }
+    if (!d || !d.data) return;
+    if (d.path === '/') Object.keys(d.data).forEach(function (k) { take(k, d.data[k]); });
+    else if (/^\/[^\/]+$/.test(d.path)) take(d.path.slice(1), d.data);
+  }
+  /* one long open stream from the database; it moves to the new channel when the day changes */
   for (;;) {
+    topic = channel();
+    const stop = new AbortController();
+    const dayCheck = setInterval(function () { if (channel() !== topic) stop.abort(); }, 60000);
     try {
-      const r = await fetch(RELAY + topic + '/json?since=' + since);
-      if (r.status === 429) { await new Promise(function (ok) { setTimeout(ok, 30000); }); continue; }
+      const r = await fetch(dbUrl(topic), { headers: { Accept: 'text/event-stream' }, signal: stop.signal });
+      if (!r.ok) { console.log('  The database said ' + r.status + '. Trying again soon.'); throw 0; }
       const reader = r.body.getReader(), dec = new TextDecoder();
       let buf = '';
       for (;;) {
         const part = await reader.read();
         if (part.done) break;
-        buf += dec.decode(part.value, { stream: true });
-        const lines = buf.split('\n'); buf = lines.pop();
-        lines.forEach(function (l) { if (l) { try { take(JSON.parse(l)); } catch (x) {} } });
+        buf += dec.decode(part.value, { stream: true }).replace(/\r/g, '');
+        const blocks = buf.split('\n\n'); buf = blocks.pop();
+        blocks.forEach(event);
       }
     } catch (e) {}
-    await new Promise(function (ok) { setTimeout(ok, 5000); });
+    clearInterval(dayCheck);
+    await new Promise(function (ok) { setTimeout(ok, 3000); });
   }
 }
 main();
