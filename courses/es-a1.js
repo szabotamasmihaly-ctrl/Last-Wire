@@ -1,6 +1,7 @@
 LWC('es', 1, `
 # Me and you | Én és te | Mig og dig
 @ ser: soy, eres, es | A „ser” ige: soy, eres, es | ser: soy, eres, es
+! Soy de Hungría.
 = Yo [soy] un genio. A veces.
 = Mi gato [es] el jefe de la casa.
 - Tú [eres|es|soy] mi persona favorita. Después de la pizza.
@@ -13,6 +14,7 @@ LWC('es', 1, `
 ~ Ella es | la jefa.
 ~ Nosotros somos | los mejores.
 @ estar: where and how | Az „estar” ige: hol és hogyan | estar: hvor og hvordan
+! ¿Dónde estás?
 = Yo [estoy] en la cama. Todo el día.
 = ¿Cómo [estás]? ¿Bien o con hambre?
 - Mi móvil [está|es|están] en la nevera. ¿Por qué?
@@ -22,6 +24,7 @@ LWC('es', 1, `
 - Yo [estoy|soy|está] en el baño. ¡No entres!
 - Los niños [están|son|está] en el tejado. ¡Socorro!
 @ ser or estar? | ser vagy estar? | ser eller estar?
+! Estoy cansado, pero soy feliz.
 = Mi gato [es] gordo.
 = Hoy mi gato [está] enfadado.
 - La sopa [está|es|son] fría. Y tiene un pelo.
@@ -34,6 +37,7 @@ LWC('es', 1, `
 ~ Estoy | aburrido.
 ~ Estoy | en el lugar equivocado.
 @ Saying no: no + verb | Tagadás: no + ige | Nægtelse: no + verbum
+! No entiendo.
 = Yo [no] soy un robot.
 = Mi perro [no] habla inglés.
 - Nosotros [no somos|somos no|no son] perezosos. Estamos descansando.
@@ -43,6 +47,7 @@ LWC('es', 1, `
 - Yo [no como|como no|no come] verduras. Soy un niño.
 - Tú [no eres|eres no|no es] mi jefe. Mi gato es mi jefe.
 @ yo, tú, él, ella, nosotros | Személyes névmások | Personlige stedord
+! Ella es mi amiga.
 = Mi abuela tiene 80 años. [Ella] juega a videojuegos.
 = Pedro y yo somos amigos. [Nosotros] compartimos pizza.
 - Mi perro es gordo. [Él|Ella|Ellos] come mi desayuno.
@@ -53,6 +58,7 @@ LWC('es', 1, `
 - Señor, ¿[usted|tú|vosotros] es el payaso de la fiesta?
 # People and things | Emberek és tárgyak | Mennesker og ting
 @ el, la, los, las | Határozott névelő: el, la, los, las | Bestemt artikel: el, la, los, las
+! ¿Dónde está el baño?
 = [El] gato manda aquí.
 = [La] nevera está vacía.
 - [La|El|Los] tele está encendida. Nadie la ve.
@@ -62,6 +68,7 @@ LWC('es', 1, `
 - [La|El|Las] abuela conduce una moto.
 - [El|La|Los] problema es mi hermano.
 @ un, una, unos, unas | Határozatlan névelő: un, una | Ubestemt artikel: un, una
+! Una cerveza, por favor.
 = Quiero [un] dragón.
 = Es [una] idea terrible. ¡Me encanta!
 - Quiero [una|un|unos] pizza grande. Muy grande.
@@ -71,6 +78,7 @@ LWC('es', 1, `
 - Vivo en [un|una|unos] piso con cuatro gatos.
 - Mi abuelo lleva [unas|unos|una] gafas de sol por la noche.
 @ Plurals: -s and -es | Többes szám: -s, -es | Flertal: -s og -es
+! Dos cafés, por favor.
 = un gato, diez [gatos]
 = una ciudad, tres [ciudades]
 - Tengo siete [primos|primo|primoes]. ¡Socorro!
@@ -80,6 +88,7 @@ LWC('es', 1, `
 - Hay muchas [flores|flors|flor] en la sopa.
 - Necesito dos [vacaciones|vacación|vacaciónes].
 @ Adjectives agree | Melléknév-egyeztetés | Tillægsord bøjes
+! La comida está muy rica.
 = un gato [perezoso]
 = unas abuelas [locas]
 - La casa es [rosa|rosas|rosos], y el perro también.
@@ -89,6 +98,7 @@ LWC('es', 1, `
 - El chiste es [malo|mala|malos], pero me río.
 - Tengo dos perros [locos|locas|loco].
 @ hay: there is, there are | hay: van valahol | hay: der er
+! ¿Hay wifi aquí?
 = [Hay] un gato en mi teclado.
 = ¿[Hay] pizza?
 - [Hay|Está|Es] una cabra en el jardín.
@@ -99,6 +109,7 @@ LWC('es', 1, `
 - [Hay|Están|Son] dos arañas en la ducha.
 # Having and liking | Birtoklás és tetszés | Have og kunne lide
 @ tener: tengo, tienes | A „tener” ige: tengo, tienes | tener: tengo, tienes
+! Tengo una pregunta.
 = Yo [tengo] un plan. Es un plan malo.
 = Mi gato [tiene] más amigos que yo.
 - Nosotros [tenemos|tienen|tenéis] un vecino muy ruidoso.
@@ -108,6 +119,7 @@ LWC('es', 1, `
 - Yo no [tengo|tiene|tienes] tiempo. Ni ganas.
 - ¿Vosotros [tenéis|tienen|tenemos] chocolate?
 @ tener hambre, tener frío | tener hambre, tener frío | tener hambre, tener frío
+! Tengo hambre.
 = [Tengo] hambre. Siempre.
 = ¿Tienes [frío]? Ponte un gato.
 - Tengo [sed|sediento|sedienta]. ¿Hay limonada?
@@ -117,6 +129,7 @@ LWC('es', 1, `
 - Tengo [calor|caliente|caluroso]. Abre la nevera.
 - Tengo [sueño|dormido|cansado de]. Y es lunes.
 @ gustar: me gusta | gustar: me gusta | gustar: me gusta
+! Me gusta mucho.
 = [Me gusta] dormir. Mucho.
 = ¿Te [gustan] las arañas?
 - Me [gustan|gusta|gusto] las patatas fritas con más patatas fritas.
@@ -129,6 +142,7 @@ LWC('es', 1, `
 ~ Me gustan | los perros.
 ~ Me gusta | dormir.
 @ mi, tu, su | Birtokos névmások: mi, tu, su | Ejestedord: mi, tu, su
+! ¿Es tu móvil?
 = Es [mi] silla. ¡Fuera!
 = ¿Es [tu] perro? Se come mi bocadillo.
 - Mi abuelo vive con [sus|su|mis] diez gatos.
@@ -138,6 +152,7 @@ LWC('es', 1, `
 - [Nuestra|Nuestro|Nuestros] casa es pequeña y ruidosa.
 - ¿Son [tus|tu|tú] calcetines? Huelen mal.
 @ este, ese, aquel | Mutató névmások: este, ese, aquel | Påpegende stedord: este, ese, aquel
+! Quiero ese, por favor.
 = [Este] pastel de aquí es mío.
 = [Esa] nube de allí parece un pato.
 - [Esta|Este|Estos] pizza es mía. Toda.
@@ -148,6 +163,7 @@ LWC('es', 1, `
 - [Esos|Esas|Ese] niños están pintando al perro.
 # The present: -ar, -er, -ir | Jelen idő: -ar, -er, -ir | Nutid: -ar, -er, -ir
 @ -ar verbs: hablo, hablas | -ar igék: hablo, hablas | -ar-verber: hablo, hablas
+! ¿Hablas inglés?
 = Yo [hablo] con mis plantas.
 = Mi padre [canta] en la ducha.
 - Nosotros [cenamos|cenan|ceno] delante de la tele.
@@ -157,6 +173,7 @@ LWC('es', 1, `
 - Mi padre [cocina|cocinas|cocino] y nosotros pedimos pizza.
 - ¿Vosotros [bailáis|bailan|bailamos] en el supermercado?
 @ -er and -ir verbs: como, vivo | -er és -ir igék: como, vivo | -er- og -ir-verber: como, vivo
+! Vivo aquí.
 = Yo [como] chocolate para desayunar.
 = Nosotros [vivimos] con cinco gatos.
 - Mi abuela [bebe|bebes|bebo] diez cafés al día.
@@ -166,6 +183,7 @@ LWC('es', 1, `
 - Yo [abro|abre|abres] la nevera cada cinco minutos.
 - ¿Dónde [vive|vives|vivo] tu serpiente?
 @ e → ie: quiero, pienso | Tőhangváltás e → ie | Vokalskift e → ie
+! Quiero un café.
 = Yo [quiero] un perro y una vida tranquila.
 = ¿Qué [piensas]? Nada. Estoy cansado.
 - Mi perro [quiere|quere|quieres] ser un gato.
@@ -175,6 +193,7 @@ LWC('es', 1, `
 - ¿Tú [entiendes|entendes|entiende] a mi profesor? Yo no.
 - Ellos [cierran|ceran|cerramos] la puerta. El gato está fuera.
 @ o → ue: puedo, duermo | Tőhangváltás o → ue | Vokalskift o → ue
+! ¿Puedo pagar con tarjeta?
 = Yo [puedo] comer una pizza entera.
 = Mi gato [duerme] veinte horas al día.
 - ¿[Puedes|Podes|Puede] guardar un secreto?
@@ -184,6 +203,7 @@ LWC('es', 1, `
 - Mis padres [vuelven|volven|volvemos] tarde de la discoteca.
 - Yo no [recuerdo|recordo|recuerda] tu nombre. Lo siento.
 @ e → i: pido, sirvo | Tőhangváltás e → i | Vokalskift e → i
+! Pido una pizza.
 = Yo [pido] postre primero.
 = ¿Qué [dices]? No te oigo.
 - El camarero [sirve|serve|sirven] la sopa con un pelo.
@@ -194,6 +214,7 @@ LWC('es', 1, `
 - Los niños [dicen|decen|decimos] que el perro rompió la tele.
 # Every day | Mindennap | Hver dag
 @ Reflexive verbs: me levanto | Visszaható igék: me levanto | Refleksive verber: me levanto
+! Me levanto tarde los domingos.
 = Yo [me] levanto a las doce los domingos.
 = Mi abuelo [se] ducha con música a todo volumen.
 - Tú [te|se|me] llamas Kevin, ¿verdad?
@@ -203,6 +224,7 @@ LWC('es', 1, `
 - ¿A qué hora [te|se|me] despiertas? ¿A mediodía?
 - Mi perro [se|me|te] sienta en mi silla.
 @ siempre, a veces, nunca | siempre, a veces, nunca | siempre, a veces, nunca
+! Siempre llego tarde.
 = [Siempre] pierdo las llaves.
 = Mi gato [nunca] se equivoca.
 - Ella [siempre|nunca no|jamás no] llega tarde. Es un arte.
@@ -212,6 +234,7 @@ LWC('es', 1, `
 - Mis gatos [normalmente|normal|normalmentes] duermen en mi cara.
 - Mi padre [nunca|nada|nadie] pide perdón.
 @ What time is it? | Hány óra van? | Hvad er klokken?
+! ¿Qué hora es?
 = [Es] la una. Hora de comer.
 = [Son] las tres de la mañana. ¿Por qué bailas?
 - [Son|Es|Está] las doce. ¡Hora de pizza!
@@ -224,6 +247,7 @@ LWC('es', 1, `
 ~ 3:30 | Son las tres y media.
 ~ 7:45 | Son las ocho menos cuarto.
 @ Days and dates: el lunes | Napok és dátumok: el lunes | Dage og datoer: el lunes
+! Nos vemos el lunes.
 = El examen es [el] lunes. ¡Socorro!
 = Como pizza [los] viernes.
 - Mi cumpleaños es [en|el|a] agosto. Aceptamos regalos.
@@ -233,6 +257,7 @@ LWC('es', 1, `
 - Estamos [en|a|el] invierno. Hace frío en la ducha.
 - Mi gato nació [el|en|a] 1 de abril. No es broma.
 @ a, en, de | Elöljárószók: a, en, de | Præpositioner: a, en, de
+! Estoy en casa.
 = Voy [a] la playa. Adiós, trabajo.
 = Vivo [en] una casa con diez gatos.
 - Mi vecino es [de|en|a] otro planeta.
@@ -243,6 +268,7 @@ LWC('es', 1, `
 - Vengo [de|a|en] la cocina. No hay galletas.
 # Going and doing | Menni és csinálni | At gå og gøre
 @ ir: voy, vas, va | Az „ir” ige: voy, vas, va | ir: voy, vas, va
+! Voy a la playa.
 = Yo [voy] al trabajo en pijama.
 = ¿Adónde [vas] con ese sombrero?
 - Nosotros [vamos|van|vais] al cine con la abuela.
@@ -252,6 +278,7 @@ LWC('es', 1, `
 - ¿Vosotros [vais|van|vamos] a la fiesta de disfraces?
 - Mi abuela [va|van|voy] a la discoteca los sábados.
 @ al and del | al és del | al og del
+! Voy al supermercado.
 = Voy [al] baño. ¡Ahora vuelvo!
 = Vengo [del] gimnasio. Bueno, de la cafetería.
 - Vamos [al|a el|a la] zoo a ver a mi primo.
@@ -261,6 +288,7 @@ LWC('es', 1, `
 - Pienso [en el|al|del] chocolate todo el día.
 - Es la moto [del|de el|al] profesor. ¡Qué guay!
 @ ir a + infinitive | ir a + főnévi igenév | ir a + infinitiv
+! Voy a llegar tarde.
 = [Voy a] dormir todo el fin de semana.
 = ¿Vas [a] comer eso?
 - Mañana [voy a|voy|voy de] limpiar mi habitación. Quizás.
@@ -270,6 +298,7 @@ LWC('es', 1, `
 - Va [a llover|llover|lloviendo]. Y no tengo paraguas.
 - Ellos no van [a venir|venir|vienen]. Están en la cama.
 @ hacer: hago, haces | A „hacer” ige: hago, haces | hacer: hago, haces
+! ¿Qué haces esta noche?
 = Yo [hago] la cena. Pizza congelada.
 = ¿Qué [haces] en mi habitación?
 - Mi gato [hace|haces|hago] yoga en mi cara.
@@ -279,6 +308,7 @@ LWC('es', 1, `
 - Yo no [hago|hace|haces] nada los domingos. Nada.
 - Mis abuelos [hacen|hacemos|hace] más deporte que yo.
 @ Weather: hace sol, llueve | Időjárás: hace sol, llueve | Vejr: hace sol, llueve
+! Hace mucho calor.
 = [Hace] calor. Me derrito.
 = [Llueve] cada vez que lavo el coche.
 - [Hace|Es|Está] sol, pero yo estoy en la oficina.
@@ -289,6 +319,7 @@ LWC('es', 1, `
 - [Hace|Está|Es] buen tiempo. ¡A la playa!
 # Questions | Kérdések | Spørgsmål
 @ qué, dónde, quién | qué, dónde, quién | qué, dónde, quién
+! ¿Qué es esto?
 = ¿[Dónde] está mi bocadillo?
 = ¿[Quién] se comió mi bocadillo?
 - ¿[Qué|Quién|Dónde] es eso? ¿Se mueve?
@@ -298,6 +329,7 @@ LWC('es', 1, `
 - ¿[Quiénes|Quién|Qué] son esos payasos?
 - ¿De [dónde|qué|quién] eres? ¿De la luna?
 @ cuándo, por qué, cómo | cuándo, por qué, cómo | cuándo, por qué, cómo
+! ¿Cómo estás?
 = ¿[Cuándo] comemos?
 = ¿[Por qué] está mojado el gato?
 - ¿[Por qué|Porque|Por que] llevas dos sombreros?
@@ -307,6 +339,7 @@ LWC('es', 1, `
 - ¿[Cómo|Cuándo|Por qué] vas al trabajo? En monopatín.
 - ¿[Por qué|Cómo|Cuándo] está el perro en el tejado? No sabemos.
 @ cuánto, cuántos | cuánto, cuántos | cuánto, cuántos
+! ¿Cuánto cuesta?
 = ¿[Cuánto] cuesta? ¿¡Por un bocadillo!?
 = ¿[Cuántos] gatos tienes? Demasiados.
 - ¿[Cuántas|Cuántos|Cuánto] galletas comiste?
@@ -316,6 +349,7 @@ LWC('es', 1, `
 - ¿[Cuántas|Cuántos|Cuánta] horas duerme tu gato?
 - ¿[Cuánto|Cuántos|Cuánta] cuestan dos dragones?
 @ cuál or qué? | cuál vagy qué? | cuál eller qué?
+! ¿Cuál es tu número?
 = ¿[Cuál] es tu pizza favorita?
 = ¿[Qué] es ese olor?
 - ¿[Cuál|Qué|Quién] es tu calcetín? ¿El rojo o el que huele?
@@ -325,6 +359,7 @@ LWC('es', 1, `
 - ¿[Cuál|Qué|Cómo] es la capital de Perú?
 - ¿[Qué|Cuál|Cuáles] es esto? ¿Sopa o café?
 @ ¿Puedo...? ¿Puedes...? | ¿Puedo...? ¿Puedes...? kérések | ¿Puedo...? ¿Puedes...?
+! ¿Puedes ayudarme?
 = ¿[Puedo] comer tus patatas fritas?
 = ¿[Puedes] guardar un secreto?
 - ¿Puedo [dormir|duermo|durmiendo] aquí esta noche?
@@ -338,6 +373,7 @@ LWC('es', 1, `
 ~ ¿Puedo pagar con galletas? | No, señor.
 # Right now | Éppen most | Lige nu
 @ estar + -ando, -iendo | estar + -ando, -iendo | estar + -ando, -iendo
+! Estoy buscando la estación.
 = Estoy [escondiendo] el chocolate.
 = Los niños están [pintando] al perro.
 - Nosotros estamos [comiendo|comando|comer] tu pastel. Perdón.
@@ -347,6 +383,7 @@ LWC('es', 1, `
 - Estoy [escribiendo|escribando|escribo] una carta de amor.
 - Mis padres están [bailando|bailiendo|bailan] en la cocina.
 @ Irregular -iendo: leyendo, durmiendo | Rendhagyó gerundium | Uregelmæssig gerundium
+! Estoy durmiendo, déjame.
 = Estoy [leyendo] tus mensajes.
 = El profesor está [durmiendo] en clase.
 - Mi hermano está [pidiendo|pediendo|pedando] otra pizza.
@@ -356,6 +393,7 @@ LWC('es', 1, `
 - El camarero está [sirviendo|serviendo|servando] la sopa fría.
 - Están [construyendo|construiendo|construendo] un castillo de pizza.
 @ Every day or now? | Mindennap vagy most? | Hver dag eller nu?
+! Normalmente trabajo, pero hoy estoy de vacaciones.
 = Mi gato [duerme] todo el día.
 = ¡Mira! ¡Mi gato [está corriendo]!
 - Normalmente [como|estoy comiendo|comiendo] pizza los lunes.
@@ -365,6 +403,7 @@ LWC('es', 1, `
 - Cada mañana [bebo|estoy bebiendo|bebiendo] tres cafés.
 - Ahora mismo [estoy pensando|pienso|pensar]. No molestes.
 @ querer, poder + infinitive | querer, poder + főnévi igenév | querer, poder + infinitiv
+! ¿Puedo acariciar a tu perro?
 = Quiero [dormir]. Para siempre.
 = No puedo [encontrar] mis gafas.
 - Quiero [ser|soy|siendo] un gato.
@@ -374,6 +413,7 @@ LWC('es', 1, `
 - ¿Quieres [probar|pruebas|probando] mi sopa? Es azul.
 - Mi abuela puede [bailar|baila|bailando] toda la noche.
 @ tener que + infinitive | tener que + főnévi igenév | tener que + infinitiv
+! Tengo que irme.
 = Tengo [que] limpiar mi habitación. Qué horror.
 = Tienes que [probar] esto. Bueno, no.
 - Tengo que [trabajar|trabajo|trabajando] el sábado. Qué pena.
@@ -384,6 +424,7 @@ LWC('es', 1, `
 - Mis padres tienen que [aprender|aprenden|aprendiendo] a usar el móvil.
 # Describing | Leírás | At beskrive
 @ muy or mucho? | muy vagy mucho? | muy eller mucho?
+! Muchas gracias, eres muy amable.
 = Mi gato es [muy] gordo.
 = Mi gato come [mucho].
 - Hace [mucho|muy|mucha] frío en la ducha.
@@ -393,6 +434,7 @@ LWC('es', 1, `
 - Estoy [muy|mucho|mucha] cansado de los lunes.
 - Hay [muchos|muchas|muy] calcetines debajo de la cama.
 @ también, tampoco | también, tampoco | también, tampoco
+! A mí también me gusta.
 = Me gusta dormir. A mí [también].
 = No me gustan los lunes. A mí [tampoco].
 - Yo hablo con mi planta y mi hermana [también|tampoco|también no].
@@ -402,6 +444,7 @@ LWC('es', 1, `
 - Mi gato no trabaja y mi tío [tampoco|también|tampoco sí].
 - Canto en la ducha y mis vecinos [también|tampoco|también no].
 @ Colours | Színek | Farver
+! Me gusta el rojo.
 = Mi pelo es [verde] esta semana.
 = Las bananas son [negras]. ¡Pastel!
 - La sopa es [verde|verda|verdes]. ¿Es sopa?
@@ -411,6 +454,7 @@ LWC('es', 1, `
 - El coche de mi abuela es [rosa|rosas|rosos].
 - Mi gato es [amarillo|amarilla|amarillos]. Sí, amarillo.
 @ Adjective position: un coche rojo | A melléknév helye | Tillægsordets plads
+! Es una buena idea.
 = un dragón [rosa]
 = una idea [terrible]
 - Tengo [un gato gordo|un gordo gato|gordo un gato].
@@ -420,6 +464,7 @@ LWC('es', 1, `
 - Compré [una pizza grande|una grande pizza es|pizza una grande].
 - Mi perro es [un gran actor|un grande actor|grande un actor].
 @ mucho, poco, bastante | mucho, poco, bastante | mucho, poco, bastante
+! Un poco, nada más.
 = Tengo [poco] dinero y mucha hambre.
 = Hay [bastante] pizza para todos. Bueno, para mí.
 - Hay [pocas|pocos|poca] galletas. ¿Quién fue?
@@ -430,6 +475,7 @@ LWC('es', 1, `
 - Hay [bastantes|bastante|bastantas] sillas, pero el perro quiere la mía.
 # Plans and wishes | Tervek és vágyak | Planer og ønsker
 @ me gustaría | me gustaría | me gustaría
+! Me gustaría una mesa para dos.
 = Me [gustaría] vivir en la luna.
 = ¿Te gustaría [conocer] a mi serpiente?
 - Me gustaría [un|una|unos] helado del tamaño de mi cabeza.
@@ -442,6 +488,7 @@ LWC('es', 1, `
 ~ ¿Qué te gustaría hacer? | Dormir.
 ~ ¿Te gustaría bailar? | ¡Me encantaría!
 @ Me encanta, odio | Me encanta, odio | Me encanta, odio
+! ¡Me encanta tu idea!
 = Me [encanta] la pizza fría.
 = [Odio] los lunes.
 - Me [encantan|encanta|encanto] los perros con sombrero.
@@ -451,6 +498,7 @@ LWC('es', 1, `
 - ¿Te [encantan|encanta|encantas] las películas de terror?
 - Los gatos [odian|odio|odiamos] los lunes también.
 @ conmigo, contigo | conmigo, contigo | conmigo, contigo
+! ¿Vienes conmigo?
 = ¿Bailas [conmigo]?
 = No quiero ir [contigo]. Cantas en el coche.
 - Este calcetín es para [ti|tú|te]. Feliz cumpleaños.
@@ -460,6 +508,7 @@ LWC('es', 1, `
 - El perro duerme [con él|con le|con lo].
 - ¿Esta galleta es para [mí|me|yo]?
 @ Imperative: ¡Abre la puerta! | Felszólítás: ¡Abre! | Bydeform: ¡Abre!
+! ¡Para, que molesta!
 = [Abre] la puerta. ¡El gato quiere salir!
 = ¡[Mira]! ¡Un pingüino!
 - [Cierra|Cerra|Cierras] la puerta. ¡El gato quiere entrar!
@@ -469,6 +518,7 @@ LWC('es', 1, `
 - [Escribe|Escribes|Escribir] tu nombre aquí. Con letras grandes.
 - [Toma|Tomas|Tomar] una galleta. Solo una.
 @ Saying hello and goodbye | Köszönés és búcsú | At hilse og sige farvel
+! ¡Hola! ¿Qué tal?
 = [Buenos] días. Bueno, son las doce.
 = ¡[Hasta] nunca, lunes!
 - [Buenas|Buenos|Buena] noches, gato. Buenas noches, pizza.

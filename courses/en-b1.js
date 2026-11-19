@@ -1,6 +1,7 @@
 LWC('en', 3, `
 # Telling stories | Történetmesélés | At fortælle historier
 @ have been doing | Befejezett folyamatos jelen | Førnutid udvidet: have been doing
+! I've been waiting for ages.
 = I['ve been waiting] for this pizza since lunch.
 = My cat's [been staring] at the wall all day. What does she know?
 - My neighbours have been [practising|practised|practise] the drums since May.
@@ -10,6 +11,7 @@ LWC('en', 3, `
 - My brother [has been|have been|is been] playing the same game for nine hours.
 - We've been [talking|talked|talk] about you. Only nice things. Mostly.
 @ have done or have been doing? | have done vagy have been doing? | have done eller have been doing?
+! I've been trying to call you.
 = I've [eaten] three pizzas. (finished, sadly)
 = I've [been eating] pizza all evening. (activity)
 - She's [watched|been watching|watching] the whole series twice this week.
@@ -19,6 +21,7 @@ LWC('en', 3, `
 - We've [moved|been moving|move] house four times. The cat is furious.
 - They've been [arguing|argued|argue] about the TV remote for an hour.
 @ The past perfect: had done | Régmúlt: had done | Førdatid: had done
+! I'd never seen anything like it.
 = When I got to the party, everyone [had gone] home.
 = My grandma [had never used] a phone. Now she's on TikTok.
 - I couldn't get in because the dog [had eaten|have eaten|had eat] my key.
@@ -31,6 +34,7 @@ LWC('en', 3, `
 ~ She was nervous because | she had never met a llama before.
 ~ I didn't recognise my dad because | he had shaved his moustache.
 @ Past simple or past perfect? | Múlt vagy régmúlt? | Datid eller førdatid?
+! When I got there, they had already left.
 = When I got home, I [ate] the cake. (then)
 = When I got home, the dog [had eaten] the cake. (before)
 - After she [had finished|has finished|finishes] the whole cake, she started her diet.
@@ -40,6 +44,7 @@ LWC('en', 3, `
 - When I [arrived|had been arrive|have arrived], the party had already ended.
 - They were exhausted because they [had walked|have walked|walks] to the wrong city.
 @ Narrative tenses | Elbeszélő igeidők | Fortælletider
+! I was walking home when it started to rain.
 = It [was raining] and the house [was] dark. Then the fridge opened.
 = Suddenly, the cat [screamed].
 - I [was walking|walked was|had walk] home when I heard someone singing badly.
@@ -50,6 +55,7 @@ LWC('en', 3, `
 - When the police arrived, the thief [had fallen|has fallen|falls] asleep on the sofa.
 # Talking about the future | A jövőről | Om fremtiden
 @ will be doing | Folyamatos jövő | Udvidet fremtid
+! This time tomorrow, I'll be lying on the beach.
 = This time tomorrow, I['ll be lying] on a beach. In my dreams.
 = [Will] you [be using] your brain later? Can I borrow it?
 - At eight, we'll be [eating|eat|ate] Grandma's famous soup. Pray for us.
@@ -59,6 +65,7 @@ LWC('en', 3, `
 - I won't be [using|use|used] my bike tomorrow. It has no wheels.
 - They'll be [driving|drive|drove] all night. With Grandpa's music.
 @ will have done | Befejezett jövő | Førfremtid
+! I'll have finished by six.
 = By Friday, I [will have finished] my new year's plans. All of them failed.
 = The cat will [have eaten] my plant by then.
 - By Sunday, I'll [have watched|have watching|has watched] every film on the internet.
@@ -68,6 +75,7 @@ LWC('en', 3, `
 - By the time you get here, I'll [have eaten|eating have|has eaten] all the snacks.
 - He [won't have|willn't have|won't has] decided what to wear by tomorrow. Or next year.
 @ as soon as, until + present | as soon as, until + jelen | as soon as, until + nutid
+! I'll call you as soon as I land.
 = I'll call you as soon as I [wake] up. So, Tuesday.
 = Don't move until the bee [goes] away.
 - We'll eat as soon as Grandpa [finishes|will finish|finished] his speech.
@@ -77,6 +85,7 @@ LWC('en', 3, `
 - Text me as soon as you [know|will know|knew] who ate the cake.
 - I'll stay in bed until the weekend [ends|will end|ended].
 @ be about to | be about to | be about to
+! I was just about to call you!
 = Hurry, the ice cream van [is about to] leave!
 = I was about [to eat] it, I promise.
 - Shh! The cat is about [to fall|falling|fall] off the shelf.
@@ -86,6 +95,7 @@ LWC('en', 3, `
 - The baby's about [to sneeze|sneezing|sneeze]. Take cover!
 - Careful! That tower of plates is [about to|about|about of] fall.
 @ Future forms review | Jövő idejű formák | Fremtidsformer
+! I'm meeting them at eight.
 = I['m meeting] the Queen of England at six. (arranged)
 = I think the cat [will] win. (opinion)
 - The bus [leaves|is leaving to|will leaves] at 7:15 every morning. Without me.
@@ -96,6 +106,7 @@ LWC('en', 3, `
 - What [are you doing|you are doing|do you doing] this weekend? Please say nothing.
 # Conditionals | Feltételes mondatok | Betingelser
 @ First conditional | Első típusú feltételes | Første betingelse
+! If you need anything, just let me know.
 = If you [touch] my chips, I'll bite.
 = If the cat's quiet, she['s planning] something.
 - If he [doesn't stop|won't stop|didn't stop] singing, I'll call the police.
@@ -105,6 +116,7 @@ LWC('en', 3, `
 - If I [find|will find|found] the remote, I'll be the king of the house.
 - You won't fit through the door if you [eat|will eat|ate] another doughnut.
 @ Second conditional | Második típusú feltételes | Anden betingelse
+! If I were you, I'd say yes.
 = If I [had] a dragon, I would never take the bus again.
 = If cats could talk, they [would] complain all day.
 - If I [were|am|would be] you, I'd hide before Mum gets home.
@@ -117,6 +129,7 @@ LWC('en', 3, `
 ~ If I spoke cat, | I would ask my cat why.
 ~ If I had wings, | I would never pay for a plane.
 @ First or second? | Első vagy második? | Første eller anden?
+! What would you do if you won the lottery?
 = If it rains tomorrow, we['ll] stay in bed. (likely)
 = If I were a pizza, I['d] eat myself. (imaginary)
 - If I [see|saw|would see] your brother later, I'll give him his socks back.
@@ -126,6 +139,7 @@ LWC('en', 3, `
 - If she calls, I ['ll tell|told|would told] her I'm in the shower.
 - If I [was|am|will be] taller, I'd reach the cookies on the top shelf.
 @ I wish + past | I wish + múlt | I wish + datid
+! I wish I could stay longer.
 = I wish I [had] a cat that liked me.
 = I wish it [wasn't] Monday.
 - I wish I [could|can|will] fly. Mostly to skip traffic.
@@ -135,6 +149,7 @@ LWC('en', 3, `
 - He wishes he [had|has|will have] more hair.
 - I wish my neighbour [didn't|doesn't|won't] play the trumpet at 6 a.m.
 @ unless | unless | unless
+! I won't go unless you come too.
 = I won't get up [unless] there's pizza.
 = Unless you hurry, the cat will [eat] your breakfast.
 - You can't come in [unless|if|without] you bring snacks.
@@ -145,6 +160,7 @@ LWC('en', 3, `
 - The cat won't move unless you [open|will open|don't open] the fridge.
 # The passive | Szenvedő szerkezet | Passiv
 @ is made, are made | Szenvedő jelen | Passiv nutid
+! Breakfast is included.
 = Most selfies [are taken] in bathrooms.
 = This cheese [is made] by angry goats.
 - Chocolate [is made|makes|is make] from cocoa. So it's a vegetable.
@@ -154,6 +170,7 @@ LWC('en', 3, `
 - The post [is delivered|delivers|is deliver] at ten. The dog is ready.
 - Coffee [is drunk|drinks is|is drink] in my office like water.
 @ was made, were made | Szenvedő múlt | Passiv datid
+! I was told to wait here.
 = My sandwich [was stolen] by a seagull.
 = The cookies [were eaten] by someone. Not me.
 - This picture [was painted|painted was|was paint] by my cat.
@@ -163,6 +180,7 @@ LWC('en', 3, `
 - We [were invited|invited were|were invite] to a wedding for two dogs.
 - When [was|did|were] this pizza delivered? It's cold.
 @ by in the passive | by a szenvedő szerkezetben | by i passiv
+! It was made by my grandma.
 = My homework was eaten [by] the dog. Really!
 = The cake was made [by] my dad. Be brave.
 - The phone was invented [by|from|of] Bell. The selfie was invented by teenagers.
@@ -172,6 +190,7 @@ LWC('en', 3, `
 - He was hit [by|from|of] a flying sandwich.
 - The song was sung [by|from|of] my grandma at the wedding. Everyone cried.
 @ has been done | Szenvedő befejezett jelen | Passiv førnutid
+! Your order has been sent.
 = The cake [has been eaten]. Nobody saw anything.
 = My car [has been painted]. Pink.
 - The tickets [have been sold|has been sold|have sold been] out. Even the bad seats.
@@ -181,6 +200,7 @@ LWC('en', 3, `
 - The dishes [haven't been|hasn't been|haven't be] washed since Tuesday.
 - Your parcel [has been delivered|has delivered|has been deliver]. To your neighbour's dog.
 @ will be done, can be done | Szenvedő modális igékkel | Passiv med modalverber
+! It can be done.
 = The winner [will be announced] after the cat wakes up.
 = This problem [can be solved] with pizza.
 - The work will [be finished|finished be|be finish] by Monday. Which Monday, we don't know.
@@ -191,6 +211,7 @@ LWC('en', 3, `
 - The best dog will [be chosen|choose be|be chose] next week. It's mine.
 # What people said | Függő beszéd | Hvad folk sagde
 @ say and tell | say és tell | say og tell
+! Tell me the truth.
 = She [said] she was on a diet. Then she ate my cake.
 = He [told] me the worst joke ever.
 - My dog [told|said|says to] me nothing, but his eyes said everything.
@@ -200,6 +221,7 @@ LWC('en', 3, `
 - [Tell|Say|Say to] Grandma her motorbike is blocking the road.
 - I [said|told|tell to] goodbye and walked into a wall.
 @ Reported speech: tense back | Függő beszéd: igeidő-egyeztetés | Indirekte tale: tiden flyttes
+! She said she was on her way.
 = "I'm a vampire." → He said he [was] a vampire.
 = "I'll clean my room." → She said she [would] clean it. Ha!
 - "I love your cooking." → He said he [loved|loves|love] my cooking. Liar.
@@ -209,6 +231,7 @@ LWC('en', 3, `
 - "I'll be on time." → She said she [would|will|wills] be on time. She wasn't.
 - "I saw a UFO." → He said he [had seen|has seen|saw had] a UFO.
 @ Reported questions | Függő kérdés | Indirekte spørgsmål
+! They asked if we were ready.
 = "Where's my sandwich?" → She asked where her sandwich [was].
 = "Are you a robot?" → He asked [if] I was a robot.
 - My boss asked me where I [had been|had I been|have I been] all morning.
@@ -218,6 +241,7 @@ LWC('en', 3, `
 - She wanted to know why [I was|was I|am I] wearing her coat.
 - I asked the cat what [she wanted|did she want|she did want]. No answer.
 @ asked me to, told me not to | asked me to, told me not to | asked me to, told me not to
+! He told me not to worry.
 = My mum asked me [to stop] singing.
 = The doctor told me [not to] eat so much cake. I changed doctors.
 - My cat told me [to feed|feed|feeding] her. With her eyes.
@@ -227,6 +251,7 @@ LWC('en', 3, `
 - He asked her [to marry|marry|marrying] him on a rollercoaster.
 - I told you [not to|to don't|don't] feed the seagulls!
 @ Reporting verbs | Közlő igék | Verber til at referere
+! She promised to call.
 = He [promised] to stop singing. He didn't.
 = She [offered] to cook. We said no, thank you.
 - My dad promised [to be|being|be] cool at the party. He wasn't.
@@ -237,6 +262,7 @@ LWC('en', 3, `
 - She [warned|warned to|said] us not to eat her cooking.
 # Relative clauses | Vonatkozó mellékmondatok | Relativsætninger
 @ who, which, that | who, which, that | who, which, that
+! That's the song that I love.
 = The man [who] lives upstairs keeps a horse in his flat.
 = The cake [that] I made is still smoking.
 - The woman [who|which|whose] sold me this chair said it was comfortable.
@@ -246,6 +272,7 @@ LWC('en', 3, `
 - The bus [that|who|what] goes to the beach is always full of seagulls.
 - She's the girl [who|which|whom she] ate fifty hot dogs.
 @ whose | whose | whose
+! I've got a friend whose brother is a chef.
 = That's the man [whose] dog stole my sandwich.
 = A woman [whose] cat has its own Instagram.
 - I have a friend [whose|who's|who] grandma is a DJ.
@@ -255,6 +282,7 @@ LWC('en', 3, `
 - Is she the singer [whose|who|that's] song made my dog cry?
 - They're the people [whose|who|which] cat lives at our house.
 @ where and when | where és when | where og when
+! That's the café where we met.
 = This is the café [where] I fell asleep in my soup.
 = I remember the day [when] the cat said "mama".
 - That's the beach [where|which|when] a seagull stole my phone.
@@ -264,6 +292,7 @@ LWC('en', 3, `
 - This is the sofa [where|which|when] I do all my best thinking.
 - There was a time [when|where|who] I thought I could sing.
 @ Leaving out who, which, that | Elhagyható vonatkozó névmás | Udeladt relativt stedord
+! Is this the book you wanted?
 = The film [we saw] was so bad it was good.
 = The man [I met] online was a cat.
 - The cake [you made|you made it|which you made it] was... interesting.
@@ -273,6 +302,7 @@ LWC('en', 3, `
 - Everything [you said|you said it|which you said it] is true, except the bit about the dragon.
 - The hotel [we booked|we booked it|which we booked it] was a tent.
 @ Commas: Paris, which is... | Vesszős vonatkozó mondat | Indskudte relativsætninger
+! My sister, who lives in Rome, is visiting.
 = My grandma, [who] is 85, does karate.
 = My car, [which] I love, is held together by tape.
 - My uncle, [who|that|which] is a dentist, eats only sweets.
@@ -283,6 +313,7 @@ LWC('en', 3, `
 - Paris, [where|that|which there] I lost my suitcase, is beautiful.
 # Possibility and necessity | Lehetőség és szükség | Mulighed og nødvendighed
 @ must, can't for guesses | must, can't: következtetés | must, can't: gæt
+! You must be tired.
 = She hasn't answered for a week. She [must] be angry.
 = That [can't] be my dad dancing. Oh no, it is.
 - He's been gaming for twelve hours. He [must|can't|mustn't] be exhausted.
@@ -292,6 +323,7 @@ LWC('en', 3, `
 - She has a Lamborghini. She [must|can't|mustn't] be rich. Or a thief.
 - It [can't|mustn't|must] be Monday again! We just had one!
 @ might, may, could for guesses | might, may, could: lehetőség | might, may, could: mulighed
+! It might rain later.
 = The cat [might] be in the washing machine. Check!
 = That noise [could] be a ghost. Or Dad.
 - I'm not sure where Grandma is. She might [be|is|being] at the disco.
@@ -301,6 +333,7 @@ LWC('en', 3, `
 - The dog might [have|has|having] my phone. He's been very quiet.
 - Where's Sam? He [could|must to|can't to] be in the fridge again.
 @ had to, didn't have to | had to, didn't have to | had to, didn't have to
+! I had to work late.
 = I [had to] chase a goat down the street yesterday.
 = We [didn't have to] pay. The waiter was in love with Grandma.
 - She [had to|must|has to] wear her pyjamas to work. Long story.
@@ -310,6 +343,7 @@ LWC('en', 3, `
 - They [didn't have to|didn't had to|hadn't to] clean. The dog licked the plates.
 - I had to [walk|walked|walking] home with one shoe.
 @ be able to | be able to | be able to
+! I wasn't able to come.
 = I'd love [to be able] to speak to animals.
 = She [won't be able to] come. Her cat said no.
 - I haven't [been able|could|can] to sleep since I watched that film.
@@ -319,6 +353,7 @@ LWC('en', 3, `
 - He'd love to be able [to dance|dance|dancing]. Everyone else would love it too.
 - We weren't able [to find|find|finding] the car. It was in the wrong car park.
 @ need to, needn't | need to, needn't | need to, needn't
+! You don't need to bring anything.
 = I [need to] buy more cat food. The cat is staring at me.
 = You [don't need to] shout. I'm right here.
 - You [needn't|don't need|needn't to] bring a present. But you can.
@@ -329,6 +364,7 @@ LWC('en', 3, `
 - [Do|Does|Need] we need to wear clothes to this party? Just checking.
 # More verb patterns | További igei szerkezetek | Flere verbalmønstre
 @ stop, remember, try | stop, remember, try | stop, remember, try
+! Remember to lock the door.
 = He stopped [singing]. The neighbours threw a party.
 = Remember [to feed] the cat. She remembers everything.
 - I stopped [to buy|buying|buy] chocolate on the way. (I stopped the car for that)
@@ -338,6 +374,7 @@ LWC('en', 3, `
 - She stopped [eating|to eat|eat] sugar. For a whole hour.
 - I'll never forget [seeing|to see|see] my dad in a swimsuit.
 @ make and let | make és let | make og let
+! Let me help you.
 = My mum [made] me eat broccoli.
 = My cat [lets] me sleep in her bed.
 - That film made me [cry|to cry|crying] like a baby.
@@ -347,6 +384,7 @@ LWC('en', 3, `
 - Don't make me [laugh|to laugh|laughing]! I have milk in my mouth!
 - Let me [help|to help|helping] you eat that.
 @ want someone to | want someone to | want someone to
+! Do you want me to come with you?
 = I want [you to] stop singing.
 = My cat would like [me to] get up and feed her. At 4 a.m.
 - My parents want [me to|that I|me] become a doctor. I want to be a cat.
@@ -356,6 +394,7 @@ LWC('en', 3, `
 - He asked [me to|that I|me] hold his snake.
 - They wanted [him to|that he|he to] stop telling that joke.
 @ used to, be used to | used to vagy be used to | used to eller be used to
+! I'm used to it.
 = I [used to] think broccoli was tiny trees. It is.
 = I'm [used to] getting up at noon.
 - She's used to [living|live|lived] with seven cats.
@@ -365,6 +404,7 @@ LWC('en', 3, `
 - Are you used to [eating|eat|ate] my cooking yet?
 - I [used to|am used to|used] have hair like a lion.
 @ get used to | get used to | get used to
+! You'll get used to it.
 = I can't [get used to] my new haircut.
 = My cat is [getting used to] the new dog. Slowly. Angrily.
 - You'll soon get used to [hearing|hear|heard] the drums next door.
@@ -375,6 +415,7 @@ LWC('en', 3, `
 - I never got used to [waking|wake|woke] up early. Never.
 # Questions and replies | Kérdések és válaszok | Spørgsmål og svar
 @ Question tags | Visszakérdezés | Spørgehaler
+! It's nice, isn't it?
 = You ate my cake, [didn't you]?
 = You don't sing, [do you]? Please say no.
 - You're not a robot, [are you|isn't it|don't you]?
@@ -387,6 +428,7 @@ LWC('en', 3, `
 ~ You can't swim, | can you?
 ~ She ate it all, | didn't she?
 @ Indirect questions | Udvarias, beágyazott kérdések | Indirekte spørgsmål
+! Do you know where the station is?
 = Do you know where my phone [is]? I'm calling it.
 = Can you tell me why the cat [is] wet?
 - Could you tell me where [the toilet is|is the toilet|the toilet does]? It's urgent.
@@ -396,6 +438,7 @@ LWC('en', 3, `
 - Do you know why [she left|did she leave|left she] in a panda costume?
 - I'd like to know when [the shop opens|does the shop open|opens the shop]. I need cake.
 @ Who called? Who did you call? | Alanyra vagy tárgyra kérdezés | Spørgsmål til subjekt og objekt
+! Who told you?
 = Who [ate] my sandwich? (someone ate it)
 = Who [did you invite]? Not the clown, I hope.
 - Who [broke|did break|did broke] the toilet seat?
@@ -405,6 +448,7 @@ LWC('en', 3, `
 - What [did the cat say|the cat said|did the cat said]?
 - Which team [won|did win|did won]? The one with the goat?
 @ So do I, Neither do I | So do I, Neither do I | So do I, Neither do I
+! I love pizza. So do I!
 = "I love pizza." "[So do] I." "So does my cat."
 = "I can't dance." "[Neither can] I. Let's dance."
 - "I'm hungry." "[So am|So do|Neither am] I. Always."
@@ -417,6 +461,7 @@ LWC('en', 3, `
 ~ I can't cook. | Neither can I.
 ~ I was late. | So was I.
 @ Negative questions | Tagadó kérdések | Nægtende spørgsmål
+! Isn't it amazing?
 = [Don't] you like my singing?
 = [Isn't] that your dad on the roof?
 - [Didn't|Don't|Wasn't] you see the "Wet paint" sign?
@@ -427,6 +472,7 @@ LWC('en', 3, `
 - [Isn't|Aren't|Doesn't] it beautiful? It's a picture of my cat.
 # Linking and quantity | Kötőszavak és mennyiség | Bindeord og mængde
 @ although, though, but | although, though, but | although, though, but
+! I liked it, although it was a bit long.
 = [Although] it was snowing, Grandpa went swimming.
 = The pizza was cold. I ate it, [though].
 - [Although|Despite|But] he was tired, he kept dancing.
@@ -436,6 +482,7 @@ LWC('en', 3, `
 - [Even though|Even|Despite of] I studied, I wrote my name wrong.
 - The food was good, [but|despite|in spite] there was a hair in it.
 @ so and such | so és such | so og such
+! It was such a good day!
 = The film was [so] boring that I watched it twice.
 = It was [such] a bad joke that everybody laughed.
 - My cat is [so|such|such a] lazy.
@@ -445,6 +492,7 @@ LWC('en', 3, `
 - He has [such|so|such a] big feet that he needs two taxis.
 - It was [so|such|such a] cold that my nose froze.
 @ too and enough + to | too és enough + to | too og enough + to
+! I'm too tired to go out.
 = My cat is too lazy [to catch] a mouse.
 = I'm old [enough to] know better. I still do it.
 - It's too cold [to swim|for swimming in|swim]. Grandpa doesn't care.
@@ -454,6 +502,7 @@ LWC('en', 3, `
 - It's [too late|late enough|too much late] to say sorry. Buy cake instead.
 - She dances [well enough|enough well|too well enough] to be on TV.
 @ the or no article | the vagy névelő nélkül | the eller ingen artikel
+! I'm going to bed.
 = I love [—] chocolate. (in general)
 = [The] chocolate in this cake is old.
 - [—|The|A] life is too short for bad coffee.
@@ -463,6 +512,7 @@ LWC('en', 3, `
 - [—|A|An] cats are better than people.
 - [The|—|A] cats next door have a band.
 @ all, none, each | all, none, each | all, none, each
+! None of us knew.
 = [All] the cookies have gone. Nobody knows how.
 = [None] of us can cook.
 - [None|No|Nothing] of my plants survived. RIP.
@@ -473,6 +523,7 @@ LWC('en', 3, `
 - [Each|All|None] guest gets a goat.
 # 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
 @ Songs: have you ever...? | Dalok: have you ever...? | Sange: have you ever...?
+! Have you ever been in love?
 = Have you ever [heard] Grandma sing Toxic?
 = I've [never] finished Stairway to Heaven. It's too long.
 - I [have played|have play|played have] Wonderwall 300 times this year.
@@ -485,6 +536,7 @@ LWC('en', 3, `
 ~ I've just | broken the Wonderwall. Sorry.
 ~ She has never | seen Purple Rain.
 @ Songs: if + will | Dalok: if + will | Sange: if + will
+! If you call me, I'll come.
 = If you play Wonderwall again, I [will] scream.
 = If it [rains], we'll sing Here Comes the Rain Again.
 - If Grandma [hears|will hear|heard] Dancing Queen, she will dance on the table.
@@ -497,6 +549,7 @@ LWC('en', 3, `
 ~ If it's sunny, | we'll play Here Comes the Sun.
 ~ If you sing Hello, | someone will answer.
 @ Songs: must, have to | Dalok: must, have to | Sange: must, have to
+! I have to go now.
 = You [mustn't] sing Let It Go in the exam.
 = You [don't have to] dance. But Thriller is on.
 - You [have to|has to|must to] listen to Hey Jude before you judge it.
@@ -509,6 +562,7 @@ LWC('en', 3, `
 ~ You mustn't | touch Dad's Purple Rain records.
 ~ We don't have to | sing the whole Bohemian Rhapsody.
 @ Songs: used to | Dalok: used to | Sange: used to
+! We used to be friends.
 = My dad [used to] dance like Michael Jackson.
 = I [didn't use to] like Abba. Now I do.
 - Grandma [used to|use to|was used] sing Respect in a band.
@@ -521,6 +575,7 @@ LWC('en', 3, `
 ~ My parents used to | dance to Mamma Mia every Friday.
 ~ Did you use to | have posters of Queen?
 @ Songs: was written, is played | Dalok: szenvedő szerkezet | Sange: passiv
+! Is this seat taken?
 = Bohemian Rhapsody [was written] by Freddie Mercury.
 = Wonderwall [is played] at every party.
 - Thriller [was recorded|was record|recorded was] in 1982.

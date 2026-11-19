@@ -1,6 +1,7 @@
 LWC('es', 3, `
 # The present subjunctive | A kötőmód jelen ideje | Konjunktiv i nutid
 @ Subjunctive -ar: hable | Kötőmód -ar: hable | Konjunktiv -ar: hable
+! Espero que te guste.
 = Quiero que [hables] con el gato. A mí no me escucha.
 = Espero que [lleguen] antes de que se acabe la pizza.
 - Quiero que tú [cantes|cantas|cantar] menos en la ducha.
@@ -10,6 +11,7 @@ LWC('es', 3, `
 - Ojalá que no [llueva|llueve|llover] en mi boda. Otra vez.
 - Necesito que ustedes [bajen|bajan|bajar] del tejado. Ahora.
 @ Subjunctive -er, -ir: coma, viva | Kötőmód -er, -ir: coma, viva | Konjunktiv -er, -ir: coma, viva
+! Es mejor que comas algo.
 = Quiero que [comas] verduras. Al menos una.
 = Espero que el pez [viva] muchos años.
 - El médico quiere que yo [beba|bebo|beber] más agua y menos café.
@@ -19,6 +21,7 @@ LWC('es', 3, `
 - Es necesario que el gato [lea|lee|leer] las normas de la casa.
 - Ojalá que me [respondas|respondes|responder] antes de que cumpla cien años.
 @ Irregular: tenga, haga, diga | Rendhagyó: tenga, haga, diga | Uregelmæssig: tenga, haga, diga
+! Que tengas un buen día.
 = Espero que [tengas] suerte. La vas a necesitar.
 = Quiero que me [digas] quién se comió mi yogur.
 - Es importante que [hagas|haces|hacer] los deberes. Y no el perro.
@@ -28,6 +31,7 @@ LWC('es', 3, `
 - Espero que me [traigas|traes|traer] un regalo. Grande.
 - Es mejor que no [digas|dices|decir] nada a la abuela.
 @ sea, vaya, esté | sea, vaya, esté | sea, vaya, esté
+! Que te vaya bien.
 = Espero que [sea] una broma.
 = Quiero que [vayas] a la tienda. Necesitamos galletas urgentes.
 - Ojalá que el pastel [esté|está|estar] bueno. Lo hizo papá.
@@ -37,6 +41,7 @@ LWC('es', 3, `
 - Es mejor que los niños [estén|están|estar] en la cama antes de que vuelva mamá.
 - No quiero que [vayas|vas|ir] solo al baño del cine. Hay fantasmas.
 @ Stem changes: pueda, quiera, duerma | Tőhangváltás: pueda, quiera, duerma | Stamskift: pueda, quiera, duerma
+! Ojalá pueda ir.
 = Ojalá que [puedas] venir. Hay tarta.
 = Es importante que el gato [duerma] bien. Si no, nos ataca.
 - Espero que [puedan|pueden|poder] bajar al perro del árbol.
@@ -47,6 +52,7 @@ LWC('es', 3, `
 - Es raro que el bebé no [llore|llora|llorar]. ¿Respira?
 # Wishes and requests | Kívánságok és kérések | Ønsker og anmodninger
 @ quiero que + subjunctive | quiero que + kötőmód | quiero que + konjunktiv
+! Quiero que vengas.
 = [Quiero que] me traigas un helado.
 = Mis padres quieren que [sea] médico. Yo quiero ser gato.
 - Quiero [que|de|—] me escuches. Ya sé que no lo harás.
@@ -56,6 +62,7 @@ LWC('es', 3, `
 - Queremos [dormir|dormimos|durmiendo] hasta el lunes.
 - Quiero que mi gato me [quiera|quiere|querer]. Solo un poco.
 @ espero que, ojalá | espero que, ojalá | espero que, ojalá
+! Ojalá tengas razón.
 = [Ojalá] mañana sea sábado.
 = Espero que te [guste] el regalo. Son calcetines.
 - Espero que [lo paséis|lo pasáis|pasarlo] bien en la fiesta del abuelo.
@@ -65,6 +72,7 @@ LWC('es', 3, `
 - Espero [verte|que te veo|que verte] pronto. Sin ese sombrero.
 - ¡Que [tengas|tienes|tener] un buen lunes! Si eso existe.
 @ pedir que, decir que, recomendar que | pedir que, decir que, recomendar que | pedir que, decir que, recomendar que
+! Te recomiendo que lo pruebes.
 = Te [pido] que no cantes en el coche.
 = El médico me recomienda que [duerma] más. ¡Por fin una buena receta!
 - Mi jefe me pide que [sonría|sonrío|sonreír] los lunes.
@@ -77,6 +85,7 @@ LWC('es', 3, `
 ~ Te recomiendo | que no pruebes la sopa.
 ~ Os pido | que habléis más bajo.
 @ prefiero que, necesito que | prefiero que, necesito que | prefiero que, necesito que
+! Necesito que me ayudes.
 = [Prefiero] que no cocines tú.
 = Necesito que me [expliques] por qué hay una cabra en el baño.
 - Prefiero que [pidamos|pedimos|pedir] pizza. Es más seguro.
@@ -86,6 +95,7 @@ LWC('es', 3, `
 - Prefiero que no me [llames|llamas|llamar] antes del mediodía.
 - El profesor necesita que [estemos|estamos|estar] callados. Ja.
 @ Same subject: infinitive | Azonos alany: főnévi igenév | Samme subjekt: infinitiv
+! Quiero ir contigo.
 = Quiero [ser] un gato.
 = Quiero que [seas] un gato. ¡Sería genial!
 - Espero [aprobar|apruebo|aprobando] el examen. Sin estudiar.
@@ -96,6 +106,7 @@ LWC('es', 3, `
 - Prefiero que mis suegros [se queden|se quedan|quedarse] en su casa.
 # Feelings with the subjunctive | Érzések kötőmóddal | Følelser med konjunktiv
 @ me alegra que | me alegra que | me alegra que
+! Me alegra que estés aquí.
 = Me alegra que [estés] aquí. ¿Has traído comida?
 = Me alegro de que el gato [haya] vuelto. Creo.
 - Me alegra que te [guste|gusta|gustar] el jersey. Lo hizo la abuela.
@@ -105,6 +116,7 @@ LWC('es', 3, `
 - Me encanta que mi perro [cante|canta|cantar] conmigo.
 - Me alegro [de|en|a] que la cabra esté bien.
 @ me molesta que, odio que | me molesta que, odio que | me molesta que, odio que
+! Me molesta que llegues tarde.
 = Me molesta que mi gato me [mire] así.
 = Odio que me [despierten] antes de las doce.
 - Me molesta que la gente [coma|come|comer] palomitas tan alto.
@@ -114,6 +126,7 @@ LWC('es', 3, `
 - Me pone nervioso que [hables|hablas|hablar] con mis plantas.
 - No soporto que me [interrumpan|interrumpen|interrumpir] cuando como.
 @ tengo miedo de que | tengo miedo de que | jeg er bange for at
+! Tengo miedo de que llueva.
 = Tengo miedo de que el gato [descubra] la nevera.
 = Me preocupa que el perro [hable]. Sabe demasiado.
 - Temo que [sea|es|ser] demasiado tarde para pedir pizza.
@@ -123,6 +136,7 @@ LWC('es', 3, `
 - Tengo miedo [de|a|en] que mi madre lea mis mensajes.
 - Nos preocupa que no [lleguéis|llegáis|llegar] antes que la tarta.
 @ es una pena que, es normal que | es una pena que, es normal que | es una pena que, es normal que
+! Es una pena que no vengas.
 = Es una pena que no [puedas] venir. Hay chocolate.
 = Es normal que [estés] cansado. Es lunes.
 - Es una lástima que [llueva|llueve|llover] en mis vacaciones. Siempre.
@@ -135,6 +149,7 @@ LWC('es', 3, `
 ~ Es normal | que estés cansado.
 ~ Es increíble | que cueste tanto.
 @ Feeling + infinitive | Érzés + főnévi igenév | Følelse + infinitiv
+! Me alegra verte.
 = Me alegra [verte]. Y a tu pizza.
 = Me alegra que me [veas]. Llevo una hora saludando.
 - Me encanta [bailar|bailo|bailando] en el supermercado.
@@ -145,6 +160,7 @@ LWC('es', 3, `
 - Nos alegra que [estéis|estáis|estar] aquí. Ahora fregad los platos.
 # Doubt and certainty | Kétség és bizonyosság | Tvivl og sikkerhed
 @ creo que / no creo que | creo que / no creo que | creo que / no creo que
+! No creo que sea buena idea.
 = Creo que el gato [es] más listo que yo.
 = No creo que el perro [sea] más listo que yo.
 - Creo que [tienes|tengas|tener] espinacas en los dientes.
@@ -154,6 +170,7 @@ LWC('es', 3, `
 - ¿Crees que el payaso [vendrá|venir|viniendo] mañana?
 - No creo que [puedan|pueden|poder] meter un sofá en un taxi.
 @ dudo que, no estoy seguro de que | dudo que, no estoy seguro de que | dudo que, no estoy seguro de que
+! No estoy seguro de que sea verdad.
 = Dudo que mi hermano [limpie] su habitación.
 = No estoy seguro de que [sea] un perro. Parece un oso.
 - Dudo que el gato [sepa|sabe|saber] dónde está el mando.
@@ -163,6 +180,7 @@ LWC('es', 3, `
 - Estoy seguro de que [es|sea|ser] mi padre. Nadie más baila así.
 - Dudo mucho que mi jefe [se ría|se ríe|reírse] de mis chistes.
 @ es posible que, puede que | es posible que, puede que | es posible que, puede que
+! Puede que llegue tarde.
 = Es posible que [llegue] tarde. Muy tarde. Mañana.
 = Puede que [tengas] razón. Pero no.
 - Es probable que el gato [rompa|rompe|romper] algo esta noche.
@@ -172,6 +190,7 @@ LWC('es', 3, `
 - Puede que la abuela [esté|está|estar] en la discoteca.
 - Es probable que los vecinos [conozcan|conocen|conocer] nuestros secretos.
 @ quizás, tal vez, a lo mejor | quizás, tal vez, a lo mejor | quizás, tal vez, a lo mejor
+! A lo mejor mañana.
 = [Quizás] el gato te perdone. O no.
 = A lo mejor el perro [está] en la nevera.
 - Tal vez tú [tengas|tengáis|tener] que dejar de cantar.
@@ -184,6 +203,7 @@ LWC('es', 3, `
 ~ Quizás | no lo sepa.
 ~ Puede que | llueva pizza.
 @ es verdad que / no es verdad que | es verdad que / no es verdad que | es verdad que / no es verdad que
+! No es verdad que sea caro.
 = Es verdad que mi gato [tiene] Instagram.
 = No es verdad que mi gato [tenga] novio.
 - Es cierto que [hace|haga|hacer] frío. Tengo hielo en la nariz.
@@ -194,6 +214,7 @@ LWC('es', 3, `
 - No está claro que [ganemos|ganamos|ganar]. El otro equipo tiene un perro.
 # Commands | Felszólítások | Bydeform
 @ Negative tú: no hables | Tagadó tú: no hables | Nægtende tú: no hables
+! ¡No te preocupes!
 = No [hables] con la boca llena.
 = No [comas] la comida del perro.
 - No [toques|tocas|toca] ese botón. ¿Qué has hecho?
@@ -203,6 +224,7 @@ LWC('es', 3, `
 - No me [mires|miras|mira] así. Yo no me comí tu pastel.
 - No [llegues|llegas|llega] tarde a tu propia boda.
 @ Irregular: no hagas, no vayas | Rendhagyó: no hagas, no vayas | Uregelmæssig: no hagas, no vayas
+! No hagas eso.
 = No [hagas] ruido. El bebé está dormido. Por fin.
 = No [vayas] a la cocina. Papá está cocinando.
 - No [digas|dices|di] eso delante de la abuela.
@@ -212,6 +234,7 @@ LWC('es', 3, `
 - No [pongas|pones|pon] los pies en la mesa. Ni la cabeza.
 - No [tengas|tienes|ten] miedo. Es solo una araña. Grande.
 @ usted, ustedes: pase, siéntense | usted, ustedes: pase, siéntense | usted, ustedes: pase, siéntense
+! Siéntese, por favor.
 = [Pase], por favor. Cuidado con el loro.
 = [Hablen] más bajo, por favor. El gato duerme.
 - [Siéntese|Siéntase|Séntese], señor. No, ahí no, ahí está el gato.
@@ -221,6 +244,7 @@ LWC('es', 3, `
 - [Espere|Espero|Esperé] un momento, señora. El perro tiene su bolso.
 - [Vengan|Vienen|Vengo] conmigo, señores. Y traigan la tarta.
 @ Pronouns: dámelo, no me lo des | Névmások: dámelo, no me lo des | Stedord: dámelo, no me lo des
+! Dímelo, por favor.
 = [Dámelo]. Es mi pastel.
 = No [me lo des]. Está vivo.
 - [Díselo|Dilo se|Se dilo] a tu madre. Yo no me atrevo.
@@ -233,6 +257,7 @@ LWC('es', 3, `
 ~ No te preocupes, | el fuego es pequeño.
 ~ Ponte el abrigo, | hace frío.
 @ Let's: vamos, hablemos | Gyerünk: vamos, hablemos | Lad os: vamos, hablemos
+! ¡Vamos, que llegamos tarde!
 = [Vamos] a esconder el chocolate.
 = [Hablemos] claro: ¿quién se comió la tarta?
 - [Comamos|Comiendo|Comido] el postre primero.
@@ -243,6 +268,7 @@ LWC('es', 3, `
 - No [perdamos|perdiendo|perdido] tiempo. La heladería cierra a las nueve.
 # The pluperfect | A régmúlt | Førnutid i datid
 @ había + participle | había + befejezett melléknévi igenév | había + participium
+! Ya habían cerrado.
 = Cuando llegué, el perro ya [había] comido mi cena.
 = Nunca [había visto] a mi padre bailar. Ni quería.
 - Yo ya [había|habías|habían] escondido las galletas.
@@ -252,6 +278,7 @@ LWC('es', 3, `
 - La abuela ya se [había|habían|habíamos] ido a la discoteca.
 - Nunca [había|habido|habiendo] comido una pizza tan grande.
 @ Irregular participles: hecho, visto | Rendhagyó alakok: hecho, visto | Uregelmæssig: hecho, visto
+! Nunca había visto algo así.
 = El gato ya había [hecho] un desastre.
 = Nadie lo había [dicho] en voz alta.
 - Nunca había [visto|veído|vido] a una cabra en bicicleta.
@@ -264,6 +291,7 @@ LWC('es', 3, `
 ~ romper | roto
 ~ volver | vuelto
 @ ya, todavía no | ya, todavía no | ya, todavía no
+! ¿Ya has terminado?
 = Cuando llamé, la pizza [ya] había llegado. Sin mí.
 = A las doce [todavía] no había salido de la cama.
 - Cuando llegamos, el tren [ya|todavía|aún] había salido. Clásico.
@@ -273,6 +301,7 @@ LWC('es', 3, `
 - La película [todavía|ya no|nunca] no había empezado, pero yo ya dormía.
 - A los cinco años yo ya [había|habían|habíamos] roto tres teles.
 @ acabar de, volver a, dejar de | acabar de, volver a, dejar de | acabar de, volver a, dejar de
+! Vuelve a intentarlo.
 = [Acabo de] ver a tu madre en TikTok.
 = He [dejado de] comer azúcar. Hace diez minutos.
 - Acabo [de|a|—] comerme tu bocadillo. Lo siento.
@@ -282,6 +311,7 @@ LWC('es', 3, `
 - Llevo dos años [aprendiendo|aprender|aprendido] a hacer tortilla.
 - Acabamos de [llegar|llegado|llegando] y ya queremos irnos.
 @ Telling a story | Történetmesélés | At fortælle en historie
+! Al final, todo salió bien.
 = [Era] una noche oscura. Alguien comía en la cocina.
 = De repente [sonó] un ruido. Era el gato.
 - [Hacía|Hacían|Hacíamos] tanto frío que el perro llevaba mi jersey.
@@ -292,6 +322,7 @@ LWC('es', 3, `
 - Al final [descubrimos|descubriemos|descubrimo] la verdad: había sido el loro.
 # The conditional | A feltételes mód | Konditionalis
 @ hablaría, comería | hablaría, comería | hablaría, comería
+! Me encantaría.
 = Yo [viviría] en una pizzería.
 = ¿Qué [harías] con un dragón?
 - Me [gustaría|gustarías|gustaríamos] ser un gato. Solo un día.
@@ -301,6 +332,7 @@ LWC('es', 3, `
 - Nosotros [compraríamos|compraría|comprarían] una isla para los gatos.
 - Mi madre nunca [diría|diríamos|dirías] una palabrota. Bueno, una vez.
 @ Irregular: tendría, haría, podría | Rendhagyó: tendría, haría, podría | Uregelmæssig: tendría, haría, podría
+! Yo podría ayudarte.
 = Yo [tendría] cuidado con esa cabra.
 = ¿[Podrías] dejar de cantar?
 - Yo que tú, no lo [haría|hacería|hacía]. La abuela te está mirando.
@@ -313,6 +345,7 @@ LWC('es', 3, `
 ~ salir | saldría
 ~ decir | diría
 @ Polite requests: ¿podrías...? | Udvarias kérés: ¿podrías...? | Høflige anmodninger: ¿podrías...?
+! ¿Podrías repetirlo, por favor?
 = ¿[Podría] quitar su perro de mi silla?
 = Me [gustaría] una pizza del tamaño de una mesa, por favor.
 - ¿[Podrías|Puedrías|Poderías] no cantar en el coche?
@@ -322,6 +355,7 @@ LWC('es', 3, `
 - ¿Me [podría|podríamos|poderías] decir dónde está el baño? Es urgente.
 - [Preferiría|Preferería|Prefiriría] sentarme lejos del payaso.
 @ Advice: deberías, yo que tú | Tanács: deberías, yo que tú | Råd: deberías, yo que tú
+! Yo que tú, lo haría.
 = [Deberías] dormir. Son las cinco.
 = Yo que tú, [escondería] la tarta.
 - Tú [deberías|debería|deberíamos] dejar de hablar con tus plantas. O no.
@@ -331,6 +365,7 @@ LWC('es', 3, `
 - Yo en tu lugar, [cambiaría|cambiarías|cambiaríamos] de peinado.
 - Con este tráfico, [sería|serías|seríamos] mejor ir andando. O volando.
 @ Future in the past: dijo que vendría | Jövő a múltban: dijo que vendría | Fremtid i datid: dijo que vendría
+! Dijo que vendría.
 = Dijo que [vendría]. Nunca vino.
 = Pensaba que [sería] fácil. Ja.
 - Me prometió que me [llamaría|llamar|llamando]. Eso fue en 2019.
@@ -341,6 +376,7 @@ LWC('es', 3, `
 - Me aseguró que lo [arreglaría|arreglar|arreglando] al día siguiente. Hace un año.
 # Reported speech | Függő beszéd | Indirekte tale
 @ dice que + present | dice que + jelen idő | dice que + nutid
+! Dice que está en camino.
 = Mi abuela dice que [está] demasiado joven para jubilarse.
 = Dicen que el gato [sabe] abrir la puerta.
 - Mi madre dice que la cena [está|esté|estar] lista. El detector de humo dice lo mismo.
@@ -350,6 +386,7 @@ LWC('es', 3, `
 - El profesor dice que [hay|haya|haber] examen el lunes. ¿Por qué?
 - Dice [que|de que|—] no puede venir. Tiene que peinar al gato.
 @ dijo que + imperfect | dijo que + imperfecto | dijo que + imperfecto
+! Dijo que estaba cansado.
 = "Estoy a dieta." → Dijo que [estaba] a dieta. Y se comió la tarta.
 = "Tengo un plan." → Dijo que [tenía] un plan. Era malo.
 - "Vivo en un barco." → Dijo que [vivía|vivir|viviendo] en un barco.
@@ -359,6 +396,7 @@ LWC('es', 3, `
 - "Quiero ser famoso." → Dijo que [quería|querer|queriendo] ser famoso.
 - "Hace un calor horrible." → Dijo que [hacía|hacer|haciendo] un calor horrible.
 @ dijo que había... | dijo que había... | dijo que había...
+! Me dijo que ya había comido.
 = "Perdí el móvil." → Dijo que [había perdido] el móvil. Estaba en su mano.
 = "He comido." → Dijo que [había comido]. Tres veces.
 - "Vi un fantasma." → Dijo que [había visto|había veído|habido visto] un fantasma.
@@ -368,6 +406,7 @@ LWC('es', 3, `
 - "No he dormido." → Dijo que no [había dormido|había dormí|habido dormido] nada.
 - "Fui al gimnasio." → Dijo que [había ido|había fue|habido ido] al gimnasio. A la cafetería.
 @ me preguntó si, qué, dónde | me preguntó si, qué, dónde | me preguntó si, qué, dónde
+! Me preguntó si quería venir.
 = Mi abuela me preguntó [si] tenía novia. Otra vez.
 = Me preguntó [dónde] había escondido el chocolate.
 - "¿Vienes a la fiesta?" → Me preguntó [si|que|qué si] iba a la fiesta.
@@ -377,6 +416,7 @@ LWC('es', 3, `
 - "¿Dónde está el gato?" → Me preguntó dónde [estaba|esté|estar] el gato.
 - "¿Cómo te llamas?" → El gato me preguntó cómo me [llamaba|llame|llamar]. Con los ojos.
 @ me pide que + subjunctive | me pide que + kötőmód | me pide que + konjunktiv
+! Me pide que la llame.
 = "¡Dame de comer!" → El gato me pide que le [dé] de comer.
 = "¡No cantes!" → Me dice que no [cante].
 - "¡Ven!" → Me dice que [vaya|voy|ir]. No quiero.
@@ -390,6 +430,7 @@ LWC('es', 3, `
 ~ "¡No cantes!" | Me dice que no cante.
 # Relative clauses | Vonatkozó mellékmondatok | Relativsætninger
 @ que | que | que
+! ¿Es el chico que conocimos ayer?
 = El hombre [que] vive arriba tiene un caballo en casa.
 = El pastel [que] hice todavía echa humo.
 - La mujer [que|quien que|cual] me vendió este sofá dijo que era cómodo.
@@ -399,6 +440,7 @@ LWC('es', 3, `
 - Los niños [que|quienes que|cuales] pintaron al perro están castigados.
 - Esta es la tarta [que|quien|lo que] me voy a comer. Sola.
 @ donde | donde | donde
+! Es el bar donde nos conocimos.
 = Esta es la playa [donde] una gaviota me robó el bocadillo.
 = El bar [donde] nos conocimos ahora es una peluquería para perros.
 - La casa [donde|cuando|quien] vivo tiene más gatos que habitaciones.
@@ -408,6 +450,7 @@ LWC('es', 3, `
 - La fiesta [a donde|a quien|al que donde] fuimos estaba llena de payasos.
 - No conozco el barrio [donde|quien|cual] vive tu cabra.
 @ el que, la que, con quien | el que, la que, con quien | el que, la que, con quien
+! Es la persona con quien vivo.
 = La chica [con la que] bailé era mi profesora. Qué vergüenza.
 = El amigo [con quien] viajo ronca como un tren.
 - El chico [con el que|con la que|con que el] salgo tiene un loro que habla.
@@ -417,6 +460,7 @@ LWC('es', 3, `
 - El amigo [a quien|a quien que|a cual] llamé estaba en la ducha.
 - La silla [en la que|en el que|en que la] estás sentado es del gato.
 @ lo que | lo que | lo que
+! Lo que necesito es un café.
 = No entiendo [lo que] dice mi gato.
 = [Lo que] más me gusta es dormir.
 - Haz [lo que|el que|que] quieras, pero no cantes.
@@ -429,6 +473,7 @@ LWC('es', 3, `
 ~ Lo que más me gusta | es dormir.
 ~ Haz | lo que quieras.
 @ Looking for: busco a alguien que sepa | Keresés: busco a alguien que sepa | At søge: busco a alguien que sepa
+! Busco a alguien que hable inglés.
 = Busco un piso que [tenga] sitio para diez gatos.
 = Tengo un piso que [tiene] sitio para un gato. Pequeño.
 - Busco a alguien que [sepa|saber|sabiendo] bajar gatos de los árboles.
@@ -439,6 +484,7 @@ LWC('es', 3, `
 - Tengo un trabajo que me [deja|deje|dejar] dormir la siesta. Soy gato.
 # Linking ideas | Gondolatok összekapcsolása | At forbinde idéer
 @ para que + subjunctive | para que + kötőmód | para que + konjunktiv
+! Te lo digo para que lo sepas.
 = Te lo digo [para que] no lo comas.
 = Hablo despacio para que el gato me [entienda].
 - Trabajo [para|para que|para de] comprar pizza.
@@ -448,6 +494,7 @@ LWC('es', 3, `
 - Estudio [para|para que|para de] aprobar. Y para que mi madre me deje en paz.
 - Lo explico otra vez para que lo [entendáis|entendéis|entender]. Y el perro también.
 @ cuando + subjunctive (future) | cuando + kötőmód (jövő) | cuando + konjunktiv (fremtid)
+! Cuando llegues, llámame.
 = Cuando [llegues], esconde la tarta.
 = Cuando [llego] a casa, el gato siempre me ignora.
 - Cuando [tenga|tengo|tendré] dinero, compraré un castillo.
@@ -460,6 +507,7 @@ LWC('es', 3, `
 ~ Cuando tenga dinero, | me compraré un pingüino.
 ~ Cuando era niño, | comía arena.
 @ hasta que, en cuanto | hasta que, en cuanto | hasta que, en cuanto
+! Te llamo en cuanto llegue.
 = No salgo [hasta que] la araña se vaya.
 = Te escribo [en cuanto] encuentre el móvil.
 - No me voy hasta que me [devuelvas|devuelves|devolver] mi bocadillo.
@@ -469,6 +517,7 @@ LWC('es', 3, `
 - Te llamo en cuanto [aterrice|aterrizo|aterrizaré]. Si aterrizo.
 - El perro no paró de llorar hasta que [volvió|vuelva|volverá] su pelota.
 @ aunque | aunque | aunque
+! Aunque llueva, voy.
 = [Aunque] llueve, el abuelo va a nadar.
 = Aunque está a dieta, [sigue] comiendo tarta.
 - Aunque [es|ser|siendo] carísimo, compro el sombrero de pato.
@@ -478,6 +527,7 @@ LWC('es', 3, `
 - No tengo hambre, [aunque|para que|aunque que] me he comido tres bocadillos. Raro.
 - Aunque [hace|hacer|haciendo] frío, voy en bañador.
 @ antes de, después de, sin | antes de, después de, sin | antes de, después de, sin
+! Lávate las manos antes de comer.
 = Lávate las manos [antes de] tocar mi pastel.
 = El gato salió [sin] decir adiós. Como siempre.
 - Después de [cenar|cenamos|cené], cenamos otra vez.

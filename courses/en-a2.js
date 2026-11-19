@@ -1,6 +1,7 @@
 LWC('en', 2, `
 # Stories from the past | Történetek a múltból | Historier fra fortiden
 @ Irregular past: got, made, told | Rendhagyó múlt: got, made, told | Uregelmæssig datid: got, made, told
+! I got your message.
 = My parrot [told] everyone my secret.
 = We [made] a cake. The fire brigade came.
 - I [got|getted|get] a love letter from my dentist.
@@ -13,6 +14,7 @@ LWC('en', 2, `
 ~ write | wrote
 ~ think | thought
 @ Irregular past: broke, lost, paid | Rendhagyó múlt: broke, lost, paid | Uregelmæssig datid: broke, lost, paid
+! I lost my keys again.
 = I [lost] my phone. It was in my hand.
 = He [broke] his arm doing a TikTok dance.
 - She [paid|payed|pay] for dinner with coins. All of them.
@@ -22,6 +24,7 @@ LWC('en', 2, `
 - My toast [fell|falled|fall] on the floor. Butter side down.
 - He [sent|sended|send] a photo of his lunch to his boss. By mistake.
 @ Past questions with "did" | Múlt idejű kérdés: did | Spørgsmål i datid: did
+! Did you have a good weekend?
 = Where [did] you hide the chocolate?
 = Did the dog [eat] your homework again?
 - What did you [do|did|done] to my hair?
@@ -31,6 +34,7 @@ LWC('en', 2, `
 - Did you [see|saw|seen] the man with the goat on the bus?
 - How [did|was|were] you get on the roof?
 @ Past negatives | Tagadás múlt időben | Nægtelse i datid
+! I didn't mean it.
 = I [didn't] sleep. The neighbours had a party.
 = It [wasn't] me. It was the cat.
 - We [didn't have|didn't had|not had] time to shower. Sorry.
@@ -40,6 +44,7 @@ LWC('en', 2, `
 - I [wasn't|didn't|weren't] scared. I was just screaming.
 - You [didn't tell|didn't told|not told] me about the snake!
 @ ago | ago: valamivel ezelőtt | ago: for ... siden
+! I saw it two minutes ago.
 = I started my diet [two hours ago].
 = The pizza arrived [ten minutes ago]. It's gone.
 - My dad told this joke [five years ago|ago five years|before five years]. And yesterday.
@@ -50,6 +55,7 @@ LWC('en', 2, `
 - I made a new year's plan [a week ago|before a week|a week since]. It's over.
 # What was happening? | Mi történt éppen? | Hvad skete der?
 @ was -ing, were -ing | Folyamatos múlt | Udvidet datid
+! Sorry, I wasn't listening.
 = I [was sleeping] in the meeting.
 = The cats [were having] a party in the kitchen.
 - She [was singing|were singing|was sing] when the bus stopped.
@@ -59,6 +65,7 @@ LWC('en', 2, `
 - He [wasn't listening|weren't listening|didn't listening]. He was playing a game.
 - The children [were painting|was painting|painting] the dog.
 @ when and while | when és while | when og while
+! You called while I was driving.
 = I was dancing [when] my boss walked in.
 = [While] I was sleeping, the cat ate my sandwich.
 - I was singing in the shower [when|while|during] the water stopped.
@@ -71,6 +78,7 @@ LWC('en', 2, `
 ~ While I was sleeping, | the dog ate my shoes.
 ~ She was singing | while he was crying.
 @ Past simple or past continuous? | Egyszerű vagy folyamatos múlt? | Datid eller udvidet datid?
+! I was cooking when you called.
 = I [was walking] when a bird [hit] my head.
 = He [fell] off his chair in the exam.
 - When I came home, the dog [was watching|watching|watch] TV.
@@ -80,6 +88,7 @@ LWC('en', 2, `
 - What [were|did|was] you doing in my wardrobe?
 - He [saw|was seeing|sees] a ghost while he was brushing his teeth.
 @ used to | used to | used to
+! I used to live here.
 = I [used to] think carrots were sweets.
 = My dad [didn't use to] have a belly.
 - We [used to|use to|used] have a goat called Steve.
@@ -89,6 +98,7 @@ LWC('en', 2, `
 - She [used to|uses to|use] sing. The neighbours were happy when she stopped.
 - There [used to|use to|used] be a cake here. Who ate it?
 @ Did you use to...? | Did you use to...? | Did you use to...?
+! Did you use to play football?
 = [Did] you use to sleep with a teddy?
 = Where did you [use] to hide your sweets?
 - [Did|Do|Were] you use to have a funny haircut?
@@ -102,6 +112,7 @@ LWC('en', 2, `
 ~ What did you use to eat? | Lots of sweets!
 # The present perfect | Befejezett jelen | Førnutid
 @ have done, has done | have done, has done | have done, has done
+! I've finished!
 = I [have finished] all the cookies.
 = My cat [has learned] to open doors.
 - We [have bought|has bought|have buyed] a sofa that is bigger than our flat.
@@ -111,6 +122,7 @@ LWC('en', 2, `
 - She's [written|wrote|writed] a song about her cat.
 - My parents [have|has|are] discovered emojis. Help.
 @ ever and never | ever és never | ever og never
+! Have you ever been to London?
 = Have you [ever] eaten a bug?
 = I've [never] won anything.
 - Have you ever [tried|tried ever|try] pizza with chocolate?
@@ -123,6 +135,7 @@ LWC('en', 2, `
 ~ Have you ever eaten snails? | No, and I never will.
 ~ Has she ever met a famous person? | Yes, she sat next to a pop star.
 @ just, already, yet | just, already, yet | just, already, yet
+! I've already eaten, thanks.
 = I've [just] woken up. It's 2 p.m.
 = Have you cleaned your room [yet]?
 - She's [already|yet|still] spent all her money. It's only the 3rd.
@@ -132,6 +145,7 @@ LWC('en', 2, `
 - We've [already|yet|ever] watched the whole series. In one night.
 - He's [just|yet|still] broken his new phone.
 @ for and since | for és since | for og since
+! I've known her for years.
 = I've waited for this pizza [for] an hour.
 = My dad has told the same joke [since] 1998.
 - We've been friends [since|for|from] the day you stole my crisps.
@@ -144,6 +158,7 @@ LWC('en', 2, `
 ~ since | Monday
 ~ for | a very long time
 @ Present perfect or past simple? | Befejezett jelen vagy múlt? | Førnutid eller datid?
+! Have you seen my phone? I had it a minute ago.
 = I [have broken] my phone. (Look!)
 = I [broke] my phone yesterday.
 - I [lost|have lost|lose] my keys last night. They were in the fridge.
@@ -154,6 +169,7 @@ LWC('en', 2, `
 - When [did you start|have you started|you started] talking to plants?
 # The future | Jövő idő | Fremtid
 @ will for predictions | will: jóslás | will: forudsigelser
+! It will be fine.
 = Robots [will] do our homework one day.
 = You [won't] believe this.
 - I think my cat [will rule|rules will|will rules] the world.
@@ -163,6 +179,7 @@ LWC('en', 2, `
 - I'm sure you [will pass|pass will|will passed]. Probably.
 - He [won't|not will|isn't will] remember this tomorrow.
 @ will for offers and quick decisions | will: felajánlás, döntés | will: tilbud og hurtige beslutninger
+! I'll get it!
 = I['ll] eat it for you.
 = It's a spider! I['ll] call my mum.
 - The phone's ringing. I ['ll|am|going to] hide.
@@ -175,6 +192,7 @@ LWC('en', 2, `
 ~ I'm thirsty. | I'll get you some water.
 ~ There's a spider. | I'll get the vacuum cleaner.
 @ going to or will? | going to vagy will? | going to eller will?
+! I'm going to tell you something.
 = Look at that seagull! It['s going to] take your chips.
 = I think the cat [will] sleep all day.
 - I've bought a guitar. I['m going to|going to|'m go to] be a rock star.
@@ -184,6 +202,7 @@ LWC('en', 2, `
 - I promise I [will|am going|going] stop eating your chips.
 - Look at the baby's face. She['s going to|going to|is go to] cry.
 @ Present continuous for arrangements | Folyamatos jelen: megbeszélt tervek | Udvidet nutid: aftaler
+! What are you doing this weekend?
 = I['m meeting] the Queen of cats tomorrow.
 = What [are] you doing on Saturday? Nothing? Great!
 - We['re flying|fly|will flying] to Rome on Friday. The cat is coming too.
@@ -193,6 +212,7 @@ LWC('en', 2, `
 - They [are getting|get|will getting] married in a zoo.
 - What time [is|does|will] the clown arriving?
 @ might and may | might és may | might og may
+! I might be a bit late.
 = I [might] be late. Or I might not come.
 = It [may] rain fish today. Who knows?
 - We might [go|going|to go] to the beach in January.
@@ -203,6 +223,7 @@ LWC('en', 2, `
 - He might [call|calls|to call] you later. Or never.
 # Comparing | Összehasonlítás | Sammenligning
 @ -er than | -er than | -er than
+! It's cheaper than a taxi.
 = My cat is [smarter] than my brother.
 = My grandma is [faster] than me.
 - My dog is [bigger|more big|biger] than my car.
@@ -212,6 +233,7 @@ LWC('en', 2, `
 - Snails are [slower|more slow|slowwer] than my internet. Almost.
 - The cat is [happier|happyer|more happy] without me.
 @ more ... than | more ... than | more ... than
+! This is more fun than I thought.
 = My phone is [more expensive] than my car.
 = Cats are [more intelligent] than people. Ask any cat.
 - Maths is [more difficult|difficulter|most difficult] than flying.
@@ -221,6 +243,7 @@ LWC('en', 2, `
 - My cat eats [more slowly|slowlier|slowly more] than a snail.
 - Is pizza [more important|importanter|important more] than love?
 @ the -est, the most | Felsőfok | Superlativ
+! This is the best pizza ever.
 = My dad tells [the worst] jokes.
 = It's [the most boring] film in history.
 - Mondays are [the longest|the longer|the most long] days of the week.
@@ -230,6 +253,7 @@ LWC('en', 2, `
 - January is [the saddest|the sadder|the most sad] month.
 - That's [the most expensive|the expensivest|the more expensive] sandwich I've ever eaten.
 @ good, better, best | good, better, best | good, better, best
+! It's getting better.
 = My cooking is [better] now. Nobody got ill.
 = It's the [worst] song ever. I love it.
 - My dog sings [better|gooder|more good] than me.
@@ -242,6 +266,7 @@ LWC('en', 2, `
 ~ bad | worse
 ~ far | further
 @ as ... as | as ... as | as ... as
+! It's not as easy as it looks.
 = My dog is [as big as] a horse.
 = I'm not [as crazy as] my brother.
 - My grandma is as [cool|cooler|coolest] as a pop star.
@@ -252,6 +277,7 @@ LWC('en', 2, `
 - Is your new flat as [small|smaller|smallest] as a shoe box?
 # Rules and advice | Szabályok és tanács | Regler og råd
 @ must and mustn't | must és mustn't | must og mustn't
+! You must try this!
 = You [must] feed the cat. Now.
 = You [mustn't] tell Mum.
 - I must [go|to go|going]. My pizza is getting cold.
@@ -261,6 +287,7 @@ LWC('en', 2, `
 - You must [try|tries|to try] Grandma's soup. She's watching.
 - Children [mustn't|don't must|not must] drive the bus.
 @ have to and don't have to | have to és don't have to | have to og don't have to
+! You don't have to pay.
 = I [have to] walk my neighbour's goat.
 = You [don't have to] laugh at my jokes.
 - She [has to|have to|must to] wear a hat at work. A big one.
@@ -273,6 +300,7 @@ LWC('en', 2, `
 ~ It's a crocodile, | so you mustn't touch it.
 ~ It's the law, | so you have to stop.
 @ should and shouldn't | should és shouldn't | should og shouldn't
+! You should see a doctor.
 = You [should] go to bed. It's 4 a.m.
 = You [shouldn't] eat yellow snow.
 - You should [try|to try|trying] this cake. I made it with salt.
@@ -282,6 +310,7 @@ LWC('en', 2, `
 - You [shouldn't|should not to|don't should] text your ex at night.
 - [Should|Do|Must to] I tell him about the spinach in his teeth?
 @ could for past ability | could: múltbeli képesség | could: evne i fortiden
+! I couldn't sleep last night.
 = I [could] touch my toes when I was five.
 = She [couldn't] stop laughing.
 - When I was young, I [could|can|could to] eat ten pancakes.
@@ -291,6 +320,7 @@ LWC('en', 2, `
 - Could you [see|saw|seeing] anything at the concert?
 - My grandma could [dance|dances|danced] all night. She still can.
 @ Asking: Can I, Could you, May I | Kérés: Can I, Could you | At bede: Can I, Could you
+! Could you say that again, please?
 = [Could] you stop singing, please?
 = [May] I have your chips?
 - [Could|Do|Would to] you move your cat?
@@ -304,6 +334,7 @@ LWC('en', 2, `
 ~ Can I borrow your pen? | You never give them back!
 # How much is enough? | Mennyi elég? | Hvor meget er nok?
 @ much and many | much és many | much og many
+! How many people are coming?
 = There aren't [many] cookies. There aren't any cookies.
 = I don't have [much] patience.
 - How [many|much|lot] cats are in your flat?
@@ -313,6 +344,7 @@ LWC('en', 2, `
 - Are there [many|much|a lot] sharks in this pool?
 - I didn't eat [much|many|lot]. Just three dinners.
 @ a few and a little | a few és a little | a few og a little
+! Just a little, thanks.
 = I have [a few] questions about your hat.
 = Add [a little] chocolate. OK, a lot.
 - There are [a few|a little|few of] spiders in the bath.
@@ -322,6 +354,7 @@ LWC('en', 2, `
 - We have [a little|a few|few] money. Let's buy cake.
 - He made [a few|a little|little] mistakes. The kitchen is on fire.
 @ too and enough | too és enough | too og enough
+! It's too late.
 = It's [too] early for Monday.
 = I'm not old [enough] to be this tired.
 - This coffee is [too|enough|to] strong. My hair is standing up.
@@ -331,6 +364,7 @@ LWC('en', 2, `
 - It's [too|very too|enough] late to say sorry.
 - Are you brave [enough|too|enought] to eat Dad's cooking?
 @ too much, too many | too much, too many | too much, too many
+! I ate too much.
 = There's [too much] glitter on this cake.
 = My grandma has [too many] cats.
 - You drink [too much|too many|too lot] coffee. You're vibrating.
@@ -340,6 +374,7 @@ LWC('en', 2, `
 - Don't put [too much|too many|to much] salt in the cake. Again.
 - The dog has [too many|too much|to much] toys and still wants mine.
 @ every and each | every és each | every og each
+! I see her every day.
 = My dad tells the same joke [every] day.
 = [Each] cat has its own sofa.
 - She calls her mum [every|all|each of] hour.
@@ -350,6 +385,7 @@ LWC('en', 2, `
 - He knows [everybody|every|all] in town. And their cats.
 # Little words that matter | Kis szavak | Små vigtige ord
 @ myself, yourself | Visszaható névmások | Refleksive stedord
+! Help yourself to some cake!
 = I cut my hair [myself]. Can you tell?
 = Did you make this cake [yourself]? Really?
 - She talks to [herself|she|hers] in the mirror.
@@ -359,6 +395,7 @@ LWC('en', 2, `
 - Help [yourself|you|yourselfs] to some cake! Not that much!
 - The cat is washing [itself|it's|its] on the dinner table.
 @ something, anyone, nobody | something, anyone, nobody | something, anyone, nobody
+! Nobody told me!
 = There's [something] in my soup. It's moving.
 = I didn't see [anyone]. It was a ghost.
 - There isn't [anything|something|nothing] in the fridge. Only a lemon.
@@ -368,6 +405,7 @@ LWC('en', 2, `
 - [Someone|Anyone|No one] is at the door. It's a man with a goat.
 - There's [nothing|anything|something] in the box. It's empty, but the cat loves it.
 @ mine, yours, ours | Önálló birtokos névmások | mine, yours, ours
+! Is this yours?
 = That last cookie is [mine].
 = Is this sock [yours]? It was in the soup.
 - This isn't my sandwich. Mine had cheese. Is it [yours|your|you]?
@@ -377,6 +415,7 @@ LWC('en', 2, `
 - Is this terrible poem [his|him|he's]?
 - Her jokes are bad, but [mine|my|me] are worse.
 @ one and ones | one és ones | one og ones
+! Which one do you want?
 = I want the biggest [one].
 = These socks smell better than the old [ones].
 - Which cake do you want? The big [one|ones|it]. Obviously.
@@ -386,6 +425,7 @@ LWC('en', 2, `
 - Which is your cat? The angry [one|ones|it].
 - Those jokes are bad, but these [ones|one|it] are worse.
 @ both, either, neither | both, either, neither | both, either, neither
+! Either is fine.
 = [Both] my cats hate me.
 = [Neither] of us can cook.
 - [Both|Either|Neither] of my parents are on TikTok.
@@ -396,6 +436,7 @@ LWC('en', 2, `
 - [Both|Neither|Either] answers are wrong. Sorry.
 # Verb patterns | Igei szerkezetek | Verbalmønstre
 @ enjoy, finish, mind + -ing | enjoy, finish, mind + -ing | enjoy, finish, mind + -ing
+! Do you mind waiting a minute?
 = My cat enjoys [watching] me work.
 = Have you finished [eating] my cake?
 - She finished [reading|to read|read] my diary. Oops.
@@ -405,6 +446,7 @@ LWC('en', 2, `
 - We kept [walking|to walk|walk]. We were lost.
 - I don't mind [waiting|to wait|wait]. I have snacks.
 @ decide, hope, want + to | decide, hope, want + to | decide, hope, want + to
+! I've decided to stay.
 = I decided [to stay] in bed.
 = She hopes [to marry] a prince. Or a cat.
 - We decided [to leave|leaving|leave] before the karaoke.
@@ -414,6 +456,7 @@ LWC('en', 2, `
 - She forgot [to close|closing|close] the door. The goat came in.
 - I'd like [to try|trying|try] that pizza. All of it.
 @ bored or boring? | bored vagy boring? | bored eller boring?
+! This is so boring.
 = The lesson was so [boring], the teacher fell asleep.
 = I was [bored], so I talked to my plant.
 - My grandpa's stories are very [interesting|interested|interest]. And very long.
@@ -426,6 +469,7 @@ LWC('en', 2, `
 ~ The game was exciting, | so we were excited.
 ~ The walk was tiring, | so they were tired.
 @ good at, afraid of | good at, afraid of | good at, afraid of
+! I'm not good at this.
 = My cat is good [at] doing nothing.
 = I'm afraid [of] my grandma's driving.
 - He's interested [in|on|at] everybody's lunch.
@@ -435,6 +479,7 @@ LWC('en', 2, `
 - We're proud [of|on|for] you. You made toast!
 - I'm bad [at|in|for] remembering names. Hi, er... you.
 @ If + present, will | Feltételes mód: If + jelen, will | If + nutid, will
+! If you're hungry, I'll make something.
 = If you eat my pizza, I['ll] cry.
 = If you [touch] my phone, the cat will attack.
 - If you [hurry|will hurry|hurried], you'll catch the last cake.
@@ -448,6 +493,7 @@ LWC('en', 2, `
 ~ If he sings, | we'll leave.
 # Joining ideas | Gondolatok összekötése | At binde idéer sammen
 @ when, before, after + present | when, before, after + jelen | when, before, after + nutid
+! Text me when you get home.
 = I'll call you when I [wake] up. Maybe tomorrow.
 = Wash your hands before you [touch] my cake.
 - I'll clean my room when the cat [cleans|will clean|cleaned] hers.
@@ -457,6 +503,7 @@ LWC('en', 2, `
 - She'll be happy when she [sees|will see|saw] her pink car.
 - After you [read|will read|reading] my diary, give it back!
 @ because and so | because és so | because og so
+! I was tired, so I went to bed.
 = I stayed in bed [because] it was Monday.
 = It was Monday, [so] I stayed in bed.
 - She was hungry, [so|because|but] she ate my lunch.
@@ -469,6 +516,7 @@ LWC('en', 2, `
 ~ She's laughing | because the dog is wearing her hat.
 ~ It was cold, | so we hugged the cat.
 @ who, which, that | who, which, that | who, which, that
+! That's the place that I told you about.
 = The man [who] lives next door has a goat.
 = The cake [which] I made is still on fire.
 - The girl [who|which|what] won the race is eight. I came last.
@@ -478,6 +526,7 @@ LWC('en', 2, `
 - People [who|which|what] talk in the cinema are monsters.
 - Is this the bus [that|who|what] goes to the beach?
 @ Adverbs: quickly, well | Határozószók: quickly, well | Biord: quickly, well
+! Drive carefully!
 = My grandma drives very [fast].
 = My cat sleeps [well]. Twenty hours a day.
 - He runs very [fast|fastly|fasts] when he sees a dog.
@@ -487,6 +536,7 @@ LWC('en', 2, `
 - He works [hard|hardly|hardy]. At playing games.
 - You did it [well|good|goodly]! The kitchen is still there.
 @ If + present, present | Nulladik feltételes | If + nutid, nutid
+! If I drink coffee at night, I can't sleep.
 = If you drop toast, it [lands] butter side down.
 = If I [eat] cheese at night, I dream about cows.
 - If you mix red and blue, you [get|will get|got] purple. And a mess.
@@ -500,6 +550,7 @@ LWC('en', 2, `
 ~ If you open the fridge, | the cat appears.
 # 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
 @ Songs: past simple | Dalok: múlt idő | Sange: datid
+! You made my day!
 = Yesterday I [sang] Hey Jude in the shower.
 = My cat [ate] my Purple Rain CD.
 - Grandma [danced|dances|danceded] to Thriller at my wedding.
@@ -512,6 +563,7 @@ LWC('en', 2, `
 ~ We danced | to Mamma Mia until 4 a.m.
 ~ Did you see | Dad's moonwalk?
 @ Songs: was singing, were dancing | Dalok: was singing, were dancing | Sange: was singing, were dancing
+! We were dancing all night.
 = I [was] singing Halo when the window broke.
 = We [were] dancing to Waterloo when the police came.
 - My dog [was|were|is] howling Hey Jude when the neighbours called.
@@ -524,6 +576,7 @@ LWC('en', 2, `
 ~ The neighbours were dancing | to Thriller at midnight.
 ~ What was Grandpa doing | on the roof?
 @ Songs: going to | Dalok: going to | Sange: going to
+! It's going to be a good night.
 = I'm [going to] sing Let It Go at the wedding.
 = My dad is going to [learn] the Thriller dance.
 - We [are going to|go to|going to] play Mamma Mia all night.
@@ -536,6 +589,7 @@ LWC('en', 2, `
 ~ We're going to | rock you tomorrow.
 ~ Are you going to | dance? Dancing Queen is on!
 @ Songs: louder, the best | Dalok: louder, the best | Sange: louder, the best
+! You're the best!
 = Uptown Funk is [louder] than my alarm.
 = Grandpa is [the best] Dancing Queen in town.
 - My cat's voice is [worse|badder|more bad] than Bohemian Rhapsody on a broken radio.
@@ -548,6 +602,7 @@ LWC('en', 2, `
 ~ Dad is the worst | dancer in the world.
 ~ My hamster is happier | than a Happy song.
 @ Songs: some, any, much, many | Dalok: some, any, much, many | Sange: some, any, much, many
+! How much time do we have?
 = Are there [any] Abba songs on your phone?
 = I don't have [much] time. Waterloo starts in a minute.
 - How [many|much|lot] times can you play Wonderwall in one day?

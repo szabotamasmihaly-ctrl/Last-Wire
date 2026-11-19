@@ -1,6 +1,7 @@
 LWC('da', 6, `
 # Idioms for experts | Szólások haladóknak | Udtryk for eksperter
 @ tage tyren ved hornene | tage tyren ved hornene | tage tyren ved hornene
+! Nu tager jeg tyren ved hornene.
 = Hun tog tyren ved [hornene] og ringede til sin ekskæreste. Han svarede ikke.
 = Der er [ugler] i mosen. Katten smiler for meget.
 - Han kaster [håndklædet|håndklæde|håndklæder] i ringen. Han kan ikke folde dynebetræk.
@@ -10,6 +11,7 @@ LWC('da', 6, `
 - Nu er vi helt ude på Herrens [mark|marken|marker]. Vi talte om pizza.
 - Du slog hovedet på [sømmet|søm|sømme]. Det var hunden.
 @ få kolde fødder | få kolde fødder | få kolde fødder
+! Han fik kolde fødder.
 = Han fik [kolde] fødder og løb fra sit eget bryllup.
 = Hun har en [skrue] løs. Hun går tur med sin fisk.
 - Han sidder på den høje [hest|heste|hesten]. Han har fået en ny cykel.
@@ -19,6 +21,7 @@ LWC('da', 6, `
 - Hun talte med store [bogstaver|bogstav|bogstavet] til sin chef. Nu er hun chef.
 - Han har det som blommen i et [æg|ægget|æggene]. Han bor i en sofa.
 @ ikke for sjov | ikke for sjov | ikke for sjov
+! Det er ikke for sjov.
 = Det er [ikke] for sjov. Min mormor har lært at hacke.
 = Han tog [det] tungt, da pizzaen var væk.
 - Det er [ikke|ikkes|nej] for sjov, når hunden får fat i fjernbetjeningen.
@@ -28,6 +31,7 @@ LWC('da', 6, `
 - Det skal du [ikke|nej|ingen] tage dig af. Det er bare en lille oversvømmelse.
 - Nu skal vi ikke [gå|går|gået] over gevind. Det er bare en kage.
 @ i det lange løb | i det lange løb | i det lange løb
+! I det lange løb kan det betale sig.
 = I det lange [løb] er pizza billigere end en kok.
 = Han kom i [sidste] øjeblik. Med en ged.
 - Det kan [betale|betaler|betalt] sig at sove til middag.
@@ -37,6 +41,7 @@ LWC('da', 6, `
 - Det er synd og [skam|skamme|skammen], at du ikke kan danse.
 - Han står og [falder|falde|faldt det] med sin morgenkaffe.
 @ gå som en kat om den varme grød | gå som... | gå som...
+! Lad være med at gå som en kat om den varme grød.
 = Hun er [helt] oppe at køre. Katten har lært at åbne køleskabet.
 = Han er ude at [cykle]. Han ved ikke, hvad han laver.
 - Han er helt oppe at [køre|kører|kørt] over prisen på smør.
@@ -47,6 +52,7 @@ LWC('da', 6, `
 - Det er [lige|lig|lige så at] meget. Bare giv mig kagen.
 # Old forms still alive | Élő régi formák | Gamle former, der lever
 @ Leve dronningen! | Leve dronningen! | Leve dronningen!
+! Skål, og tak for i aften!
 = Længe [leve] kongen! Og hans hund.
 = Gud [bevare] Danmark. Og vores cykler.
 - Hun [leve|lever|levet], hurra, hurra, hurra! Hun fylder 100.
@@ -56,6 +62,7 @@ LWC('da', 6, `
 - Himlen [hjælpe|hjælper|hjulpet] os, hun synger igen.
 - Det [være|er været|væren] sig kage eller pizza, jeg spiser det.
 @ koste hvad det vil | koste hvad det vil | koste hvad det vil
+! Jeg vil vinde, koste hvad det vil.
 = Jeg skal have den kage, [koste] hvad det vil.
 = [Være] det som det vil, vi tager på stranden i regnvejr.
 - Vi vinder, [koste|koster|kostet] hvad det vil. Selv hvis vi snyder.
@@ -65,6 +72,7 @@ LWC('da', 6, `
 - Det er en fin idé, [om|hvis om|omend at] end lidt skør.
 - [Gid|Gidt|Gider at] jeg kunne flyve. Så slap jeg for bussen.
 @ hvad enten... eller | hvad enten... eller | hvad enten... eller
+! Hvad enten du vil eller ej, så kommer du.
 = [Hvad enten] du kan lide det eller ej, er der rosiner i.
 = [Enten] kommer du nu, eller også spiser hunden din mad.
 - [Hvad enten|Hvad end at|Hvad enten om] det regner eller ej, griller vi.
@@ -74,6 +82,7 @@ LWC('da', 6, `
 - [Både|Både om|Både at] min mor og min mormor er på TikTok.
 - Vi tager af sted, [hvad enten|hvad end at|hvad om enten] bussen kommer eller ej.
 @ hvor meget han end prøver | hvor meget... end | hvor meget... end
+! Hvor meget jeg end prøver, kan jeg ikke.
 = Hvor meget han [end] prøver, kan han ikke danse.
 = [Hvad] du end gør, så rør ikke kagen.
 - Hvor hurtigt hun [end|ende|endnu om] løber, når hun aldrig bussen.
@@ -83,6 +92,7 @@ LWC('da', 6, `
 - [Hvor|Hvorend|Hvorom] du end går hen, følger katten efter dig.
 - Hvor sjovt det [end|ende|ends] er, må du ikke give hunden kaffe.
 @ skønt, omend, uagtet | skønt, omend, uagtet | skønt, omend, uagtet
+! Det var godt, omend dyrt.
 = [Skønt] det regnede, gik vi i bikini.
 = Han er sød, [omend] lidt mærkelig.
 - [Skønt|Skønne|Skøntat] hun var træt, dansede hun hele natten.
@@ -93,6 +103,7 @@ LWC('da', 6, `
 - [Uagtet|Uagtets|Uagtende] vejret holdt vi picnic.
 # Saying it formally | Hivatalos megfogalmazás | At sige det formelt
 @ træffe en beslutning | træffe en beslutning | træffe en beslutning
+! Vi skal træffe en beslutning.
 = Vi skal [træffe] en beslutning. Pizza eller pizza?
 = Udvalget har [foretaget] en undersøgelse af kagen.
 - Ledelsen har truffet en [beslutning|beslutte|besluttet] om kaffemaskinen.
@@ -102,6 +113,7 @@ LWC('da', 6, `
 - Vi vil gerne gøre [opmærksom|opmærksomhed|opmærke] på, at elevatoren er en fryser.
 - Han bragte [i forslag|i foreslå|i forslået], at mødet blev aflyst.
 @ i lyset af, med henblik på | i lyset af, med henblik på | i lyset af, med henblik på
+! Med henblik på weekenden, hvad skal vi lave?
 = I [lyset] af de seneste begivenheder er kagen forbudt.
 = Med [henblik] på frokost slutter mødet nu.
 - I lyset [af|på|om] vejret aflyser vi picnicen.
@@ -111,6 +123,7 @@ LWC('da', 6, `
 - Som følge [af|på|om] strejken er der ingen pizza i kantinen.
 - På grundlag [af|på|om] undersøgelsen konkluderer vi: Mere kage.
 @ alt taget i betragtning | alt taget i betragtning | alt taget i betragtning
+! Alt taget i betragtning var det en god dag.
 = Alt [taget] i betragtning var det en god fest. Ingen døde.
 = Når alt [kommer] til alt, er vi bare mennesker med katte.
 - Alt [taget|tage|tager] i betragtning er det en god pris for en brugt kano.
@@ -120,6 +133,7 @@ LWC('da', 6, `
 - [Strengt|Streng|Strenge] taget er pizza en tærte.
 - Rent [ud|ude|uden] sagt var din sang forfærdelig.
 @ undersøgelsen viser | undersøgelsen viser | undersøgelsen viser
+! Undersøgelsen viser, at kaffe gør glad.
 = [Undersøgelsen] viser, at 9 ud af 10 katte foretrækker tastaturer.
 = [Anvendelsen] af mobiltelefon er forbudt under brylluppet.
 - [Indførelsen|Indføre|Indført] af fire dages arbejdsuge glæder alle.
@@ -129,6 +143,7 @@ LWC('da', 6, `
 - [Overholdelse|Overholde|Overholdt] af reglerne er obligatorisk. Også for hunden.
 - [Godkendelsen|Godkende|Godkendt] af budgettet blev udsat til efter frokost.
 @ man, en, ens | man, en, ens | man, en, ens
+! Man skal ikke tage det så tungt.
 = [Man] ved aldrig, hvad katten finder på.
 = Det er svært, når [ens] hund er klogere end en selv.
 - [Man|En man|Mand] skal ikke spise gul sne.
@@ -139,6 +154,7 @@ LWC('da', 6, `
 - Hvis man ikke passer på, spiser hunden [ens|mans|man] sko.
 # Saying it with emphasis | Nyomatékosan | Med eftertryk
 @ Hvad jeg ikke forstår, er... | Hvad jeg ikke forstår, er... | Hvad jeg ikke forstår, er...
+! Hvad jeg ikke forstår, er hvorfor.
 = [Hvad] jeg ikke forstår, er, hvorfor katten har en Instagram.
 = [Det, der] irriterer mig, er naboens trompet.
 - [Det, jeg|Det, hvad jeg|Hvad, det jeg] savner mest, er min mormors frikadeller.
@@ -148,6 +164,7 @@ LWC('da', 6, `
 - [Det eneste, jeg|Det eneste, hvad jeg|Det eneste jeg det] vil, er at sove.
 - [Hvad|Hvem det|Hvad der der] hun ikke ved, er, at vi har spist kagen.
 @ Sikke en dag! | Sikke en dag! | Sikke en dag!
+! Sikke en dag!
 = [Sikke] en dag! Bussen var en båd.
 = [Hvor] er du sød! Når du sover.
 - [Sikke|Sikken at|Sikkes] et vejr! Det sner i juli.
@@ -157,6 +174,7 @@ LWC('da', 6, `
 - [Hvor|Hvem|Hvad er] han dog sjov, når han danser.
 - [Sikke|Sikket|Sikker] noget rod! Hunden har haft fest.
 @ selv ikke, ikke engang | selv ikke, ikke engang | selv ikke, ikke engang
+! Ikke engang hunden gad gå ud.
 = [Ikke engang] katten vil spise din suppe.
 = [Selv] min mormor kan danse bedre end dig.
 - [Ikke engang|Ikke en gang at|Engang ikke ikke] hunden gider gå tur i regnen.
@@ -166,6 +184,7 @@ LWC('da', 6, `
 - Hun har [ikke engang|engang ikke|ikke en engang] en telefon. Hun bruger duer.
 - [Selv|Selve|Selvs] papegøjen er blevet stille.
 @ netop, ligefrem | netop, ligefrem | netop, ligefrem
+! Det er netop pointen.
 = Det er [netop] det, jeg mener. Pizza er mad.
 = Det er ikke [ligefrem] billigt at have en lama.
 - Det er [netop|netops|netopt] derfor, vi ikke har en kat.
@@ -175,6 +194,7 @@ LWC('da', 6, `
 - [Netop|Netops|Netopt] i dag har jeg ikke tid. Jeg skal sove.
 - Det er ikke [ligefrem|ligefrems|ligefremmest] sjovt at stå i kø.
 @ Det er ikke fordi, ... men | Det er ikke fordi | Det er ikke fordi
+! Det er ikke fordi, jeg ikke vil, men jeg kan ikke.
 = Det er ikke [fordi], jeg er sur, men du har spist min kage.
 = Det er ikke det, [at] jeg ikke kan lide dig. Jeg kan bare bedre lide din hund.
 - Det er ikke [fordi|for at|fordi om], jeg klager, men suppen er kold.
@@ -185,6 +205,7 @@ LWC('da', 6, `
 - Det er ikke [fordi|fordi om|for at om], jeg vil blande mig, men din kat er på taget.
 # Whose is it? | Kié? | Hvis er det?
 @ kongens, Danmarks | kongens, Danmarks | kongens, Danmarks
+! Danmarks hovedstad er København.
 = [Danmarks] bedste pizza findes i en tankstation.
 = [Kattens] yndlingssted er mit tastatur.
 - [Hundens|Hunds|Hunden's] seng er større end min.
@@ -194,6 +215,7 @@ LWC('da', 6, `
 - [Naboens|Nabos|Naboen's] trompet kan høres i Sverige.
 - [Pizzaens|Pizzas|Pizzaen's] ost er forsvundet. Hunden smiler.
 @ hr. Hansens hund | hr. Hansens hund | hr. Hansens hund
+! Det er hr. Hansens hund.
 = Det er [hr. Hansens] hund. Den har sin egen bil.
 = [Kongen af Danmarks] hund hedder Fido. Måske.
 - [Fru Jensens|Fru's Jensen|Fruen Jensen] kat har lært at ringe på døren.
@@ -203,6 +225,7 @@ LWC('da', 6, `
 - [Peter og Lines|Peters og Line|Peter's og Line's] bryllup var under vand.
 - [Vores nabos|Vores's nabo|Vores nabo's] papegøje bander på tre sprog.
 @ hvis, hvem sin | hvis, hvem sin | hvis, hvem sin
+! Hvem sin taske er det?
 = [Hvis] sko er det? De lugter af ost.
 = Manden, [hvis] kat er borgmester, er meget stolt.
 - [Hvis|Hvems|Hvem's] telefon ringer i kirken?
@@ -212,6 +235,7 @@ LWC('da', 6, `
 - [Hvis|Hvems|Hvem's] tur er det til at vaske op? Ikke min.
 - Det er barnet, [hvis|hvem|hvems] is faldt på chefen.
 @ mit og dit | mit og dit | mit og dit
+! Det er mit og dit.
 = Den er [min]. Nej, den er din. Den er kattens.
 = Er det her [jeres] eller vores? Det er en kamel.
 - Den kage er [min|mit|mine]. Hænderne væk.
@@ -221,6 +245,7 @@ LWC('da', 6, `
 - Hvilken pizza er [din|dit|dine]? Den med ananas?
 - Er de briller [dine|din|dit]? De sidder på hunden.
 @ en ven af mig | en ven af mig | en ven af mig
+! Han er en ven af mig.
 = En ven [af] mig har en ged som husdyr.
 = Han er en gammel kollega [af] min far.
 - En kusine [af|på|om] mig spiser kun gule ting.
@@ -231,6 +256,7 @@ LWC('da', 6, `
 - Det er en gammel ven [af|på|om] huset. Han kommer for kagens skyld.
 # Danish as it is spoken | Dán ahogy beszélik | Dansk, som det tales
 @ nå, nå men, ej | nå, nå men, ej | nå, nå men, ej
+! Nå men, vi ses!
 = [Nå], så du har solgt bilen. Til en ged?
 = [Ej], hvor er han sød! Hunden, ikke manden.
 - [Nå men|Nåh mens|Nå mand men], skal vi spise?
@@ -240,6 +266,7 @@ LWC('da', 6, `
 - [Nå men|Nå mens|Nåen men], jeg må videre. Katten venter.
 - [Nå|Nåe|Nået], er du kommet hjem? Hunden har spist din pude.
 @ fedt, nederen, for vildt | fedt, nederen, for vildt | fedt, nederen, for vildt
+! Det er for vildt!
 = Det er [mega] fedt! Min mormor vandt en rapbattle.
 = Det er så [nederen]. Pizzeriaet er lukket.
 - Det var [for vildt|for vild|for vilde]! Katten spillede klaver.
@@ -249,6 +276,7 @@ LWC('da', 6, `
 - Det var [vildt|vildes|vilde't] sjovt i går.
 - Det er [mega|megas|megat] irriterende, når wifi'en forsvinder.
 @ sådan!, så er det nu! | sådan!, så er det nu! | sådan!
+! Sådan, det var flot!
 = [Sådan]! Du ramte bolden. Og vinduet.
 = Så er det [nu]! Kagen er klar.
 - [Sådan|Sådanne|Sådant]! Nu kan du cykle uden hænder. Og uden cykel.
@@ -258,6 +286,7 @@ LWC('da', 6, `
 - [Sådan|Sådanne|Sådant] der! Nu virker printeren. Næsten.
 - Så er det [nu|nuet|nus], vi danser!
 @ gider, orker | gider, orker | gider, orker
+! Jeg orker ikke mere i dag.
 = Jeg [gider] ikke stå op. Det er mandag.
 = Hun [orker] ikke mere karaoke. Hendes ører græder.
 - [Gider|Gidder|Gidt] du lige række mig saltet?
@@ -267,6 +296,7 @@ LWC('da', 6, `
 - Jeg har ikke [gidet|gad|gide] svare på hans beskeder.
 - Hun [orkede|orkte|orket de] ikke at tage telefonen. Det var hendes mor.
 @ ikke?, ikke også?, vel? | ikke?, ikke også? | ikke?, ikke også?
+! Det er dejligt vejr, ikke?
 = Du kommer [ikke]? Nej? Godt, så spiser jeg kagen.
 = Det er da lidt sjovt, [ikke også]?
 - Det var din kat, der sang, [ikke|ikkes|nej også]?
@@ -277,6 +307,7 @@ LWC('da', 6, `
 - Han kan da ikke køre bus, [vel|vels|ikke vels]?
 # Building words like a pro | Szóképzés mesterfokon | Orddannelse for viderekomne
 @ be-, for-, gen- | be-, for-, gen- | be-, for-, gen-
+! Jeg forstår det ikke.
 = Huset er [beboet] af tolv katte og en mand.
 = Byen blev [genopbygget] efter kagekatastrofen.
 - Hun [forandrede|forandre|forandret de] hele lejligheden. Nu er den lilla.
@@ -286,6 +317,7 @@ LWC('da', 6, `
 - Han [forsømte|forsømme|forsømt de] sit arbejde for at se katteklip.
 - Hun [besejrede|besejre|besejret de] sin bror i skak. Han er tre år.
 @ und-, an-, op- | und-, an-, op- | und-, an-, op-
+! Undskyld forsinkelsen.
 = Jeg kan ikke [undvære] min kaffe. Eller min kat.
 = Det [anbefales] at bruge hjelm. Også i sofaen.
 - Hun kan godt [undvære|undværer at|undværet] sin telefon. I fem minutter.
@@ -295,6 +327,7 @@ LWC('da', 6, `
 - Hun [anerkender|anerkende at|anerkendt] ikke, at katten er chef.
 - Hvem [opdagede|opdage|opdaget de] Amerika? Min mormor, på TikTok.
 @ -agtig, -ish, -isk | -agtig, -isk | -agtig, -isk
+! Det var lidt barnagtigt.
 = Suppen smager lidt [fiskeagtigt]. Den er lavet af æbler.
 = Han er meget [teknisk]. Han kan tænde for tv'et.
 - Hun har en [barnagtig|barnisk|barnsk] humor. Hun griner af prutter.
@@ -304,6 +337,7 @@ LWC('da', 6, `
 - Hans kage er [klistret|klisteragtigt et|klistrisk]. Og grøn.
 - Det er [typisk|typagtig|typlig] dansk at tale om vejret.
 @ -vis, -mæssigt | -vis, -mæssigt | -vis, -mæssigt
+! Heldigvis gik det godt.
 = [Heldigvis] var kagen ikke giftig.
 = [Vejrmæssigt] var ferien en katastrofe. Pizzamæssigt var den fantastisk.
 - [Heldigvis|Heldigt vis|Heldigviss] var naboen ikke hjemme.
@@ -313,6 +347,7 @@ LWC('da', 6, `
 - [Tilsyneladende|Tilsyneladendevis|Tilsyneladendet] kan hunden åbne døren.
 - [Pludselig|Pludseligvis|Pludseligt vis] begyndte min mormor at rappe.
 @ lange ord | hosszú szavak | lange ord
+! Hvad er dit længste ord?
 = Han har [fødselsdagsgaveindkøbsstress]. Det er alvorligt.
 = Det er en [hundeluftningstur]. Hunden lufter mig.
 - Vi har [kaffemaskinereparationsproblemer|kaffemaskinerreparationproblemer|kaffemaskinens reparations problemer]. Ingen kaffe.
@@ -323,6 +358,7 @@ LWC('da', 6, `
 - Han har [karaokeangst|karaokesangst|karaoke's angst]. Det er forståeligt.
 # Getting things done | Elintézni a dolgokat | At få tingene gjort
 @ få gjort, få lavet | få gjort, få lavet | få gjort, få lavet
+! Jeg skal have lavet bilen.
 = Jeg fik ikke [vasket] op. Tallerkenerne bor der nu.
 = Har du fået [ringet] til din mor? Hun har ringet 40 gange.
 - Vi fik endelig [malet|male|maler] stuen. Katten er også lilla nu.
@@ -332,6 +368,7 @@ LWC('da', 6, `
 - Hun fik [skrevet|skrive|skriver] sin bog færdig. Den handler om hendes kat.
 - Vi skal have [ordnet|ordne|ordner] taget. Det regner i køkkenet.
 @ komme til at | komme til at | komme til at
+! Jeg kom til at grine.
 = Jeg [kom til at] spise din kage. Den så ensom ud.
 = Undskyld, jeg [kom til at] trykke "svar alle".
 - Han [kom til at|kom til|kom at til] kalde læreren "mor".
@@ -341,6 +378,7 @@ LWC('da', 6, `
 - Pas på, du ikke [kommer til at|kommer at|kommer til] vække hunden.
 - Han [er kommet til at|er kommet til|har kommet til at at] købe tre sofaer på nettet.
 @ blive ved med at | blive ved med at | blive ved med at
+! Han blev ved med at snakke.
 = Hunden [bliver ved med at] gø ad postbuddet. Postbuddet gør tilbage.
 = Hun [blev ved med at] synge. Vi blev ved med at gå.
 - Han [bliver ved med at|bliver ved at med|bliver med ved at] spørge om kage.
@@ -350,6 +388,7 @@ LWC('da', 6, `
 - De [blev ved med at|blev ved af at|blev ved med ad] danse, selvom musikken stoppede.
 - Hun [bliver ved med at|bliver ved med ved|bliver ved om at] sige, at hun ikke er træt.
 @ gå og, sidde og, stå og | gå og, sidde og, stå og | gå og, sidde og, stå og
+! Hun sad og ventede på mig.
 = Han [sidder og] spiller computer hele dagen. Han er 70.
 = Hun [går og] synger hele tiden.
 - Hvad [står du og|står du at|står du og at] laver i køleskabet klokken fire?
@@ -359,6 +398,7 @@ LWC('da', 6, `
 - Hun [stod og|stod at|står og at] ventede i en time. Bussen kom aldrig.
 - Katten [ligger og|ligger at|lå og at] sover på mit tastatur.
 @ ende med at, nå at | ende med at, nå at | ende med at, nå at
+! Vi endte med at blive hjemme.
 = Vi [endte med at] spise pizza. Igen.
 = Jeg [nåede lige at] redde kagen.
 - Han [endte med at|endte med|endte at med] gifte sig med sin tandlæge.
@@ -369,6 +409,7 @@ LWC('da', 6, `
 - Jeg [nåede lige at|nåede lige|nåede at lige] se dronningen. Hun vinkede til en due.
 # What people say | Ahogy mondják | Hvad man siger
 @ Han skal være rig | Han skal være rig | Han skal være rig
+! Han skal være meget rig.
 = Han [skal være] millionær. Han bor i en kasse.
 = Restauranten [skal være] fantastisk. Men den har kun én stol.
 - Hun [skal være|skal er|skal været] meget god til at synge. Siger hun selv.
@@ -378,6 +419,7 @@ LWC('da', 6, `
 - Kagen [skal være|skal været|skal er] lavet af broccoli. Den er grøn.
 - Hun [skal have|skal har|skal havde] mødt kongen i en kø.
 @ Hun vil have set... | Hun vil have set... | Hun vil have set...
+! Hun vil have set ham i byen.
 = Han [vil have] set en UFO. Det var en drone.
 = Hun [vil have] hørt katten tale.
 - Min onkel [vil have|vil har|vil havde] fanget en fisk på 50 kilo.
@@ -387,6 +429,7 @@ LWC('da', 6, `
 - Hun [vil have|vil har|vil havde] vundet i lotto. Hun køber stadig rugbrød på tilbud.
 - Han [vil have|vil har|vil havet] lært katten at spille klaver.
 @ lader til at, ser ud til at | lader til at, ser ud til at | lader til at, ser ud til at
+! Det ser ud til at regne.
 = Det [lader til at] regne hele ugen. Godt vi har en båd.
 = Katten [ser ud til at] være sulten. Den spiser mine sokker.
 - Han [lader til at|lader at|lader til] være glad for sin nye gris.
@@ -396,6 +439,7 @@ LWC('da', 6, `
 - Det [lader til at|lader at til|lader til ad] virke. Printeren printer.
 - De [ser ud til at|ser at ud til|ser ud af at] more sig. De græder af grin.
 @ angiveligt, efter sigende | angiveligt, efter sigende | angiveligt, efter sigende
+! Han er angiveligt syg.
 = Han er [angiveligt] verdens bedste kok. Han laver toast.
 = Hun er efter [sigende] gift med sin cykel.
 - Katten er [angiveligt|angivelig|angiveligen] blevet borgmester.
@@ -405,6 +449,7 @@ LWC('da', 6, `
 - Hun har [angiveligt|angivelige|angiveligst] lært sin hund at tale fransk.
 - Det er efter [sigende|sigede|siges] umuligt at slå min mormor i skak.
 @ formodentlig, sandsynligvis | formodentlig, sandsynligvis | formodentlig, sandsynligvis
+! Han kommer sandsynligvis i morgen.
 = Han er [formodentlig] faret vild. Han har en GPS.
 = Det bliver [sandsynligvis] regn. Det bliver det altid.
 - Hun kommer [sandsynligvis|sandsynligvise|sandsynligt vis] for sent. Hun skal finde sine sko.
@@ -415,6 +460,7 @@ LWC('da', 6, `
 - Bogen er [formodentlig|formodentligs|formodentlige] skrevet af en kat.
 # Written and literary style | Írott és irodalmi stílus | Skriftsprog og litterær stil
 @ atter, blot | atter, blot | atter, blot
+! Det er blot en idé.
 = Kongen vendte [atter] hjem. Han havde glemt sin hat.
 = Det var [blot] en drøm. Eller var det?
 - Solen skinnede [atter|attere|atters] over byen. Efter tre uger.
@@ -424,6 +470,7 @@ LWC('da', 6, `
 - Hun vendte [atter|atters|attert] tilbage til sit køleskab.
 - Det var [blot|blots|blotte] et spørgsmål om tid, før hunden stjal pølsen.
 @ endog, ganske | endog, ganske | endog, ganske
+! Det var ganske godt.
 = Han kunne [endog] danse. Næsten.
 = Det var [ganske] vist en god kage. Men den var hans.
 - Hun talte fem sprog, [endog|endogs|endoget] klingonsk.
@@ -433,6 +480,7 @@ LWC('da', 6, `
 - De inviterede [endog|endogs|endogt] dronningen. Hun kom ikke.
 - Hun er [ganske|ganskt|ganskes] sikker på, at hunden er et geni.
 @ thi, ej | thi, ej | thi, ej
+! Vi gik, thi det regnede.
 = Frygt ej, [thi] kagen er på vej.
 = Han kom [ej] tilbage. Han var på ferie.
 - Frygt ikke, [thi|this|thien] pizzaen er bestilt.
@@ -442,6 +490,7 @@ LWC('da', 6, `
 - Glæd dig, [thi|this|thien] weekenden er nær.
 - Hun kunne [ej|ejs|eje] længere vente.
 @ hin, hint | hin, hint | hin, hint
+! I hine dage var alt bedre.
 = På [hin] dag faldt kongen i søen.
 = I [hine] tider havde man ikke wifi.
 - På [hin|hint|hine] aften spiste vi 20 pandekager.
@@ -451,6 +500,7 @@ LWC('da', 6, `
 - I [hine|hint|hin] tider havde alle en mullet.
 - Ved [hint|hin|hinte] bord sad dronningen og spiste pølser.
 @ desuagtet, ikke desto mindre | desuagtet | desuagtet
+! Ikke desto mindre var det sjovt.
 = Det regnede. [Ikke desto mindre] gik vi i bikini.
 = Han var advaret. [Desuagtet] spiste han hele kagen.
 - Kagen var brændt. [Ikke desto mindre|Ikke desto mindste|Ikke dest mindre] spiste vi den.

@@ -1,6 +1,7 @@
 LWC('en', 5, `
 # Inversion | Inverzió | Inversion
 @ Never, rarely, seldom + inversion | Never, rarely, seldom + inverzió | Never, rarely, seldom + inversion
+! Rarely do you see service like this.
 = [Never have I] seen a cat look so smug.
 = Rarely [does my dad] admit he's lost.
 - Never [have I seen|I have seen|I saw] a man eat soup with a fork so confidently.
@@ -10,6 +11,7 @@ LWC('en', 5, `
 - Seldom [does it|it does|it] snow here, which is why nobody can drive in it.
 - Never again [will I|I will|I] agree to help a friend move house.
 @ Not only ... but also | Not only ... but also | Not only ... but also
+! Not only is it cheap, but it's also delicious.
 = Not only [is my cat] lazy, but she's also judgemental.
 = Not only did he forget my birthday, [but] he also ate my cake.
 - Not only [did they|they did|they] lose the match, but they also lost the bus home.
@@ -19,6 +21,7 @@ LWC('en', 5, `
 - Not only [will you|you will|you] save money, you'll also annoy your neighbours.
 - Not only [was it|it was|was] raining, but the umbrella was also inside out.
 @ No sooner ... than, Hardly ... when | No sooner ... than, Hardly ... when | No sooner ... than, Hardly ... when
+! No sooner had I sat down than my phone rang.
 = No sooner [had I] sat down than the cat wanted my chair.
 = Hardly had we lit the barbecue [when] it started to pour.
 - No sooner [had she|she had|did she] started her diet than someone brought doughnuts.
@@ -31,6 +34,7 @@ LWC('en', 5, `
 ~ Hardly had we arrived | when the kids asked to go home.
 ~ Scarcely had she sat down | when the phone rang.
 @ Only when, Only after, Not until | Only when, Only after, Not until | Only when, Only after, Not until
+! Only when I got home did I realise.
 = Only when I got to work [did I] realise I was wearing slippers.
 = Not until the bill came [did he] remember his wallet was at home.
 - Only then [did I|I did|I] understand why the cat was smiling.
@@ -40,6 +44,7 @@ LWC('en', 5, `
 - Only by bribing the cat [can you|you can|you] get your seat back.
 - Not until I tasted it [did I|I did|I] believe the soup was chocolate.
 @ Little did I know | Little did I know | Little did I know
+! Little did I know what was coming.
 = [Little did] I know the goat could open doors.
 = Under no circumstances [should you] feed it after midnight.
 - Little [did they|they did|they] realise the "puppy" was a wolf.
@@ -50,6 +55,7 @@ LWC('en', 5, `
 - At no time [was I|I was|I] told the party was fancy dress.
 # Conditionals, advanced | Feltételes mondatok, haladó | Betingelser, avanceret
 @ Had I known, Should you need | Had I known, Should you need | Had I known, Should you need
+! Should you need anything, just call.
 = [Had I] known it was karaoke night, I would have stayed home.
 = [Should] you find my dignity, please return it.
 - [Had we|If we|We had] read the reviews, we'd never have booked this hotel.
@@ -59,6 +65,7 @@ LWC('en', 5, `
 - [Should|Would|Will] the printer jam again, please scream quietly.
 - [Were they|They were|If they] to find out about the cake, we'd be in trouble.
 @ But for, Without | But for, Without | But for, Without
+! But for your help, I'd never have made it.
 = [But for] my GPS, I would still be in Belgium.
 = [Without] coffee, I'd be a very different person. A worse one.
 - But for the rain, we [would have|will have|had] had a picnic. And ants.
@@ -68,6 +75,7 @@ LWC('en', 5, `
 - Without you, I [would|will|wouldn't to] never have discovered pineapple pizza.
 - [If it hadn't been for|If it wasn't been for|If it hadn't for] the lifeguard, Dad would still be floating.
 @ provided that, as long as, supposing | provided that, as long as, supposing | provided that, as long as, supposing
+! You can borrow it, as long as you give it back.
 = You can borrow my car [as long as] you bring it back with all four wheels.
 = [Provided that] the cat agrees, you can sit there.
 - I'll lend you my jacket [provided|provide|providing to] you don't eat in it.
@@ -77,6 +85,7 @@ LWC('en', 5, `
 - [Assuming|Assume|Assumed] the bus actually comes, we'll be there by noon.
 - [Providing|Provide|Provided to] Grandpa doesn't drive, we'll arrive alive.
 @ otherwise, or else | otherwise, or else | otherwise, or else
+! Hurry up, otherwise we'll be late.
 = Hide the chocolate, [otherwise] the kids will find it.
 = Put the lid on, [or else] the cat will be in the pan.
 - I'm allergic to mornings; [otherwise|unless|although] I'd come jogging.
@@ -86,6 +95,7 @@ LWC('en', 5, `
 - Leave now, [or else|or other|else] Grandpa will start his war stories.
 - I had a snack in my bag; [otherwise|unless|though] I'd have eaten my shoe.
 @ If ... were to, If ... should | If ... were to, If ... should | If ... were to, If ... should
+! If you were to ask me, I'd say no.
 = If the cat [were to] resign, who would run the house?
 = If you [should] see my sense of humour, tell it to come home.
 - If the pizza place were [to close|close|closing], the whole street would go into mourning.
@@ -96,6 +106,7 @@ LWC('en', 5, `
 - If my mother [should|would|shall to] call, tell her I've moved to Peru.
 # Unreal and formal forms | Irreális és választékos formák | Uvirkelige og formelle former
 @ suggest that he go | Kötőmód: suggest that he go | Konjunktiv: suggest that he go
+! I suggest that he apologise.
 = I suggest that he [take] a shower before the date.
 = The cat insists that breakfast [be] served at 5 a.m.
 - The doctor recommended that Dad [stop|stops|stopped] eating cheese at midnight.
@@ -105,6 +116,7 @@ LWC('en', 5, `
 - I propose that the meeting [be|is|was] replaced by a nap.
 - They asked that guests [not bring|don't bring|not bringing] their pet snakes.
 @ would rather + past | would rather + múlt | would rather + datid
+! I'd rather you didn't tell anyone.
 = I'd rather you [didn't] sing at my wedding.
 = My cat would rather I [stayed] in bed all day as her mattress.
 - I'd rather you [kept|keep|will keep] your opinions about my haircut to yourself.
@@ -114,6 +126,7 @@ LWC('en', 5, `
 - We'd rather the neighbours [practised|practise|will practise] the drums somewhere else.
 - She'd rather he [wore|wears|will wear] something other than that shirt.
 @ as if, as though | as if, as though | as if, as though
+! You look as if you haven't slept.
 = My cat looks at me [as if] I owed her money.
 = You look as though you [had] seen your dad dance.
 - He walks into every room as if he [were|is being|be] the king of Spain.
@@ -123,6 +136,7 @@ LWC('en', 5, `
 - The waiter looked at me as if I [was|am being|be] mad for ordering pineapple.
 - It feels as though we've [known|knew|know] each other forever. Or since lunch.
 @ It's high time + past | It's high time + múlt | It's high time + datid
+! It's high time we had a holiday.
 = It's high time we [left]. The hosts are in their pyjamas.
 = It's about time you [learned] to use the washing machine.
 - It's high time the government [banned|bans|will ban] loud chewing.
@@ -132,6 +146,7 @@ LWC('en', 5, `
 - It's about time somebody [fixed|fixes|fix] the office coffee machine.
 - It's high time the cat [found|finds|find] a job.
 @ wish + would, wish + could | wish + would, wish + could | wish + would, wish + could
+! I wish I could help, but I can't.
 = I wish I [could] teleport. Mostly to avoid traffic.
 = I wish my cat [would] respect me.
 - I wish I [could|can|will] come, but I have a very important nap.
@@ -142,6 +157,7 @@ LWC('en', 5, `
 - I wish the neighbour's dog [would|will|does] stop auditioning for the opera.
 # Modal verbs, advanced | Módbeli igék, haladó | Modalverber, avanceret
 @ would for past habits | would: múltbeli szokás | would: vaner i fortiden
+! My dad would always make pancakes on Sundays.
 = Every summer my grandpa [would] fall asleep in a deckchair and get sunburnt.
 = My mum [would] always find the chocolate. Always.
 - As kids, we would [hide|hid|hiding] vegetables in the plant pots.
@@ -151,6 +167,7 @@ LWC('en', 5, `
 - He would sit by the window for hours, [judging|judge|to judge] the neighbours.
 - My parents would [argue|argued|arguing] about the map on every holiday.
 @ may well, might as well | may well, might as well | may well, might as well
+! We might as well start without them.
 = The pizza [may well] be the best thing that happens today.
 = The bus isn't coming. We [might as well] walk. Or cry.
 - She may [well|good|as] be right, but I'm not telling her that.
@@ -160,6 +177,7 @@ LWC('en', 5, `
 - That might well [be|is|being] true, but it's still a goat in a suit.
 - You might as well [tell|told|telling] him. The whole office knows.
 @ dare and need | dare és need | dare og need
+! How dare you!
 = How [dare] you eat my yoghurt!
 = You [needn't] whisper. The cat already knows.
 - I didn't dare [to tell|telling|told] her the dress looked like a tent.
@@ -169,6 +187,7 @@ LWC('en', 5, `
 - [Need|Am|Needs] I say more? The cat is on the table again.
 - Don't you dare [touch|touched|touching] my chips!
 @ could have, might have: criticism | could have, might have: kritika | could have, might have: kritik
+! You could have told me earlier.
 = You [could have] told me there was spinach in my teeth!
 = You [might have] mentioned the dog bites.
 - You could have [helped|help|helping] me carry the sofa up nine floors!
@@ -178,6 +197,7 @@ LWC('en', 5, `
 - You could at least [have pretended|pretended|have pretend] to like the present.
 - She might have [asked|ask|asking] before using my toothbrush.
 @ be likely to, be sure to | be likely to, be sure to | be likely to, be sure to
+! She's sure to love it.
 = Grandpa's [likely to] fall asleep during the film.
 = If you hide the biscuits there, the kids are [sure to] find them.
 - She's sure [to be|be|being] late. She was late to her own birth.
@@ -188,6 +208,7 @@ LWC('en', 5, `
 - He is [bound to|bound|bound for] notice the dent in his car.
 # Participles and fronting | Igenevek és előre vetés | Participier og fremrykning
 @ Having been, Not having | Having been, Not having | Having been, Not having
+! Not having eaten all day, I was starving.
 = [Having been] bitten twice, I no longer pet the hamster.
 = [Not having] read the book, I nodded a lot in the book club.
 - [Having been|Having be|Been having] told about the free pizza, everyone came.
@@ -197,6 +218,7 @@ LWC('en', 5, `
 - [Having been|Having being|Been] elected class president, the dog gave a speech.
 - [Not knowing|Knowing not|No knowing] the rules, I won by accident.
 @ Weather permitting | Abszolút szerkezetek | Absolutte konstruktioner
+! Weather permitting, we'll eat outside.
 = [Weather permitting], Grandpa will go skinny-dipping. Sorry, everyone.
 = The cake [eaten], the guests went home.
 - [All things considered|All things consider|All things considering], the wedding was a success. Only one fire.
@@ -206,6 +228,7 @@ LWC('en', 5, `
 - [Generally speaking|General speaking|Generally spoken], cats are in charge.
 - [Judging|Judged|Judge] by the noise, the kids have found the drum kit.
 @ easy to please, hard to find | Melléknév + főnévi igenév | Tillægsord + navnemåde
+! He's easy to please.
 = My dog is [easy to] please. Just say "sausage".
 = This series is [hard to] stop watching.
 - My cat is impossible [to please|pleasing|to be pleased him].
@@ -215,6 +238,7 @@ LWC('en', 5, `
 - His question was hard [to answer|answering|to answer it]. It was "why?"
 - It's not easy [to find|finding|to be find] a parking space near the pizza place.
 @ Fronting: Strange as it may seem | Előre vetés: Strange as it may seem | Fremrykning: Strange as it may seem
+! Strange as it may seem, I enjoyed it.
 = [Strange as] it may seem, my cat loves the vacuum cleaner.
 = [Much as] I love you, I'm not sharing my chips.
 - [Tired as|As tired|Tired so] she was, she still went to the party.
@@ -224,6 +248,7 @@ LWC('en', 5, `
 - [Young as|As young|So young] she is, she already runs the family.
 - [Rich as|As rich|So rich] they are, they still steal hotel shampoo.
 @ Fronting for emphasis | Nyomatékos előre vetés | Fremrykning for at fremhæve
+! That I can't promise.
 = [That] I will never understand.
 = [Into the kitchen] walked a goat.
 - Into the meeting [ran the dog|the dog ran it|ran it the dog].
@@ -234,6 +259,7 @@ LWC('en', 5, `
 - [This|These|That's] I will never forgive.
 # Passive and impersonal | Szenvedő és személytelen | Passiv og upersonlig
 @ is thought to have done | is thought to have done | is thought to have done
+! He's thought to have left the country.
 = The thief [is thought to have] escaped on a child's scooter.
 = My grandma is said [to have been] a spy.
 - The cat is believed [to have eaten|to eat have|having eaten] the evidence.
@@ -243,6 +269,7 @@ LWC('en', 5, `
 - The ship is thought [to have sunk|to sink have|having sink] because of a very heavy cake.
 - She is known [to have worked|to work have|worked to] as a lion tamer.
 @ There is said to be | There is said to be | There is said to be
+! There's said to be a great view from the top.
 = [There is said to be] a ghost in the staff toilet.
 = There are believed [to be] three cats living in our walls.
 - There [is thought|thinks|is think] to be a problem with the engine. It's on fire.
@@ -252,6 +279,7 @@ LWC('en', 5, `
 - There is known [to be|being|be] a cure for Mondays. It's called Friday.
 - There [seems|seem it|it seems] to be a goat in your car.
 @ needs doing, wants cleaning | needs doing, wants cleaning | needs doing, wants cleaning
+! My car needs washing.
 = The cat [needs feeding]. Constantly.
 = My car [needs to be] towed. Again.
 - My hair needs [cutting|cut|to cut]. A bird tried to live in it.
@@ -261,6 +289,7 @@ LWC('en', 5, `
 - These windows need [cleaning|clean|to clean]. I think it's daytime.
 - The report needs [checking|check|to check]. The cat wrote half of it.
 @ get done, have done: causative | Műveltetés: get, have | Kausativ: get, have
+! I need to get my phone fixed.
 = I must [get my car washed]. Someone wrote "clean me" on it.
 = She [had her phone stolen] by a monkey.
 - We need to get the roof [fixed|fix|fixing]. It's raining in the bath.
@@ -270,6 +299,7 @@ LWC('en', 5, `
 - They got the house [cleaned|clean|cleaning] before the in-laws arrived.
 - He had his licence [taken|take|taking] away for driving a lawnmower on the motorway.
 @ It is ... that (impersonal) | Személytelen It is ... that | Upersonligt It is ... that
+! It's often said that time heals everything.
 = [It is] believed that cats can smell fear. And tuna.
 = It has been suggested [that] we stop letting Dad cook.
 - [It is|There is|They are] widely believed that the office plant is plastic.
@@ -280,6 +310,7 @@ LWC('en', 5, `
 - It [is|has|was being] known that he cheats at board games.
 # Linking, advanced | Kötőszavak, haladó | Bindeord, avanceret
 @ notwithstanding, albeit | notwithstanding, albeit | notwithstanding, albeit
+! It was a long, albeit enjoyable, day.
 = The party was a success, [albeit] a loud one.
 = [Notwithstanding] the smell, the cheese was delicious.
 - It was a victory, [albeit|although of|despite of] against a team of toddlers.
@@ -289,6 +320,7 @@ LWC('en', 5, `
 - She agreed to babysit, [albeit|in spite|despite of] with conditions.
 - [Notwithstanding|Although|Even] his age, Grandpa still skateboards.
 @ hence, thus, consequently | hence, thus, consequently | hence, thus, consequently
+! It's late, hence the coffee.
 = He ate the whole cake; [hence] the stomach ache.
 = The cat sat on the keyboard; [consequently], my email was sent to everyone.
 - The pavement was icy; [hence|despite|although] the very elegant fall.
@@ -298,6 +330,7 @@ LWC('en', 5, `
 - He lied about his age, and [thus|whereas|despite] got the children's menu.
 - The shop ran out of coffee; [as a result|despite|whereas], the office collapsed.
 @ whereby, in which | whereby, in which | whereby, in which
+! We need a system whereby everyone gets a turn.
 = We have a system [whereby] the cat decides everything.
 = The house [in which] I grew up had a very angry goose.
 - It's an arrangement [whereby|where by|whereabouts] I cook and my partner pretends to enjoy it.
@@ -307,6 +340,7 @@ LWC('en', 5, `
 - A rule [whereby|whereas|wherein by] whoever burns dinner buys the pizza.
 - The reason [for which|which for|for what] he left remains a mystery. And a goat.
 @ given that, seeing that | given that, seeing that | given that, seeing that
+! Given that it's raining, let's stay in.
 = [Given that] he's a cat, he plays the piano quite well.
 = [Seeing that] you're up, could you feed the cat?
 - [Given|Give|Giving] the weather, we had the picnic in the car.
@@ -316,6 +350,7 @@ LWC('en', 5, `
 - [Considering|Consider|Considered] how much he eats, he's surprisingly thin.
 - [In that|In what|In which that] he ate the evidence, he's clearly guilty.
 @ in so far as, to the extent that | in so far as, to the extent that | in so far as, to the extent that
+! I'll help, in so far as I can.
 = The diet worked, [in so far as] I now hate salad.
 = It helped, [to the extent that] I stopped crying.
 - The plan succeeded [in so far as|in so far that|in so as] nobody died.
@@ -326,6 +361,7 @@ LWC('en', 5, `
 - [To the best of|To the best for|At the best of] my knowledge, the cake was never there.
 # Determiners and pronouns | Determinánsok és névmások | Bestemmerord og stedord
 @ the former, the latter | the former, the latter | the former, the latter
+! Tea or coffee? The latter, please.
 = Of cats and dogs, I prefer [the latter]. Cats prefer the former.
 = Of pizza and salad, [the former] is better for the soul.
 - I met Tom and his parrot; [the former|the formers|the first one of] talked more.
@@ -335,6 +371,7 @@ LWC('en', 5, `
 - Of walking and taking a taxi, [the latter|the later|the lattest] is faster and lazier.
 - He studied law and magic, [the former|the formerly|the formal] at Oxford.
 @ each other, one another | each other, one another | each other, one another
+! We always help each other.
 = My cats hate [each other].
 = We stole chips from [one another] all evening.
 - Tom and Anna stared at [each other|each others|themself] in horror.
@@ -344,6 +381,7 @@ LWC('en', 5, `
 - The two teams blamed [one another|ones another|another one] for the goat.
 - Do you two know [each other|each others|yourself]? From prison? I'm joking.
 @ such as, so as | such as, so as | such as, so as
+! Bring something light, such as fruit.
 = I eat healthy food, [such as] pizza with vegetables on it.
 = He tiptoed [so as not to] wake the cat.
 - My uncle has strange hobbies, [such as|so as|such like] collecting spoons.
@@ -353,6 +391,7 @@ LWC('en', 5, `
 - Avoid drinks [such as|so as|such like] coffee after midnight. Says my doctor.
 - I left a note [so as to|such as to|so that to] remind myself who I am.
 @ whatever, however, whichever | whatever, however, whichever | whatever, however, whichever
+! Whatever happens, I'm with you.
 = [Whatever] happens, don't let Grandpa near the microphone.
 = [However] hard it is, don't give the cat your chair.
 - [However|Whatever|Whoever] much it costs, I'm buying that hat.
@@ -362,6 +401,7 @@ LWC('en', 5, `
 - [Whenever|Whatever|However] I sit down, the cat appears.
 - [However|Whatever|Whoever] you look at it, that's a goat in a dress.
 @ Agreement: neither of, none of, a number of | Egyeztetés: neither of, none of, a number of | Kongruens: neither of, none of, a number of
+! None of us has ever done this before.
 = A number of guests [have] complained about the clown.
 = The number of cats in my house [is] growing.
 - A number of my colleagues [are|is|be] secretly asleep right now.
@@ -372,6 +412,7 @@ LWC('en', 5, `
 - A lot of the money [was|were|are] spent on snacks.
 # Verb patterns, advanced | Igei szerkezetek, haladó | Verbalmønstre, avanceret
 @ see him go, see him going | see him go, see him going | see him go, see him going
+! I saw him leave.
 = I saw my dad [fall] into the pool. (the whole action)
 = I heard the neighbours [singing] at 3 a.m. (part of the action)
 - We watched the cake [collapse|to collapse|collapses].
@@ -381,6 +422,7 @@ LWC('en', 5, `
 - She caught him [stealing|to steal|stolen] her chips.
 - I've never heard my boss [laugh|to laugh|laughs]. Is she a robot?
 @ mean, go on, try: two meanings | mean, go on, try: két jelentés | mean, go on, try: to betydninger
+! Try turning it off and on again.
 = I meant [to call] you. Then I fell asleep.
 = Having a cat means [being] someone's servant.
 - The new job means [getting|to get|get] up before the sun.
@@ -390,6 +432,7 @@ LWC('en', 5, `
 - I tried [to open|opening it to|open] the jar, but I lost.
 - Missing the bus means [walking|to walk|walk] in the rain with my dignity.
 @ would have liked to | would have liked to | would have liked to
+! I would have liked to stay longer.
 = I [would have liked to] meet the dog first.
 = She'd have loved [to see] her husband's face.
 - I would have liked [to see|seeing|saw] the clown fall over. Again.
@@ -399,6 +442,7 @@ LWC('en', 5, `
 - They would have hated [to miss|missing|missed] Grandma's tango.
 - She would [have preferred|preferred have|have prefer] to know about the goat earlier.
 @ The more ..., the more ... | The more ..., the more ... | The more ..., the more ...
+! The more I think about it, the less I like it.
 = [The more] I eat, [the hungrier] I get.
 = The sooner the pizza comes, [the better].
 - The older my dad gets, [the louder|the more loud|louder] his jokes become.
@@ -408,6 +452,7 @@ LWC('en', 5, `
 - [The more|More|The most] I learn, the less I understand my teenager.
 - The bigger the cake, [the happier|happier|the more happy] the guests.
 @ be + to: instructions and fate | be + to: utasítás és sors | be + to: instruktioner og skæbne
+! You're to be home by midnight.
 = You [are to] stay away from the cake.
 = He [was never to] see his sandwich again.
 - Nobody [is to|is|has] leave the room until the cookie thief confesses.
@@ -418,6 +463,7 @@ LWC('en', 5, `
 - They [were to|were|had] meet again years later, both wearing the same shirt.
 # Discourse and emphasis | Szövegszervezés és nyomaték | Diskurs og fremhævelse
 @ All I want is... | All I want is... | All I want is...
+! All I want is a quiet weekend.
 = [All] I want is a nap without a cat on my face.
 = All he did [was] complain about the Wi-Fi.
 - [All|Every|Whole] I need is coffee and silence.
@@ -427,6 +473,7 @@ LWC('en', 5, `
 - All I'm asking [is|are|it] that you stop singing in the lift.
 - All they wanted [was|were|is to] a quiet holiday. Then Uncle Bob came.
 @ The thing is, What happened was | The thing is, What happened was | The thing is, What happened was
+! The thing is, I've already said yes.
 = [The thing is], I've eaten your birthday cake.
 = The reason I'm late [is that] a goose chased me.
 - The problem [is|are|it is] that the cat thinks she owns the house.
@@ -436,6 +483,7 @@ LWC('en', 5, `
 - The trouble [is that|is what|it is] nobody can find the remote.
 - The point [is|are|it is] that the soup shouldn't be blue.
 @ I find it hard to... | I find it hard to... | I find it hard to...
+! I find it hard to say no.
 = I find [it] hard to believe your cat did your homework.
 = She made [it] clear that the last biscuit was hers.
 - I find [it|that|this it] difficult to concentrate when the dog is singing.
@@ -445,6 +493,7 @@ LWC('en', 5, `
 - She found [it|that|this] impossible to sleep next to Grandpa's snoring.
 - The free pizza made [it|that|so] possible for us to survive the meeting.
 @ I hope so, I think not | I hope so, I think not | I hope so, I think not
+! Is it going to rain? I hope not.
 = "Will Dad sing at the wedding?" "I hope [not]."
 = "Is there more cake?" "I think [so]."
 - "Is the pizza here?" "I [think so|think it|think that so]. I can smell it."
@@ -454,6 +503,7 @@ LWC('en', 5, `
 - "Is the goat in the car again?" "I hope [not|no|don't]."
 - "Has he eaten all the biscuits?" "It [seems so|seems it|seems that]."
 @ So do I, nor do I, nor can she | So do I, nor do I | So do I, nor do I
+! I can't swim. Nor can I.
 = He can't cook, and [nor can] I.
 = She loves cheese, and [so does] her dog.
 - I don't do mornings, and [nor does|nor eats|nor doesn't] my cat.
@@ -464,6 +514,7 @@ LWC('en', 5, `
 - I'm not ready for Monday, and [neither is|neither are|neither isn't] Tom.
 # 🎵 Song titles | 🎵 Dalcímek | 🎵 Sangtitler
 @ Songs: if I had known... | Dalok: if I had known... | Sange: if I had known...
+! Had I known, I'd have stayed.
 = If I [had known] the words, I would have sung Bohemian Rhapsody.
 = If Grandma hadn't danced, nobody [would have] noticed Thriller was on.
 - If you had warned me, I [wouldn't have|won't have|wouldn't had] played Wonderwall.
@@ -476,6 +527,7 @@ LWC('en', 5, `
 ~ Had the band played Hey Jude, | the crowd would have stayed.
 ~ If you had listened, | you'd know the words to Wonderwall by now.
 @ Songs: I wish, if only | Dalok: I wish, if only | Sange: I wish, if only
+! If only you were here.
 = I wish Dad [didn't] sing Toxic so often.
 = If only I [had] learned the words to Bohemian Rhapsody.
 - I wish I [could|can|would can] sing like Freddie Mercury.
@@ -488,6 +540,7 @@ LWC('en', 5, `
 ~ If only they would | play something other than Africa.
 ~ She wishes she hadn't | started the Thriller dance in the lift.
 @ Songs: never have I... | Dalok: never have I... | Sange: never have I...
+! Never have I felt so alive.
 = Never [have I] heard a worse Bohemian Rhapsody.
 = Not only [did] Grandma sing Toxic, she also danced.
 - Rarely [does|do|is] Dad finish Stairway to Heaven without crying.
@@ -500,6 +553,7 @@ LWC('en', 5, `
 ~ Seldom does Grandpa | sing anything but Hey Jude.
 ~ Not once did the band | play Bohemian Rhapsody.
 @ Songs: what I need is... | Dalok: what I need is... | Sange: what I need is...
+! What I need is someone who gets me.
 = What I need [is] a quiet day without Wonderwall.
 = It was Grandma [who] started the Thriller dance.
 - What annoys me [is|are|it is] Dad's version of Toxic.
@@ -512,6 +566,7 @@ LWC('en', 5, `
 ~ It was my cat | that knocked over the Purple Rain records.
 ~ All we need | is love. And pizza.
 @ Songs: is said to be | Dalok: is said to be | Sange: is said to be
+! It's said to be the song of the summer.
 = Bohemian Rhapsody [is said] to be the best karaoke song.
 = Hey Jude is believed [to have been] written for John Lennon's son.
 - Thriller [is thought|thinks|is think] to be the best-selling album of all time.

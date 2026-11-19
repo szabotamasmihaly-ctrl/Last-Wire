@@ -539,7 +539,7 @@ LWC('en', 1, `
 - He is going to [be|is|been] famous. He says.
 - Look at the sky. It's going [to rain|rain|raining].
 @ Let's | Let's | Let's
-! Let's go!
+! Let's go, we're late!
 = [Let's] party!
 = Let's [have] dessert first.
 - Let's [eat|eating|to eat] pizza for breakfast.

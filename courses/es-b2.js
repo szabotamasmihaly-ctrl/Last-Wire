@@ -1,6 +1,7 @@
 LWC('es', 4, `
 # The imperfect subjunctive | A kötőmód múlt ideje | Konjunktiv i datid
 @ -ar: hablara | -ar: hablara | -ar: hablara
+! Si yo hablara mejor, viviría aquí.
 = Quería que [hablaras] con el gato. Tú le caes mejor.
 = Mi abuela me pidió que la [llamara]. Desde la discoteca.
 - Mi madre quería que yo [estudiara|estudiaba|estudiar] Derecho. Estudié payaso.
@@ -10,6 +11,7 @@ LWC('es', 4, `
 - El jefe nos dijo que [trabajáramos|trabajábamos|trabajar] más rápido. Nos reímos.
 - Ojalá me [tocara|tocaba|tocar] la lotería. Compraría un castillo para mis gatos.
 @ -er, -ir: comiera, viviera | -er, -ir: comiera, viviera | -er, -ir: comiera, viviera
+! Ojalá comiera menos dulces.
 = El médico me dijo que [comiera] menos pizza. Cambié de médico.
 = Queríamos que mis suegros [vivieran] lejos. Muy lejos.
 - Le pedí al gato que me [devolviera|devolvía|devolver] el sitio en el sofá.
@@ -19,6 +21,7 @@ LWC('es', 4, `
 - Me sorprendió que [vendieran|vendían|vender] la casa con el abuelo dentro.
 - Les rogué que no [discutieran|discutían|discutir] por el mando. Discutieron.
 @ Irregular: tuviera, fuera, hiciera | Rendhagyó: tuviera, fuera, hiciera | Uregelmæssig: tuviera, fuera, hiciera
+! Si tuviera tiempo, iría.
 = Ojalá [tuviera] un dragón.
 = Me pidió que [fuera] su novio. Era una cabra.
 - Quería que [hicieras|hacieras|hacías] la cena. No que quemaras la cocina.
@@ -31,6 +34,7 @@ LWC('es', 4, `
 ~ hacer | hiciera
 ~ poder | pudiera
 @ Ojalá + imperfect subjunctive | Ojalá + múlt idejű kötőmód | Ojalá + konjunktiv datid
+! Ojalá estuvieras aquí.
 = Ojalá [fuera] viernes. Es lunes por la mañana.
 = Ojalá mi gato me [quisiera] un poco.
 - Ojalá [viviera|vivo|vivir] encima de una pizzería.
@@ -40,6 +44,7 @@ LWC('es', 4, `
 - Ojalá [hubiera|hay|haber] wifi en el baño de la abuela.
 - Ojalá mi perro [fuera|es|ser] más listo. O menos.
 @ como si + imperfect subjunctive | como si + múlt idejű kötőmód | como si + konjunktiv datid
+! Habla como si lo supiera todo.
 = Mi gato me mira [como si] le debiera dinero.
 = Baila como si nadie lo [viera]. Todos lo vemos.
 - Gasta dinero como si [fuera|es|sea] un jeque.
@@ -53,6 +58,7 @@ LWC('es', 4, `
 ~ Come como si | no hubiera mañana.
 # Past wishes and requests | Múltbeli kívánságok és kérések | Ønsker og anmodninger i datid
 @ quería que, pedí que | quería que, pedí que | quería que, pedí que
+! Te pedí que me esperaras.
 = Quiero que cocines. → Quería que [cocinaras]. Fue un error.
 = Te pido que no cantes. → Te pedí que no [cantaras].
 - Quiero que me ayudes. → Quería que me [ayudaras|ayudes|ayudabas] a bajar al gato.
@@ -62,6 +68,7 @@ LWC('es', 4, `
 - Prefiero que te quedes. → Prefería que te [quedaras|quedes|quedabas]. Con la pizza.
 - Le digo que se calle. → Le dije al loro que se [callara|calle|callaba].
 @ Feelings in the past | Érzések a múltban | Følelser i datid
+! Me encantó que vinieras.
 = Me alegró que [vinieras]. Más que nada por el pastel que trajiste.
 = Le molestaba que el gato [durmiera] en su cara.
 - Me sorprendió que mi padre no [dijera|dice|diga] nada del corte de pelo.
@@ -71,6 +78,7 @@ LWC('es', 4, `
 - Fue una pena que no [pudieras|puedes|puedas] venir. Hubo karaoke.
 - Me molestó que me [mintieras|mientes|mientas]. Sobre la pizza.
 @ No creía que, dudaba que | No creía que, dudaba que | No creía que, dudaba que
+! No creía que fuera tan fácil.
 = No creía que mi gato [fuera] capaz de abrir la puerta.
 = Dudaba que mi hermano [limpiara] su habitación. Tenía razón.
 - No pensé que un café [costara|cuesta|cueste] tanto.
@@ -80,6 +88,7 @@ LWC('es', 4, `
 - No estaba seguro de que el paracaídas [funcionara|funciona|funcione].
 - Era probable que [lloviera|llueve|llueva]. Era mi día de playa.
 @ Looking for in the past | Keresés a múltban | At søge i datid
+! Buscaba a alguien que me entendiera.
 = Buscaba un piso que [tuviera] sitio para mis diez gatos.
 = No había nadie que [supiera] arreglar el robot.
 - Necesitaba a alguien que me [ayudara|ayuda|ayude] a mover el sofá. Y al gato.
@@ -89,6 +98,7 @@ LWC('es', 4, `
 - ¿Había alguien que [supiera|sabe|sepa] bajar a la cabra del tejado?
 - Buscábamos un hotel que [admitiera|admite|admita] cerdos.
 @ para que in the past | para que a múltban | para que i datid
+! Te lo dije para que no te preocuparas.
 = Escondí el chocolate [para que] no lo encontraras.
 = Te llamé para que me [rescataras] de la reunión.
 - Hablé despacio para que el gato me [entendiera|entiende|entienda].
@@ -99,6 +109,7 @@ LWC('es', 4, `
 - Salimos pronto para que no nos [viera|ve|vea] la suegra.
 # If clauses | Feltételes mondatok | Betingelsessætninger
 @ Real: si llueve, me quedo | Valós: si llueve, me quedo | Reel: si llueve, me quedo
+! Si llueve, me quedo en casa.
 = Si [llueve], me quedo en la cama. Si no llueve, también.
 = Si ves a mi gato, [dile] que vuelva.
 - Si [tengo|tenga|tendré] hambre, abro la nevera. Cada diez minutos.
@@ -108,6 +119,7 @@ LWC('es', 4, `
 - Si me [llamas|llames|llamarás] antes de las doce, no contesto.
 - Si no [te das|te des|te darás] prisa, el perro se comerá tu desayuno.
 @ Unreal: si tuviera, iría | Irreális: si tuviera, iría | Uvirkelig: si tuviera, iría
+! Si fuera tú, no lo haría.
 = Si [tuviera] alas, nunca más cogería el autobús.
 = Si fuera tú, no [comería] eso. Se mueve.
 - Si [supiera|sabría|sé] cocinar, no comeríamos pizza cada día.
@@ -120,6 +132,7 @@ LWC('es', 4, `
 ~ Si fuera tú, | no lo haría.
 ~ Si pudiera, | dormiría todo el día.
 @ Past unreal: si hubiera sabido | Múltbeli irreális: si hubiera sabido | Uvirkelig fortid: si hubiera sabido
+! Si lo hubiera sabido, habría venido.
 = Si [hubiera sabido] que era una fiesta de disfraces, no habría venido de mí mismo.
 = Si hubieras leído las instrucciones, [habrías] montado bien el armario.
 - Si [hubiera|habría|había] visto el escalón, no me habría caído.
@@ -129,6 +142,7 @@ LWC('es', 4, `
 - Si [hubieras|habrías|habías] venido, habrías visto bailar al abuelo.
 - Si lo hubiera sabido, [habría|hubo|había] comprado palomitas.
 @ Mixed: si hubiera estudiado, ahora sería | Vegyes: si hubiera estudiado, ahora sería | Blandet: si hubiera estudiado, ahora sería
+! Si hubiera dormido más, ahora no estaría tan cansado.
 = Si hubiera estudiado, ahora [sería] médico. Pero soy experto en siestas.
 = Si [fuera] más valiente, le habría dicho que tenía espinacas en los dientes.
 - Si hubiera comprado bitcoin, ahora [viviría|vivía|viviera] en un yate.
@@ -138,6 +152,7 @@ LWC('es', 4, `
 - Si [hablara|hablaría|hablo] italiano, no habría pedido una lámpara para cenar.
 - Si me hubieras escuchado, ahora no [tendrías|tenías|tengas] una cabra en el salón.
 @ de + infinitive, en caso de que | de + főnévi igenév, en caso de que | de + infinitiv, en caso de que
+! En caso de que llueva, lleva paraguas.
 = [De] haberlo sabido, habría traído pastel.
 = En caso de que [llegue] la suegra, escóndete.
 - [De|Si de|En] tener dinero, me compraría un pingüino.
@@ -148,6 +163,7 @@ LWC('es', 4, `
 - Toma mi número por si te [pierdes|pierdas|perderás] en IKEA.
 # Perfect tenses of the subjunctive | A kötőmód befejezett alakjai | Konjunktiv perfektum
 @ haya hecho | haya hecho | haya hecho
+! Espero que lo hayas pasado bien.
 = Espero que el gato no [haya] roto nada.
 = No creo que la pizza [haya] llegado todavía.
 - Me alegro de que [hayas|has|hayes] venido. ¿Has traído comida?
@@ -157,6 +173,7 @@ LWC('es', 4, `
 - Dudo que mi abuelo [haya|ha|había] dicho eso. Bueno, sí, seguro.
 - Es raro que no [hayas|has|habías] oído al vecino. Toca la batería.
 @ hubiera hecho | hubiera hecho | hubiera hecho
+! Ojalá me lo hubieras dicho.
 = Ojalá [hubiera] escondido mejor el chocolate.
 = Me alegré de que [hubieras] traído tarta.
 - Ojalá no [hubiera|había|habría] contestado "responder a todos".
@@ -166,6 +183,7 @@ LWC('es', 4, `
 - Fue una pena que no [hubieras|habías|has] estado. La abuela bailó el tango.
 - Dudaba que el perro [hubiera|había|ha] aprendido a nadar.
 @ habría hecho | habría hecho | habría hecho
+! Yo lo habría hecho igual.
 = Yo no [habría] comido eso.
 = ¿Qué habrías [hecho] tú con una cabra en el ascensor?
 - Con más tiempo, yo [habría|habiera|habió] terminado la serie. Entera.
@@ -175,6 +193,7 @@ LWC('es', 4, `
 - ¿Tú [habrías|habría|habríais] comprado ese sombrero?
 - Sin tu ayuda, no [habría|habiera|habió] bajado al gato del árbol.
 @ Tense agreement | Igeidő-egyeztetés | Tidsfølge
+! Quería que lo supieras.
 = Quiero que [vengas] a mi fiesta.
 = Quería que [vinieras] a mi fiesta. ¿Dónde estabas?
 - Te pido que me [devuelvas|devolvieras|devolver] mi bocadillo.
@@ -187,6 +206,7 @@ LWC('es', 4, `
 ~ Quería que | vinieras.
 ~ Quería | venir.
 @ Wishes about the past | Kívánságok a múltról | Ønsker om fortiden
+! Ojalá hubiera ido.
 = Ojalá [hubiera] comprado más pizza.
 = Ojalá no [hubieras] visto a tu padre en bañador.
 - Ojalá [hubiéramos|habíamos|habríamos] llegado antes que la suegra.
@@ -197,6 +217,7 @@ LWC('es', 4, `
 - Ojalá no [hubiera|había|habría] probado la sopa de papá.
 # Conjunctions with the subjunctive | Kötőszavak kötőmóddal | Bindeord med konjunktiv
 @ antes de que | antes de que | antes de que
+! Vámonos antes de que empiece a llover.
 = Escóndete [antes de que] llegue mamá.
 = Me comí el pastel antes de que [llegaras]. Lo siento.
 - Termina [antes de que|antes que de|antes de] el gato se despierte.
@@ -206,6 +227,7 @@ LWC('es', 4, `
 - Antes de que te [vayas|vas|irás], devuélveme mi jersey.
 - Lo arreglé antes de que mi padre [se diera|se dio|se da] cuenta.
 @ sin que | sin que | sin que
+! Salí sin que nadie me viera.
 = El gato salió [sin que] lo viéramos.
 = Me comí la tarta sin que nadie me [viera].
 - Lo hizo sin que nadie lo [supiera|sabía|sabe]. Excepto la cámara.
@@ -215,6 +237,7 @@ LWC('es', 4, `
 - No puedo salir sin que mi madre me [pregunte|pregunta|preguntará] con quién.
 - Terminé el puzle sin que el perro me [ayudara|ayudaba|ayuda]. Por fin.
 @ a menos que, siempre que | a menos que, siempre que | a menos que, siempre que
+! Voy, a menos que llueva.
 = No me levanto, [a menos que] haya pizza.
 = Puedes usar mi coche siempre que lo [devuelvas] con ruedas.
 - No me llames a menos que [sea|es|será] una emergencia. De verdad.
@@ -227,6 +250,7 @@ LWC('es', 4, `
 ~ Te lo presto, | siempre que me lo devuelvas.
 ~ No te llamo, | a menos que sea urgente.
 @ mientras, una vez que, tan pronto como | mientras, una vez que, tan pronto como | mientras, una vez que, tan pronto como
+! Te llamo tan pronto como llegue.
 = Mientras [vivas] en mi casa, el gato manda.
 = Tan pronto como [llegue] la pizza, te aviso.
 - Una vez que [termines|terminas|terminarás] de cantar, puedes irte. Lejos.
@@ -236,6 +260,7 @@ LWC('es', 4, `
 - Una vez que [tengas|tienes|tendrás] el carné, no conduzcas como la abuela.
 - Tan pronto como [vio|vea|verá] al gato, el perro salió corriendo.
 @ aunque + subjunctive | aunque + kötőmód | aunque + konjunktiv
+! Aunque no te guste, es verdad.
 = Aunque [llueva] mañana, el abuelo irá a nadar.
 = Aunque [llueve], el abuelo está nadando.
 - Aunque me lo [pidas|pedir|pidiendo] mil veces, no voy a cantar.
@@ -246,6 +271,7 @@ LWC('es', 4, `
 - Aunque [hubiera|habría|haber] estudiado, no habría entendido nada.
 # Passive and impersonal | Szenvedő szerkezet és személytelen alakok | Passiv og upersonlige udtryk
 @ ser + participle | ser + melléknévi igenév | ser + participium
+! La casa fue construida en 1900.
 = El pastel [fue] comido por alguien. Nadie sabe quién.
 = El cuadro fue [pintado] por mi gato. Con la cola.
 - La casa fue [vendida|vendido|vendidas] con la suegra dentro.
@@ -255,6 +281,7 @@ LWC('es', 4, `
 - La pizzería [fue|era fue|estuvo fue] fundada por un gato. Dicen.
 - El ganador será [elegido|elegida|elegidos] por el perro.
 @ Passive se: se venden pisos | Szenvedő se: se venden pisos | Passivt se: se venden pisos
+! Se alquila habitación.
 = Se [venden] gatos que no maúllan.
 = Se [busca] novio para la abuela.
 - Se [alquila|alquilan|alquilo] habitación con fantasma.
@@ -264,6 +291,7 @@ LWC('es', 4, `
 - Aquí se [hacen|hace|hago] tartas para perros.
 - Se [prohíbe|prohíben|prohíbo] cantar en el ascensor.
 @ Impersonal se: se vive bien | Személytelen se: se vive bien | Upersonligt se: se vive bien
+! Aquí se come muy bien.
 = En mi casa [se] cena a las doce de la noche.
 = ¿Cómo [se] dice "lunes" sin llorar?
 - Aquí se [vive|viven|vivo] muy bien. Si te gustan los gatos.
@@ -276,6 +304,7 @@ LWC('es', 4, `
 ~ Se venden | gatos.
 ~ ¿Cómo se dice | "lunes"?
 @ estar + participle: está cerrado | estar + melléknévi igenév: está cerrado | estar + participium: está cerrado
+! La tienda está cerrada.
 = La pizzería [está] cerrada. Es una tragedia.
 = Las galletas están [escondidas]. Muy escondidas.
 - La tele está [rota|rompida|roto]. El perro lo sabe.
@@ -285,6 +314,7 @@ LWC('es', 4, `
 - Estamos [agotados|agotadas de|agotado] de no hacer nada.
 - La carta de amor ya está [escrita|escribida|escrito]. Es para la pizza.
 @ lo + adjective: lo bueno es | lo + melléknév: lo bueno es | lo + adjektiv: lo bueno es
+! Lo bueno es que es gratis.
 = [Lo] bueno es que hay pizza. Lo malo es que es de piña.
 = Lo más [importante] es la siesta.
 - [Lo|El|La] peor es que el gato tiene razón.
@@ -295,6 +325,7 @@ LWC('es', 4, `
 - Lo [único|únicos|única] que quiero es dormir. Y pizza.
 # Verbs of change | Változást kifejező igék | Verber for forandring
 @ ponerse: se puso rojo | ponerse: se puso rojo | ponerse: se puso rojo
+! Se puso rojo.
 = Mi padre se [puso] rojo cuando le cantamos.
 = Me pongo nervioso [cuando] el gato me mira.
 - Se [puso|volvió de|hizo] muy contenta cuando vio la tarta.
@@ -304,6 +335,7 @@ LWC('es', 4, `
 - ¿Por qué te [pones|haces|conviertes] tan nervioso? Es solo una araña.
 - El perro se [puso|hizo en|volvió en] malo después de comerse un calcetín.
 @ volverse: se volvió loco | volverse: se volvió loco | volverse: se volvió loco
+! Se volvió loco.
 = El gato se [volvió] loco con el puntero láser.
 = Desde que tiene TikTok, la abuela se ha vuelto muy [famosa].
 - Con los años se [volvió|puso en|convirtió] más tranquilo. Ahora duerme veinte horas.
@@ -313,6 +345,7 @@ LWC('es', 4, `
 - Se [volvió|convertió|hizo en] muy tacaño. Cuenta las galletas.
 - La situación se ha [vuelto|volvido|convertido] peligrosa. La cabra está suelta.
 @ hacerse: se hizo rico | hacerse: se hizo rico | hacerse: se hizo rico
+! Se hizo famoso de la noche a la mañana.
 = Se [hizo] rico vendiendo calcetines para gatos.
 = Mi hermano quiere hacerse [youtuber].
 - Mi abuela se [hizo|puso en|convirtió] famosa bailando en internet.
@@ -322,6 +355,7 @@ LWC('es', 4, `
 - Quiero [hacerme|hacerse|me hacer] socio del club de la siesta.
 - Se [hizo|volvió en|puso de] de noche y el abuelo seguía bailando.
 @ quedarse: se quedó sorprendido | quedarse: se quedó sorprendido | quedarse: se quedó sorprendido
+! Me quedé sin palabras.
 = Me [quedé] sin palabras. Y sin pizza.
 = El profesor se quedó [dormido] en clase.
 - El abuelo se [quedó|puso en|hizo] calvo. Ahora lleva sombrero.
@@ -331,6 +365,7 @@ LWC('es', 4, `
 - El móvil se [quedó|puso de|hizo de] sin batería en lo mejor.
 - Los niños se quedaron [boquiabiertos|boquiabierto|boquiabiertas] cuando el perro habló.
 @ convertirse en, llegar a ser | convertirse en, llegar a ser | convertirse en, llegar a ser
+! Se convirtió en mi mejor amigo.
 = El sapo se [convirtió] en príncipe. La princesa prefería el sapo.
 = Mi perro llegó [a] ser el alcalde del pueblo.
 - El agua se convirtió [en|a|de] vino. Bueno, en zumo.
@@ -344,6 +379,7 @@ LWC('es', 4, `
 ~ quedarse | sin dinero
 # Ser and estar, deeper | Ser és estar mélyebben | Ser og estar, dybere
 @ Meaning changes: es listo / está listo | Jelentésváltozás: es listo / está listo | Betydningsskift: es listo / está listo
+! ¿Estás listo?
 = Mi gato [es] muy listo. Demasiado.
 = La pizza [está] lista. ¡A la mesa!
 - El plátano [está|es|son] verde, no te lo comas.
@@ -353,6 +389,7 @@ LWC('es', 4, `
 - Ese profesor [es|está|son] tan aburrido que se duerme él mismo.
 - [Estoy|Soy|Son] aburrido. Voy a molestar al gato.
 @ estar de: está de vacaciones | estar de: está de vacaciones | estar de: está de vacaciones
+! Estoy de vacaciones.
 = Mi jefe [está] de vacaciones. ¡Fiesta!
 = Estamos de [mudanza]. El gato no colabora.
 - Mi abuela [está|es|hay] de crucero. Otra vez.
@@ -362,6 +399,7 @@ LWC('es', 4, `
 - ¿[Estás|Eres|Hay] de broma? ¿Una cabra en el coche?
 - El médico está [de|en|a] guardia y su gato también.
 @ ser for events: la fiesta es en mi casa | ser eseményekre: la fiesta es en mi casa | ser for begivenheder: la fiesta es en mi casa
+! La fiesta es en mi casa.
 = La fiesta del gato [es] en mi casa.
 = El concierto de la abuela [es] a las nueve.
 - La boda [es|está|hay] en un barco. Traed pastillas.
@@ -371,6 +409,7 @@ LWC('es', 4, `
 - ¿Dónde [está|es|hay] el baño? Es urgente.
 - El concurso de baile [es|está|hay] el domingo. El abuelo ya está entrenando.
 @ es que..., resulta que | es que..., resulta que | es que..., resulta que
+! Es que no tengo tiempo.
 = No puedo ir. [Es que] mi gato está triste.
 = [Resulta] que el fantasma era mi abuelo.
 - [Es que|Está que|Es de que] no tengo nada que ponerme. Solo cuarenta jerséis.
@@ -380,6 +419,7 @@ LWC('es', 4, `
 - [Resulta|Resultó de|Resultaba de] que nadie sabía cocinar.
 - No es que [sea|es|ser] feo, es que es muy original.
 @ Weather and life: hace, hay, está | Időjárás: hace, hay, está | Vejr: hace, hay, está
+! Hay mucha niebla.
 = [Hace] tanto viento que el gato vuela.
 = [Hay] tanta niebla que no veo mis pies.
 - [Está|Hace|Es] nublado. Mi humor también.
@@ -393,6 +433,7 @@ LWC('es', 4, `
 ~ Está | nublado.
 # Linking ideas | Gondolatok összekapcsolása | At forbinde idéer
 @ sin embargo, no obstante | sin embargo, no obstante | sin embargo, no obstante
+! Es caro. Sin embargo, vale la pena.
 = Es carísimo. [Sin embargo], lo voy a comprar. Tiene purpurina.
 = Estudió mucho; [no obstante], escribió mal su nombre.
 - Hacía un frío horrible. [Sin embargo|Sin obstante|Embargo], el abuelo fue a nadar.
@@ -402,6 +443,7 @@ LWC('es', 4, `
 - Es simpático; [sin embargo|por lo tanto|así que], nadie entiende sus chistes.
 - Tenía hambre. No [obstante|obstantes|embargo], la sopa de papá era demasiado.
 @ por lo tanto, así que | por lo tanto, así que | por lo tanto, así que
+! Estaba cansado, así que me fui a casa.
 = Era lunes, [así que] me quedé en la cama.
 = El perro se comió los deberes; [por lo tanto], suspendí.
 - Estoy cansado, [así que|sin embargo|aunque] me voy a dormir. Son las siete.
@@ -411,6 +453,7 @@ LWC('es', 4, `
 - Perdió el autobús; [por eso|sin embargo|aunque] llegó en monopatín.
 - Te comiste mi tarta, [de modo que|de modo|modo que] te quedas sin postre.
 @ a pesar de (que) | a pesar de (que) | a pesar de (que)
+! Fuimos a pesar de la lluvia.
 = [A pesar de] la lluvia, el abuelo se fue a la playa.
 = A pesar de [que] estaba a dieta, se comió la tarta entera.
 - A pesar [de|a|en] todo, mi gato me quiere. Creo.
@@ -420,6 +463,7 @@ LWC('es', 4, `
 - Pese [a|de|en] la crisis, el precio de la pizza sigue igual. Alto.
 - A pesar de que [es|ser|siendo] millonario, roba sobres de azúcar.
 @ en cambio, mientras que | en cambio, mientras que | en cambio, mientras que
+! A mí me gusta el mar; en cambio, a ella, la montaña.
 = Yo soy madrugador; mi gato, [en cambio], me despierta a las cinco por diversión.
 = A mí me gusta la playa, [mientras que] a mi perro le gusta comerse la arena.
 - Tú trabajas mucho; tu gato, en [cambio|cambios|cambiar], no hace nada.
@@ -429,6 +473,7 @@ LWC('es', 4, `
 - Antes comía de todo; ahora, en [cambio|vez|lugar de], solo como pizza.
 - Aquí llueve mucho, [mientras que|en cambio que|sin embargo que] en mi corazón siempre hace sol.
 @ no ... sino, sino que | no ... sino, sino que | no ... sino, sino que
+! No es mi novio, sino mi hermano.
 = No es un perro [sino] un oso.
 = No lo cociné, [sino que] lo pedí por teléfono.
 - No vive en Madrid, [sino|pero|si no] en un barco.
@@ -442,6 +487,7 @@ LWC('es', 4, `
 ~ No solo canta, | sino que también baila.
 # Verbs with prepositions | Vonzatos igék | Verber med præpositioner
 @ pensar en, confiar en | pensar en, confiar en | pensar en, confiar en
+! Pienso en ti.
 = Siempre [pienso en] pizza.
 = No confío [en] mi gato.
 - ¿En qué [piensas|piensas en|piensas de]? ¿En comida?
@@ -451,6 +497,7 @@ LWC('es', 4, `
 - Fíjate [en|a|de] ese perro. Lleva gafas de sol.
 - No me atrevo a confiar [en|a|de] nadie que no le guste el queso.
 @ soñar con, contar con | soñar con, contar con | soñar con, contar con
+! Cuento contigo.
 = Anoche [soñé con] una pizza gigante.
 = Puedes contar [con] nosotros. Excepto para mudanzas.
 - Sueño [con|en|de] tener un pingüino.
@@ -460,6 +507,7 @@ LWC('es', 4, `
 - No te metas [con|a|de] la cabra. Muerde.
 - Me conformo [con|a|de] poco: una pizza y una siesta.
 @ acordarse de, depender de | acordarse de, depender de | acordarse de, depender de
+! Depende de ti.
 = ¿Te [acuerdas de] la boda del perro?
 = Depende [del] humor del gato.
 - No me acuerdo [de|en|a] dónde aparqué. Ni de qué coche tengo.
@@ -472,6 +520,7 @@ LWC('es', 4, `
 ~ soñar | con
 ~ pensar | en
 @ empezar a, aprender a | empezar a, aprender a | empezar a, aprender a
+! Estoy aprendiendo a cocinar.
 = El perro empezó [a] cantar.
 = La abuela está aprendiendo [a] hacer surf.
 - Me ayudó [a|de|en] bajar al gato del árbol.
@@ -481,6 +530,7 @@ LWC('es', 4, `
 - Me acostumbré [a|de|en] dormir con el gato en la cara.
 - Te invito [a|de|en] cenar. Pagas tú.
 @ por and para, deeper | Por és para mélyebben | Por og para, dybere
+! Lo hago por ti, no para mí.
 = Lo hago [por] ti. Y por el pastel.
 = [Para] mí, la pizza fría es mejor.
 - Compré este sombrero [por|para|de] cinco euros. Se nota.
