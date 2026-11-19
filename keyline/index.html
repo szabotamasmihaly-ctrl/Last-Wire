@@ -88,6 +88,14 @@ main{flex:1;width:100%;max-width:620px;margin:0 auto;padding:0 16px 28px;display
 .share .slabel{font-weight:800;font-size:16px;color:var(--ink-2);text-align:center}
 .share .bigcode{font-size:clamp(60px,20vw,96px)}
 .share .wait{padding:4px 0}
+.levels{display:flex;gap:8px}
+.lv{display:flex;gap:2px;padding:8px 12px;border-radius:14px;background:var(--card);border:2px solid var(--edge);border-bottom-width:4px}
+.lv.on{border-color:var(--gold);background:#FFF6DB}
+.lv:active{transform:translateY(2px);border-bottom-width:2px}
+.st{display:inline-grid;width:18px;height:18px;color:var(--edge)} .st svg{width:18px;height:18px} .st.on{color:var(--gold)}
+.lvchip{display:flex;gap:1px;padding:6px 8px;border-radius:10px;background:var(--card);border:2px solid var(--edge)}
+.lvchip .st,.lvchip .st svg{width:13px;height:13px}
+.crack{text-align:center;font-weight:800;font-size:20px;color:var(--them);animation:pop .4s cubic-bezier(.2,1.6,.4,1)}
 .wlabel{text-align:center;font-weight:800;font-size:17px;color:var(--ink-2);padding-top:6px}
 .secret{display:flex;gap:10px;justify-content:center;user-select:none;-webkit-user-select:none;touch-action:none}
 .secret i{width:58px;height:70px;border-radius:14px;background:var(--ink);color:#fff;font-style:normal;font-family:var(--display);font-size:46px;display:grid;place-items:center;border-bottom:5px solid #000;transition:transform .3s}
@@ -171,8 +179,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',sharebots:'Your opponent types this code'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',sharebots:'Az ellenfeled ezt a kódot írja be'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',level:'Level',crack:"Crack {x}'s code!",sharebots:'Your opponent types this code'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',level:'Szint',crack:'Törd fel a {x} csapat kódját!',sharebots:'Az ellenfeled ezt a kódot írja be'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -186,6 +194,10 @@ var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar
  'doctor nurse king queen baby police farmer pilot chef artist '+
  'hand foot head eye ear nose heart hair tooth '+
  'gold silver summer winter night birthday holiday ghost robot dragon castle tower circus zoo hospital church park city').split(' ');
+/* level 2: harder things and places; level 3: ideas you cannot touch */
+var WORDS2='anchor compass desert volcano pyramid harbor lighthouse tunnel jungle canyon glacier cave helmet ladder hammer magnet balloon parachute rocket telescope microscope battery engine diamond crown sword shield arrow treasure pirate wizard vampire mummy knight soldier detective prisoner museum library theater stadium airport laboratory carnival wedding funeral election passport suitcase umbrella costume'.split(' ');
+var WORDS3='freedom memory justice silence luck future history energy shadow balance danger secret dream fear hope pride truth power peace war chaos gravity echo mystery nature habit honor envy patience courage wisdom illusion rhythm fortune revenge trust victory comfort network deadline'.split(' ');
+var LEVELS=[WORDS,WORDS2,WORDS3];
 /* word families the computer uses to link clues to each other (it never sees your secret words) */
 var FAM = [
  'hot summer sun sunny beach sand sea swim swimming holiday vacation island tan sunglasses heat warm july august',
@@ -249,8 +261,9 @@ var FAM = [
  'mountain hill rock climb high peak'
 ].map(function(f){ var o={}; f.split(' ').forEach(function(w){ o[w]=1; }); return o; });
 var ALPH='ABCDEFGHJKLMNPQRSTUVWXYZ', ROUNDS=8, COOP_TURNS=8;
-var S = { lang:'en', scr:'home', mode:'', room:'', team:'A', player:'1', ev:[], seen:{}, guess:[], linked:false, shown:'', live:{}, cover:0 };
-try{ var sv=JSON.parse(localStorage.getItem('kl-ui')||'{}'); if(sv.lang) S.lang=sv.lang; }catch(e){}
+var S = { level:1, lang:'en', scr:'home', mode:'', room:'', team:'A', player:'1', ev:[], seen:{}, guess:[], linked:false, shown:'', live:{}, cover:0 };
+try{ var sv=JSON.parse(localStorage.getItem('kl-ui')||'{}'); if(sv.lang) S.lang=sv.lang; if(sv.level) S.level=sv.level; }catch(e){}
+function saveUI(){ try{ localStorage.setItem('kl-ui',JSON.stringify({lang:S.lang,level:S.level})); }catch(e){} }
 function t(k){ return T[S.lang][k]; }
 function $(s){ return document.querySelector(s); }
 function $$(s){ return Array.prototype.slice.call(document.querySelectorAll(s)); }
@@ -258,8 +271,10 @@ function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&am
 function hash(s){ var h=2166136261>>>0; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619)>>>0; } return h>>>0; }
 function rng(seed){ var a=seed>>>0; return function(){ a=(a+0x6D2B79F5)>>>0; var x=a; x=Math.imul(x^(x>>>15),x|1); x^=x+Math.imul(x^(x>>>7),x|61); return ((x^(x>>>14))>>>0)/4294967296; }; }
 function shuffle(arr,r){ arr=arr.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(r()*(i+1)); var x=arr[i]; arr[i]=arr[j]; arr[j]=x; } return arr; }
-function newRoom(){ var c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; return c; }
-function nextRoom(c){ var r=rng(hash('next:'+c)), o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; return o; }
+/* the level is hidden in the room code, so a friend who types the code gets the same level */
+function levelOf(code){ return hash('lvl:'+code)%3+1; }
+function newRoom(){ var c; do{ c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; }while(levelOf(c)!==S.level); return c; }
+function nextRoom(c){ var r=rng(hash('next:'+c)), L=levelOf(c), o; do{ o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; }while(levelOf(o)!==L||o===c); return o; }
 function coop(){ return S.mode!=='vs' && S.mode!=='bots'; }
 function teams(){ return S.mode==='vs' || S.mode==='bots'; }
 /* robot teams: each team's robot gives the clues on every second turn of that team (rounds 2, 4, 6...) */
@@ -267,17 +282,108 @@ function robotGives(turn){ return S.mode==='bots' && Math.floor(turn/2)%2===1; }
 function online(){ return S.mode!=='solo'; }
 /* every phone builds the same words and codes from the room code */
 function makeGame(room){
-  var r=rng(hash('kl1:'+room)), w=shuffle(WORDS,r);
-  return { keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
+  var pool=LEVELS[levelOf(room)-1], r=rng(hash('kl1:'+room)), w=shuffle(pool,r);
+  return { pool:pool, keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
 }
 function encoder(turn){ return coop()?'A':(turn%2===0?'A':'B'); }
 function opponent(team){ return coop()?'C':(team==='A'?'B':'A'); }
 function roundOf(turn){ return coop()?turn+1:Math.floor(turn/2)+1; }
-function canIntercept(turn){ return coop()?true:Math.floor(turn/2)>=1; }
+function canIntercept(turn){ return true; }
 function giverOf(turn){ return turn%2===0?'1':'2'; }
 
 /* what each possible secret word makes people think of */
-var ASSOC_SRC='apple:fruit red green tree pie juice orchard newton iphone mac computer core seed worm eve adam snow white teacher healthy crunchy cider vitamin doctor bite|'+
+var ASSOC_SRC='anchor:ship boat sea sail harbor chain heavy captain sailor port drop tattoo navy rope steel|'+
+ 'compass:north south east west direction map needle navigate lost explorer magnet arrow travel|'+
+ 'desert:sand hot dry camel sahara cactus dune oasis sun mirage thirst lizard egypt|'+
+ 'volcano:lava eruption mountain fire hot ash magma crater iceland hawaii smoke explode rock|'+
+ 'pyramid:egypt pharaoh desert mummy tomb ancient triangle sphinx stone cairo pharaohs|'+
+ 'harbor:port ship boat dock sea anchor sailor fishing pier ferry crane|'+
+ 'lighthouse:light tower sea coast ship beacon keeper rock night lamp shore|'+
+ 'tunnel:dark train underground metro mountain dig mole light car subway|'+
+ 'jungle:tree monkey tiger rainforest wild amazon vine green hot snake tarzan parrot|'+
+ 'canyon:grand rock river cliff deep valley arizona desert echo red|'+
+ 'glacier:ice cold mountain snow frozen melt arctic iceberg climate blue|'+
+ 'cave:dark bat rock bear underground stone echo hide explore stalactite|'+
+ 'helmet:head bike safety motorcycle soldier hard hat football protect astronaut|'+
+ 'ladder:climb step up high roof tall wood fireman reach|'+
+ 'hammer:nail tool hit wood thor build carpenter metal construction|'+
+ 'magnet:metal attract iron fridge north south pull force compass|'+
+ 'balloon:air party red helium float fly pop birthday hot sky|'+
+ 'parachute:jump sky fall plane skydive soldier open air float|'+
+ 'rocket:space moon launch fire fast nasa astronaut fly star mars|'+
+ 'telescope:star sky space planet moon astronomy lens observe galileo|'+
+ 'microscope:small cell science lab biology lens bacteria doctor zoom|'+
+ 'battery:power energy phone charge electric phone low full lithium|'+
+ 'engine:car motor power fuel machine train oil speed mechanic|'+
+ 'diamond:ring jewel rich expensive hard shine wedding stone sparkle|'+
+ 'crown:king queen royal gold jewel throne head prince princess|'+
+ 'sword:knight fight blade sharp steel weapon battle king samurai|'+
+ 'shield:protect knight armor defend sword battle round captain|'+
+ 'arrow:bow shoot target archer point direction sharp robin hood cupid|'+
+ 'treasure:gold chest pirate map island hidden jewel rich hunt coins|'+
+ 'pirate:ship treasure sea parrot hook captain flag patch island rum sword|'+
+ 'wizard:magic wand spell hat potter harry merlin beard witch|'+
+ 'vampire:blood bite dracula night bat teeth garlic transylvania coffin|'+
+ 'mummy:egypt pyramid bandage tomb pharaoh mother wrapped ancient|'+
+ 'knight:armor sword horse castle king shield medieval chess lady brave|'+
+ 'soldier:army war gun uniform fight military battle helmet march|'+
+ 'detective:mystery crime clue sherlock holmes police investigate magnifying case|'+
+ 'prisoner:jail prison cell guard escape crime chain locked bars|'+
+ 'museum:art history painting statue ancient exhibition gallery old visit|'+
+ 'library:book read quiet study librarian shelf borrow silence|'+
+ 'theater:stage play actor drama show curtain shakespeare audience ticket|'+
+ 'stadium:football match crowd sport arena concert seat goal fans|'+
+ 'airport:plane flight travel ticket gate passport luggage pilot runway|'+
+ 'laboratory:science experiment chemistry test tube scientist lab coat|'+
+ 'carnival:festival rio mask dance parade costume samba fun music|'+
+ 'wedding:bride groom ring marriage love church dress cake party|'+
+ 'funeral:death black sad church cemetery flowers grave coffin cry|'+
+ 'election:vote president politics campaign democracy ballot party|'+
+ 'passport:travel border country photo stamp visa airport id|'+
+ 'suitcase:travel luggage pack clothes trip airport bag holiday|'+
+ 'umbrella:rain wet weather open storm cover shade|'+
+ 'costume:dress halloween party mask theater disguise wear carnival|'+
+ 'freedom:free liberty prison escape bird independence slave right flag choice|'+
+ 'memory:remember brain past forget mind photo childhood computer|'+
+ 'justice:law court judge fair police right truth crime scale|'+
+ 'silence:quiet still peace calm library mute noise night secret|'+
+ 'luck:lucky chance clover fortune dice casino horseshoe coin win|'+
+ 'future:time tomorrow later robot plan hope dream next year|'+
+ 'history:past ancient war old museum school book king date|'+
+ 'energy:power electric force sun battery strong coffee tired|'+
+ 'shadow:dark sun light black follow sunset ghost figure|'+
+ 'balance:equal scale yoga gymnast steady even fair weight|'+
+ 'danger:risk warning alarm careful sign fire sharp poison|'+
+ 'secret:hidden hide mystery spy whisper password diary private|'+
+ 'dream:sleep night bed wish hope nightmare goal imagination|'+
+ 'fear:scared afraid horror spider dark nightmare panic scream|'+
+ 'hope:wish dream future believe pray faith optimism|'+
+ 'pride:lion proud ego rainbow parade honor arrogance|'+
+ 'truth:honest lie fact real false justice reality|'+
+ 'power:energy strength king electric force strong control|'+
+ 'peace:war dove calm quiet treaty love hippie|'+
+ 'war:army soldier battle gun peace fight enemy tank|'+
+ 'chaos:mess disorder crazy confusion storm order|'+
+ 'gravity:fall newton apple earth space weight force down|'+
+ 'echo:sound repeat cave mountain voice return|'+
+ 'mystery:secret detective puzzle unknown clue crime riddle|'+
+ 'nature:tree forest green earth animal plant wild|'+
+ 'habit:routine daily repeat smoking custom|'+
+ 'honor:respect pride knight duty medal glory|'+
+ 'envy:jealous green want greed|'+
+ 'patience:wait calm slow time virtue|'+
+ 'courage:brave hero fear lion bold strong|'+
+ 'wisdom:wise old owl knowledge smart tooth|'+
+ 'illusion:magic trick fake mirage optical|'+
+ 'rhythm:music beat dance drum tempo|'+
+ 'fortune:luck rich money teller wheel gold|'+
+ 'revenge:enemy angry payback anger hate|'+
+ 'trust:faith believe friend honest loyal|'+
+ 'victory:win winner trophy champion medal|'+
+ 'comfort:sofa cozy warm soft blanket relax|'+
+ 'network:internet computer web connection social wifi|'+
+ 'deadline:time late work project date rush|'+
+ 'apple:fruit red green tree pie juice orchard newton iphone mac computer core seed worm eve adam snow white teacher healthy crunchy cider vitamin doctor bite|'+
  'bread:toast butter bakery baker loaf sandwich slice flour wheat dough yeast crust breakfast jam roll baguette food oven crumb|'+
  'cheese:mouse milk cow pizza swiss holes yellow cheddar dairy smile photo say sandwich fondue goat wine burger|'+
  'egg:chicken hen bird nest easter omelette breakfast yolk shell boil fried white yellow bacon dinosaur round|'+
@@ -438,7 +544,7 @@ FAM.forEach(function(g,i){ for(var w in g){ var n=norm(w); (FAMOF[n]=FAMOF[n]||[
 function norm(w){
   w=String(w); if(w.normalize) w=w.normalize('NFD').replace(/[̀-ͯ]/g,'');
   w=w.toLowerCase().replace(/[^a-z]/g,'');
-  if(w.length>4 && /ies$/.test(w)) w=w.slice(0,-3)+'y'; else if(w.length>4 && /(ch|sh|x|s)es$/.test(w)) w=w.slice(0,-2); else if(w.length>3 && /s$/.test(w) && !/(ss|us|is)$/.test(w)) w=w.slice(0,-1);
+  if(w.length>4 && /ies$/.test(w)) w=w.slice(0,-3)+'y'; else if(w.length>4 && /(ch|sh|x|s)es$/.test(w)) w=w.slice(0,-2); else if(w.length>3 && /s$/.test(w) && !/(ss|us|is|os)$/.test(w)) w=w.slice(0,-1);
   return w;
 }
 function variants(c){ var v=[c]; if(c.length>5 && /ing$/.test(c)){ v.push(c.slice(0,-3)); v.push(c.slice(0,-3)+'e'); } if(c.length>4 && /ed$/.test(c)){ v.push(c.slice(0,-2)); v.push(c.slice(0,-1)); } if(c.length>4 && /er$/.test(c)) v.push(c.slice(0,-2)); if(c.length>4 && /y$/.test(c)) v.push(c.slice(0,-1)); return v; }
@@ -464,20 +570,20 @@ function sim(a,b){
   return famShare(a,b)?.5:0;
 }
 function aiGuess(turns, i, clues){
-  var cols=[[],[],[],[]], N=WORDS.length;
+  var cols=[[],[],[],[]], W=S.game.pool, N=W.length;
   for(var j=0;j<i;j++){ var tt=turns[j]; if(tt && tt.done && tt.enc==='A') tt.clues.forEach(function(c,k){ cols[+tt.code[k]-1].push(norm(c)); }); }
   var cl=clues.map(norm);
   /* which secret word is behind each number, judged from that number's earlier clues */
   var post=cols.map(function(col){
     if(!col.length) return null;
-    var ws=WORDS.map(function(w){ var s=0; col.forEach(function(h){ if(h===w) s-=5; else s+=rel(h,w); }); if(s<0) return 0; var b=.15+s; return b*b*b*b; });
+    var ws=W.map(function(w){ var s=0; col.forEach(function(h){ if(h===w) s-=5; else s+=rel(h,w); }); if(s<0) return 0; var b=.15+s; return b*b*b*b; });
     var z=ws.reduce(function(a,b){ return a+b; },0)||1; return ws.map(function(x){ return x/z; });
   });
-  var claim=WORDS.map(function(w,j){ var m=0; post.forEach(function(p){ if(p) m=Math.max(m,p[j]); }); return m; });
-  var pri=WORDS.map(function(w,j){ return Math.max(0,1-3*claim[j]); }), pz=pri.reduce(function(a,b){ return a+b; },0)||1;
+  var claim=W.map(function(w,j){ var m=0; post.forEach(function(p){ if(p) m=Math.max(m,p[j]); }); return m; });
+  var pri=W.map(function(w,j){ return Math.max(0,1-3*claim[j]); }), pz=pri.reduce(function(a,b){ return a+b; },0)||1;
   pri=pri.map(function(x){ return x/pz; });
   var score=cl.map(function(c){
-    var fit=WORDS.map(function(w){ return rel(c,w); });
+    var fit=W.map(function(w){ return rel(c,w); });
     return cols.map(function(col,k){
       var P=post[k]||pri, s=0; for(var j=0;j<N;j++) if(fit[j]) s+=P[j]*fit[j];
       var m=0; col.forEach(function(h){ m=Math.max(m,sim(c,h)); });
@@ -620,6 +726,7 @@ var I={
   phone:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="3"/><path d="M10.5 18.5h3" stroke-linecap="round"/></svg>',
   robot:'<svg class="robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1" fill="currentColor"/></svg>'
 };
+function stars(l){ var h=''; for(var i=1;i<=3;i++) h+='<i class="st'+(i<=l?' on':'')+'">'+I.star+'</i>'; return h; }
 function sw(team){ return team==='C'?I.robot:'<span class="sw" style="background:var(--'+team+')"></span>'; }
 
 /* ---------- screens ---------- */
@@ -634,6 +741,7 @@ function render(){
     h=topbar('<a class="icon-btn" href="../" aria-label="'+t('home')+'">'+I.home+'</a>')+
       '<main><div class="hero"><div class="dial"><i><span>3</span></i><i><span style="animation-delay:.2s">1</span></i><i><span style="animation-delay:.4s">4</span></i></div>'+
       '<h1 class="logo"><span>KEY</span><em>LINE</em></h1>'+
+      '<div class="levels">'+[1,2,3].map(function(l){ return '<button class="lv'+(S.level===l?' on':'')+'" data-l="'+l+'" aria-label="'+t('level')+' '+l+'">'+stars(l)+'</button>'; }).join('')+'</div>'+
       '<div class="modes">'+
         '<button class="mode" data-m="solo"><span class="ic">'+I.phone+'<span class="vs">vs</span>'+I.robot+'</span>'+t('solo')+'</button>'+
         '<button class="mode" data-m="duo"><span class="ic">'+I.phone+I.phone+'<span class="vs">vs</span>'+I.robot+'</span>'+t('duo')+'</button>'+
@@ -650,7 +758,7 @@ function render(){
       '<div class="teams"><button class="team A" data-t="A">'+I.team+t('A')+'</button><button class="team B" data-t="B">'+I.team+t('B')+'</button></div></div></main>';
   } else {
     var G=S.game, cur=st.turns[st.cur];
-    h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>'+(online()?'<span class="codechip"><span class="link'+(S.linked?' on':'')+'"></span>'+S.room+'</span>':''))+
+    h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button><span class="lvchip">'+stars(levelOf(S.room))+'</span>'+(online()?'<span class="codechip"><span class="link'+(S.linked?' on':'')+'"></span>'+S.room+'</span>':''))+
       '<main>'+shareCard()+scoreBar(st)+keysHtml(G.keys[S.team])+panel(st,cur)+history(st)+'</main>';
   }
   var keep=$$('.crow input').map(function(x){ return x.value; }), fi=$$('.crow input').indexOf(document.activeElement);
@@ -662,7 +770,7 @@ function shareCard(){
   if(!online() || Object.keys(S.peers||{}).length) return '';
   return '<div class="share"><div class="slabel">'+t(S.mode==='duo'?'shareduo':(S.mode==='bots'?'sharebots':'sharevs'))+'</div><button class="bigcode" id="copy" aria-label="'+t('code')+'">'+S.room+'</button><div class="wait"><i></i><i></i><i></i></div></div>';
 }
-function getBest(){ try{ return +(localStorage.getItem('kl-best-'+S.mode)||0); }catch(e){ return 0; } }
+function getBest(){ try{ return +(localStorage.getItem('kl-best-'+S.mode+levelOf(S.room))||0); }catch(e){ return 0; } }
 function scoreBar(st){
   function toks(team, star, miss){
     var h='<div class="side">'+sw(team);
@@ -721,6 +829,7 @@ function panel(st,tt){
     return P+who+clues.map(function(c,i){ return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span>'+(myG?'<span class="dig fill">'+myG[i]+'</span>':'')+'</div>'; }).join('')+waitDots+'</div>';
   }
   var g=S.guess;
+  if(teams() && !mine) who='<div class="who">'+sw(E)+(tt.robot?I.robot:'')+'</div><div class="crack">'+esc(t('crack').replace('{x}',t(E)))+'</div>';
   return P+who+clues.map(function(c,i){
       return '<div class="crow"><span class="cw'+(live?' live':'')+'" data-row="'+i+'">'+esc(c||'')+'</span><button class="dig'+(g[i]?' fill':'')+'" data-slot="'+i+'">'+(g[i]||'')+'</button></div>'; }).join('')+
     '<div class="pad">'+[1,2,3,4].map(function(n){ return '<button data-n="'+n+'"'+(g.indexOf(String(n))>=0||g.length>=3?' disabled':'')+'>'+n+'</button>'; }).join('')+'</div>'+
@@ -743,8 +852,9 @@ function history(st){
   return '<div class="hist">'+grid(S.team,true)+(coop()?'':grid(opponent(S.team),false))+'</div>';
 }
 function bind(){
-  var l=$('#lang'); if(l) l.onclick=function(){ S.lang=S.lang==='en'?'hu':'en'; try{localStorage.setItem('kl-ui',JSON.stringify({lang:S.lang}));}catch(e){} render(); };
+  var l=$('#lang'); if(l) l.onclick=function(){ S.lang=S.lang==='en'?'hu':'en'; saveUI(); render(); };
   var b=$('#back'); if(b) b.onclick=function(){ closeEnd(); linkStop(); if(S.scr==='play') S.scr=S.mode==='solo'?'home':(S.mode==='vs'?'pick':'room'); else if(S.scr==='pick') S.scr='room'; else S.scr='home'; setHash(''); render(); };
+  $$('.lv').forEach(function(x){ x.onclick=function(){ S.level=+x.getAttribute('data-l'); saveUI(); beep('tap'); render(); }; });
   $$('.mode').forEach(function(x){ x.onclick=function(){ beep('tap'); S.mode=x.getAttribute('data-m'); if(S.mode==='solo'){ S.team='A'; goPlay(newRoom()); } else { S.scr='room'; render(); } }; });
   var nw=$('#new'); if(nw) nw.onclick=function(){ beep('tap'); enterRoom(newRoom(),true); };
   var jc=$('#jc'), jb=$('#jb');
@@ -835,7 +945,7 @@ function drawEnd(){
   var o=S.st.over, me=coop()?'A':S.team, res=o==='draw'?'draw':(o===me?'win':'lose'), v=document.createElement('div'); v.className='veil';
   var title=t(res), extra='';
   if(coop()){
-    if(!S.endInfo || S.endInfo.key!==S.shown){ var b0=getBest(), sc0=S.st.cur; S.endInfo={key:S.shown,best:b0,nb:sc0>b0}; if(sc0>b0) try{ localStorage.setItem('kl-best-'+S.mode,String(sc0)); }catch(e){} }
+    if(!S.endInfo || S.endInfo.key!==S.shown){ var b0=getBest(), sc0=S.st.cur; S.endInfo={key:S.shown,best:b0,nb:sc0>b0}; if(sc0>b0) try{ localStorage.setItem('kl-best-'+S.mode+levelOf(S.room),String(sc0)); }catch(e){} }
     var sc=S.st.cur, best=S.endInfo.best, nb=S.endInfo.nb;
     title=t('cracked'); res=nb?'win':'lose';
     extra='<div class="bigcode" style="font-size:96px">'+sc+'</div><div class="who">'+(nb?t('newbest'):t('best')+': '+best)+'</div>';
@@ -858,7 +968,7 @@ function confetti(){
 function toast(s){ var d=document.createElement('div'); d.className='toast'; d.textContent=s; document.body.appendChild(d); setTimeout(function(){ d.remove(); },1400); }
 
 /* used by the automated tests */
-window.KeylineTest={robotClues:function(){ return robotClues.apply(null,arguments); },aiGuess:function(turns,i,clues,room){ S.room=room||"TEST"; return aiGuess(turns,i,clues); },norm:norm,rel:rel};
+window.KeylineTest={robotClues:function(){ return robotClues.apply(null,arguments); },aiGuess:function(turns,i,clues,room,lv){ S.room=room||"TEST"; S.game={pool:LEVELS[(lv||1)-1]}; return aiGuess(turns,i,clues); },norm:norm,rel:rel};
 /* reopen the same game after a reload */
 var m=/^#(solo|duo|vs|bots)-([A-Z]{4})(?:-([AB12]))?$/.exec(location.hash||'');
 if(m){ S.mode=m[1]; if(m[1]==='vs'||m[1]==='bots') S.team=m[3]||'A'; else { S.team='A'; S.player=m[3]||'1'; } goPlay(m[2]); } else render();
