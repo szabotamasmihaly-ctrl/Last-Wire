@@ -4291,7 +4291,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 36;
+  var BUILD = 37;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6422,19 +6422,45 @@ var ES_PHRASES = [
   })();
 
   /* 🎬 emoji films: the bomb sees emojis, the helper has the titles */
-  UI.film = {
-    init: function () { return { r: 0, fb: false }; },
-    bomb: function (d, st, i) {
-      var rd = d.rounds[st.r];
-      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
-        '<div class="reel"><div class="holes" aria-hidden="true"></div><div class="emo">' + rd.emo + '</div><div class="holes" aria-hidden="true"></div></div>' +
-        cBtns(i, 3) + (st.fb ? fbBad('p.bad') : '');
-    },
-    on: pickOn, key: pickKey, keys: function () { return t('keys.col'); }, pos: pPos, recap: pRecap,
-    done: function (d) { return learn(pRecap(d)); },
-    help: function (d, i, ms) { var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1); return card(cnt('n.sentence', p + 1, n), '', cWords(d.rounds[p].words) + stepNav(i, p, n, null, null, true)); },
-    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
-  };
+  /* typed titles: the bomb writes the title it knows; 👀 costs 10 s and shows the choices (the helper gets them too).
+     The helper follows through pos: two steps per round, odd = the choices are open. */
+  function titleKey(x) { return String(x).toLowerCase().replace(/[’'`]/g, '').replace(/&/g, ' and ').replace(/[^a-z0-9à-ÿ]+/g, ' ').trim().replace(/^(the|a|an|el|la|los|las|den|det|de) /, ''); }
+  function titleOk(got, want) { var g = titleKey(got), w = titleKey(want); if (!g) return false; return g === w || editDist(g, w) <= Math.max(1, Math.floor(w.length / 6)); }
+  function typedTitle(o) {
+    return {
+      init: function () { return { r: 0, fb: false, show: false, value: '' }; },
+      bomb: function (d, st, i) {
+        var rd = d.rounds[st.r];
+        return note([cnt(o.cnt, st.r + 1, d.rounds.length)]) + o.face(rd) +
+          (st.show ? cBtns(i, rd.words.length) :
+            '<div class="row">' + field(i, st.value || '', '✍️ ' + o.ph, { enter: 'send' }) + '</div><div class="row">' + B(i, 'send', null, t('ck.check'), 'go wide') + B(i, 'peek', null, '👀 −10 s') + '</div>') +
+          (st.fb ? fbBad('p.bad') : '');
+      },
+      on: function (k, v, d, st, i) {
+        var rd = d.rounds[st.r];
+        if (k === 'peek') { if (st.show) return; st.show = true; st.fb = false; penalty(10); return 'move'; }
+        if (k === 'send') {
+          if (st.show || !String(st.value || '').trim()) return;
+          if (!titleOk(st.value, rd.words[rd.ans])) { st.fb = true; st.value = ''; return 'strike'; }
+          st.r++; st.value = ''; st.fb = false; st.show = false;
+          return st.r >= d.rounds.length ? 'solved' : 'next';
+        }
+        if (!st.show) return;
+        var res = pickOn(k, v, d, st, i); if (res === 'next') st.show = false; return res;
+      },
+      key: function (e, d, st, i) { if (st.show) return pickKey(e, d, st, i); },
+      keys: function () { return ''; },
+      pos: function (d, st) { return 2 * (st.r || 0) + (st.show ? 1 : 0); },
+      recap: pRecap, done: function (d) { return learn(pRecap(d)); },
+      help: function (d, i, ms) {
+        var n = d.rounds.length, s = ms.step || 0, p = Math.min(Math.floor(s / 2), n - 1), open = s % 2 === 1;
+        return card(cnt(o.cnt, p + 1, n), '', open ? cWords(d.rounds[p].words) : '<p class="card-big" aria-label="✍️">✍️ 🔒</p>');
+      },
+      onHelp: function () {}
+    };
+  }
+  /* 🎬 emoji films: the bomb sees emojis and writes the title */
+  UI.film = typedTitle({ cnt: 'n.sentence', ph: '🎬', face: function (rd) { return '<div class="reel"><div class="holes" aria-hidden="true"></div><div class="emo">' + rd.emo + '</div><div class="holes" aria-hidden="true"></div></div>'; } });
 
   /* 🎤 karaoke: the helper hears one of three lines, the bomb picks it and sings it */
   UI.karaoke = ext({
@@ -6647,17 +6673,7 @@ var ES_PHRASES = [
   };
 
   /* 🍿 movie riddles: a roundabout description on the bomb, six titles with the helper */
-  UI.plot = {
-    init: function () { return { r: 0, fb: false }; },
-    bomb: function (d, st, i) {
-      var rd = d.rounds[st.r];
-      return note([cnt('n.q', st.r + 1, d.rounds.length)]) + '<div class="plot-c"><span class="plot-i" aria-hidden="true">🍿</span><p lang="en">' + TW(rd.desc, rd.desc) + '</p></div>' + cBtns(i, 6) + (st.fb ? fbBad('p.bad') : '');
-    },
-    on: pickOn, key: pickKey, keys: function () { return t('keys.col'); }, pos: pPos, recap: pRecap,
-    done: function (d) { return learn(pRecap(d)); },
-    help: function (d, i, ms) { var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1); return card(cnt('n.q', p + 1, n), '', cWords(d.rounds[p].words) + stepNav(i, p, n, null, null, true)); },
-    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
-  };
+  UI.plot = typedTitle({ cnt: 'n.q', ph: '🍿', face: function (rd) { return '<div class="plot-c"><span class="plot-i" aria-hidden="true">🍿</span><p lang="en">' + TW(rd.desc, rd.desc) + '</p></div>'; } });
 
   /* 🌧️ idioms: the bomb sees the idiom as a picture, the helper has the meanings */
   UI.idiom = {
