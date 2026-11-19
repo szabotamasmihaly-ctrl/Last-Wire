@@ -1183,6 +1183,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .bub .dots i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.4;animation:wdot 1s infinite}
 .bub .dots i:nth-child(2){animation-delay:.15s}.bub .dots i:nth-child(3){animation-delay:.3s}
 .bub .msg{opacity:0;animation:fadein .3s 1.1s forwards}
+.bub .msg.now{opacity:1;animation:none}
 @keyframes fadeout{to{opacity:0}}
 @keyframes fadein{to{opacity:1}}
 .rwires{display:grid;gap:12px;margin:4px 0}
@@ -3935,8 +3936,10 @@ var BOSS0 = 20, BOSS_N = 30, BOSS_FM = ['88.1', '91.5', '96.3', '104.7'];
 function bossWord(n) { var T = typeof PARTY !== 'undefined' && PARTY.deadair, k = n - BOSS0 - 1; return T && T[Math.floor(k / 10)] ? T[Math.floor(k / 10)].q[k % 10][1] : ''; }
 function partyGames(n, r) {
   if (n > BOSS0) return ['boss'];
+  /* text slang is a speedrun on its own: both phones get the same cards */
+  if (PARTY_GAMES[n - 1] === 'slang') return ['slang'];
   if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
-  var mix = r.sample(PARTY_GAMES.filter(function (g) { return g !== 'karaoke'; }), 3);
+  var mix = r.sample(PARTY_GAMES.filter(function (g) { return g !== 'karaoke' && g !== 'slang'; }), 3);
   /* the song and the karaoke share their lines, so a mix holds at most one of them */
   if (mix.indexOf('song') < 0 && r.chance(0.3)) mix[r.int(3)] = 'karaoke';
   return mix;
@@ -4057,7 +4060,7 @@ var GENP = {
   },
   slang: function (r, L, off) {
     var pool = PARTY[L].slang;
-    return { rounds: deckTake(L + ':slang', pool, off, 2).map(function (i) {
+    return { rounds: r.shuffle(pool.map(function (_, i) { return i; })).slice(0, 20).map(function (i) {
       var x = pool[i], o = shuf3(r, x[1], [x[2], x[3]]);
       /* the helper gets three meanings too: only the right one is on both phones */
       var more = r.sample(pool.filter(function (y, j) { return j !== i && [x[1], x[2], x[3]].indexOf(y[1]) < 0; }).map(function (y) { return y[1]; }), 2);
@@ -4090,6 +4093,8 @@ function makePartySpec(code) {
     return { t: t, off: p.offs[i] || 0, data: GENP[t](rng, p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h) };
   });
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
+  /* the slang speedrun: 7.5 seconds a card */
+  if (list.length === 1 && list[0] === 'slang') secs = Math.round(modules[0].data.rounds.length * 7.5);
   return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
     st: { t: { en: '', hu: '', da: '' }, ex: [], items: [], pairs: [] },
     serial: serial, batteries: batteries, modules: modules, time: Math.round(secs / 10) * 10, maxStrikes: 3 };
@@ -4235,7 +4240,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 26;
+  var BUILD = 27;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4728,7 +4733,14 @@ var ES_PHRASES = [
   function linkTopic(spec) { return 'lastwire-v1-' + hashSeed('lw-link:' + spec.code + (PAIR ? ':' + PAIR.room : '')).toString(36); }
   function linkState() {
     var g = S.game; if (!g) return null;
-    return { tab: nextTask(), steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '' };
+    return { tab: nextTask(), steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '', x: g.strikes || 0 };
+  }
+  /* the helper's phone can answer too (the slang speedrun): its answer counts only for the card both are on */
+  function bombHear(m) {
+    if (!m || !m.act || S.screen !== 'bomb' || !S.game || S.game.over) return;
+    var a = m.act, ms = S.game.ms[a.i], mod = S.spec.modules[a.i];
+    if (!ms || !mod || mod.t !== 'slang' || ms.r !== a.r) return;
+    modAct(a.i, a.k, a.v, true);
   }
   function linkOpen(topic, onMsg, since) {
     if (Link.relay && Link.topic === topic) return Link.relay;
@@ -4744,7 +4756,7 @@ var ES_PHRASES = [
     Link.last = sig;
     if (Link.g !== S.game) { Link.g = S.game; Link.id = Date.now().toString(36); Link.n = 0; }
     st.g = Link.id; st.n = ++Link.n;
-    linkOpen(linkTopic(S.spec)).post(st);
+    linkOpen(linkTopic(S.spec), bombHear).post(st);
   }
   function linkStop() {
     if (Link.relay) Link.relay.close(); Link.relay = null; Link.topic = '';
@@ -4753,7 +4765,7 @@ var ES_PHRASES = [
   function linkListen(spec) {
     linkStop(); Link.last = '';
     linkOpen(linkTopic(spec), function (st, time) {
-      if (!st || !S.spec || S.spec.code !== spec.code || S.screen !== 'helper') return;
+      if (!st || st.act || !S.spec || S.spec.code !== spec.code || S.screen !== 'helper') return;
       /* the newest game wins; inside one game, only a later step counts */
       if (st.g && Link.cur && st.g === Link.cur.g && st.n <= Link.cur.n) return;
       if (st.g && Link.cur && st.g !== Link.cur.g && time && time < Link.cur.t) return;
@@ -4769,7 +4781,8 @@ var ES_PHRASES = [
       }
       var first = !S.linked; S.linked = true;
       var tab = st.tab >= 0 ? st.tab : S.tab, moved = tab !== S.tab;
-      (st.steps || []).forEach(function (n, k) { if (S.spec.modules[k]) manState(k).step = n; });
+      S.lx = st.x || 0;
+      (st.steps || []).forEach(function (n, k) { if (S.spec.modules[k]) { var mm = manState(k); if (mm.step !== n) mm.sent = null; mm.step = n; } });
       S.tab = tab;
       if (moved || first) { render(); var sc = $('.man-scroll'); if (sc) sc.scrollTop = 0; if (moved) window.scrollTo(0, 0); } else renderHelpBody();
     }, Math.floor(Date.now() / 1000) - 600);
@@ -4970,10 +4983,10 @@ var ES_PHRASES = [
     save();
     finish(false);
   }
-  function modAct(i, k, v) {
+  function modAct(i, k, v, remote) {
     var g = S.game; if (!g || g.over || g.paused || g.solved[i]) return;
     var m = S.spec.modules[i];
-    if (S.view.focus !== i) return;
+    if (S.view.focus !== i && !remote) return;
     var res = UI[m.t].on(k, v, m.data, g.ms[i], i);
     if (!res) return;
     if (res === 'strike' || res === 'strike-solved') {
@@ -6521,11 +6534,19 @@ var ES_PHRASES = [
     },
     on: pickOn, key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); },
+    /* the helper has the same card and can answer it too; the answer goes to the bomb's phone */
     help: function (d, i, ms) {
-      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1);
-      return card(cnt('n.sentence', p + 1, n), '', '<ul class="hopts" lang="' + tl() + '">' + d.rounds[p].hw.map(function (w) { return '<li><span class="bub">' + esc(w) + '</span>' + sayBtn(w, true) + '</li>'; }).join('') + '</ul>' + stepNav(i, p, n, null, null, true));
+      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1), rd = d.rounds[p], wait = ms.sent === p;
+      return card(cnt('n.sentence', p + 1, n) + (S.lx ? ' · ❌ ' + S.lx : ''), '', '<div class="phone"><div class="bub"><span class="msg now" lang="' + tl() + '">' + esc(rd.msg) + '</span></div></div>' +
+        '<div class="pobs reply">' + rd.words.map(function (w, k) { return '<button type="button" class="pob c' + k + '" data-a="hm" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (wait ? ' disabled' : '') + ' lang="' + tl() + '">' + kbd(k + 1) + '<span>' + esc(w) + '</span></button>'; }).join('') + '</div>');
     },
-    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
+    onHelp: function (k, v, d, ms, i) {
+      if (k !== 'c') return;
+      var p = ms.step || 0;
+      /* one screen: answer straight into the game */
+      if (S.game && !S.game.over) { var st = S.game.ms[i]; if (st.r !== p) return; modAct(i, 'c', v, true); ms.step = st.r; renderHelpBody(); return; }
+      if (Link.relay) { ms.sent = p; Link.relay.post({ act: { i: i, k: 'c', v: +v, r: p } }); renderHelpBody(); setTimeout(function () { if (ms.sent === p) { ms.sent = null; renderHelpBody(); } }, 2500); }
+    }
   };
 
   /* ✂️ rhyme wires: the helper hears a sentence, the bomb cuts the wire with the missing word; all the wires rhyme */
