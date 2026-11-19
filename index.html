@@ -1137,13 +1137,17 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 @keyframes gauge{from{transform:scaleX(.15)}to{transform:scaleX(1)}}
 .tw-s{font-size:22px;font-weight:700;line-height:1.6;margin:0 0 10px}
 .tw-s.sm{font-size:19px}.tw-s.xs{font-size:16px}
+.tw-s .blank.fill{background:none;animation:none;color:#FFC83D;border-bottom:3px solid #FFC83D;border-radius:0;height:auto;padding:0 2px}
 .tw-s .blank{display:inline-block;height:1.05em;vertical-align:-.15em;border-radius:6px;background:repeating-linear-gradient(45deg,#FFC83D 0 6px,#e0a100 6px 12px);animation:blankp 1.4s ease-in-out infinite alternate}
 @keyframes blankp{from{opacity:.55}to{opacity:1}}
 .safe{display:grid;justify-items:center;gap:8px}
-.safe .leds{display:flex;gap:10px}
-.safe .leds i{width:16px;height:16px;border-radius:50%;background:#3a1015;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
-.safe .leds i.now{background:#6b4d00;animation:pdot 1.4s infinite}
-.safe .leds i.on{background:#58CC02;box-shadow:0 0 10px #58CC02}
+.safe .leds{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center}
+.sstep{display:inline-flex;align-items:center;gap:5px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:#cfd3dc;font-weight:800;font-size:13px}
+.sstep i{width:12px;height:12px;border-radius:50%;background:#3a1015;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
+.sstep.now{color:#fff;background:rgba(255,200,61,.22)}.sstep.now i{background:#6b4d00;animation:pdot 1.4s infinite}
+.sstep.on i{background:#58CC02;box-shadow:0 0 10px #58CC02}
+.safe-rule{margin:0 0 6px;font-weight:800;font-size:15px;color:#FFC83D}
+.safe .sreset{min-width:40px;min-height:34px;font-size:16px;padding:2px 6px}
 .lcd{background:#0d1a10;color:#7CFF7C;border-radius:8px;padding:4px 16px;font:700 30px/1.1 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.12em;box-shadow:inset 0 0 0 2px #1f3a24;text-shadow:0 0 8px rgba(124,255,124,.7);min-width:96px;text-align:center}
 .dial{position:relative;width:196px;height:196px}
 .dial-face{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 40% 35%,#6c737b,#2b3036 70%);box-shadow:0 8px 0 #15181b,inset 0 0 0 6px #8a9199,inset 0 0 0 9px #2b3036;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
@@ -3916,7 +3920,7 @@ function makeStationSpec(code) {
 }
 /* ===== party bombs: ten games built around things people love about a language ===== */
 var PARTY_GAMES = ['song', 'film', 'karaoke', 'twister', 'safe', 'radio', 'idiom', 'slang', 'rhyme', 'post'];
-var PARTY_ICON = { plot: '🍿', song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
+var PARTY_ICON = { wires: '✂️', plot: '🍿', song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
 var PARTY_LANGS = ['en', 'es', 'da'];
 /* X:lang:game:seed:offsets. Game 1..10 is that game with a partner; 11 mixes three. The seed picks the mix;
    the offsets say how far each game has got through its content, so the next bomb brings new things. Both phones get the same code. */
@@ -3940,9 +3944,9 @@ function partyGames(n, r) {
 /* the games a code holds, worked out before its offsets are known */
 function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))).map(function (g) { return partyGame(g, p.lang); }) : []; }
 /* English plays movie riddles where the others have idioms */
-function partyGame(g, L) { return g === 'idiom' && L === 'en' && typeof PARTY !== 'undefined' && PARTY.plots ? 'plot' : g; }
+function partyGame(g, L) { if (g === 'rhyme' && PACK[L] && typeof PACK[L].cond === 'function') return 'wires'; return g === 'idiom' && L === 'en' && typeof PARTY !== 'undefined' && PARTY.plots ? 'plot' : g; }
 /* how many items each game takes per bomb */
-var PARTY_PER = { plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
+var PARTY_PER = { wires: 0, plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
 /* each game's content in a fixed shuffled order per language: bomb k takes the next items; only after all of them does a new order begin */
 function deckTake(key, pool, off, k) {
   var len = pool.length, out = [], seen = {}, idx = off * k, guard = 0, cyc = -1, d = null;
@@ -4074,16 +4078,21 @@ var GENP = {
     }) };
   }
 };
-var PARTY_TIME = { plot: 120, boss: 120, song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
+var PARTY_TIME = { wires: 110, plot: 120, boss: 120, song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
 function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
   var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
-  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h) }; });
+  var r0 = RU(mulberry32(base ^ 0x5bd1e995)), serial = genSerial(r0, PACK[p.lang]), batteries = r0.int(4);
+  var modules = list.map(function (t, i) {
+    var rng = RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0));
+    /* the classic wires with their rule sentences, in the party's language */
+    if (t === 'wires') return { t: t, off: 0, data: GEN.wires(rng, 2, { lang: p.lang, pack: PACK[p.lang], serial: serial, batteries: batteries }) };
+    return { t: t, off: p.offs[i] || 0, data: GENP[t](rng, p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h) };
+  });
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
-  var r0 = RU(mulberry32(base ^ 0x5bd1e995));
   return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
     st: { t: { en: '', hu: '', da: '' }, ex: [], items: [], pairs: [] },
-    serial: genSerial(r0, PACK[p.lang]), batteries: r0.int(4), modules: modules, time: Math.round(secs / 10) * 10, maxStrikes: 3 };
+    serial: serial, batteries: batteries, modules: modules, time: Math.round(secs / 10) * 10, maxStrikes: 3 };
 }
 
 /* every sentence a station uses: the words in it are the ones its flashcards look for */
@@ -4190,7 +4199,9 @@ var ES_PHRASES = [
     'party': ['Party bombs', 'Partibombák', 'Festbomber'],
     'party.mix': ['Mix', 'Keverék', 'Mix'],
     'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
-    'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'], 'mod.boss': ['Dead Air', 'Dead Air', 'Dead Air'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
+    'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'], 'mod.boss': ['Dead Air', 'Dead Air', 'Dead Air'],
+    'safe.r': ['right', 'jobbra', 'højre'], 'safe.l': ['left', 'balra', 'venstre'], 'safe.way': ['Wrong way round.', 'Rossz irányba.', 'Den forkerte vej.'], 'safe.again': ['Turned too far. Start again.', 'Túltekerted. Kezdd újra.', 'Drejet for langt. Start forfra.'],
+    'safe.rule': ['1 ↻ right · 2 ↺ left · 3 ↻ right. Turned too far? Start again: 🔄', '1 ↻ jobbra · 2 ↺ balra · 3 ↻ jobbra. Túltekerted? Kezdd újra: 🔄', '1 ↻ højre · 2 ↺ venstre · 3 ↻ højre. Drejet for langt? Start forfra: 🔄'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
     'boss.warn': ['⚠️ Skip = no way back', '⚠️ Ha továbblépsz, nincs visszaút', '⚠️ Springer du over, er der ingen vej tilbage'],
     'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
   };
@@ -4224,7 +4235,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 22;
+  var BUILD = 26;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6307,10 +6318,10 @@ var ES_PHRASES = [
       var rd = d.rounds[st.r], rec = Mic.rec && Mic.at === i;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="gauge" aria-hidden="true"><i></i></div>' +
         '<p class="tw-s' + sizeCls(rd.full) + '" lang="' + tl() + '">' + rd.toks.map(function (w, k) {
-          return rd.hide.indexOf(k) >= 0 ? '<span class="blank" style="width:' + Math.max(3, w.length) * 0.62 + 'em"></span>' : esc(w);
+          return rd.hide.indexOf(k) >= 0 ? '<span class="blank" data-b="' + rd.hide.indexOf(k) + '" style="min-width:' + Math.max(3, w.length) * 0.62 + 'em"></span>' : esc(w);
         }).join(' ') + '</p>';
       if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
-      h += '<div class="row">' + field(i, st.value || '', '⌨', { enter: 'send' }) + '</div>';
+      h += '<div class="row">' + field(i, st.value || '', '✍️ ' + rd.hide.map(function () { return '____'; }).join(' '), { enter: 'send' }) + '</div>';
       h += '<div class="row">' + (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
         B(i, 'send', null, t('ck.check'), 'go wide') + '</div>';
       return h + (st.fb ? fbBad('p.bad') : '');
@@ -6321,15 +6332,30 @@ var ES_PHRASES = [
       if (k === 'mic') { st.heard = ''; st.fb = false; micToggle(i); return; }
       if (k === 'said') { if (saidRight(v, rd.full.split(/\s+/))) return next(); st.heard = v[0]; return 're'; }
       if (k === 'send') {
-        var got = lsWords(st.value), want = lsWords(rd.hide.map(function (h) { return rd.toks[h]; }).join(' '));
+        var got = lsWords(st.value), want = lsWords(rd.hide.map(function (h) { return rd.toks[h]; }).join(' ')), all = lsWords(rd.full);
         if (!got.length) return;
-        if (got.join(' ') === want.join(' ') || lsWords(st.value).join(' ') === lsWords(rd.full).join(' ')) return next();
+        if (nearWords(got, want) || nearWords(got, all)) return next();
         st.fb = true; st.value = ''; return 'strike';
       }
+    },
+    /* the typed words fill the blanks as they are typed */
+    typed: function (val, d, st, i) {
+      var ws = String(val || '').trim().split(/\s+/).filter(Boolean), el = document.getElementById('mod-' + i); if (!el) return;
+      el.querySelectorAll('.tw-s .blank').forEach(function (b) { var w = ws[+b.getAttribute('data-b')] || ''; b.textContent = w; b.classList.toggle('fill', !!w); });
     },
     keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+  /* a typed word counts when it is right or one letter off (seawards for seaward); short words must be exact */
+  function nearWords(got, want) {
+    if (got.length !== want.length) return false;
+    return want.every(function (w, k) { var g = got[k].replace(/[’`]/g, "'"); return g === w || (w.length >= 5 && editDist(g, w) <= 1); });
+  }
+  function editDist(a, b) {
+    var p = [], q; for (var j = 0; j <= b.length; j++) p[j] = j;
+    for (var x = 1; x <= a.length; x++) { q = [x]; for (var y = 1; y <= b.length; y++) q[y] = Math.min(p[y] + 1, q[y - 1] + 1, p[y - 1] + (a[x - 1] === b[y - 1] ? 0 : 1)); p = q; }
+    return p[b.length];
+  }
 
   /* 🔐 the safe: the helper hears three numbers, the bomb turns the dial */
   function safeDial(st) { return 'transform:rotate(' + (-st.rot * 6) + 'deg)'; }
@@ -6340,20 +6366,26 @@ var ES_PHRASES = [
     if (l) l.textContent = (st.v < 10 ? '0' : '') + st.v;
   }
   UI.safe = {
-    init: function () { return { k: 0, v: 0, rot: 0, fb: false }; },
+    init: function () { return { k: 0, v: 0, rot: 0, dir: 0, fb: false }; },
     bomb: function (d, st, i) {
       var ticks = '';
       for (var n = 0; n < 60; n++) ticks += '<i style="transform:rotate(' + (n * 6) + 'deg)"' + (n % 5 ? '' : ' class="big"') + '>' + (n % 10 ? '' : '<b style="transform:rotate(' + (-n * 6) + 'deg)">' + n + '</b>') + '</i>';
-      var leds = d.nums.map(function (_, k) { return '<i class="' + (k < st.k ? 'on' : k === st.k ? 'now' : '') + '"></i>'; }).join('');
-      return '<div class="safe"><div class="leds" aria-hidden="true">' + leds + '</div><div class="lcd"><b>' + (st.v < 10 ? '0' : '') + st.v + '</b></div>' +
+      /* an American combination lock: right to the first number, left to the second, right to the third */
+      var leds = d.nums.map(function (_, k) { return '<span class="sstep' + (k < st.k ? ' on' : k === st.k ? ' now' : '') + '"><i></i>' + (k % 2 ? '↺ ' + t('safe.l') : '↻ ' + t('safe.r')) + '</span>'; }).join('');
+      return '<div class="safe"><div class="leds">' + leds + '<button type="button" class="key sreset" data-a="m" data-i="' + i + '" data-k="reset" aria-label="reset">🔄</button></div><div class="lcd"><b>' + (st.v < 10 ? '0' : '') + st.v + '</b></div>' +
         '<div class="dial"><div class="dial-face" style="' + safeDial(st) + '">' + ticks + '</div><span class="dial-mark" aria-hidden="true">▼</span><span class="dial-knob" aria-hidden="true"></span></div>' +
-        '<div class="row dialbtns">' + B(i, 'd', -10, '«') + B(i, 'd', -1, '‹') + B(i, 'set', null, '🔓', 'go') + B(i, 'd', 1, '›') + B(i, 'd', 10, '»') + '</div></div>' + (st.fb ? fbBad('p.bad') : '');
+        '<div class="row dialbtns">' + B(i, 'd', -10, '↻↻') + B(i, 'd', -1, '↻') + B(i, 'set', null, '🔓', 'go') + B(i, 'd', 1, '↺') + B(i, 'd', 10, '↺↺') + '</div></div>' + (st.fb ? fbBad(st.fb === 'way' ? 'safe.way' : st.fb === 'again' ? 'safe.again' : 'p.bad') : '');
     },
     on: function (k, v, d, st, i) {
-      if (k === 'd') { v = +v; st.rot += v; st.v = ((st.v + v) % 60 + 60) % 60; st.fb = false; sfx('tick'); safePaint(i, st); return; }
+      /* turning right (clockwise) brings the numbers down to the mark, turning left brings them up */
+      /* like a real lock: once you turn the right way in a step, turning back scrambles it and you start again */
+      if (k === 'd') { v = +v; st.rot += v; st.v = ((st.v + v) % 60 + 60) % 60; st.dir = v < 0 ? 'r' : 'l'; if (st.dir === (st.k % 2 ? 'l' : 'r')) st.go = true; else if (st.go) st.bad = true; if (st.fb) { st.fb = false; var fb = document.querySelector('#mod-' + i + ' .fb'); if (fb) fb.remove(); } sfx('tick'); safePaint(i, st); return; }
+      if (k === 'reset') { st.k = 0; st.v = 0; st.rot = 0; st.dir = 0; st.go = st.bad = false; st.fb = false; sfx('tick'); return 're'; }
       if (k === 'set') {
+        if (st.bad) { st.k = 0; st.go = st.bad = false; st.fb = 'again'; return 'strike'; }
         if (st.v !== d.nums[st.k]) { st.fb = true; return 'strike'; }
-        st.k++; st.fb = false;
+        if (st.dir !== (st.k % 2 ? 'l' : 'r')) { st.fb = 'way'; return 'strike'; }
+        st.k++; st.fb = false; st.go = st.bad = false;
         return st.k >= d.nums.length ? 'solved' : 'next';
       }
     },
@@ -6365,7 +6397,7 @@ var ES_PHRASES = [
     keys: function () { return ''; }, pos: function () { return 0; },
     recap: function (d) { return [{ tx: d.nums.map(function (n) { return n + ' = ' + PK().num(n); }).join(' · ') }]; },
     done: function (d) { return learn(UI.safe.recap(d)); },
-    help: function (d, i, ms) { return card('', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.say, ms, d.tpl.replace(/\{(\d)\}/g, function (_, k) { return PK().num(d.nums[+k]); }))); },
+    help: function (d, i, ms) { return card('', '', '<p class="safe-rule">' + esc(t('safe.rule')) + '</p><div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's0', d.say, ms, d.tpl.replace(/\{(\d)\}/g, function (_, k) { return PK().num(d.nums[+k]); }))); },
     onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function () { return d.say; }); }
   };
 
@@ -7495,6 +7527,7 @@ var ES_PHRASES = [
       syncInput(el);
       /* in the dictation a space ends the word, as it would in a sentence */
       var i = +el.getAttribute('data-in'), m = S.spec && S.spec.modules[i];
+      if (m && UI[m.t].typed && S.game) UI[m.t].typed(el.value, m.data, S.game.ms[i], i);
       if (m && UI[m.t].space && /\s$/.test(el.value) && el.value.trim()) { el.value = el.value.trim(); syncInput(el); modAct(i, 'send'); }
     }
   });
