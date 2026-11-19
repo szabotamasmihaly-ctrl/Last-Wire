@@ -10,7 +10,7 @@ LWC('en', 1, `
 - You [are|is|am] my favourite person. After pizza.
 - The fridge [is|are|am] empty. Who ate everything?
 ~ I am | hungry. Again.
-~ The cat is | in my bed. Again.
+~ The cat is | on the fridge. Again.
 ~ My grandma is | faster than me.
 @ Questions with "be" | Kérdés a „be” igével | Spørgsmål med "be"
 = [Are] you a robot?
@@ -477,7 +477,7 @@ LWC('en', 1, `
 - She'd like [to live|live|lives] on the moon.
 - What [would|do|are] you like for dinner? Not soup.
 - I'd [like|likes|liking] the chocolate cake, please. Two.
-~ Would you like a drink? | Yes, a big one.
+~ Would you like a drink? | Yes, a hot chocolate.
 ~ What would you like? | Everything.
 ~ Would you like to dance? | I'd love to!
 @ going to for plans | going to: tervek | going to: planer

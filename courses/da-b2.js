@@ -153,7 +153,7 @@ LWC('da', 4, `
 - Kage [spiser jeg|jeg spiser|spiser mig] hver dag.
 - Det [ved jeg|jeg ved|ved mig] godt.
 - Sådan en hat [vil jeg|jeg vil|vil mig] også have.
-- Ham [har jeg|jeg har|har mig] aldrig set før. Han sover i min seng.
+- Ham [har jeg|jeg har|har mig] aldrig set før. Han spiser min pizza.
 - Den slags musik [kan jeg|jeg kan|kan mig] ikke lide.
 - Broccoli [spiser hunden|hunden spiser|spiser hund] ikke.
 @ Aldrig har jeg | Aldrig har jeg | Aldrig har jeg

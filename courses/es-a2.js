@@ -73,7 +73,7 @@ LWC('es', 2, `
 - El año pasado [fuimos|fuemos|vamos] a Italia y comimos solo helado.
 - De niña, yo [tenía|tenías|tengo] miedo de los payasos. Todavía.
 - Ayer [vi|veía|veo] a mi profesor en la discoteca.
-~ Bailaba en la cocina | cuando entró mi jefe.
+~ Bailaba en la cocina | cuando llegó la pizza.
 ~ Hacía sol | y fuimos a la playa sin crema.
 ~ Mientras dormía, | el gato se comió mi bocadillo.
 @ Time words for the past: ayer, anoche | Időhatározók a múltban | Tidsord i fortiden

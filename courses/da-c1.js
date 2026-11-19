@@ -14,12 +14,12 @@ LWC('da', 5, `
 = [Den film har jeg] set tolv gange. Den er stadig dårlig.
 - [Det tror jeg|Det jeg tror|Det tror jeg det] ikke på. Katten kan ikke køre bil.
 - [Den sang kan jeg|Den sang jeg kan|Den sang kan jeg kan] ikke lide. Den kører i hovedet hele dagen.
-- [Ham har jeg|Han har jeg|Ham jeg har] aldrig mødt. Han bor i mit køleskab.
+- [Ham har jeg|Han har jeg|Ham jeg har] aldrig mødt. Han er min nye nabo, og han spiller trompet.
 - [Hende kender vi|Hun kender vi|Hende vi kender] godt. Hun er hundens advokat.
 - [Den slags gør man|Den slags man gør|Den slags gør man gør] ikke til et bryllup.
 - [Pizza spiser hun|Pizza hun spiser|Pizza spiser hun spiser] kun om morgenen.
 ~ Det vidste jeg ikke. | Min mormor har en podcast.
-~ Ham har jeg aldrig mødt. | Han bor i mit køleskab.
+~ Ham har jeg aldrig mødt. | Han spiller trompet om natten.
 ~ Den slags gør man ikke | til et bryllup.
 @ Havde jeg vidst det... | Havde jeg vidst det... | Havde jeg vidst det...
 = [Havde jeg vidst] det, var jeg blevet hjemme.

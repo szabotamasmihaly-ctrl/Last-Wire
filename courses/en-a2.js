@@ -67,7 +67,7 @@ LWC('en', 2, `
 - My mum called [when|while|during] I was on a date.
 - [While|During|Meanwhile] I was waiting, I ate all the snacks.
 - The dog barked [when|while|during] the postman came. As always.
-~ I was having a bath | when the doorbell rang.
+~ I was making pancakes | when the doorbell rang.
 ~ While I was sleeping, | the dog ate my shoes.
 ~ She was singing | while he was crying.
 @ Past simple or past continuous? | Egyszerű vagy folyamatos múlt? | Datid eller udvidet datid?
