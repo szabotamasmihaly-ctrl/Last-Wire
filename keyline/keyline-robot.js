@@ -178,12 +178,23 @@ async function main() {
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
     job.id = e.q; queue.push(job); next();
   }
+  /* one long open connection to the relay; asking again and again would hit its rate limit
+     and could block the phones on this network too */
   for (;;) {
     try {
-      const r = await fetch(RELAY + topic + '/json?poll=1&since=' + since);
-      (await r.text()).split('\n').forEach(function (l) { if (l) { try { take(JSON.parse(l)); } catch (x) {} } });
+      const r = await fetch(RELAY + topic + '/json?since=' + since);
+      if (r.status === 429) { await new Promise(function (ok) { setTimeout(ok, 30000); }); continue; }
+      const reader = r.body.getReader(), dec = new TextDecoder();
+      let buf = '';
+      for (;;) {
+        const part = await reader.read();
+        if (part.done) break;
+        buf += dec.decode(part.value, { stream: true });
+        const lines = buf.split('\n'); buf = lines.pop();
+        lines.forEach(function (l) { if (l) { try { take(JSON.parse(l)); } catch (x) {} } });
+      }
     } catch (e) {}
-    await new Promise(function (r) { setTimeout(r, 1200); });
+    await new Promise(function (ok) { setTimeout(ok, 5000); });
   }
 }
 main();
