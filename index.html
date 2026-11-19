@@ -985,7 +985,7 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .cbtn{position:relative;min-height:96px;border:0;border-radius:16px;color:#fff;font-size:34px;line-height:1;display:grid;place-items:center;box-shadow:0 6px 0 rgba(0,0,0,.45),inset 0 -6px 0 rgba(0,0,0,.18),inset 0 3px 0 rgba(255,255,255,.25)}
 .cbtn:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.45),inset 0 -4px 0 rgba(0,0,0,.18)}
 .cbtn kbd{position:absolute;left:8px;top:8px}
-.c0{background:#D8263C}.c1{background:#2F6FE4}.c2{background:#F4C430;color:#3a2a00}.c3{background:#2FA35E}
+.c0{background:#D8263C}.c1{background:#2F6FE4}.c2{background:#F4C430;color:#3a2a00}.c3{background:#2FA35E}.c4{background:#fff;color:#1b1f2a}.c5{background:#1B1F2A;color:#fff;box-shadow:inset 0 0 0 2px #555}
 .lb{height:auto;min-height:94px;max-height:150px}
 /* listen: everything fits on the panel, nothing scrolls */
 .build.lw{flex:1 1 0;height:auto;min-height:48px;max-height:none;overflow:hidden}
@@ -1219,6 +1219,26 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 @keyframes mixbg{to{background-position:300% 0}}
 @keyframes pgin{from{transform:scale(.7) translateY(20px);opacity:0}to{transform:none;opacity:1}}
 .g1{background:#FF4B4B}.g2{background:#1CB0F6}.g3{background:#CE82FF}.g4{background:#FF9600}.g5{background:#4B4B4B}.g6{background:#8B5A2B}.g7{background:#2B70C9}.g8{background:#58CC02}.g9{background:#E5B400;color:#3a2a00}.g10{background:#E5527A}
+.plot-c{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:#fff8e6;color:#2a1a00;border-radius:14px;padding:12px 14px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.plot-c p{margin:0;font-size:18px;line-height:1.3;font-weight:600}
+.plot-i{font-size:34px;animation:bob 2.4s ease-in-out infinite}
+.cbtns.n6{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cbtns.n6 .cbtn{min-height:58px}
+.bossbtn{background:linear-gradient(135deg,#1b1f2a,#3b2010)!important;box-shadow:0 6px 0 #000!important}
+.bossbtn .pst{font-size:13px;opacity:.85}
+.boss-t b{font-size:22px;letter-spacing:.01em}
+.boss-q{display:grid;gap:12px;justify-items:center;background:var(--graphite,#1f2430);border-radius:14px;padding:16px;color:#fff}
+.boss-n{margin:0;font-weight:800;opacity:.7}
+.boss-a{margin:0;font:900 30px/1.1 var(--font-display);text-align:center;animation:pgin .35s cubic-bezier(.2,1.5,.4,1) both}
+.boss-warn{margin:0;font-size:14px;font-weight:700;color:#ffd166}
+.boss-won{font:900 34px/1.1 var(--font-display);margin:6px 0;animation:pgin .5s cubic-bezier(.2,1.5,.4,1) both}
+.da-h{margin:10px 0 0;font:800 20px/1.2 var(--font-body);color:var(--ink)}
+.da-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.da-node{position:relative;display:grid;place-items:center;min-height:64px;border:0;border-radius:14px;padding:6px 3px;font:800 15px/1.1 var(--font-body);color:#fff;background:#3b4152;box-shadow:0 4px 0 #1b1f2a;overflow-wrap:break-word;hyphens:auto;text-align:center}
+.da-node.open{background:linear-gradient(135deg,#ff8a3d,#e5527a);box-shadow:0 4px 0 #a03050;animation:bob 2.4s ease-in-out infinite}
+.da-node.won{background:linear-gradient(135deg,#58cc02,#2f9e44);box-shadow:0 4px 0 #237a33;font-size:13px}
+.da-node.lock{opacity:.55}
+.da-node .pst{font-size:10px}
 .partybig{display:flex;align-items:center;gap:12px;width:100%;margin:2px 0;padding:14px 18px;border-radius:16px;border:0;color:#fff;box-shadow:0 5px 0 #A04ACB;background:linear-gradient(90deg,#CE82FF,#E5527A);font:800 18px/1.1 var(--font-body);text-align:left;transition:transform .08s}
 .partybig:active{transform:translateY(3px);box-shadow:0 2px 0 #A04ACB}
 .partybig .pb-i{font-size:28px;animation:bob 2s ease-in-out infinite}
@@ -3893,17 +3913,21 @@ function makeStationSpec(code) {
 }
 /* ===== party bombs: ten games built around things people love about a language ===== */
 var PARTY_GAMES = ['song', 'film', 'karaoke', 'twister', 'safe', 'radio', 'idiom', 'slang', 'rhyme', 'post'];
-var PARTY_ICON = { song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
+var PARTY_ICON = { plot: '🍿', song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗼' };
 var PARTY_LANGS = ['en', 'es', 'da'];
 /* X:lang:game:seed:offsets. Game 1..10 is that game with a partner; 11 mixes three. The seed picks the mix;
    the offsets say how far each game has got through its content, so the next bomb brings new things. Both phones get the same code. */
 function partyCode(lang, n, seed) { return 'X:' + lang + ':' + n + ':' + (seed == null ? Math.floor(Math.random() * 9000) + 1000 : seed); }
 function parsePartyCode(code) {
   var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})(?::(\d{1,4}(?:\.\d{1,4}){0,2}))?(?::h([a-z0-9]{1,9}))?$/.exec(String(code || ''));
-  if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || !(+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1)) return null;
+  if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || !((+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1) || (+m[2] > BOSS0 && +m[2] <= BOSS0 + BOSS_N))) return null;
   return { lang: m[1], n: +m[2], seed: +m[3], offs: m[4] ? m[4].split('.').map(Number) : [], h: m[5] || '', base: 'X:' + m[1] + ':' + m[2] + ':' + m[3] };
 }
+/* 📻 DEAD AIR, the radio boss: party codes 21..50 are its levels (three movie tracks of ten) */
+var BOSS0 = 20, BOSS_N = 30, BOSS_FM = ['88.1', '91.5', '96.3', '104.7'];
+function bossWord(n) { var T = typeof PARTY !== 'undefined' && PARTY.deadair, k = n - BOSS0 - 1; return T && T[Math.floor(k / 10)] ? T[Math.floor(k / 10)].q[k % 10][1] : ''; }
 function partyGames(n, r) {
+  if (n > BOSS0) return ['boss'];
   if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
   var mix = r.sample(PARTY_GAMES.filter(function (g) { return g !== 'karaoke'; }), 3);
   /* the song and the karaoke share their lines, so a mix holds at most one of them */
@@ -3911,9 +3935,11 @@ function partyGames(n, r) {
   return mix;
 }
 /* the games a code holds, worked out before its offsets are known */
-function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))) : []; }
+function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))).map(function (g) { return partyGame(g, p.lang); }) : []; }
+/* English plays movie riddles where the others have idioms */
+function partyGame(g, L) { return g === 'idiom' && L === 'en' && typeof PARTY !== 'undefined' && PARTY.plots ? 'plot' : g; }
 /* how many items each game takes per bomb */
-var PARTY_PER = { song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
+var PARTY_PER = { plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
 /* each game's content in a fixed shuffled order per language: bomb k takes the next items; only after all of them does a new order begin */
 function deckTake(key, pool, off, k) {
   var len = pool.length, out = [], seen = {}, idx = off * k, guard = 0, cyc = -1, d = null;
@@ -3962,6 +3988,20 @@ function shuf3(r, right, wrongs) {
 function gapParts(s) { var m = /^(.*?)\[(.+?)\](.*)$/.exec(s); return m ? { pre: m[1], word: m[2], post: m[3], plain: m[1] + m[2] + m[3] } : { pre: s, word: '', post: '', plain: s }; }
 function others(r, pool, not, k) { return r.sample(pool.filter(function (_, i) { return not.indexOf(i) < 0; }), k); }
 var GENP = {
+  /* one level: four stations (one fits the title, three come from the other tracks), then four answers shown one by one */
+  plot: function (r, L, off) {
+    var pool = PARTY.plots;
+    return { rounds: deckTake(L + ':plot', pool, off, 2).map(function (i) {
+      var x = pool[i], words = r.shuffle([x[0]].concat(others(r, pool, [i], 5).map(function (y) { return y[0]; })));
+      return { desc: x[1], words: words, ans: words.indexOf(x[0]), full: x[0] + ': ' + x[1] };
+    }) };
+  },
+  boss: function (r, L, lvl) {
+    var T = PARTY.deadair, k = lvl - 1, tp = T[Math.floor(k / 10)], row = tp.q[k % 10], rest = [];
+    T.forEach(function (x) { if (x !== tp) rest = rest.concat(x.q); });
+    var st = r.shuffle([row].concat(r.sample(rest, 3))), opts = r.shuffle(row.slice(1));
+    return { e: tp.e, title: tp.t, st: st.map(function (x) { return x[0]; }), ans: st.indexOf(row), opts: opts, oa: opts.indexOf(row[1]), word: row[1], q: row[0], lvl: lvl };
+  },
   song: function (r, L, off, h) {
     var pool = songPool(L, h);
     return { rounds: deckTake(L + ':song', pool, off, 3).map(function (i) {
@@ -4027,11 +4067,11 @@ var GENP = {
     }) };
   }
 };
-var PARTY_TIME = { song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
+var PARTY_TIME = { plot: 120, boss: 120, song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
 function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
   var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
-  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, p.offs[i] || 0, p.h) }; });
+  var modules = list.map(function (t, i) { return { t: t, off: p.offs[i] || 0, data: GENP[t](RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0)), p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h) }; });
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
   var r0 = RU(mulberry32(base ^ 0x5bd1e995));
   return { code: code, party: p.n, path: false, lang: p.lang, level: 0, mission: 0, station: p.n,
@@ -4069,7 +4109,7 @@ PACK.es = {
   win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
   num: esNum
 };
-PACK.en.mod.song = 'Finish the song'; PACK.en.mod.film = 'Emoji films'; PACK.en.mod.karaoke = 'Karaoke'; PACK.en.mod.twister = 'Tongue twister'; PACK.en.mod.safe = 'The safe'; PACK.en.mod.radio = 'Radio'; PACK.en.mod.idiom = 'Idioms'; PACK.en.mod.slang = 'Text slang'; PACK.en.mod.rhyme = 'Rhyme wires'; PACK.en.mod.post = 'Postcards';
+PACK.en.mod.plot = PACK.es.mod.plot = PACK.da.mod.plot = PACK.hu.mod.plot = 'Movie riddles'; PACK.en.mod.boss = PACK.es.mod.boss = PACK.da.mod.boss = PACK.hu.mod.boss = 'Dead Air'; PACK.en.mod.song = 'Finish the song'; PACK.en.mod.film = 'Emoji films'; PACK.en.mod.karaoke = 'Karaoke'; PACK.en.mod.twister = 'Tongue twister'; PACK.en.mod.safe = 'The safe'; PACK.en.mod.radio = 'Radio'; PACK.en.mod.idiom = 'Idioms'; PACK.en.mod.slang = 'Text slang'; PACK.en.mod.rhyme = 'Rhyme wires'; PACK.en.mod.post = 'Postcards';
 PACK.es.mod.song = 'Termina la canción'; PACK.es.mod.film = 'Pelis en emojis'; PACK.es.mod.karaoke = 'Karaoke'; PACK.es.mod.twister = 'Trabalenguas'; PACK.es.mod.safe = 'La caja fuerte'; PACK.es.mod.radio = 'La radio'; PACK.es.mod.idiom = 'Modismos'; PACK.es.mod.slang = 'Jerga de chat'; PACK.es.mod.rhyme = 'Cables que riman'; PACK.es.mod.post = 'Postales';
 PACK.da.mod.song = 'Syng færdig'; PACK.da.mod.film = 'Emoji-film'; PACK.da.mod.karaoke = 'Karaoke'; PACK.da.mod.twister = 'Tungebrækker'; PACK.da.mod.safe = 'Pengeskabet'; PACK.da.mod.radio = 'Radioen'; PACK.da.mod.idiom = 'Talemåder'; PACK.da.mod.slang = 'Chat-slang'; PACK.da.mod.rhyme = 'Rimledninger'; PACK.da.mod.post = 'Postkort';
 PACK.hu.mod.song = 'Fejezd be a dalt'; PACK.hu.mod.film = 'Emoji-filmek'; PACK.hu.mod.karaoke = 'Karaoke'; PACK.hu.mod.twister = 'Nyelvtörő'; PACK.hu.mod.safe = 'A széf'; PACK.hu.mod.radio = 'Rádió'; PACK.hu.mod.idiom = 'Szólások'; PACK.hu.mod.slang = 'Chat-szleng'; PACK.hu.mod.rhyme = 'Rímelő drótok'; PACK.hu.mod.post = 'Képeslapok';
@@ -4143,7 +4183,8 @@ var ES_PHRASES = [
     'party': ['Party bombs', 'Partibombák', 'Festbomber'],
     'party.mix': ['Mix', 'Keverék', 'Mix'],
     'mod.song': ['Finish the song', 'Fejezd be a dalt', 'Syng færdig'], 'mod.film': ['Emoji films', 'Emoji-filmek', 'Emoji-film'], 'mod.karaoke': ['Karaoke', 'Karaoke', 'Karaoke'],
-    'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'],
+    'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'], 'mod.boss': ['Dead Air', 'Dead Air', 'Dead Air'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
+    'boss.warn': ['⚠️ Skip = no way back', '⚠️ Ha továbblépsz, nincs visszaút', '⚠️ Springer du over, er der ingen vej tilbage'],
     'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
   };
   for (var k in add) STR[k] = add[k];
@@ -4176,7 +4217,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 20;
+  var BUILD = 21;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -5753,7 +5794,7 @@ var ES_PHRASES = [
 
 
   /* ===== part P: the learning path ======================================================= */
-  var P_COL = ['#D8263C', '#2F6FE4', '#F4C430', '#2FA35E'], P_SHAPE = ['●', '▲', '■', '◆'];
+  var P_COL = ['#D8263C', '#2F6FE4', '#F4C430', '#2FA35E', '#FFFFFF', '#1B1F2A'], P_SHAPE = ['●', '▲', '■', '◆', '★', '✚'];
   var UNIT_COL = [['#58CC02', '#46A302'], ['#1CB0F6', '#1899D6'], ['#CE82FF', '#A568CC'], ['#FF9600', '#CC7800'], ['#FF4B4B', '#D33131'], ['#2B70C9', '#1F5AA6'], ['#00B5A3', '#008F81'], ['#E5527A', '#B83E60'], ['#8E6CEF', '#6E4FCC'], ['#E0A100', '#B07F00']];
   var DAILY_GOAL = 30, CARD_MAX = 6, BOX_GAP = [0, 1, 2, 4, 7], LEARNED = 5;
 
@@ -6132,12 +6173,12 @@ var ES_PHRASES = [
   function pRecap(d) { return d.rounds.map(function (x) { return { tx: x.full }; }); }
   function pickOn(k, v, d, st) {
     var rd = d.rounds[st.r]; v = +v;
-    if (k !== 'c' || !(v >= 0 && v < 3)) return;
+    if (k !== 'c' || !(v >= 0 && v < (rd.words ? rd.words.length : 3))) return;
     if (v !== rd.ans) { st.fb = true; return 'strike'; }
     st.r++; st.fb = false;
     return st.r >= d.rounds.length ? 'solved' : 'next';
   }
-  function pickKey(e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= 3) { modAct(i, 'c', n - 1); return true; } }
+  function pickKey(e, d, st, i) { var rd = d.rounds && d.rounds[st.r], n = digitOf(e); if (n >= 1 && n <= (rd && rd.words ? rd.words.length : 3)) { modAct(i, 'c', n - 1); return true; } }
   /* a right answer that shows its animation first, then moves on */
   function later(i, st, ms) {
     st.lock = true;
@@ -6362,6 +6403,59 @@ var ES_PHRASES = [
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
 
+  /* 📻 DEAD AIR: the bomb sees only the title it wants to hear and tunes four stations; the helper hears each station's question.
+     Then the answers come one at a time: take it, or skip it for good. */
+  UI.boss = {
+    init: function () { return { ph: 0, pos: 0, o: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var h = note(['📡 ' + (st.ph + 1) + '/2']);
+      if (!st.ph) {
+        var marks = BOSS_FM.map(function (_, k) { return '<i class="st" style="left:' + (12.5 + 25 * k) + '%"></i>'; }).join('');
+        h += '<div class="radio boss"><div class="grill" aria-hidden="true"></div>' +
+          '<div class="lcd radio-lcd boss-t"><small>' + BOSS_FM[st.pos] + ' FM</small><b lang="en">' + d.e + ' ' + esc(d.title) + '</b></div>' +
+          '<div class="scale" aria-hidden="true">' + marks + '<span class="needle" style="left:' + (12.5 + 25 * st.pos) + '%"></span></div>' +
+          '<div class="row dialbtns">' + B(i, 'd', -1, '‹', '', st.pos === 0) + B(i, 'lock', null, '🔒', 'go') + B(i, 'd', 1, '›', '', st.pos === BOSS_FM.length - 1) + '</div></div>';
+      } else {
+        h += '<div class="boss-q"><p class="boss-n">' + (st.o + 1) + '/' + d.opts.length + '</p><p class="boss-a" lang="en">' + esc(d.opts[st.o]) + '</p>' +
+          '<div class="row dialbtns">' + B(i, 'pick', null, '✓', 'go') + B(i, 'skip', null, '⏭') + '</div><p class="boss-warn">' + t('boss.warn') + '</p></div>';
+      }
+      return h + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st) {
+      if (k === 'd') { if (st.ph) return; var p = Math.max(0, Math.min(BOSS_FM.length - 1, st.pos + (+v))); if (p === st.pos) return; st.pos = p; st.fb = false; sfx('tick'); return 'move'; }
+      if (k === 'lock') { if (st.ph) return; if (st.pos !== d.ans) { st.fb = true; return 'strike'; } st.ph = 1; st.o = 0; st.fb = false; return 'next'; }
+      if (k === 'pick') { if (!st.ph) return; if (st.o === d.oa) return 'solved'; st.fb = true; st.o = (st.o + 1) % d.opts.length; return 'strike'; }
+      if (k === 'skip') { if (!st.ph) return; var was = st.o === d.oa; st.o = (st.o + 1) % d.opts.length; st.fb = was; sfx('tick'); return was ? 'strike' : 'move'; }
+    },
+    key: function (e, d, st, i) {
+      if (e.key === 'ArrowRight') { modAct(i, st.ph ? 'skip' : 'd', 1); return true; }
+      if (e.key === 'ArrowLeft') { if (!st.ph) modAct(i, 'd', -1); return true; }
+      if (e.key === 'Enter') { modAct(i, st.ph ? 'pick' : 'lock'); return true; }
+    },
+    keys: function () { return ''; },
+    pos: function (d, st) { return st.ph ? BOSS_FM.length : st.pos; },
+    recap: function (d) { return [{ tx: d.q }, { tx: '🔓 ' + d.word }]; },
+    done: function (d) { return learn(UI.boss.recap(d)); },
+    help: function (d, i, ms) {
+      var p = Math.min(ms.step || 0, BOSS_FM.length), locked = p >= BOSS_FM.length, k = locked ? d.ans : p;
+      return card(locked ? '🔒 ' + BOSS_FM[k] + ' FM' : '📡 ' + BOSS_FM[k] + ' FM', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's' + k, d.st[k], ms));
+    },
+    onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function (key) { return d.st[+String(key).slice(1)] || null; }); }
+  };
+
+  /* 🍿 movie riddles: a roundabout description on the bomb, six titles with the helper */
+  UI.plot = {
+    init: function () { return { r: 0, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('n.q', st.r + 1, d.rounds.length)]) + '<div class="plot-c"><span class="plot-i" aria-hidden="true">🍿</span><p lang="en">' + TW(rd.desc, rd.desc) + '</p></div>' + cBtns(i, 6) + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: pickOn, key: pickKey, keys: function () { return t('keys.col'); }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) { var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1); return card(cnt('n.q', p + 1, n), '', cWords(d.rounds[p].words) + stepNav(i, p, n, null, null, true)); },
+    onHelp: function (k, v, d, ms) { if (stepMove(k, ms, d.rounds.length)) renderHelpBody(); }
+  };
+
   /* 🌧️ idioms: the bomb sees the idiom as a picture, the helper has the meanings */
   UI.idiom = {
     init: function () { return { r: 0, fb: false }; },
@@ -6503,9 +6597,9 @@ var ES_PHRASES = [
   /* ---------- the station card that slides up from below ---------- */
   function partySheet() {
     var p = parsePartyCode(S.sheet); if (!p) return '';
-    var g = PARTY_GAMES[p.n - 1], name = g ? PACK[p.lang].mod[g] : t('party.mix');
+    var boss = p.n > BOSS0, g = boss ? 'boss' : PARTY_GAMES[p.n - 1], name = boss ? 'Dead Air · ' + (p.n - BOSS0) : g ? PACK[p.lang].mod[g = partyGame(g, p.lang)] : t('party.mix');
     return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
-      '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
+      '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (boss ? '📻' : g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
       (pairBlocked() ? pairWaitHTML() + '</aside>' :
       '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
       '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
@@ -6519,10 +6613,27 @@ var ES_PHRASES = [
     var h = '<div class="party"><div class="course" role="group">' + courses + '</div>' + pairBig() + '<h1><span aria-hidden="true">🎉</span>' + t('party') + '</h1><div class="pgrid">';
     PARTY_GAMES.forEach(function (g, k) {
       var st = partyStars(L, k + 1);
+      if (g === 'radio' && L === 'en') { h += '<button type="button" class="pgame g' + (k + 1) + ' bossbtn" data-a="deadair" style="animation-delay:' + (k * 0.04) + 's"><span class="pi" aria-hidden="true">📻</span>DEAD AIR<span class="pst">' + bossWon() + '/' + BOSS_N + '</span></button>'; return; }
+      g = partyGame(g, L);
       h += '<button type="button" class="pgame g' + (k + 1) + '" data-a="pnode" data-v="' + (k + 1) + '" style="animation-delay:' + (k * 0.04) + 's" lang="' + L + '"><span class="pi" aria-hidden="true">' + PARTY_ICON[g] + '</span>' + esc(PACK[L].mod[g]) + (st ? '<span class="pst" aria-label="' + st + ' / 3">' + stars3(st) + '</span>' : '') + '</button>';
     });
     h += '<button type="button" class="pgame mix" data-a="pnode" data-v="' + (PARTY_GAMES.length + 1) + '"><span class="pi" aria-hidden="true">🎲</span>' + t('party.mix') + '</button></div></div>';
     return h;
+  }
+  /* 📻 the boss track: three movie tracks of ten levels; a won level shows the word it taught */
+  function bossWon() { var c = 0; for (var n = BOSS0 + 1; n <= BOSS0 + BOSS_N; n++) if (partyStars('en', n)) c++; return c; }
+  function viewDeadAir() {
+    var h = '<div class="party deadair"><button type="button" class="hb" data-a="party">← 🎉</button><h1><span aria-hidden="true">📻</span>Dead Air</h1>';
+    (PARTY.deadair || []).forEach(function (tp, ti) {
+      h += '<h2 class="da-h" lang="en">' + tp.e + ' ' + esc(tp.t) + '</h2><div class="da-row">';
+      tp.q.forEach(function (row, k) {
+        var n = BOSS0 + 1 + ti * 10 + k, won = partyStars('en', n), open = won || k === 0 || partyStars('en', n - 1);
+        h += '<button type="button" class="da-node' + (won ? ' won' : open ? ' open' : ' lock') + '" data-a="danode" data-v="' + n + '"' + (open ? '' : ' disabled') + ' lang="en">' +
+          (won ? '<b>' + esc(row[1]) + '</b><span class="pst">' + stars3(won) + '</span>' : open ? '<b>' + (k + 1) + '</b>' : '<b aria-hidden="true">🔒</b>') + '</button>';
+      });
+      h += '</div>';
+    });
+    return h + '</div>';
   }
   function partyBig() { return '<button type="button" class="partybig" data-a="party"><span class="pb-i" aria-hidden="true">🎉</span><b>' + t('party') + '</b><span class="pb-go" aria-hidden="true">→</span></button>'; }
   function sheetHTML() {
@@ -6915,7 +7026,7 @@ var ES_PHRASES = [
       '';
   }
 
-  function bombTag(spec) { if (spec.party) return '🎉' + (spec.party > PARTY_GAMES.length ? '?' : spec.party); if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
+  function bombTag(spec) { if (spec.party > BOSS0) return '📻' + (spec.party - BOSS0); if (spec.party) return '🎉' + (spec.party > PARTY_GAMES.length ? '?' : spec.party); if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
   function openCode() {
     var spec = makeSpec(S.codeInput);
     if (!spec) { S.codeErr = true; render(); return; }
@@ -7092,17 +7203,19 @@ var ES_PHRASES = [
 
   /* ---------- result ---------- */
   function viewPartyResult() {
-    var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok';
+    var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok', boss = spec.party > BOSS0;
+    var hasNext = boss ? spec.party < BOSS0 + BOSS_N : spec.party <= PARTY_GAMES.length;
     var stars = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, all = [];
     spec.modules.forEach(function (m, i) { all = all.concat(UI[m.t].recap(m.data, g.ms[i])); });
     var starH = ''; for (var k = 0; k < 3; k++) starH += '<i class="' + (k < stars ? 'on' : '') + '" style="animation-delay:' + (0.35 + k * 0.18) + 's">★</i>';
     return (ok ? confetti() : '') + '<div class="result pr ' + (ok ? 'won' : 'lost') + '"><div><p class="eyebrow">🎉 ' + spec.modules.map(function (m) { return esc(modName(m.t)); }).join(' + ') + '</p>' +
       '<h1 data-fit lang="' + spec.lang + '">' + (ok ? P.win : P.boom) + '</h1>' +
+      (ok && boss ? '<p class="boss-won" lang="en">🔓 ' + esc(spec.modules[0].data.word) + '</p>' : '') +
       (ok ? '<div class="bigstars" role="img" aria-label="' + stars + ' / 3">' + starH + '</div>' : '<p class="lead">' + t(g.why === 'time' ? 'res.time' : 'res.mist') + '</p>') + '</div>' +
       '<div class="ctas">' + (pairBlocked() ? pairWaitHTML() :
-        (ok && spec.party <= PARTY_GAMES.length ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
-        '<button type="button" class="' + (ok && spec.party <= PARTY_GAMES.length ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
-      '<button type="button" class="hb big" data-a="party">🎉 ' + t('party') + '</button></div>' +
+        (ok && hasNext ? '<button type="button" class="cta" data-a="next">' + t('res.next') + '</button>' : '') +
+        '<button type="button" class="' + (ok && hasNext ? 'hb big' : 'cta') + '" data-a="again">' + t(ok ? 'res.again' : 'res.retry') + '</button>') +
+      (boss ? '<button type="button" class="hb big" data-a="deadair">📻 Dead Air</button>' : '<button type="button" class="hb big" data-a="party">🎉 ' + t('party') + '</button>') + '</div>' +
       (all.length ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + learn(all) + '</section></div>' : '') + '</div>';
   }
   function viewResult() {
@@ -7180,8 +7293,8 @@ var ES_PHRASES = [
     var de = document.documentElement;
     de.lang = ui(); de.setAttribute('data-tl', tl());
     document.body.setAttribute('data-screen', S.screen);
-    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'party' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' || S.screen === 'snake' ? 'paper' : 'hard');
-    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'party' ? viewParty() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'snake' && S.sn ? viewSnake() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
+    document.body.setAttribute('data-view', helperVisible() || S.screen === 'home' || S.screen === 'party' || S.screen === 'deadair' || S.screen === 'cards' || S.screen === 'words' || S.screen === 'place' || S.screen === 'warm' || S.screen === 'snake' ? 'paper' : 'hard');
+    var h = S.screen === 'home' ? viewPath() : S.screen === 'classic' ? viewHome() : S.screen === 'party' ? viewParty() : S.screen === 'deadair' ? viewDeadAir() : S.screen === 'cards' ? viewCards() : S.screen === 'warm' ? viewWarm() : S.screen === 'words' ? viewWords() : S.screen === 'snake' && S.sn ? viewSnake() : S.screen === 'place' && S.pt ? viewPlace() : S.screen === 'bomb' ? viewBomb() : S.screen === 'helper' ? viewHelper() : viewResult();
     $('#app').innerHTML = topbar() + '<main id="main">' + h + '</main>';
     if (S.screen === 'bomb') {
       paintTimer(); paintCaption(); applyView(false);
@@ -7210,7 +7323,7 @@ var ES_PHRASES = [
   try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); } catch (e) {}
   function goHome() {
     linkStop();
-    if (S.spec && S.spec.party && S.screen !== 'party') { stopLoop(); clearTimers(); micStop(); document.body.classList.remove('boom'); S.game = null; S.spec = null; S.solo = false; S.screen = 'party'; render(); window.scrollTo(0, 0); return; }
+    if (S.spec && S.spec.party && S.screen !== 'party') { var bs = S.spec.party > BOSS0; stopLoop(); clearTimers(); micStop(); document.body.classList.remove('boom'); S.game = null; S.spec = null; S.solo = false; S.screen = bs ? 'deadair' : 'party'; render(); window.scrollTo(0, 0); return; }
     if (S.spec && S.spec.path && S.screen !== 'home' && S.screen !== 'classic') { goPath(); return; }
     var back = S.spec && !S.spec.path && S.screen !== 'home' && S.screen !== 'classic' ? 'classic' : 'home';
     stopLoop(); clearTimers(); document.body.classList.remove('boom'); S.game = null; S.spec = back === 'home' ? null : S.spec; S.screen = back; S.solo = false; S.fc = null; render(); window.scrollTo(0, 0);
@@ -7287,6 +7400,8 @@ var ES_PHRASES = [
       case 'sn-peek': S.sn.peek = !S.sn.peek; render(); break;
       case 'sn-judge': if (ds.v === '1') { S.sn.phase = S.sn.chain.length >= S.sn.deck.length ? 'over' : 'flip'; S.sn.peek = false; if (S.sn.phase === 'over') S.sn.win = S.sn.turn; sfx('ok'); } else { S.sn.phase = 'over'; S.sn.win = 1 - S.sn.turn; sfx('strike'); } render(); break;
       case 'classic': S.screen = 'classic'; S.spec = null; render(); window.scrollTo(0, 0); break;
+      case 'deadair': stopLoop(); clearTimers(); linkStop(); S.screen = 'deadair'; S.spec = null; S.game = null; S.solo = false; render(); window.scrollTo(0, 0); break;
+      case 'danode': openSheet(partyNew('en', +ds.v)); break;
       case 'party': if (PARTY_LANGS.indexOf(S.sel.course) < 0) S.sel.course = 'en'; S.screen = 'party'; S.spec = null; S.game = null; render(); window.scrollTo(0, 0); break;
       case 'pnode': openSheet(partyNew(PARTY_LANGS.indexOf(S.sel.course) >= 0 ? S.sel.course : 'en', +ds.v)); break;
       case 'help-done': helperDone(); break;
@@ -7302,7 +7417,7 @@ var ES_PHRASES = [
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
       case 'next': if (pairBlocked()) break;
-        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyNew(pp.lang, pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
+        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyNew(pp.lang, pp.n > BOSS0 ? Math.min(BOSS0 + BOSS_N, pp.n + 1) : pp.n % PARTY_GAMES.length + 1); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
         if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
       case 'again': if (pairBlocked()) break;
         if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyNew(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }

@@ -370,3 +370,74 @@ PARTY.melody = {
     "https://upload.wikimedia.org/wikipedia/commons/0/06/United_States_Navy_Band_-_Der_er_et_yndigt_land.ogg"
   ]
 };
+
+/* 📻 DEAD AIR, the radio boss: three movie tracks of ten levels. Each level teaches one word.
+   Row: [question (a full sentence, read to the helper), answer, wrong, wrong, wrong] */
+PARTY.deadair = [
+  { e: '🎬', t: 'Movie words', q: [
+    ['What do we call the second film that continues the story of the first one?', 'sequel', 'prequel', 'remake', 'trailer'],
+    ['What is the short video that shows scenes from a film before it comes out?', 'trailer', 'sequel', 'poster', 'credits'],
+    ['What do we call the bad character who fights against the hero?', 'villain', 'sidekick', 'stuntman', 'narrator'],
+    ['What is the music of a film called when you can buy it or stream it?', 'soundtrack', 'screenplay', 'subtitles', 'voice-over'],
+    ['What do we call a very expensive film that millions of people go to see?', 'blockbuster', 'flop', 'documentary', 'short film'],
+    ['What do we call a big surprise in the story that changes everything?', 'plot twist', 'happy ending', 'flashback', 'opening scene'],
+    ['Who is the person who tells the actors what to do and is in charge of the whole film?', 'director', 'critic', 'extra', 'cameraman'],
+    ['What are the words at the bottom of the screen that translate what people say?', 'subtitles', 'credits', 'footnotes', 'banners'],
+    ['What do we call the hero\'s best friend and helper, like Robin for Batman?', 'sidekick', 'rival', 'villain', 'stranger'],
+    ['What is the first public showing of a new film, with the stars on the red carpet?', 'premiere', 'rehearsal', 'audition', 'sequel']
+  ] },
+  { e: '💬', t: 'Famous movie quotes', q: [
+    ['Which movie has the famous line "I\'ll be back", said by a robot from the future?', 'The Terminator', 'RoboCop', 'Predator', 'Total Recall'],
+    ['Which movie has the famous line "May the Force be with you"?', 'Star Wars', 'Star Trek', 'Avatar', 'Dune'],
+    ['Which movie has the famous line "Houston, we have a problem", said by an astronaut?', 'Apollo 13', 'Gravity', 'Interstellar', 'The Martian'],
+    ['Which movie has the famous line "You\'re gonna need a bigger boat", said when the shark appears?', 'Jaws', 'Titanic', 'The Meg', 'Life of Pi'],
+    ['Which movie has the famous line "I\'m the king of the world", shouted at the front of a ship?', 'Titanic', 'Avatar', 'The Lion King', 'Pearl Harbor'],
+    ['Which movie has the famous line "There\'s no place like home", said by a girl in red shoes?', 'The Wizard of Oz', 'Home Alone', 'Peter Pan', 'Mary Poppins'],
+    ['Which movie has the famous line "Life is like a box of chocolates"?', 'Forrest Gump', 'Charlie and the Chocolate Factory', 'Big', 'Cast Away'],
+    ['Which movie has the famous line "I see dead people", whispered by a scared little boy?', 'The Sixth Sense', 'Ghostbusters', 'The Others', 'Beetlejuice'],
+    ['Which movie has the famous line "To infinity and beyond", said by a toy astronaut?', 'Toy Story', 'Up', 'WALL-E', 'Cars'],
+    ['Which movie has the famous line "Why so serious?", said by the Joker?', 'The Dark Knight', 'Iron Man', 'Spider-Man', 'Deadpool']
+  ] },
+  { e: '🌍', t: 'Movie trivia', q: [
+    ['In which country were The Lord of the Rings films made, with all those green mountains?', 'New Zealand', 'Ireland', 'Norway', 'Canada'],
+    ['Which city is the home of Hollywood and the American film industry?', 'Los Angeles', 'New York', 'Las Vegas', 'San Francisco'],
+    ['Which golden statue do the best films and actors win every year?', 'Oscar', 'Grammy', 'Emmy', 'Nobel'],
+    ['Which ocean does the ship cross in the film Titanic before it sinks?', 'Atlantic', 'Pacific', 'Indian', 'Arctic'],
+    ['Bollywood is the huge film industry in Mumbai. Which country is it in?', 'India', 'Pakistan', 'Brazil', 'Egypt'],
+    ['Which school of magic does Harry Potter go to?', 'Hogwarts', 'Narnia', 'Gotham', 'Atlantis'],
+    ['Which dark city does Batman protect at night?', 'Gotham', 'Metropolis', 'Springfield', 'Hogwarts'],
+    ['In Finding Nemo, Marlin swims all the way to Sydney to find his son. Which country is Sydney in?', 'Australia', 'New Zealand', 'South Africa', 'Canada'],
+    ['The rat chef in Ratatouille cooks in the city of the Eiffel Tower. Which city is it?', 'Paris', 'Rome', 'Lyon', 'Brussels'],
+    ['Which famous film festival takes place every May in a town in the south of France?', 'Cannes', 'Venice', 'Berlin', 'Sundance']
+  ] }
+];
+
+/* 🍿 movie riddles (English): a funny, roundabout description on the bomb; six titles with the helper. [title, description] */
+PARTY.plots = [
+  ['The Lion King', 'A teenager runs away after his dad dies at work, lives on insects with two unemployed friends, then goes back home to evict his uncle.'],
+  ['Titanic', 'A poor artist wins a ticket in a card game, draws a rich girl, and their first date ends badly because of some ice.'],
+  ['Jurassic Park', 'A rich grandpa opens a zoo with very, very old animals, ignores every safety rule, and the guests end up on the menu.'],
+  ['Finding Nemo', 'A nervous single dad crosses half an ocean, asks a forgetful stranger for directions, and finds his son in a dentist\'s waiting room.'],
+  ['Home Alone', 'A big family flies to Paris and forgets one small thing at home, who then defends the house against two burglars with paint cans.'],
+  ['Toy Story', 'A cowboy gets very jealous when a new guy with a laser and plastic wings becomes the favourite in the bedroom.'],
+  ['Up', 'A grumpy old man ties thousands of balloons to his house and flies to South America, but forgets to check who is on the porch.'],
+  ['Frozen', 'A queen with an air-conditioning problem runs away to the mountains, and her sister gets engaged to a man she met that morning.'],
+  ['Shrek', 'A grumpy guy who just wants his swamp back goes on a rescue mission with a donkey who never stops talking.'],
+  ['Harry Potter', 'A boy who sleeps in a cupboard under the stairs gets a letter from an owl and goes to a boarding school with a very dangerous sports team.'],
+  ['The Matrix', 'A computer programmer takes a pill from a man in sunglasses and finds out that his whole life is fake.'],
+  ['Jaws', 'A small beach town refuses to close for the summer, even though something big in the water keeps eating the tourists.'],
+  ['Ratatouille', 'The best cook in Paris is very small, very hairy, and controls a kitchen boy by pulling his hair under his hat.'],
+  ['Back to the Future', 'A teenager borrows a crazy scientist\'s car, drives it much too fast, and accidentally makes his own mum fall in love with him.'],
+  ['The Wizard of Oz', 'A girl and her dog travel by tornado, then walk down a yellow road with a man made of straw, a man made of metal and a scared big cat.'],
+  ['Star Wars', 'A farm boy, an old monk and a smuggler with a hairy co-pilot try to blow up something that looks like a moon but is not a moon.'],
+  ['Inception', 'A team of thieves steals ideas while people sleep, and nobody is sure if the little spinning top ever stops.'],
+  ['Ghostbusters', 'Three scientists lose their university jobs and start a cleaning company for houses with very unusual guests.'],
+  ['Cinderella', 'A young woman with a terrible stepfamily gets a free makeover from a magical old lady and loses a shoe at midnight.'],
+  ['The Terminator', 'A machine travels back in time to make sure a certain baby is never born, and the only thing in its way is a waitress.'],
+  ['Spider-Man', 'A shy student gets bitten on a school trip and starts climbing walls and shooting sticky ropes from his wrists.'],
+  ['E.T.', 'A lonely boy hides a short, wrinkled visitor in his wardrobe, feeds him sweets, and helps him make a very long-distance phone call.'],
+  ['Avatar', 'A soldier who cannot walk gets a tall blue body on another planet and falls in love with the people he was sent to move.'],
+  ['Kung Fu Panda', 'A noodle-shop worker who loves dumplings is chosen as the greatest warrior in the land, even though he can hardly climb the stairs.'],
+  ['Despicable Me', 'A man who wants to steal the moon adopts three girls to help with the plan, and his small yellow workers love bananas.'],
+  ['Pirates of the Caribbean', 'A sailor who has lost his ship and is never quite sober helps a blacksmith save a governor\'s daughter from a crew of skeletons.']
+];
