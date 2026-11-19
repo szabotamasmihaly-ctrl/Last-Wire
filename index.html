@@ -4240,7 +4240,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 27;
+  var BUILD = 28;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4733,7 +4733,9 @@ var ES_PHRASES = [
   function linkTopic(spec) { return 'lastwire-v1-' + hashSeed('lw-link:' + spec.code + (PAIR ? ':' + PAIR.room : '')).toString(36); }
   function linkState() {
     var g = S.game; if (!g) return null;
-    return { tab: nextTask(), steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '', x: g.strikes || 0 };
+    /* the helper's page shows the task the bomb is zoomed in on, else the next one to solve */
+    var f = S.view && S.view.focus, tab = f != null && f >= 0 && !g.solved[f] ? f : nextTask();
+    return { tab: tab, steps: S.spec.modules.map(function (m, k) { return UI[m.t].pos && g.ms[k] ? UI[m.t].pos(m.data, g.ms[k]) : 0; }), over: g.over || '', x: g.strikes || 0 };
   }
   /* the helper's phone can answer too (the slang speedrun): its answer counts only for the card both are on */
   function bombHear(m) {
@@ -5997,22 +5999,48 @@ var ES_PHRASES = [
     var w = sayWords(want.join(' ')), slack = Math.floor(w.length / 6);
     return alts.some(function (a) { return wordDist(sayWords(a), w) <= slack; });
   }
-  function micStop() { if (Mic.rec) { try { Mic.rec.abort(); } catch (e) {} } Mic.rec = null; Mic.at = null; }
+  function micStop() { if (Mic.rec) { try { Mic.rec.abort(); } catch (e) {} } Mic.rec = null; Mic.at = null; Mic.done = null; }
+  /* listens until the player stops talking: the words show as they come, the right sentence counts at once,
+     and an answer that arrives after the task has moved on is dropped */
   function micToggle(i) {
     if (Mic.off) return;
-    if (Mic.rec) { var was = Mic.at; micStop(); if (S.game) renderMod(was); return; }
-    var rec, heard = null;
+    if (Mic.rec) { var was = Mic.at, r0 = Mic.rec; if (Mic.done) Mic.done(); else { micStop(); if (S.game) renderMod(was); } return; }
+    var rec, fin = '', alts = [], step = S.game && S.game.ms[i] ? JSON.stringify([S.game.ms[i].r, S.game.ms[i].s]) : '', quiet = null, cap = null, over = false;
     try { rec = new SpeechRec(); } catch (e) { Mic.off = true; renderMod(i); return; }
-    rec.lang = PACK[tl()].bcp; rec.interimResults = false; rec.continuous = false; rec.maxAlternatives = 5;
-    rec.onresult = function (e) { var r = e.results[0], a = []; for (var k = 0; r && k < r.length; k++) a.push(r[k].transcript); if (a.length) heard = a; };
-    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'language-not-supported') Mic.off = true; };
-    rec.onend = function () {
-      if (Mic.rec !== rec) return;
-      Mic.rec = null; Mic.at = null;
-      if (heard) modAct(i, 'said', heard); else if (S.game) renderMod(i);
+    rec.lang = PACK[tl()].bcp; rec.interimResults = true; rec.continuous = true; rec.maxAlternatives = 3;
+    function same() { var g = S.game; return g && !g.over && g.ms[i] && JSON.stringify([g.ms[i].r, g.ms[i].s]) === step; }
+    function live(txt) {
+      var box = document.getElementById('mod-' + i); if (!box) return;
+      var p = box.querySelector('.mic-live');
+      if (!p) { var mic = box.querySelector('.mic'); if (!mic) return; p = document.createElement('p'); p.className = 'heard mic-live'; p.setAttribute('lang', tl()); var row = mic.closest('.row') || mic.parentNode; row.parentNode.insertBefore(p, row); }
+      p.textContent = txt;
+    }
+    function finish() {
+      if (over) return; over = true; clearTimeout(quiet); clearTimeout(cap);
+      if (Mic.rec === rec) { Mic.rec = null; Mic.at = null; Mic.done = null; }
+      try { rec.stop(); } catch (e) {}
+      var said = [fin.trim()].concat(alts).filter(function (x, k, a) { return x && a.indexOf(x) === k; });
+      if (!same()) return;
+      if (said.length) modAct(i, 'said', said); else if (S.game) renderMod(i);
+    }
+    rec.onresult = function (e) {
+      var interim = ''; fin = ''; alts = [];
+      for (var k = 0; k < e.results.length; k++) {
+        var r = e.results[k];
+        if (r.isFinal) { fin += ' ' + r[0].transcript; if (e.results.length === 1) for (var a = 1; a < r.length; a++) alts.push(r[a].transcript); }
+        else interim += ' ' + r[0].transcript;
+      }
+      live((fin + ' ' + interim).trim());
+      /* a right sentence ends it at once; otherwise two quiet seconds do */
+      var m = S.spec && S.spec.modules[i], want = m && UI[m.t].want && S.game ? UI[m.t].want(m.data, S.game.ms[i]) : null;
+      if (want && saidRight([(fin + ' ' + interim).trim()], want)) { fin = (fin + ' ' + interim).trim(); finish(); return; }
+      clearTimeout(quiet); quiet = setTimeout(function () { if (!interim.trim()) finish(); else { fin = (fin + ' ' + interim).trim(); finish(); } }, 2200);
     };
-    Mic.rec = rec; Mic.at = i;
-    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; }
+    rec.onerror = function (e) { if (e.error === 'not-allowed' || e.error === 'service-not-allowed' || e.error === 'language-not-supported') Mic.off = true; };
+    rec.onend = function () { if (!over) finish(); };
+    Mic.rec = rec; Mic.at = i; Mic.done = finish;
+    cap = setTimeout(finish, 20000);
+    try { rec.start(); } catch (e) { Mic.rec = null; Mic.at = null; Mic.done = null; return; }
     renderMod(i);
   }
   /* tiles get smaller as the sentence grows, so the whole tray always fits on the panel */
@@ -6059,6 +6087,7 @@ var ES_PHRASES = [
   }
   UI.listen = {
     init: function () { return { r: 0, value: '', fb: false }; },
+    want: function (d, st) { var rd = d.rounds[st.r]; return rd && rd.ans; },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r], rec = Mic.rec && Mic.at === i, empty = !lsWords(st.value).length;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + lsBuild(rd, st, i);
@@ -6290,6 +6319,7 @@ var ES_PHRASES = [
   /* 🎤 karaoke: the helper hears one of three lines, the bomb picks it and sings it */
   UI.karaoke = ext({
     init: function () { return { r: 0, picked: false, heard: '', tries: 0, fb: false }; },
+    want: function (d, st) { var rd = d.rounds[st.r]; return rd && st.picked ? rd.full.split(/\s+/) : null; },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r], h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]);
       if (!st.picked) {
@@ -6327,6 +6357,7 @@ var ES_PHRASES = [
   /* 👅 tongue twisters: words are missing on the bomb; the helper hears it; the bomb says it or types the missing words */
   UI.twister = ext({
     init: function () { return { r: 0, value: '', heard: '', fb: false }; },
+    want: function (d, st) { var rd = d.rounds[st.r]; return rd && rd.full.split(/\s+/); },
     bomb: function (d, st, i) {
       var rd = d.rounds[st.r], rec = Mic.rec && Mic.at === i;
       var h = note([cnt('n.sentence', st.r + 1, d.rounds.length)]) + '<div class="gauge" aria-hidden="true"><i></i></div>' +
@@ -7257,7 +7288,7 @@ var ES_PHRASES = [
   }
   function renderHelpSide() { var el = $('#man-side'); if (el && helperVisible()) el.innerHTML = sideHTML(S.tab); }
   function viewHelper() {
-    if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '<div class="man-foot"><button type="button" class="dbtn ok" data-a="help-done">' + t('p.hdone') + '</button></div></div>';
+    if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '</div>';
     return '<div class="paper-wrap">' + helpHTML() + '</div>';
   }
 
