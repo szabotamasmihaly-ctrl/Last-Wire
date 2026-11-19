@@ -19,7 +19,7 @@ LWC('es', 5, `
 - No me saludó. No me [reconocería|reconozca|reconocer] con el bigote.
 - [Habría|Haya|Haber] unas cien personas en la cola del baño.
 - No contestó el teléfono. [Estaría|Esté|Estar] cantando en la ducha.
-- ¿Por qué [diría|diga|decir] el loro esa palabra delante de la abuela?
+- ¿Por qué [diría|diga|decir] el niño esa palabra delante de la abuela?
 @ habrá llegado: guessing about the past | habrá llegado: találgatás a múltról | habrá llegado: gæt om fortiden
 ! Se habrá quedado dormido.
 = La pizza no está. El perro se la [habrá] comido.
@@ -32,7 +32,7 @@ LWC('es', 5, `
 - El suelo está mojado. El perro [habrá|haya|haber] visto la bañera.
 @ deber de, a lo mejor, seguramente | deber de, a lo mejor, seguramente | deber de, a lo mejor, seguramente
 ! Debe de estar cansado.
-= El pingüino [debe de] tener calor en Sevilla.
+= Juan [debe de] tener calor con ese abrigo.
 = [Seguramente] el taxi llegue tarde. Es lunes.
 - Debe [de|a|en] ser muy tarde. El gallo ya canta.
 - Deben [de|a|en] estar de vacaciones. Nadie contesta mis memes.
@@ -40,7 +40,7 @@ LWC('es', 5, `
 - A lo mejor [está|esté|estar] en el gimnasio. Ja, ja, no.
 - [Igual|Igualmente|Iguales] no viene. Su gato está triste.
 - Seguro [que|de que|a] te lo has dejado en el autobús.
-~ El pingüino debe de | tener calor.
+~ Juan debe de | tener calor.
 ~ El perro se la | habrá comido.
 ~ Serían | las seis de la mañana.
 @ Future perfect: habré terminado | Befejezett jövő: habré terminado | Førfutur: habré terminado
@@ -77,7 +77,7 @@ LWC('es', 5, `
 @ siempre y cuando | siempre y cuando | siempre y cuando
 ! Puedes salir, siempre y cuando vuelvas temprano.
 = Te presto mis zapatos, [siempre y cuando] no bailes con ellos.
-= Siempre y cuando [estudies], el loro no se lo dirá a tus padres.
+= Siempre y cuando [estudies], te dejaré salir.
 - Puedes usar el coche siempre y cuando [tengas|tienes|tendrás] carné.
 - Aceptaré el trabajo, siempre y [cuando|que|como] el perro venga conmigo.
 - Siempre y cuando no [llueva|llueve|lloverá] tacos, jugaremos.
@@ -103,7 +103,7 @@ LWC('es', 5, `
 = [Con] estudiar un poco, aprobarás. Con dormir, no.
 - De [haber|habido|habiendo] sabido lo del karaoke, no habría venido.
 - Con [que|de que|—] me traigas café, me basta.
-- [En caso de|En caso que de|Por caso de] zombis, use la escalera.
+- [En caso de|En caso que de|Por caso de] incendio, use la escalera.
 - Salvo [que|de que|—] lo prohíba la abuela, lo haremos.
 - [Si|De|Con] no fuera por el GPS, estaría en Marruecos.
 - De no [ser|siendo|sea] por el gato, habría dormido bien.
@@ -127,7 +127,7 @@ LWC('es', 5, `
 - Los motivos por los [cuales|cual|cuyos] lleva pijama al trabajo son un misterio.
 - Aprobó el examen dormido, [lo cual|la cual|los cuales] nos sorprendió a todos.
 - Es la empresa para la [cual|cuyo|cuales] trabaja mi gato.
-- Tiene dos loros, los [cuales|cual|cuyos] hablan más que él.
+- Tiene dos hijos, los [cuales|cual|cuyos] hablan más que él.
 @ quien, quienes | quien, quienes | quien, quienes
 ! Quien quiera venir, que venga.
 = [Quien] ríe el último, no entendió el chiste.
@@ -240,7 +240,7 @@ LWC('es', 5, `
 ! Estaba tan cansado que me dormí en el metro.
 = Estaba [tan] cansado que me dormí en el ascensor.
 = Comió [tanto] que tuvieron que llevarlo en carrito.
-- Hablaba [tan|tanto|tanta] rápido que el loro se rindió.
+- Hablaba [tan|tanto|tanta] rápido que no entendí nada.
 - Había [tanta|tanto|tan] gente en el baño que bailamos allí.
 - Tengo [tantos|tantas|tan] calcetines desparejados que hago una fiesta.
 - Es tan caro [que|como|de] solo lo compra el gato del jefe.
@@ -289,7 +289,7 @@ LWC('es', 5, `
 - Nada más [terminar|terminado|terminando] la dieta, pidió tres pizzas.
 - Nada más [entrar|entrando|entrado], noté el olor a pescado.
 - [Nada más|Nada de|Más nada] conocernos, me pidió dinero.
-- Nada más [abrir|abriendo|abierto] la tienda, entró una cabra.
+- Nada más [abrir|abriendo|abierto] la tienda, entró un cliente.
 @ apenas, en cuanto | apenas, en cuanto | apenas, en cuanto
 ! En cuanto lo vi, lo supe.
 = [Apenas] se sentó, la silla se rompió.
@@ -437,7 +437,7 @@ LWC('es', 5, `
 = [El hecho de que] el gato sonría es preocupante.
 = El hecho de que [seas] rico no te da mi pizza.
 - El hecho de que [llegues|llegar|llegando] tarde a tu boda me molesta.
-- El hecho de que el loro no [diga|decir|diciendo] nada es raro.
+- El hecho de que no [diga|decir|diciendo] nada es raro.
 - El hecho [de que|que de|en que] lo sepas no cambia nada.
 - El hecho de que [estés|estar|estando] aquí me alegra. Más o menos.
 - El hecho de que no [haya|haber|habiendo] llamado el jefe es buena señal.
@@ -481,7 +481,7 @@ LWC('es', 5, `
 = Los que [quieran] cantar, que se vayan a otro bar.
 - El que [termine|termina|terminar] antes, lava los platos.
 - Los que no [tengan|tienen|tener] sombrero, no pueden entrar.
-- La que [gane|gana|ganar] el concurso, se lleva la cabra.
+- La que [gane|gana|ganar] el concurso, se lleva el viaje.
 - Quien [encuentre|encuentra|encontrar] el mando, que me avise.
 - El que [quiera|quiere|querer] tarta, que lo diga ahora.
 - Los que [sepan|saben|saber] dónde está el gato, que hablen.

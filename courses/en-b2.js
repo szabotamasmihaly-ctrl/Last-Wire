@@ -8,7 +8,7 @@ LWC('en', 4, `
 - If you [had told|told|would have told] me it was your wedding, I'd have worn shoes.
 - She would have won the dance contest if she [had stayed|stayed|would stay] on her feet.
 - If the seagull hadn't been so fast, I [would have eaten|would eat|had eaten] my chips.
-- What would you have done if the monkey [had taken|took|would take] your passport?
+- What would you have done if someone [had taken|took|would take] your passport?
 - I [wouldn't have|won't have|hadn't] laughed if he hadn't fallen into the cake.
 ~ If I had seen the step, | I wouldn't have fallen down it.
 ~ If he had read the recipe, | the kitchen would still exist.
@@ -70,7 +70,7 @@ LWC('en', 4, `
 @ might have, could have | might have, could have | might have, could have
 ! I might have left it at home.
 = The parcel [might have] gone to the wrong country.
-= That [could have] been a ghost. Or the cat.
+= That [could have] been the wind. Or the neighbours.
 - Grandma might have [gone|go|went] to the casino again.
 - They [might not have|mightn't have to|might have not] seen the "Wet paint" sign.
 - My homework could have [got|get|getting] eaten. It's possible.
@@ -84,7 +84,7 @@ LWC('en', 4, `
 - We needn't have [run|ran|running]. The train was an hour late.
 - You [needn't have|didn't need have|needn't] cleaned. We like the mess.
 - I didn't need [to set|set|setting] an alarm. The cat woke me at five.
-- She needn't have [worried|worry|worrying]. The goat was fine.
+- She needn't have [worried|worry|worrying]. The kids were fine.
 - He [didn't need to|needn't to|didn't need] pay. His grandma knows the owner.
 - They needn't have [cooked|cook|cooking]. We'd already eaten three pizzas.
 @ had better, would rather | had better, would rather | had better, would rather
@@ -115,7 +115,7 @@ LWC('en', 4, `
 - My bike [got stolen|got steal|got stole] by a man in a chicken costume.
 - She got [promoted|promote|promoting] because the boss liked her cat.
 - They got [married|marry|marrying] in a hot-air balloon.
-- Did you get [paid|pay|payed] for walking the neighbour's snake?
+- Did you get [paid|pay|payed] for working on Sunday?
 - I got [stuck|stick|sticked] in a lift with my ex.
 - Be careful with that crab, or you'll get [pinched|pinching|pinch].
 @ have something done | have something done | have something done
@@ -126,13 +126,13 @@ LWC('en', 4, `
 - I need to [have my eyes tested|test my eyes have|have tested my eyes]. I waved at a lamp.
 - They're having a hot tub [fitted|fit|fitting] on their balcony.
 - We had the cat [photographed|photograph|photographing] by a professional. She hated it.
-- He had his phone [stolen|steal|stealing] by a monkey.
+- He had his phone [stolen|steal|stealing] on the metro.
 - Where do you [get|make|do] your nails done? They're amazing. And long.
 @ It is said that, He is said to | It is said that, He is said to | It is said that, He is said to
 ! It's said to be the best restaurant in town.
 = [It is said] that the cat runs the company.
 = My uncle [is said to] have met Elvis.
-- It [is believed|believes|is believing] that the painting was made by a monkey.
+- It [is believed|believes|is believing] that the painting is a fake.
 - Grandma is thought [to be|be|being] in Las Vegas.
 - [It|There|He] is reported that a cow stopped the traffic.
 - The school toilet is said [to be|that is|being] haunted.
@@ -151,7 +151,7 @@ LWC('en', 4, `
 @ The passive with modals | Szenvedő szerkezet módbeli igékkel | Passiv med modalverber
 ! It should be fixed by Friday.
 = My pizza [should be delivered] soon. Please.
-= It [could have been] worse. The goat could have eaten the car.
+= It [could have been] worse. We could have missed the flight.
 - The cat's rules must [be followed|follow|be follow].
 - This mess [should have been|should been|should have be] cleaned up yesterday.
 - The wedding might [be cancelled|cancel|be cancel]. The groom is stuck in a tree.
@@ -162,20 +162,20 @@ LWC('en', 4, `
 @ was going to | was going to | was going to
 ! I was going to call you, I promise.
 = I [was going to] go to the gym, but my sofa said no.
-= It [was going to] be a quiet night. Then the neighbours got a parrot.
+= It [was going to] be a quiet night. Then my friends showed up.
 - We were going [to buy|buy|buying] a dog, but we came home with a pig.
 - I was going to [tell|told|telling] you! Eventually.
-- She [was going to|is going to|went to] become a lawyer, but she became a clown.
+- She [was going to|is going to|went to] become a lawyer, but she became a chef.
 - They [were going to|was going to|are going to] get married on a mountain, but nobody could climb it.
 - I thought the exam [was going to|is going to|will going to] be easy. I was wrong.
 - He was going to [cook|cooked|cooking], but we called the fire brigade first.
 @ be to, be due to | be to, be due to | be to, be due to
 ! The train is due to arrive at six.
-= The Queen [is to] visit our tiny village. Hide the goats.
+= The President [is to] visit our tiny village. Everyone is cleaning.
 = The pizza [is due to] arrive at eight.
 - The plane is due [to land|land|landing] at noon. With my suitcase, I hope.
 - You [are to|are|have] stay in bed until your temperature goes down.
-- The new zoo is [to be|be|being] opened by a famous penguin.
+- The new bridge is [to be|be|being] opened next month.
 - The cat's kittens are [due|due to|to due] next month.
 - The meeting is due [to start|start|starting] at ten. The coffee at nine.
 - All guests [are to|have|are] leave their shoes at the door.
@@ -275,7 +275,7 @@ LWC('en', 4, `
 ! I love cats, whereas my wife prefers dogs.
 = I like getting up early, [whereas] my cat likes getting me up early.
 = [While] my dog is friendly, my cat is planning world domination.
-- He's very quiet, [whereas|despite|although of] his parrot never stops talking.
+- He's very quiet, [whereas|despite|although of] his wife never stops talking.
 - [While|Despite|In spite] I understand your love for cheese, this is too much.
 - Some people love Mondays, [whereas|despite|so that] most people are normal.
 - My flat is tiny, [whereas|in spite|despite of] my cat's bed is huge.
@@ -303,7 +303,7 @@ LWC('en', 4, `
 - [Even if|Even though|In spite] I had the money, I wouldn't buy a boat. OK, I would.
 @ however, therefore, moreover | however, therefore, moreover | however, therefore, moreover
 ! It's expensive. However, it's worth it.
-= The plan is brilliant. [However], it involves a goat.
+= The plan is brilliant. [However], it's very expensive.
 = He ate all the cookies. [Therefore], he gets no dinner.
 - The car was cheap. [However|Therefore|Moreover], it had no doors.
 - The cat knocked over the plant. [Therefore|However|Although], she is in trouble.
@@ -319,7 +319,7 @@ LWC('en', 4, `
 - I'll never forget [seeing|to see|see] my dad on a skateboard.
 - Don't forget [to feed|feeding|feed] the cat. She won't forget.
 - She regrets [cutting|to cut|cut] her own fringe.
-- We regret [to announce|announcing|announce] that the clown is sick.
+- We regret [to announce|announcing|announce] that the flight is cancelled.
 - He went on [talking|to talk|talk] about his cat for two hours.
 - After the cat story, he went on [to talk|talk|talked] about his other cat.
 @ suggest, recommend | suggest, recommend | suggest, recommend
@@ -339,7 +339,7 @@ LWC('en', 4, `
 - My grandma encouraged me [to try|try|trying] skydiving.
 - They allowed us [to sleep|sleep|sleeping] in the museum.
 - She persuaded him [to wear|wear|wearing] the reindeer jumper.
-- The guide warned us [not to|to not|don't] feed the monkeys.
+- The guide warned us [not to|to not|don't] swim after dark.
 - My cat forced me [to get|get|getting] up at 5 a.m.
 - I'd advise you [to run|run|running]. Now.
 @ make, let, have, get someone do | make, let, have, get | make, let, have, get
@@ -370,7 +370,7 @@ LWC('en', 4, `
 - I love [—|the|a] chocolate more than people.
 - [The|—|A] chocolate you gave me has disappeared. Strange.
 - [—|The|An] honesty is important, so I ate your cake.
-- She works at [the|—|an] zoo near my house. She's a penguin's assistant.
+- She works at [the|—|an] hospital near my house. She's a nurse.
 - She goes to [—|the|a] bed at nine, like a grandma.
 - Can you pass [the|—|a] salt, please? And the chips. And the cake.
 @ advice, news, information | Megszámlálhatatlan főnevek | Utællelige navneord
@@ -398,11 +398,11 @@ LWC('en', 4, `
 = [Both] of my cats are evil.
 = Neither of them [is] sorry.
 - Either the cat or the dog [is|are|be] lying.
-- Both my uncles [are|is|be] clowns. Real ones.
+- Both my uncles [are|is|be] doctors.
 - [Neither|Either|Both] of my parents can whistle. It's sad.
 - You can have [either|both|neither] cookie. But only one!
 - Neither the teacher nor the students [were|was|is] awake.
-- [Both|Either|Neither] Anna and Ben brought a goat.
+- [Both|Either|Neither] Anna and Ben brought a cake. Two cakes!
 @ Compound adjectives | Összetett melléknevek | Sammensatte tillægsord
 ! It's a two-hour drive.
 = a [ten-minute] shower that lasted an hour
@@ -410,7 +410,7 @@ LWC('en', 4, `
 - It's a [two-hour|two-hours|two hour's] film about a sandwich.
 - She has a [five-year-old|five-years-old|five-year-olds] son who is smarter than me.
 - He's a [good-looking|good-look|good-looked] dog.
-- It was a [last-minute|last-minutes|lasts-minute] decision to buy the llama.
+- It was a [last-minute|last-minutes|lasts-minute] decision to go to Rome.
 - They live in a [three-bedroom|three-bedrooms|three bedrooms'] flat with eight cats.
 - I found a [ten-euro|ten-euros|ten euro's] note in my old jeans. Best day ever.
 # Reporting, further | Függő beszéd haladóknak | Indirekte tale for viderekomne
@@ -432,11 +432,11 @@ LWC('en', 4, `
 - I apologise [for|of|about to] my dog. He's very friendly. Too friendly.
 - She blamed me [for|of|with] the smell.
 - Grandpa insisted [on|for|to] driving. We prayed.
-- They congratulated us [on|for|of] our new baby goat.
+- They congratulated us [on|for|of] our new baby.
 - She thanked me [for|of|on] eating her broccoli.
 @ Reporting without changing tense | Függő beszéd igeidő-változás nélkül | Indirekte tale uden tidsskift
 ! She says she's on her way.
-= "I'm a vampire." → He says he [is] a vampire. He's been saying it since lunch.
+= "I'm on my way." → He says he [is] on his way. He's been saying it for an hour.
 = "Cats can't fly." → She said cats [can't] fly. My cat disagrees.
 - "I'm starving." → She says she [is|was|were] starving. She's eating.
 - "I love jazz." → He tells everyone he [loves|loved|love] jazz. He doesn't.
@@ -449,11 +449,11 @@ LWC('en', 4, `
 = My mum asked me where I [had been] all night.
 = She wanted to know [whether] I was the one who ate the cake.
 - They asked us how long we [had been|have been|had be] living in a tent.
-- She asked me [whether|that|what if] I could babysit her snake.
+- She asked me [whether|that|what if] I could babysit on Friday.
 - He wanted to know why I [hadn't called|didn't called|haven't call]. My phone was in the soup.
 - They asked if we [would|will|wills] come back. We said no.
 - She asked me what I [was doing|am doing|did doing] in her wardrobe.
-- He asked [if|that|what] the restaurant allowed goats.
+- He asked [if|that|what] the restaurant allowed dogs.
 @ said that or told me that | say vagy tell + that | say eller tell + that
 ! She told me that she loved it.
 = She [told] me that she was moving to the moon.
@@ -462,7 +462,7 @@ LWC('en', 4, `
 - She [told|said|explained] us that the trip was cancelled because of a goose.
 - They [said|told|said us] they would bring snacks. They brought celery.
 - I [told|said|explained] him the truth about his haircut.
-- She [mentioned|mentioned me|told] that she had a pet crocodile.
+- She [mentioned|mentioned me|told] that she was moving abroad.
 - My grandpa [told|said|explained] me a story that lasted three hours.
 # Emphasis | Nyomatékosítás | Fremhævelse
 @ What I need is... | What I need is... | What I need is...
@@ -481,7 +481,7 @@ LWC('en', 4, `
 = It's the smell [that] worries me.
 - [It was|There was|That was] in a lift that we met. It was stuck for six hours.
 - It's my brother [who|which|what] snores, not me.
-- It was yesterday [that|when it|which] the goat escaped.
+- It was yesterday [that|when it|which] I found out.
 - [It's|There's|That's] not money that makes you happy. It's pizza.
 - It was the trumpet [that|what|who] woke the whole street.
 - [It was|There was|What was] Grandma who started the food fight.

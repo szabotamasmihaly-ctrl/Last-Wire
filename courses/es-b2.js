@@ -4,7 +4,7 @@ LWC('es', 4, `
 ! Si yo hablara mejor, viviría aquí.
 = Quería que [hablaras] con el gato. Tú le caes mejor.
 = Mi abuela me pidió que la [llamara]. Desde la discoteca.
-- Mi madre quería que yo [estudiara|estudiaba|estudiar] Derecho. Estudié payaso.
+- Mi madre quería que yo [estudiara|estudiaba|estudiar] Derecho. Estudié cocina.
 - Te pedí que me [esperaras|esperabas|esperar]. ¿Por qué te comiste mi pizza?
 - Era importante que nadie [tocara|tocaba|tocar] el botón rojo. Alguien lo tocó.
 - No quería que el perro se [enterara|enteraba|enterar] de lo del gato.
@@ -23,7 +23,7 @@ LWC('es', 4, `
 @ Irregular: tuviera, fuera, hiciera | Rendhagyó: tuviera, fuera, hiciera | Uregelmæssig: tuviera, fuera, hiciera
 ! Si tuviera tiempo, iría.
 = Ojalá [tuviera] un dragón.
-= Me pidió que [fuera] su novio. Era una cabra.
+= Me pidió que [fuera] su novio. Le dije que sí.
 - Quería que [hicieras|hacieras|hacías] la cena. No que quemaras la cocina.
 - Me dijo que no le [dijera|diciera|decía] nada a nadie. Ya lo sabe todo el barrio.
 - No creía que el perro [pudiera|podiera|podía] abrir la nevera. Puede.
@@ -50,7 +50,7 @@ LWC('es', 4, `
 - Gasta dinero como si [fuera|es|sea] un jeque.
 - Actúa como si no [hubiera|hay|haya] roto el jarrón.
 - Mi madre me trata como si [tuviera|tengo|tenga] cinco años. Tengo treinta.
-- Corre como si lo [persiguiera|persigue|persiga] una cabra. Lo persigue una cabra.
+- Corre como si lo [persiguiera|persigue|persiga] la policía.
 - Come como si no [hubiera|hay|haya] mañana.
 - Mi abuela conduce como si [fuera|es|sea] piloto de Fórmula 1.
 ~ Gasta como si | fuera millonario.
@@ -66,14 +66,14 @@ LWC('es', 4, `
 - Espero que llegues bien. → Esperaba que [llegaras|llegues|llegabas] bien. Llegaste en burro.
 - Necesito que me llames. → Necesitaba que me [llamaras|llames|llamabas]. Estaba en el tejado.
 - Prefiero que te quedes. → Prefería que te [quedaras|quedes|quedabas]. Con la pizza.
-- Le digo que se calle. → Le dije al loro que se [callara|calle|callaba].
+- Le digo que se calle. → Le dije que se [callara|calle|callaba].
 @ Feelings in the past | Érzések a múltban | Følelser i datid
 ! Me encantó que vinieras.
 = Me alegró que [vinieras]. Más que nada por el pastel que trajiste.
 = Le molestaba que el gato [durmiera] en su cara.
 - Me sorprendió que mi padre no [dijera|dice|diga] nada del corte de pelo.
 - Nos encantó que nos [invitaran|invitan|inviten] a la boda del perro.
-- Me daba miedo que [hubiera|hay|haya] un payaso en el armario.
+- Me daba miedo que [hubiera|hay|haya] alguien en casa.
 - A mi abuela le preocupaba que yo no [comiera|come|coma]. Comí por tres.
 - Fue una pena que no [pudieras|puedes|puedas] venir. Hubo karaoke.
 - Me molestó que me [mintieras|mientes|mientas]. Sobre la pizza.
@@ -90,19 +90,19 @@ LWC('es', 4, `
 @ Looking for in the past | Keresés a múltban | At søge i datid
 ! Buscaba a alguien que me entendiera.
 = Buscaba un piso que [tuviera] sitio para mis diez gatos.
-= No había nadie que [supiera] arreglar el robot.
+= No había nadie que [supiera] arreglar el coche.
 - Necesitaba a alguien que me [ayudara|ayuda|ayude] a mover el sofá. Y al gato.
 - No conocía a nadie que [hablara|habla|hable] con las plantas. Ahora conozco a mi tía.
 - Querían una casa que [estuviera|está|esté] cerca de la heladería.
 - No encontré ningún jersey que le [gustara|gusta|guste] a la abuela.
-- ¿Había alguien que [supiera|sabe|sepa] bajar a la cabra del tejado?
+- ¿Había alguien que [supiera|sabe|sepa] hablar inglés?
 - Buscábamos un hotel que [admitiera|admite|admita] cerdos.
 @ para que in the past | para que a múltban | para que i datid
 ! Te lo dije para que no te preocuparas.
 = Escondí el chocolate [para que] no lo encontraras.
 = Te llamé para que me [rescataras] de la reunión.
 - Hablé despacio para que el gato me [entendiera|entiende|entienda].
-- Cerré la puerta para que no [entrara|entra|entre] la cabra.
+- Cerré la puerta para que no [entrara|entra|entre] el gato.
 - Les di dinero para que [compraran|compran|compren] pan. Compraron caramelos.
 - Te lo expliqué para que lo [supieras|sabes|sepas]. No para que lo publicaras.
 - Lo escondí para que nadie lo [encontrara|encuentra|encuentre]. Yo tampoco lo encuentro.
@@ -150,12 +150,12 @@ LWC('es', 4, `
 - Si [fuera|sería|soy] más alto, habría cogido las galletas de arriba.
 - Si hubiéramos ahorrado, ahora [tendríamos|teníamos|tengamos] una casa. O una moto.
 - Si [hablara|hablaría|hablo] italiano, no habría pedido una lámpara para cenar.
-- Si me hubieras escuchado, ahora no [tendrías|tenías|tengas] una cabra en el salón.
+- Si me hubieras escuchado, ahora no [tendrías|tenías|tengas] este problema.
 @ de + infinitive, en caso de que | de + főnévi igenév, en caso de que | de + infinitiv, en caso de que
 ! En caso de que llueva, lleva paraguas.
 = [De] haberlo sabido, habría traído pastel.
 = En caso de que [llegue] la suegra, escóndete.
-- [De|Si de|En] tener dinero, me compraría un pingüino.
+- [De|Si de|En] tener dinero, me compraría una casa.
 - En caso de que [veas|ves|ver] una araña, no me llames.
 - De [haberlo|lo haber|haberlo de] visto, no me lo habría comido.
 - Llévate un bocadillo por si la reunión [dura|dure|durará] mucho.
@@ -185,7 +185,7 @@ LWC('es', 4, `
 @ habría hecho | habría hecho | habría hecho
 ! Yo lo habría hecho igual.
 = Yo no [habría] comido eso.
-= ¿Qué habrías [hecho] tú con una cabra en el ascensor?
+= ¿Qué habrías [hecho] tú en mi lugar?
 - Con más tiempo, yo [habría|habiera|habió] terminado la serie. Entera.
 - Yo en tu lugar [habría|habiera|habió] escondido la tarta.
 - Nosotros [habríamos|habrían|habría] ido contigo, pero estábamos dormidos.
@@ -242,8 +242,8 @@ LWC('es', 4, `
 = Puedes usar mi coche siempre que lo [devuelvas] con ruedas.
 - No me llames a menos que [sea|es|será] una emergencia. De verdad.
 - Te presto el gato siempre que me lo [devuelvas|devuelves|devolverás] feliz.
-- A menos que [estudies|estudias|estudiarás], tendrás que trabajar con tu tío el payaso.
-- Iremos a la playa, siempre que no [llueva|llueve|lloverá] tiburones.
+- A menos que [estudies|estudias|estudiarás], no aprobarás el examen.
+- Iremos a la playa, siempre que no [llueva|llueve|lloverá].
 - No bailo, a menos que tú [bailes|bailas|bailarás] conmigo.
 - Siempre que [puedo|podré|poder], duermo la siesta.
 ~ Iré a la fiesta, | a menos que haya karaoke.
@@ -276,7 +276,7 @@ LWC('es', 4, `
 = El cuadro fue [pintado] por mi gato. Con la cola.
 - La casa fue [vendida|vendido|vendidas] con la suegra dentro.
 - Los ladrones fueron [detenidos|detenido|detenidas] porque se durmieron en el sofá.
-- Este poema fue [escrito|escrita|escritos] por un loro.
+- Este poema fue [escrito|escrita|escritos] por mi abuela.
 - Las galletas fueron [escondidas|escondidos|escondida] por la abuela. Ella no lo recuerda.
 - La pizzería [fue|era fue|estuvo fue] fundada por un gato. Dicen.
 - El ganador será [elegido|elegida|elegidos] por el perro.
@@ -284,8 +284,8 @@ LWC('es', 4, `
 ! Se alquila habitación.
 = Se [venden] gatos que no maúllan.
 = Se [busca] novio para la abuela.
-- Se [alquila|alquilan|alquilo] habitación con fantasma.
-- Se [buscan|busca|busco] payasos que no den miedo.
+- Se [alquila|alquilan|alquilo] habitación con vistas al mar.
+- Se [buscan|busca|busco] camareros para el verano.
 - En esta tienda se [arreglan|arregla|arreglo] corazones rotos.
 - Se [necesita|necesitan|necesito] un electricista valiente.
 - Aquí se [hacen|hace|hago] tartas para perros.
@@ -308,7 +308,7 @@ LWC('es', 4, `
 = La pizzería [está] cerrada. Es una tragedia.
 = Las galletas están [escondidas]. Muy escondidas.
 - La tele está [rota|rompida|roto]. El perro lo sabe.
-- El misterio de la tarta ya está [resuelto|resolvido|resuelta]. Fue el loro.
+- El misterio de la tarta ya está [resuelto|resolvido|resuelta]. Fue el perro.
 - Los deberes están [hechos|hacidos|hecho]. Por el gato.
 - La mesa está [puesta|ponida|puesto], pero el gato está encima.
 - Estamos [agotados|agotadas de|agotado] de no hacer nada.
@@ -343,7 +343,7 @@ LWC('es', 4, `
 - El trabajo se [volvió|puso en|hizo en] imposible cuando llegó el gato.
 - Te vas a [volver|volverse|volviendo] loco con tantos gatos.
 - Se [volvió|convertió|hizo en] muy tacaño. Cuenta las galletas.
-- La situación se ha [vuelto|volvido|convertido] peligrosa. La cabra está suelta.
+- La situación se ha [vuelto|volvido|convertido] complicada.
 @ hacerse: se hizo rico | hacerse: se hizo rico | hacerse: se hizo rico
 ! Se hizo famoso de la noche a la mañana.
 = Se [hizo] rico vendiendo calcetines para gatos.
@@ -369,11 +369,11 @@ LWC('es', 4, `
 = El sapo se [convirtió] en príncipe. La princesa prefería el sapo.
 = Mi perro llegó [a] ser el alcalde del pueblo.
 - El agua se convirtió [en|a|de] vino. Bueno, en zumo.
-- La rana se [convirtió|convertió|conviertió] en un vecino molesto.
+- Mi compañero de piso se [convirtió|convertió|conviertió] en mi mejor amigo.
 - Con esfuerzo, mi gato llegó a [ser|siendo|es] el jefe de la casa.
 - Mi habitación se ha convertido [en|a|de] un zoo.
-- Nunca [llegó|llegó de|llegó en] a ser famoso, pero tiene un loro que sí.
-- El hobby de mi tío se convirtió [en|a|por] un problema. Colecciona cabras.
+- Nunca [llegó|llegó de|llegó en] a ser famoso, pero su perro sí.
+- El hobby de mi tío se convirtió [en|a|por] un problema. Colecciona coches.
 ~ ponerse | nervioso
 ~ hacerse | rico
 ~ quedarse | sin dinero
@@ -394,9 +394,9 @@ LWC('es', 4, `
 = Estamos de [mudanza]. El gato no colabora.
 - Mi abuela [está|es|hay] de crucero. Otra vez.
 - Hoy estoy de buen [humor|humora|humores]. Hay pizza.
-- Mi tío está [de|en|a] payaso este verano. Bueno, como siempre.
+- Mi tío está [de|en|a] camarero este verano.
 - Llevar calcetines con sandalias [está|es|hay] de moda. Dice mi padre.
-- ¿[Estás|Eres|Hay] de broma? ¿Una cabra en el coche?
+- ¿[Estás|Eres|Hay] de broma? ¿Cien euros por una pizza?
 - El médico está [de|en|a] guardia y su gato también.
 @ ser for events: la fiesta es en mi casa | ser eseményekre: la fiesta es en mi casa | ser for begivenheder: la fiesta es en mi casa
 ! La fiesta es en mi casa.
@@ -411,9 +411,9 @@ LWC('es', 4, `
 @ es que..., resulta que | es que..., resulta que | es que..., resulta que
 ! Es que no tengo tiempo.
 = No puedo ir. [Es que] mi gato está triste.
-= [Resulta] que el fantasma era mi abuelo.
+= [Resulta] que el ruido era mi abuelo.
 - [Es que|Está que|Es de que] no tengo nada que ponerme. Solo cuarenta jerséis.
-- [Resulta|Resulto|Resulte] que la cabra sabía abrir puertas.
+- [Resulta|Resulto|Resulte] que el perro sabía abrir puertas.
 - No es [que|de que|—] no quiera bailar, es que no sé.
 - Lo [que|el que|qué] pasa es que me he comido tu pastel.
 - [Resulta|Resultó de|Resultaba de] que nadie sabía cocinar.
@@ -500,11 +500,11 @@ LWC('es', 4, `
 ! Cuento contigo.
 = Anoche [soñé con] una pizza gigante.
 = Puedes contar [con] nosotros. Excepto para mudanzas.
-- Sueño [con|en|de] tener un pingüino.
+- Sueño [con|en|de] vivir junto al mar.
 - Mi abuela se casó [con|a|en] un hombre veinte años más joven.
 - Me encontré [con|de|en] mi ex en la cola del baño.
 - ¿Te has enfadado [con|a|de] el gato? Él no se ha enterado.
-- No te metas [con|a|de] la cabra. Muerde.
+- No te metas [con|a|de] mi hermano.
 - Me conformo [con|a|de] poco: una pizza y una siesta.
 @ acordarse de, depender de | acordarse de, depender de | acordarse de, depender de
 ! Depende de ti.
@@ -537,6 +537,6 @@ LWC('es', 4, `
 - La tarta tiene que estar lista [para|por|de] el cumpleaños del gato.
 - Pasaré [por|para|de] tu casa luego. Ten galletas.
 - [Para|Por|De] ser un gato, sabe mucho de política.
-- Cambié mi bici [por|para|de] una cabra. No me arrepiento.
+- Cambié mi bici [por|para|de] un patinete. No me arrepiento.
 - Llévate un bocadillo por [si acaso|si caso|acaso si].
 `);

@@ -35,11 +35,11 @@ LWC('es', 3, `
 = Espero que [sea] una broma.
 = Quiero que [vayas] a la tienda. Necesitamos galletas urgentes.
 - Ojalá que el pastel [esté|está|estar] bueno. Lo hizo papá.
-- Es posible que mi vecino [sea|es|ser] un vampiro.
+- Es posible que mi vecino [sea|es|ser] famoso.
 - Quiero que [vayamos|vamos|ir] a la playa en pijama.
 - Espero que el examen no [sea|es|ser] tan difícil como mi vida.
 - Es mejor que los niños [estén|están|estar] en la cama antes de que vuelva mamá.
-- No quiero que [vayas|vas|ir] solo al baño del cine. Hay fantasmas.
+- No quiero que [vayas|vas|ir] solo a casa. Es muy tarde.
 @ Stem changes: pueda, quiera, duerma | Tőhangváltás: pueda, quiera, duerma | Stamskift: pueda, quiera, duerma
 ! Ojalá pueda ir.
 = Ojalá que [puedas] venir. Hay tarta.
@@ -68,7 +68,7 @@ LWC('es', 3, `
 - Espero que [lo paséis|lo pasáis|pasarlo] bien en la fiesta del abuelo.
 - [Ojalá|Ojalá de|Espero] mi gato aprenda a cocinar.
 - Espero que la pizza no [llegue|llega|llegar] fría.
-- Ojalá que me [toque|toca|tocar] la lotería. Me compraría un pingüino.
+- Ojalá que me [toque|toca|tocar] la lotería. Dejaría de trabajar.
 - Espero [verte|que te veo|que verte] pronto. Sin ese sombrero.
 - ¡Que [tengas|tienes|tener] un buen lunes! Si eso existe.
 @ pedir que, decir que, recomendar que | pedir que, decir que, recomendar que | pedir que, decir que, recomendar que
@@ -79,7 +79,7 @@ LWC('es', 3, `
 - Te recomiendo que [pruebes|pruebas|probar] la sopa. Bueno, mejor no.
 - Dile al perro que me [devuelva|devuelve|devolver] el zapato.
 - Les pido que [apaguen|apagan|apagar] el móvil. Y el cerebro no.
-- Te aconsejo que no [corras|corres|correr] detrás de la cabra.
+- Te aconsejo que no [corras|corres|correr] detrás del autobús.
 - Os ruego que [tengáis|tenéis|tener] paciencia. El abuelo está aparcando.
 ~ Dile a Ana | que me devuelva mi gato.
 ~ Te recomiendo | que no pruebes la sopa.
@@ -87,7 +87,7 @@ LWC('es', 3, `
 @ prefiero que, necesito que | prefiero que, necesito que | prefiero que, necesito que
 ! Necesito que me ayudes.
 = [Prefiero] que no cocines tú.
-= Necesito que me [expliques] por qué hay una cabra en el baño.
+= Necesito que me [expliques] cómo funciona esto.
 - Prefiero que [pidamos|pedimos|pedir] pizza. Es más seguro.
 - Necesito que alguien me [rasque|rasca|rascar] la espalda.
 - ¿Prefieres que [conduzca|conduzco|conducir] la abuela? Va a 200.
@@ -114,7 +114,7 @@ LWC('es', 3, `
 - Me alegra mucho que [vengáis|venís|venir]. Traed hielo.
 - Me alegra que [haya|hay|haber] pizza para todos.
 - Me encanta que mi perro [cante|canta|cantar] conmigo.
-- Me alegro [de|en|a] que la cabra esté bien.
+- Me alegro [de|en|a] que estés bien.
 @ me molesta que, odio que | me molesta que, odio que | me molesta que, odio que
 ! Me molesta que llegues tarde.
 = Me molesta que mi gato me [mire] así.
@@ -131,8 +131,8 @@ LWC('es', 3, `
 = Me preocupa que el perro [hable]. Sabe demasiado.
 - Temo que [sea|es|ser] demasiado tarde para pedir pizza.
 - Me preocupa que mi abuelo no [use|usa|usar] casco en la moto.
-- Tengo miedo de que la cabra me [muerda|muerde|morder] otra vez.
-- Me da miedo que [haya|hay|haber] un payaso debajo de la cama.
+- Tengo miedo de que el perro me [muerda|muerde|morder] otra vez.
+- Me da miedo que [haya|hay|haber] mucho tráfico.
 - Tengo miedo [de|a|en] que mi madre lea mis mensajes.
 - Nos preocupa que no [lleguéis|llegáis|llegar] antes que la tarta.
 @ es una pena que, es normal que | es una pena que, es normal que | es una pena que, es normal que
@@ -167,7 +167,7 @@ LWC('es', 3, `
 - No creo que [tengas|tienes|tener] razón. Pero di lo que quieras.
 - Pienso que mi abuela [va|vaya|ir] a ganar el concurso de baile.
 - No pienso que [vaya|va|ir] a llover pizza. Por desgracia.
-- ¿Crees que el payaso [vendrá|venir|viniendo] mañana?
+- ¿Crees que el técnico [vendrá|venir|viniendo] mañana?
 - No creo que [puedan|pueden|poder] meter un sofá en un taxi.
 @ dudo que, no estoy seguro de que | dudo que, no estoy seguro de que | dudo que, no estoy seguro de que
 ! No estoy seguro de que sea verdad.
@@ -198,7 +198,7 @@ LWC('es', 3, `
 - Quizás mi suegra no [sepa|sepe|saber] nuestra nueva dirección.
 - [A lo mejor|Al mejor|A la mejor] la pizza llega hoy.
 - Tal vez [sea|seas|ser] mejor no preguntar.
-- A lo mejor [es|sea|ser] un fantasma. O el gato.
+- A lo mejor [es|sea|ser] el viento. O el gato.
 ~ A lo mejor | está debajo de la cama.
 ~ Quizás | no lo sepa.
 ~ Puede que | llueva pizza.
@@ -228,14 +228,14 @@ LWC('es', 3, `
 = No [hagas] ruido. El bebé está dormido. Por fin.
 = No [vayas] a la cocina. Papá está cocinando.
 - No [digas|dices|di] eso delante de la abuela.
-- No [vengas|vienes|ven] con la cabra.
+- No [vengas|vienes|ven] tarde, por favor.
 - No [seas|eres|sé] malo con el gato. Él lo recuerda todo.
 - No [salgas|sales|sal] en pijama. Bueno, sí, pero el bueno.
 - No [pongas|pones|pon] los pies en la mesa. Ni la cabeza.
 - No [tengas|tienes|ten] miedo. Es solo una araña. Grande.
 @ usted, ustedes: pase, siéntense | usted, ustedes: pase, siéntense | usted, ustedes: pase, siéntense
 ! Siéntese, por favor.
-= [Pase], por favor. Cuidado con el loro.
+= [Pase], por favor. Cuidado con el escalón.
 = [Hablen] más bajo, por favor. El gato duerme.
 - [Siéntese|Siéntase|Séntese], señor. No, ahí no, ahí está el gato.
 - [Abran|Abren|Abro] la boca y digan "ah".
@@ -273,7 +273,7 @@ LWC('es', 3, `
 = Nunca [había visto] a mi padre bailar. Ni quería.
 - Yo ya [había|habías|habían] escondido las galletas.
 - Mis padres [habían|había|habíamos] vendido mi cama.
-- ¿Tú [habías|habíamos|habían] visto un pingüino antes?
+- ¿Tú [habías|habíamos|habían] estado aquí antes?
 - Nosotros no [habíamos|habían|había] terminado, pero el camarero se llevó la pizza.
 - La abuela ya se [había|habían|habíamos] ido a la discoteca.
 - Nunca [había|habido|habiendo] comido una pizza tan grande.
@@ -281,7 +281,7 @@ LWC('es', 3, `
 ! Nunca había visto algo así.
 = El gato ya había [hecho] un desastre.
 = Nadie lo había [dicho] en voz alta.
-- Nunca había [visto|veído|vido] a una cabra en bicicleta.
+- Nunca había [visto|veído|vido] tanta gente en la playa.
 - ¿Quién había [roto|rompido|rompió] la tele? El perro miraba al suelo.
 - Ya habíamos [escrito|escribido|escribiendo] la carta de amor. Para la pizza.
 - Alguien había [abierto|abrido|abrió] la nevera. Había huellas de gato.
@@ -319,7 +319,7 @@ LWC('es', 3, `
 - Cuando me desperté, el ladrón ya se [había ido|fue ido|iba ido] con mi pizza.
 - De repente [vi|veí|vió yo] una luz. Era la nevera.
 - Todos [estaban|estaba|estabas] muy nerviosos. El abuelo iba a cantar.
-- Al final [descubrimos|descubriemos|descubrimo] la verdad: había sido el loro.
+- Al final [descubrimos|descubriemos|descubrimo] la verdad: había sido el perro.
 # The conditional | A feltételes mód | Konditionalis
 @ hablaría, comería | hablaría, comería | hablaría, comería
 ! Me encantaría.
@@ -333,7 +333,7 @@ LWC('es', 3, `
 - Mi madre nunca [diría|diríamos|dirías] una palabrota. Bueno, una vez.
 @ Irregular: tendría, haría, podría | Rendhagyó: tendría, haría, podría | Uregelmæssig: tendría, haría, podría
 ! Yo podría ayudarte.
-= Yo [tendría] cuidado con esa cabra.
+= Yo [tendría] cuidado con ese chico.
 = ¿[Podrías] dejar de cantar?
 - Yo que tú, no lo [haría|hacería|hacía]. La abuela te está mirando.
 - Con más dinero, [saldríamos|saliríamos|salieríamos] a cenar. A cenar pizza.
@@ -353,7 +353,7 @@ LWC('es', 3, `
 - [Querría|Quereria|Quiería] hablar con el gato que manda aquí.
 - ¿Te [importaría|importarías|importaríamos] bajar la trompeta?
 - ¿Me [podría|podríamos|poderías] decir dónde está el baño? Es urgente.
-- [Preferiría|Preferería|Prefiriría] sentarme lejos del payaso.
+- [Preferiría|Preferería|Prefiriría] sentarme junto a la ventana.
 @ Advice: deberías, yo que tú | Tanács: deberías, yo que tú | Råd: deberías, yo que tú
 ! Yo que tú, lo haría.
 = [Deberías] dormir. Son las cinco.
@@ -382,7 +382,7 @@ LWC('es', 3, `
 - Mi madre dice que la cena [está|esté|estar] lista. El detector de humo dice lo mismo.
 - El perro dice que no [tiene|tenga|tener] hambre. Mentira.
 - Dicen que este restaurante [es|sea|ser] muy bueno. Lo dicen los dueños.
-- Pedro dice que [viene|venga|venir] mañana. Con su cabra.
+- Pedro dice que [viene|venga|venir] mañana. Con su novia.
 - El profesor dice que [hay|haya|haber] examen el lunes. ¿Por qué?
 - Dice [que|de que|—] no puede venir. Tiene que peinar al gato.
 @ dijo que + imperfect | dijo que + imperfecto | dijo que + imperfecto
@@ -399,7 +399,7 @@ LWC('es', 3, `
 ! Me dijo que ya había comido.
 = "Perdí el móvil." → Dijo que [había perdido] el móvil. Estaba en su mano.
 = "He comido." → Dijo que [había comido]. Tres veces.
-- "Vi un fantasma." → Dijo que [había visto|había veído|habido visto] un fantasma.
+- "Vi a tu ex." → Dijo que [había visto|había veído|habido visto] a mi ex.
 - "Terminé." → Dijo que [había terminado|había terminó|habido terminado]. No había empezado.
 - "Hemos llegado." → Dijeron que [habían llegado|habían llegó|habido llegado]. A la ciudad equivocada.
 - "Lo hice yo." → Dijo que lo [había hecho|había hacido|habido hecho] el gato.
@@ -447,13 +447,13 @@ LWC('es', 3, `
 - Es el pueblo [donde|que donde|cual] mi abuela es la reina.
 - Busco un sitio [donde|quien|cuando] esconder el chocolate.
 - El restaurante [donde|cuyo|quien] cenamos tenía un pelo en cada plato.
-- La fiesta [a donde|a quien|al que donde] fuimos estaba llena de payasos.
-- No conozco el barrio [donde|quien|cual] vive tu cabra.
+- La fiesta [a donde|a quien|al que donde] fuimos estaba llena de gente.
+- No conozco el barrio [donde|quien|cual] vive tu novia.
 @ el que, la que, con quien | el que, la que, con quien | el que, la que, con quien
 ! Es la persona con quien vivo.
 = La chica [con la que] bailé era mi profesora. Qué vergüenza.
 = El amigo [con quien] viajo ronca como un tren.
-- El chico [con el que|con la que|con que el] salgo tiene un loro que habla.
+- El chico [con el que|con la que|con que el] salgo cocina muy bien.
 - La empresa [para la que|para el que|para que la] trabajo hace calcetines para gatos.
 - Las personas [con las que|con los que|con las cual] vivo son tres gatos.
 - Es el vecino [del que|de la que|de quien que] te hablé. El del trombón.
@@ -477,7 +477,7 @@ LWC('es', 3, `
 = Busco un piso que [tenga] sitio para diez gatos.
 = Tengo un piso que [tiene] sitio para un gato. Pequeño.
 - Busco a alguien que [sepa|saber|sabiendo] bajar gatos de los árboles.
-- Conozco a alguien que [sabe|sepa|saber] hablar con las cabras.
+- Busco a alguien que [sepa|sabe|saber] arreglar bicis.
 - ¿Hay alguien aquí que [cocine|cocinar|cocinando] mejor que mi padre? Todos.
 - No hay nadie que [quiera|quiere|querer] probar mi sopa.
 - Quiero un trabajo que me [deje|dejar|dejando] dormir la siesta.
@@ -489,7 +489,7 @@ LWC('es', 3, `
 = Hablo despacio para que el gato me [entienda].
 - Trabajo [para|para que|para de] comprar pizza.
 - Trabajo para que mis gatos [vivan|viven|vivir] como reyes.
-- Cierra la puerta para que no [entre|entra|entrar] la cabra.
+- Cierra la puerta para que no [entre|entra|entrar] el frío.
 - Te llamo para que me [traigas|traes|traer] papel higiénico. Urgente.
 - Estudio [para|para que|para de] aprobar. Y para que mi madre me deje en paz.
 - Lo explico otra vez para que lo [entendáis|entendéis|entender]. Y el perro también.
@@ -504,7 +504,7 @@ LWC('es', 3, `
 - Siempre como chocolate cuando [estoy|esté|estaré] triste.
 - Cuando [seas|eres|serás] mayor, entenderás los chistes de papá. O no.
 ~ Cuando llegues, | llámame.
-~ Cuando tenga dinero, | me compraré un pingüino.
+~ Cuando tenga dinero, | me compraré un coche.
 ~ Cuando era niño, | comía arena.
 @ hasta que, en cuanto | hasta que, en cuanto | hasta que, en cuanto
 ! Te llamo en cuanto llegue.

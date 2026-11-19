@@ -5,7 +5,7 @@ LWC('en', 5, `
 = [Never have I] seen a cat look so smug.
 = Rarely [does my dad] admit he's lost.
 - Never [have I seen|I have seen|I saw] a man eat soup with a fork so confidently.
-- Seldom [do we|we do|we] get visitors. We think it's the goat.
+- Seldom [do we|we do|we] get visitors. We think it's the stairs.
 - Rarely [has he|he has|he] been so quiet. He must be planning something.
 - Never [had she|she had|she] felt so betrayed. Someone had eaten her leftovers.
 - Seldom [does it|it does|it] snow here, which is why nobody can drive in it.
@@ -45,12 +45,12 @@ LWC('en', 5, `
 - Not until I tasted it [did I|I did|I] believe the soup was chocolate.
 @ Little did I know | Little did I know | Little did I know
 ! Little did I know what was coming.
-= [Little did] I know the goat could open doors.
+= [Little did] I know she was his sister.
 = Under no circumstances [should you] feed it after midnight.
 - Little [did they|they did|they] realise the "puppy" was a wolf.
 - Under no circumstances [are you|you are|you] to tell Grandma about TikTok.
 - On no account [should you|you should|you] reply all.
-- Little [did she|she did|she] suspect that her parrot had told everyone.
+- Little [did she|she did|she] suspect that her kids had planned a party.
 - In no way [is this|this is|this] my fault. It's the cat's.
 - At no time [was I|I was|I] told the party was fancy dress.
 # Conditionals, advanced | Feltételes mondatok, haladó | Betingelser, avanceret
@@ -81,7 +81,7 @@ LWC('en', 5, `
 - I'll lend you my jacket [provided|provide|providing to] you don't eat in it.
 - [Supposing|Suppose to|Supposed] your cat could talk, what would she complain about first?
 - [As long as|As soon|So long] there's cake, I'm happy.
-- You can have a party [on condition that|on condition|in condition that] the goat stays outside.
+- You can have a party [on condition that|on condition|in condition that] you clean up afterwards.
 - [Assuming|Assume|Assumed] the bus actually comes, we'll be there by noon.
 - [Providing|Provide|Provided to] Grandpa doesn't drive, we'll arrive alive.
 @ otherwise, or else | otherwise, or else | otherwise, or else
@@ -101,7 +101,7 @@ LWC('en', 5, `
 - If the pizza place were [to close|close|closing], the whole street would go into mourning.
 - If anything [should|would|will] happen to my plant, I'll know it was you.
 - What would you say if I [were to|was going|will] dye my hair green?
-- If you should [change|changed|changing] your mind about the llama, call me.
+- If you should [change|changed|changing] your mind about the job, call me.
 - If it were [to snow|snow|snowing] in July, my dad would still go swimming.
 - If my mother [should|would|shall to] call, tell her I've moved to Peru.
 # Unreal and formal forms | Irreális és választékos formák | Uvirkelige og formelle former
@@ -110,11 +110,11 @@ LWC('en', 5, `
 = I suggest that he [take] a shower before the date.
 = The cat insists that breakfast [be] served at 5 a.m.
 - The doctor recommended that Dad [stop|stops|stopped] eating cheese at midnight.
-- We insist that the clown [leave|leaves|left] immediately.
-- It's essential that the goat [be|is|are] kept away from the wedding cake.
+- We insist that he [leave|leaves|left] immediately.
+- It's essential that the cake [be|is|are] kept in the fridge.
 - She demanded that he [apologise|apologises|apologised] to her cactus.
 - I propose that the meeting [be|is|was] replaced by a nap.
-- They asked that guests [not bring|don't bring|not bringing] their pet snakes.
+- They asked that guests [not bring|don't bring|not bringing] their kids.
 @ would rather + past | would rather + múlt | would rather + datid
 ! I'd rather you didn't tell anyone.
 = I'd rather you [didn't] sing at my wedding.
@@ -151,7 +151,7 @@ LWC('en', 5, `
 = I wish my cat [would] respect me.
 - I wish I [could|can|will] come, but I have a very important nap.
 - I wish my uncle [would|will|does] stop explaining my own job to me.
-- I wish I [could have|can have|will have] seen his face when the goat walked in.
+- I wish I [could have|can have|will have] seen his face when she said yes.
 - I wish you [wouldn't|won't|don't] chew so loudly. I can hear you from Spain.
 - She wishes she [could|can|will] eat like a teenager and look like a model.
 - I wish the neighbour's dog [would|will|does] stop auditioning for the opera.
@@ -174,7 +174,7 @@ LWC('en', 5, `
 - There's nothing on TV. We might [as well|well as|so well] go to bed at eight like grandparents.
 - He could [well|good|very] be the worst driver in Europe.
 - We've already eaten half the cake. We may as [well|good|soon] finish it.
-- That might well [be|is|being] true, but it's still a goat in a suit.
+- That might well [be|is|being] true, but it's still too expensive.
 - You might as well [tell|told|telling] him. The whole office knows.
 @ dare and need | dare és need | dare og need
 ! How dare you!
@@ -209,7 +209,7 @@ LWC('en', 5, `
 # Participles and fronting | Igenevek és előre vetés | Participier og fremrykning
 @ Having been, Not having | Having been, Not having | Having been, Not having
 ! Not having eaten all day, I was starving.
-= [Having been] bitten twice, I no longer pet the hamster.
+= [Having been] burned twice, I no longer trust that airline.
 = [Not having] read the book, I nodded a lot in the book club.
 - [Having been|Having be|Been having] told about the free pizza, everyone came.
 - [Not having|Having not to|No having] a key, I climbed in through the cat flap.
@@ -250,7 +250,7 @@ LWC('en', 5, `
 @ Fronting for emphasis | Nyomatékos előre vetés | Fremrykning for at fremhæve
 ! That I can't promise.
 = [That] I will never understand.
-= [Into the kitchen] walked a goat.
+= [Into the room] walked my ex.
 - Into the meeting [ran the dog|the dog ran it|ran it the dog].
 - [Such|So|Such a] was his hunger that he ate the decorations.
 - On the pillow [lay a dead mouse|a dead mouse lay it|lay it a dead mouse]. A gift from the cat.
@@ -264,20 +264,20 @@ LWC('en', 5, `
 = My grandma is said [to have been] a spy.
 - The cat is believed [to have eaten|to eat have|having eaten] the evidence.
 - The cake is thought [to have been|to be have|to have be] baked in 1987.
-- He is said [to have|having|to has] a pet crocodile in his bath.
-- The clowns are reported [to have left|to leave have|left] the circus in a hurry.
+- He is said [to have|having|to has] three houses in Spain.
+- The players are reported [to have left|to leave have|left] the hotel in a hurry.
 - The ship is thought [to have sunk|to sink have|having sink] because of a very heavy cake.
 - She is known [to have worked|to work have|worked to] as a lion tamer.
 @ There is said to be | There is said to be | There is said to be
 ! There's said to be a great view from the top.
-= [There is said to be] a ghost in the staff toilet.
+= [There is said to be] a great café near the station.
 = There are believed [to be] three cats living in our walls.
 - There [is thought|thinks|is think] to be a problem with the engine. It's on fire.
-- There are said [to be|being|be] crocodiles in the hotel pool.
+- There are said [to be|being|be] wolves in these mountains.
 - There [is believed|believes|believed] to have been a food fight at the wedding.
 - There are reported [to be|being|have] long queues for the free pizza.
 - There is known [to be|being|be] a cure for Mondays. It's called Friday.
-- There [seems|seem it|it seems] to be a goat in your car.
+- There [seems|seem it|it seems] to be a problem with your card.
 @ needs doing, wants cleaning | needs doing, wants cleaning | needs doing, wants cleaning
 ! My car needs washing.
 = The cat [needs feeding]. Constantly.
@@ -291,7 +291,7 @@ LWC('en', 5, `
 @ get done, have done: causative | Műveltetés: get, have | Kausativ: get, have
 ! I need to get my phone fixed.
 = I must [get my car washed]. Someone wrote "clean me" on it.
-= She [had her phone stolen] by a monkey.
+= She [had her phone stolen] at the airport.
 - We need to get the roof [fixed|fix|fixing]. It's raining in the bath.
 - I had my sandwich [stolen|steal|stealing] by a seagull on holiday.
 - Get your hair [cut|cutting|to cut]! You look like a mop.
@@ -306,7 +306,7 @@ LWC('en', 5, `
 - It [has been|has|have been] reported that a cow is blocking the motorway.
 - [It|There|This] is expected that Grandpa will win the dance-off.
 - It is [said|saying|say] that the school canteen once served real food.
-- [It was|There was|They were] decided that the goat would not attend the wedding.
+- [It was|There was|They were] decided that the meeting would be online.
 - It [is|has|was being] known that he cheats at board games.
 # Linking, advanced | Kötőszavak, haladó | Bindeord, avanceret
 @ notwithstanding, albeit | notwithstanding, albeit | notwithstanding, albeit
@@ -338,7 +338,7 @@ LWC('en', 5, `
 - The man [to whom|to who|whom to] I spoke turned out to be a mannequin.
 - This is the hour [during which|which during|during that] my cat sings.
 - A rule [whereby|whereas|wherein by] whoever burns dinner buys the pizza.
-- The reason [for which|which for|for what] he left remains a mystery. And a goat.
+- The reason [for which|which for|for what] he left remains a mystery.
 @ given that, seeing that | given that, seeing that | given that, seeing that
 ! Given that it's raining, let's stay in.
 = [Given that] he's a cat, he plays the piano quite well.
@@ -355,7 +355,7 @@ LWC('en', 5, `
 = It helped, [to the extent that] I stopped crying.
 - The plan succeeded [in so far as|in so far that|in so as] nobody died.
 - He's right, [to the extent that|to the extent what|in the extent that] the cat is the boss.
-- [As far as|So far as I|As far that] I know, the goat is still in the car.
+- [As far as|So far as I|As far that] I know, the shop is still open.
 - [As far as|As long as of|So long that] I'm concerned, Mondays should be illegal.
 - She contributed, [inasmuch as|in as much that|inasmuch that] she ate the snacks.
 - [To the best of|To the best for|At the best of] my knowledge, the cake was never there.
@@ -364,10 +364,10 @@ LWC('en', 5, `
 ! Tea or coffee? The latter, please.
 = Of cats and dogs, I prefer [the latter]. Cats prefer the former.
 = Of pizza and salad, [the former] is better for the soul.
-- I met Tom and his parrot; [the former|the formers|the first one of] talked more.
+- I met Tom and his dad; [the former|the formers|the first one of] talked more.
 - Between sleeping and running, I choose [the latter|the later|the last of]. Just kidding.
 - Of the two plans, [the former|the formal|the formerly] involves less screaming.
-- Anna and her goat came; [the latter|the later|the lately] ate the curtains.
+- Anna and her dog came; [the latter|the later|the lately] ate the cake.
 - Of walking and taking a taxi, [the latter|the later|the lattest] is faster and lazier.
 - He studied law and magic, [the former|the formerly|the formal] at Oxford.
 @ each other, one another | each other, one another | each other, one another
@@ -378,7 +378,7 @@ LWC('en', 5, `
 - The guests gave [one another|one others|another one] terrible presents.
 - We've annoyed [each other|each others|us each] for twenty years.
 - My parents never speak to [each other|each another|themself] during board games.
-- The two teams blamed [one another|ones another|another one] for the goat.
+- The two teams blamed [one another|ones another|another one] for the loss.
 - Do you two know [each other|each others|yourself]? From prison? I'm joking.
 @ such as, so as | such as, so as | such as, so as
 ! Bring something light, such as fruit.
@@ -399,10 +399,10 @@ LWC('en', 5, `
 - Take [whichever|whatever|whoever] seat is not covered in cat hair.
 - [Whoever|Whatever|Whichever] ate my lunch will be found.
 - [Whenever|Whatever|However] I sit down, the cat appears.
-- [However|Whatever|Whoever] you look at it, that's a goat in a dress.
+- [However|Whatever|Whoever] you look at it, that's a bad idea.
 @ Agreement: neither of, none of, a number of | Egyeztetés: neither of, none of, a number of | Kongruens: neither of, none of, a number of
 ! None of us has ever done this before.
-= A number of guests [have] complained about the clown.
+= A number of guests [have] complained about the noise.
 = The number of cats in my house [is] growing.
 - A number of my colleagues [are|is|be] secretly asleep right now.
 - The number of selfies taken at weddings [has|have|are] doubled.
@@ -418,7 +418,7 @@ LWC('en', 5, `
 - We watched the cake [collapse|to collapse|collapses].
 - I felt something [crawl|to crawl|crawls] up my leg. I left the picnic.
 - I heard someone [eating|to eat|eaten] crisps in the library.
-- Did you see the goat [jump|to jump|jumped] onto the car?
+- Did you see him [jump|to jump|jumped] into the pool?
 - She caught him [stealing|to steal|stolen] her chips.
 - I've never heard my boss [laugh|to laugh|laughs]. Is she a robot?
 @ mean, go on, try: two meanings | mean, go on, try: két jelentés | mean, go on, try: to betydninger
@@ -435,12 +435,12 @@ LWC('en', 5, `
 ! I would have liked to stay longer.
 = I [would have liked to] meet the dog first.
 = She'd have loved [to see] her husband's face.
-- I would have liked [to see|seeing|saw] the clown fall over. Again.
+- I would have liked [to see|seeing|saw] the end of the match.
 - We'd have preferred [to stay|staying|stayed] at home with the cat.
 - He would have loved [to be|being|been] there when the cake exploded.
 - I'd [have liked|liked have|have like] to help, but I was busy hiding.
 - They would have hated [to miss|missing|missed] Grandma's tango.
-- She would [have preferred|preferred have|have prefer] to know about the goat earlier.
+- She would [have preferred|preferred have|have prefer] to know about it earlier.
 @ The more ..., the more ... | The more ..., the more ... | The more ..., the more ...
 ! The more I think about it, the less I like it.
 = [The more] I eat, [the hungrier] I get.
@@ -500,7 +500,7 @@ LWC('en', 5, `
 - "Did the cat forgive you?" "I'm afraid [not|no|don't]."
 - "Will Grandma behave?" "I [don't think so|think not so|don't think it]."
 - "Can we go home now?" "I [suppose so|suppose it|suppose yes]."
-- "Is the goat in the car again?" "I hope [not|no|don't]."
+- "Is it going to rain tomorrow?" "I hope [not|no|don't]."
 - "Has he eaten all the biscuits?" "It [seems so|seems it|seems that]."
 @ So do I, nor do I, nor can she | So do I, nor do I | So do I, nor do I
 ! I can't swim. Nor can I.

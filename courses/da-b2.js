@@ -137,7 +137,7 @@ LWC('da', 4, `
 - Vi [ville|vil|villet] have danset, hvis der havde været musik.
 - Ville du have [sagt|sagde|siger] ja, hvis jeg havde spurgt?
 - Katten ville have [spist|spiste|spiser] fisken, hvis den havde set den.
-- De [ville|vil|villet] have købt huset, hvis det ikke havde haft et spøgelse.
+- De [ville|vil|villet] have købt huset, hvis det ikke havde været så dyrt.
 @ har kunnet, har måttet | har kunnet, har måttet | har kunnet, har måttet
 ! Jeg har ikke kunnet sove.
 = Jeg har ikke [kunnet] sove, siden naboen fik trommer.
@@ -255,7 +255,7 @@ LWC('da', 4, `
 - Vi byggede huset [selv|selve|selvet]. Det står skævt.
 @ begge, hver, hvert | begge, hver, hvert | begge, hver, hvert
 ! Begge dele er fine.
-= [Begge] mine brødre er klovne. Professionelle.
+= [Begge] mine brødre er læger.
 = [Hver] morgen drikker jeg tre kopper kaffe.
 - Vi fik [hver|hvert|hvere] en kage. Jeg fik to.
 - [Hvert|Hver|Hvere] år siger han, at han vil løbe et maraton.
@@ -263,7 +263,7 @@ LWC('da', 4, `
 - [Hver|Hvert|Hvere] gang jeg synger, går hunden.
 - De kigger på [hinanden|hinandens|hver anden] og griner.
 - Jeg spiser en kage [hver|hvert|hvere] dag. For mit helbred.
-~ Begge mine brødre | er klovne.
+~ Begge mine brødre | er læger.
 ~ Hver morgen | drikker jeg tre kopper kaffe.
 ~ Hver gang jeg synger, | går hunden.
 # Clever conjunctions | Haladó kötőszavak | Avancerede bindeord
@@ -390,7 +390,7 @@ LWC('da', 4, `
 - Man bedes [slukke|slukker|slukket] mobiltelefonen.
 - Vi skal hermed [meddele|meddeler|meddelt], at pizzaen er spist.
 - De bedes [udfylde|udfylder|udfyldt] skemaet. Alle 40 sider.
-- Vi [anmoder|anmode|anmodet] Dem om at fjerne Deres ged.
+- Vi [anmoder|anmode|anmodet] Dem om at flytte Deres bil.
 - Tak for Deres [henvendelse|henvende|henvendt].
 @ vildt, fedt, nå | vildt, fedt, nå | vildt, fedt, nå
 ! Hvor er det fedt!
@@ -451,7 +451,7 @@ LWC('da', 4, `
 = Hun har [is] i maven. Hun går aldrig i panik.
 = Han står med håret i [postkassen]. Alt gik galt.
 - Det er en [smal|smalle|smalt] sag. Jeg gør det med lukkede øjne.
-- Han har skudt [papegøjen|papegøje|papegøjer]. Han vandt en ged.
+- Han har skudt [papegøjen|papegøje|papegøjer] i tivoli. Han vandt en bamse.
 - Han hælder vand ud af [ørerne|øre|ører]. Ingen forstår ham.
 - Vi sidder i [saksen|saks|sakse]. Bilen er væk.
 - Hun tog fusen [på|i|af] ham. Kagen var af pap.
@@ -491,7 +491,7 @@ LWC('da', 4, `
 ! Kender du ham?
 = Jeg [ved], at du har spist kagen.
 = Jeg [kender] din mor. Hun har fortalt alt.
-- [Kender|Ved|Kan] du min bror? Han er klovn.
+- [Kender|Ved|Kan] du min bror? Han er kok.
 - [Ved|Kender|Kan] du, hvad klokken er?
 - Hun [kan|ved|kender] tre sprog. Og hundesprog.
 - Jeg [kender|ved|kan] en god restaurant. Den har ingen mad.
@@ -526,5 +526,5 @@ LWC('da', 4, `
 - Gør, [som|sig|det] jeg siger, ikke som jeg gør.
 - Hun er [ligesom|lige|liges] sin far: altid sulten.
 - Det er [lige|ligesom|liges] meget. Jeg spiser den alligevel.
-- Han arbejder [som|sig|det] klovn. Og som tandlæge.
+- Han arbejder [som|sig|det] tandlæge.
 `);

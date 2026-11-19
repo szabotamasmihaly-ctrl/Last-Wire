@@ -44,7 +44,7 @@ LWC('es', 2, `
 ! Te lo dije.
 = No [pude] dormir. Mi gato roncaba.
 = ¿Qué [dijiste]? Tenía la boca llena.
-- Mi loro [dijo|decí|dijió] una palabra muy fea delante de la abuela.
+- Mi hijo [dijo|decí|dijió] una palabra muy fea delante de la abuela.
 - Yo [puse|poní|pusé] las llaves en la nevera. Otra vez.
 - ¿Por qué no [viniste|veniste|vino] a mi fiesta? Había tarta.
 - Nosotros no [pudimos|podimos|pudieron] entrar. El perro cerró la puerta.
@@ -54,7 +54,7 @@ LWC('es', 2, `
 @ Imperfect: hablaba, comía | Imperfecto: hablaba, comía | Imperfecto: hablaba, comía
 ! Cuando era niño, vivía en el campo.
 = De niño [comía] arena.
-= Antes [teníamos] una cabra que se llamaba Pepe.
+= Antes [teníamos] un perro que se llamaba Pepe.
 - Cuando era pequeño, [creía|creyó|creo] que los gatos hablaban.
 - Mi abuela [cantaba|cantaban|cantabas] en la ducha y los vecinos aplaudían.
 - Nosotros [íbamos|ibamos|íbais] a la playa con el gato.
@@ -123,7 +123,7 @@ LWC('es', 2, `
 - El perro ha [roto|rompido|rompió] el sofá. Otra vez.
 - Hemos [vuelto|volvido|vuelvido] a casa sin el abuelo. ¡Vamos!
 - ¿Quién ha [abierto|abrido|abrieto] la nevera? Solo hay un limón.
-- No me has [dicho|decido|dichado] que tu novio es un payaso.
+- No me has [dicho|decido|dichado] que tu novio es médico.
 - Mis hermanos han [puesto|ponido|ponesto] un pez en la bañera.
 @ ya, todavía no | ya, todavía no | ya, todavía no
 ! Todavía no he terminado.
@@ -161,7 +161,7 @@ LWC('es', 2, `
 = ¿El pastel? Ya [lo] he comido.
 = ¿La pizza? El perro [la] tiene.
 - ¿Tienes mis calcetines? Sí, [los|las|lo] tengo puestos.
-- ¿Conoces al hombre de la cabra? Sí, [lo|la|le lo] conozco.
+- ¿Conoces al hombre del bar? Sí, [lo|la|le lo] conozco.
 - Compré galletas y [las|los|la] escondí. No las encuentro.
 - ¿Dónde está mi móvil? No [lo|la|los] encuentro. Ah, en mi mano.
 - ¿Ves a las gallinas? No, no [las|los|la] veo. ¡Se escaparon!
@@ -172,7 +172,7 @@ LWC('es', 2, `
 = [Les] escribo cartas a mis gatos.
 - [Le|Lo|La] dije la verdad a mamá. Ahora estoy castigado.
 - ¿[Les|Los|Le] has contado el chiste a tus abuelos?
-- [Le|Les|La] compré flores a mi profesora. Se las comió la cabra.
+- [Le|Les|La] compré flores a mi profesora. Le encantaron.
 - A los gatos [les|le|los] gusta dormir en el teclado.
 - ¿Qué [le|lo|la] pasa a Ana? Ha visto una araña.
 - [Les|Le|Los] explico los deberes a los perros.
@@ -265,7 +265,7 @@ LWC('es', 2, `
 - El año que viene [estudiaré|estudiaba|estudié] para ser un gato.
 - ¿[Vendrás|Vendrés|Venirás] a la boda de mi perro?
 - Nosotros [viviremos|vivimos ayer|vivíamos] en una casa de chocolate.
-- Los robots [harán|hicieron ayer|hacían] nuestros deberes.
+- Mis padres [harán|hicieron ayer|hacían] la cena esta noche.
 - Te [llamaré|llamé ayer|llamaba] cuando me despierte. El martes.
 - Mi hermana [será|serás|fue ayer] presidenta. Ya manda mucho.
 @ Irregular future: tendré, haré, podré | Rendhagyó jövő: tendré, haré | Uregelmæssig futurum: tendré, haré
@@ -277,7 +277,7 @@ LWC('es', 2, `
 - ¿[Sabrás|Saberás|Sabrá tú] cocinar sin quemar la casa?
 - Mi madre [dirá|decirá|decerá] que no. Siempre dice que no.
 - [Habrá|Haberá|Hayrá] pizza para todos. Bueno, para mí.
-- Mis primos [vendrán|venirán|venderán] con su cabra.
+- Mis primos [vendrán|venirán|venderán] con sus hijos.
 @ ir a or future? | ir a vagy jövő idő? | ir a eller futurum?
 ! Va a llover.
 = Esta tarde [voy a] dormir la siesta. Tres horas.
@@ -336,7 +336,7 @@ LWC('es', 2, `
 - Fui al mercado [para|por|de] comprar una gallina.
 - Corrimos [por|para|de] la playa. Nos perseguía un perro.
 - El tren [para|por|de para] Sevilla sale sin mí.
-- Cambié mi bici [por|para|de] una cabra.
+- Cambié mi bici [por|para|de] un patinete.
 - Estudio mucho [para|por|de] aprobar. Bueno, un poco.
 - Llegué tarde [por|para|de] el tráfico. Y por la cama.
 ~ Gracias | por la cena.
@@ -349,7 +349,7 @@ LWC('es', 2, `
 - [Pon|Pone|Pones] la mesa. El gato no la va a poner.
 - [Sal|Sale|Salir] del armario. Ya sé que estás ahí.
 - [Di|Dice|Dices] la verdad. ¿Te comiste el pastel?
-- [Ten|Tiene|Tienes] cuidado con la cabra. Muerde.
+- [Ten|Tiene|Tienes] cuidado con el perro. Muerde.
 - [Ve|Va|Vas] a tu habitación. Y no salgas hasta el jueves.
 - [Sé|Es|Eres] bueno con la abuela. Conduce ella.
 @ Imperative usted: hable, coma | Felszólítás usted: hable, coma | Bydeform usted: hable, coma
@@ -437,7 +437,7 @@ LWC('es', 2, `
 @ Location: cerca de, delante de | Helyhatározók: cerca de, delante de | Sted: cerca de, delante de
 ! Está cerca de aquí.
 = Mi cama está [cerca de] la nevera. Perfecto.
-= Hay una cabra [delante de] mi casa.
+= Hay una parada de autobús [delante de] mi casa.
 - La pizzería está [al lado del|al lado el|lado del] gimnasio. Qué suerte.
 - El gato está [debajo de|debajo|bajo de] la cama con mis calcetines.
 - Vivo [lejos de|lejos|lejos a] mi trabajo. Por suerte.
@@ -490,7 +490,7 @@ LWC('es', 2, `
 = [Creo que] mi gato me odia.
 = Pienso [que] la pizza es comida sana.
 - Creo [que|de|qué] el perro se ha comido el mando.
-- [Pienso que|Pienso de|Pienso en que] mi vecino es un vampiro.
+- [Pienso que|Pienso de|Pienso en que] mi vecino es un poco raro.
 - ¿Crees [que|de|qué] la abuela vendrá en moto?
 - Me parece [que|de|qué] alguien se ha comido mi yogur.
 - ¿Hay pizza? Creo [que sí|que si|sí que]. Huele a pizza.

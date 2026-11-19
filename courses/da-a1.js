@@ -55,7 +55,7 @@ LWC('da', 1, `
 - Hun [bor|bo|boet] i en bil. Bilen er glad.
 - Du [hedder|hedde|hedt] Kevin? Igen?
 - De [taler|tale|talt] dansk med kartofler i munden.
-- Min farfar [arbejder|arbejde|arbejdet] som klovn.
+- Min farfar [arbejder|arbejde|arbejdet] stadig. Han er 80.
 # Things: en and et | Tárgyak: en és et | Ting: en og et
 @ en or et | en vagy et | en eller et
 ! Jeg vil gerne have en kaffe.
@@ -129,7 +129,7 @@ LWC('da', 1, `
 = Jeg spiser [ikke] broccoli. Aldrig.
 = Min kat taler [ikke] dansk. Kun kat.
 - Hunden [danser ikke|ikke danser|danser nej]. Den er træt.
-- Jeg [er ikke|ikke er|er nej] en robot.
+- Jeg [er ikke|ikke er|er nej] sulten lige nu.
 - Vi [har ikke|ikke har|har nej] en bil. Vi har en cykel med tre hjul.
 - Min mormor [ser ikke|ikke ser|ser nej] tv. Hun spiller computer.
 - Du [synger ikke|ikke synger|synger nej] godt. Men du synger meget.
@@ -137,7 +137,7 @@ LWC('da', 1, `
 @ Questions: Spiser du? | Kérdés: Spiser du? | Spørgsmål: Spiser du?
 ! Taler du engelsk?
 = [Spiser du] pizza til morgenmad?
-= [Er du] en robot?
+= [Er du] klar?
 - [Taler du|Du taler du|Taler dig] dansk med din hund?
 - [Har du|Du har du|Har dig] en kat på hovedet?
 - [Bor I|Bor jer|I bor I] i en kasse?
@@ -173,7 +173,7 @@ LWC('da', 1, `
 = Jeg har en [stor] hund og et lille hus.
 = Vi har et [stort] problem. Katten er væk.
 - Min mormor har en [hurtig|hurtigt|hurtige] motorcykel.
-- Det er et [koldt|kold|kolde] hus. Pingvinen er glad.
+- Det er et [koldt|kold|kolde] hus. Tag en trøje på.
 - Han har [grønne|grøn|grønt] sokker.
 - Det er en [sjov|sjovt|sjove] hund. Den griner af mig.
 - Vi bor i et [gammelt|gammel|gamle] slot uden wifi.
@@ -181,7 +181,7 @@ LWC('da', 1, `
 @ the big one: den store hund | den store hund | den store hund
 ! Jeg tager den røde.
 = [Den] store hund er bange for katten.
-= [Det] gamle hus har et spøgelse.
+= [Det] gamle hus er til salg.
 - [Den|Det|De] lille kat er chefen.
 - [Det|Den|De] røde æble er til læreren.
 - [De|Den|Det] grønne sokker er mine.
@@ -217,7 +217,7 @@ LWC('da', 1, `
 - Min bror er [ældre|gammel|ældst] end min far. Det er mærkeligt.
 - Hunden er [mindre|lille|mindst] end katten.
 - Regn er [værre|dårligt|værst] end sne.
-- Elefanten er [tungere|tung|tungest] end mig. Lidt.
+- Min kuffert er [tungere|tung|tungest] end mig. Lidt.
 ~ stor | større
 ~ god | bedre
 ~ gammel | ældre
@@ -295,7 +295,7 @@ LWC('da', 1, `
 - [Det er|Der har|Den er] mandag. Igen.
 - [Der er|Der har|Den er] tre katte på taget.
 - [Det er|Der har|Dem er] koldt i dag.
-- [Der er|Der har|Den er] et spøgelse i køkkenet. Det spiser yoghurt.
+- [Der er|Der har|Den er] en edderkop i køkkenet. Kan du fjerne den?
 @ hvornår, hvorfor, hvordan | hvornår, hvorfor, hvordan | hvornår, hvorfor, hvordan
 ! Hvordan går det?
 = [Hvorfor] er der en ko i haven?
@@ -315,7 +315,7 @@ LWC('da', 1, `
 - Jeg [drikker aldrig|aldrig drikker|drikker aldri] te. Kun kaffe.
 - Min farmor [danser også|også danser|danser og] hiphop.
 - Du [synger altid|altid synger|synger alle] i badet.
-- Han [er aldrig|aldrig er|er aldri] træt. Han er en robot.
+- Han [er aldrig|aldrig er|er aldri] træt. Hvordan gør han?
 @ at + verb: at sove | at + ige: at sove | at + udsagnsord: at sove
 ! Det er dejligt at se dig.
 = Jeg elsker [at] sove.
@@ -420,7 +420,7 @@ LWC('da', 1, `
 = Jeg [havde] ingen penge, kun en banan.
 - Hunden [var|være|ere] meget glad i går.
 - Vi [havde|have|haft] tre katte sidste år. Nu har vi ti.
-- Det [var|være|ere] koldt i går. Pingvinerne var glade.
+- Det [var|være|ere] koldt i går. Vi blev inde.
 - I [havde|have|haft] ingen mad til festen i går.
 - Hvor [var|være|ere] du i går? I køleskabet?
 - Min farfar [havde|have|haft] en motorcykel. Nu har min farmor den.

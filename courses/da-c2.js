@@ -33,7 +33,7 @@ LWC('da', 6, `
 @ i det lange løb | i det lange løb | i det lange løb
 ! I det lange løb kan det betale sig.
 = I det lange [løb] er pizza billigere end en kok.
-= Han kom i [sidste] øjeblik. Med en ged.
+= Han kom i [sidste] øjeblik. Som altid.
 - Det kan [betale|betaler|betalt] sig at sove til middag.
 - Hun nåede toget i sidste [øjeblik|øjeblikket|øjeblikke].
 - Vi er alle sammen i samme [båd|både|båden]. Og den lækker.
@@ -58,7 +58,7 @@ LWC('da', 6, `
 - Hun [leve|lever|levet], hurra, hurra, hurra! Hun fylder 100.
 - Gud [bevare|bevarer|bevaret] os for mandage.
 - [Velbekomme|Velbekommer|Velbekommet]! Undskyld for den brændte grød.
-- Fred [være|er|væren] med dig. Og med din papegøje.
+- Fred [være|er|væren] med dig.
 - Himlen [hjælpe|hjælper|hjulpet] os, hun synger igen.
 - Det [være|er været|væren] sig kage eller pizza, jeg spiser det.
 @ koste hvad det vil | koste hvad det vil | koste hvad det vil
@@ -182,11 +182,11 @@ LWC('da', 6, `
 - Han har [ikke engang|engang ikke|ikke engangs] set filmen, men han hader den.
 - [Selv ikke|Selve ikke|Selv ikke ikke] kaffe kan redde denne mandag.
 - Hun har [ikke engang|engang ikke|ikke en engang] en telefon. Hun bruger duer.
-- [Selv|Selve|Selvs] papegøjen er blevet stille.
+- [Selv|Selve|Selvs] børnene er blevet stille.
 @ netop, ligefrem | netop, ligefrem | netop, ligefrem
 ! Det er netop pointen.
 = Det er [netop] det, jeg mener. Pizza er mad.
-= Det er ikke [ligefrem] billigt at have en lama.
+= Det er ikke [ligefrem] billigt at bo i København.
 - Det er [netop|netops|netopt] derfor, vi ikke har en kat.
 - Han er ikke [ligefrem|ligefremt|lige fremme] en stjerne i køkkenet.
 - Hun kom [netop|netops|netoppe], da kagen blev skåret.
@@ -223,7 +223,7 @@ LWC('da', 6, `
 - [Kongen af Danmarks|Kongens af Danmark|Kongen's af Danmark] cykel er blevet stjålet.
 - [En af mine venners|En af mine venner|Ens af mine venner] hund spiser kun sushi.
 - [Peter og Lines|Peters og Line|Peter's og Line's] bryllup var under vand.
-- [Vores nabos|Vores's nabo|Vores nabo's] papegøje bander på tre sprog.
+- [Vores nabos|Vores's nabo|Vores nabo's] hund gør på tre sprog.
 @ hvis, hvem sin | hvis, hvem sin | hvis, hvem sin
 ! Hvem sin taske er det?
 = [Hvis] sko er det? De lugter af ost.
@@ -246,7 +246,7 @@ LWC('da', 6, `
 - Er de briller [dine|din|dit]? De sidder på hunden.
 @ en ven af mig | en ven af mig | en ven af mig
 ! Han er en ven af mig.
-= En ven [af] mig har en ged som husdyr.
+= En ven [af] mig bor i Aarhus.
 = Han er en gammel kollega [af] min far.
 - En kusine [af|på|om] mig spiser kun gule ting.
 - Hun er en god veninde [af|på|om] min mor.
@@ -257,7 +257,7 @@ LWC('da', 6, `
 # Danish as it is spoken | Dán ahogy beszélik | Dansk, som det tales
 @ nå, nå men, ej | nå, nå men, ej | nå, nå men, ej
 ! Nå men, vi ses!
-= [Nå], så du har solgt bilen. Til en ged?
+= [Nå], så du har solgt bilen. Til hvem?
 = [Ej], hvor er han sød! Hunden, ikke manden.
 - [Nå men|Nåh mens|Nå mand men], skal vi spise?
 - [Ej|Ejs|Eje], det er løgn! Har din mormor en podcast?
@@ -272,7 +272,7 @@ LWC('da', 6, `
 - Det var [for vildt|for vild|for vilde]! Katten spillede klaver.
 - Det er [sindssygt|sindssyg|sindssyge] koldt i dag.
 - Det er så [nederen|nedern't|nederent], at bussen er aflyst.
-- Hvor [fedt|fed's|feder]! Du har fået en ny ged.
+- Hvor [fedt|fed's|feder]! Du har fået nyt job.
 - Det var [vildt|vildes|vilde't] sjovt i går.
 - Det er [mega|megas|megat] irriterende, når wifi'en forsvinder.
 @ sådan!, så er det nu! | sådan!, så er det nu! | sådan!
@@ -302,7 +302,7 @@ LWC('da', 6, `
 - Det var din kat, der sang, [ikke|ikkes|nej også]?
 - Du har ikke solgt min guitar, [vel|vels|ikke velt]?
 - Det er en god idé, [ikke også|ikke ogsås|nej også]?
-- Hun er da ikke gift med en robot, [vel|velt|vels]?
+- Hun er da ikke gift, [vel|velt|vels]?
 - Pizzaen var god, [ikke|nej ikke|ikkes]?
 - Han kan da ikke køre bus, [vel|vels|ikke vels]?
 # Building words like a pro | Szóképzés mesterfokon | Orddannelse for viderekomne
@@ -322,7 +322,7 @@ LWC('da', 6, `
 = Det [anbefales] at bruge hjelm. Også i sofaen.
 - Hun kan godt [undvære|undværer at|undværet] sin telefon. I fem minutter.
 - Jeg kan varmt [anbefale|anbefaler at|anbefalet] den pizza. Den er blå.
-- Han [opfandt|opfinde|opfundet de] en robot, der folder tøj. Den spiser det.
+- Han [opfandt|opfinde|opfundet de] en robot, der folder tøj.
 - Vi [undgik|undgå|undgået de] at synge. Næsten.
 - Hun [anerkender|anerkende at|anerkendt] ikke, at katten er chef.
 - Hvem [opdagede|opdage|opdaget de] Amerika? Min mormor, på TikTok.
@@ -425,7 +425,7 @@ LWC('da', 6, `
 - Min onkel [vil have|vil har|vil havde] fanget en fisk på 50 kilo.
 - Hun [vil have|vil har|vil havet] mødt Elvis i Netto.
 - Han [vil have været|vil have være|vil har været] i rummet. Han var i Tivoli.
-- De [vil have|vil har|vil havde] set et spøgelse i kantinen.
+- De [vil have|vil har|vil havde] set ham i byen.
 - Hun [vil have|vil har|vil havde] vundet i lotto. Hun køber stadig rugbrød på tilbud.
 - Han [vil have|vil har|vil havet] lært katten at spille klaver.
 @ lader til at, ser ud til at | lader til at, ser ud til at | lader til at, ser ud til at
