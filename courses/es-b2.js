@@ -498,7 +498,7 @@ LWC('es', 4, `
 - No me atrevo a confiar [en|a|de] nadie que no le guste el queso.
 @ soñar con, contar con | soñar con, contar con | soñar con, contar con
 ! Cuento contigo.
-= Anoche [soñé con] una pizza gigante.
+= Siempre [sueño con] vivir en la playa.
 = Puedes contar [con] nosotros. Excepto para mudanzas.
 - Sueño [con|en|de] vivir junto al mar.
 - Mi abuela se casó [con|a|en] un hombre veinte años más joven.
@@ -531,7 +531,7 @@ LWC('es', 4, `
 - Te invito [a|de|en] cenar. Pagas tú.
 @ por and para, deeper | Por és para mélyebben | Por og para, dybere
 ! Lo hago por ti, no para mí.
-= Lo hago [por] ti. Y por el pastel.
+= Gracias [por] la cena. Estaba buenísima.
 = [Para] mí, la pizza fría es mejor.
 - Compré este sombrero [por|para|de] cinco euros. Se nota.
 - La tarta tiene que estar lista [para|por|de] el cumpleaños del gato.

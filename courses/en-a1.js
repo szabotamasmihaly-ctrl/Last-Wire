@@ -338,7 +338,7 @@ LWC('en', 1, `
 - [Where|What|Who] are my keys? In the fridge.
 - [Who|Where|How] is that man at the door?
 - [What|Who|Where] time is it? Pizza time.
-- [Where|Who|What] are my glasses? On my head.
+- [Where|Who|What] are my keys? In the fridge?
 - [Who|Where|When] is that woman? My new boss. Oops.
 ~ Where | is the cat?
 ~ Who | is at the door?

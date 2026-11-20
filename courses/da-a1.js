@@ -212,7 +212,7 @@ LWC('da', 1, `
 ! Det er bedre end i går.
 = Min kat er [større] end min hund.
 = Pizza er [bedre] end broccoli.
-- Min farmor er [hurtigere|hurtigst|hurtig] end mig.
+- Min lillebror er [højere|højest|høj] end mig nu.
 - Kaffe er [bedre|god|bedst] end te.
 - Min bror er [ældre|gammel|ældst] end min far. Det er mærkeligt.
 - Hunden er [mindre|lille|mindst] end katten.
@@ -328,7 +328,7 @@ LWC('da', 1, `
 - Katten elsker at [sove|sover|sovet] på mit tastatur.
 ~ Jeg elsker | at sove.
 ~ Hun prøver at | lave mad.
-~ Det er sjovt at | danse i regnen.
+~ Han elsker at | spille fodbold.
 # Where and when | Hol és mikor | Hvor og hvornår
 @ i or på | i vagy på | i eller på
 ! Jeg er på arbejde.

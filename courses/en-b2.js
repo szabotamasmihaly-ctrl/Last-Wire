@@ -392,7 +392,7 @@ LWC('en', 4, `
 - There's [little|a little|few] hope for this cake now. It's black.
 - We've got [a few|few|a little] minutes before Mum gets home. Hide everything!
 - [Very few|Very little|A very few] people survived Dad's chilli.
-- She speaks [a little|few|a few] cat.
+- I have [a little|few|a few] money left. Enough for one coffee.
 @ neither, either, both: verb agreement | neither, either, both egyeztetés | neither, either, both: kongruens
 ! Neither of us is ready.
 = [Both] of my cats are evil.

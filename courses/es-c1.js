@@ -256,9 +256,9 @@ LWC('es', 5, `
 - ¡Qué gato [más|tan más|muy] gordo!
 - Bailar en el supermercado es [de lo más|de los más|del más] normal.
 - ¡Qué día [tan|tanto|tanta] largo!
-~ ¡Qué gato | más gordo!
+~ ¡Qué perro | más bonito!
 ~ Estamos | la mar de contentos.
-~ Bailar en el supermercado es | de lo más normal.
+~ Mi hermano es | de lo más gracioso.
 @ ni siquiera, ni ... ni | ni siquiera, ni ... ni | ni siquiera, ni ... ni
 ! Ni siquiera me saludó.
 = [Ni siquiera] el perro se comió mi tortilla.
@@ -311,8 +311,8 @@ LWC('es', 5, `
 - Siempre que [podía|poder|pudiendo], dormía en el trabajo.
 - Cada vez [que|de que|—] salgo, me encuentro a mi ex.
 ~ Cada vez que canto, | el perro aúlla.
-~ Nada más llegar a la playa, | empezó a llover.
-~ A medida que pasa el tiempo, | me parezco más a mi gato.
+~ Siempre que hago dieta, | alguien trae pasteles.
+~ Cada vez que me ducho, | suena el teléfono.
 @ desde que, hasta que, mientras tanto | desde que, hasta que, mientras tanto | desde que, hasta que, mientras tanto
 ! Desde que te conozco, soy más feliz.
 = [Desde que] tengo gato, no tengo sofá.
@@ -375,8 +375,8 @@ LWC('es', 5, `
 - No tengo coche, [así que|así como|así de] voy en patinete.
 - Ha subido el precio del chocolate; [por tanto|por tanto que|por lo tanto que], lloramos.
 ~ No había nadie en la fiesta, | así que bailé con la planta.
-~ Ve series hasta las cuatro; | de ahí que esté tan cansado.
-~ Debido a un pato, | se suspendió el partido.
+~ Llovía muchísimo, | de modo que nos quedamos en casa.
+~ El wifi no funciona; | por consiguiente, hablamos entre nosotros.
 # Pronouns in depth | Névmások mélyebben | Stedord i dybden
 @ Accidents: se me olvidó | Véletlenek: se me olvidó | Uheld: se me olvidó
 ! Se me olvidó.
@@ -468,7 +468,7 @@ LWC('es', 5, `
 @ no es que ... sino que | no es que ... sino que | no es que ... sino que
 ! No es que no quiera, sino que no puedo.
 = No es que no [quiera] bailar, es que mis pies no quieren.
-= No es que [sea] feo, es que es muy original.
+= No es que [tenga] sueño, sino que la película es aburrida.
 - No es que [esté|estoy|estar] gordo, es que el espejo es pequeño.
 - No es que no te [crea|creo|creer], es que tu perro no habla.
 - No es que [tenga|tengo|tener] miedo, es que la araña me mira.
@@ -528,7 +528,7 @@ LWC('es', 5, `
 - Tengo [prisa|prisas de|la prisa], el helado se derrite.
 ~ Echo de menos | mi cama.
 ~ Tengo ganas | de vacaciones.
-~ Al gato le da | igual todo.
+~ Ten cuidado, | el suelo está mojado.
 @ quedar: quedar bien, quedarse con | quedar: quedar bien, quedarse con | quedar: quedar bien, quedarse con
 ! Me quedo con este.
 = Ese sombrero te [queda] fatal. Cómpralo.

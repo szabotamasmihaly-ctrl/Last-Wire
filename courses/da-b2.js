@@ -194,7 +194,7 @@ LWC('da', 4, `
 - Det var ikke for sjov, [at|der|hvem] hun sagde det.
 @ Det er svært, Der står | Det er svært, Der står | Det er svært, Der står
 ! Det er svært at sige nej.
-= [Det] er svært at være kat.
+= [Det] er svært at stå tidligt op.
 = [Der] står en ko i haven.
 - [Der|Det|Den] sidder en fremmed mand i min sofa.
 - [Det|Der|Den] er dejligt at have fri.
@@ -492,7 +492,7 @@ LWC('da', 4, `
 = Jeg [ved], at du har spist kagen.
 = Jeg [kender] din mor. Hun har fortalt alt.
 - [Kender|Ved|Kan] du min bror? Han er kok.
-- [Ved|Kender|Kan] du, hvad klokken er?
+- [Kender|Ved|Kan] du min søster?
 - Hun [kan|ved|kender] tre sprog. Og hundesprog.
 - Jeg [kender|ved|kan] en god restaurant. Den har ingen mad.
 - Ingen [ved|kender|kan], hvor katten går hen om natten.

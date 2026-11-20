@@ -361,7 +361,7 @@ LWC('es', 1, `
 @ ¿Puedo...? ¿Puedes...? | ¿Puedo...? ¿Puedes...? kérések | ¿Puedo...? ¿Puedes...?
 ! ¿Puedes ayudarme?
 = ¿[Puedo] comer tus patatas fritas?
-= ¿[Puedes] guardar un secreto?
+= ¿[Puedes] cerrar la ventana?
 - ¿Puedo [dormir|duermo|durmiendo] aquí esta noche?
 - ¿[Puede|Puedes|Puedo] usted bailar conmigo, señor?
 - ¿Puedes [hablar|hablas|hablando] más despacio? Estoy cansado.

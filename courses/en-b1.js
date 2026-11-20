@@ -498,7 +498,7 @@ LWC('en', 3, `
 - It's too cold [to swim|for swimming in|swim]. Grandpa doesn't care.
 - He isn't strong [enough to|enough for|too to] open the jar.
 - The pizza is [too big|enough big|big enough] to fit in the door.
-- I'm not tall [enough|too|so] to reach the cookies.
+- This coffee is [too|enough|so] hot to drink.
 - It's [too late|late enough|too much late] to say sorry. Buy cake instead.
 - She dances [well enough|enough well|too well enough] to be on TV.
 @ the or no article | the vagy névelő nélkül | the eller ingen artikel
