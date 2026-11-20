@@ -112,7 +112,7 @@ LWC('da', 5, `
 ! Jeg synes, det er en god idé.
 = Jeg [synes], at pizza med ananas er en forbrydelse.
 = Det [lykkedes] mig at åbne syltetøjsglasset. Efter en time.
-- Hvad [synes|syns|synser] du om min nye hat?
+- I går [lykkedes|lykkede|lykkes] det mig at finde mine nøgler.
 - Det [lykkedes|lykkes ede|lykkedede] ham at lære hunden at danse.
 - Jeg [syntes|synesede|syntede], filmen var for lang. Den varede fem timer.
 - Det er aldrig [lykkedes|lykket|lykkes et] mig at folde et kort sammen.
@@ -181,7 +181,7 @@ LWC('da', 5, `
 - Hun [kunne være blevet|kunne har blevet|kunnet være blevet] popstjerne. Hun valgte regnskab.
 @ skulle have gjort | skulle have gjort | skulle have gjort
 ! Jeg skulle have sagt det før.
-= Du [skulle have] set hans ansigt.
+= Du [skulle have] sagt det før.
 = Vi [skulle have] taget den anden bus. Den kørte til stranden.
 - Jeg [skulle have|skulle har|skal havde] lyttet til min mor.
 - Du [skulle have været|skulle have være|skulle være været] der. Det var vildt.
@@ -259,7 +259,7 @@ LWC('da', 5, `
 - Gør det [selv|selve|selvet], hvis du er så klog.
 - [Selve|Selv|Selver] turen var kort, men køen var lang.
 - Børnene klarede det [selv|selve|selvs]. Køkkenet er ødelagt.
-- [Selve|Selv|Selves] idéen er god. Udførelsen er en katastrofe.
+- Jeg har lavet kagen [selv|selve|selvet].
 # Verbs with fixed partners | Állandó vonzatú igék | Verber med faste præpositioner
 @ tro på, tænke på | tro på, tænke på | tro på, tænke på
 ! Jeg tror på dig.
@@ -296,7 +296,7 @@ LWC('da', 5, `
 = Jeg er træt [af] regnen. Og af min nabos trompet.
 = Han er bange [for] duer.
 - Hun er stolt [af|på|om] sin datter, der kan spise ti pandekager.
-- Katten er bange [for|af|om] støvsugeren.
+- Jeg er så træt [af|for|om] regn.
 - Vi er glade [for|af|om] vores nye sofa. Hunden også.
 - Jeg er ked [af|for|om] at jeg spiste din frokost.
 - Han er god [til|af|for] at synge. Bare ikke i badet.
@@ -336,7 +336,7 @@ LWC('da', 5, `
 ! Det var en misforståelse.
 = Det er [umuligt] at finde en parkeringsplads her.
 = Der er sket en [misforståelse]. Jeg bestilte ikke en hest.
-- Han er helt [uskyldig|ikkeskyldig|ingenskyldig]. Det var katten.
+- Jeg tror, du har [misforstået|uforstået|ikkeforstået] mig.
 - Det var en stor [misforståelse|ufortåelse|ikkeforståelse]. Jeg sagde "pizza", ikke "Pisa".
 - Hun er [utålmodig|mistålmodig|ikketålmodig]. Hun spiser kagen før den er bagt.
 - Jeg har [misforstået|uforstået|ikkeforstået] opskriften. Den er blå.

@@ -96,7 +96,7 @@ LWC('es', 6, `
 - Se perdió en el supermercado, y eso que [es|sea|ser] guía turístico.
 ~ Suspendió, | y eso que copió.
 ~ Si bien es caro, | el gato lo merece.
-~ Mal que te pese, | el gato tiene razón.
+~ Tiene hambre, | y eso que acaba de comer.
 @ así + subjunctive: así se hunda el mundo | así + kötőmód: así se hunda el mundo | así + konjunktiv: así se hunda el mundo
 ! Así me lo pidan de rodillas, no voy.
 = No me pongo ese jersey, [así] me paguen.
@@ -160,7 +160,7 @@ LWC('es', 6, `
 - Basta con [que|de que|como] lo digas. Pero no lo cantes.
 ~ Con solo mirar la tarta, | engordo.
 ~ A poco que estudies, | aprobarás.
-~ De no ser por el GPS, | estaría en Portugal.
+~ Con que me escribas, | me basta.
 # Comparing, advanced | Haladó összehasonlítás | Avanceret sammenligning
 @ cuanto más ... más | cuanto más ... más | cuanto más ... más
 ! Cuanto más lo pienso, menos lo entiendo.
@@ -203,7 +203,7 @@ LWC('es', 6, `
 - Escribe el discurso lo [más|mucho|tan] breve posible, por favor.
 - Habla lo más bajo [que|de|como] puedas, el bebé duerme.
 ~ Cuanto antes, | mejor.
-~ Cuanta más tarta, | mejor.
+~ Lo más rápido | posible.
 ~ Ven | lo antes posible.
 @ ni que, como si, igual que | ni que, como si, igual que | ni que, como si, igual que
 ! ¡Ni que fuera tan difícil!
@@ -222,7 +222,7 @@ LWC('es', 6, `
 = Fue el perro [quien] se comió la tarta.
 - Es por tu forma de cantar [por lo que|lo que por|que por lo] me fui.
 - Fueron mis tíos [quienes|quien|los cuales que] trajeron la tarta.
-- Es aquí [donde|que donde|lo que] escondo el chocolate.
+- Es mi madre [quien|que quien|lo que] manda en esta casa.
 - Fue en la cola del baño [cuando|que cuando|lo cual] nos conocimos.
 - Es así [como|que como|lo como] se dobla una sábana. Creo.
 - Es a ti [a quien|quien a|el quien] busca la policía.

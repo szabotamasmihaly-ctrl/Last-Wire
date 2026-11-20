@@ -208,7 +208,7 @@ LWC('da', 6, `
 ! Danmarks hovedstad er København.
 = [Danmarks] bedste pizza findes i en tankstation.
 = [Kattens] yndlingssted er mit tastatur.
-- [Hundens|Hunds|Hunden's] seng er større end min.
+- [Danmarks|Danmark|Danmark's] hovedstad er København.
 - [Byens|Bys|Byen's] borgmester er en kat. Det er en lang historie.
 - [Mormors|Mormor's|Mormorens] TikTok har en million følgere.
 - [Børnenes|Børnes|Børnen's] værelse ligner en vulkan.
@@ -301,7 +301,7 @@ LWC('da', 6, `
 = Det er da lidt sjovt, [ikke også]?
 - Det var din kat, der sang, [ikke|ikkes|nej også]?
 - Du har ikke solgt min guitar, [vel|vels|ikke velt]?
-- Det er en god idé, [ikke også|ikke ogsås|nej også]?
+- Du kan godt lide kaffe, [ikke også|ikke ogsås|nej også]?
 - Hun er da ikke gift, [vel|velt|vels]?
 - Pizzaen var god, [ikke|nej ikke|ikkes]?
 - Han kan da ikke køre bus, [vel|vels|ikke vels]?

@@ -292,7 +292,7 @@ LWC('da', 2, `
 - Peters [grimme|grim|grimt] trøje er min.
 @ Det er sjovt | Det er sjovt | Det er sjovt
 ! Det er sjovt!
-= Det er [sjovt] at danse i regnen.
+= Det er [dejligt] at sove længe.
 = Det var [koldt] i går. Jeg frøs.
 - Det er [dyrt|dyr|dyre] at bo i København. Også i en kasse.
 - Det er [vigtigt|vigtig|vigtige] at drikke kaffe.

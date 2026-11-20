@@ -283,7 +283,7 @@ LWC('es', 2, `
 = Esta tarde [voy a] dormir la siesta. Tres horas.
 = Algún día [seré] famoso. O no.
 - Mira esa gaviota. [Va a|Irá|Va] robar tu bocadillo.
-- Mañana [voy a|voy|vaya a] limpiar mi habitación. Quizás.
+- Esta noche [voy a|voy|vaya a] pedir pizza. Otra vez.
 - En el futuro, los gatos [gobernarán|gobiernan ayer|gobernaban] el mundo.
 - ¿Qué [vas a|vas|vayas a] hacer con un caballo en un piso?
 - Creo que mi perro [ganará|ganó mañana|ganaba] el concurso de baile.
@@ -311,7 +311,7 @@ LWC('es', 2, `
 # Por and para, first steps | Por és para, első lépések | Por og para, første skridt
 @ para: purpose and destination | para: cél és irány | para: formål og mål
 ! Es para ti.
-= Este calcetín es [para] ti. Feliz cumpleaños.
+= Un café [para] llevar, por favor.
 = Como chocolate [para] ser feliz.
 - Salgo [para|por|a] la playa. Adiós, trabajo.
 - Trabajo [para|por|a] comprar pizza.
@@ -448,7 +448,7 @@ LWC('es', 2, `
 ! Está allí.
 = Ven [aquí]. Tengo galletas.
 = Mi suegra vive [allí], muy lejos. ¡Qué bien!
-- Este pastel de [aquí|allí|ahí allí] es mío.
+- Este sofá de [aquí|allí|ahí allí] es para el perro.
 - ¿Ves esa montaña? Mi gato vive [allí|aquí|acá aquí] ahora.
 - Deja la pizza [ahí|aquí allí|acá ahí], a tu lado. No te la comas.
 - [Aquí|Allí aquí|Ahí aquí] tienes tu café. Está frío.

@@ -96,7 +96,7 @@ LWC('es', 3, `
 - El profesor necesita que [estemos|estamos|estar] callados. Ja.
 @ Same subject: infinitive | Azonos alany: főnévi igenév | Samme subjekt: infinitiv
 ! Quiero ir contigo.
-= Quiero [ser] un gato.
+= Quiero [dormir] hasta el mediodía.
 = Quiero que [seas] un gato. ¡Sería genial!
 - Espero [aprobar|apruebo|aprobando] el examen. Sin estudiar.
 - Mi hermana quiere [ser|es|siendo] astronauta. Ya vive en las nubes.
@@ -487,7 +487,7 @@ LWC('es', 3, `
 ! Te lo digo para que lo sepas.
 = Te lo digo [para que] no lo comas.
 = Hablo despacio para que el gato me [entienda].
-- Trabajo [para|para que|para de] comprar pizza.
+- Estudio [para|para que|para de] aprobar el examen.
 - Trabajo para que mis gatos [vivan|viven|vivir] como reyes.
 - Cierra la puerta para que no [entre|entra|entrar] el frío.
 - Te llamo para que me [traigas|traes|traer] papel higiénico. Urgente.

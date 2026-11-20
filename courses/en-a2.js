@@ -225,7 +225,7 @@ LWC('en', 2, `
 @ -er than | -er than | -er than
 ! It's cheaper than a taxi.
 = My cat is [smarter] than my brother.
-= My grandma is [faster] than me.
+= My little brother is [taller] than me now.
 - My dog is [bigger|more big|biger] than my car.
 - This curry is [hotter|more hot|hoter] than the sun.
 - I feel [older|more old|oldder] than my grandma on Mondays.
@@ -375,7 +375,7 @@ LWC('en', 2, `
 - The dog has [too many|too much|to much] toys and still wants mine.
 @ every and each | every és each | every og each
 ! I see her every day.
-= My dad tells the same joke [every] day.
+= I check my phone [every] five minutes.
 = [Each] cat has its own sofa.
 - She calls her mum [every|all|each of] hour.
 - [Every|All|Each of] room in our house has a cat in it.
