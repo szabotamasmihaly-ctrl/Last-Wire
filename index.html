@@ -4137,9 +4137,10 @@ var GENP = {
   twister: function (r, L, off) {
     var pool = PARTY[L].twister;
     return { rounds: deckTake(L + ':twister', pool, off, 2).map(function (i) {
-      var x = pool[i], toks = x.split(/\s+/), order = toks.map(function (w, k) { return k; }).sort(function (a, b) { return toks[b].length - toks[a].length || a - b; });
-      var hide = order.slice(0, toks.length > 4 ? 2 : 1).sort(function (a, b) { return a - b; });
-      return { toks: toks, hide: hide, full: x };
+      /* exactly one missing word: the longest word away from both ends, so it is heard in the middle of the sentence */
+      var x = pool[i], toks = x.split(/\s+/), n = toks.length, mid = (n - 1) / 2, best = -1, len = function (k) { return toks[k].replace(/[^\p{L}]/gu, '').length; };
+      for (var k = n > 2 ? 1 : 0; k < (n > 2 ? n - 1 : n); k++) if (best < 0 || len(k) > len(best) || (len(k) === len(best) && Math.abs(k - mid) < Math.abs(best - mid))) best = k;
+      return { toks: toks, hide: [best], full: x };
     }) };
   },
   safe: function (r, L) {
@@ -4351,7 +4352,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 41;
+  var BUILD = 42;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6596,7 +6597,7 @@ var ES_PHRASES = [
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
 
-  /* 👅 tongue twisters: words are missing on the bomb; the helper hears it; the bomb says it or types the missing words */
+  /* 👅 tongue twisters: one word is missing on the bomb; the helper hears it; the bomb says it or types the missing words */
   UI.twister = ext({
     init: function () { return { r: 0, value: '', heard: '', fb: false }; },
     want: function (d, st) { var rd = d.rounds[st.r]; return rd && rd.full.split(/\s+/); },
@@ -6607,7 +6608,7 @@ var ES_PHRASES = [
           return rd.hide.indexOf(k) >= 0 ? '<span class="blank" data-b="' + rd.hide.indexOf(k) + '" style="min-width:' + Math.max(3, w.length) * 0.62 + 'em"></span>' : esc(w);
         }).join(' ') + '</p>';
       if (st.heard) h += '<p class="heard" lang="' + tl() + '">' + esc(st.heard) + '</p>';
-      h += '<div class="row">' + field(i, st.value || '', '✍️ ' + rd.hide.map(function () { return '____'; }).join(' '), { enter: 'send' }) + '</div>';
+      h += '<div class="row">' + field(i, st.value || '', '✍️ ____', { enter: 'send' }) + '</div>';
       h += '<div class="row">' + (Mic.off ? '' : '<button type="button" class="key mic' + (rec ? ' rec' : '') + '" data-a="m" data-i="' + i + '" data-k="mic" aria-pressed="' + !!rec + '" aria-label="' + esc(t('mic')) + '">' + MIC_SVG + '</button>') +
         B(i, 'send', null, t('ck.check'), 'go wide') + '</div>' + micErr(i);
       return h + (st.fb ? fbBad('p.bad') : '');
@@ -6618,20 +6619,47 @@ var ES_PHRASES = [
       if (k === 'mic') { st.heard = ''; st.fb = false; micToggle(i); return; }
       if (k === 'said') { if (saidRight(v, rd.full.split(/\s+/))) return next(); st.heard = v[0]; return 're'; }
       if (k === 'send') {
-        var got = lsWords(st.value), want = lsWords(rd.hide.map(function (h) { return rd.toks[h]; }).join(' ')), all = lsWords(rd.full);
+        var got = lsWords(st.value), all = lsWords(rd.full);
         if (!got.length) return;
-        if (nearWords(got, want) || nearWords(got, all)) return next();
+        if ((got.length <= 2 && got.some(function (g) { return twOk(g, rd.toks[rd.hide[0]], rd.toks); })) || nearWords(got, all)) return next();
         st.fb = true; st.value = ''; return 'strike';
       }
     },
     /* the typed words fill the blanks as they are typed */
     typed: function (val, d, st, i) {
       var ws = String(val || '').trim().split(/\s+/).filter(Boolean), el = document.getElementById('mod-' + i); if (!el) return;
-      el.querySelectorAll('.tw-s .blank').forEach(function (b) { var w = ws[+b.getAttribute('data-b')] || ''; b.textContent = w; b.classList.toggle('fill', !!w); });
+      el.querySelectorAll('.tw-s .blank').forEach(function (b) { var w = ws.join(' '); b.textContent = w; b.classList.toggle('fill', !!w); });
     },
     keys: function () { return ''; }, pos: pPos, recap: pRecap,
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.full }; }));
+  /* 👅 a heard word is spelled by ear: case, accents and punctuation do not matter, and a near miss
+     (a few letters off, or the same sound spelled another way: fotograf/photograph, pikld/pickled) counts.
+     A word that is closer to another word of the twister (sells for shells) does not. */
+  function twNorm(w) {
+    return String(w || '').toLowerCase().replace(/[’`]/g, "'").replace(/ø/g, 'o').replace(/æ/g, 'ae').replace(/ß/g, 'ss').normalize('NFD').replace(/[^a-z]/g, '');
+  }
+  function twSound(w) {
+    return twNorm(w).replace(/ph/g, 'f').replace(/ck/g, 'k').replace(/qu/g, 'kw').replace(/c(?=[eiy])/g, 's').replace(/c/g, 'k').replace(/q/g, 'k').replace(/x/g, 'ks')
+      .replace(/z/g, 's').replace(/y/g, 'i').replace(/gh/g, 'g').replace(/^kn/, 'n').replace(/^wr/, 'r').replace(/([a-z])h/g, '$1').replace(/(.)\1+/g, '$1').replace(/e$/, '');
+  }
+  /* edit distance where two swapped letters (pickeld) count as one slip */
+  function twDist(a, b) {
+    var D = []; for (var x = 0; x <= a.length; x++) { D[x] = [x]; for (var y = 1; y <= b.length; y++) D[x][y] = x ? 0 : y; }
+    for (x = 1; x <= a.length; x++) for (y = 1; y <= b.length; y++) {
+      D[x][y] = Math.min(D[x - 1][y] + 1, D[x][y - 1] + 1, D[x - 1][y - 1] + (a[x - 1] === b[y - 1] ? 0 : 1));
+      if (x > 1 && y > 1 && a[x - 1] === b[y - 2] && a[x - 2] === b[y - 1]) D[x][y] = Math.min(D[x][y], D[x - 2][y - 2] + 1);
+    }
+    return D[a.length][b.length];
+  }
+  function twOk(guess, target, toks) {
+    var g = twNorm(guess), w = twNorm(target); if (!g) return false;
+    if (g === w) return true;
+    var tol = w.length <= 3 ? 1 : w.length <= 6 ? 2 : 3, d = twDist(g, w);
+    if (d > tol && twDist(twSound(g), twSound(w)) > Math.max(1, tol - 1)) return false;
+    /* reject a guess that is really another word of the same twister */
+    return !toks.some(function (o) { var x = twNorm(o); return x !== w && twDist(g, x) < d; });
+  }
   /* a typed word counts when it is right or one letter off (seawards for seaward); short words must be exact */
   function nearWords(got, want) {
     if (got.length !== want.length) return false;
@@ -7390,7 +7418,7 @@ var ES_PHRASES = [
       '<div class="tl"><span class="lbl" lang="' + tl() + '">' + P.plate.strikes + '</span><span class="lamps big" id="bomb-lamps">' + lampsHTML() + '</span></div></div></section>';
   }
   /* one sentence per game, and who waits for whom: h = the helper has the info, b = the bomb has it, otherwise both hold half */
-  var GX = {"boss": ["The bomb tunes the stations, the helper hears what each one says.", "A bomba állomásokat hangol, a segítő hallja, mit mond mindegyik.", "Bomben stiller ind på stationer, hjælperen hører, hvad hver af dem siger."], "clock": ["Set the clock to the time the clues point to.", "Állítsd az órát arra az időre, amire a nyomok utalnak.", "Stil uret til det tidspunkt, sporene peger på."], "comp": ["The helper describes a word, the bomb builds it from two parts.", "A segítő körülír egy szót, a bomba két részből rakja össze.", "Hjælperen beskriver et ord, bomben sætter det sammen af to dele."], "dict": ["The helper plays a sentence, the bomb types it word by word.", "A segítő lejátszik egy mondatot, a bomba szóról szóra begépeli.", "Hjælperen afspiller en sætning, bomben skriver den ord for ord."], "film": ["The bomb guesses the film from emojis, the helper has the titles.", "A bomba emojikból találja ki a filmet, a segítőnél vannak a címek.", "Bomben gætter filmen ud fra emojis, hjælperen har titlerne."], "fix": ["The helper hears the sentence, the bomb fixes the wrong word.", "A segítő hallja a mondatot, a bomba kijavítja a rossz szót.", "Hjælperen hører sætningen, bomben retter det forkerte ord."], "gap": ["The bomb reads the sentence, the helper says which colour fills the gap.", "A bomba felolvassa a mondatot, a segítő megmondja, melyik szín illik a hiányba.", "Bomben læser sætningen, hjælperen siger, hvilken farve passer i hullet."], "idiom": ["The bomb sees the idiom as a picture, the helper has the meanings.", "A bomba képként látja a szólást, a segítőnél vannak a jelentések.", "Bomben ser talemåden som et billede, hjælperen har betydningerne."], "match": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."], "karaoke": ["The helper hears a line, the bomb picks it and sings it.", "A segítő hall egy sort, a bomba kiválasztja és elénekli.", "Hjælperen hører en linje, bomben vælger den og synger den."], "lever": ["Pick the right word of two for each sentence.", "Válaszd ki a két szó közül a jót minden mondathoz.", "Vælg det rigtige af to ord til hver sætning."], "listen": ["The helper hears a sentence, the bomb builds it from the tiles.", "A segítő hall egy mondatot, a bomba kirakja a kártyákból.", "Hjælperen hører en sætning, bomben bygger den af brikkerne."], "order": ["Put the words in the right order.", "Tedd a szavakat helyes sorrendbe.", "Sæt ordene i den rigtige rækkefølge."], "pics": ["The bomb names the picture, the helper says its number.", "A bomba megnevezi a képet, a segítő megmondja a számát.", "Bomben siger, hvad billedet viser, hjælperen siger dets nummer."], "plot": ["The bomb reads a tricky movie riddle and types the title, the helper has six titles.", "A bomba felolvas egy trükkös filmrejtvényt és beírja a címet, a segítőnél hat cím van.", "Bomben læser en drilsk filmgåde og skriver titlen, hjælperen har seks titler."], "post": ["The helper hears about a place, the bomb picks its postcard.", "A segítő hall egy helyről, a bomba kiválasztja a képeslapját.", "Hjælperen hører om et sted, bomben vælger dets postkort."], "radio": ["The helper hears a sentence, the bomb tunes in to the missing word.", "A segítő hall egy mondatot, a bomba ráhangol a hiányzó szóra.", "Hjælperen hører en sætning, bomben stiller ind på det manglende ord."], "read": ["The helper reads a notice, the bomb answers questions about it.", "A segítő elolvas egy hirdetményt, a bomba kérdésekre válaszol róla.", "Hjælperen læser en meddelelse, bomben svarer på spørgsmål om den."], "rhyme": ["The helper hears a sentence, the bomb cuts the wire with the missing word.", "A segítő hall egy mondatot, a bomba elvágja a hiányzó szó drótját.", "Hjælperen hører en sætning, bomben klipper ledningen med det manglende ord."], "safe": ["The helper hears three numbers, the bomb turns the dial to open the safe.", "A segítő hall három számot, a bomba a tárcsával kinyitja a széfet.", "Hjælperen hører tre tal, bomben drejer skiven og åbner pengeskabet."], "slang": ["The bomb reads a chat message, the helper has the slang list.", "A bomba felolvas egy chatüzenetet, a segítőnél van a szlenglista.", "Bomben læser en chatbesked, hjælperen har slanglisten."], "song": ["The helper hears the song, the bomb picks the missing words.", "A segítő hallja a dalt, a bomba kiválasztja a hiányzó szavakat.", "Hjælperen hører sangen, bomben vælger de manglende ord."], "story": ["Fill the gaps in the story with words from the helper's list.", "Töltsd ki a történet hiányait a segítő listájának szavaival.", "Udfyld hullerne i historien med ord fra hjælperens liste."], "twister": ["The helper hears a tongue twister, the bomb fills the gaps or says it.", "A segítő hall egy nyelvtörőt, a bomba kitölti a hiányokat vagy kimondja.", "Hjælperen hører en tungebrækker, bomben udfylder hullerne eller siger den."], "verbs": ["Put the verb in the right form; the helper has the signal words.", "Tedd az igét a helyes alakba; a segítőnél vannak a jelzőszavak.", "Sæt verbet i den rigtige form; hjælperen har signalordene."], "wires": ["The bomb describes the wires, the helper says which one to cut.", "A bomba leírja a drótokat, a segítő megmondja, melyiket kell elvágni.", "Bomben beskriver ledningerne, hjælperen siger, hvilken der skal klippes."], "joke": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."]};
+  var GX = {"boss": ["The bomb tunes the stations, the helper hears what each one says.", "A bomba állomásokat hangol, a segítő hallja, mit mond mindegyik.", "Bomben stiller ind på stationer, hjælperen hører, hvad hver af dem siger."], "clock": ["Set the clock to the time the clues point to.", "Állítsd az órát arra az időre, amire a nyomok utalnak.", "Stil uret til det tidspunkt, sporene peger på."], "comp": ["The helper describes a word, the bomb builds it from two parts.", "A segítő körülír egy szót, a bomba két részből rakja össze.", "Hjælperen beskriver et ord, bomben sætter det sammen af to dele."], "dict": ["The helper plays a sentence, the bomb types it word by word.", "A segítő lejátszik egy mondatot, a bomba szóról szóra begépeli.", "Hjælperen afspiller en sætning, bomben skriver den ord for ord."], "film": ["The bomb guesses the film from emojis, the helper has the titles.", "A bomba emojikból találja ki a filmet, a segítőnél vannak a címek.", "Bomben gætter filmen ud fra emojis, hjælperen har titlerne."], "fix": ["The helper hears the sentence, the bomb fixes the wrong word.", "A segítő hallja a mondatot, a bomba kijavítja a rossz szót.", "Hjælperen hører sætningen, bomben retter det forkerte ord."], "gap": ["The bomb reads the sentence, the helper says which colour fills the gap.", "A bomba felolvassa a mondatot, a segítő megmondja, melyik szín illik a hiányba.", "Bomben læser sætningen, hjælperen siger, hvilken farve passer i hullet."], "idiom": ["The bomb sees the idiom as a picture, the helper has the meanings.", "A bomba képként látja a szólást, a segítőnél vannak a jelentések.", "Bomben ser talemåden som et billede, hjælperen har betydningerne."], "match": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."], "karaoke": ["The helper hears a line, the bomb picks it and sings it.", "A segítő hall egy sort, a bomba kiválasztja és elénekli.", "Hjælperen hører en linje, bomben vælger den og synger den."], "lever": ["Pick the right word of two for each sentence.", "Válaszd ki a két szó közül a jót minden mondathoz.", "Vælg det rigtige af to ord til hver sætning."], "listen": ["The helper hears a sentence, the bomb builds it from the tiles.", "A segítő hall egy mondatot, a bomba kirakja a kártyákból.", "Hjælperen hører en sætning, bomben bygger den af brikkerne."], "order": ["Put the words in the right order.", "Tedd a szavakat helyes sorrendbe.", "Sæt ordene i den rigtige rækkefølge."], "pics": ["The bomb names the picture, the helper says its number.", "A bomba megnevezi a képet, a segítő megmondja a számát.", "Bomben siger, hvad billedet viser, hjælperen siger dets nummer."], "plot": ["The bomb reads a tricky movie riddle and types the title, the helper has six titles.", "A bomba felolvas egy trükkös filmrejtvényt és beírja a címet, a segítőnél hat cím van.", "Bomben læser en drilsk filmgåde og skriver titlen, hjælperen har seks titler."], "post": ["The helper hears about a place, the bomb picks its postcard.", "A segítő hall egy helyről, a bomba kiválasztja a képeslapját.", "Hjælperen hører om et sted, bomben vælger dets postkort."], "radio": ["The helper hears a sentence, the bomb tunes in to the missing word.", "A segítő hall egy mondatot, a bomba ráhangol a hiányzó szóra.", "Hjælperen hører en sætning, bomben stiller ind på det manglende ord."], "read": ["The helper reads a notice, the bomb answers questions about it.", "A segítő elolvas egy hirdetményt, a bomba kérdésekre válaszol róla.", "Hjælperen læser en meddelelse, bomben svarer på spørgsmål om den."], "rhyme": ["The helper hears a sentence, the bomb cuts the wire with the missing word.", "A segítő hall egy mondatot, a bomba elvágja a hiányzó szó drótját.", "Hjælperen hører en sætning, bomben klipper ledningen med det manglende ord."], "safe": ["The helper hears three numbers, the bomb turns the dial to open the safe.", "A segítő hall három számot, a bomba a tárcsával kinyitja a széfet.", "Hjælperen hører tre tal, bomben drejer skiven og åbner pengeskabet."], "slang": ["The bomb reads a chat message, the helper has the slang list.", "A bomba felolvas egy chatüzenetet, a segítőnél van a szlenglista.", "Bomben læser en chatbesked, hjælperen har slanglisten."], "song": ["The helper hears the song, the bomb picks the missing words.", "A segítő hallja a dalt, a bomba kiválasztja a hiányzó szavakat.", "Hjælperen hører sangen, bomben vælger de manglende ord."], "story": ["Fill the gaps in the story with words from the helper's list.", "Töltsd ki a történet hiányait a segítő listájának szavaival.", "Udfyld hullerne i historien med ord fra hjælperens liste."], "twister": ["The helper hears a tongue twister, the bomb types the missing word or says it.", "A segítő hall egy nyelvtörőt, a bomba beírja a hiányzó szót vagy kimondja.", "Hjælperen hører en tungebrækker, bomben skriver det manglende ord eller siger den."], "verbs": ["Put the verb in the right form; the helper has the signal words.", "Tedd az igét a helyes alakba; a segítőnél vannak a jelzőszavak.", "Sæt verbet i den rigtige form; hjælperen har signalordene."], "wires": ["The bomb describes the wires, the helper says which one to cut.", "A bomba leírja a drótokat, a segítő megmondja, melyiket kell elvágni.", "Bomben beskriver ledningerne, hjælperen siger, hvilken der skal klippes."], "joke": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."]};
   var GROLE = {};
   'comp dict fix karaoke listen post radio read rhyme safe song twister'.split(' ').forEach(function (k) { GROLE[k] = 'h'; }); 'wires film plot idiom slang gap pics'.split(' ').forEach(function (k) { GROLE[k] = 'b'; });
   function gx(type) { var r = GX[type]; return r ? r[UIX[ui()]] : ''; }
