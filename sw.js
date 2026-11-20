@@ -1,7 +1,7 @@
 /* Last Wire offline: keeps a copy of the game on the phone so it opens without internet.
    The page itself is fetched fresh when there is a connection, so updates still arrive. */
 var CACHE = 'lastwire-v1';
-var FILES = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./vendor/peerjs.min.js", "./courses/da-a1.js","./courses/da-a2.js","./courses/da-b1.js","./courses/da-b2.js","./courses/da-c1.js","./courses/da-c2.js","./courses/en-a1.js","./courses/en-a2.js","./courses/en-b1.js","./courses/en-b2.js","./courses/en-c1.js","./courses/en-c2.js","./courses/es-a1.js","./courses/es-a2.js","./courses/es-b1.js","./courses/es-b2.js","./courses/es-c1.js","./courses/es-c2.js","./courses/gloss-da.js","./courses/gloss-en.js","./courses/gloss-es.js","./courses/party.js"];
+var FILES = ["./", "./index.html", "./manifest.json", "./icon-192.png", "./icon-512.png", "./vendor/peerjs.min.js", "./courses/da-a1.js","./courses/da-a2.js","./courses/da-b1.js","./courses/da-b2.js","./courses/da-c1.js","./courses/da-c2.js","./courses/en-a1.js","./courses/en-a2.js","./courses/en-b1.js","./courses/en-b2.js","./courses/en-c1.js","./courses/en-c2.js","./courses/es-a1.js","./courses/es-a2.js","./courses/es-b1.js","./courses/es-b2.js","./courses/es-c1.js","./courses/es-c2.js","./courses/gloss-da.js","./courses/gloss-en.js","./courses/gloss-es.js","./courses/party.js","./courses/culture.js"];
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(CACHE).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));
 });

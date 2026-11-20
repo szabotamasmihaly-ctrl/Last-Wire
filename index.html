@@ -1265,6 +1265,74 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .pc-e{font-size:46px}
 .pcard b{font-size:21px;font-weight:800;flex:1;text-align:left}
 .stamp{width:34px;height:40px;border:2px dashed #D8263C;border-radius:3px;background:linear-gradient(135deg,#ffd6d6,#fff)}
+/* 🇬🇧🇺🇸 culture games */
+.cult-h{margin:12px 0 0;font:900 24px/1.15 var(--font-display);color:var(--ink);display:flex;gap:8px;align-items:center}
+.k1{background:linear-gradient(135deg,#1f3fa8,#c8102e)}.k2{background:#3c3c55}.k3{background:#e2412f}.k4{background:#0f9d8a}
+.pond{flex:none;background:#eaf4ff;color:#10213a;border-radius:14px;padding:6px 12px 10px;box-shadow:0 4px 0 rgba(0,0,0,.22);margin:0 0 10px}
+.pond-f{display:flex;align-items:center;justify-content:center;gap:10px;font-size:24px;line-height:1.1;margin:0 0 2px}
+.pond-f .waves{font-size:18px;color:#2F6FE4;animation:wave 1.6s ease-in-out infinite;letter-spacing:-4px}
+.pond .fl.b{opacity:.35;transition:opacity .4s,transform .5s}
+.pond.done .fl.b{opacity:1;transform:scale(1.25) rotate(8deg)}.pond.done .fl.a{opacity:.35}
+@keyframes wave{50%{transform:translateX(6px)}}
+.pond-s{margin:0;font-size:20px;font-weight:700;line-height:1.35;text-align:center}
+.pond-s.sm{font-size:18px}.pond-s.xs{font-size:16px}
+.pond-s mark.pw{background:#FFC83D;color:#2a1a00;border-radius:6px;padding:0 6px;display:inline-block}
+.pond-s mark.pw.flip{background:#58CC02;color:#fff;animation:pflip .6s cubic-bezier(.3,1.4,.5,1)}
+@keyframes pflip{0%{transform:rotateX(90deg)}100%{transform:none}}
+.pond-h{margin:0 0 8px;font-weight:800;font-size:18px}
+.pbook{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pbook li{display:flex;align-items:center;gap:14px;background:#fffaf0;color:#111;border-radius:12px;padding:10px 14px;box-shadow:0 3px 0 #c9bd9f}
+.pbook .pb-e{font-size:40px;line-height:1}.pbook b{font-size:22px}
+.who-c{flex:none;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:#1b1f2a;color:#fff;border-radius:14px;padding:8px 12px;margin:0 0 4px;position:relative;overflow:hidden;box-shadow:0 4px 0 #000}
+.who-c::after{content:"";position:absolute;inset:-40% auto -40% -30%;width:40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);transform:rotate(18deg);animation:spot 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes spot{0%{left:-40%}60%,100%{left:120%}}
+.who-s{position:relative;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 50% 40%,#3a4257,#11141b);display:grid;place-items:center}
+.who-x{font-size:34px;filter:drop-shadow(0 0 10px rgba(255,200,61,.5))}
+.who-c.shown .who-x{animation:pgin .6s cubic-bezier(.2,1.6,.4,1) both}
+.who-k{position:absolute;right:-4px;top:-4px;font-size:22px}
+.who-t p{margin:0}.who-q{font:900 14px/1 var(--font-body);letter-spacing:.08em;text-transform:uppercase;color:#FFC83D;margin:0 0 6px!important}
+.who-l{font-size:17px;font-weight:600;line-height:1.3}
+.who-n{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.who-n li{background:#fffaf0;color:#111;font-weight:800;font-size:20px;border-radius:12px;padding:10px 14px;box-shadow:0 3px 0 #c9bd9f}
+.pob.no{animation:pshake .35s;opacity:.55}
+.diner{flex:none;display:grid;grid-template-columns:1fr 92px 70px;gap:8px;align-items:center}
+.ticket{background:#fffef4;color:#222;border-radius:4px;padding:8px 10px;box-shadow:0 3px 0 #bdb59c;display:grid;gap:4px;transform:rotate(-2deg);animation:swing 3s ease-in-out infinite;transform-origin:top center;border-top:6px dashed #e2412f}
+.ticket .tk-h{font:800 12px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase;color:#888}
+.ticket b{font:900 18px/1.15 var(--font-display)}
+@keyframes swing{50%{transform:rotate(2deg)}}
+.plate{position:relative;border-radius:50%;width:92px;height:92px;background:radial-gradient(circle,#fff 52%,#e9ecef 54%,#fff 64%,#d7dbe0 66%);display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:0 2px;padding:18%;box-shadow:0 5px 0 rgba(0,0,0,.2)}
+.pl-i{font-size:17px;animation:drop .35s cubic-bezier(.3,1.6,.5,1) both}
+.pl-0{font-size:28px;opacity:.35}
+.bell{width:70px;height:70px;border:0;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe9a8,#FFC83D 55%,#d99a00);box-shadow:0 5px 0 #8a6200;font-size:30px;display:grid;place-items:center;line-height:1;padding:0}
+.bell span{font:800 11px/1 var(--font-body);color:#3a2a00;text-transform:uppercase}
+.bell:active{transform:translateY(3px);box-shadow:0 2px 0 #8a6200}
+.bell:disabled{filter:grayscale(.7);opacity:.6}
+@keyframes drop{from{transform:translateY(-30px) scale(1.4);opacity:0}}
+.plate.served{animation:ding .6s}
+.pl-ok{position:absolute;right:-6px;top:-6px;font-size:34px;animation:pgin .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes ding{30%{transform:scale(1.12) rotate(-4deg)}60%{transform:scale(.96) rotate(3deg)}}
+.kitchen{flex:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.kit{font-size:28px;min-height:46px;padding:0;border:0;border-radius:14px;background:#f1efe8;box-shadow:0 4px 0 #9aa0a6;transition:transform .08s}
+.kit.on{background:#d7ffb8;box-shadow:0 2px 0 #58a700,inset 0 0 0 3px #58CC02;transform:translateY(2px)}
+.kit.no{animation:pshake .35s;background:#ffd6d6}
+.menu{background:#fff8ec;color:#2a1a00;border-radius:12px;padding:12px 14px;box-shadow:0 4px 0 #c9b48f;border:3px double #e2412f}
+.mn-h{margin:0 0 8px;text-align:center;font:900 22px/1 var(--font-display);letter-spacing:.12em;color:#e2412f}
+.menu ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.menu li{display:grid;gap:2px;border-bottom:1px dotted #c9b48f;padding:0 0 8px}.menu li:last-child{border:0}
+.menu li b{font-size:19px}.menu li span{font-size:17px;line-height:1.3}
+.guess-q{flex:none;font-size:20px;font-weight:700;line-height:1.3;margin:0 0 10px;text-align:center}
+.guess{flex:none;display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;margin:0 0 10px}
+.gd-col{display:grid;gap:6px}.gd-col .key{min-height:44px;font-weight:800}
+.gd-n{min-width:120px;background:#0b0c0e;color:#ff5a4e;border-radius:12px;padding:14px 10px;text-align:center;font:900 40px/1 ui-monospace,Menlo,monospace;box-shadow:inset 0 0 0 3px #3a3f45;text-shadow:0 0 12px rgba(255,90,78,.7)}
+.gd-n.hit{color:#7CFC6A;text-shadow:0 0 12px rgba(124,252,106,.8);animation:pgin .4s both}
+.gauge2{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.gauge2 .th{width:34px;height:170px;border-radius:17px;background:#e8ecf1;position:relative;overflow:hidden;box-shadow:inset 0 0 0 3px #c9d1db}
+.gauge2 .th i{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(0deg,#2F6FE4,#58CC02,#FF9600,#FF4B4B);background-size:100% 170px;background-position:bottom;transition:height .5s cubic-bezier(.3,1.3,.5,1)}
+.g2-t p{margin:0;text-align:center}.g2-v{font-size:18px;opacity:.75}.g2-v b{font-family:ui-monospace,Menlo,monospace;font-size:22px}
+.g2-a{font-size:64px;line-height:1.1;animation:bob 1.4s ease-in-out infinite}
+.g2-w{font:900 28px/1.1 var(--font-display)}
+.gauge2.cold .g2-w{color:#2F6FE4}.gauge2.warm .g2-w{color:#FF9600}.gauge2.hit .g2-w{color:#58a700}
+@media (prefers-reduced-motion:reduce){.who-c::after,.ticket,.g2-a,.pond-f .waves,.pl-i{animation:none!important}}
 .slangd{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:20px;margin:0}
 .slangd dt{font-weight:900;color:var(--enamel);font-family:ui-monospace,Menlo,monospace}
 .slangd dd{margin:0}
@@ -3983,6 +4051,12 @@ function stationKind(p) {
   var pick = jokeSet(p, N);
   if (pick) { var order = RU(mulberry32(hashSeed('lwjo:' + p.lang + ':' + p.lv + ':' + p.n))).shuffle([0, 1, 2]);
     return { t: 'joke', data: { joke: true, left: pick.map(function (x) { return x[0]; }), right: order.map(function (k) { return pick[k][1]; }), ans: [0, 1, 2].map(function (k) { return order.indexOf(k) + 1; }), full: pick.map(function (x) { return x[0] + ' ' + x[1]; }) } }; }
+  /* English: British and American culture at every ninth station (5, 14, 23 ...), the four games in turn */
+  if (p.lang === 'en' && p.n % 9 === 5 && typeof CULT !== 'undefined') {
+    var k = (p.n - 5) / 9, g = CULT_GAMES[(k + p.lv) % CULT_GAMES.length], slot = 0;
+    for (var q = 0; q < k; q++) if (CULT_GAMES[(q + p.lv) % CULT_GAMES.length] === g) slot++;
+    return cultPath(RU(mulberry32(hashSeed('lwcp:' + p.lv + ':' + p.n))), g, p.lv, slot, 2);
+  }
   return null;
 }
 function genRadioP(r, items) {
@@ -4030,6 +4104,7 @@ function makeStationSpec(code) {
     else if (m.t === 'listen') m.data.rounds.forEach(function (x) { secs += 25 + 5 * x.ans.length; });
     else if (m.t === 'fix') secs += 45 * m.data.rounds.length;
     else if (m.t === 'radio') secs += 45 * m.data.rounds.length;
+    else if (CULT_PER[m.t]) secs += (m.t === 'diner' ? 70 : 50) * m.data.rounds.length;
     else secs += 90;
   });
   var r0 = RU(mulberry32(base ^ 0x5bd1e995));
@@ -4045,14 +4120,14 @@ var PARTY_OFF = ['safe'];
 function partyOn(g) { return PARTY_OFF.indexOf(g) < 0; }
 /* the tile after tile n, skipping games taken out */
 function partyNext(n) { var k = n % PARTY_GAMES.length; while (!partyOn(PARTY_GAMES[k])) k = (k + 1) % PARTY_GAMES.length; return k + 1; }
-var PARTY_ICON = { wires: '✂️', plot: '🍿', song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗺️' };
+var PARTY_ICON = { wires: '✂️', plot: '🍿', song: '🎵', film: '🎬', karaoke: '🎤', twister: '👅', safe: '🔐', radio: '📻', idiom: '🌧️', slang: '📱', rhyme: '✂️', post: '🗺️', pond: '🇬🇧', who: '🕵️', diner: '🍔', guess: '🌡️' };
 var PARTY_LANGS = ['en', 'es', 'da'];
 /* X:lang:game:seed:offsets. Game 1..10 is that game with a partner; 11 mixes three. The seed picks the mix;
    the offsets say how far each game has got through its content, so the next bomb brings new things. Both phones get the same code. */
 function partyCode(lang, n, seed) { return 'X:' + lang + ':' + n + ':' + (seed == null ? Math.floor(Math.random() * 9000) + 1000 : seed); }
 function parsePartyCode(code) {
   var m = /^X:([a-z]{2}):(\d{1,2}):(\d{1,6})(?::(\d{1,4}(?:\.\d{1,4}){0,2}))?(?::h([a-z0-9]{1,9}))?$/.exec(String(code || ''));
-  if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || (+m[2] <= PARTY_GAMES.length && !partyOn(PARTY_GAMES[+m[2] - 1])) || !((+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1) || (+m[2] > BOSS0 && +m[2] <= BOSS0 + BOSS_N))) return null;
+  if (!m || PARTY_LANGS.indexOf(m[1]) < 0 || (+m[2] <= PARTY_GAMES.length && !partyOn(PARTY_GAMES[+m[2] - 1])) || !((+m[2] >= 1 && +m[2] <= PARTY_GAMES.length + 1) || (+m[2] > BOSS0 && +m[2] <= BOSS0 + BOSS_N) || (m[1] === 'en' && cultGame(+m[2])))) return null;
   return { lang: m[1], n: +m[2], seed: +m[3], offs: m[4] ? m[4].split('.').map(Number) : [], h: m[5] || '', base: 'X:' + m[1] + ':' + m[2] + ':' + m[3] };
 }
 /* 📻 DEAD AIR, the radio boss: party codes 21..50 are its levels (three movie tracks of ten) */
@@ -4060,6 +4135,8 @@ var BOSS0 = 20, BOSS_N = 30, BOSS_FM = ['88.1', '91.5', '96.3', '104.7'];
 function bossWord(n) { var T = typeof PARTY !== 'undefined' && PARTY.deadair, k = n - BOSS0 - 1; return T && T[Math.floor(k / 10)] ? T[Math.floor(k / 10)].q[k % 10][1] : ''; }
 function partyGames(n, r, L) {
   if (n > BOSS0) return ['boss'];
+  /* the culture tiles: the game, and the next culture game */
+  if (cultGame(n)) return [cultGame(n), CULT_GAMES[(n - CULT0) % CULT_GAMES.length]];
   /* text slang is a speedrun on its own: both phones get the same cards */
   if (PARTY_GAMES[n - 1] === 'slang') return ['slang'];
   /* English movies: the emoji films and the movie riddles share one tile and one list of films */
@@ -4075,7 +4152,7 @@ function partyGames(n, r, L) {
 function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base))), p.lang).map(function (g) { return partyGame(g, p.lang); }) : []; }
 function partyGame(g, L) { if (g === 'rhyme' && PACK[L] && typeof PACK[L].cond === 'function') return 'wires'; return g; }
 /* how many items each game takes per bomb */
-var PARTY_PER = { wires: 0, plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
+var PARTY_PER = { wires: 0, plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3, pond: 3, who: 3, diner: 2, guess: 3 };
 /* each game's content in a fixed shuffled order per language: bomb k takes the next items; only after all of them does a new order begin */
 /* tier: the pool runs easy to hard in blocks of this size, so the first round through it shuffles inside each block */
 /* stride, start: a bomb takes k items from its own slots in every block of stride, so two games can share one deck without meeting */
@@ -4249,7 +4326,66 @@ var GENP = {
     }) };
   }
 };
-var PARTY_TIME = { wires: 110, plot: 120, boss: 120, song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110 };
+/* ===== English and American culture (English only): four games, data in courses/culture.js ===== */
+/* party codes 13..16 are the culture tiles; each tile adds the next culture game */
+var CULT0 = 12, CULT_GAMES = ['pond', 'who', 'diner', 'guess'];
+function cultGame(n) { return n > CULT0 && n <= CULT0 + CULT_GAMES.length ? CULT_GAMES[n - CULT0 - 1] : ''; }
+var CULT_KIND = { p: '👤', h: '🎉', s: '🏟️', l: '📍' };
+/* the rounds of one culture game, built from the rows picked */
+var CULTR = {
+  /* one sentence in one country's English: the bomb has three words from the other side of the ocean, the helper three pictures with words; one word is on both */
+  pond: function (r, pick) {
+    var pool = CULT.pond;
+    return pick.map(function (i) {
+      var x = pool[i], us = r.chance(0.5), from = us ? 0 : 1, to = 1 - from;
+      var rest = pool.filter(function (_, j) { return j !== i; }), mine = r.sample(rest, 4);
+      var o = shuf3(r, x[to], mine.slice(0, 2).map(function (y) { return y[to]; }));
+      var help = r.shuffle([x].concat(mine.slice(2, 4))).map(function (y) { return { e: y[2], w: y[to] }; });
+      var parts = x[3].split('_');
+      return { from: us ? 'us' : 'uk', pre: parts[0], post: parts[1] || '', word: x[from], words: o.words, ans: o.ans, help: help, e: x[2],
+        full: (us ? '🇺🇸 ' : '🇬🇧 ') + x[from] + ' = ' + (us ? '🇬🇧 ' : '🇺🇸 ') + x[to] + ' · ' + x[3].replace('_', x[to]) };
+    });
+  },
+  /* each side has one clue and three names: only one name is on both */
+  who: function (r, pick) {
+    var pool = CULT.who;
+    return pick.map(function (i) {
+      var x = pool[i], same = pool.filter(function (y, j) { return j !== i && y[2] === x[2]; }), dec = r.sample(same, 4).map(function (y) { return y[0]; });
+      var a = r.shuffle([x[0]].concat(dec.slice(0, 2))), b = r.shuffle([x[0]].concat(dec.slice(2, 4)));
+      return { kind: x[2], e: x[1], clue: x[3], hclue: x[4], words: a, ans: a.indexOf(x[0]), hwords: b, name: x[0], full: x[1] + ' ' + x[0] + ': ' + x[3] + ' ' + x[4] };
+    });
+  },
+  /* the order is on the bomb, the menu with the helper; the bomb puts the pictures on the plate */
+  diner: function (r, pick) {
+    var pool = CULT.diner, keys = Object.keys(CULT.ing);
+    return pick.map(function (i) {
+      var x = pool[i], need = x[3], extra = r.sample(keys.filter(function (k) { return need.indexOf(k) < 0; }), 9 - need.length);
+      var menu = r.shuffle([x].concat(r.sample(pool.filter(function (_, j) { return j !== i; }), 3))).map(function (y) { return { n: y[0], d: y[2] }; });
+      return { dish: x[0], e: x[1], need: need.slice(), grid: r.shuffle(need.concat(extra)), menu: menu, full: x[1] + ' ' + x[0] + ': ' + x[2] };
+    });
+  },
+  /* the bomb turns a number dial, the helper only sees higher or lower */
+  guess: function (r, pick) {
+    return pick.map(function (i) { var x = CULT.guess[i]; return { q: x[0], ans: x[1], start: x[2], full: x[0] + ' ' + x[1] }; });
+  }
+};
+var CULT_PER = { pond: 3, who: 3, diner: 2, guess: 3 };
+GENP.pond = function (r, L, off) { return { rounds: CULTR.pond(r, deckTake('en:pond', CULT.pond, off, CULT_PER.pond, 20)) }; };
+GENP.who = function (r, L, off) { return { rounds: CULTR.who(r, deckTake('en:who', CULT.who, off, CULT_PER.who, 20)) }; };
+GENP.diner = function (r, L, off) { return { rounds: CULTR.diner(r, deckTake('en:diner', CULT.diner, off, CULT_PER.diner, 9)) }; };
+GENP.guess = function (r, L, off) { return { rounds: CULTR.guess(r, deckTake('en:guess', CULT.guess, off, CULT_PER.guess, 12)) }; };
+function cultPool(g) { return typeof CULT !== 'undefined' && CULT[g] ? CULT[g] : []; }
+/* the path's culture stations: rows of the station's own level, a different pair at each station */
+function cultPath(r, g, lv, slot, k) {
+  var pool = cultPool(g), lvl = function (x) { return x[x.length - 1]; };
+  var own = pool.map(function (_, i) { return i; }).filter(function (i) { return lvl(pool[i]) === lv; });
+  var near = pool.map(function (_, i) { return i; }).filter(function (i) { return Math.abs(lvl(pool[i]) - lv) === 1; });
+  var dr = RU(mulberry32(hashSeed('lwcult:' + g + ':' + lv)));
+  var list = dr.shuffle(own).concat(dr.shuffle(near)), pick = list.slice(slot * k, slot * k + k);
+  if (pick.length < k) pick = list.slice(0, k);
+  return { t: g, data: { rounds: CULTR[g](r, pick) } };
+}
+var PARTY_TIME = { wires: 110, plot: 120, boss: 120, song: 110, film: 120, karaoke: 110, twister: 130, safe: 110, radio: 100, idiom: 100, slang: 120, rhyme: 90, post: 110, pond: 100, who: 120, diner: 130, guess: 110 };
 function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
   var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
@@ -4309,6 +4445,7 @@ PACK.en.mod.plot = PACK.es.mod.plot = PACK.da.mod.plot = PACK.hu.mod.plot = 'Mov
 PACK.es.mod.song = 'Termina la canción'; PACK.es.mod.film = 'Pelis en emojis'; PACK.es.mod.karaoke = 'Karaoke'; PACK.es.mod.twister = 'Trabalenguas'; PACK.es.mod.safe = 'La caja fuerte'; PACK.es.mod.radio = 'La radio'; PACK.es.mod.idiom = 'Modismos'; PACK.es.mod.slang = 'Jerga de chat'; PACK.es.mod.rhyme = 'Cables que riman'; PACK.es.mod.post = 'Postales';
 PACK.da.mod.song = 'Syng færdig'; PACK.da.mod.film = 'Emoji-film'; PACK.da.mod.karaoke = 'Karaoke'; PACK.da.mod.twister = 'Tungebrækker'; PACK.da.mod.safe = 'Pengeskabet'; PACK.da.mod.radio = 'Radioen'; PACK.da.mod.idiom = 'Talemåder'; PACK.da.mod.slang = 'Chat-slang'; PACK.da.mod.rhyme = 'Rimledninger'; PACK.da.mod.post = 'Postkort';
 PACK.hu.mod.song = 'Fejezd be a dalt'; PACK.hu.mod.film = 'Emoji-filmek'; PACK.hu.mod.karaoke = 'Karaoke'; PACK.hu.mod.twister = 'Nyelvtörő'; PACK.hu.mod.safe = 'A széf'; PACK.hu.mod.radio = 'Rádió'; PACK.hu.mod.idiom = 'Szólások'; PACK.hu.mod.slang = 'Chat-szleng'; PACK.hu.mod.rhyme = 'Rímelő drótok'; PACK.hu.mod.post = 'Képeslapok';
+['en', 'es', 'da', 'hu'].forEach(function (L) { var M = PACK[L].mod; M.pond = 'Across the Pond'; M.who = 'Who am I?'; M.diner = 'The diner'; M.guess = 'Higher or lower'; });
 PACK.en.mod.gap = 'Gap'; PACK.en.mod.listen = 'Listen'; PACK.en.mod.fix = 'Hear it'; PACK.en.mod.match = 'Match'; PACK.en.mod.joke = 'Jokes';
 PACK.da.mod.gap = 'Hul'; PACK.da.mod.listen = 'Lyt'; PACK.da.mod.fix = 'Hør efter'; PACK.da.mod.match = 'Par';
 PACK.hu.mod.gap = 'Hiány'; PACK.hu.mod.listen = 'Hallgasd'; PACK.hu.mod.fix = 'Halld'; PACK.hu.mod.match = 'Párosítsd';
@@ -4399,7 +4536,14 @@ var ES_PHRASES = [
     'boss.h1': ['🗣️ Play it and tell the bomb what it is about.', '🗣️ Játszd le, és mondd el a bombának, miről szól.', '🗣️ Afspil den, og fortæl bomben, hvad den handler om.'],
     'boss.h2': ['🗣️ Read the question to the bomb: it has the answers.', '🗣️ Olvasd fel a kérdést a bombának: nála vannak a válaszok.', '🗣️ Læs spørgsmålet op for bomben: den har svarene.'],
     'boss.warn': ['⚠️ Skip = no way back', '⚠️ Ha továbblépsz, nincs visszaút', '⚠️ Springer du over, er der ingen vej tilbage'],
-    'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
+    'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort'],
+    'mod.pond': ['Across the Pond', 'Az óceán két partján', 'Over dammen'], 'mod.who': ['Who am I?', 'Ki vagyok?', 'Hvem er jeg?'], 'mod.diner': ['The diner', 'A büfé', 'Dineren'], 'mod.guess': ['Higher or lower', 'Több vagy kevesebb', 'Højere eller lavere'],
+    'party.culture': ['British and American culture', 'Brit és amerikai kultúra', 'Britisk og amerikansk kultur'],
+    'pond.book.uk': ['Your British words', 'A brit szavaid', 'Dine britiske ord'], 'pond.book.us': ['Your American words', 'Az amerikai szavaid', 'Dine amerikanske ord'],
+    'who.q.p': ['Who am I?', 'Who am I?', 'Who am I?'], 'who.q.x': ['What am I?', 'What am I?', 'What am I?'],
+    'diner.n': ['Order', 'Rendelés', 'Bestilling'], 'diner.order': ['Order', 'Rendelés', 'Bestilling'], 'diner.plate': ['The plate', 'A tányér', 'Tallerkenen'], 'diner.serve': ['Serve', 'Tálald', 'Servér'],
+    'diner.bad': ['Not quite: the wrong food went back.', 'Nem egészen: a rossz kaja visszament.', 'Ikke helt: den forkerte mad røg tilbage.'],
+    'guess.lock': ['Lock', 'Rögzítsd', 'Lås'], 'guess.bad': ['Not that number. Ask your helper: higher or lower?', 'Nem ez a szám. Kérdezd a segítődet: több vagy kevesebb?', 'Ikke det tal. Spørg din hjælper: højere eller lavere?']
   };
   for (var k in add) STR[k] = add[k];
 })();
@@ -4427,6 +4571,7 @@ var ES_PHRASES = [
 <script src="courses/da-c2.js"></script>
 <script src="courses/gloss-da.js"></script>
 <script src="courses/party.js"></script>
+<script src="courses/culture.js"></script>
 <script>
 'use strict';
 (function () {
@@ -6978,6 +7123,151 @@ var ES_PHRASES = [
     done: function (d) { return learn(pRecap(d)); }
   }, earHelp(function (d, p) { var rd = d.rounds[p]; return rd && { say: rd.desc }; }));
 
+  /* ===== English and American culture ===== */
+  /* 🇬🇧🇺🇸 across the pond: one word of the sentence becomes the other country's word */
+  var FLAGS = { us: '🇺🇸', uk: '🇬🇧' };
+  UI.pond = {
+    init: function () { return { r: 0, pick: -1, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], done = st.pick >= 0, to = rd.from === 'us' ? 'uk' : 'us';
+      return note([cnt('n.sentence', st.r + 1, d.rounds.length)]) +
+        '<div class="pond' + (done ? ' done' : '') + '"><div class="pond-f" aria-hidden="true"><span class="fl a">' + FLAGS[rd.from] + '</span><span class="waves">〰️〰️〰️</span><span class="fl b">' + FLAGS[to] + '</span></div>' +
+        '<p class="pond-s' + sizeCls(rd.pre + rd.word + rd.post) + '" lang="en">' + TW(rd.pre, rd.pre + rd.post) + '<mark class="pw' + (done ? ' flip' : '') + '">' + esc(done ? rd.words[st.pick] : rd.word) + '</mark>' + TW(rd.post, rd.pre + rd.post) + '</p></div>' +
+        '<div class="pobs pond-o">' + rd.words.map(function (w, k) {
+          return '<button type="button" class="pob c' + k + (st.pick === k ? ' on' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (st.lock ? ' disabled' : '') + ' lang="en">' + kbd(k + 1) + '<span>' + FLAGS[to] + ' ' + esc(w) + '</span></button>';
+        }).join('') + '</div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') return advOn(d, st);
+      if (k !== 'c' || st.lock) return; v = +v; if (!(v >= 0 && v < rd.words.length)) return;
+      if (v !== rd.ans) { st.fb = true; return 'strike'; }
+      st.pick = v; st.fb = false; sfx('tick'); later(i, st, 1100); return 're';
+    },
+    key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) {
+      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1), rd = d.rounds[p], to = rd.from === 'us' ? 'uk' : 'us';
+      return card(cnt('n.sentence', p + 1, n), '', '<p class="pond-h"><span aria-hidden="true">' + FLAGS[to] + '</span> ' + esc(t('pond.book.' + to)) + '</p><ul class="pbook" lang="en">' + rd.help.map(function (x) {
+        return '<li><span class="pb-e" aria-hidden="true">' + x.e + '</span><b>' + esc(x.w) + '</b></li>';
+      }).join('') + '</ul>');
+    },
+    onHelp: function () {}
+  };
+
+  /* 🕵️ who am I: one clue and three names on each phone; only one name is on both */
+  function whoQ(kind) { return t(kind === 'p' ? 'who.q.p' : 'who.q.x'); }
+  UI.who = {
+    init: function () { return { r: 0, pick: -1, bad: [], fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], done = st.pick >= 0;
+      return note([cnt('n.q', st.r + 1, d.rounds.length)]) +
+        '<div class="who-c' + (done ? ' shown' : '') + '"><div class="who-s" aria-hidden="true"><span class="who-k">' + CULT_KIND[rd.kind] + '</span><span class="who-x">' + (done ? rd.e : '❓') + '</span></div>' +
+        '<div class="who-t"><p class="who-q" lang="en">' + esc(whoQ(rd.kind)) + '</p><p class="who-l" lang="en">' + TW(rd.clue, rd.clue) + '</p></div></div>' +
+        '<div class="pobs who-o">' + rd.words.map(function (w, k) {
+          return '<button type="button" class="pob c' + k + (st.pick === k ? ' on' : '') + (st.bad.indexOf(k) >= 0 ? ' no' : '') + '" data-a="m" data-i="' + i + '" data-k="c" data-v="' + k + '"' + (st.lock ? ' disabled' : '') + ' lang="en">' + kbd(k + 1) + '<span>' + esc(w) + '</span></button>';
+        }).join('') + '</div>' + (st.fb ? fbBad('p.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') return advOn(d, st);
+      if (k !== 'c' || st.lock) return; v = +v; if (!(v >= 0 && v < rd.words.length)) return;
+      if (v !== rd.ans) { if (st.bad.indexOf(v) < 0) st.bad.push(v); st.fb = true; return 'strike'; }
+      st.pick = v; st.fb = false; sfx('tick'); later(i, st, 1300); return 're';
+    },
+    key: pickKey, keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) {
+      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1), rd = d.rounds[p];
+      return card(cnt('n.q', p + 1, n), '', '<div class="who-c help"><div class="who-s" aria-hidden="true"><span class="who-k">' + CULT_KIND[rd.kind] + '</span><span class="who-x">❓</span></div>' +
+        '<div class="who-t"><p class="who-q" lang="en">' + esc(whoQ(rd.kind)) + '</p><p class="who-l" lang="en">' + TW(rd.hclue, rd.hclue) + '</p></div></div>' +
+        '<ul class="who-n" lang="en">' + rd.hwords.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') + '</ul>');
+    },
+    onHelp: function () {}
+  };
+
+  /* 🍔 the diner: the bomb has the order and the kitchen, the helper reads the menu */
+  UI.diner = {
+    init: function () { return { r: 0, on: [], bad: [], fb: false, served: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r];
+      return note([cnt('diner.n', st.r + 1, d.rounds.length)]) +
+        '<div class="diner"><div class="ticket"><span class="tk-h">🧾 ' + esc(t('diner.order')) + '</span><b lang="en">' + esc(rd.dish) + '</b></div>' +
+        '<div class="plate' + (st.served ? ' served' : '') + '" aria-label="' + esc(t('diner.plate')) + '">' + (st.on.length ? st.on.map(function (k) { return '<span class="pl-i">' + CULT.ing[rd.grid[k]] + '</span>'; }).join('') : '<span class="pl-0" aria-hidden="true">🍽️</span>') + (st.served ? '<span class="pl-ok" aria-hidden="true">' + rd.e + '</span>' : '') + '</div>' +
+          '<button type="button" class="bell" data-a="m" data-i="' + i + '" data-k="serve"' + (st.lock || !st.on.length ? ' disabled' : '') + '>🔔<span>' + esc(t('diner.serve')) + '</span></button></div>' +
+        '<div class="kitchen">' + rd.grid.map(function (g, k) {
+          var on = st.on.indexOf(k) >= 0;
+          return '<button type="button" class="kit' + (on ? ' on' : '') + (st.bad.indexOf(k) >= 0 ? ' no' : '') + '" data-a="m" data-i="' + i + '" data-k="t" data-v="' + k + '" aria-pressed="' + on + '" aria-label="' + esc(g) + '"' + (st.lock ? ' disabled' : '') + '>' + CULT.ing[g] + '</button>';
+        }).join('') + '</div>' + (st.fb ? fbBad('diner.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') { st.r++; st.on = []; st.bad = []; st.served = false; return st.r >= d.rounds.length ? 'solved' : 'next'; }
+      if (st.lock) return;
+      if (k === 't') { v = +v; if (!(v >= 0 && v < rd.grid.length)) return; var at = st.on.indexOf(v); if (at >= 0) st.on.splice(at, 1); else st.on.push(v); st.bad = []; st.fb = false; sfx('tick'); return 'move'; }
+      if (k === 'serve') {
+        if (!st.on.length) return;
+        var wrong = st.on.filter(function (x) { return rd.need.indexOf(rd.grid[x]) < 0; }), got = st.on.filter(function (x) { return rd.need.indexOf(rd.grid[x]) >= 0; }).length;
+        if (wrong.length || got < rd.need.length) { st.bad = wrong; st.on = st.on.filter(function (x) { return wrong.indexOf(x) < 0; }); st.fb = true; return 'strike'; }
+        st.served = true; st.fb = false; sfx('ok'); later(i, st, 1300); return 're';
+      }
+    },
+    key: function (e, d, st, i) { var n = digitOf(e); if (n >= 1 && n <= 9) { modAct(i, 't', n - 1); return true; } if (e.key === 'Enter') { modAct(i, 'serve'); return true; } },
+    keys: function () { return ''; }, pos: pPos, recap: pRecap,
+    done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) {
+      var n = d.rounds.length, p = Math.min(ms.step || 0, n - 1), rd = d.rounds[p];
+      return card(cnt('diner.n', p + 1, n), '', '<div class="menu"><p class="mn-h">🍔 MENU 🍟</p><ul lang="en">' + rd.menu.map(function (x) {
+        return '<li><b>' + esc(x.n) + '</b><span>' + TW(x.d, x.d) + '</span></li>';
+      }).join('') + '</ul></div>');
+    },
+    onHelp: function () {}
+  };
+
+  /* 🌡️ higher or lower: the bomb turns the number, the helper sees only which way to go */
+  var GUESS_M = 100000, GUESS_W = { 'guess.hit': "That's it! Lock it!", 'guess.up1': 'A bit higher', 'guess.up2': 'Much higher!', 'guess.down1': 'A bit lower', 'guess.down2': 'Much lower!' };
+  function guessSteps(rd) { var big = Math.max(rd.ans, rd.start); return big >= 1000 ? [1000, 100, 10, 1] : big >= 100 ? [100, 10, 1] : [10, 1]; }
+  function guessHeat(v, ans) {
+    if (v === ans) return { k: 'guess.hit', a: '🎯', c: 'hit', f: 1 };
+    var far = Math.abs(v - ans) / Math.max(10, ans), up = v < ans;
+    return { k: (up ? 'guess.up' : 'guess.down') + (far > 0.25 ? '2' : '1'), a: up ? '⬆️' : '⬇️', c: far > 0.25 ? 'cold' : 'warm', f: Math.max(0.08, 1 - Math.min(1, far)) };
+  }
+  UI.guess = {
+    init: function (d) { return { r: 0, v: d.rounds[0].start, fb: false }; },
+    bomb: function (d, st, i) {
+      var rd = d.rounds[st.r], steps = guessSteps(rd);
+      return note([cnt('n.q', st.r + 1, d.rounds.length)]) + '<p class="guess-q" lang="en">' + TW(rd.q, rd.q) + '</p>' +
+        '<div class="guess"><div class="gd-col">' + steps.map(function (s) { return B(i, 'd', -s, '−' + s); }).join('') + '</div>' +
+        '<div class="gd-n' + (st.hit ? ' hit' : '') + '" aria-live="polite"><b>' + st.v + '</b></div>' +
+        '<div class="gd-col">' + steps.map(function (s) { return B(i, 'd', s, '+' + s); }).join('') + '</div></div>' +
+        '<div class="row">' + B(i, 'lock', null, '🔒 ' + t('guess.lock'), 'go wide', st.lock) + '</div>' + (st.fb ? fbBad('guess.bad') : '');
+    },
+    on: function (k, v, d, st, i) {
+      var rd = d.rounds[st.r];
+      if (k === 'adv') { st.r++; st.hit = false; if (st.r >= d.rounds.length) return 'solved'; st.v = d.rounds[st.r].start; return 'next'; }
+      if (st.lock) return;
+      if (k === 'd') { var nv = Math.max(0, Math.min(GUESS_M - 1, st.v + (+v))); if (nv === st.v) return; st.v = nv; st.fb = false; sfx('tick'); return 'move'; }
+      if (k === 'lock') { if (st.v !== rd.ans) { st.fb = true; return 'strike'; } st.hit = true; st.fb = false; sfx('ok'); later(i, st, 1000); return 're'; }
+    },
+    key: function (e, d, st, i) {
+      if (e.key === 'ArrowUp') { modAct(i, 'd', e.shiftKey ? 10 : 1); return true; }
+      if (e.key === 'ArrowDown') { modAct(i, 'd', e.shiftKey ? -10 : -1); return true; }
+      if (e.key === 'Enter') { modAct(i, 'lock'); return true; }
+    },
+    keys: function () { return ''; },
+    pos: function (d, st) { return Math.min(st.r, d.rounds.length - 1) * GUESS_M + st.v + 1; },
+    recap: pRecap, done: function (d) { return learn(pRecap(d)); },
+    help: function (d, i, ms) {
+      /* step 0: the bomb has not said anything yet, so the dial is where it starts */
+      var n = d.rounds.length, s = ms.step || 0, p = s ? Math.min(Math.floor((s - 1) / GUESS_M), n - 1) : 0, rd = d.rounds[p];
+      var v = s ? (s - 1) % GUESS_M : rd.start;
+      var h = guessHeat(v, rd.ans);
+      return card(cnt('n.q', p + 1, n), '', '<div class="gauge2 ' + h.c + '"><div class="th" aria-hidden="true"><i style="height:' + Math.round(h.f * 100) + '%"></i></div>' +
+        '<div class="g2-t"><p class="g2-v">📟 <b>' + v + '</b></p><p class="g2-a" aria-hidden="true">' + h.a + '</p><p class="g2-w" lang="en">' + esc(GUESS_W[h.k]) + '</p></div></div>');
+    },
+    onHelp: function () {}
+  };
+
 
   /* ---------- the path screen ---------- */
   var FLAG = { en: '🇬🇧', es: '🇪🇸', da: '🇩🇰' };
@@ -7042,7 +7332,7 @@ var ES_PHRASES = [
   /* ---------- the station card that slides up from below ---------- */
   function partySheet() {
     var p = parsePartyCode(S.sheet); if (!p) return '';
-    var boss = p.n > BOSS0, g = boss ? 'boss' : PARTY_GAMES[p.n - 1], name = boss ? 'Dead Air · ' + (p.n - BOSS0) : g ? PACK[p.lang].mod[g = partyGame(g, p.lang)] : t('party.mix');
+    var boss = p.n > BOSS0, g = boss ? 'boss' : cultGame(p.n) || PARTY_GAMES[p.n - 1], name = boss ? 'Dead Air · ' + (p.n - BOSS0) : g ? PACK[p.lang].mod[g = partyGame(g, p.lang)] : t('party.mix');
     return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
       '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (boss ? '📻' : g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
       (pairBlocked() ? pairWaitHTML() + '</aside>' :
@@ -7063,7 +7353,17 @@ var ES_PHRASES = [
       g = partyGame(g, L);
       h += '<button type="button" class="pgame g' + (k + 1) + '" data-a="pnode" data-v="' + (k + 1) + '" style="animation-delay:' + (k * 0.04) + 's" lang="' + L + '"><span class="pi" aria-hidden="true">' + PARTY_ICON[g] + '</span>' + esc(PACK[L].mod[g]) + (st ? '<span class="pst" aria-label="' + st + ' / 3">' + stars3(st) + '</span>' : '') + '</button>';
     });
-    h += '<button type="button" class="pgame mix" data-a="pnode" data-v="' + (PARTY_GAMES.length + 1) + '"><span class="pi" aria-hidden="true">🎲</span>' + t('party.mix') + '</button></div></div>';
+    h += '<button type="button" class="pgame mix" data-a="pnode" data-v="' + (PARTY_GAMES.length + 1) + '"><span class="pi" aria-hidden="true">🎲</span>' + t('party.mix') + '</button></div>';
+    /* 🇬🇧🇺🇸 British and American culture: English only */
+    if (L === 'en' && typeof CULT !== 'undefined') {
+      h += '<h2 class="cult-h"><span aria-hidden="true">🇬🇧🇺🇸</span> ' + esc(t('party.culture')) + '</h2><div class="pgrid cult">';
+      CULT_GAMES.forEach(function (g, k) {
+        var n = CULT0 + k + 1, st = partyStars(L, n);
+        h += '<button type="button" class="pgame k' + (k + 1) + '" data-a="pnode" data-v="' + n + '" style="animation-delay:' + (0.4 + k * 0.05) + 's" lang="en"><span class="pi" aria-hidden="true">' + PARTY_ICON[g] + '</span>' + esc(PACK.en.mod[g]) + (st ? '<span class="pst" aria-label="' + st + ' / 3">' + stars3(st) + '</span>' : '') + '</button>';
+      });
+      h += '</div>';
+    }
+    h += '</div>';
     return h;
   }
   /* 📻 the boss track: three movie tracks of ten levels; a won level shows the word it taught */
@@ -7473,7 +7773,7 @@ var ES_PHRASES = [
       '';
   }
 
-  function bombTag(spec) { if (spec.party > BOSS0) return '📻' + (spec.party - BOSS0); if (spec.party) return '🎉' + (spec.party > PARTY_GAMES.length ? '?' : spec.party); if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
+  function bombTag(spec) { if (spec.party > BOSS0) return '📻' + (spec.party - BOSS0); if (cultGame(spec.party)) return '🇬🇧' + (spec.party - CULT0); if (spec.party) return '🎉' + (spec.party > PARTY_GAMES.length ? '?' : spec.party); if (spec.path) return CEFR[spec.level - 1] + '·' + spec.station; var m = MISSIONS[spec.mission - 1]; return LEVELS[spec.level - 1] + '·' + (m.random === 4 ? 'XL' : m.random ? '?' : spec.mission); }
   function openCode() {
     var spec = makeSpec(S.codeInput);
     if (!spec) { S.codeErr = true; render(); return; }
@@ -7513,7 +7813,7 @@ var ES_PHRASES = [
       '<div class="tl"><span class="lbl" lang="' + tl() + '">' + P.plate.strikes + '</span><span class="lamps big" id="bomb-lamps">' + lampsHTML() + '</span></div></div></section>';
   }
   /* one sentence per game, and who waits for whom: h = the helper has the info, b = the bomb has it, otherwise both hold half */
-  var GX = {"boss": ["The bomb tunes the stations, the helper hears what each one says.", "A bomba állomásokat hangol, a segítő hallja, mit mond mindegyik.", "Bomben stiller ind på stationer, hjælperen hører, hvad hver af dem siger."], "clock": ["Set the clock to the time the clues point to.", "Állítsd az órát arra az időre, amire a nyomok utalnak.", "Stil uret til det tidspunkt, sporene peger på."], "comp": ["The helper describes a word, the bomb builds it from two parts.", "A segítő körülír egy szót, a bomba két részből rakja össze.", "Hjælperen beskriver et ord, bomben sætter det sammen af to dele."], "dict": ["The helper plays a sentence, the bomb types it word by word.", "A segítő lejátszik egy mondatot, a bomba szóról szóra begépeli.", "Hjælperen afspiller en sætning, bomben skriver den ord for ord."], "film": ["The bomb guesses the film from emojis, the helper has the titles.", "A bomba emojikból találja ki a filmet, a segítőnél vannak a címek.", "Bomben gætter filmen ud fra emojis, hjælperen har titlerne."], "fix": ["The helper hears the sentence, the bomb fixes the wrong word.", "A segítő hallja a mondatot, a bomba kijavítja a rossz szót.", "Hjælperen hører sætningen, bomben retter det forkerte ord."], "gap": ["The bomb reads the sentence, the helper says which colour fills the gap.", "A bomba felolvassa a mondatot, a segítő megmondja, melyik szín illik a hiányba.", "Bomben læser sætningen, hjælperen siger, hvilken farve passer i hullet."], "idiom": ["The bomb sees the idiom as a picture, the helper has the meanings.", "A bomba képként látja a szólást, a segítőnél vannak a jelentések.", "Bomben ser talemåden som et billede, hjælperen har betydningerne."], "match": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."], "karaoke": ["The helper hears a line, the bomb picks it and sings it.", "A segítő hall egy sort, a bomba kiválasztja és elénekli.", "Hjælperen hører en linje, bomben vælger den og synger den."], "lever": ["Pick the right word of two for each sentence.", "Válaszd ki a két szó közül a jót minden mondathoz.", "Vælg det rigtige af to ord til hver sætning."], "listen": ["The helper hears a sentence, the bomb builds it from the tiles.", "A segítő hall egy mondatot, a bomba kirakja a kártyákból.", "Hjælperen hører en sætning, bomben bygger den af brikkerne."], "order": ["Put the words in the right order.", "Tedd a szavakat helyes sorrendbe.", "Sæt ordene i den rigtige rækkefølge."], "pics": ["The bomb names the picture, the helper says its number.", "A bomba megnevezi a képet, a segítő megmondja a számát.", "Bomben siger, hvad billedet viser, hjælperen siger dets nummer."], "plot": ["The bomb reads a tricky movie riddle and types the title, the helper has six titles.", "A bomba felolvas egy trükkös filmrejtvényt és beírja a címet, a segítőnél hat cím van.", "Bomben læser en drilsk filmgåde og skriver titlen, hjælperen har seks titler."], "post": ["The helper hears about a country, the bomb picks its postcard.", "A segítő hall egy országról, a bomba kiválasztja a képeslapját.", "Hjælperen hører om et land, bomben vælger dets postkort."], "radio": ["The helper hears a sentence, the bomb tunes in to the missing word.", "A segítő hall egy mondatot, a bomba ráhangol a hiányzó szóra.", "Hjælperen hører en sætning, bomben stiller ind på det manglende ord."], "read": ["The helper reads a notice, the bomb answers questions about it.", "A segítő elolvas egy hirdetményt, a bomba kérdésekre válaszol róla.", "Hjælperen læser en meddelelse, bomben svarer på spørgsmål om den."], "rhyme": ["The helper hears a sentence, the bomb cuts the wire with the missing word.", "A segítő hall egy mondatot, a bomba elvágja a hiányzó szó drótját.", "Hjælperen hører en sætning, bomben klipper ledningen med det manglende ord."], "safe": ["The helper hears three numbers, the bomb turns the dial to open the safe.", "A segítő hall három számot, a bomba a tárcsával kinyitja a széfet.", "Hjælperen hører tre tal, bomben drejer skiven og åbner pengeskabet."], "slang": ["The bomb reads a chat message, the helper has the slang list.", "A bomba felolvas egy chatüzenetet, a segítőnél van a szlenglista.", "Bomben læser en chatbesked, hjælperen har slanglisten."], "song": ["The helper hears the song, the bomb picks the missing words.", "A segítő hallja a dalt, a bomba kiválasztja a hiányzó szavakat.", "Hjælperen hører sangen, bomben vælger de manglende ord."], "story": ["Fill the gaps in the story with words from the helper's list.", "Töltsd ki a történet hiányait a segítő listájának szavaival.", "Udfyld hullerne i historien med ord fra hjælperens liste."], "twister": ["The helper hears a tongue twister, the bomb types the missing word or says it.", "A segítő hall egy nyelvtörőt, a bomba beírja a hiányzó szót vagy kimondja.", "Hjælperen hører en tungebrækker, bomben skriver det manglende ord eller siger den."], "verbs": ["Put the verb in the right form; the helper has the signal words.", "Tedd az igét a helyes alakba; a segítőnél vannak a jelzőszavak.", "Sæt verbet i den rigtige form; hjælperen har signalordene."], "wires": ["The bomb describes the wires, the helper says which one to cut.", "A bomba leírja a drótokat, a segítő megmondja, melyiket kell elvágni.", "Bomben beskriver ledningerne, hjælperen siger, hvilken der skal klippes."], "joke": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."]};
+  var GX = {"boss": ["The bomb tunes the stations, the helper hears what each one says.", "A bomba állomásokat hangol, a segítő hallja, mit mond mindegyik.", "Bomben stiller ind på stationer, hjælperen hører, hvad hver af dem siger."], "clock": ["Set the clock to the time the clues point to.", "Állítsd az órát arra az időre, amire a nyomok utalnak.", "Stil uret til det tidspunkt, sporene peger på."], "comp": ["The helper describes a word, the bomb builds it from two parts.", "A segítő körülír egy szót, a bomba két részből rakja össze.", "Hjælperen beskriver et ord, bomben sætter det sammen af to dele."], "dict": ["The helper plays a sentence, the bomb types it word by word.", "A segítő lejátszik egy mondatot, a bomba szóról szóra begépeli.", "Hjælperen afspiller en sætning, bomben skriver den ord for ord."], "film": ["The bomb guesses the film from emojis, the helper has the titles.", "A bomba emojikból találja ki a filmet, a segítőnél vannak a címek.", "Bomben gætter filmen ud fra emojis, hjælperen har titlerne."], "fix": ["The helper hears the sentence, the bomb fixes the wrong word.", "A segítő hallja a mondatot, a bomba kijavítja a rossz szót.", "Hjælperen hører sætningen, bomben retter det forkerte ord."], "gap": ["The bomb reads the sentence, the helper says which colour fills the gap.", "A bomba felolvassa a mondatot, a segítő megmondja, melyik szín illik a hiányba.", "Bomben læser sætningen, hjælperen siger, hvilken farve passer i hullet."], "idiom": ["The bomb sees the idiom as a picture, the helper has the meanings.", "A bomba képként látja a szólást, a segítőnél vannak a jelentések.", "Bomben ser talemåden som et billede, hjælperen har betydningerne."], "match": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."], "karaoke": ["The helper hears a line, the bomb picks it and sings it.", "A segítő hall egy sort, a bomba kiválasztja és elénekli.", "Hjælperen hører en linje, bomben vælger den og synger den."], "lever": ["Pick the right word of two for each sentence.", "Válaszd ki a két szó közül a jót minden mondathoz.", "Vælg det rigtige af to ord til hver sætning."], "listen": ["The helper hears a sentence, the bomb builds it from the tiles.", "A segítő hall egy mondatot, a bomba kirakja a kártyákból.", "Hjælperen hører en sætning, bomben bygger den af brikkerne."], "order": ["Put the words in the right order.", "Tedd a szavakat helyes sorrendbe.", "Sæt ordene i den rigtige rækkefølge."], "pics": ["The bomb names the picture, the helper says its number.", "A bomba megnevezi a képet, a segítő megmondja a számát.", "Bomben siger, hvad billedet viser, hjælperen siger dets nummer."], "plot": ["The bomb reads a tricky movie riddle and types the title, the helper has six titles.", "A bomba felolvas egy trükkös filmrejtvényt és beírja a címet, a segítőnél hat cím van.", "Bomben læser en drilsk filmgåde og skriver titlen, hjælperen har seks titler."], "post": ["The helper hears about a country, the bomb picks its postcard.", "A segítő hall egy országról, a bomba kiválasztja a képeslapját.", "Hjælperen hører om et land, bomben vælger dets postkort."], "radio": ["The helper hears a sentence, the bomb tunes in to the missing word.", "A segítő hall egy mondatot, a bomba ráhangol a hiányzó szóra.", "Hjælperen hører en sætning, bomben stiller ind på det manglende ord."], "read": ["The helper reads a notice, the bomb answers questions about it.", "A segítő elolvas egy hirdetményt, a bomba kérdésekre válaszol róla.", "Hjælperen læser en meddelelse, bomben svarer på spørgsmål om den."], "rhyme": ["The helper hears a sentence, the bomb cuts the wire with the missing word.", "A segítő hall egy mondatot, a bomba elvágja a hiányzó szó drótját.", "Hjælperen hører en sætning, bomben klipper ledningen med det manglende ord."], "safe": ["The helper hears three numbers, the bomb turns the dial to open the safe.", "A segítő hall három számot, a bomba a tárcsával kinyitja a széfet.", "Hjælperen hører tre tal, bomben drejer skiven og åbner pengeskabet."], "slang": ["The bomb reads a chat message, the helper has the slang list.", "A bomba felolvas egy chatüzenetet, a segítőnél van a szlenglista.", "Bomben læser en chatbesked, hjælperen har slanglisten."], "song": ["The helper hears the song, the bomb picks the missing words.", "A segítő hallja a dalt, a bomba kiválasztja a hiányzó szavakat.", "Hjælperen hører sangen, bomben vælger de manglende ord."], "story": ["Fill the gaps in the story with words from the helper's list.", "Töltsd ki a történet hiányait a segítő listájának szavaival.", "Udfyld hullerne i historien med ord fra hjælperens liste."], "twister": ["The helper hears a tongue twister, the bomb types the missing word or says it.", "A segítő hall egy nyelvtörőt, a bomba beírja a hiányzó szót vagy kimondja.", "Hjælperen hører en tungebrækker, bomben skriver det manglende ord eller siger den."], "verbs": ["Put the verb in the right form; the helper has the signal words.", "Tedd az igét a helyes alakba; a segítőnél vannak a jelzőszavak.", "Sæt verbet i den rigtige form; hjælperen har signalordene."], "wires": ["The bomb describes the wires, the helper says which one to cut.", "A bomba leírja a drótokat, a segítő megmondja, melyiket kell elvágni.", "Bomben beskriver ledningerne, hjælperen siger, hvilken der skal klippes."], "pond": ["Swap the word for the other country's word: one word is on both phones.", "Cseréld a szót a másik ország szavára: egy szó mindkét telefonon ott van.", "Byt ordet ud med det andet lands ord: ét ord står på begge telefoner."], "who": ["Each of you has one clue and three names: only one name is on both phones.", "Mindkettőtöknek van egy nyoma és három neve: csak egy név van mindkét telefonon.", "I har hver et spor og tre navne: kun ét navn står på begge telefoner."], "diner": ["The bomb has the order, the helper reads the menu: put the right food on the plate.", "A bombánál a rendelés, a segítő felolvassa a menüt: tegyétek a jó ételeket a tányérra.", "Bomben har bestillingen, hjælperen læser menuen: læg den rigtige mad på tallerkenen."], "guess": ["The bomb reads the question and turns the number, the helper only sees higher or lower.", "A bomba felolvassa a kérdést és tekeri a számot, a segítő csak azt látja, több vagy kevesebb.", "Bomben læser spørgsmålet og drejer tallet, hjælperen ser kun højere eller lavere."], "joke": ["The bomb has the beginnings, the helper has the endings: match them.", "A bombánál vannak a kezdetek, a segítőnél a befejezések: párosítsátok.", "Bomben har begyndelserne, hjælperen har slutningerne: sæt dem sammen."]};
   var GROLE = {};
   'comp dict fix karaoke listen post radio read rhyme safe song twister'.split(' ').forEach(function (k) { GROLE[k] = 'h'; }); 'wires film plot idiom slang gap pics'.split(' ').forEach(function (k) { GROLE[k] = 'b'; });
   function gx(type) { var r = GX[type]; return r ? r[UIX[ui()]] : ''; }
@@ -7664,7 +7964,7 @@ var ES_PHRASES = [
   /* ---------- result ---------- */
   function viewPartyResult() {
     var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok', boss = spec.party > BOSS0;
-    var hasNext = boss ? spec.party < BOSS0 + BOSS_N : spec.party <= PARTY_GAMES.length;
+    var hasNext = boss ? spec.party < BOSS0 + BOSS_N : spec.party <= PARTY_GAMES.length || !!cultGame(spec.party);
     var stars = ok ? (g.strikes === 0 ? 3 : g.strikes === 1 ? 2 : 1) : 0, all = [];
     spec.modules.forEach(function (m, i) { all = all.concat(UI[m.t].recap(m.data, g.ms[i])); });
     var starH = ''; for (var k = 0; k < 3; k++) starH += '<i class="' + (k < stars ? 'on' : '') + '" style="animation-delay:' + (0.35 + k * 0.18) + 's">★</i>';
@@ -7983,7 +8283,7 @@ var ES_PHRASES = [
         if (ds.v === 'manual') S.spec.modules.forEach(function (m, i) { if (UI[m.t].pos && !g.solved[i]) manState(i).step = UI[m.t].pos(m.data, g.ms[i]); });
         Voice.stop(); render(); break;
       case 'next': if (pairBlocked()) break;
-        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyNew(pp.lang, pp.n > BOSS0 ? Math.min(BOSS0 + BOSS_N, pp.n + 1) : partyNext(pp.n)); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
+        if (S.spec.party) { var pp = parsePartyCode(S.spec.code), pn = partyNew(pp.lang, pp.n > BOSS0 ? Math.min(BOSS0 + BOSS_N, pp.n + 1) : cultGame(pp.n) ? CULT0 + (pp.n - CULT0) % CULT_GAMES.length + 1 : partyNext(pp.n)); if (!S.solo) pairLead(pn, 'bomb'); play(pn, S.solo ? 'solo' : 'bomb'); break; }
         if (S.spec.path) { if (!S.solo) pairLead(nextCode(S.spec.code), 'bomb'); play(nextCode(S.spec.code), S.solo ? 'solo' : 'bomb'); break; } S.sel.lang = S.spec.lang; S.sel.level = S.spec.level; S.sel.mission = Math.min(5, S.spec.mission + 1); newBomb(S.solo); if (!S.solo) pairLead(S.code, 'bomb'); break;
       case 'again': if (pairBlocked()) break;
         if (S.spec.party) { var pa = parsePartyCode(S.spec.code), pc = partyNew(pa.lang, pa.n); if (!S.solo) pairLead(pc, 'bomb'); play(pc, S.solo ? 'solo' : 'bomb'); break; }
