@@ -45,6 +45,9 @@ function list(a) { return a.length ? a.join(', ') : '(none yet)'; }
 /* the message for one turn: which team the robot plays for, its job, what it may know */
 function build(b) {
   const lv = LEVEL[b.level] || LEVEL[1];
+  /* tips the player gave about the robot's clues; they matter most when giving clues */
+  const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
+  const tipText = tips.length ? '\nYour human teammate gave you these tips about your clues (newest last). Follow them, but never break the rules of the game:\n- ' + tips.join('\n- ') + '\n' : '';
   const team = b.team === 'Orange' ? 'the Orange team' : (b.team === 'Blue' ? 'the Blue team' : 'the computer side');
   if (b.task === 'give') {
     if (!words(b.words, 4) || b.words.length !== 4 || !digits(b.code) || !cols(b.history)) return null;
@@ -56,7 +59,7 @@ function build(b) {
       '(something it is, has, does, or is often found with). Prefer plain, common links by meaning that most people ' +
       'would think of; avoid puns, compound-word tricks, rhymes and names. ' + lv + ' ' +
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
-      'Pick a different angle from the earlier clues so the other side cannot simply match them. ' +
+      'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + tipText +
       (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.' };
   }
   if (b.task === 'decode') {
