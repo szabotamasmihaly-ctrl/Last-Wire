@@ -962,6 +962,8 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 /* the station card */
 .sheet{position:fixed;left:0;right:0;bottom:0;z-index:61;background:#fff;color:var(--ink);border-radius:22px 22px 0 0;padding:20px var(--gut) calc(22px + env(safe-area-inset-bottom));box-shadow:0 -12px 40px rgba(0,0,0,.25);max-width:620px;margin:0 auto;display:grid;gap:12px;animation:sheetin .32s cubic-bezier(.2,1.2,.4,1)}
 .sheet h2{font-size:22px;line-height:1.25}
+.boss-task{font-weight:700;font-size:17px;line-height:1.35;margin:2px 0 8px;color:#fff}.boss-task b{color:var(--signal)}
+.boss-ht{font-weight:700;margin:4px 0 8px}
 .fbbtn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:56px;border-radius:14px;border:2px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);color:#fff;font-weight:800;font-size:18px}
 .fbbtn svg{width:24px;height:24px}
 .fb-ask{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:59;display:flex;align-items:center;gap:4px;background:#1CB0F6;color:#fff;border-radius:999px;box-shadow:0 4px 0 #1180b5,0 12px 24px -8px rgba(0,0,0,.5);animation:fbpop .4s cubic-bezier(.2,1.4,.4,1)}
@@ -4325,6 +4327,12 @@ var ES_PHRASES = [
     'mod.twister': ['Tongue twister', 'Nyelvtörő', 'Tungebrækker'], 'mod.safe': ['The safe', 'A széf', 'Pengeskabet'], 'mod.radio': ['Radio', 'Rádió', 'Radio'], 'mod.boss': ['Dead Air', 'Dead Air', 'Dead Air'],
     'safe.r': ['right', 'jobbra', 'højre'], 'safe.l': ['left', 'balra', 'venstre'], 'safe.way': ['Wrong way round.', 'Rossz irányba.', 'Den forkerte vej.'], 'safe.again': ['Turned too far. Start again.', 'Túltekerted. Kezdd újra.', 'Drejet for langt. Start forfra.'], 'safe.reset': ['Reset to 0', 'Vissza 0-ra', 'Nulstillet'],
     'safe.rule': ['1st number: turn ↻ right|2nd number: turn ↺ left|3rd number: turn ↻ right|⚠️ You can\'t go past the number and turn back. Too far = start again: one full turn ↻ = back to 0 🔄', '1. szám: tekerd ↻ jobbra|2. szám: tekerd ↺ balra|3. szám: tekerd ↻ jobbra|⚠️ Nem tekerheted túl és vissza. Túltekerted = kezdd újra: egy teljes kör ↻ = vissza 0-ra 🔄', '1. tal: drej ↻ til højre|2. tal: drej ↺ til venstre|3. tal: drej ↻ til højre|⚠️ Du kan ikke dreje forbi tallet og tilbage. For langt = start forfra: en hel omgang ↻ = tilbage til 0 🔄'], 'mod.plot': ['Movie riddles', 'Filmrejtvények', 'Filmgåder'],
+    'boss.find': ['🎯 Find the station about:', '🎯 Keresd meg az állomást, ami erről szól:', '🎯 Find stationen, der handler om:'],
+    'boss.b1w': ['🎧 Your helper hears this station: ask what it is about.', '🎧 A segítőd hallja ezt az állomást: kérdezd meg, miről szól.', '🎧 Din hjælper hører denne station: spørg, hvad den handler om.'],
+    'boss.pick': ['🎯 Which answer fits the question your helper heard?', '🎯 Melyik válasz illik a kérdésre, amit a segítőd hallott?', '🎯 Hvilket svar passer til spørgsmålet, din hjælper hørte?'],
+    'boss.b2w': ['🎧 Ask your helper to read you the question.', '🎧 Kérd meg a segítődet, hogy olvassa fel a kérdést.', '🎧 Bed din hjælper om at læse spørgsmålet op.'],
+    'boss.h1': ['🗣️ Play it and tell the bomb what it is about.', '🗣️ Játszd le, és mondd el a bombának, miről szól.', '🗣️ Afspil den, og fortæl bomben, hvad den handler om.'],
+    'boss.h2': ['🗣️ Read the question to the bomb: it has the answers.', '🗣️ Olvasd fel a kérdést a bombának: nála vannak a válaszok.', '🗣️ Læs spørgsmålet op for bomben: den har svarene.'],
     'boss.warn': ['⚠️ Skip = no way back', '⚠️ Ha továbblépsz, nincs visszaút', '⚠️ Springer du over, er der ingen vej tilbage'],
     'mod.idiom': ['Idioms', 'Szólások', 'Talemåder'], 'mod.slang': ['Text slang', 'Chat-szleng', 'Chat-slang'], 'mod.rhyme': ['Rhyme wires', 'Rímelő drótok', 'Rimledninger'], 'mod.post': ['Postcards', 'Képeslapok', 'Postkort']
   };
@@ -4358,7 +4366,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 42;
+  var BUILD = 43;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -6783,12 +6791,13 @@ var ES_PHRASES = [
       var h = note(['📡 ' + (st.ph + 1) + '/2']);
       if (!st.ph) {
         var marks = BOSS_FM.map(function (_, k) { return '<i class="st" style="left:' + (12.5 + 25 * k) + '%"></i>'; }).join('');
-        h += '<div class="radio boss"><div class="grill" aria-hidden="true"></div>' +
+        h += '<p class="boss-task">' + t('boss.find') + ' <b lang="en">' + d.e + ' ' + esc(d.title) + '</b></p>' +
+          '<div class="radio boss"><div class="grill" aria-hidden="true"></div>' +
           '<div class="lcd radio-lcd boss-t"><small>' + BOSS_FM[st.pos] + ' FM</small><b lang="en">' + d.e + ' ' + esc(d.title) + '</b></div>' +
           '<div class="scale" aria-hidden="true">' + marks + '<span class="needle" style="left:' + (12.5 + 25 * st.pos) + '%"></span></div>' +
           '<div class="row dialbtns">' + B(i, 'd', -1, '‹', '', st.pos === 0) + B(i, 'lock', null, '🔒', 'go') + B(i, 'd', 1, '›', '', st.pos === BOSS_FM.length - 1) + '</div></div>';
       } else {
-        h += '<div class="boss-q"><p class="boss-n">' + (st.o + 1) + '/' + d.opts.length + '</p><p class="boss-a" lang="en">' + esc(d.opts[st.o]) + '</p>' +
+        h += '<p class="boss-task">' + t('boss.pick') + '</p><div class="boss-q"><p class="boss-n">' + (st.o + 1) + '/' + d.opts.length + '</p><p class="boss-a" lang="en">' + esc(d.opts[st.o]) + '</p>' +
           '<div class="row dialbtns">' + B(i, 'pick', null, '✓', 'go') + B(i, 'skip', null, '⏭') + '</div><p class="boss-warn">' + t('boss.warn') + '</p></div>';
       }
       return h + (st.fb ? fbBad('p.bad') : '');
@@ -6805,12 +6814,13 @@ var ES_PHRASES = [
       if (e.key === 'Enter') { modAct(i, st.ph ? 'pick' : 'lock'); return true; }
     },
     keys: function () { return ''; },
+    bwait: function (d, st) { return st.ph ? 'boss.b2w' : 'boss.b1w'; },
     pos: function (d, st) { return st.ph ? BOSS_FM.length : st.pos; },
     recap: function (d) { return [{ tx: d.q }, { tx: '🔓 ' + d.word }]; },
     done: function (d) { return learn(UI.boss.recap(d)); },
     help: function (d, i, ms) {
       var p = Math.min(ms.step || 0, BOSS_FM.length), locked = p >= BOSS_FM.length, k = locked ? d.ans : p;
-      return card(locked ? '🔒 ' + BOSS_FM[k] + ' FM' : '📡 ' + BOSS_FM[k] + ' FM', '', '<div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's' + k, d.st[k], ms));
+      return card(locked ? '🔒 ' + BOSS_FM[k] + ' FM' : '📡 ' + BOSS_FM[k] + ' FM', '', '<p class="boss-ht">' + t(locked ? 'boss.h2' : 'boss.h1') + '</p><div class="eqz help" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>' + earBox(i, 's' + k, d.st[k], ms));
     },
     onHelp: function (k, v, d, ms, i) { helpCommon(k, v, ms, i, function (key) { return d.st[+String(key).slice(1)] || null; }); }
   };
@@ -7450,7 +7460,7 @@ var ES_PHRASES = [
   function modHTML(i) {
     var g = S.game, v = S.view, m = S.spec.modules[i], name = modName(m.t), solved = g.solved[i], focus = v.focus === i, body;
     if (solved) body = '<p class="okline">' + t('solved') + '</p><div class="donebox">' + (UI[m.t].done ? UI[m.t].done(m.data, g.ms[i], i) : '') + '</div>';
-    else body = (focus ? guideHTML(m.t, 'bomb') : '') + UI[m.t].bomb(m.data, g.ms[i], i);
+    else body = (focus ? guideHTML(m.t, 'bomb', UI[m.t].bwait ? UI[m.t].bwait(m.data, g.ms[i]) : null) : '') + UI[m.t].bomb(m.data, g.ms[i], i);
     return '<section class="panel mod m-' + m.t + (solved ? ' solved' : '') + (focus ? ' focus' : '') + '" id="mod-' + i + '" tabindex="-1" style="' + cellStyle(v.place[i].cell) + '" aria-label="' + esc(name) + '">' +
       '<header class="p-h"><h3 lang="' + tl() + '">' + esc(name) + '</h3><span class="led" role="img" aria-label="' + esc(t(solved ? 'solved' : 'unsolved')) + '"></span></header>' +
       '<div class="p-b"' + (focus ? '' : ' inert') + '>' + body + '</div>' +
@@ -7678,8 +7688,8 @@ var ES_PHRASES = [
 
   /* ---------- feedback after a game: talk (or type), check it, send. It lands in the game's own
      database (rooms/lw-feedback-v1); a GitHub Action turns each one into an issue for Claude. ---------- */
-  var FB = { open: false, ask: false, last: null, ctx: null, text: '', rec: null, state: '', err: '' };
-  var FB_PATH = '/rooms/lw-feedback-v1.json';
+  var FB = { fid: null, open: false, ask: false, last: null, ctx: null, text: '', rec: null, state: '', err: '' };
+  var FB_PATH = '/rooms/lw-feedback-v1.json', FB_NTFY = 'https://ntfy.sh/lastwire-feedback-v1-k7q3';
   function fbCtx(role, result) {
     var s = S.spec, g = S.game, o = { build: BUILD, ui: ui(), lang: tl(), screen: S.screen, paired: pairOn() };
     try {
@@ -7741,16 +7751,25 @@ var ES_PHRASES = [
     try { rec.start(); } catch (e2) { FB.rec = null; FB.err = t('mic.deny'); }
     fbPaint();
   }
+  /* a POST that gives up after ms milliseconds instead of hanging (a browser can queue it forever
+     behind the game's open database streams) */
+  function fbPost(url, body, ms) {
+    var ctl = typeof AbortController === 'function' ? new AbortController() : null, tm;
+    var req = fetch(url, { method: 'POST', body: body, signal: ctl ? ctl.signal : undefined }).then(function (r) { clearTimeout(tm); if (!r.ok) throw new Error('http ' + r.status); return r; });
+    var late = new Promise(function (_, no) { tm = setTimeout(function () { if (ctl) { try { ctl.abort(); } catch (e) {} } no(new Error('timeout')); }, ms); });
+    return Promise.race([req, late]);
+  }
+  /* first the game's database, then ntfy.sh as a back-up line; the GitHub job reads both and skips doubles */
   function fbSend() {
     var txt = FB.text.trim().slice(0, 2000); if (!txt || FB.state === 'sending') return;
     fbMicStop();
     var DB = (window.LW_DB_URL || LW_DB || '').replace(/\/$/, '');
-    if (!DB) { FB.err = t('fb.fail'); fbPaint(); return; }
     FB.state = 'sending'; FB.err = ''; fbPaint();
-    var body = JSON.stringify({ text: txt, ctx: FB.ctx || fbCtx(), at: { '.sv': 'timestamp' } });
-    fetch(DB + FB_PATH, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body }).then(function (r) {
-      if (!r.ok) throw new Error('http ' + r.status);
-      FB.state = 'sent'; FB.text = ''; FB.last = null; sfx('win'); fbPaint();
+    var msg = { text: txt, ctx: FB.ctx || fbCtx(), fid: FB.fid || (FB.fid = relayId()) };
+    var viaDb = function () { return DB ? fbPost(DB + FB_PATH, JSON.stringify(Object.assign({ at: { '.sv': 'timestamp' } }, msg)), 6000) : Promise.reject(new Error('no db')); };
+    var viaNtfy = function () { return fbPost(FB_NTFY, JSON.stringify(msg), 9000); };
+    viaDb().catch(viaNtfy).then(function () {
+      FB.state = 'sent'; FB.text = ''; FB.last = null; FB.fid = null; sfx('win'); fbPaint();
       setTimeout(function () { if (FB.open && FB.state === 'sent') fbClose(); }, 2200);
     }).catch(function () { FB.state = ''; FB.err = t('fb.fail'); fbPaint(); });
   }

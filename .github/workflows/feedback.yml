@@ -6,6 +6,11 @@ on:
   schedule:
     - cron: '*/10 * * * *'
   workflow_dispatch:
+    inputs:
+      selftest:
+        description: 'Also write one test message to the database first'
+        type: boolean
+        default: false
 permissions:
   issues: write
 concurrency:
@@ -24,3 +29,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
           DB: https://last-wire-default-rtdb.europe-west1.firebasedatabase.app
+          NTFY: https://ntfy.sh/lastwire-feedback-v1-k7q3
+          SELFTEST: ${{ inputs.selftest }}
