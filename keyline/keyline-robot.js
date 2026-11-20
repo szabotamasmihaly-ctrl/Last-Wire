@@ -11,14 +11,20 @@ const fs = require('fs'), path = require('path'), os = require('os'), cp = requi
 
 const DB = process.env.KEYLINE_DB || 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
 /* fast model for giving clues; a smarter one for reading clues, where wordplay matters */
-const MODEL = { clues: 'haiku', code: 'sonnet' };
+/* Smart (the default): the strongest model thinks briefly first. Fast: quicker models answer straight away. */
+const MODEL = { smart: { clues: 'opus', code: 'opus' }, fast: { clues: 'haiku', code: 'sonnet' } };
+const THINK = 'First think briefly in a few short lines: for each clue, list its links to all four words ' +
+  '(meaning, phrases and compound words, culture such as songs or films, facts such as moon -> 28-day cycle), ' +
+  'then use elimination, since the three numbers are all different. End with the JSON on the last line. ';
+const THINK_GIVE = 'First think briefly in a few short lines: for each word, list a few candidate clues, drop any that could point to ' +
+  'one of your other words or that repeat an earlier clue, and keep the clearest. End with the JSON on the last line. ';
 const SELF_URL = 'https://raw.githubusercontent.com/szabotamasmihaly-ctrl/Last-Wire/main/keyline/keyline-robot.js';
 const DIR = path.join(os.homedir(), '.keyline-robot');
 const MAX_AT_ONCE = 3;
 const ALPH = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
 const RULES = 'You are a robot player in Keyline, a team word game for people learning English. ' +
-  'You only play Keyline. You have no tools. Answer with only the JSON object asked for, nothing else. ' +
+  'You only play Keyline. You have no tools. Always end your answer with the JSON object asked for. ' +
   'Rules: each team has 4 secret words, numbered 1 to 4. Each round a secret 3-digit code ' +
   '(three different digits from 1 to 4) is drawn. The clue giver says one clue word per digit, in order, and the teammate, ' +
   'who knows the 4 words, must guess the code. The other side does not know the words and only sees all the clues so far, ' +
@@ -51,7 +57,7 @@ function build(b) {
       'would think of; avoid puns, compound-word tricks, rhymes and names. ' + lv + ' ' +
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' +
-      'Answer only: {"clues": ["word", "word", "word"]} in code order.' };
+      (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.' };
   }
   if (b.task === 'decode') {
     if (!words(b.words, 4) || b.words.length !== 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -61,7 +67,7 @@ function build(b) {
       'Match each clue to the secret word it most likely points to. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
       'Check every clue against all four words in all these ways, then choose the best overall match. ' +
       'The three numbers must be different. ' +
-      'Answer only: {"code": "three digits"}, for example {"code": "312"}.' };
+      (b.smart ? THINK + 'JSON: ' : 'Answer only: ') + '{"code": "three digits"}, for example {"code": "312"}.' };
   }
   if (b.task === 'crack') {
     if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -71,7 +77,7 @@ function build(b) {
       '\n\nNew clues, in order: ' + b.clues.join(', ') + '.\n' +
       'Work out which secret word is probably behind each number, then match each new clue to a number. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
       'Check every clue against all four words in all these ways, then choose the best overall match. ' +
-      'The three numbers must be different. Answer only: {"code": "three digits"}, for example {"code": "241"}.' };
+      'The three numbers must be different. ' + (b.smart ? THINK + 'JSON: ' : 'Answer only: ') + '{"code": "three digits"}, for example {"code": "241"}.' };
   }
   return null;
 }
@@ -107,11 +113,11 @@ function findClaude() {
 function quote(a) { return '"' + String(a).replace(/"/g, "'") + '"'; }
 function askClaude(claude, prompt, model) {
   return new Promise(function (resolve, reject) {
-    let args = claude.pre.concat(['-p', '--model', model || MODEL.clues, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
+    let args = claude.pre.concat(['-p', '--model', model || MODEL.fast.clues, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
     if (claude.shell) args = args.map(quote);
     const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true, shell: !!claude.shell });
     let out = '', err = '';
-    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, 45000);
+    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, 55000);
     p.stdout.on('data', function (d) { out += d; });
     p.stderr.on('data', function (d) { err += d; });
     p.on('error', function (e) { clearTimeout(timer); reject(e); });
@@ -121,12 +127,13 @@ function askClaude(claude, prompt, model) {
 }
 
 function parse(kind, text) {
-  const m = String(text).match(/\{[\s\S]*\}/);
-  if (!m) return null;
-  let o; try { o = JSON.parse(m[0]); } catch (e) { return null; }
-  if (kind === 'code') { const c = String(o.code || '').replace(/[^1-4]/g, ''); return digits(c) ? { code: c } : null; }
-  const cl = (o.clues || []).map(function (c) { return String(c).trim(); });
-  return cl.length === 3 && cl.every(word) ? { clues: cl } : null;
+  const all = String(text).match(/\{[^{}]*\}/g) || [];
+  for (let i = all.length - 1; i >= 0; i--) {
+    let o; try { o = JSON.parse(all[i]); } catch (e) { continue; }
+    if (kind === 'code' && o.code !== undefined) { const c = String(o.code).replace(/[^1-4]/g, ''); if (digits(c)) return { code: c }; }
+    if (kind === 'clues' && Array.isArray(o.clues)) { const cl = o.clues.map(function (c) { return String(c).trim(); }); if (cl.length === 3 && cl.every(word)) return { clues: cl }; }
+  }
+  return null;
 }
 
 function dbUrl(ch) { return DB + '/rooms/' + ch + '.json'; }
@@ -180,7 +187,7 @@ async function main() {
     while (busy < MAX_AT_ONCE && queue.length) {
       const job = queue.shift(); busy++;
       const t0 = Date.now();
-      askClaude(claude, job.prompt, MODEL[job.kind]).then(function (txt) {
+      askClaude(claude, job.prompt, MODEL[job.smart ? 'smart' : 'fast'][job.kind]).then(function (txt) {
         const r = parse(job.kind, txt);
         if (!r) throw new Error('no clear answer');
         r.a = job.id; send(topic, r);
@@ -201,7 +208,7 @@ async function main() {
     if (!e.q) return;
     const job = build(e);
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
-    job.id = e.q; queue.push(job); next();
+    job.id = e.q; job.smart = !!e.smart; queue.push(job); next();
   }
   function event(block) {
     let name = '', data = '';
