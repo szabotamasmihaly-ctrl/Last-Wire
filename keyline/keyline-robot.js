@@ -10,7 +10,9 @@
 const fs = require('fs'), path = require('path'), os = require('os'), cp = require('child_process');
 
 const DB = process.env.KEYLINE_DB || 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
-const MODEL = 'haiku';
+/* fast model for giving clues; a smarter one for reading clues, where wordplay matters */
+const MODEL = { clues: 'haiku', code: 'sonnet' };
+const SELF_URL = 'https://raw.githubusercontent.com/szabotamasmihaly-ctrl/Last-Wire/main/keyline/keyline-robot.js';
 const DIR = path.join(os.homedir(), '.keyline-robot');
 const MAX_AT_ONCE = 3;
 const ALPH = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -45,7 +47,8 @@ function build(b) {
       b.words.map(function (w, i) { return (i + 1) + '. ' + w + ' - clues used before: ' + list(b.history[i]); }).join('\n') +
       '\n\nThe code is ' + b.code + ', so give one clue for each of: ' + order + '.\n' +
       'Each clue must be ONE English word that your teammate can easily link to the right secret word ' +
-      '(something it is, has, does, or is often found with). ' + lv + ' ' +
+      '(something it is, has, does, or is often found with). Prefer plain, common links by meaning that most people ' +
+      'would think of; avoid puns, compound-word tricks, rhymes and names. ' + lv + ' ' +
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' +
       'Answer only: {"clues": ["word", "word", "word"]} in code order.' };
@@ -55,7 +58,9 @@ function build(b) {
     return { kind: 'code', prompt: 'You play for ' + team + '. This turn you are the teammate who guesses. Your team\'s secret words:\n' +
       b.words.map(function (w, i) { return (i + 1) + '. ' + w + ' - earlier clues: ' + list(b.history[i]); }).join('\n') +
       '\n\nYour clue giver just said, in order: ' + b.clues.join(', ') + '.\n' +
-      'Match each clue to the secret word it most likely points to. The three numbers must be different. ' +
+      'Match each clue to the secret word it most likely points to. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
+      'Check every clue against all four words in all these ways, then choose the best overall match. ' +
+      'The three numbers must be different. ' +
       'Answer only: {"code": "three digits"}, for example {"code": "312"}.' };
   }
   if (b.task === 'crack') {
@@ -64,7 +69,8 @@ function build(b) {
       'The 4 secret words were picked from this list: ' + b.pool.join(', ') + '.\n\nClues given before, by number:\n' +
       b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
       '\n\nNew clues, in order: ' + b.clues.join(', ') + '.\n' +
-      'Work out which secret word is probably behind each number, then match each new clue to a number. ' +
+      'Work out which secret word is probably behind each number, then match each new clue to a number. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
+      'Check every clue against all four words in all these ways, then choose the best overall match. ' +
       'The three numbers must be different. Answer only: {"code": "three digits"}, for example {"code": "241"}.' };
   }
   return null;
@@ -99,9 +105,9 @@ function findClaude() {
 }
 
 function quote(a) { return '"' + String(a).replace(/"/g, "'") + '"'; }
-function askClaude(claude, prompt) {
+function askClaude(claude, prompt, model) {
   return new Promise(function (resolve, reject) {
-    let args = claude.pre.concat(['-p', '--model', MODEL, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
+    let args = claude.pre.concat(['-p', '--model', model || MODEL.clues, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
     if (claude.shell) args = args.map(quote);
     const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true, shell: !!claude.shell });
     let out = '', err = '';
@@ -138,7 +144,23 @@ function robotCode() {
   return c;
 }
 
+/* keep this program up to date: if a newer version is online, save it and start that one instead */
+async function update() {
+  if (process.env.KEYLINE_NO_UPDATE) return false;
+  try {
+    const r = await fetch(SELF_URL, { cache: 'no-store' });
+    if (!r.ok) return false;
+    const fresh = await r.text(), me = fs.readFileSync(__filename, 'utf8');
+    if (fresh === me || fresh.indexOf('KEYLINE ROBOT') < 0) return false;
+    fs.writeFileSync(__filename, fresh);
+    console.log('\n  Updated the robot to the newest version. Starting it...');
+    cp.spawn(process.execPath, [__filename], { stdio: 'inherit', env: Object.assign({}, process.env, { KEYLINE_NO_UPDATE: '1' }) }).on('close', function (c) { process.exit(c || 0); });
+    return true;
+  } catch (e) { return false; }
+}
+
 async function main() {
+  if (await update()) return;
   const code = robotCode();
   /* a fresh channel every day (UTC), the same one the game uses, so it never grows big */
   function channel() { return 'keyline-bot-' + code.toLowerCase() + '-' + new Date().toISOString().slice(0, 10).replace(/-/g, ''); }
@@ -158,7 +180,7 @@ async function main() {
     while (busy < MAX_AT_ONCE && queue.length) {
       const job = queue.shift(); busy++;
       const t0 = Date.now();
-      askClaude(claude, job.prompt).then(function (txt) {
+      askClaude(claude, job.prompt, MODEL[job.kind]).then(function (txt) {
         const r = parse(job.kind, txt);
         if (!r) throw new Error('no clear answer');
         r.a = job.id; send(topic, r);
