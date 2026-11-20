@@ -4223,7 +4223,8 @@ var GENP = {
   },
   slang: function (r, L, off) {
     var pool = PARTY[L].slang;
-    return { rounds: r.shuffle(pool.map(function (_, i) { return i; })).slice(0, 20).map(function (i) {
+    /* ten new cards a run, dealt from the deck, so the next run brings cards not seen yet */
+    return { rounds: deckTake(L + ':slang', pool, off, 10).map(function (i) {
       var x = pool[i], o = shuf3(r, x[1], [x[2], x[3]]);
       /* the helper gets three meanings too: only the right one is on both phones */
       var more = r.sample(pool.filter(function (y, j) { return j !== i && [x[1], x[2], x[3]].indexOf(y[1]) < 0; }).map(function (y) { return y[1]; }), 2);
