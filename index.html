@@ -4021,28 +4021,36 @@ function parsePartyCode(code) {
 /* 📻 DEAD AIR, the radio boss: party codes 21..50 are its levels (three movie tracks of ten) */
 var BOSS0 = 20, BOSS_N = 30, BOSS_FM = ['88.1', '91.5', '96.3', '104.7'];
 function bossWord(n) { var T = typeof PARTY !== 'undefined' && PARTY.deadair, k = n - BOSS0 - 1; return T && T[Math.floor(k / 10)] ? T[Math.floor(k / 10)].q[k % 10][1] : ''; }
-function partyGames(n, r) {
+function partyGames(n, r, L) {
   if (n > BOSS0) return ['boss'];
   /* text slang is a speedrun on its own: both phones get the same cards */
   if (PARTY_GAMES[n - 1] === 'slang') return ['slang'];
-  if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[(n - 1 + 5) % PARTY_GAMES.length]];
+  /* English movies: the emoji films and the movie riddles share one tile and one list of films */
+  if (L === 'en' && PARTY_GAMES[n - 1] === 'film' && typeof PARTY !== 'undefined' && PARTY.plots) return ['film', 'plot'];
+  /* each tile adds the next game, so no two tiles hold the same pair */
+  if (n <= PARTY_GAMES.length) return [PARTY_GAMES[n - 1], PARTY_GAMES[n % PARTY_GAMES.length]];
   var mix = r.sample(PARTY_GAMES.filter(function (g) { return g !== 'karaoke' && g !== 'slang'; }), 3);
   /* the song and the karaoke share their lines, so a mix holds at most one of them */
   if (mix.indexOf('song') < 0 && r.chance(0.3)) mix[r.int(3)] = 'karaoke';
   return mix;
 }
 /* the games a code holds, worked out before its offsets are known */
-function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base)))).map(function (g) { return partyGame(g, p.lang); }) : []; }
-/* English plays movie riddles where the others have idioms */
-function partyGame(g, L) { if (g === 'rhyme' && PACK[L] && typeof PACK[L].cond === 'function') return 'wires'; return g === 'idiom' && L === 'en' && typeof PARTY !== 'undefined' && PARTY.plots ? 'plot' : g; }
+function partyList(base) { var p = parsePartyCode(base); return p ? partyGames(p.n, RU(mulberry32(hashSeed('lwx:' + p.base))), p.lang).map(function (g) { return partyGame(g, p.lang); }) : []; }
+function partyGame(g, L) { if (g === 'rhyme' && PACK[L] && typeof PACK[L].cond === 'function') return 'wires'; return g; }
 /* how many items each game takes per bomb */
 var PARTY_PER = { wires: 0, plot: 2, boss: 0, song: 3, film: 3, karaoke: 2, twister: 2, safe: 0, radio: 2, idiom: 2, slang: 2, rhyme: 2, post: 3 };
 /* each game's content in a fixed shuffled order per language: bomb k takes the next items; only after all of them does a new order begin */
-function deckTake(key, pool, off, k) {
-  var len = pool.length, out = [], seen = {}, idx = off * k, guard = 0, cyc = -1, d = null;
+/* tier: the pool runs easy to hard in blocks of this size, so the first round through it shuffles inside each block */
+/* stride, start: a bomb takes k items from its own slots in every block of stride, so two games can share one deck without meeting */
+function deckTake(key, pool, off, k, tier, stride, start) {
+  var len = pool.length, out = [], seen = {}, idx = off * (stride || k) + (start || 0), guard = 0, cyc = -1, d = null;
   while (out.length < Math.min(k, len) && guard++ < 4 * len + 8) {
     var c = Math.floor(idx / len);
-    if (c !== cyc) { cyc = c; d = RU(mulberry32(hashSeed('lwdeck:' + key + ':' + c))).shuffle(pool.map(function (_, i) { return i; })); }
+    if (c !== cyc) {
+      cyc = c; var dr = RU(mulberry32(hashSeed('lwdeck:' + key + ':' + c))), all = pool.map(function (_, i) { return i; });
+      if (tier && c === 0) { d = []; for (var b = 0; b < len; b += tier) d = d.concat(dr.shuffle(all.slice(b, b + tier))); }
+      else d = dr.shuffle(all);
+    }
     var it = d[idx % len]; idx++;
     if (!seen[it]) { seen[it] = 1; out.push(it); }
   }
@@ -4096,8 +4104,10 @@ function others(r, pool, not, k) { return r.sample(pool.filter(function (_, i) {
 var GENP = {
   /* one level: four stations (one fits the title, three come from the other tracks), then four answers shown one by one */
   plot: function (r, L, off) {
-    var pool = PARTY.plots;
-    return { rounds: deckTake(L + ':plot', pool, off, 2).map(function (i) {
+    var pool = PARTY.plots, avoid = r.avoid || {}, pick = deckTake(L + ':movie', pool, off, 2, 50, 5, 3);
+    /* a film the emoji game of the same bomb already shows is swapped for the next free one */
+    if (pick.some(function (i) { return avoid[pool[i][0]]; })) pick = pick.concat(deckTake(L + ':plot:x', pool, off, 8, 50)).filter(function (i, k, a) { return !avoid[pool[i][0]] && a.indexOf(i) === k; }).slice(0, 2);
+    return { rounds: pick.map(function (i) {
       var x = pool[i], words = r.shuffle([x[0]].concat(others(r, pool, [i], 5).map(function (y) { return y[0]; })));
       return { desc: x[1], words: words, ans: words.indexOf(x[0]), full: x[0] + ': ' + x[1] };
     }) };
@@ -4122,9 +4132,10 @@ var GENP = {
   },
   film: function (r, L, off) {
     var col = 1 + PARTY_LANGS.indexOf(L), pool = PARTY.films;
-    return { rounds: deckTake(L + ':film', pool, off, 3).map(function (i) {
+    return { rounds: (L === 'en' && PARTY.plots ? deckTake(L + ':movie', pool, off, 3, 50, 5, 0) : deckTake(L + ':film', pool, off, 3, 50)).map(function (i) {
       var f = pool[i], o = shuf3(r, f[col], others(r, pool, [i], 2).map(function (x) { return x[col]; }));
-      return { emo: f[0], words: o.words, ans: o.ans, full: f[col] };
+      /* the title in any of the course languages counts when typed */
+      return { emo: f[0], words: o.words, ans: o.ans, full: f[col], alts: [f[1], f[2], f[3]], en: f[1] };
     }) };
   },
   karaoke: function (r, L, off, h) {
@@ -4187,12 +4198,19 @@ function makePartySpec(code) {
   var p = parsePartyCode(code); if (!p || typeof PARTY === 'undefined' || !PARTY[p.lang]) return null;
   var base = hashSeed('lwx:' + p.base), list = partyList(p.base), sub = hashSeed('lwx:' + code);
   var r0 = RU(mulberry32(base ^ 0x5bd1e995)), serial = genSerial(r0, PACK[p.lang]), batteries = r0.int(4);
-  var modules = list.map(function (t, i) {
+  var shown = {};
+  /* the emoji films go first, so the movie riddles in the same bomb can skip their films */
+  var order = list.map(function (t, i) { return i; }).sort(function (a, b) { return (list[b] === 'film') - (list[a] === 'film') || a - b; }), modules = [];
+  order.forEach(function (i) { modules[i] = build(list[i], i); });
+  function build(t, i) {
     var rng = RU(mulberry32((sub ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0));
+    rng.avoid = shown;
     /* the classic wires with their rule sentences, in the party's language */
     if (t === 'wires') return { t: t, off: 0, data: GEN.wires(rng, 2, { lang: p.lang, pack: PACK[p.lang], serial: serial, batteries: batteries }) };
-    return { t: t, off: p.offs[i] || 0, data: GENP[t](rng, p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h) };
-  });
+    var data = GENP[t](rng, p.lang, t === 'boss' ? p.n - BOSS0 : p.offs[i] || 0, p.h);
+    if (t === 'film') data.rounds.forEach(function (rd) { shown[rd.en] = 1; });
+    return { t: t, off: p.offs[i] || 0, data: data };
+  }
   var secs = 40; list.forEach(function (t) { secs += PARTY_TIME[t]; });
   /* the slang speedrun: 7.5 seconds a card */
   if (list.length === 1 && list[0] === 'slang') secs = Math.round(modules[0].data.rounds.length * 7.5);
@@ -4231,7 +4249,7 @@ PACK.es = {
   win: '¡Desactivada!', boom: '¡Bum!', hello: '¡Hola! ¿Me oyes? La bomba espera.',
   num: esNum
 };
-PACK.en.mod.plot = PACK.es.mod.plot = PACK.da.mod.plot = PACK.hu.mod.plot = 'Movie riddles'; PACK.en.mod.boss = PACK.es.mod.boss = PACK.da.mod.boss = PACK.hu.mod.boss = 'Dead Air'; PACK.en.mod.song = 'Finish the song'; PACK.en.mod.film = 'Emoji films'; PACK.en.mod.karaoke = 'Karaoke'; PACK.en.mod.twister = 'Tongue twister'; PACK.en.mod.safe = 'The safe'; PACK.en.mod.radio = 'Radio'; PACK.en.mod.idiom = 'Idioms'; PACK.en.mod.slang = 'Text slang'; PACK.en.mod.rhyme = 'Rhyme wires'; PACK.en.mod.post = 'Postcards';
+PACK.en.mod.plot = PACK.es.mod.plot = PACK.da.mod.plot = PACK.hu.mod.plot = 'Movie riddles'; PACK.en.mod.boss = PACK.es.mod.boss = PACK.da.mod.boss = PACK.hu.mod.boss = 'Dead Air'; PACK.en.mod.song = 'Finish the song'; PACK.en.mod.film = 'Movies'; PACK.en.mod.karaoke = 'Karaoke'; PACK.en.mod.twister = 'Tongue twister'; PACK.en.mod.safe = 'The safe'; PACK.en.mod.radio = 'Radio'; PACK.en.mod.idiom = 'Idioms'; PACK.en.mod.slang = 'Text slang'; PACK.en.mod.rhyme = 'Rhyme wires'; PACK.en.mod.post = 'Postcards';
 PACK.es.mod.song = 'Termina la canción'; PACK.es.mod.film = 'Pelis en emojis'; PACK.es.mod.karaoke = 'Karaoke'; PACK.es.mod.twister = 'Trabalenguas'; PACK.es.mod.safe = 'La caja fuerte'; PACK.es.mod.radio = 'La radio'; PACK.es.mod.idiom = 'Modismos'; PACK.es.mod.slang = 'Jerga de chat'; PACK.es.mod.rhyme = 'Cables que riman'; PACK.es.mod.post = 'Postales';
 PACK.da.mod.song = 'Syng færdig'; PACK.da.mod.film = 'Emoji-film'; PACK.da.mod.karaoke = 'Karaoke'; PACK.da.mod.twister = 'Tungebrækker'; PACK.da.mod.safe = 'Pengeskabet'; PACK.da.mod.radio = 'Radioen'; PACK.da.mod.idiom = 'Talemåder'; PACK.da.mod.slang = 'Chat-slang'; PACK.da.mod.rhyme = 'Rimledninger'; PACK.da.mod.post = 'Postkort';
 PACK.hu.mod.song = 'Fejezd be a dalt'; PACK.hu.mod.film = 'Emoji-filmek'; PACK.hu.mod.karaoke = 'Karaoke'; PACK.hu.mod.twister = 'Nyelvtörő'; PACK.hu.mod.safe = 'A széf'; PACK.hu.mod.radio = 'Rádió'; PACK.hu.mod.idiom = 'Szólások'; PACK.hu.mod.slang = 'Chat-szleng'; PACK.hu.mod.rhyme = 'Rímelő drótok'; PACK.hu.mod.post = 'Képeslapok';
@@ -6535,7 +6553,7 @@ var ES_PHRASES = [
         if (k === 'peek') { if (st.show) return; st.show = true; st.fb = false; penalty(10); return 'move'; }
         if (k === 'send') {
           if (st.show || !String(st.value || '').trim()) return;
-          if (!titleOk(st.value, rd.words[rd.ans])) { st.fb = true; st.value = ''; return 'strike'; }
+          if (!titleOk(st.value, rd.words[rd.ans]) && !(rd.alts || []).some(function (w) { return titleOk(st.value, w); })) { st.fb = true; st.value = ''; return 'strike'; }
           st.r++; st.value = ''; st.fb = false; st.show = false;
           return st.r >= d.rounds.length ? 'solved' : 'next';
         }
