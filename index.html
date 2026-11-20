@@ -1376,6 +1376,30 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .partybig .pb-i{font-size:28px;animation:bob 2s ease-in-out infinite}
 .partybig b{flex:1;text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){.vinyl,.pobs.rec .pob,.pobs.rec .pob span,.eqz i,.reel .holes,.ksing span,.kball,.gauge i,.iscene span,.pgame,.pgame .pi,.partybig .pb-i{animation:none!important}}
+
+/* start page, tidy layout (2026-11-20) */
+[data-screen="home"] .brand{visibility:visible;font-size:20px;margin-right:14px}
+.bar .pstats{gap:12px}
+.bar .pst{font-size:16px}
+.ptop{padding:2px 0 12px}
+.course.seg{display:flex;gap:0;width:100%;background:#f1f3f5;border-radius:14px;padding:4px}
+.course.seg button{flex:1 1 0;min-width:0;justify-content:center;border:0;box-shadow:none;background:transparent;border-radius:11px;padding:9px 6px;color:#6b7280;font-size:15px;transition:background .15s,color .15s}
+.course.seg button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.hub{display:grid;grid-template-columns:repeat(auto-fit,minmax(70px,1fr));gap:10px;margin:0 0 4px}
+.hub-t{display:flex;flex-direction:column;align-items:center;gap:7px;width:auto;margin:0;padding:12px 4px 10px;border:2px solid #e5e5e5;border-radius:16px;background:#fff;color:var(--ink);box-shadow:0 4px 0 #e5e5e5;font:800 12.5px/1.15 var(--font-body,inherit);text-align:center;letter-spacing:0;transition:transform .08s,box-shadow .08s}
+.hub-t:active{transform:translateY(3px);box-shadow:0 1px 0 #e5e5e5}
+.hub-t>b{flex:none;text-transform:none;min-height:2.3em;display:flex;align-items:center;justify-content:center;gap:4px}
+.hub-i{display:grid;place-items:center;width:44px;height:44px;border-radius:13px;color:#fff;background:var(--hc,#1CB0F6)}
+.hub-i svg{width:26px;height:26px}
+.t-pair{--hc:#1CB0F6}.t-party{--hc:linear-gradient(135deg,#CE82FF,#E5527A)}.t-test{--hc:#58CC02}.t-snake{--hc:#FF9600}
+.t-party .hub-i{background:linear-gradient(135deg,#CE82FF,#E5527A)}
+.hub-t.on{background:#fff;color:var(--ink);border:2px solid #e5e5e5;box-shadow:0 4px 0 #e5e5e5}
+.hub-t.on .hub-i{width:auto;min-width:44px;padding:0 8px;background:#eaf6fe}
+.hub-t.on .pb-code{font:900 18px/1 var(--font-display);letter-spacing:.08em;color:var(--enamel)}
+.hub-t.on.live{border-color:#58CC02;box-shadow:0 4px 0 #58A700}
+.lvtabs{gap:6px;padding:12px 0 14px}
+.lvtab{flex:1 1 0;min-width:0;padding:7px 2px 9px;font-size:21px}
+@media (max-width:360px){.hub-t{font-size:11.5px}.course.seg button{font-size:13px;padding:8px 2px}}
 </style>
 </head>
 <body data-screen="home" data-view="hard">
@@ -4522,6 +4546,7 @@ var ES_PHRASES = [
     'pair.they': ['Your partner chooses', 'A társad választ', 'Din makker vælger'],
     'pair.leave': ['Leave', 'Kilépés', 'Forlad'],
     'pair.alone': ['Play alone', 'Egyedül játszom', 'Spil alene'],
+    'pair.waitp': ['Waiting for your partner', 'Várjuk a társad', 'Venter på din makker'],
     'set.songs': ['My songs (one line each)', 'Saját dalok (soronként egy)', 'Mine sange (én linje hver)'],
     'party': ['Party bombs', 'Partibombák', 'Festbomber'],
     'party.mix': ['Mix', 'Keverék', 'Mix'],
@@ -4576,7 +4601,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 43;
+  var BUILD = 44;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -5129,7 +5154,7 @@ var ES_PHRASES = [
   /* ---------- playing together: two phones pair with a room code; the one who made the code is the leader ----------
      The leader picks the station and the role. The other phone follows at once and takes the other role.
      Messages go through the same public relay, on a channel named after the room code. */
-  var PAIR_KEY = 'last-wire-pair', PAIR_ABC = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  var PAIR_KEY = 'last-wire-pair', PAIR_ABC = 'ABCDEFGHKLMNPRSTUVZ';
   var PAIR = null, PL = { relay: null, ping: null };
   function pairTopic() { return 'lastwire-pair-v1-' + hashSeed('lw-pair:' + PAIR.room).toString(36); }
   function pairSave() { try { if (PAIR) localStorage.setItem(PAIR_KEY, JSON.stringify({ room: PAIR.room, lead: PAIR.lead, me: PAIR.me, cur: PAIR.cur, done: PAIR.done, top: PAIR.top || 0, t: Date.now() })); else localStorage.removeItem(PAIR_KEY); } catch (e) {} }
@@ -5236,7 +5261,7 @@ var ES_PHRASES = [
   }
   function pairPaint() {
     var c = document.querySelector('.bar .pair-chip'); if (c) c.outerHTML = pairChip();
-    var pb = document.querySelector('.pairbig'); if (pb) pb.outerHTML = pairBig();
+    var pb = document.querySelector('.pairbig'); if (pb) pb.outerHTML = pb.classList.contains('hub-t') ? pairTile() : pairBig();
     if (S.drawer === 'pair') { var d = document.querySelector('.drawer .pair'); if (d) d.outerHTML = pairHTML(); }
     if (S.sheet) renderDrawer();
     if (S.screen === 'result' && S.spec) { var w = document.querySelector('.ctas'); if (w && pairBlocked() !== !!document.querySelector('.ctas .pair-wait')) render(); }
@@ -7295,10 +7320,9 @@ var ES_PHRASES = [
       var Lv = C[k], n = Lv ? Lv.list.length : 0, d = Lv ? levelDone(L, k + 1) : 0;
       return '<button type="button" class="lvtab" data-a="plv" data-v="' + (k + 1) + '" aria-pressed="' + (lv === k + 1) + '"' + (Lv ? '' : ' disabled') + '><span>' + name + '</span><i><b style="width:' + (n ? Math.round(100 * d / n) : 0) + '%"></b></i></button>';
     }).join('');
-    var h = '<div class="path"><div class="ptop"><div class="course" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div>' + statsBar() + '</div>' +
-      '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>' +
-      pairBig() + (PARTY_LANGS.indexOf(L) >= 0 ? partyBig() : '') +
-      '<div class="ptest"><button type="button" class="pbtn sm" data-a="ptest">' + t('p.place') + '</button><button type="button" class="pbtn sm" data-a="snake">🐍 ' + t('p.snake') + '</button></div>';
+    var h = '<div class="path"><div class="ptop"><div class="course seg" role="group" aria-label="' + esc(t('home.learn')) + '">' + courses + '</div></div>' +
+      hubTiles(L) +
+      '<div class="lvtabs" role="group" aria-label="' + esc(t('home.level')) + '">' + tabs + '</div>';
     var Lv = C[lv - 1];
     if (!Lv) return h + '</div>';
     var off = [0, 1, 2, 1, 0, -1, -2, -1], gi = 0;
@@ -7380,6 +7404,22 @@ var ES_PHRASES = [
       h += '</div>';
     });
     return h + '</div>';
+  }
+  /* the four equal tiles at the top of the start page: play together, party, find my level, word snake */
+  var HUB_I = {
+    party: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21l4.5-13 8.5 8.5z" fill="currentColor"/><path d="M14 3.5v2M19.5 9h2M17 6.5l1.5-1.5M12.5 8.5c1-1.5 1-3-.5-4.5M15.5 11.5c1.5-1 3-1 4.5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    test: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="13" width="4" height="7.5" rx="1.3" fill="currentColor" opacity=".55"/><rect x="10" y="8.5" width="4" height="12" rx="1.3" fill="currentColor" opacity=".8"/><rect x="16.5" y="3.5" width="4" height="17" rx="1.3" fill="currentColor"/></svg>',
+    snake: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 5.5C14 4 8 4.2 8 8s8.5 2.5 8.5 7.2S10 20.5 5.5 18.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/><circle cx="18" cy="5.5" r="2.7" fill="currentColor"/><path d="M20.5 5.5h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>'
+  };
+  function pairTile() {
+    if (!PAIR) return '<button type="button" class="hub-t pairbig t-pair" data-a="drawer" data-v="pair"><span class="hub-i">' + ICON_PAIR + '</span><b>' + t('pair.title') + '</b></button>';
+    return '<button type="button" class="hub-t pairbig t-pair on' + (pairLive() ? ' live' : '') + '" data-a="drawer" data-v="pair" aria-label="' + esc(t('pair.title') + ' ' + PAIR.room) + '"><span class="hub-i"><b class="pb-code">' + PAIR.room + '</b></span><b>' + (pairLive() ? '<i class="pdot" aria-hidden="true"></i>' + (PAIR.lead ? '👑 ' : '') + t('pair.linked') : t('pair.waitp')) + '</b></button>';
+  }
+  function hubTiles(L) {
+    return '<div class="hub">' + pairTile() +
+      (PARTY_LANGS.indexOf(L) >= 0 ? '<button type="button" class="hub-t t-party" data-a="party"><span class="hub-i">' + HUB_I.party + '</span><b>' + t('party') + '</b></button>' : '') +
+      '<button type="button" class="hub-t t-test" data-a="ptest"><span class="hub-i">' + HUB_I.test + '</span><b>' + t('p.place') + '</b></button>' +
+      '<button type="button" class="hub-t t-snake" data-a="snake"><span class="hub-i">' + HUB_I.snake + '</span><b>' + t('p.snake') + '</b></button></div>';
   }
   function partyBig() { return '<button type="button" class="partybig" data-a="party"><span class="pb-i" aria-hidden="true">🎉</span><b>' + t('party') + '</b><span class="pb-go" aria-hidden="true">→</span></button>'; }
   function sheetHTML() {
@@ -7740,7 +7780,7 @@ var ES_PHRASES = [
 
   function uiOptions() { return UI_ORDER.map(function (L) { return '<option value="' + L + '"' + (ui() === L ? ' selected' : '') + '>' + PACK[L].name + '</option>'; }).join(''); }
   function topbar() {
-    return '<div class="bar">' + (S.screen !== 'home' ? '<button type="button" class="bar-b ico bar-back" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') + '<button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button><span class="bar-sp"></span>' + pairChip() +
+    return '<div class="bar">' + (S.screen !== 'home' ? '<button type="button" class="bar-b ico bar-back" data-a="home" aria-label="' + esc(t('bar.home')) + '" title="' + esc(t('bar.home')) + '">' + ICON_HOME + '</button>' : '') + '<button type="button" class="brand" data-a="brand" aria-label="' + esc(t('bar.home')) + '" lang="' + tl() + '">' + esc(PK().title) + '</button>' + (S.screen === 'home' ? statsBar() : '') + '<span class="bar-sp"></span>' + (S.screen === 'home' ? '' : pairChip()) +
       '<label class="bar-sel">' + ICON_GLOBE + '<span class="sr">' + t('ui.label') + '</span><select data-a="uilang" id="ui-sel">' + uiOptions() + '</select></label>' +
       '<button type="button" class="bar-b ico" data-a="drawer" data-v="set" aria-label="' + esc(t('bar.settings')) + '">' + ICON_GEAR + '</button></div>';
   }

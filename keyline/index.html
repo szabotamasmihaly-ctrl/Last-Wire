@@ -279,7 +279,7 @@ var FAM = [
  'city town street building park church museum shop',
  'mountain hill rock climb high peak'
 ].map(function(f){ var o={}; f.split(' ').forEach(function(w){ o[w]=1; }); return o; });
-var ALPH='ABCDEFGHJKLMNPQRSTUVWXYZ', ROUNDS=8, COOP_TURNS=8;
+var ALPH='ABCDEFGHKLMNPRSTUVZ', ROUNDS=8, COOP_TURNS=8;
 var S = { np:2, rob:{}, level:1, lang:'en', scr:'home', mode:'', room:'', team:'A', player:'1', ev:[], seen:{}, guess:[], linked:false, shown:'', live:{}, cover:0 };
 try{ var sv=JSON.parse(localStorage.getItem('kl-ui')||'{}'); if(sv.lang) S.lang=sv.lang; if(sv.level) S.level=sv.level; if(sv.np) S.np=sv.np; }catch(e){}
 function saveUI(){ try{ localStorage.setItem('kl-ui',JSON.stringify({lang:S.lang,level:S.level,np:S.np})); }catch(e){} }
