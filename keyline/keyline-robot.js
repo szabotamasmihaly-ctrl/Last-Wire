@@ -12,7 +12,7 @@ const fs = require('fs'), path = require('path'), os = require('os'), cp = requi
 const DB = process.env.KEYLINE_DB || 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
 /* fast model for giving clues; a smarter one for reading clues, where wordplay matters */
 /* Smart (the default): the strongest model thinks briefly first. Fast: quicker models answer straight away. */
-const MODEL = { smart: { clues: 'opus', code: 'opus' }, fast: { clues: 'haiku', code: 'sonnet' } };
+const MODEL = { smart: { clues: 'opus', code: 'opus', quiz: 'opus', words: 'opus' }, fast: { clues: 'haiku', code: 'sonnet', quiz: 'sonnet', words: 'sonnet' } };
 const THINK = 'First think briefly in a few short lines: for each clue, list its links to all four words ' +
   '(meaning, phrases and compound words, culture such as songs or films, facts such as moon -> 28-day cycle), ' +
   'then use elimination, since the three numbers are all different. End with the JSON on the last line. ';
@@ -40,6 +40,26 @@ function word(s) { return typeof s === 'string' && /^[A-Za-z' -]{1,24}$/.test(s.
 function words(a, n) { return Array.isArray(a) && a.length <= n && a.every(word); }
 function digits(s) { return typeof s === 'string' && /^[1-4]{3}$/.test(s) && new Set(s).size === 3; }
 function cols(h) { return Array.isArray(h) && h.length === 4 && h.every(function (c) { return words(c, 12); }); }
+/* the notebook the player's phone keeps about them: their own words about how they link clues to words */
+function clean(x, n) { return String(x == null ? '' : x).replace(/[\r\n]+/g, ' ').replace(/"/g, "'").trim().slice(0, n); }
+function notebook(me) {
+  if (!Array.isArray(me) || !me.length) return '';
+  const lines = me.slice(-30).map(function (o) {
+    if (!o || typeof o !== 'object') return '';
+    const c = clean(o.c, 24).toUpperCase(), w = clean(o.w, 24).toUpperCase(), g = clean(o.g, 24).toUpperCase(), y = clean(o.y, 160);
+    if (!c || !w) return '';
+    if (o.k === 'misread') return '- You clued ' + w + ' with ' + c + ', but they read it as ' + g + '. Their thinking: "' + y + '"';
+    if (o.k === 'ok') return '- They clued ' + w + ' with ' + c + ' and agreed with this reading: "' + y + '"';
+    if (o.k === 'bad') return '- They clued ' + w + ' with ' + c + '. Their real link: "' + y + '"';
+    return '- They clued ' + w + ' with ' + c + (g ? ' (you guessed ' + g + ')' : '') + '. Their link: "' + y + '"';
+  }).filter(Boolean);
+  return lines.length ? '\nYour notebook about your human teammate, in their own words (newest last). Use it to understand how they think and which links they know:\n' + lines.join('\n') + '\n' : '';
+}
+const DIFF = {
+  1: 'Make every clue very easy and direct: the first word most people would say for that secret word.',
+  2: '',
+  3: 'Make the clues a little indirect and clever, so the other side cannot easily crack them, but keep one clear, fair link your teammate can find.'
+};
 function list(a) { return a.length ? a.join(', ') : '(none yet)'; }
 
 /* the message for one turn: which team the robot plays for, its job, what it may know */
@@ -48,6 +68,7 @@ function build(b) {
   /* tips the player gave about the robot's clues; they matter most when giving clues */
   const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
   const tipText = tips.length ? '\nYour human teammate gave you these tips about your clues (newest last). Follow them, but never break the rules of the game:\n- ' + tips.join('\n- ') + '\n' : '';
+  const book = notebook(b.me), diff = DIFF[b.diff] || '';
   const team = b.team === 'Orange' ? 'the Orange team' : (b.team === 'Blue' ? 'the Blue team' : 'the computer side');
   if (b.task === 'give') {
     if (!words(b.words, 4) || b.words.length !== 4 || !digits(b.code) || !cols(b.history)) return null;
@@ -59,7 +80,7 @@ function build(b) {
       '(something it is, has, does, or is often found with). Prefer plain, common links by meaning that most people ' +
       'would think of; avoid puns, compound-word tricks, rhymes and names. ' + lv + ' ' +
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
-      'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + tipText +
+      'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + diff + ' ' + tipText + book +
       (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.' };
   }
   if (b.task === 'decode') {
@@ -69,8 +90,28 @@ function build(b) {
       '\n\nYour clue giver just said, in order: ' + b.clues.join(', ') + '.\n' +
       'Match each clue to the secret word it most likely points to. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
       'Check every clue against all four words in all these ways, then choose the best overall match. ' +
-      'The three numbers must be different. ' +
-      (b.smart ? THINK + 'JSON: ' : 'Answer only: ') + '{"code": "three digits"}, for example {"code": "312"}.' };
+      'The three numbers must be different. ' + book +
+      (b.smart ? THINK + 'JSON: ' : 'Answer only: ') + '{"code": "three digits", "why": ["link", "link", "link"]}, where each "why" is a very short reason (at most 6 words, ' +
+      'for example "shoplift" or "Dr House, a TV doctor"), for example {"code": "312", "why": ["...", "...", "..."]}.' };
+  }
+  if (b.task === 'words') {
+    if (!words(b.pool, 260) || b.pool.length < 4 || !cols(b.history)) return null;
+    return { kind: 'words', prompt: 'The game is over: you cracked the other team\'s code. Bonus: guess their 4 secret words. ' +
+      'They were picked from this list: ' + b.pool.join(', ') + '.\n\nThe clues they gave, by number:\n' +
+      b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
+      '\n\nFor each number pick the word from the list that best fits all its clues; use 4 different words. ' +
+      (b.smart ? 'First think briefly in a few short lines. End with the JSON on the last line. JSON: ' : 'Answer only: ') +
+      '{"words": ["word 1", "word 2", "word 3", "word 4"]}.' };
+  }
+  if (b.task === 'quiz') {
+    if (!words(b.words, 4) || b.words.length !== 4 || !word(b.clue)) return null;
+    return { kind: 'quiz', prompt: 'This is practice, so you can learn how your human teammate thinks. Their 4 words:\n' +
+      b.words.map(function (w, i) { return (i + 1) + '. ' + w; }).join('\n') +
+      '\n\nThey gave the clue ' + b.clue + ' for ONE of these words. Which one? ' +
+      'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings. ' +
+      'Check the clue against all four words in all these ways. ' + book +
+      (b.smart ? 'First think briefly in a few short lines. End with the JSON on the last line. JSON: ' : 'Answer only: ') +
+      '{"n": number 1-4, "why": "one short, simple sentence that explains the link"}.' };
   }
   if (b.task === 'crack') {
     if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -133,7 +174,9 @@ function parse(kind, text) {
   const all = String(text).match(/\{[^{}]*\}/g) || [];
   for (let i = all.length - 1; i >= 0; i--) {
     let o; try { o = JSON.parse(all[i]); } catch (e) { continue; }
-    if (kind === 'code' && o.code !== undefined) { const c = String(o.code).replace(/[^1-4]/g, ''); if (digits(c)) return { code: c }; }
+    if (kind === 'code' && o.code !== undefined) { const c = String(o.code).replace(/[^1-4]/g, ''); if (digits(c)) { const r = { code: c }; if (Array.isArray(o.why) && o.why.length === 3) r.why = o.why.map(function (x) { return clean(x, 60); }); return r; } }
+    if (kind === 'words' && Array.isArray(o.words) && o.words.length === 4 && o.words.every(word)) return { words: o.words.map(function (w) { return clean(w, 24); }) };
+    if (kind === 'quiz' && o.n !== undefined) { const n = parseInt(o.n, 10); if (n >= 1 && n <= 4) return { n: n, why: clean(o.why, 140) }; }
     if (kind === 'clues' && Array.isArray(o.clues)) { const cl = o.clues.map(function (c) { return String(c).trim(); }); if (cl.length === 3 && cl.every(word)) return { clues: cl }; }
   }
   return null;
