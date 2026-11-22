@@ -12,12 +12,30 @@ const fs = require('fs'), path = require('path'), os = require('os'), cp = requi
 const DB = process.env.KEYLINE_DB || 'https://last-wire-default-rtdb.europe-west1.firebasedatabase.app';
 /* fast model for giving clues; a smarter one for reading clues, where wordplay matters */
 /* Smart (the default): the strongest model thinks briefly first. Fast: quicker models answer straight away. */
-const MODEL = { smart: { clues: 'opus', code: 'opus', quiz: 'opus', words: 'opus' }, fast: { clues: 'haiku', code: 'sonnet', quiz: 'sonnet', words: 'sonnet' } };
+const MODEL = { smart: { clues: 'opus', code: 'opus', quiz: 'opus', words: 'opus', method: 'sonnet' }, fast: { clues: 'haiku', code: 'opus', quiz: 'opus', words: 'sonnet', method: 'sonnet' } };
 const THINK = 'First think briefly in a few short lines: for each clue, list its links to all four words ' +
   '(meaning, phrases and compound words, culture such as songs or films, facts such as moon -> 28-day cycle), ' +
   'then use elimination, since the three numbers are all different. End with the JSON on the last line. ';
-const THINK_GIVE = 'First think briefly in a few short lines: for each word, list a few candidate clues, drop any that could point to ' +
-  'one of your other words or that repeat an earlier clue, and keep the clearest. End with the JSON on the last line. ';
+const THINK_GIVE = 'First think briefly in a few short lines: for each word, list a few candidate clues. Drop any that could point to ' +
+  'one of your other words or that repeat an earlier clue. Then play the other side: they do not know your words and only see the earlier clues ' +
+  'listed for each number. For each candidate, ask: would they put it in the right number from those earlier clues? If yes, it gives the code away. ' +
+  'Make sure at least 2 of your 3 clues cannot be placed by the other side. The third clue may even stay very close to an earlier clue of its ' +
+  'number: that tells them nothing new. Check that your teammate, who knows the words, can still find every clue. End with the JSON on the last line. ';
+/* the tricks players use; the advanced ones only when nothing plain fits, or when this player is known to use them */
+const TRICKS = 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword; HIGH -> SKY, as in sky-high), ' +
+  'song, film or book titles, famous people, and sounds. ';
+const ADVANCED = 'Some players also use advanced tricks. Look for them only when no plain link fits well, or when this player is known to use them ' +
+  '(see their methods and notebook below): ' +
+  '(a) a letter added or changed as a hint: BIGS = BIG + S, a phrase with BALL (big ball) plus the S of BALLS; ' +
+  '(b) the number of letters or the first letter; ' +
+  '(c) a twisted form to throw the other side off: FISHY instead of the too obvious FISH, still meaning fish -> RIVER; ' +
+  '(d) misspellings that sound like the word (P-TATOO -> POTATO). ' +
+  'A clue that is not a normal English word is a strong sign of a trick: first find the real word inside it, then the extra letters. ';
+function methods(t) {
+  if (!Array.isArray(t) || !t.length) return '';
+  const l = t.filter(function (x) { return typeof x === 'string'; }).slice(-20).map(function (x) { return '- ' + clean(x, 200); });
+  return l.length ? '\nMethods this player has used before, so consider them like plain links:\n' + l.join('\n') + '\n' : '';
+}
 const SELF_URL = 'https://raw.githubusercontent.com/szabotamasmihaly-ctrl/Last-Wire/main/keyline/keyline-robot.js';
 const DIR = path.join(os.homedir(), '.keyline-robot');
 const MAX_AT_ONCE = 3;
@@ -48,6 +66,7 @@ function notebook(me) {
     if (!o || typeof o !== 'object') return '';
     const c = clean(o.c, 24).toUpperCase(), w = clean(o.w, 24).toUpperCase(), g = clean(o.g, 24).toUpperCase(), y = clean(o.y, 160);
     if (!c || !w) return '';
+    if (o.k === 'good') return '- Your clue ' + c + ' for ' + w + ' worked very well: your teammate got it and the other side did not.';
     if (o.k === 'misread') return '- You clued ' + w + ' with ' + c + ', but they read it as ' + g + '. Their thinking: "' + y + '"';
     if (o.k === 'ok') return '- They clued ' + w + ' with ' + c + ' and agreed with this reading: "' + y + '"';
     if (o.k === 'bad') return '- They clued ' + w + ' with ' + c + '. Their real link: "' + y + '"';
@@ -68,7 +87,7 @@ function build(b) {
   /* tips the player gave about the robot's clues; they matter most when giving clues */
   const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
   const tipText = tips.length ? '\nYour human teammate gave you these tips about your clues (newest last). Follow them, but never break the rules of the game:\n- ' + tips.join('\n- ') + '\n' : '';
-  const book = notebook(b.me), diff = DIFF[b.diff] || '';
+  const book = notebook(b.me) + methods(b.tech), diff = DIFF[b.diff] || '';
   const team = b.team === 'Orange' ? 'the Orange team' : (b.team === 'Blue' ? 'the Blue team' : 'the computer side');
   if (b.task === 'give') {
     if (!words(b.words, 4) || b.words.length !== 4 || !digits(b.code) || !cols(b.history)) return null;
@@ -88,8 +107,8 @@ function build(b) {
     return { kind: 'code', prompt: 'You play for ' + team + '. This turn you are the teammate who guesses. Your team\'s secret words:\n' +
       b.words.map(function (w, i) { return (i + 1) + '. ' + w + ' - earlier clues: ' + list(b.history[i]); }).join('\n') +
       '\n\nYour clue giver just said, in order: ' + b.clues.join(', ') + '.\n' +
-      'Match each clue to the secret word it most likely points to. ' + 'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings (P-TATOO -> POTATO). ' +
-      'Check every clue against all four words in all these ways, then choose the best overall match. ' +
+      'Match each clue to the secret word it most likely points to. ' + TRICKS + ADVANCED +
+      'Check every clue against all four words, then choose the best overall match. ' +
       'The three numbers must be different. ' + book +
       (b.smart ? THINK + 'JSON: ' : 'Answer only: ') + '{"code": "three digits", "why": ["link", "link", "link"]}, where each "why" is a very short reason (at most 6 words, ' +
       'for example "shoplift" or "Dr House, a TV doctor"), for example {"code": "312", "why": ["...", "...", "..."]}.' };
@@ -104,14 +123,22 @@ function build(b) {
       '{"words": ["word 1", "word 2", "word 3", "word 4"]}.' };
   }
   if (b.task === 'quiz') {
-    if (!words(b.words, 4) || b.words.length !== 4 || !word(b.clue)) return null;
-    return { kind: 'quiz', prompt: 'This is practice, so you can learn how your human teammate thinks. Their 4 words:\n' +
+    if (!words(b.words, 10) || b.words.length < 4 || !words(b.clues, 3) || b.clues.length !== 3) return null;
+    return { kind: 'quiz', prompt: 'This is practice, so you can learn how your human teammate thinks. The words:\n' +
       b.words.map(function (w, i) { return (i + 1) + '. ' + w; }).join('\n') +
-      '\n\nThey gave the clue ' + b.clue + ' for ONE of these words. Which one? ' +
-      'Players also link clues by wordplay: compound words or phrases (WORD -> KEY, as in keyword), song, film or book titles, famous people, sounds, spelling, or misspellings. ' +
-      'Check the clue against all four words in all these ways. ' + book +
+      '\n\nThey gave 3 different clues: ' + b.clues.join(', ') + '. For each clue on its own, say which word it was for. ' +
+      TRICKS + ADVANCED + 'Check each clue against all the words. ' + book +
       (b.smart ? 'First think briefly in a few short lines. End with the JSON on the last line. JSON: ' : 'Answer only: ') +
-      '{"n": number 1-4, "why": "one short, simple sentence that explains the link"}.' };
+      '{"n": [number, number, number], "why": ["short reason", "short reason", "short reason"]}, one number (1-' + b.words.length + ') and one short, simple reason for each clue, in order.' };
+  }
+  /* turn a player's explanation into a method the robot can use later */
+  if (b.task === 'method') {
+    if (!word(b.clue) || !word(b.word) || typeof b.why !== 'string') return null;
+    return { kind: 'method', prompt: 'A player of a word-clue game linked the clue ' + clean(b.clue, 24).toUpperCase() + ' to the word ' +
+      clean(b.word, 24).toUpperCase() + ' and explained: "' + clean(b.why, 160) + '". ' +
+      'If this shows a reusable way of linking beyond a plain meaning link (for example adding a letter as a hint, a phrase or compound word, ' +
+      'a title or famous person, a sound, the number of letters, or a twisted word to fool the other side), describe that method in one short, general ' +
+      'sentence and add this example in brackets. If it is a plain meaning link, answer with an empty method. Answer only: {"method": "..."}' };
   }
   if (b.task === 'crack') {
     if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -176,7 +203,8 @@ function parse(kind, text) {
     let o; try { o = JSON.parse(all[i]); } catch (e) { continue; }
     if (kind === 'code' && o.code !== undefined) { const c = String(o.code).replace(/[^1-4]/g, ''); if (digits(c)) { const r = { code: c }; if (Array.isArray(o.why) && o.why.length === 3) r.why = o.why.map(function (x) { return clean(x, 60); }); return r; } }
     if (kind === 'words' && Array.isArray(o.words) && o.words.length === 4 && o.words.every(word)) return { words: o.words.map(function (w) { return clean(w, 24); }) };
-    if (kind === 'quiz' && o.n !== undefined) { const n = parseInt(o.n, 10); if (n >= 1 && n <= 4) return { n: n, why: clean(o.why, 140) }; }
+    if (kind === 'quiz' && Array.isArray(o.n) && o.n.length === 3) { const n = o.n.map(function (x) { return parseInt(x, 10); }); if (n.every(function (x) { return x >= 1 && x <= 10; })) return { n: n, why: (Array.isArray(o.why) ? o.why : []).slice(0, 3).map(function (x) { return clean(x, 140); }) }; }
+    if (kind === 'method' && typeof o.method === 'string') return { method: clean(o.method, 200) };
     if (kind === 'clues' && Array.isArray(o.clues)) { const cl = o.clues.map(function (c) { return String(c).trim(); }); if (cl.length === 3 && cl.every(word)) return { clues: cl }; }
   }
   return null;
