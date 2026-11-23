@@ -215,13 +215,22 @@ function findClaude() {
 }
 
 function quote(a) { return '"' + String(a).replace(/"/g, "'") + '"'; }
-function askClaude(claude, prompt, model) {
+/* at most 4 Claude programs at once; one place is always kept free for reading clues, so the robot's own
+   clue planning in the background never makes a guess wait or time out */
+const MAXC = 4; let RUN = 0; const WAIT = { hi: [], lo: [] };
+function slot(lo) { return new Promise(function (ok) { if (lo ? RUN < MAXC - 1 && !WAIT.hi.length : RUN < MAXC) { RUN++; ok(); } else WAIT[lo ? 'lo' : 'hi'].push(ok); }); }
+function free() { RUN--; if (WAIT.hi.length && RUN < MAXC) { RUN++; WAIT.hi.shift()(); } else if (WAIT.lo.length && RUN < MAXC - 1) { RUN++; WAIT.lo.shift()(); } }
+async function askClaude(claude, prompt, model, lo, limit) {
+  await slot(lo);
+  try { return await runClaude(claude, prompt, model, limit); } finally { free(); }
+}
+function runClaude(claude, prompt, model, limit) {
   return new Promise(function (resolve, reject) {
     let args = claude.pre.concat(['-p', '--model', model || MODEL.fast.clues, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
     if (claude.shell) args = args.map(quote);
     const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true, shell: !!claude.shell });
     let out = '', err = '';
-    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, 55000);
+    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, limit || 55000);
     p.stdout.on('data', function (d) { out += d; });
     p.stderr.on('data', function (d) { err += d; });
     p.on('error', function (e) { clearTimeout(timer); reject(e); });
@@ -235,7 +244,7 @@ async function rivalCheck(claude, sim, clues) {
   const j = build({ task: 'rival', lang: sim.lang, team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
   if (!j) return null;
   /* the same model the real rivals use on this difficulty */
-  const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet'));
+  const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet', true));
   if (!r) return null;
   const hit = [0, 1, 2].filter(function (i) { return r.code[i] === sim.code[i]; });
   return { guess: r.code, hit: hit };
@@ -244,7 +253,7 @@ async function rivalCheck(claude, sim, clues) {
 async function mateCheck(claude, sim, clues) {
   const j = build({ task: 'decode', lang: sim.lang, team: sim.team, words: sim.words, history: sim.history, clues: clues, me: sim.me, tech: sim.tech, level: sim.level, smart: 0 });
   if (!j) return null;
-  const r = parse('code', await askClaude(claude, j.prompt, 'opus'));
+  const r = parse('code', await askClaude(claude, j.prompt, 'opus', true));
   if (!r) return null;
   return { miss: [0, 1, 2].filter(function (i) { return r.code[i] !== sim.code[i]; }) };
 }
@@ -269,9 +278,9 @@ const SETS = '\n\nPlay it safe: the other side may already guess your words from
 /* give clues: make a few sets, test each on a pretend rival and a pretend teammate, keep the safest one */
 async function giveClues(claude, job, model) {
   const t0 = Date.now();
-  if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model));
-  let sets = parseSets(await askClaude(claude, job.prompt + SETS, model));
-  if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model));
+  if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model, true, 100000));
+  let sets = parseSets(await askClaude(claude, job.prompt + SETS, model, true, 100000));
+  if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model, true));
   /* stronger robots test more and accept less: level 3-5 one round, 6-8 two, 9-10 three and nothing the rival can place */
   const L = job.sim.lvl, rounds = L >= 9 ? 3 : (L >= 6 ? 2 : 1), allow = L >= 9 ? 0 : 1, cap = L >= 9 ? 120000 : 80000;
   let best = null;
@@ -283,7 +292,7 @@ async function giveClues(claude, job, model) {
     /* none was safe: show the robot what went wrong and ask for new sets */
     const notes = res.map(function (x) { return x.clues.join(', ') + ': the other side placed ' + (x.hit.map(function (i) { return x.clues[i]; }).join(' and ') || 'none') +
       (x.miss.length ? '; your teammate could misread ' + x.miss.map(function (i) { return x.clues[i]; }).join(' and ') : ''); }).join('\n');
-    sets = parseSets(await askClaude(claude, job.prompt + SETS + '\n\nWe already tested these sets:\n' + notes + '\nMake 3 new sets that avoid these problems.', model));
+    sets = parseSets(await askClaude(claude, job.prompt + SETS + '\n\nWe already tested these sets:\n' + notes + '\nMake 3 new sets that avoid these problems.', model, true, 100000));
     if (!sets.length) break;
   }
   return { clues: best.clues };
@@ -365,12 +374,13 @@ async function main() {
       const job = queue.shift(); busy++;
       const t0 = Date.now();
       const model = MODEL[job.smart ? 'smart' : 'fast'][job.kind];
-      (job.kind === 'clues' ? giveClues(claude, job, model) : askClaude(claude, job.prompt, model).then(function (txt) { return parse(job.kind, txt); })).then(function (r) {
+      (job.kind === 'clues' ? giveClues(claude, job, model) : askClaude(claude, job.prompt, model, false, 50000).then(function (txt) { return parse(job.kind, txt); }, function (e) { console.log('  ' + new Date().toLocaleTimeString() + '  first try failed (' + e.message + '), asking a quicker model'); return null; })
+        .then(function (r) { return r || askClaude(claude, job.prompt, 'sonnet', false, 25000).then(function (txt) { return parse(job.kind, txt); }); })).then(function (r) {
         if (!r) throw new Error('no clear answer');
         r.a = job.id; send(topic, r);
         console.log('  ' + new Date().toLocaleTimeString() + '  robot move done (' + ((Date.now() - t0) / 1000).toFixed(1) + 's)');
       }).catch(function (e) {
-        send(topic, { a: job.id, err: 1 });
+        send(topic, { a: job.id, err: 1, msg: clean(e.message, 160) });
         console.log('  ' + new Date().toLocaleTimeString() + '  robot could not answer: ' + e.message);
       }).then(function () { busy--; next(); });
     }
