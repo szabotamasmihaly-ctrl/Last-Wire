@@ -54,7 +54,8 @@ const LEVEL = {
   3: 'Use clear English words that an upper-intermediate learner (level B2) knows. Avoid rare or academic words.'
 };
 
-function word(s) { return typeof s === 'string' && /^[A-Za-z' -]{1,24}$/.test(s.trim()); }
+/* a clue may hold letters, digits and a few signs (9-5, 007, R&B) */
+function word(s) { return typeof s === 'string' && /^[\p{L}\p{N}' .,&!?+\/-]{1,24}$/u.test(s.trim()) && /[\p{L}\p{N}]/u.test(s); }
 function words(a, n) { return Array.isArray(a) && a.length <= n && a.every(word); }
 function digits(s) { return typeof s === 'string' && /^[1-4]{3}$/.test(s) && new Set(s).size === 3; }
 function cols(h) { return Array.isArray(h) && h.length === 4 && h.every(function (c) { return words(c, 12); }); }
@@ -79,6 +80,8 @@ const DIFF = {
   2: '',
   3: 'Make the clues a little indirect and clever, so the other side cannot easily crack them, but keep one clear, fair link your teammate can find.'
 };
+/* how strong the robot's clues are, 1 to 10 */
+function strength(b) { const n = parseInt(b.lvl, 10); if (n >= 1 && n <= 10) return n; return b.diff === 1 ? 2 : (b.diff === 3 ? 8 : 5); }
 function list(a) { return a.length ? a.join(', ') : '(none yet)'; }
 
 /* the message for one turn: which team the robot plays for, its job, what it may know */
@@ -87,7 +90,8 @@ function build(b) {
   /* tips the player gave about the robot's clues; they matter most when giving clues */
   const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
   const tipText = tips.length ? '\nYour human teammate gave you these tips about your clues (newest last). Follow them, but never break the rules of the game:\n- ' + tips.join('\n- ') + '\n' : '';
-  const book = notebook(b.me) + methods(b.tech), diff = DIFF[b.diff] || '';
+  const lvl = strength(b);
+  const book = notebook(b.me) + methods(b.tech), diff = DIFF[lvl <= 3 ? 1 : (lvl >= 7 ? 3 : 2)] || '';
   const team = b.team === 'Orange' ? 'the Orange team' : (b.team === 'Blue' ? 'the Blue team' : 'the computer side');
   if (b.task === 'give') {
     if (!words(b.words, 4) || b.words.length !== 4 || !digits(b.code) || !cols(b.history)) return null;
@@ -101,7 +105,7 @@ function build(b) {
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + diff + ' ' + tipText + book +
       (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.',
-      sim: (words(b.pool, 260) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, diff: b.diff || 2, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
+      sim: (lvl >= 3 && words(b.pool, 260) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, lvl: lvl, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
   }
   if (b.task === 'decode') {
     if (!words(b.words, 4) || b.words.length !== 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -203,7 +207,7 @@ async function rivalCheck(claude, sim, clues) {
   const j = build({ task: 'rival', team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
   if (!j) return null;
   /* the same model the real rivals use on this difficulty */
-  const r = parse('code', await askClaude(claude, j.prompt, sim.diff >= 3 ? 'opus' : 'sonnet'));
+  const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet'));
   if (!r) return null;
   const hit = [0, 1, 2].filter(function (i) { return r.code[i] === sim.code[i]; });
   return { guess: r.code, hit: hit };
@@ -240,12 +244,14 @@ async function giveClues(claude, job, model) {
   if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model));
   let sets = parseSets(await askClaude(claude, job.prompt + SETS, model));
   if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model));
+  /* stronger robots test more and accept less: level 3-5 one round, 6-8 two, 9-10 three and nothing the rival can place */
+  const L = job.sim.lvl, rounds = L >= 9 ? 3 : (L >= 6 ? 2 : 1), allow = L >= 9 ? 0 : 1, cap = L >= 9 ? 120000 : 80000;
   let best = null;
-  for (let round = 0; round < 2; round++) {
+  for (let round = 0; round < rounds; round++) {
     const res = (await Promise.all(sets.map(function (c) { return testSet(claude, job.sim, c); }))).filter(Boolean);
     res.forEach(function (x) { if (!best || x.score < best.score) best = x; });
     if (!best) return { clues: sets[0] };
-    if ((best.hit.length <= 1 && !best.miss.length) || Date.now() - t0 > 80000) break;
+    if ((best.hit.length <= allow && !best.miss.length) || round === rounds - 1 || Date.now() - t0 > cap) break;
     /* none was safe: show the robot what went wrong and ask for new sets */
     const notes = res.map(function (x) { return x.clues.join(', ') + ': the other side placed ' + (x.hit.map(function (i) { return x.clues[i]; }).join(' and ') || 'none') +
       (x.miss.length ? '; your teammate could misread ' + x.miss.map(function (i) { return x.clues[i]; }).join(' and ') : ''); }).join('\n');
@@ -283,8 +289,9 @@ function robotCode() {
 }
 
 /* keep this program up to date: if a newer version is online, save it and start that one instead */
-async function update() {
-  if (process.env.KEYLINE_NO_UPDATE) return false;
+let RETIRED = false;
+async function update(running) {
+  if (process.env.KEYLINE_NO_UPDATE || (!running && process.env.KEYLINE_FRESH)) return false;
   try {
     const r = await fetch(SELF_URL, { cache: 'no-store' });
     if (!r.ok) return false;
@@ -292,7 +299,8 @@ async function update() {
     if (fresh === me || fresh.indexOf('KEYLINE ROBOT') < 0) return false;
     fs.writeFileSync(__filename, fresh);
     console.log('\n  Updated the robot to the newest version. Starting it...');
-    cp.spawn(process.execPath, [__filename], { stdio: 'inherit', env: Object.assign({}, process.env, { KEYLINE_NO_UPDATE: '1' }) }).on('close', function (c) { process.exit(c || 0); });
+    RETIRED = true;
+    cp.spawn(process.execPath, [__filename], { stdio: 'inherit', env: Object.assign({}, process.env, { KEYLINE_FRESH: '1' }) }).on('close', function (c) { process.exit(c || 0); });
     return true;
   } catch (e) { return false; }
 }
@@ -329,14 +337,18 @@ async function main() {
       }).then(function () { busy--; next(); });
     }
   }
+  setInterval(function () { if (!RETIRED && !busy && !queue.length) update(true); }, 20 * 60000);
   function take(key, v) {
-    if (!v || typeof v.m !== 'string' || seen.has(key)) return;
+    if (RETIRED || !v || typeof v.m !== 'string' || seen.has(key)) return;
     seen.add(key);
     if ((v.t || 0) < start - 60000 || v.f === 'robot') return;
     let e; try { e = JSON.parse(v.m); } catch (x) { return; }
     if (!e) return;
     if (e.ping) { send(topic, { pong: e.ping }); console.log('  ' + new Date().toLocaleTimeString() + '  Keyline connected'); return; }
     if (!e.q) return;
+    /* the player's notebook, kept on this computer so every phone with this robot code shares it */
+    if (e.task === 'load') { let pr = null; try { pr = JSON.parse(fs.readFileSync(path.join(DIR, 'profile.json'), 'utf8')); } catch (x) { pr = null; } send(topic, { a: e.q, profile: pr }); return; }
+    if (e.task === 'save') { if (e.profile && typeof e.profile === 'object') { try { fs.writeFileSync(path.join(DIR, 'profile.json'), JSON.stringify(e.profile, null, 1)); } catch (x) {} } send(topic, { a: e.q, ok: 1 }); return; }
     const job = build(e);
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
     job.id = e.q; job.smart = !!e.smart; queue.push(job); next();
