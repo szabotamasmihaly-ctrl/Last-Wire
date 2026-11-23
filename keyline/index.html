@@ -731,8 +731,9 @@ function viaAI(kind, team, i, turns, data, local){
   var k=S.room+':'+kind+':'+team+':'+i, room=S.room;
   if(!aiOwner(kind,team)){
     /* online: the phone that owns this robot move shares it; if it never comes, work it out here */
-    if(!AI.since[k]){ AI.since[k]=Date.now(); setTimeout(function(){ if(S.room===room) update(); },20500); }
-    if(Date.now()-AI.since[k]>20000){ if(!AI.busy[k]){ AI.busy[k]=1; var v=local(); setTimeout(function(){ if(S.room===room) aiEvent(kind,team,i,v,AI.code?1:0); },0); } }
+    var lim=kind==='give'?160000:20000;
+    if(!AI.since[k]){ AI.since[k]=Date.now(); setTimeout(function(){ if(S.room===room) update(); },lim+500); }
+    if(Date.now()-AI.since[k]>lim){ if(!AI.busy[k]){ AI.busy[k]=1; var v=local(); setTimeout(function(){ if(S.room===room) aiEvent(kind,team,i,v,AI.code?1:0); },0); } }
     return undefined;
   }
   /* a robot code is set but the computer did not answer last time: ask it again before giving up,
@@ -751,7 +752,7 @@ function viaAI(kind, team, i, turns, data, local){
   AI.busy[k]=1;
   var fb=local(), done=false, finish=function(v,wl,why){ if(done) return; done=true; if(S.room===room && S.scr==='play') aiEvent(kind,team,i,v,wl,why); }, finishWl=function(v){ finish(v,1); };
   data.task=kind; data.team=teamName(team); data.level=levelOf(S.room); data.smart=AI.smart?1:0; data.diff=AI.diff; if(kind==='crack') data.smart=AI.diff>=3?1:0; else { if(AI.tips.length) data.tips=AI.tips.slice(); if(AI.me.length) data.me=AI.me.slice(); if(AI.tech.length) data.tech=AI.tech.slice(); }
-  botAsk(data,60000,function(j){
+  botAsk(data,kind==='give'?150000:60000,function(j){
     if(!j || j.err){ if(!j){ AI.off++; AI.ok=false; paintDiag(); } return finishWl(fb); }
     AI.off=0; if(kind==='give') return finish(aiCheckClues(j.clues,team,i,turns,fb));
     var why=(kind==='decode' && Array.isArray(j.why) && j.why.length===3)?j.why.map(function(x){ return String(x).slice(0,60); }):null;
@@ -771,7 +772,7 @@ function aiCheckClues(cl, team, i, turns, fb){
 }
 function aiClues(team, i, turns){
   var H=teamHistory(turns,team,i);
-  return viaAI('give',team,i,turns,{words:S.game.keys[team],code:S.game.code(i),history:aiCols(H)},function(){ return robotClues(team,i,turns); });
+  return viaAI('give',team,i,turns,{words:S.game.keys[team],code:S.game.code(i),history:aiCols(H),pool:S.game.pool},function(){ return robotClues(team,i,turns); });
 }
 function aiDecode(team, i, turns, clues){
   var H=teamHistory(turns,team,i);

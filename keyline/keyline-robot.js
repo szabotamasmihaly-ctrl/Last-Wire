@@ -100,7 +100,8 @@ function build(b) {
       'would think of; avoid puns, compound-word tricks, rhymes and names. ' + lv + ' ' +
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + diff + ' ' + tipText + book +
-      (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.' };
+      (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.',
+      sim: (words(b.pool, 260) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, diff: b.diff || 2, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
   }
   if (b.task === 'decode') {
     if (!words(b.words, 4) || b.words.length !== 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -140,7 +141,7 @@ function build(b) {
       'a title or famous person, a sound, the number of letters, or a twisted word to fool the other side), describe that method in one short, general ' +
       'sentence and add this example in brackets. If it is a plain meaning link, answer with an empty method. Answer only: {"method": "..."}' };
   }
-  if (b.task === 'crack') {
+  if (b.task === 'crack' || b.task === 'rival') {
     if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
     return { kind: 'code', prompt: 'You play for ' + team + '. This turn you are the other side, trying to crack the code. ' +
       'The 4 secret words were picked from this list: ' + b.pool.join(', ') + '.\n\nClues given before, by number:\n' +
@@ -197,6 +198,62 @@ function askClaude(claude, prompt, model) {
   });
 }
 
+/* play the rivals for real: give them the new clues and every clue they have seen, and count how many digits they get */
+async function rivalCheck(claude, sim, clues) {
+  const j = build({ task: 'rival', team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
+  if (!j) return null;
+  /* the same model the real rivals use on this difficulty */
+  const r = parse('code', await askClaude(claude, j.prompt, sim.diff >= 3 ? 'opus' : 'sonnet'));
+  if (!r) return null;
+  const hit = [0, 1, 2].filter(function (i) { return r.code[i] === sim.code[i]; });
+  return { guess: r.code, hit: hit };
+}
+/* and play the teammate: would someone who knows the words read all three right? */
+async function mateCheck(claude, sim, clues) {
+  const j = build({ task: 'decode', team: sim.team, words: sim.words, history: sim.history, clues: clues, me: sim.me, tech: sim.tech, level: sim.level, smart: 0 });
+  if (!j) return null;
+  const r = parse('code', await askClaude(claude, j.prompt, 'opus'));
+  if (!r) return null;
+  return { miss: [0, 1, 2].filter(function (i) { return r.code[i] !== sim.code[i]; }) };
+}
+/* test one set of clues on the rivals and on the teammate at the same time */
+async function testSet(claude, sim, clues) {
+  let both; try { both = await Promise.all([rivalCheck(claude, sim, clues), mateCheck(claude, sim, clues)]); } catch (e) { return null; }
+  if (!both[0]) return null;
+  const hit = both[0].hit.length, miss = both[1] ? both[1].miss.length : 0;
+  console.log('  test: ' + clues.join(', ') + ' -> rivals would get ' + hit + ' of 3, teammate ' + (3 - miss) + ' of 3');
+  return { clues: clues, hit: both[0].hit, miss: both[1] ? both[1].miss : [], score: hit + 2 * miss };
+}
+function parseSets(text) {
+  const out = [], all = String(text).match(/\[[^\[\]]*\]/g) || [];
+  all.forEach(function (x) { let a; try { a = JSON.parse(x); } catch (e) { return; } if (Array.isArray(a) && a.length === 3 && a.every(word)) out.push(a.map(function (c) { return String(c).trim(); })); });
+  return out.slice(-4);
+}
+const SETS = '\n\nPlay it safe: the other side may already guess your words from the earlier clues. So give 3 DIFFERENT sets of clues to choose from. ' +
+  'In each set, at least 2 clues should link to their word through a different meaning or angle than the earlier clues for that number ' +
+  '(for example NURSE -> SHARK, as in nurse shark, when the earlier clues were doctor and care), or fit two of your words about equally for an outsider, ' +
+  'while your teammate, who knows the exact words, can still find every one. ' +
+  'First think briefly. End with the JSON on the last line: {"sets": [["word", "word", "word"], ["word", "word", "word"], ["word", "word", "word"]]} in code order.';
+/* give clues: make a few sets, test each on a pretend rival and a pretend teammate, keep the safest one */
+async function giveClues(claude, job, model) {
+  const t0 = Date.now();
+  if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model));
+  let sets = parseSets(await askClaude(claude, job.prompt + SETS, model));
+  if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model));
+  let best = null;
+  for (let round = 0; round < 2; round++) {
+    const res = (await Promise.all(sets.map(function (c) { return testSet(claude, job.sim, c); }))).filter(Boolean);
+    res.forEach(function (x) { if (!best || x.score < best.score) best = x; });
+    if (!best) return { clues: sets[0] };
+    if ((best.hit.length <= 1 && !best.miss.length) || Date.now() - t0 > 80000) break;
+    /* none was safe: show the robot what went wrong and ask for new sets */
+    const notes = res.map(function (x) { return x.clues.join(', ') + ': the other side placed ' + (x.hit.map(function (i) { return x.clues[i]; }).join(' and ') || 'none') +
+      (x.miss.length ? '; your teammate could misread ' + x.miss.map(function (i) { return x.clues[i]; }).join(' and ') : ''); }).join('\n');
+    sets = parseSets(await askClaude(claude, job.prompt + SETS + '\n\nWe already tested these sets:\n' + notes + '\nMake 3 new sets that avoid these problems.', model));
+    if (!sets.length) break;
+  }
+  return { clues: best.clues };
+}
 function parse(kind, text) {
   const all = String(text).match(/\{[^{}]*\}/g) || [];
   for (let i = all.length - 1; i >= 0; i--) {
@@ -261,8 +318,8 @@ async function main() {
     while (busy < MAX_AT_ONCE && queue.length) {
       const job = queue.shift(); busy++;
       const t0 = Date.now();
-      askClaude(claude, job.prompt, MODEL[job.smart ? 'smart' : 'fast'][job.kind]).then(function (txt) {
-        const r = parse(job.kind, txt);
+      const model = MODEL[job.smart ? 'smart' : 'fast'][job.kind];
+      (job.kind === 'clues' ? giveClues(claude, job, model) : askClaude(claude, job.prompt, model).then(function (txt) { return parse(job.kind, txt); })).then(function (r) {
         if (!r) throw new Error('no clear answer');
         r.a = job.id; send(topic, r);
         console.log('  ' + new Date().toLocaleTimeString() + '  robot move done (' + ((Date.now() - t0) / 1000).toFixed(1) + 's)');
