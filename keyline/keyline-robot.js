@@ -82,6 +82,22 @@ const DIFF = {
 };
 /* how strong the robot's clues are, 1 to 10 */
 function strength(b) { const n = parseInt(b.lvl, 10); if (n >= 1 && n <= 10) return n; return b.diff === 1 ? 2 : (b.diff === 3 ? 8 : 5); }
+/* the player's notebook is kept for good in a file on this computer (it survives restarts and updates);
+   phones add to it, and only a Clear button on a phone removes things */
+const PROFILE = path.join(DIR, 'profile.json');
+function readProfile() { try { return JSON.parse(fs.readFileSync(PROFILE, 'utf8')); } catch (e) { try { return JSON.parse(fs.readFileSync(PROFILE + '.bak', 'utf8')); } catch (x) { return null; } } }
+function union(a, b, key) { const seen = new Set(), out = []; (Array.isArray(a) ? a : []).concat(Array.isArray(b) ? b : []).forEach(function (x) { const k = key(x); if (x && !seen.has(k)) { seen.add(k); out.push(x); } }); return out; }
+function noteKey(o) { return o && [o.k, o.c, o.w, o.y].join('|'); }
+function saveProfile(p, replace) {
+  const old = readProfile() || {};
+  const n = replace ? p : {
+    me: union(old.me, p.me, noteKey),
+    tech: union(old.tech, p.tech, String).slice(-50),
+    tips: Array.isArray(p.tips) ? p.tips : old.tips,
+    quiz: old.quiz || p.quiz ? 1 : 0
+  };
+  try { fs.mkdirSync(DIR, { recursive: true }); if (fs.existsSync(PROFILE)) fs.copyFileSync(PROFILE, PROFILE + '.bak'); fs.writeFileSync(PROFILE + '.tmp', JSON.stringify(n, null, 1)); fs.renameSync(PROFILE + '.tmp', PROFILE); } catch (e) {}
+}
 function list(a) { return a.length ? a.join(', ') : '(none yet)'; }
 
 /* the message for one turn: which team the robot plays for, its job, what it may know */
@@ -91,6 +107,8 @@ function build(b) {
   const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
   const tipText = tips.length ? '\nYour human teammate gave you these tips about your clues (newest last). Follow them, but never break the rules of the game:\n- ' + tips.join('\n- ') + '\n' : '';
   const lvl = strength(b);
+  const pf = (b.task === 'crack' || b.task === 'rival' || b.task === 'words' || b.task === 'method') ? null : readProfile();
+  if (pf) { b.me = union(pf.me, b.me, noteKey); b.tech = union(pf.tech, b.tech, String); }
   const book = notebook(b.me) + methods(b.tech), diff = DIFF[lvl <= 3 ? 1 : (lvl >= 7 ? 3 : 2)] || '';
   const team = b.team === 'Orange' ? 'the Orange team' : (b.team === 'Blue' ? 'the Blue team' : 'the computer side');
   if (b.task === 'give') {
@@ -347,8 +365,8 @@ async function main() {
     if (e.ping) { send(topic, { pong: e.ping }); console.log('  ' + new Date().toLocaleTimeString() + '  Keyline connected'); return; }
     if (!e.q) return;
     /* the player's notebook, kept on this computer so every phone with this robot code shares it */
-    if (e.task === 'load') { let pr = null; try { pr = JSON.parse(fs.readFileSync(path.join(DIR, 'profile.json'), 'utf8')); } catch (x) { pr = null; } send(topic, { a: e.q, profile: pr }); return; }
-    if (e.task === 'save') { if (e.profile && typeof e.profile === 'object') { try { fs.writeFileSync(path.join(DIR, 'profile.json'), JSON.stringify(e.profile, null, 1)); } catch (x) {} } send(topic, { a: e.q, ok: 1 }); return; }
+    if (e.task === 'load') { send(topic, { a: e.q, profile: readProfile() }); return; }
+    if (e.task === 'save') { if (e.profile && typeof e.profile === 'object') saveProfile(e.profile, !!e.replace); send(topic, { a: e.q, ok: 1 }); return; }
     const job = build(e);
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
     job.id = e.q; job.smart = !!e.smart; queue.push(job); next();
