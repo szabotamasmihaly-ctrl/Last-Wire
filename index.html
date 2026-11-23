@@ -1374,6 +1374,9 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .partybig{display:flex;align-items:center;gap:12px;width:100%;margin:2px 0;padding:14px 18px;border-radius:16px;border:0;color:#fff;box-shadow:0 5px 0 #A04ACB;background:linear-gradient(90deg,#CE82FF,#E5527A);font:800 18px/1.1 var(--font-body);text-align:left;transition:transform .08s}
 .partybig:active{transform:translateY(3px);box-shadow:0 2px 0 #A04ACB}
 .partybig .pb-i{font-size:28px;animation:bob 2s ease-in-out infinite}
+.versebig{display:flex;align-items:center;gap:12px;width:100%;margin:12px 0 4px;padding:14px 18px;border-radius:16px;color:#fff;text-decoration:none;box-shadow:0 5px 0 #1A0F3A;background:linear-gradient(90deg,#2A1A52,#FF4FA3);font:800 18px/1.1 var(--font-body)}
+.versebig:active{transform:translateY(3px);box-shadow:0 2px 0 #1A0F3A}
+.versebig .pb-i{font-size:28px;animation:bob 2s ease-in-out infinite}.versebig b{flex:1;text-transform:uppercase}
 .partybig b{flex:1;text-transform:uppercase}
 @media (prefers-reduced-motion:reduce){.vinyl,.pobs.rec .pob,.pobs.rec .pob span,.eqz i,.reel .holes,.ksing span,.kball,.gauge i,.iscene span,.pgame,.pgame .pi,.partybig .pb-i{animation:none!important}}
 
@@ -4601,7 +4604,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 44;
+  var BUILD = 45;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -7378,6 +7381,8 @@ var ES_PHRASES = [
       h += '<button type="button" class="pgame g' + (k + 1) + '" data-a="pnode" data-v="' + (k + 1) + '" style="animation-delay:' + (k * 0.04) + 's" lang="' + L + '"><span class="pi" aria-hidden="true">' + PARTY_ICON[g] + '</span>' + esc(PACK[L].mod[g]) + (st ? '<span class="pst" aria-label="' + st + ' / 3">' + stars3(st) + '</span>' : '') + '</button>';
     });
     h += '<button type="button" class="pgame mix" data-a="pnode" data-v="' + (PARTY_GAMES.length + 1) + '"><span class="pi" aria-hidden="true">🎲</span>' + t('party.mix') + '</button></div>';
+    /* 🎤 Last Verse: the song game on its own page, solo, co-op or versus, with the original recordings */
+    if (L === 'en') h += '<a class="versebig" href="verse/"><span class="pb-i" aria-hidden="true">🎤</span><b>Last Verse</b><span aria-hidden="true">🎧 🤝 ⚔️</span></a>';
     /* 🇬🇧🇺🇸 British and American culture: English only */
     if (L === 'en' && typeof CULT !== 'undefined') {
       h += '<h2 class="cult-h"><span aria-hidden="true">🇬🇧🇺🇸</span> ' + esc(t('party.culture')) + '</h2><div class="pgrid cult">';
