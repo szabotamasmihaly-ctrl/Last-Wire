@@ -819,6 +819,10 @@ function state(){
     }
     if(!(tt.done && tt.next)){ cur=i; break; }
   }
+  /* a robot team that writes the next clues starts now, while this round is still being played, so nobody waits for it.
+     Only when the next round is the other team's: its earlier clues cannot change during this round. */
+  var nx=cur+1, En=encoder(nx);
+  if(!st.over && En!==encoder(cur) && robotOn(En) && robotGives(nx,En) && !(turns[nx] && turns[nx].clues)) aiClues(En,nx,turns);
   st.turns=turns; st.cur=cur; return st;
 }
 
