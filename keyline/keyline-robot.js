@@ -101,7 +101,17 @@ function saveProfile(p, replace) {
 function list(a) { return a.length ? a.join(', ') : '(none yet)'; }
 
 /* the message for one turn: which team the robot plays for, its job, what it may know */
+/* a game in Hungarian: Hungarian words, Hungarian clues */
+const HU = 'LANGUAGE: This game is played in HUNGARIAN by Hungarian speakers. The secret words are Hungarian. ' +
+  'Every clue you give must be ONE Hungarian word (wherever the rules say English, read Hungarian; use everyday Hungarian words). ' +
+  'Read all clues as Hungarian words, with Hungarian phrases, compound words, songs, films and culture. ' +
+  'Write every explanation ("why") in short, simple Hungarian.\n\n';
 function build(b) {
+  const j = buildJob(b);
+  if (j && b.lang === 'hu') { j.prompt = HU + j.prompt + '\n(Remember: Hungarian words only.)'; if (j.sim) j.sim.lang = 'hu'; }
+  return j;
+}
+function buildJob(b) {
   const lv = LEVEL[b.level] || LEVEL[1];
   /* tips the player gave about the robot's clues; they matter most when giving clues */
   const tips = Array.isArray(b.tips) ? b.tips.filter(function (x) { return typeof x === 'string'; }).slice(-6).map(function (x) { return x.replace(/[\r\n]+/g, ' ').slice(0, 120); }) : [];
@@ -222,7 +232,7 @@ function askClaude(claude, prompt, model) {
 
 /* play the rivals for real: give them the new clues and every clue they have seen, and count how many digits they get */
 async function rivalCheck(claude, sim, clues) {
-  const j = build({ task: 'rival', team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
+  const j = build({ task: 'rival', lang: sim.lang, team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
   if (!j) return null;
   /* the same model the real rivals use on this difficulty */
   const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet'));
@@ -232,7 +242,7 @@ async function rivalCheck(claude, sim, clues) {
 }
 /* and play the teammate: would someone who knows the words read all three right? */
 async function mateCheck(claude, sim, clues) {
-  const j = build({ task: 'decode', team: sim.team, words: sim.words, history: sim.history, clues: clues, me: sim.me, tech: sim.tech, level: sim.level, smart: 0 });
+  const j = build({ task: 'decode', lang: sim.lang, team: sim.team, words: sim.words, history: sim.history, clues: clues, me: sim.me, tech: sim.tech, level: sim.level, smart: 0 });
   if (!j) return null;
   const r = parse('code', await askClaude(claude, j.prompt, 'opus'));
   if (!r) return null;
