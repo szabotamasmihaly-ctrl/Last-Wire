@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Keyline</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&family=Big+Shoulders+Stencil:wght@800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500;600;700;800&family=Big+Shoulders+Display:wght@800;900&display=swap">
 <style>
 :root{
   --bg:#F4F6F8; --card:#FFFFFF; --edge:#D5DBE1; --ink:#17202A; --ink-2:#6B7682;
@@ -14,7 +14,7 @@
   --them:var(--B); --them-soft:var(--B-soft);
   --ok:#22B573; --ok-deep:#15895A; --bad:#FF4B55; --gold:#FFC83D;
   --font:"Albert Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  --display:"Big Shoulders Stencil",Impact,"Arial Narrow Bold",sans-serif;
+  --display:"Big Shoulders Display",Impact,"Arial Narrow Bold",sans-serif;
   color-scheme:light;
 }
 body.tB{--me:var(--B);--me-deep:var(--B-deep);--me-soft:var(--B-soft);--them:var(--A);--them-soft:var(--A-soft)}
@@ -196,6 +196,19 @@ body.quake main{animation:shake .45s}
 .mode:active{transform:translateY(3px);border-bottom-width:3px}
 .mode .ic{display:flex;gap:4px;align-items:center;flex:none;width:92px;justify-content:center}
 .mode .ic svg{width:28px;height:28px}
+.modes .mode{flex-direction:column;align-items:stretch;gap:10px}
+.art{display:flex;align-items:center;justify-content:center;gap:10px}
+.side{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 10px 6px;border-radius:14px;border:2px solid var(--edge);background:var(--bg)}
+.side.A{border-color:var(--A);background:var(--A-soft)}
+.side.B{border-color:var(--B);background:var(--B-soft)}
+.mbs{display:flex;gap:8px}
+.mb{display:flex;flex-direction:column;align-items:center;gap:1px;color:var(--ink)}
+.side.A .mb{color:var(--A-deep)}
+.side.C .mb{color:var(--ink-2)}
+.mb svg{width:28px;height:28px}
+.mb small{font-family:var(--font);text-transform:none;letter-spacing:0;font-size:11px;font-weight:800}
+.ph{display:flex;gap:2px;color:var(--ink-2)}
+.ph svg{width:14px;height:14px}
 .mode .vs{font-family:var(--display);font-size:14px;color:var(--ink-2)}
 .pchip{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;background:var(--ink);color:#fff;font-family:var(--display);font-size:18px}
 .side .robot{width:22px;height:22px;color:var(--ink)}
@@ -217,8 +230,8 @@ body.quake main{animation:shake .45s}
 (function(){
 'use strict';
 var T = {
-  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',level:'Level',crack:"Crack {x}'s code!",sharebots:'Your opponent types this code',players:'Players',robo:'Me + robot',d_robo:'You and a robot take turns giving clues, and the computer tries to crack your code.',d_solo:'Share one phone: one of you gives clues, the other guesses, and the computer tries to crack the code.',d_duo:'The same on two phones: your teammate sees your clues as you type them.',d_bots:'You and a robot against your friend and a robot, each on your own phone.',d_vs3:'Two of you share a phone, and the third player gets a robot teammate.',d_vs4:"Two teams of two, one phone per team: crack the other team's code.",pick:'Pick your team',two:'2 of us',mebot:'Me + robot',alone:'Alone on this phone? Pick Me + robot.',giveh:'Give a clue for each number',guessh:'Guess the code',robgave:'Your robot gave clues. Guess the code',robdec:'Your robot is guessing your code',wwrite:'Waiting for {x} to write clues',wguess:'Waiting for {x} to guess',tA:'Blue team',tC:'the computer',tB:'Orange team',pl:'Player {n}',yourturn:'Your turn',errEmpty:'Write a clue in every box',errSecret:"Don't use your secret words",pass:'Pass the phone',pass2:'Clue giver, look away',sendcl:'Send clues',checkc:'Check code',nextr:'Next round',startg:'Start a new game',joinh:'Or type the code your friend got',wjoin:'Waiting for {x} to join. They type this code:',yourmate:'your teammate',otherteam:'the other team',youropp:'your opponent',robthink:'Your robot is thinking of clues',sign:'Sign in',signed:'Signed in as {n}. Your notebook and unfinished games are saved online and load on any phone.',signout:'Sign out',sname:'Name',spw:'Password',signin:'Sign in',signhint:'Any name and any password. Use the same ones on another phone to get everything back.',snameneed:'Type a name.',signback:'Welcome back! Everything is loaded.',signnew:'Signed in. Everything is saved from now on.',signoff:'Signed in, but no internet now. It will save later.',lvlh:'Robot strength:',lvlx1:'Plain, easy clues. Fast.',lvlx2:'It tests its clues once against the rivals. About 30 s.',lvlx3:'It tests its clues hard against the rivals. About 1 min.',lvlx4:'Hardest to crack: the rivals may place no clue. Up to 2 min.',techsv:'Ways of linking your robot learned from you:',quizask3:'Give 3 different one-word clues for {w}',quizres:'Your robot read your clues for {w}:',quizpick:'Tap another word to give clues for that one instead.',quizdiff:'Use 3 different clues.',quizstop:'Stop for now',tipoff:'Tip removed',twomissc:'Two misreads!',twomiss:'(two misreads)',wgme:'Bonus: guess their four secret words. The clues they gave are under each number.',wgthem:'They cracked your code. Now they try to guess your words.',wgbot:'The robots cracked your code. Now they guess your words…',wgbot2:'The robots guessed your words:',wgres:'Their words were:',wgscore:'{n} of 4 words guessed',diffh:'How hard are the robots?',diff1:'Easy',diff2:'Normal',diff3:'Hard',quizb:'Teach your robot',quizs:'10 words, 3 clues each, so it learns how you think',quizask:'Give a one-word clue for {w}',quizthink:'Your robot is guessing which word you mean',quizok:'Right! It picked {w}',quizno:'Wrong, it picked {w}',quizyes:'Yes, that is my link',quiznot:'Not quite',quizfail:'Your robot did not answer. Is the robot window open on your PC? If it is, close it and start it again so it updates.',nextq:'Next question',quizend:'Finish',quizdone:'Your robot knows you better',quizdone2:'It will use what you taught it in every game.',ok:'OK',whybot:'Your robot got these wrong. Tell it your link:',whybotq:'{c} → {w}. What was your link?',whyme:'You got these wrong. Say what you thought:',whymeq:'{c}: why did you pick {g}? (It was {w}.)',whysave:'Save and continue',whysend:'Teach my robot',cont:'Continue a game',room:'Room',rnd:'round {n}',ago_m:'{n} min ago',ago_h:'{n} h ago',ago_d:'{n} days ago',colcode:'Code',colus:'Your team',colthem:'Rivals',wlnote:'Your computer did not answer, so the robot used the simple word list this round. Is the robot window open on your PC?',tiph:'Tell your robot',tip1:'Too obvious',tip2:'Too hard',tip3:'Fits two words',tip4:'Great clues',tip1x:'Your clues were too obvious. Make them a bit less direct.',tip2x:'Your clues were too hard. Make them clearer and more direct.',tip3x:'A clue fitted two of the words. Pick clues that point to only one word.',tip4x:'Your clues were great. Keep the same style.',tipown:'Or write your own tip',tipok:'Sent! Your robot will remember this',tipsv:'Your tips:',tipclr:'Clear tips',botsmart:'Smart (about 7 s)',botfast:'Fast (about 5 s)',dgroomok:'Room connected',dgroomwait:'Connecting to the room…',dgroomno:'No connection to the room. Check the internet.',dgbotok:'Robot: Claude',dgbotno:'Robot: word list',rvr:'Me + robot vs robots',d_rvr:'You and a robot against a team of two robots. Crack their code before they crack yours.',bot:'Claude robot',botcon:'Connect',botok:'Connected: the robot thinks with Claude',botno:'Not connected. Start the robot on your computer and type its code here.',botoff:'Disconnect',botwait:'Connecting…',p1:'You are Player 1',p2:'You are Player 2'},
-  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',level:'Szint',crack:'Törd fel a {x} csapat kódját!',sharebots:'Az ellenfeled ezt a kódot írja be',players:'Játékosok',robo:'Én + robot',d_robo:'Te és egy robot felváltva adtok jeleket, a gép pedig próbálja feltörni a kódotokat.',d_solo:'Egy telefonon: egyikőtök jeleket ad, a másik tippel, a gép pedig próbálja feltörni a kódot.',d_duo:'Ugyanez két telefonon: a társad gépelés közben látja a jeleidet.',d_bots:'Te és egy robot a barátod és egy robot ellen, mindenki a saját telefonján.',d_vs3:'Ketten egy telefont használtok, a harmadik játékos robot csapattársat kap.',d_vs4:'Két kétfős csapat, csapatonként egy telefon: törjétek fel a másik csapat kódját.',pick:'Válassz csapatot',two:'Ketten vagyunk',mebot:'Én + robot',alone:'Egyedül vagy ezen a telefonon? Válaszd: Én + robot.',giveh:'Adj egy jelet minden számhoz',guessh:'Találd ki a kódot',robgave:'A robotod jeleket adott. Találd ki a kódot',robdec:'A robotod tippeli a kódodat',wwrite:'Várjuk, hogy {x} megírja a jeleket',wguess:'Várjuk, hogy {x} tippeljen',tA:'a Kék csapat',tC:'a gép',tB:'a Narancs csapat',pl:'a {n}. játékos',yourturn:'Te jössz',errEmpty:'Írj jelet minden mezőbe',errSecret:'Ne használd a titkos szavakat',pass:'Add át a telefont',pass2:'Jeladó, ne nézz oda',sendcl:'Jelek küldése',checkc:'Kód ellenőrzése',nextr:'Következő kör',startg:'Új játék indítása',joinh:'Vagy írd be a kódot, amit a barátod kapott',wjoin:'Várjuk, hogy {x} belépjen. Ezt a kódot írja be:',yourmate:'a csapattársad',otherteam:'a másik csapat',youropp:'az ellenfeled',robthink:'A robotod jeleken gondolkodik',sign:'Belépés',signed:'Belépve: {n}. A jegyzeteid és a befejezetlen játékaid online mentődnek, és bármelyik telefonon betöltődnek.',signout:'Kilépés',sname:'Név',spw:'Jelszó',signin:'Belépés',signhint:'Bármilyen név és jelszó jó. Másik telefonon ugyanezekkel mindent visszakapsz.',snameneed:'Írj be egy nevet.',signback:'Üdv újra! Minden betöltve.',signnew:'Belépve. Mostantól minden mentődik.',signoff:'Belépve, de most nincs internet. Később ment.',lvlh:'Robot ereje:',lvlx1:'Egyszerű, könnyű jelek. Gyors.',lvlx2:'Egyszer kipróbálja a jeleit az ellenfélen. Kb. 30 mp.',lvlx3:'Alaposan kipróbálja a jeleit az ellenfélen. Kb. 1 perc.',lvlx4:'A legnehezebb feltörni: az ellenfél egy jelet se tudjon elhelyezni. Akár 2 perc.',techsv:'Kapcsolási módok, amiket a robotod tőled tanult:',quizask3:'Adj 3 különböző egyszavas jelet erre: {w}',quizres:'Így értette a robotod a jeleidet ({w}):',quizpick:'Koppints egy másik szóra, ha inkább arra adnál jeleket.',quizdiff:'3 különböző jelet adj.',quizstop:'Most elég',tipoff:'Tipp törölve',twomissc:'Két félreértés!',twomiss:'(két félreértés)',wgme:'Bónusz: találd ki a négy titkos szavukat. A számok alatt látod a jeleiket.',wgthem:'Feltörték a kódotokat. Most kitalálják a szavaitokat.',wgbot:'A robotok feltörték a kódotokat. Most kitalálják a szavaitokat…',wgbot2:'A robotok tippjei a szavaitokra:',wgres:'A szavaik ezek voltak:',wgscore:'{n} szót találtatok el a 4-ből',diffh:'Milyen nehezek a robotok?',diff1:'Könnyű',diff2:'Közepes',diff3:'Nehéz',quizb:'Tanítsd a robotod',quizs:'10 szó, mindegyikre 3 jel, hogy megtanulja, hogyan gondolkodsz',quizask:'Adj egyszavas jelet erre: {w}',quizthink:'A robotod kitalálja, melyik szóra gondolsz',quizok:'Talált! Ezt választotta: {w}',quizno:'Nem talált, ezt választotta: {w}',quizyes:'Igen, erre gondoltam',quiznot:'Nem egészen',quizfail:'A robotod nem válaszolt. Nyitva van a robot ablaka a gépeden? Ha igen, zárd be és indítsd újra, hogy frissüljön.',nextq:'Következő kérdés',quizend:'Kész',quizdone:'A robotod jobban ismer',quizdone2:'Minden játékban használja, amit tanítottál neki.',ok:'OK',whybot:'A robotod ezeket eltévesztette. Mondd el, mire gondoltál:',whybotq:'{c} → {w}. Mi volt a kapcsolat?',whyme:'Ezeket eltévesztetted. Írd le, mire gondoltál:',whymeq:'{c}: miért a(z) {g}-t választottad? ({w} volt.)',whysave:'Mentés és tovább',whysend:'Tanítom a robotot',cont:'Játék folytatása',room:'Szoba',rnd:'{n}. kör',ago_m:'{n} perce',ago_h:'{n} órája',ago_d:'{n} napja',colcode:'Kód',colus:'Csapatod',colthem:'Ellenfél',wlnote:'A géped nem válaszolt, ezért a robot most az egyszerű szólistát használta. Nyitva van a robot ablaka a gépeden?',tiph:'Szólj a robotodnak',tip1:'Túl egyszerű',tip2:'Túl nehéz',tip3:'Két szóra is illett',tip4:'Remek jelek',tip1x:'Your clues were too obvious. Make them a bit less direct.',tip2x:'Your clues were too hard. Make them clearer and more direct.',tip3x:'A clue fitted two of the words. Pick clues that point to only one word.',tip4x:'Your clues were great. Keep the same style.',tipown:'Vagy írj saját tippet',tipok:'Elküldve! A robotod megjegyzi',tipsv:'A tippjeid:',tipclr:'Tippek törlése',botsmart:'Okos (kb. 7 mp)',botfast:'Gyors (kb. 5 mp)',dgroomok:'Szoba csatlakozva',dgroomwait:'Csatlakozás a szobához…',dgroomno:'Nincs kapcsolat a szobával. Nézd meg az internetet.',dgbotok:'Robot: Claude',dgbotno:'Robot: szólista',rvr:'Én + robot a robotok ellen',d_rvr:'Te és egy robot két robot ellen. Törd fel a kódjukat, mielőtt ők a tiéteket.',bot:'Claude robot',botcon:'Csatlakozás',botok:'Csatlakozva: a robot Claude-dal gondolkodik',botno:'Nincs kapcsolat. Indítsd el a robotot a gépeden, és írd be ide a kódját.',botoff:'Leválasztás',botwait:'Csatlakozás…',p1:'Te vagy az 1. játékos',p2:'Te vagy a 2. játékos'}
+  en:{newg:'New game',join:'Join',code:'Code',A:'Blue',B:'Orange',send:'Send',ready:'Ready',check:'Check',next:'Next',win:'You win!',lose:'They win!',cpu:'Computer wins!',cracked:'Cracked!',best:'Best',newbest:'New best!',draw:'Draw',again:'Play again',home:'Home',copied:'Code copied',shareduo:'Your teammate types this code',sharevs:'The other players type this code',joined:'Connected',got:'Got a code?',solo:'One phone',writing:'{x} is writing clues',guessing:'{x} is guessing',player:'Player {n}',duo:'Two phones',vs:'Team vs team',bots:'Robot teams',level:'Level',crack:"Crack {x}'s code!",sharebots:'Your opponent types this code',players:'Players',robo:'Me + robot',d_robo:'You and a robot take turns giving clues, and the computer tries to crack your code.',d_solo:'Share one phone: one of you gives clues, the other guesses, and the computer tries to crack the code.',d_duo:'The same on two phones: your teammate sees your clues as you type them.',d_bots:'You and a robot against your friend and a robot, each on your own phone.',d_vs3:'Two of you share a phone, and the third player gets a robot teammate.',d_vs4:"Two teams of two, one phone per team: crack the other team's code.",pick:'Pick your team',two:'2 of us',mebot:'Me + robot',alone:'Alone on this phone? Pick Me + robot.',giveh:'Give a clue for each number',guessh:'Guess the code',robgave:'Your robot gave clues. Guess the code',robdec:'Your robot is guessing your code',wwrite:'Waiting for {x} to write clues',wguess:'Waiting for {x} to guess',tA:'Blue team',tC:'the computer',tB:'Orange team',pl:'Player {n}',yourturn:'Your turn',errEmpty:'Write a clue in every box',errSecret:"Don't use your secret words",pass:'Pass the phone',pass2:'Clue giver, look away',sendcl:'Send clues',checkc:'Check code',nextr:'Next round',startg:'Start a new game',joinh:'Or type the code your friend got',wjoin:'Waiting for {x} to join. They type this code:',yourmate:'your teammate',otherteam:'the other team',youropp:'your opponent',robthink:'Your robot is thinking of clues',w_me:'You',w_mate:'Teammate',w_fr:'Friend',w_fr2:'Friend',w_rob:'Robot',w_cpu:'Computer',sign:'Sign in',signed:'Signed in as {n}. Your notebook and unfinished games are saved online and load on any phone.',signout:'Sign out',sname:'Name',spw:'Password',signin:'Sign in',signhint:'Any name and any password. Use the same ones on another phone to get everything back.',snameneed:'Type a name.',signback:'Welcome back! Everything is loaded.',signnew:'Signed in. Everything is saved from now on.',signoff:'Signed in, but no internet now. It will save later.',lvlh:'Robot strength:',lvlx1:'Plain, easy clues. Fast.',lvlx2:'It tests its clues once against the rivals. About 30 s.',lvlx3:'It tests its clues hard against the rivals. About 1 min.',lvlx4:'Hardest to crack: the rivals may place no clue. Up to 2 min.',techsv:'Ways of linking your robot learned from you:',quizask3:'Give 3 different one-word clues for {w}',quizres:'Your robot read your clues for {w}:',quizpick:'Tap another word to give clues for that one instead.',quizdiff:'Use 3 different clues.',quizstop:'Stop for now',tipoff:'Tip removed',twomissc:'Two misreads!',twomiss:'(two misreads)',wgme:'Bonus: guess their four secret words. The clues they gave are under each number.',wgthem:'They cracked your code. Now they try to guess your words.',wgbot:'The robots cracked your code. Now they guess your words…',wgbot2:'The robots guessed your words:',wgres:'Their words were:',wgscore:'{n} of 4 words guessed',diffh:'How hard are the robots?',diff1:'Easy',diff2:'Normal',diff3:'Hard',quizb:'Teach your robot',quizs:'10 words, 3 clues each, so it learns how you think',quizask:'Give a one-word clue for {w}',quizthink:'Your robot is guessing which word you mean',quizok:'Right! It picked {w}',quizno:'Wrong, it picked {w}',quizyes:'Yes, that is my link',quiznot:'Not quite',quizfail:'Your robot did not answer. Is the robot window open on your PC? If it is, close it and start it again so it updates.',nextq:'Next question',quizend:'Finish',quizdone:'Your robot knows you better',quizdone2:'It will use what you taught it in every game.',ok:'OK',whybot:'Your robot got these wrong. Tell it your link:',whybotq:'{c} → {w}. What was your link?',whyme:'You got these wrong. Say what you thought:',whymeq:'{c}: why did you pick {g}? (It was {w}.)',whysave:'Save and continue',whysend:'Teach my robot',cont:'Continue a game',room:'Room',rnd:'round {n}',ago_m:'{n} min ago',ago_h:'{n} h ago',ago_d:'{n} days ago',colcode:'Code',colus:'Your team',colthem:'Rivals',wlnote:'Your computer did not answer, so the robot used the simple word list this round. Is the robot window open on your PC?',tiph:'Tell your robot',tip1:'Too obvious',tip2:'Too hard',tip3:'Fits two words',tip4:'Great clues',tip1x:'Your clues were too obvious. Make them a bit less direct.',tip2x:'Your clues were too hard. Make them clearer and more direct.',tip3x:'A clue fitted two of the words. Pick clues that point to only one word.',tip4x:'Your clues were great. Keep the same style.',tipown:'Or write your own tip',tipok:'Sent! Your robot will remember this',tipsv:'Your tips:',tipclr:'Clear tips',botsmart:'Smart (about 7 s)',botfast:'Fast (about 5 s)',dgroomok:'Room connected',dgroomwait:'Connecting to the room…',dgroomno:'No connection to the room. Check the internet.',dgbotok:'Robot: Claude',dgbotno:'Robot: word list',rvr:'Me + robot vs robots',d_rvr:'You and a robot against a team of two robots. Crack their code before they crack yours.',bot:'Claude robot',botcon:'Connect',botok:'Connected: the robot thinks with Claude',botno:'Not connected. Start the robot on your computer and type its code here.',botoff:'Disconnect',botwait:'Connecting…',p1:'You are Player 1',p2:'You are Player 2'},
+  hu:{newg:'Új játék',join:'Belépés',code:'Kód',A:'Kék',B:'Narancs',send:'Küldés',ready:'Kész',check:'Ellenőrzés',next:'Tovább',win:'Nyertetek!',lose:'Ők nyertek!',cpu:'A gép nyert!',cracked:'Feltörve!',best:'Rekord',newbest:'Új rekord!',draw:'Döntetlen',again:'Új játék',home:'Főoldal',copied:'Kód másolva',shareduo:'A csapattársad ezt a kódot írja be',sharevs:'A többiek ezt a kódot írják be',joined:'Csatlakozott',got:'Van kódod?',solo:'Egy telefon',writing:'{x} írja a jeleket',guessing:'{x} tippel',player:'{n}. játékos',duo:'Két telefon',vs:'Csapat vs csapat',bots:'Robotos csapatok',level:'Szint',crack:'Törd fel a {x} csapat kódját!',sharebots:'Az ellenfeled ezt a kódot írja be',players:'Játékosok',robo:'Én + robot',d_robo:'Te és egy robot felváltva adtok jeleket, a gép pedig próbálja feltörni a kódotokat.',d_solo:'Egy telefonon: egyikőtök jeleket ad, a másik tippel, a gép pedig próbálja feltörni a kódot.',d_duo:'Ugyanez két telefonon: a társad gépelés közben látja a jeleidet.',d_bots:'Te és egy robot a barátod és egy robot ellen, mindenki a saját telefonján.',d_vs3:'Ketten egy telefont használtok, a harmadik játékos robot csapattársat kap.',d_vs4:'Két kétfős csapat, csapatonként egy telefon: törjétek fel a másik csapat kódját.',pick:'Válassz csapatot',two:'Ketten vagyunk',mebot:'Én + robot',alone:'Egyedül vagy ezen a telefonon? Válaszd: Én + robot.',giveh:'Adj egy jelet minden számhoz',guessh:'Találd ki a kódot',robgave:'A robotod jeleket adott. Találd ki a kódot',robdec:'A robotod tippeli a kódodat',wwrite:'Várjuk, hogy {x} megírja a jeleket',wguess:'Várjuk, hogy {x} tippeljen',tA:'a Kék csapat',tC:'a gép',tB:'a Narancs csapat',pl:'a {n}. játékos',yourturn:'Te jössz',errEmpty:'Írj jelet minden mezőbe',errSecret:'Ne használd a titkos szavakat',pass:'Add át a telefont',pass2:'Jeladó, ne nézz oda',sendcl:'Jelek küldése',checkc:'Kód ellenőrzése',nextr:'Következő kör',startg:'Új játék indítása',joinh:'Vagy írd be a kódot, amit a barátod kapott',wjoin:'Várjuk, hogy {x} belépjen. Ezt a kódot írja be:',yourmate:'a csapattársad',otherteam:'a másik csapat',youropp:'az ellenfeled',robthink:'A robotod jeleken gondolkodik',w_me:'Te',w_mate:'Társad',w_fr:'Barát',w_fr2:'Barát',w_rob:'Robot',w_cpu:'Gép',sign:'Belépés',signed:'Belépve: {n}. A jegyzeteid és a befejezetlen játékaid online mentődnek, és bármelyik telefonon betöltődnek.',signout:'Kilépés',sname:'Név',spw:'Jelszó',signin:'Belépés',signhint:'Bármilyen név és jelszó jó. Másik telefonon ugyanezekkel mindent visszakapsz.',snameneed:'Írj be egy nevet.',signback:'Üdv újra! Minden betöltve.',signnew:'Belépve. Mostantól minden mentődik.',signoff:'Belépve, de most nincs internet. Később ment.',lvlh:'Robot ereje:',lvlx1:'Egyszerű, könnyű jelek. Gyors.',lvlx2:'Egyszer kipróbálja a jeleit az ellenfélen. Kb. 30 mp.',lvlx3:'Alaposan kipróbálja a jeleit az ellenfélen. Kb. 1 perc.',lvlx4:'A legnehezebb feltörni: az ellenfél egy jelet se tudjon elhelyezni. Akár 2 perc.',techsv:'Kapcsolási módok, amiket a robotod tőled tanult:',quizask3:'Adj 3 különböző egyszavas jelet erre: {w}',quizres:'Így értette a robotod a jeleidet ({w}):',quizpick:'Koppints egy másik szóra, ha inkább arra adnál jeleket.',quizdiff:'3 különböző jelet adj.',quizstop:'Most elég',tipoff:'Tipp törölve',twomissc:'Két félreértés!',twomiss:'(két félreértés)',wgme:'Bónusz: találd ki a négy titkos szavukat. A számok alatt látod a jeleiket.',wgthem:'Feltörték a kódotokat. Most kitalálják a szavaitokat.',wgbot:'A robotok feltörték a kódotokat. Most kitalálják a szavaitokat…',wgbot2:'A robotok tippjei a szavaitokra:',wgres:'A szavaik ezek voltak:',wgscore:'{n} szót találtatok el a 4-ből',diffh:'Milyen nehezek a robotok?',diff1:'Könnyű',diff2:'Közepes',diff3:'Nehéz',quizb:'Tanítsd a robotod',quizs:'10 szó, mindegyikre 3 jel, hogy megtanulja, hogyan gondolkodsz',quizask:'Adj egyszavas jelet erre: {w}',quizthink:'A robotod kitalálja, melyik szóra gondolsz',quizok:'Talált! Ezt választotta: {w}',quizno:'Nem talált, ezt választotta: {w}',quizyes:'Igen, erre gondoltam',quiznot:'Nem egészen',quizfail:'A robotod nem válaszolt. Nyitva van a robot ablaka a gépeden? Ha igen, zárd be és indítsd újra, hogy frissüljön.',nextq:'Következő kérdés',quizend:'Kész',quizdone:'A robotod jobban ismer',quizdone2:'Minden játékban használja, amit tanítottál neki.',ok:'OK',whybot:'A robotod ezeket eltévesztette. Mondd el, mire gondoltál:',whybotq:'{c} → {w}. Mi volt a kapcsolat?',whyme:'Ezeket eltévesztetted. Írd le, mire gondoltál:',whymeq:'{c}: miért a(z) {g}-t választottad? ({w} volt.)',whysave:'Mentés és tovább',whysend:'Tanítom a robotot',cont:'Játék folytatása',room:'Szoba',rnd:'{n}. kör',ago_m:'{n} perce',ago_h:'{n} órája',ago_d:'{n} napja',colcode:'Kód',colus:'Csapatod',colthem:'Ellenfél',wlnote:'A géped nem válaszolt, ezért a robot most az egyszerű szólistát használta. Nyitva van a robot ablaka a gépeden?',tiph:'Szólj a robotodnak',tip1:'Túl egyszerű',tip2:'Túl nehéz',tip3:'Két szóra is illett',tip4:'Remek jelek',tip1x:'Your clues were too obvious. Make them a bit less direct.',tip2x:'Your clues were too hard. Make them clearer and more direct.',tip3x:'A clue fitted two of the words. Pick clues that point to only one word.',tip4x:'Your clues were great. Keep the same style.',tipown:'Vagy írj saját tippet',tipok:'Elküldve! A robotod megjegyzi',tipsv:'A tippjeid:',tipclr:'Tippek törlése',botsmart:'Okos (kb. 7 mp)',botfast:'Gyors (kb. 5 mp)',dgroomok:'Szoba csatlakozva',dgroomwait:'Csatlakozás a szobához…',dgroomno:'Nincs kapcsolat a szobával. Nézd meg az internetet.',dgbotok:'Robot: Claude',dgbotno:'Robot: szólista',rvr:'Én + robot a robotok ellen',d_rvr:'Te és egy robot két robot ellen. Törd fel a kódjukat, mielőtt ők a tiéteket.',bot:'Claude robot',botcon:'Csatlakozás',botok:'Csatlakozva: a robot Claude-dal gondolkodik',botno:'Nincs kapcsolat. Indítsd el a robotot a gépeden, és írd be ide a kódját.',botoff:'Leválasztás',botwait:'Csatlakozás…',p1:'Te vagy az 1. játékos',p2:'Te vagy a 2. játékos'}
 };
 /* everyday English words that are easy to link to other words */
 var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar lemon banana potato honey '+
@@ -236,6 +249,200 @@ var WORDS = ('apple bread cheese egg milk pizza soup cake coffee chocolate sugar
 var WORDS2='anchor compass desert volcano pyramid harbor lighthouse tunnel jungle canyon glacier cave helmet ladder hammer magnet balloon parachute rocket telescope microscope battery engine diamond crown sword shield arrow treasure pirate wizard vampire mummy knight soldier detective prisoner museum library theater stadium airport laboratory carnival wedding funeral election passport suitcase umbrella costume'.split(' ');
 var WORDS3='freedom memory justice silence luck future history energy shadow balance danger secret dream fear hope pride truth power peace war chaos gravity echo mystery nature habit honor envy patience courage wisdom illusion rhythm fortune revenge trust victory comfort network deadline'.split(' ');
 var LEVELS=[WORDS,WORDS2,WORDS3];
+/* Hungarian secret words with what they make people think of; level 1 everyday things, 2 harder things and places, 3 ideas */
+var HU_SRC=[
+'alma:piros gyümölcs fa körte pite zöld kukac almalé Newton|'+
+'kenyér:pék vaj szelet reggeli liszt pirítós zsemle kovász|'+
+'sajt:egér trappista sárga lyukas pizza tej reszelt|'+
+'tojás:tyúk húsvét reggeli rántotta sárgája héj fészek omlett|'+
+'tej:tehén fehér kakaó reggeli müzli bögre tejföl|'+
+'pizza:olasz sajt szelet paradicsom szalámi futár sütő|'+
+'leves:tányér kanál meleg húsleves gulyás ebéd fazék vasárnap|'+
+'torta:szülinap gyertya szelet krém cukrász ünnep édes|'+
+'kávé:reggel csésze fekete eszpresszó koffein bögre|'+
+'csoki:édes barna kakaó tábla mogyoró desszert|'+
+'citrom:sárga savanyú tea limonádé vitamin citrus|'+
+'banán:sárga majom héj gyümölcs turmix trópusi pálma|'+
+'krumpli:sült hasáb chips burgonya püré föld paprikás|'+
+'méz:méh édes sárga tea medve kaptár mézeskalács|'+
+'kutya:ugat csont póráz kölyök hűséges farok vau|'+
+'macska:nyávog egér dorombol cica bajusz karom|'+
+'ló:nyereg patkó lovas vágta istálló paci sörény|'+
+'tehén:tej mező bika farm legel borjú pöttyös|'+
+'bárány:gyapjú juh nyáj pásztor bégetés göndör|'+
+'csirke:tyúk tojás kakas farm csibe szárny rántott|'+
+'hal:víz úszik tó horgász pikkely halászlé akvárium|'+
+'madár:repül toll fészek csőr szárny ének kalitka|'+
+'nyúl:répa fül húsvét ugrál tapsi bunda bűvész|'+
+'oroszlán:király sörény Afrika szavanna üvölt ragadozó|'+
+'tigris:csíkos dzsungel India macska ragadozó|'+
+'medve:méz erdő barlang mackó jegesmedve brumm|'+
+'majom:banán fa dzsungel csimpánz gorilla mászik|'+
+'kígyó:mérges sziszeg hosszú kobra csúszik|'+
+'béka:brekeg zöld tó ugrik királyfi ebihal|'+
+'pók:háló nyolc rovar Pókember sarok|'+
+'bálna:óceán hatalmas kék tenger emlős|'+
+'cápa:fog tenger veszélyes uszony óceán|'+
+'bagoly:éjjel huhog bölcs erdő Harry|'+
+'ház:otthon tető ajtó ablak szoba család fal|'+
+'ajtó:kilincs kulcs zár csengő bejárat kopog|'+
+'ablak:üveg függöny kilátás párkány fény|'+
+'konyha:főz sütő hűtő szakács edény mosogató|'+
+'kert:virág fű locsol ásó kerítés zöldség|'+
+'ágy:alszik párna takaró paplan matrac álom|'+
+'szék:ül asztal támla iroda fotel|'+
+'asztal:szék lap vacsora íróasztal terítő|'+
+'tükör:arc kép fürdőszoba hiú üveg|'+
+'óra:idő perc mutató ébresztő ketyeg|'+
+'kulcs:zár ajtó kulcscsomó nyit lyuk|'+
+'doboz:karton csomag láda fedő költözés|'+
+'táska:váll iskolatáska bőrönd kézitáska zseb|'+
+'kés:éles vág villa penge konyha|'+
+'autó:kerék sofőr benzin parkol garázs dudál|'+
+'busz:megálló jegy sofőr utas menetrend|'+
+'vonat:sín állomás kalauz mozdony vagon gőz|'+
+'repülő:pilóta szárny reptér felszáll ég utazás|'+
+'hajó:tenger kapitány vitorla kikötő horgony matróz|'+
+'bicikli:pedál kerék tekerés sisak lánc kormány|'+
+'híd:folyó Duna lánchíd átkel pillér Budapest|'+
+'iskola:tanár diák osztály tanul szünet|'+
+'tanár:iskola tábla diák jegy kréta|'+
+'könyv:olvas lap író könyvtár regény mese|'+
+'toll:ír tinta papír golyóstoll aláír|'+
+'nap:sárga meleg nyár fény reggel strand napszemüveg|'+
+'hold:éjjel telihold csillag űrhajós farkas kráter|'+
+'csillag:ég éjszaka fényes hullócsillag sztár|'+
+'eső:esernyő felhő vizes csepp zivatar pocsolya|'+
+'hó:fehér tél hóember szánkó pehely hideg|'+
+'szél:fúj vihar sárkány szélmalom vitorla|'+
+'felhő:ég fehér eső szürke bárányfelhő|'+
+'tenger:hullám sós víz strand hajó kék|'+
+'folyó:Duna víz híd part csónak|'+
+'sziget:tenger pálma kincs hajótörött Robinson|'+
+'hegy:csúcs magas mászik Mátra túra|'+
+'erdő:fa vadász őz gomba ösvény avar|'+
+'virág:rózsa szirom csokor illat méh|'+
+'tűz:láng meleg füst gyufa tábortűz tűzoltó|'+
+'jég:hideg fagyott korcsolya kocka jégkrém|'+
+'telefon:hív üzenet mobil képernyő töltő|'+
+'zene:dal hang koncert ritmus fülhallgató táncol|'+
+'zongora:billentyű fekete fehér zenész kotta|'+
+'gitár:húr rock pengető akkord zenekar|'+
+'film:mozi színész popcorn rendező|'+
+'labda:foci kerek rúg dob gól|'+
+'buli:zene tánc barátok szülinap este|'+
+'ajándék:szülinap karácsony csomag meglepetés masni|'+
+'levél:posta boríték bélyeg ír postás|'+
+'pénz:forint bank fizet érme bankjegy drága|'+
+'bolt:vásárol pénztár kosár eladó nyitva|'+
+'kalap:fej bűvész cowboy napsütés|'+
+'cipő:láb fűző sportcipő pár sarok|'+
+'kabát:tél meleg zseb cipzár fogas|'+
+'gyűrű:ujj arany eljegyzés esküvő gyémánt|'+
+'kesztyű:kéz tél ujj meleg box|'+
+'orvos:kórház beteg gyógyszer recept rendelő|'+
+'király:korona trón vár királynő ország|'+
+'rendőr:bűnöző sziréna jelvény bilincs|'+
+'pilóta:repülő pilótafülke kapitány felhő|'+
+'kéz:ujj tenyér kesztyű integet|'+
+'láb:cipő zokni lép térd fut|'+
+'szív:szerelem piros dobog Valentin vér|'+
+'haj:fodrász fésű szőke barna copf|'+
+'fog:fogkefe fogorvos mosoly fehér harap|'+
+'arany:sárga kincs érme gyűrű olimpia|'+
+'nyár:meleg strand szünet fagyi Balaton|'+
+'tél:hideg hó karácsony sál szánkó|'+
+'szellem:kísértet fehér ijesztő kastély Halloween|'+
+'sárkány:tűz szárny lovag mese papírsárkány|'+
+'kastély:torony lovag hercegnő vár|'+
+'cirkusz:bohóc sátor artista elefánt porond|'+
+'kórház:orvos nővér beteg mentő|'+
+'park:pad fű séta játszótér fák|'+
+'város:utca ház Budapest busz lakás',
+'horgony:hajó lánc kikötő tenger matróz tetoválás|'+
+'iránytű:észak irány térkép tű felfedező mágnes|'+
+'sivatag:homok teve kaktusz forró dűne oázis Szahara|'+
+'vulkán:láva kitörés kráter hamu magma Etna|'+
+'piramis:Egyiptom fáraó múmia sír Szfinx háromszög|'+
+'világítótorony:fény tenger part hajó sziklák|'+
+'alagút:sötét metró föld vonat ás vakond|'+
+'dzsungel:esőerdő majom liána Tarzan papagáj|'+
+'barlang:sötét denevér cseppkő mély Aggtelek|'+
+'gleccser:jég hegy olvad hideg Izland jéghegy|'+
+'létra:mászik fok magas tűzoltó festő|'+
+'kalapács:szög ütés barkács szerszám Thor|'+
+'mágnes:vonz vas hűtő észak iránytű|'+
+'lufi:léggömb levegő szülinap pukkan hőlégballon|'+
+'ejtőernyő:ugrás repülő zuhan katona leszállás|'+
+'rakéta:űr kilövés hold űrhajós|'+
+'távcső:csillag hold csillagász messze ég|'+
+'gyémánt:drága csillog gyűrű kemény ékszer|'+
+'korona:királynő arany trón ékszer|'+
+'kard:penge harc kardvívás|'+
+'pajzs:véd harc címer|'+
+'kincs:kalóz láda arany térkép|'+
+'kalóz:kincs papagáj kampó félszemű|'+
+'varázsló:pálca varázslat Merlin Gandalf köpeny|'+
+'vámpír:vér Drakula éjszaka koporsó fokhagyma|'+
+'lovag:páncél ló vár király|'+
+'katona:hadsereg puska egyenruha háború tank|'+
+'nyomozó:rejtély nagyító Sherlock bűnügy nyom|'+
+'múzeum:kiállítás festmény régi szobor|'+
+'könyvtár:könyv csend kölcsönöz polc|'+
+'színház:színpad színész függöny előadás|'+
+'stadion:foci meccs szurkoló gól lelátó|'+
+'repülőtér:utazás bőrönd útlevél kapu|'+
+'esküvő:menyasszony vőlegény gyűrű torta templom|'+
+'útlevél:utazás határ fénykép ország|'+
+'bőrönd:csomag kerék nyaralás|'+
+'esernyő:eső vizes nyitott kampós|'+
+'bűvész:nyúl kalap trükk varázspálca kártya|'+
+'robot:gép fém mesterséges okos android|'+
+'vihar:villám mennydörgés eső szél sötét|'+
+'szivárvány:szín eső ív hét|'+
+'tűzijáték:durr szilveszter szikra ünnep|'+
+'labirintus:útvesztő fal kijárat eltéved Minótaurusz|'+
+'tolvaj:lop rendőr maszk betörő|'+
+'kém:titok ügynök álruha 007 Bond|'+
+'hercegnő:királylány kastély korona mese',
+'szabadság:szabad madár börtön forradalom függetlenség|'+
+'emlék:múlt fénykép gyerekkor emlékszik napló|'+
+'igazság:bíró törvény igaz hazugság bíróság|'+
+'csend:halk könyvtár éjszaka pszt|'+
+'szerencse:lóhere patkó lottó szerencsés|'+
+'jövő:holnap terv jóslat időgép|'+
+'történelem:múlt háború régen évszám|'+
+'energia:erő áram fáradt napelem|'+
+'árnyék:sötét fény fekete követ|'+
+'egyensúly:mérleg jóga kötéltáncos stabil|'+
+'veszély:vigyázat figyelmeztet kockázat|'+
+'titok:rejtett suttog zár|'+
+'álom:alszik rémálom vágy|'+
+'félelem:fél sötét rémület horror|'+
+'remény:hit vár zöld|'+
+'büszkeség:büszke győzelem érem|'+
+'hatalom:erő uralkodik trón|'+
+'béke:galamb nyugalom szeretet|'+
+'háború:harc fegyver csata|'+
+'káosz:rendetlenség zűrzavar rendetlen|'+
+'gravitáció:Newton alma esik föld bolygó|'+
+'visszhang:hang barlang ismétel kiált|'+
+'rejtély:megoldás krimi kérdés|'+
+'természet:erdő állat zöld|'+
+'szokás:reggel rutin mindig szokott|'+
+'türelem:vár nyugodt lassan sor|'+
+'bátorság:bátor hős oroszlán|'+
+'bölcsesség:bölcs bagoly öreg tudás|'+
+'ritmus:dob tánc ütem|'+
+'bosszú:harag megtorlás ellenség düh|'+
+'bizalom:barát hit őszinte ígéret|'+
+'győzelem:nyer bajnok érem kupa|'+
+'kényelem:fotel puha kanapé otthon|'+
+'határidő:naptár sietni stressz munka|'+
+'barátság:barát együtt szeretet|'+
+'idő:perc múlik naptár'];
+var LEVELS_HU=HU_SRC.map(function(s){ return s.split('|').map(function(l){ return l.split(':')[0]; }); });
+function poolFor(lang, level){ return (lang==='hu'?LEVELS_HU:LEVELS)[(level||1)-1]; }
 /* word families the computer uses to link clues to each other (it never sees your secret words) */
 var FAM = [
  'hot summer sun sunny beach sand sea swim swimming holiday vacation island tan sunglasses heat warm july august',
@@ -311,8 +518,11 @@ function rng(seed){ var a=seed>>>0; return function(){ a=(a+0x6D2B79F5)>>>0; var
 function shuffle(arr,r){ arr=arr.slice(); for(var i=arr.length-1;i>0;i--){ var j=Math.floor(r()*(i+1)); var x=arr[i]; arr[i]=arr[j]; arr[j]=x; } return arr; }
 /* the level is hidden in the room code, so a friend who types the code gets the same level */
 function levelOf(code){ return hash('lvl:'+code)%3+1; }
-function newRoom(){ var c; do{ c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; }while(levelOf(c)!==S.level); return c; }
-function nextRoom(c){ var r=rng(hash('next:'+c)), L=levelOf(c), o; do{ o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; }while(levelOf(o)!==L||o===c); return o; }
+function langOf(code){ return hash('lng:'+code)%2 ? 'hu' : 'en'; }
+/* games saved before words came in two languages stay English */
+function gameLang(code){ var g=loadGames().filter(function(x){ return x.r===code; })[0]; return g ? (g.lg||'en') : langOf(code); }
+function newRoom(){ var c; do{ c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; }while(levelOf(c)!==S.level || langOf(c)!==S.lang); return c; }
+function nextRoom(c){ var r=rng(hash('next:'+c)), L=levelOf(c), lg=(S.game&&S.game.lang)||langOf(c), o; do{ o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; }while(levelOf(o)!==L||langOf(o)!==lg||o===c); return o; }
 function coop(){ return !teams(); }
 function teams(){ return S.mode==='vs' || S.mode==='bots' || S.mode==='rvr'; }
 /* robot teams: each team's robot gives the clues on every second turn of that team (rounds 2, 4, 6...) */
@@ -325,8 +535,8 @@ function online(){ return S.mode!=='solo' && S.mode!=='robo' && S.mode!=='rvr'; 
 function allBots(team){ return S.mode==='rvr' && team==='B'; }
 /* every phone builds the same words and codes from the room code */
 function makeGame(room){
-  var pool=LEVELS[levelOf(room)-1], r=rng(hash('kl1:'+room)), w=shuffle(pool,r);
-  return { pool:pool, keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
+  var lang=gameLang(room), pool=poolFor(lang,levelOf(room)), r=rng(hash('kl1:'+room)), w=shuffle(pool.slice(),r);
+  return { lang:lang, pool:pool, keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
 }
 function encoder(turn){ return coop()?'A':(turn%2===0?'A':'B'); }
 function opponent(team){ return coop()?'C':(team==='A'?'B':'A'); }
@@ -582,7 +792,7 @@ var ASSOC_SRC='anchor:ship boat sea sail harbor chain heavy captain sailor port 
    today's clues to those words and to the earlier clues. */
 var ASSOC={}, FAMOF={};
 var ASSOC_ARR={};
-ASSOC_SRC.split('|').forEach(function(l){ var p=l.split(':'), o={}; ASSOC_ARR[p[0]]=p[1].split(' '); p[1].split(' ').forEach(function(w){ o[norm(w)]=1; }); ASSOC[p[0]]=o; });
+ASSOC_SRC.split('|').concat(HU_SRC.join('|').split('|')).forEach(function(l){ var p=l.split(':'), o=ASSOC[p[0]]||{}; ASSOC_ARR[p[0]]=(ASSOC_ARR[p[0]]||[]).concat(p[1].split(' ')); p[1].split(' ').forEach(function(w){ o[norm(w)]=1; }); ASSOC[p[0]]=o; });
 FAM.forEach(function(g,i){ for(var w in g){ var n=norm(w); (FAMOF[n]=FAMOF[n]||[]).push(i); } });
 function norm(w){
   w=String(w); if(w.normalize) w=w.normalize('NFD').replace(/[̀-ͯ]/g,'');
@@ -711,7 +921,7 @@ function botAsk(msg, wait, cb){
   var end=function(r){ if(over) return; over=true; delete BotLink.wait[id]; clearTimeout(to); cb(r); };
   var to=setTimeout(function(){ end(null); },wait);
   BotLink.wait[id]=end; botListen();
-  if(msg.ping) msg.ping=id; else msg.q=id;
+  if(msg.ping) msg.ping=id; else { msg.q=id; if(!msg.lang) msg.lang=(msg.task==='quiz' ? S.lang : (S.game && S.game.lang)) || S.lang; }
   dbSend(botTopic(), msg).catch(function(){ end(null); });
 }
 function botPing(cb){
@@ -977,6 +1187,16 @@ var I={
   robot:'<svg class="robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3.5" r="1" fill="currentColor"/></svg>'
 };
 var MODES={1:[['robo','d_robo'],['rvr','d_rvr']],2:[['solo','d_solo'],['duo','d_duo'],['bots','d_bots']],3:[['vs','d_vs3']],4:[['vs','d_vs4']]};
+/* who plays with whom: [your side, phones on your side, the other side, phones there, the other side is a team] */
+var ART={robo:[['me','rob'],1,['cpu'],0,0], rvr:[['me','rob'],1,['rob','rob'],0,1], solo:[['me','mate'],1,['cpu'],0,0], duo:[['me','mate'],2,['cpu'],0,0],
+  bots:[['me','rob'],1,['fr','rob'],1,1], vs3:[['me','mate'],1,['fr','rob'],1,1], vs4:[['me','mate'],1,['fr','fr2'],1,1]};
+function modeArt(k){
+  var a=ART[k]||ART.vs4;
+  var who=function(x){ return '<span class="mb">'+(x==='rob'||x==='cpu'?I.robot:I.person)+'<small>'+esc(t('w_'+x))+'</small></span>'; };
+  var phones=function(n){ if(!n) return ''; var h=''; for(var i=0;i<n;i++) h+=I.phone; return '<span class="ph">'+h+'</span>'; };
+  var side=function(l,n,c){ return '<span class="side '+c+'"><span class="mbs">'+l.map(who).join('')+'</span>'+phones(n)+'</span>'; };
+  return '<span class="art">'+side(a[0],a[1],'A')+'<span class="vs">vs</span>'+side(a[2],a[3],a[4]?'B':'C')+'</span>';
+}
 function modeIcon(m){
   var sq=function(c,z){ return '<span class="sw" style="width:'+z+'px;height:'+z+'px;border-radius:'+(z/3|0)+'px;flex:none;background:var(--'+c+')"></span>'; }, vs='<span class="vs">vs</span>';
   if(m==='robo') return I.person+I.robot+vs+I.robot;
@@ -1013,7 +1233,7 @@ function render(){
       '<h1 class="logo"><span>KEY</span><em>LINE</em></h1>'+
       '<div class="levels">'+[1,2,3].map(function(l){ return '<button class="lv'+(S.level===l?' on':'')+'" data-l="'+l+'" aria-label="'+t('level')+' '+l+'">'+stars(l)+'</button>'; }).join('')+'</div>'+
       '<div class="np" role="group" aria-label="'+t('players')+'">'+[1,2,3,4].map(function(n){ return '<button class="npb'+(S.np===n?' on':'')+'" data-np="'+n+'" aria-label="'+n+' '+t('players')+'"><b>'+n+'</b>'+I.person+'</button>'; }).join('')+'</div>'+
-      '<div class="modes">'+MODES[S.np].map(function(m){ return '<button class="mode" data-m="'+m[0]+'"><span class="ic">'+modeIcon(m[0])+'</span><span class="mt"><b>'+t(m[0])+'</b><small>'+esc(t(m[1]))+'</small></span></button>'; }).join('')+
+      '<div class="modes">'+MODES[S.np].map(function(m){ return '<button class="mode" data-m="'+m[0]+'">'+modeArt(m[1]==='d_vs3'?'vs3':(m[1]==='d_vs4'?'vs4':m[0]))+'<span class="mt"><b>'+t(m[0])+'</b><small>'+esc(t(m[1]))+'</small></span></button>'; }).join('')+
       '</div>'+(AI.ok && !quizDone()?'<button class="quizcard" id="hquiz">'+I.robot+'<span><b>'+esc(t('quizb'))+'</b><small>'+esc(t('quizs'))+'</small></span></button>':'')+gamesHtml()+'</div></main>';
   } else if(S.scr==='room'){
     h=topbar('<button class="icon-btn" id="back" aria-label="Back">'+I.back+'</button>')+
@@ -1266,7 +1486,7 @@ function loadGames(){ try{ var g=JSON.parse(localStorage.getItem('kl-games')||'[
 function saveGame(){
   if(S.scr!=='play' || !S.st) return; cloudSave();
   var h=gameHash(), g=loadGames().filter(function(x){ return x.h!==h; });
-  g.unshift({h:h, m:S.mode, r:S.room, made:S.made?1:0, at:Date.now(), n:S.st.cur+1, over:S.st.over?1:0});
+  g.unshift({h:h, m:S.mode, r:S.room, lg:S.game.lang, made:S.made?1:0, at:Date.now(), n:S.st.cur+1, over:S.st.over?1:0});
   try{ localStorage.setItem('kl-games',JSON.stringify(g.slice(0,12))); }catch(e){}
 }
 function gameHash(){ return S.mode+'-'+S.room+(teams()?'-'+S.team:(S.mode==='duo'?'-'+S.player:'')); }
@@ -1377,7 +1597,7 @@ function botSheet(){
 function quizDone(){ try{ return localStorage.getItem('kl-quiz')==='1'; }catch(e){ return false; } }
 function quiz(){
   closeEnd(); var v=document.createElement('div'); v.className='veil'; document.body.appendChild(v);
-  var pool=LEVELS[(S.level||1)-1], r=rng(Date.now()), W=shuffle(pool.slice(),r).slice(0,10).map(function(x){ return String(x).toUpperCase(); }), N=W.length, q=0, cl=[], ans=null, tg=0, used={}, typed=[], step0='ask';
+  var pool=poolFor(S.lang,S.level), r=rng(Date.now()), W=shuffle(pool.slice(),r).slice(0,10).map(function(x){ return String(x).toUpperCase(); }), N=W.length, q=0, cl=[], ans=null, tg=0, used={}, typed=[], step0='ask';
   /* the quiz is saved after every key press, so closing it or the page never loses anything */
   try{ var sv=JSON.parse(localStorage.getItem('kl-quiz-state')||'null'); if(sv && Array.isArray(sv.W) && sv.W.length===10){ W=sv.W; N=10; q=sv.q||0; tg=sv.tg||0; used=sv.used||{}; cl=sv.cl||[]; ans=sv.ans||null; typed=sv.typed||[]; step0=(sv.step==='done'&&ans)?'done':(sv.step==='wait'&&cl.length===3?'wait':'ask'); } }catch(e){}
   function saveQ(step){ typed=Array.prototype.map.call(v.querySelectorAll(step==='done'?'.qy':'.qc'),function(x){ return x.value; }); try{ localStorage.setItem('kl-quiz-state',JSON.stringify({W:W,q:q,tg:tg,used:used,cl:cl,ans:ans,step:step,typed:typed})); }catch(e){} }
