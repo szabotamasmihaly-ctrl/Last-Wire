@@ -133,7 +133,7 @@ function buildJob(b) {
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + diff + ' ' + tipText + book +
       (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.',
-      sim: (lvl >= 3 && words(b.pool, 260) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, lvl: lvl, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
+      sim: (lvl >= 3 && words(b.pool, 900) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, lvl: lvl, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
   }
   if (b.task === 'decode') {
     if (!words(b.words, 4) || b.words.length !== 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -147,7 +147,7 @@ function buildJob(b) {
       'for example "shoplift" or "Dr House, a TV doctor"), for example {"code": "312", "why": ["...", "...", "..."]}.' };
   }
   if (b.task === 'words') {
-    if (!words(b.pool, 260) || b.pool.length < 4 || !cols(b.history)) return null;
+    if (!words(b.pool, 900) || b.pool.length < 4 || !cols(b.history)) return null;
     return { kind: 'words', prompt: 'The game is over: you cracked the other team\'s code. Bonus: guess their 4 secret words. ' +
       'They were picked from this list: ' + b.pool.join(', ') + '.\n\nThe clues they gave, by number:\n' +
       b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
@@ -174,7 +174,7 @@ function buildJob(b) {
       'sentence and add this example in brackets. If it is a plain meaning link, answer with an empty method. Answer only: {"method": "..."}' };
   }
   if (b.task === 'crack' || b.task === 'rival') {
-    if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
+    if (!words(b.pool, 900) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
     return { kind: 'code', prompt: 'You play for ' + team + '. This turn you are the other side, trying to crack the code. ' +
       'The 4 secret words were picked from this list: ' + b.pool.join(', ') + '.\n\nClues given before, by number:\n' +
       b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
