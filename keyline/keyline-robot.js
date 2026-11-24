@@ -399,7 +399,7 @@ async function main() {
     if (e.task === 'save') { if (e.profile && typeof e.profile === 'object') saveProfile(e.profile, !!e.replace); send(topic, { a: e.q, ok: 1 }); return; }
     const job = build(e);
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
-    job.id = e.q; job.smart = !!e.smart; queue.push(job); next();
+    job.id = e.q; job.smart = !!e.smart; queue.push(job); send(topic, { ack: e.q }); next();
   }
   function event(block) {
     let name = '', data = '';
