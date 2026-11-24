@@ -458,6 +458,10 @@ var HU_SRC=[
 'barátság:barát együtt szeretet|'+
 'idő:perc múlik naptár'];
 var LEVELS_HU=HU_SRC.map(function(s){ return s.split('|').map(function(l){ return l.split(':')[0]; }); });
+/* many more secret words, so games do not keep showing the same ones */
+var MORE={en:['orange grape strawberry cherry tomato carrot onion rice pasta butter salt sandwich burger cookie candy juice tea water popcorn duck goat pig elephant giraffe zebra penguin dolphin turtle butterfly ant snail wolf fox deer camel kangaroo parrot bathroom sofa lamp pillow blanket carpet roof wall stairs fridge oven cup plate fork spoon bottle wallet toothbrush soap towel taxi truck helicopter scooter tractor pencil desk lesson exam football tennis dance song cinema supermarket restaurant hotel farm village street lake storm spring autumn morning weekend picnic camping television video internet photo clown princess fairy witch monster angel dentist baker firefighter waiter singer dancer student brother sister grandma friend neighbor finger knee mouth smile jacket scarf socks boots glasses backpack button pocket candle kite puzzle toy doll teddy present postcard','spaceship astronaut satellite planet comet submarine skyscraper dungeon fortress earthquake tornado hurricane avalanche iceberg waterfall swamp cliff valley reef jellyfish octopus crocodile eagle scorpion dinosaur fossil skeleton zombie werewolf ninja samurai cowboy sheriff spy hacker inventor scientist explorer trophy medal stage microphone orchestra headphones keyboard printer elevator escalator highway motorway subway platform tent campfire flashlight binoculars raft canoe sailboat yacht cruise palace temple bunker vault safe jewel necklace bracelet perfume lipstick tattoo wig mask cape throne scepter unicorn phoenix mermaid giant dwarf elf goblin troll casino lottery auction bakery pharmacy prison courtroom embassy parliament factory warehouse mine quarry windmill sphinx statue fountain monument cathedral arena magician acrobat juggler puppet','adventure ambition anger anxiety beauty boredom chance change choice confidence curiosity destiny dignity doubt duty empathy faith fame friendship fun glory greed guilt happiness harmony hate honesty humor imagination innocence instinct jealousy joy kindness knowledge laziness loneliness love loyalty madness magic mercy miracle motivation nostalgia optimism pain panic passion poverty privacy progress promise rage reality regret respect risk romance sacrifice safety sadness shame sorrow speed spirit strength stress success surprise suspense talent temptation tension time tradition trouble value vanity violence wealth wonder youth age beginning ending journey legacy logic reason opinion rumor'],hu:['narancs szőlő eper cseresznye paradicsom répa hagyma rizs tészta vaj só szendvics hamburger keksz cukorka gyümölcslé tea víz kacsa kecske malac elefánt zsiráf zebra pingvin delfin teknős pillangó hangya csiga farkas róka szarvas teve kenguru papagáj fürdőszoba kanapé lámpa párna takaró szőnyeg tető fal lépcső hűtő sütő bögre tányér villa kanál üveg pénztárca fogkefe szappan törölköző taxi kamion helikopter roller traktor ceruza pad lecke vizsga foci tenisz tánc dal mozi szupermarket étterem szálloda tanya falu utca tó tavasz ősz reggel hétvége piknik kemping tévé videó internet fénykép bohóc tündér boszorkány szörny angyal fogorvos pék tűzoltó pincér énekes táncos diák testvér nagymama barát szomszéd ujj térd száj mosoly dzseki sál zokni csizma szemüveg hátizsák gomb zseb gyertya társasjáték kirakós játék baba maci képeslap','űrhajó űrhajós műhold bolygó üstökös tengeralattjáró felhőkarcoló börtön erőd földrengés tornádó hurrikán lavina jéghegy vízesés mocsár szikla völgy korallzátony medúza polip krokodil sas skorpió dinoszaurusz kövület csontváz zombi vérfarkas nindzsa szamuráj cowboy seriff hacker feltaláló tudós felfedező trófea érem színpad mikrofon zenekar fejhallgató billentyűzet nyomtató lift mozgólépcső autópálya metró peron kikötő sátor tábortűz zseblámpa tutaj kenu vitorlás jacht palota templom bunker széf ékszer nyaklánc karkötő parfüm rúzs tetoválás paróka maszk köpeny trón jogar egyszarvú főnix sellő óriás törpe manó troll kaszinó lottó árverés pékség patika bíróság nagykövetség parlament gyár raktár bánya szélmalom szobor szökőkút emlékmű katedrális aréna zsonglőr báb','kaland becsvágy düh szorongás szépség unalom esély változás döntés önbizalom kíváncsiság sors méltóság kétely kötelesség együttérzés hit hírnév öröm dicsőség kapzsiság bűntudat boldogság harmónia gyűlölet becsület humor képzelet ártatlanság ösztön féltékenység kedvesség tudás lustaság magány szerelem hűség őrület varázslat irgalom csoda motiváció nosztalgia optimizmus fájdalom pánik szenvedély szegénység magánélet fejlődés ígéret megbánás tisztelet kockázat romantika áldozat biztonság szomorúság szégyen bánat sebesség lélek erő stressz siker meglepetés feszültség tehetség kísértés hagyomány baj érték hiúság erőszak gazdagság ifjúság kor kezdet vég utazás örökség logika ész vélemény pletyka']};
+var BASE_N={en:LEVELS.map(function(l){ return l.length; }),hu:LEVELS_HU.map(function(l){ return l.length; })};
+[0,1,2].forEach(function(i){ LEVELS[i]=LEVELS[i].concat(MORE.en[i].split(' ')); LEVELS_HU[i]=LEVELS_HU[i].concat(MORE.hu[i].split(' ')); });
 function poolFor(lang, level){ return (lang==='hu'?LEVELS_HU:LEVELS)[(level||1)-1]; }
 /* word families the computer uses to link clues to each other (it never sees your secret words) */
 var FAM = [
@@ -537,7 +541,18 @@ function levelOf(code){ return hash('lvl:'+code)%3+1; }
 function langOf(code){ return hash('lng:'+code)%2 ? 'hu' : 'en'; }
 /* games saved before words came in two languages stay English */
 function gameLang(code){ var g=loadGames().filter(function(x){ return x.r===code; })[0]; return g ? (g.lg||'en') : langOf(code); }
-function newRoom(){ var c; do{ c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)]; }while(levelOf(c)!==S.level || langOf(c)!==S.lang); return c; }
+function recentWords(){ try{ var r=JSON.parse(localStorage.getItem('kl-recent')||'[]'); return Array.isArray(r)?r:[]; }catch(e){ return []; } }
+function noteWords(g){ try{ var r=recentWords().concat(g.keys.A,g.keys.B), seen={}; r=r.reverse().filter(function(w){ if(seen[w]) return false; seen[w]=1; return true; }).reverse().slice(-120); localStorage.setItem('kl-recent',JSON.stringify(r)); }catch(e){} }
+function newRoom(){
+  var rec={}, best='', bn=99; recentWords().forEach(function(w){ rec[w]=1; });
+  for(var n=0;n<4000;n++){
+    var c=''; for(var i=0;i<4;i++) c+=ALPH[Math.floor(Math.random()*ALPH.length)];
+    if(levelOf(c)!==S.level || langOf(c)!==S.lang) continue;
+    var pool=poolFor(S.lang,S.level), w=shuffle(pool.slice(),rng(hash('kl1:'+c))).slice(0,8), k=w.filter(function(x){ return rec[x]; }).length;
+    if(k<bn){ bn=k; best=c; } if(!k) break;
+  }
+  return best;
+}
 function nextRoom(c){ var r=rng(hash('next:'+c)), L=levelOf(c), lg=(S.game&&S.game.lang)||langOf(c), o; do{ o=''; for(var i=0;i<4;i++) o+=ALPH[Math.floor(r()*ALPH.length)]; }while(levelOf(o)!==L||langOf(o)!==lg||o===c); return o; }
 function coop(){ return !teams(); }
 function teams(){ return S.mode==='vs' || S.mode==='bots' || S.mode==='rvr'; }
@@ -551,7 +566,9 @@ function online(){ return S.mode!=='solo' && S.mode!=='robo' && S.mode!=='rvr'; 
 function allBots(team){ return S.mode==='rvr' && team==='B'; }
 /* every phone builds the same words and codes from the room code */
 function makeGame(room){
-  var lang=gameLang(room), pool=poolFor(lang,levelOf(room)), r=rng(hash('kl1:'+room)), w=shuffle(pool.slice(),r);
+  var sv=loadGames().filter(function(x){ return x.r===room; })[0], lang=gameLang(room), pool=poolFor(lang,levelOf(room));
+  if(sv && !sv.pv) pool=pool.slice(0,BASE_N[lang][levelOf(room)-1]);
+  var r=rng(hash('kl1:'+room)), w=shuffle(pool.slice(),r);
   return { lang:lang, pool:pool, keys:{A:w.slice(0,4),B:w.slice(4,8)}, code:function(turn){ return shuffle([1,2,3,4],rng(hash('kl1:'+room+':'+turn))).slice(0,3).join(''); } };
 }
 function encoder(turn){ return coop()?'A':(turn%2===0?'A':'B'); }
@@ -938,6 +955,7 @@ function botAsk(msg, wait, cb){
   var to=setTimeout(function(){ end(null); },wait);
   /* the robot says "got it, thinking" at once; from then on wait much longer, so a slow but working robot is never replaced by the word list */
   BotLink.wait[id]=function(r){ if(r && r.ack && !r.a){ clearTimeout(to); to=setTimeout(function(){ end(null); },msg.task==='give'?300000:200000); return; } end(r); }; botListen();
+  if(Array.isArray(msg.pool) && msg.pool.length>250 && S.game){ var keep=S.game.keys.A.concat(S.game.keys.B), rest=msg.pool.filter(function(w){ return keep.indexOf(w)<0; }); msg.pool=shuffle(keep.concat(shuffle(rest.slice(),rng(hash('pool:'+S.room))).slice(0,250-keep.length)),rng(hash('pool2:'+S.room))); }
   if(msg.ping) msg.ping=id; else { msg.q=id; if(!msg.lang) msg.lang=(msg.task==='quiz' ? S.lang : (S.game && S.game.lang)) || S.lang; }
   dbSend(botTopic(), msg).catch(function(){ end(null); });
 }
@@ -1530,7 +1548,7 @@ function bump(col){
   if(navigator.vibrate) try{ navigator.vibrate(120); }catch(e){}
 }
 function goPlay(room){
-  closeEnd(); S.endHidden=false; S.endInfo=null; S.lastType=''; S.room=room; S.game=makeGame(room); S.guess=[]; S.live={}; S.st=null;
+  closeEnd(); S.endHidden=false; S.endInfo=null; S.lastType=''; S.room=room; S.game=makeGame(room); noteWords(S.game); S.guess=[]; S.live={}; S.st=null;
   try{ S.ev=JSON.parse(localStorage.getItem('kl-ev-'+S.mode+room)||'[]'); }catch(e){ S.ev=[]; }
   S.seen={}; S.ev.forEach(function(e){ S.seen[e.id]=1; });
   S.scr='play'; S.shown='';
@@ -1542,7 +1560,7 @@ function loadGames(){ try{ var g=JSON.parse(localStorage.getItem('kl-games')||'[
 function saveGame(){
   if(S.scr!=='play' || !S.st) return; cloudSave();
   var h=gameHash(), g=loadGames().filter(function(x){ return x.h!==h; });
-  g.unshift({h:h, m:S.mode, r:S.room, lg:S.game.lang, made:S.made?1:0, at:Date.now(), n:S.st.cur+1, over:S.st.over?1:0});
+  g.unshift({h:h, m:S.mode, r:S.room, lg:S.game.lang, pv:S.game.pool.length>BASE_N[S.game.lang][levelOf(S.room)-1]?2:0, made:S.made?1:0, at:Date.now(), n:S.st.cur+1, over:S.st.over?1:0});
   try{ localStorage.setItem('kl-games',JSON.stringify(g.slice(0,12))); }catch(e){}
 }
 function gameHash(){ return S.mode+'-'+S.room+(teams()?'-'+S.team:(S.mode==='duo'?'-'+S.player:'')); }
