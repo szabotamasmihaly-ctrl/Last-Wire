@@ -133,7 +133,7 @@ function buildJob(b) {
       'Never use a secret word, part of one, or a word with the same root. Never repeat a clue used before. ' +
       'Pick a different angle from the earlier clues so the other side cannot simply match them. ' + diff + ' ' + tipText + book +
       (b.smart ? THINK_GIVE + 'JSON: ' : 'Answer only: ') + '{"clues": ["word", "word", "word"]} in code order.',
-      sim: (lvl >= 3 && words(b.pool, 260) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, lvl: lvl, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
+      sim: (lvl >= 3 && words(b.pool, 900) && b.pool.length >= 4) ? { pool: b.pool, history: b.history, code: b.code, team: b.team, lvl: lvl, words: b.words, me: b.me, tech: b.tech, level: b.level } : null };
   }
   if (b.task === 'decode') {
     if (!words(b.words, 4) || b.words.length !== 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
@@ -147,7 +147,7 @@ function buildJob(b) {
       'for example "shoplift" or "Dr House, a TV doctor"), for example {"code": "312", "why": ["...", "...", "..."]}.' };
   }
   if (b.task === 'words') {
-    if (!words(b.pool, 260) || b.pool.length < 4 || !cols(b.history)) return null;
+    if (!words(b.pool, 900) || b.pool.length < 4 || !cols(b.history)) return null;
     return { kind: 'words', prompt: 'The game is over: you cracked the other team\'s code. Bonus: guess their 4 secret words. ' +
       'They were picked from this list: ' + b.pool.join(', ') + '.\n\nThe clues they gave, by number:\n' +
       b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
@@ -174,7 +174,7 @@ function buildJob(b) {
       'sentence and add this example in brackets. If it is a plain meaning link, answer with an empty method. Answer only: {"method": "..."}' };
   }
   if (b.task === 'crack' || b.task === 'rival') {
-    if (!words(b.pool, 260) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
+    if (!words(b.pool, 900) || b.pool.length < 4 || !words(b.clues, 3) || b.clues.length !== 3 || !cols(b.history)) return null;
     return { kind: 'code', prompt: 'You play for ' + team + '. This turn you are the other side, trying to crack the code. ' +
       'The 4 secret words were picked from this list: ' + b.pool.join(', ') + '.\n\nClues given before, by number:\n' +
       b.history.map(function (c, i) { return (i + 1) + ': ' + list(c); }).join('\n') +
@@ -215,13 +215,22 @@ function findClaude() {
 }
 
 function quote(a) { return '"' + String(a).replace(/"/g, "'") + '"'; }
-function askClaude(claude, prompt, model) {
+/* at most 4 Claude programs at once; one place is always kept free for reading clues, so the robot's own
+   clue planning in the background never makes a guess wait or time out */
+const MAXC = 4; let RUN = 0; const WAIT = { hi: [], lo: [] };
+function slot(lo) { return new Promise(function (ok) { if (lo ? RUN < MAXC - 1 && !WAIT.hi.length : RUN < MAXC) { RUN++; ok(); } else WAIT[lo ? 'lo' : 'hi'].push(ok); }); }
+function free() { RUN--; if (WAIT.hi.length && RUN < MAXC) { RUN++; WAIT.hi.shift()(); } else if (WAIT.lo.length && RUN < MAXC - 1) { RUN++; WAIT.lo.shift()(); } }
+async function askClaude(claude, prompt, model, lo, limit) {
+  await slot(lo);
+  try { return await runClaude(claude, prompt, model, limit); } finally { free(); }
+}
+function runClaude(claude, prompt, model, limit) {
   return new Promise(function (resolve, reject) {
     let args = claude.pre.concat(['-p', '--model', model || MODEL.fast.clues, '--system-prompt', RULES, '--tools', '', '--no-session-persistence']);
     if (claude.shell) args = args.map(quote);
     const p = cp.spawn(claude.cmd, args, { cwd: DIR, windowsHide: true, shell: !!claude.shell });
     let out = '', err = '';
-    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, 55000);
+    const timer = setTimeout(function () { p.kill(); reject(new Error('Claude took too long')); }, limit || 55000);
     p.stdout.on('data', function (d) { out += d; });
     p.stderr.on('data', function (d) { err += d; });
     p.on('error', function (e) { clearTimeout(timer); reject(e); });
@@ -235,7 +244,7 @@ async function rivalCheck(claude, sim, clues) {
   const j = build({ task: 'rival', lang: sim.lang, team: sim.team === 'Orange' ? 'Blue' : 'Orange', pool: sim.pool, history: sim.history, clues: clues, smart: 0 });
   if (!j) return null;
   /* the same model the real rivals use on this difficulty */
-  const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet'));
+  const r = parse('code', await askClaude(claude, j.prompt, sim.lvl >= 6 ? 'opus' : 'sonnet', true));
   if (!r) return null;
   const hit = [0, 1, 2].filter(function (i) { return r.code[i] === sim.code[i]; });
   return { guess: r.code, hit: hit };
@@ -244,7 +253,7 @@ async function rivalCheck(claude, sim, clues) {
 async function mateCheck(claude, sim, clues) {
   const j = build({ task: 'decode', lang: sim.lang, team: sim.team, words: sim.words, history: sim.history, clues: clues, me: sim.me, tech: sim.tech, level: sim.level, smart: 0 });
   if (!j) return null;
-  const r = parse('code', await askClaude(claude, j.prompt, 'opus'));
+  const r = parse('code', await askClaude(claude, j.prompt, 'opus', true));
   if (!r) return null;
   return { miss: [0, 1, 2].filter(function (i) { return r.code[i] !== sim.code[i]; }) };
 }
@@ -269,9 +278,9 @@ const SETS = '\n\nPlay it safe: the other side may already guess your words from
 /* give clues: make a few sets, test each on a pretend rival and a pretend teammate, keep the safest one */
 async function giveClues(claude, job, model) {
   const t0 = Date.now();
-  if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model));
-  let sets = parseSets(await askClaude(claude, job.prompt + SETS, model));
-  if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model));
+  if (!job.sim) return parse('clues', await askClaude(claude, job.prompt, model, true, 100000));
+  let sets = parseSets(await askClaude(claude, job.prompt + SETS, model, true, 100000));
+  if (!sets.length) return parse('clues', await askClaude(claude, job.prompt, model, true));
   /* stronger robots test more and accept less: level 3-5 one round, 6-8 two, 9-10 three and nothing the rival can place */
   const L = job.sim.lvl, rounds = L >= 9 ? 3 : (L >= 6 ? 2 : 1), allow = L >= 9 ? 0 : 1, cap = L >= 9 ? 120000 : 80000;
   let best = null;
@@ -283,7 +292,7 @@ async function giveClues(claude, job, model) {
     /* none was safe: show the robot what went wrong and ask for new sets */
     const notes = res.map(function (x) { return x.clues.join(', ') + ': the other side placed ' + (x.hit.map(function (i) { return x.clues[i]; }).join(' and ') || 'none') +
       (x.miss.length ? '; your teammate could misread ' + x.miss.map(function (i) { return x.clues[i]; }).join(' and ') : ''); }).join('\n');
-    sets = parseSets(await askClaude(claude, job.prompt + SETS + '\n\nWe already tested these sets:\n' + notes + '\nMake 3 new sets that avoid these problems.', model));
+    sets = parseSets(await askClaude(claude, job.prompt + SETS + '\n\nWe already tested these sets:\n' + notes + '\nMake 3 new sets that avoid these problems.', model, true, 100000));
     if (!sets.length) break;
   }
   return { clues: best.clues };
@@ -333,11 +342,19 @@ async function update(running) {
   } catch (e) { return false; }
 }
 
+let OFF = 0;
+function now() { return Date.now() + OFF; }
+async function syncClock(code) {
+  try { const r = await fetch(DB + '/rooms/keyline-alive-' + code.toLowerCase() + '.json'); const d = Date.parse(r.headers.get('date') || ''); if (d) OFF = d - Date.now(); } catch (e) {}
+  if (Math.abs(OFF) > 60000) console.log('  Note: this computer\'s clock is ' + Math.round(Math.abs(OFF) / 60000) + ' min wrong. The robot uses the internet time instead.');
+}
+/* tell the phones this robot is alive, so they can say exactly what is wrong when it does not answer */
+function alive(code) { fetch(DB + '/rooms/keyline-alive-' + code.toLowerCase() + '.json', { method: 'PUT', body: JSON.stringify({ t: { '.sv': 'timestamp' } }) }).catch(function () {}); }
 async function main() {
   if (await update()) return;
   const code = robotCode();
   /* a fresh channel every day (UTC), the same one the game uses, so it never grows big */
-  function channel() { return 'keyline-bot-' + code.toLowerCase() + '-' + new Date().toISOString().slice(0, 10).replace(/-/g, ''); }
+  function channel() { return 'keyline-bot-' + code.toLowerCase() + '-' + new Date(now()).toISOString().slice(0, 10).replace(/-/g, ''); }
   const claude = findClaude();
   console.log('\n  KEYLINE ROBOT\n');
   if (!claude) { console.log('  I could not find Claude Code. Install it first:  npm install -g @anthropic-ai/claude-code\n'); process.exit(1); }
@@ -346,21 +363,24 @@ async function main() {
   catch (e) { console.log('it did not answer.\n  ' + e.message + '\n  Open PowerShell, type  claude  and sign in, then start me again.\n'); process.exit(1); }
   console.log('\n  Robot code:  ' + code.slice(0, 4) + '-' + code.slice(4) + '\n');
   console.log('  Type this code in Keyline: the robot button at the top of the start page.');
-  console.log('  Keep this window open while you play. Close it to stop the robot.\n');
+  console.log('  Keep this window open while you play. Close it to stop the robot.');
+  console.log('  Do not click inside this window: a click pauses the robot. If you did, press Esc.\n');
+  await syncClock(code); alive(code); setInterval(function () { if (!RETIRED) alive(code); }, 60000);
 
-  const start = Date.now(); let busy = 0, topic = channel();
+  const start = now(); let busy = 0, topic = channel();
   const seen = new Set(), queue = [];
   function next() {
     while (busy < MAX_AT_ONCE && queue.length) {
       const job = queue.shift(); busy++;
       const t0 = Date.now();
       const model = MODEL[job.smart ? 'smart' : 'fast'][job.kind];
-      (job.kind === 'clues' ? giveClues(claude, job, model) : askClaude(claude, job.prompt, model).then(function (txt) { return parse(job.kind, txt); })).then(function (r) {
+      (job.kind === 'clues' ? giveClues(claude, job, model) : askClaude(claude, job.prompt, model, false, 50000).then(function (txt) { return parse(job.kind, txt); }, function (e) { console.log('  ' + new Date().toLocaleTimeString() + '  first try failed (' + e.message + '), asking a quicker model'); return null; })
+        .then(function (r) { return r || askClaude(claude, job.prompt, 'sonnet', false, 25000).then(function (txt) { return parse(job.kind, txt); }); })).then(function (r) {
         if (!r) throw new Error('no clear answer');
         r.a = job.id; send(topic, r);
         console.log('  ' + new Date().toLocaleTimeString() + '  robot move done (' + ((Date.now() - t0) / 1000).toFixed(1) + 's)');
       }).catch(function (e) {
-        send(topic, { a: job.id, err: 1 });
+        send(topic, { a: job.id, err: 1, msg: clean(e.message, 160) });
         console.log('  ' + new Date().toLocaleTimeString() + '  robot could not answer: ' + e.message);
       }).then(function () { busy--; next(); });
     }
@@ -379,7 +399,7 @@ async function main() {
     if (e.task === 'save') { if (e.profile && typeof e.profile === 'object') saveProfile(e.profile, !!e.replace); send(topic, { a: e.q, ok: 1 }); return; }
     const job = build(e);
     if (!job) { send(topic, { a: e.q, err: 1 }); return; }
-    job.id = e.q; job.smart = !!e.smart; queue.push(job); next();
+    job.id = e.q; job.smart = !!e.smart; queue.push(job); send(topic, { ack: e.q }); next();
   }
   function event(block) {
     let name = '', data = '';
@@ -394,7 +414,8 @@ async function main() {
   for (;;) {
     topic = channel();
     const stop = new AbortController();
-    const dayCheck = setInterval(function () { if (channel() !== topic) stop.abort(); }, 60000);
+    let last = Date.now();
+    const dayCheck = setInterval(function () { if (channel() !== topic || Date.now() - last > 95000) stop.abort(); }, 15000);
     try {
       const r = await fetch(dbUrl(topic), { headers: { Accept: 'text/event-stream' }, signal: stop.signal });
       if (!r.ok) { console.log('  The database said ' + r.status + '. Trying again soon.'); throw 0; }
@@ -403,6 +424,7 @@ async function main() {
       for (;;) {
         const part = await reader.read();
         if (part.done) break;
+        last = Date.now();
         buf += dec.decode(part.value, { stream: true }).replace(/\r/g, '');
         const blocks = buf.split('\n\n'); buf = blocks.pop();
         blocks.forEach(event);
