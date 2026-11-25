@@ -168,6 +168,9 @@ body[data-screen="bomb"] :focus-visible{outline-color:var(--signal)}
 .stage{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip;background:#14181c}
 .man-scroll{flex:1;min-height:0;overflow-y:auto;background:var(--paper)}
 .man-scroll .paper-wrap{padding-bottom:24px;min-height:100%}
+.solo-pane{flex:none;height:40vh;height:40dvh;overflow-y:auto;background:var(--paper);color:var(--ink);border-top:4px solid var(--signal);-webkit-overflow-scrolling:touch}
+.solo-pane .paper-wrap{padding-bottom:20px;min-height:100%}
+@media (min-width:900px){.game.solo-on{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,38%);grid-template-rows:auto minmax(0,1fr) auto}.game.solo-on>.hud,.game.solo-on>.toolbar{grid-column:1/-1}.game.solo-on>.solo-pane{height:auto;border-top:0;border-left:4px solid var(--signal)}}
 .toolbar{flex:none;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 10px;background:#07090b}
 .tb{background:#1b2026;border:1.5px solid #4a535c;color:#fff;border-radius:8px;padding:7px 13px;min-height:42px;font-weight:700;font-size:15px}
 .tb:disabled{opacity:.4}
@@ -992,6 +995,38 @@ body[data-screen="home"],body[data-screen="cards"],body[data-screen="words"]{bac
 .sh-ex mark,.pex mark{background:rgba(255,200,61,.55);color:inherit;border-radius:4px;padding:0 2px}
 .sh-due{display:flex;align-items:center;gap:8px;color:#1899D6;font-weight:700}
 .sh-btns{display:grid;gap:12px;margin-top:4px}
+/* solo, together, versus: three cards with a picture of who plays with whom */
+.modes3{display:grid;gap:10px}
+.mode3{display:grid;grid-template-columns:76px minmax(0,1fr);grid-template-rows:auto auto;align-items:center;column-gap:14px;text-align:left;background:#fff;color:var(--ink);border:2px solid var(--mc,#e2e2e2);border-radius:16px;box-shadow:0 4px 0 var(--mcd,#e2e2e2);padding:12px 14px;width:100%;cursor:pointer;animation:m3in .34s cubic-bezier(.2,1.3,.4,1) both}
+.mode3:nth-child(2){animation-delay:.05s}.mode3:nth-child(3){animation-delay:.1s}
+.mode3:active{transform:translateY(3px);box-shadow:0 1px 0 var(--mcd,#e2e2e2)}
+.mode3 svg{grid-row:1/3;width:76px;height:44px}
+.mode3 b{font:900 21px/1.1 var(--font-display);text-transform:uppercase;letter-spacing:.02em;align-self:end}
+.mode3 .md{font-size:15px;line-height:1.3;color:var(--ink-2);align-self:start}
+.mode3.m-solo{--mc:#49C0F0;--mcd:#2A98C6}.mode3.m-coop{--mc:#58CC02;--mcd:#3F9A00}.mode3.m-vs{--mc:#FF9F1C;--mcd:#C9760A}
+@keyframes m3in{from{opacity:0;transform:translateY(10px) scale(.97)}}
+.roles .modes3{grid-column:1/-1}
+@media (min-width:760px){.roles .modes3{grid-template-columns:repeat(3,minmax(0,1fr))}.roles .mode3{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;justify-items:center;text-align:center;row-gap:8px;padding:20px 16px}.roles .mode3 svg{grid-row:auto;width:110px;height:64px}}
+.mback{justify-self:start}
+.roles .mback{grid-column:1/-1;color:inherit}
+.pair-vs{font:900 20px/1.2 var(--font-display);text-transform:uppercase;margin:0 0 6px}
+/* versus: the bomb waits until both phones are in, then counts down */
+.vs-hold{position:fixed;inset:0;z-index:40;display:grid;place-content:center;justify-items:center;gap:16px;background:rgba(10,12,16,.82);color:#fff;text-align:center;padding:var(--gut)}
+.vs-hold svg{width:150px;height:88px}
+.vs-hold p{font-size:20px;font-weight:700}
+.vs-hold .link{color:#fff}
+.vs-cd{font:900 clamp(90px,30vw,180px)/1 var(--font-display);color:var(--signal);animation:vscd .9s ease-out both}
+@keyframes vscd{from{transform:scale(1.8);opacity:0}30%{opacity:1}to{transform:scale(.9)}}
+.hud-l .vs-them{font:800 22px/1 var(--font-display);letter-spacing:.04em;white-space:nowrap}
+.vsr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+.vsc{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.16);border-radius:18px;padding:14px;display:grid;gap:6px;justify-items:center;text-align:center;animation:m3in .4s both}
+.vsc.top{border-color:var(--signal);background:rgba(255,200,61,.14)}
+.vsc svg{width:46px;height:46px}
+.vsc .vn{font-weight:800;font-size:17px}
+.vsc .vp{font:900 clamp(40px,11vw,64px)/1 var(--font-display)}
+.vsc .vs-s{font-size:15px;opacity:.85}
+.vsc .wdots{margin:6px 0}
+.vs-still{font:900 clamp(30px,8vw,48px)/1.05 var(--font-display);text-transform:uppercase;margin:6px 0 10px}
 .sh-btns .link{justify-self:center}
 @keyframes sheetin{0%{transform:translateY(100%)}100%{transform:none}}
 /* tappable words */
@@ -3676,7 +3711,7 @@ var STR = {
   'hud.sr': ['{0} minutes and {1} seconds', '{0} perc {1} másodperc', '{0} minutter og {1} sekunder'],
   'pen': ['−{0} s', '−{0} mp', '−{0} s'],
   'cap.start': ['Your partner opens the same bomb: {0}. When your partner is ready, tap a task on the bomb. Then the clock starts.', 'A társad ugyanezt a bombát nyitja meg: {0}. Ha a társad készen áll, koppints egy feladatra a bombán. Ekkor indul az óra.', 'Din makker åbner den samme bombe: {0}. Når din makker er klar, så tryk på en opgave på bomben. Så starter uret.'],
-  'cap.start.solo': ['You are playing alone. Tap a task on the bomb to start the clock. The “Helper page” button below shows what a partner would see.', 'Egyedül játszol. Koppints egy feladatra a bombán, ekkor indul az óra. A lenti „Segítő oldala” gomb megmutatja, amit a társad látna.', 'Du spiller alene. Tryk på en opgave på bomben for at starte uret. Knappen »Hjælperens side« nedenfor viser det, en makker ville se.'],
+  'cap.start.solo': ['Tap a task to start the clock. The helper\'s half is right here too.', 'Koppints egy feladatra, ekkor indul az óra. A segítő fele is itt van.', 'Tryk på en opgave for at starte uret. Hjælperens halvdel er også her.'],
   'cap.over': ['Tap a task to zoom in.', 'Koppints egy feladatra a nagyításhoz.', 'Tryk på en opgave for at zoome ind.'],
   'cap.over.more': ['Turn the bomb to see the tasks on the back.', 'Fordítsd meg a bombát, hogy lásd a hátoldalon lévő feladatokat.', 'Vend bomben for at se opgaverne på bagsiden.'],
   'cap.under': ['The serial number and the batteries are here. Your partner may ask about them.', 'Itt van a sorozatszám és az elemek. A társad rákérdezhet ezekre.', 'Her står serienummeret og batterierne. Din makker spørger måske om dem.'],
@@ -4517,6 +4552,17 @@ var ES_PHRASES = [
     'p.start': ['Start', 'Kezdés', 'Start'],
     'p.unit': ['Unit {0}', '{0}. egység', 'Enhed {0}'],
     'p.solo': ['Alone on one screen', 'Egyedül, egy képernyőn', 'Alene på én skærm'],
+    'm.solo': ['Solo', 'Egyedül', 'Solo'], 'm.solo.d': ['You do both halves on one phone.', 'Mindkét felét te oldod meg, egy telefonon.', 'Du klarer begge halvdele på én telefon.'],
+    'm.coop': ['Together', 'Együtt', 'Sammen'], 'm.coop.d': ['One has the bomb, the other helps.', 'Egyikőtöknél a bomba, a másik segít.', 'Én har bomben, den anden hjælper.'],
+    'm.vs': ['Versus', 'Párbaj', 'Duel'], 'm.vs.d': ['Same bomb on both phones. Faster wins.', 'Ugyanaz a bomba mindkét telefonon. A gyorsabb nyer.', 'Samme bombe på begge telefoner. Den hurtigste vinder.'],
+    'm.back': ['Back', 'Vissza', 'Tilbage'],
+    'vs.link': ['Connect with your rival', 'Kapcsolódj az ellenfeledhez', 'Forbind dig med din modstander'],
+    'vs.wait': ['Waiting for your rival', 'Várjuk az ellenfeled', 'Venter på din modstander'],
+    'vs.you': ['You', 'Te', 'Dig'], 'vs.them': ['Rival', 'Ellenfél', 'Modstander'],
+    'vs.win': ['You win!', 'Nyertél!', 'Du vinder!'], 'vs.lose': ['Your rival wins', 'Az ellenfeled nyert', 'Din modstander vinder'], 'vs.draw': ['Draw', 'Döntetlen', 'Uafgjort'],
+    'vs.still': ['Your rival is still playing', 'Az ellenfeled még játszik', 'Din modstander spiller stadig'],
+    'vs.pts': ['points', 'pont', 'point'], 'vs.again': ['Rematch', 'Visszavágó', 'Revanche'], 'vs.go': ['Go!', 'Rajt!', 'Start!'],
+    'vs.quit': ['Gave up', 'Feladta', 'Gav op'],
     'p.place': ['Find my level', 'Szintfelmérő', 'Find mit niveau'],
     'p.placed': ['Your level', 'A szinted', 'Dit niveau'],
     'p.classic': ['Classic bombs (Danish, English, Hungarian)', 'Klasszikus bombák (dán, angol, magyar)', 'Klassiske bomber (dansk, engelsk, ungarsk)'],
@@ -4604,7 +4650,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 45;
+  var BUILD = 47;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4829,7 +4875,7 @@ var ES_PHRASES = [
   }
   function voiceChanged() {
     if (S.drawer) renderDrawer();
-    if (helperVisible()) renderHelpBody();
+    if (helpShown()) renderHelpBody();
   }
   var SPK = '<svg class="spk" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   function sayBtn(text, small) {
@@ -5199,13 +5245,14 @@ var ES_PHRASES = [
     if (x.k === 'bye') { if (x.lead && !PAIR.lead) { pairStop(); PAIR = null; pairSave(); pairPaint(); return; } PAIR.peer = false; pairPaint(); return; }
     PAIR.peer = true; PAIR.seen = Date.now();
     /* the leader keeps repeating its choice, so a phone that missed the start still joins */
-    if (x.k === 'ping') { if (!PAIR.lead && x.cur) pairFollow(x.cur, 'ping'); if (!was) pairPaint(); return; }
+    if (x.k === 'vs') { vsGot(x); if (!was) { pairPaint(); vsPending(); } return; }
+    if (x.k === 'ping') { if (!PAIR.lead && x.cur) pairFollow(x.cur, 'ping'); if (!was) { pairPaint(); vsPending(); } return; }
     if (x.k === 'hi') pairPost(PAIR.lead ? { k: 'here', cur: PAIR.cur } : { k: 'here' });
     /* whoever picks a bomb last, the other phone follows: the leader too, when the other phone picked */
     if (x.cur && x.k === 'go') { if (PAIR.lead && !(x.cur.n < (PAIR.top || 0))) PAIR.cur = x.cur; pairFollow(x.cur, false); }
     else if (!PAIR.lead && x.cur && (x.k === 'here' || x.k === 'hi')) pairFollow(x.cur, true);
     if (!was) { sfx('ok'); setTimeout(function () { if (S.drawer === 'pair' && PAIR && PAIR.peer) { S.drawer = null; renderDrawer(); } }, 1400); }
-    pairPaint();
+    pairPaint(); if (!was) vsPending();
   }
   /* the follower takes the other role on the station the leader chose */
   function pairFollow(cur, soft) {
@@ -5217,13 +5264,13 @@ var ES_PHRASES = [
     if (cur.n < (PAIR.top || 0)) return;
     var spec = makeSpec(cur.code); if (!spec) return;
     PAIR.done = cur.n; PAIR.top = cur.n; pairSave();
-    var role = cur.role === 'bomb' ? 'help' : 'bomb';
-    S.drawer = null; S.sheet = null; renderDrawer(); linkStop(); stopLoop(); clearTimers(); document.body.classList.remove('boom');
+    var role = cur.role === 'vs' ? 'vs' : cur.role === 'bomb' ? 'help' : 'bomb';
+    S.drawer = null; S.sheet = null; S.mstep = null; S.pendVs = null; renderDrawer(); linkStop(); stopLoop(); clearTimers(); vsStop(); document.body.classList.remove('boom');
     S.solo = false; S.game = null;
     if (spec.path) { S.sel.course = spec.lang; S.sel.plv = spec.level; save(); play(cur.code, role); return; }
     if (spec.party) { S.sel.course = spec.lang; save(); play(cur.code, role); return; }
     S.sel.lang = spec.lang; S.sel.level = spec.level; S.sel.mission = spec.mission; save();
-    warmUp(spec, { a: role === 'bomb' ? 'get' : 'join' });
+    warmUp(spec, role === 'vs' ? { a: 'vs', code: cur.code } : { a: role === 'bomb' ? 'get' : 'join' });
   }
   /* the leader's choice goes to the other phone */
   function pairLead(code, role) {
@@ -5267,7 +5314,7 @@ var ES_PHRASES = [
     var pb = document.querySelector('.pairbig'); if (pb) pb.outerHTML = pb.classList.contains('hub-t') ? pairTile() : pairBig();
     if (S.drawer === 'pair') { var d = document.querySelector('.drawer .pair'); if (d) d.outerHTML = pairHTML(); }
     if (S.sheet) renderDrawer();
-    if (S.screen === 'result' && S.spec) { var w = document.querySelector('.ctas'); if (w && pairBlocked() !== !!document.querySelector('.ctas .pair-wait')) render(); }
+    if (S.screen === 'result' && S.spec && !S.vs) { var w = document.querySelector('.ctas'); if (w && pairBlocked() !== !!document.querySelector('.ctas .pair-wait')) render(); }
   }
   /* the big "Play together" button at the top of the start page */
   function pairBig() {
@@ -5320,7 +5367,7 @@ var ES_PHRASES = [
     setTimeout(function () { var s2 = $('#stage'); if (s2) s2.classList.remove(cls); }, ms);
   }
   function strike() {
-    var g = S.game; g.strikes++; sfx('strike'); paintHud(); fx('hit', 520);
+    var g = S.game; g.strikes++; sfx('strike'); paintHud(); fx('hit', 520); vsProg();
     if (g.strikes >= S.spec.maxStrikes) explode('mist');
   }
   /* asking the game to write something down costs ten seconds */
@@ -5332,14 +5379,14 @@ var ES_PHRASES = [
     if (hud) { hud.classList.remove('pen'); void hud.offsetWidth; hud.classList.add('pen'); setTimeout(function () { var h2 = $('#hud'); if (h2) h2.classList.remove('pen'); }, 1300); }
   }
   function solvedFx(i) {
-    var g = S.game; sfx('ok'); paintHud();
+    var g = S.game; sfx('ok'); paintHud(); vsProg();
     if (g.solved.every(Boolean)) { defuse(); return; }
-    var nx = nextTask(); S.tab = nx;
+    var nx = nextTask(); S.tab = nx; paintSoloPane();
     if (helperVisible()) { render(); var sc2 = $('.man-scroll'); if (sc2) sc2.scrollTop = 0; }
     setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
   function finish(boom) {
-    melStop(); FB.last = fbCtx();
+    melStop(); FB.last = fbCtx(); vsEnd();
     if (pairLeader() && PAIR.cur && S.spec && PAIR.cur.code === S.spec.code) { PAIR.cur = null; pairSave(); }
     linkSend(); stopLoop(); clearTimers();
     var go = function () { document.body.classList.remove('boom'); S.screen = 'result'; render(); window.scrollTo(0, 0); };
@@ -5360,7 +5407,7 @@ var ES_PHRASES = [
     finish(false);
   }
   function modAct(i, k, v, remote) {
-    var g = S.game; if (!g || g.over || g.paused || g.solved[i]) return;
+    var g = S.game; if (!g || g.over || g.paused || g.hold || g.solved[i]) return;
     var m = S.spec.modules[i];
     if (S.view.focus !== i && !remote) return;
     var res = UI[m.t].on(k, v, m.data, g.ms[i], i);
@@ -5428,19 +5475,19 @@ var ES_PHRASES = [
     return true;
   }
   function setFocus(i) {
-    var g = S.game, v = S.view; if (!g || g.over || g.paused || !v.place) return;
+    var g = S.game, v = S.view; if (!g || g.over || g.paused || g.hold || !v.place) return;
     if (v.place[i].face !== v.face) return;
     var old = v.focus; if (old === i) return;
     if (!g.started) { g.started = true; g.last = Date.now(); }
     v.focus = i; v.lockS = 0;
     if (old != null) renderMod(old);
-    renderMod(i); paintToolbar(); paintCaption(); applyView(true); sfx('zoom');
+    renderMod(i); paintToolbar(); paintCaption(); paintSoloPane(); applyView(true); sfx('zoom');
     if (!focusField(i)) { var el = document.getElementById('mod-' + i); if (el) { try { el.focus({ preventScroll: true }); } catch (e) {} } }
   }
   function nextTask() { var g = S.game; if (!g) return -1; for (var k = 0; k < g.solved.length; k++) if (!g.solved[k]) return k; return -1; }
   /* the bomb always shows the task to solve now: the first one at the start, the next one after each success */
   function goTask(i) {
-    var g = S.game, v = S.view; if (!g || g.over || g.paused || !v || !v.place || i < 0 || S.screen !== 'bomb') return;
+    var g = S.game, v = S.view; if (!g || g.over || g.paused || g.hold || !v || !v.place || i < 0 || S.screen !== 'bomb') return;
     if (S.solo && S.soloView === 'manual') return;
     var face = v.place[i].face;
     if (face !== v.face) {
@@ -5906,7 +5953,7 @@ var ES_PHRASES = [
       if (!ms.cd) { clearInterval(iv); return; }
       ms.cd.n--;
       if (ms.cd.n <= 0) { clearInterval(iv); ms.rev[ms.cd.key] = true; ms.cd = null; }
-      if (!helperVisible() || S.tab !== i) return;
+      if (!helpShown() || S.tab !== i) return;
       /* while it counts only the label changes, so that somebody who is typing is not disturbed */
       var b = ms.cd && document.querySelector('#man-body [data-k="reveal"][data-v="' + ms.cd.key + '"]');
       if (b) b.textContent = t('write.wait', ms.cd.n); else renderHelpBody();
@@ -5919,7 +5966,7 @@ var ES_PHRASES = [
       var text = textOf(v); if (text == null) return true;
       if (!Voice.has()) { ms.rev[v] = true; renderHelpBody(); return true; }
       /* a voice that fails must not stop the game: what it could not read is written down, at no cost */
-      Voice.speak(text, k === 'slow' || ms.slow ? 0.7 : 1).then(function (ok) { if (!ok) { ms.rev[v] = true; ms.vf = ms.vf || {}; ms.vf[v] = true; if (helperVisible() && S.tab === i) renderHelpBody(); } });
+      Voice.speak(text, k === 'slow' || ms.slow ? 0.7 : 1).then(function (ok) { if (!ok) { ms.rev[v] = true; ms.vf = ms.vf || {}; ms.vf[v] = true; if (helpShown() && S.tab === i) renderHelpBody(); } });
       return true;
     }
     if (k === 'reveal') { startReveal(ms, v, i); return true; }
@@ -6293,7 +6340,7 @@ var ES_PHRASES = [
     S.wopen[k] = true; S.wnew = k;
     wAdd(tl(), k, ctx, S.spec ? S.spec.code : '');
     if (S.screen === 'bomb' && S.game && !S.game.over) penalty(3); else sfx('pen');
-    if (helperVisible()) renderHelpBody();
+    if (helpShown()) renderHelpBody();
     else if (S.screen === 'bomb' && S.view && S.view.focus != null) renderMod(S.view.focus);
     else render();
     S.wnew = null;
@@ -7356,16 +7403,116 @@ var ES_PHRASES = [
     if (cur) { try { cur.scrollIntoView({ block: 'center', behavior: reduced() ? 'auto' : 'smooth' }); } catch (e) { cur.scrollIntoView(); } }
   }
 
+  /* ---------- solo, together or versus ----------
+     Solo: one phone, the player flips between the bomb and the helper's page.
+     Together: one phone holds the bomb, the other the helper's page (as before).
+     Versus: both phones get the same bomb in solo view; the clock starts on both after 3-2-1; points decide. */
+  function modeCode() { return S.sheet || fixedCode(S.sel.lang, S.sel.mission, S.sel.level); }
+  function modePick(m) {
+    if (pairBlocked()) { S.drawer = 'pair'; renderDrawer(); return; }
+    if (m === 'coop') { S.mstep = 'coop'; if (S.sheet) renderDrawer(); else render(); return; }
+    var code = modeCode(); S.mstep = null;
+    if (m === 'vs') { vsStart(code); return; }
+    if (S.sheet) play(code, 'solo'); else warmUp(makeSpec(code), { a: 'solo' });
+  }
+  /* versus needs the two phones linked first: the pairing drawer opens, and the game starts once they are */
+  function vsStart(code) {
+    if (!pairLive()) { S.pendVs = code; S.sheet = null; S.drawer = 'pair'; renderDrawer(); return; }
+    S.pendVs = null; pairLead(code, 'vs'); vsPlay(code);
+  }
+  function vsPending() { if (S.pendVs && pairLive()) { var c = S.pendVs; S.pendVs = null; S.drawer = null; renderDrawer(); vsStart(c); } }
+  function vsPlay(code) {
+    var spec = makeSpec(code); if (!spec) return;
+    linkStop(); stopLoop(); clearTimers(); vsStop(); document.body.classList.remove('boom'); S.sheet = null; renderDrawer();
+    if (spec.path || spec.party) { play(code, 'vs'); return; }
+    S.sel.lang = spec.lang; S.sel.level = spec.level; S.sel.mission = spec.mission; save();
+    warmUp(spec, { a: 'vs', code: code });
+  }
+  var VSI = null;
+  function vsStop() { if (VSI) clearInterval(VSI); VSI = null; S.vs = null; }
+  function vsPost(s, o) { if (!S.vs) return; o = o || {}; o.k = 'vs'; o.m = S.vs.m; o.s = s; pairPost(o); }
+  function vsBegin() {
+    var g = S.game;
+    S.vs = { m: PAIR ? PAIR.top : 0, them: { ready: false, solved: 0, x: 0, end: null }, mine: null, ack: false, cd: 0 };
+    g.calm = false; g.hold = true;
+    vsPost('ready');
+    /* keep saying "ready" until the other phone is in, and the final score until it is heard */
+    VSI = setInterval(function () {
+      var V = S.vs; if (!V) return;
+      if (S.game && S.game.hold && !V.cd) vsPost('ready');
+      else if (V.mine && !V.ack) vsPost('end', V.mine);
+    }, 1500);
+  }
+  function vsPts(g) {
+    var solved = g.solved.filter(Boolean).length, ok = g.over === 'ok';
+    return Math.max(0, 100 * solved + (ok ? Math.ceil(Math.max(0, g.dur - g.elapsed) / 1000) : 0) - 30 * g.strikes);
+  }
+  function vsMine() { var g = S.game; return { ok: g.over === 'ok' ? 1 : 0, quit: g.quit ? 1 : 0, pts: vsPts(g), solved: g.solved.filter(Boolean).length, n: g.solved.length, left: Math.max(0, g.dur - g.elapsed), x: g.strikes }; }
+  function vsProg() { var g = S.game; if (S.vs && g) vsPost('prog', { solved: g.solved.filter(Boolean).length, x: g.strikes }); }
+  function vsEnd() { if (!S.vs || !S.game || S.vs.mine) return; S.vs.mine = vsMine(); vsPost('end', S.vs.mine); }
+  function vsGot(x) {
+    var V = S.vs; if (!V || x.m !== V.m) return;
+    var T = V.them;
+    if (x.s === 'ready') { if (!T.ready) { T.ready = true; vsPost('ready'); } vsCount(); return; }
+    if (x.s === 'prog') { T.ready = true; T.solved = x.solved || 0; T.x = x.x || 0; vsPaint(); if (V.mine && S.screen === 'result') render(); return; }
+    if (x.s === 'end') { vsPost('got'); if (T.end) return; T.ready = true; T.end = { ok: x.ok, quit: x.quit, pts: x.pts || 0, solved: x.solved || 0, n: x.n, left: x.left || 0, x: x.x || 0 }; T.solved = T.end.solved; vsPaint(); if (S.screen === 'result') { render(); if (vsWon() === 1) sfx('win'); } return; }
+    if (x.s === 'got') V.ack = true;
+  }
+  /* both phones are in: 3, 2, 1, go */
+  function vsCount() {
+    var V = S.vs, g = S.game; if (!V || !g || !g.hold || V.cd || !V.them.ready) return;
+    V.cd = Date.now();
+    var n = 3;
+    (function step() {
+      if (S.vs !== V || S.game !== g) return;
+      var el = $('#vs-hold');
+      if (n > 0) { if (el) el.innerHTML = '<b class="vs-cd">' + n + '</b>'; sfx('tick'); n--; setTimeout(step, 800); return; }
+      if (el) el.innerHTML = '<b class="vs-cd">' + t('vs.go') + '</b>';
+      sfx('arm');
+      setTimeout(function () { if (S.vs !== V || S.game !== g) return; g.hold = false; var h = $('#vs-hold'); if (h) h.remove(); goTask(0); }, 450);
+    })();
+  }
+  function vsHoldHTML() {
+    return modePic('vs') + '<p>' + t('vs.wait') + '</p>' + waitDots() + '<button type="button" class="link" data-a="vs-alone">' + t('pair.alone') + '</button><button type="button" class="link" data-a="home">' + t('bar.home') + '</button>';
+  }
+  /* the rival left or never came: carry on alone, same bomb */
+  function vsAlone() { var g = S.game; vsStop(); if (!g) return; g.hold = false; render(); goTask(0); }
+  function vsThemTxt() { var V = S.vs; if (!V || !S.spec) return ''; var n = S.spec.modules.length, s = ''; for (var k = 0; k < n; k++) s += k < V.them.solved ? '●' : '○'; return s + (V.them.end ? (V.them.end.ok ? ' ✓' : ' 💥') : ''); }
+  function vsPaint() { var el = $('#vs-them'); if (el) el.textContent = vsThemTxt(); }
+  /* 1 = I won, -1 = they won, 0 = draw, null = not both done */
+  function vsWon() { var V = S.vs; if (!V || !V.mine || !V.them.end) return null; var a = V.mine.pts, b = V.them.end.pts; return a > b ? 1 : a < b ? -1 : 0; }
+  function vsCard(name, r, live, top, col) {
+    var n = S.spec.modules.length;
+    var pic = '<svg viewBox="0 0 22 36" aria-hidden="true">' + vsFig(col, 0, 0) + '</svg>';
+    if (!r) return '<div class="vsc">' + pic + '<span class="vn">' + name + '</span>' + waitDots() + '<span class="vs-s">' + t('x.of.y', live.solved, n) + ' ✓</span></div>';
+    return '<div class="vsc' + (top ? ' top' : '') + '">' + pic + '<span class="vn">' + name + '</span><b class="vp">' + r.pts + '</b><span class="vs-s">' + t('vs.pts') + '</span>' +
+      '<span class="vs-s">' + (r.quit ? t('vs.quit') : r.ok ? '✓ ' + fmtTime(r.left) : '💥') + ' · ' + t('x.of.y', r.solved, r.n || n) + '</span></div>';
+  }
+  function viewVsResult() {
+    var V = S.vs, g = S.game, spec = S.spec, w = vsWon(), done = w !== null, recap = '';
+    spec.modules.forEach(function (m, i) { var rows = UI[m.t].recap(m.data, g.ms[i]); if (rows.length) recap += '<section><h3 lang="' + tl() + '">' + esc(modName(m.t)) + '</h3>' + learn(rows) + '</section>'; });
+    var head = !done ? t('vs.still') : w > 0 ? t('vs.win') : w < 0 ? t('vs.lose') : t('vs.draw');
+    return (done && w > 0 ? confetti() : '') + '<div class="result ' + (!done || w >= 0 ? 'won' : 'lost') + '"><div><p class="eyebrow">⚔️ ' + t('m.vs') + ' · ' + bombTag(spec) + '</p>' +
+      (done ? '<h1 data-fit>' + head + '</h1>' : '<h2 class="vs-still">' + head + '</h2>' + waitDots()) + '</div>' +
+      '<div class="vsr">' + vsCard(t('vs.you'), V.mine, null, done && w >= 0, '#FF9F1C') + vsCard(t('vs.them'), V.them.end, V.them, done && w <= 0, '#9B5DE5') + '</div>' +
+      '<div class="ctas">' + (done ? '<button type="button" class="cta" data-a="vs-again">⚔️ ' + t('vs.again') + '</button>' : '') +
+      '<button type="button" class="hb big" data-a="home">' + t('bar.home') + '</button></div>' +
+      (recap ? '<div class="recap"><h2>' + t('res.recap') + '</h2>' + recap + '</div>' : '') + '</div>';
+  }
+  function vsAgain() {
+    var spec = S.spec; if (!spec) return;
+    var code = spec.code;
+    if (spec.party) { var pa = parsePartyCode(spec.code); code = partyNew(pa.lang, pa.n); }
+    vsStop(); vsStart(code);
+  }
+
   /* ---------- the station card that slides up from below ---------- */
   function partySheet() {
     var p = parsePartyCode(S.sheet); if (!p) return '';
     var boss = p.n > BOSS0, g = boss ? 'boss' : cultGame(p.n) || PARTY_GAMES[p.n - 1], name = boss ? 'Dead Air · ' + (p.n - BOSS0) : g ? PACK[p.lang].mod[g = partyGame(g, p.lang)] : t('party.mix');
     return '<div class="scrim" data-a="sheet-close"></div><aside class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">' +
       '<p class="sh-tag">🎉 ' + FLAG[p.lang] + '</p><h2 id="sh-t" lang="' + p.lang + '"><span aria-hidden="true">' + (boss ? '📻' : g ? PARTY_ICON[g] : '🎲') + '</span> ' + esc(name) + '</h2>' +
-      (pairBlocked() ? pairWaitHTML() + '</aside>' :
-      '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
-      '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
-      (pairOn() ? '' : '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button>') + '</div></aside>');
+      sheetBtns() + '</aside>';
   }
   /* ---------- the party screen: ten games, and a mix ---------- */
   function partyStars(L, n) { return S.prog['X:' + L + ':' + n] || 0; }
@@ -7426,6 +7573,30 @@ var ES_PHRASES = [
       '<button type="button" class="hub-t t-test" data-a="ptest"><span class="hub-i">' + HUB_I.test + '</span><b>' + t('p.place') + '</b></button>' +
       '<button type="button" class="hub-t t-snake" data-a="snake"><span class="hub-i">' + HUB_I.snake + '</span><b>' + t('p.snake') + '</b></button></div>';
   }
+  /* who plays with whom: little people and their phones */
+  function vsFig(c, x, y) { return '<g transform="translate(' + x + ' ' + (y || 0) + ')"><circle cx="11" cy="8" r="6.5" fill="' + c + '"/><path d="M0 36c0-9 4.8-14.5 11-14.5S22 27 22 36z" fill="' + c + '"/></g>'; }
+  function vsPhone(x) { return '<rect x="' + x + '" y="15" width="11" height="19" rx="2.5" fill="#fff" stroke="#15181C" stroke-width="2.2"/><rect x="' + (x + 3) + '" y="18" width="5" height="10" rx="1" fill="#FFC83D"/>'; }
+  function modePic(m) {
+    var h = '<svg viewBox="0 0 76 40" aria-hidden="true">';
+    if (m === 'solo') h += vsFig('#49C0F0', 16, 2) + vsPhone(44);
+    else if (m === 'coop') h += vsFig('#58CC02', 6, 2) + vsFig('#3F9A00', 48, 2) + '<path d="M30 22c3-4 13-4 16 0" fill="none" stroke="#58CC02" stroke-width="3" stroke-linecap="round"/><circle cx="38" cy="14" r="4.5" fill="#FF5B61"/>';
+    else h += vsFig('#FF9F1C', 4, 2) + vsFig('#9B5DE5', 50, 2) + '<path d="M41 6 32 22h7l-3 13 10-17h-7z" fill="#FFC83D" stroke="#15181C" stroke-width="1.5" stroke-linejoin="round"/>';
+    return h + '</svg>';
+  }
+  function modesHTML() {
+    if (S.mstep === 'coop') return '';
+    return '<div class="modes3" role="group">' + ['solo', 'coop', 'vs'].map(function (m) {
+      return '<button type="button" class="mode3 m-' + m + '" data-a="mode" data-v="' + m + '">' + modePic(m) + '<b>' + t('m.' + m) + '</b><span class="md">' + t('m.' + m + '.d') + '</span></button>';
+    }).join('') + '</div>';
+  }
+  /* the station card: first who plays with whom, then (together) who holds the bomb */
+  function sheetBtns() {
+    if (pairBlocked()) return pairWaitHTML();
+    if (S.mstep !== 'coop') return '<div class="sh-btns">' + modesHTML() + '</div>';
+    return '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
+      '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
+      '<button type="button" class="link mback" data-a="mback">← ' + t('m.back') + '</button></div>';
+  }
   function partyBig() { return '<button type="button" class="partybig" data-a="party"><span class="pb-i" aria-hidden="true">🎉</span><b>' + t('party') + '</b><span class="pb-go" aria-hidden="true">→</span></button>'; }
   function sheetHTML() {
     if (/^X:/.test(String(S.sheet || ''))) return partySheet();
@@ -7437,13 +7608,10 @@ var ES_PHRASES = [
       '<h2 id="sh-t">' + esc(st.t[ui()] || st.t.en) + '</h2>' +
       '<p class="sh-ex" lang="' + p.lang + '">' + exHTML(ex) + '</p>' +
       (due ? '<p class="sh-due">' + ICON_CARDS + t('p.due', due) + '</p>' : '') +
-      (pairBlocked() ? pairWaitHTML() + '</aside>' :
-      '<div class="sh-btns"><button type="button" class="dbtn go" data-a="play" data-v="bomb">' + t('role.bomb') + '</button>' +
-      '<button type="button" class="dbtn" data-a="play" data-v="help">' + t('role.help') + '</button>' +
-      (pairOn() ? '' : '<button type="button" class="link" data-a="play" data-v="solo">' + t('p.solo') + '</button>') + '</div></aside>');
+      sheetBtns() + '</aside>';
   }
-  function openSheet(code) { S.sheet = code; renderDrawer(); var b = $('.sheet .dbtn'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
-  function closeSheet() { S.sheet = null; renderDrawer(); }
+  function openSheet(code) { S.sheet = code; S.mstep = null; renderDrawer(); var b = $('.sheet .dbtn'); if (b) { try { b.focus({ preventScroll: true }); } catch (e) {} } }
+  function closeSheet() { S.sheet = null; S.mstep = null; renderDrawer(); }
 
 
   /* ---------- before every bomb: three words and three sentences the level uses ---------- */
@@ -7498,6 +7666,7 @@ var ES_PHRASES = [
     var W = S.warm; S.warm = null; if (!W) { S.screen = 'home'; render(); return; }
     var th = W.then;
     if (th.path) play2(th.code, th.role);
+    else if (th.a === 'vs') go(th.code, 'vs');
     else if (th.a === 'join') { S.codeInput = fixedCode(S.sel.lang, S.sel.mission, S.sel.level); openCode(); }
     else newBomb(th.a === 'solo');
   }
@@ -7530,10 +7699,10 @@ var ES_PHRASES = [
       S.spec = spec; S.code = spec.code; S.solo = false; S.game = null; S.man = {}; S.tab = 0; S.screen = 'helper'; linkListen(spec);
       render(); window.scrollTo(0, 0); return;
     }
-    launch(spec, role === 'solo');
+    launch(spec, role === 'solo' || role === 'vs', role === 'vs');
   }
-  function launch(spec, solo) {
-    clearTimers();
+  function launch(spec, solo, vs) {
+    clearTimers(); vsStop();
     S.solo = !!solo; S.code = spec.code; S.spec = spec; S.wopen = S.wopen || {};
     S.game = {
       dur: spec.time * 1000, elapsed: 0, last: Date.now(), started: false, strikes: 0, hints: 0,
@@ -7543,8 +7712,10 @@ var ES_PHRASES = [
     };
     S.view = freshView();
     S.man = {}; S.tab = 0; S.soloView = 'bomb'; S.screen = 'bomb';
+    if (vs) vsBegin();
     save(); sfx('arm'); render(); startLoop(); window.scrollTo(0, 0);
-    var g0 = S.game; setTimeout(function () { if (S.game === g0 && !g0.started) goTask(0); }, 1700);
+    var g0 = S.game; if (vs) return;
+    setTimeout(function () { if (S.game === g0 && !g0.started) goTask(0); }, 1700);
   }
   function nextCode(code) { var p = parsePathCode(code), list = courseList(p.lang), k = list.indexOf(code); return list[Math.min(k + 1, list.length - 1)]; }
   /* the result of a station: stars, XP, the streak, and words that got stronger */
@@ -7776,6 +7947,22 @@ var ES_PHRASES = [
   }
 
   /* ===== part D: screens, events, start-up ===== */
+  /* solo: the helper's half sits beside (or under) the bomb, for the task being solved */
+  function soloPaneOn() { return S.screen === 'bomb' && S.solo && S.soloView !== 'manual' && !!S.game && !S.game.paused && !!document.getElementById('solo-pane'); }
+  function helpShown() { return helperVisible() || soloPaneOn(); }
+  function soloTab() { var g = S.game, f = S.view && S.view.focus; return f != null && f >= 0 && !g.solved[f] ? f : Math.max(0, nextTask()); }
+  function soloPaneHTML() {
+    var spec = S.spec, i = S.tab = soloTab();
+    spec.modules.forEach(function (m, k) { if (UI[m.t].pos && S.game.ms[k]) manState(k).step = UI[m.t].pos(m.data, S.game.ms[k]); });
+    var side = sideHTML(i), after = afterHTML(i);
+    return '<div class="paper-wrap"><div class="manual"><div class="man-cols" id="man-cols"><article class="chapter" id="man-body">' + chapterHTML(i) + '</article>' +
+      (side ? '<aside class="side" id="man-side">' + side + '</aside>' : '') + (after ? '<div class="chapter after" id="man-after">' + after + '</div>' : '') + '</div></div></div>';
+  }
+  function paintSoloPane() {
+    var el = document.getElementById('solo-pane'); if (!el || !S.game) return;
+    var was = S.tab, ae = document.activeElement; if (ae && el.contains(ae) && soloTab() === was) { renderHelpBody(); return; }
+    el.innerHTML = soloPaneHTML(); if (S.tab !== was) el.scrollTop = 0;
+  }
   function helperVisible() { return S.screen === 'helper' || (S.screen === 'bomb' && S.solo && S.soloView === 'manual'); }
   function stars(n) { var s = ''; for (var k = 0; k < 3; k++) s += k < n ? '★' : '☆'; return s; }
   var ICON_BOMB = '<svg class="role-i" viewBox="0 0 96 72" aria-hidden="true"><path d="M30 15v-5a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v5" fill="none" stroke="#9aa3ab" stroke-width="5"/><rect x="6" y="14" width="84" height="54" rx="6" fill="var(--enamel)"/><rect x="33" y="24" width="30" height="16" rx="2" fill="#140406"/><path d="M38 36v-8h5v8zM47 36v-8h5v8M56 28v8" fill="none" stroke="var(--signal)" stroke-width="2"/><path d="M13 28q7-6 14 0M13 40q7 6 14 0M69 28q7-6 14 0M69 40q7 6 14 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="48" cy="54" r="4.5" fill="#ff4040"/></svg>';
@@ -7807,14 +7994,15 @@ var ES_PHRASES = [
       '<p class="premise">' + t('home.sub', tIn()) + '</p>' +
       '<div class="field"><span class="flabel" id="l-lang">' + t('home.learn') + '</span><div class="seg3 langs" role="group" aria-labelledby="l-lang">' + langs + '</div></div></header>' +
       '<section class="roles" aria-labelledby="l-role"><h2 class="sr" id="l-role">' + t('home.pick') + '</h2>' +
+      (S.mstep !== 'coop' ? modesHTML() :
       '<button type="button" class="role r-bomb" data-a="get">' + ICON_BOMB + '<b>' + t('role.bomb') + '</b><span class="role-d">' + t('role.bomb.d') + '</span><span class="role-go">' + t('role.bomb.go') + '</span></button>' +
-      '<button type="button" class="role r-help" data-a="join">' + ICON_BOOK + '<b>' + t('role.help') + '</b><span class="role-d">' + t('role.help.d') + '</span><span class="role-go">' + t('role.help.go') + '</span></button></section>' +
+      '<button type="button" class="role r-help" data-a="join">' + ICON_BOOK + '<b>' + t('role.help') + '</b><span class="role-d">' + t('role.help.d') + '</span><span class="role-go">' + t('role.help.go') + '</span></button>' +
+      '<button type="button" class="link mback" data-a="mback">← ' + t('m.back') + '</button>') + '</section>' +
       '<section class="bset" aria-labelledby="l-opts"><h2 id="l-opts">' + t('home.opts') + '</h2><p class="opts-d">' + t('home.opts.d') + '</p>' +
       '<div class="opts-row"><div class="field"><span class="flabel" id="l-level">' + t('home.level') + '</span><div class="seg3" role="group" aria-labelledby="l-level">' + levels + '</div></div>' +
       '<div class="field"><span class="flabel" id="l-bomb">' + t('home.bomb') + '</span><div class="seg3 bombs" role="group" aria-labelledby="l-bomb">' + bombs + '</div></div></div>' +
       '<p class="bomb-d">' + esc(missionText(S.sel.mission)) + '</p>' +
-      '<label class="check"><input type="checkbox" id="calm" data-a="calm"' + (S.sel.calm ? ' checked' : '') + '><span>' + t('home.calm') + '</span></label>' +
-      '<button type="button" class="link" data-a="solo">' + t('home.solo') + '</button></section>' +
+      '<label class="check"><input type="checkbox" id="calm" data-a="calm"' + (S.sel.calm ? ' checked' : '') + '><span>' + t('home.calm') + '</span></label></section>' +
       '';
   }
 
@@ -7833,7 +8021,7 @@ var ES_PHRASES = [
   function lampsHTML() { var g = S.game, h = ''; for (var k = 0; k < S.spec.maxStrikes; k++) h += '<i class="lamp' + (k < g.strikes ? ' on' : '') + '"></i>'; return h; }
   function hudHTML() {
     var g = S.game, spec = S.spec;
-    return '<header class="hud" id="hud"><div class="hud-l"><span class="lbl">' + t('hud.code') + '</span><b class="code">' + bombTag(spec) + '</b></div>' +
+    return '<header class="hud" id="hud"><div class="hud-l">' + (S.vs ? '<span class="lbl">⚔️ ' + t('vs.them') + '</span><b class="vs-them" id="vs-them">' + vsThemTxt() + '</b>' : '<span class="lbl">' + t('hud.code') + '</span><b class="code">' + bombTag(spec) + '</b>') + '</div>' +
       '<div class="hud-m"><span class="lbl">' + t(g.calm ? 'hud.used' : 'hud.left') + '</span><span class="segs" aria-hidden="true">' + seg7('h0') + seg7('h1') + '<i class="colon"></i>' + seg7('h2') + seg7('h3') + '</span><span class="pen-fly" aria-hidden="true">' + t('pen', 10) + '</span><span class="sr" id="t-sr" role="timer"></span></div>' +
       '<div class="hud-r"><span class="lbl">' + t('hud.mist') + '</span><span class="lamps" id="hud-lamps" role="img" aria-label="' + esc(t('hud.mist.n', g.strikes, spec.maxStrikes)) + '">' + lampsHTML() + '</span></div></header>';
   }
@@ -7871,7 +8059,7 @@ var ES_PHRASES = [
   function modHTML(i) {
     var g = S.game, v = S.view, m = S.spec.modules[i], name = modName(m.t), solved = g.solved[i], focus = v.focus === i, body;
     if (solved) body = '<p class="okline">' + t('solved') + '</p><div class="donebox">' + (UI[m.t].done ? UI[m.t].done(m.data, g.ms[i], i) : '') + '</div>';
-    else body = (focus ? guideHTML(m.t, 'bomb', UI[m.t].bwait ? UI[m.t].bwait(m.data, g.ms[i]) : null) : '') + UI[m.t].bomb(m.data, g.ms[i], i);
+    else body = (focus && !S.solo ? guideHTML(m.t, 'bomb', UI[m.t].bwait ? UI[m.t].bwait(m.data, g.ms[i]) : null) : '') + UI[m.t].bomb(m.data, g.ms[i], i);
     return '<section class="panel mod m-' + m.t + (solved ? ' solved' : '') + (focus ? ' focus' : '') + '" id="mod-' + i + '" tabindex="-1" style="' + cellStyle(v.place[i].cell) + '" aria-label="' + esc(name) + '">' +
       '<header class="p-h"><h3 lang="' + tl() + '">' + esc(name) + '</h3><span class="led" role="img" aria-label="' + esc(t(solved ? 'solved' : 'unsolved')) + '"></span></header>' +
       '<div class="p-b"' + (focus ? '' : ' inert') + '>' + body + '</div>' +
@@ -7886,6 +8074,7 @@ var ES_PHRASES = [
       else if (ae.getAttribute('data-k')) key = '[data-k="' + ae.getAttribute('data-k') + '"]' + (ae.getAttribute('data-v') != null ? '[data-v="' + ae.getAttribute('data-v') + '"]' : '');
     }
     el.outerHTML = modHTML(i);
+    if (S.solo && i === S.tab) paintSoloPane();
     var n = document.getElementById('mod-' + i); if (!n) return;
     var cur = n.querySelector('.gapw.cur'), box = cur && cur.parentNode;
     if (box) box.scrollTop = Math.max(0, cur.offsetTop - box.clientHeight / 2);
@@ -7939,18 +8128,18 @@ var ES_PHRASES = [
       var m = S.spec.modules[v.focus], U = UI[m.t];
       h = '';
     } else if (v.face === 'under') h = '';
-    else if (!g.started) h = '<p class="big">' + (S.solo ? t('cap.start.solo') : t('cap.start', '<b class="codechip">' + bombTag(S.spec) + '</b>')) + '</p>';
+    else if (!g.started && !S.vs) h = '<p class="big">' + (S.solo ? t('cap.start.solo') : t('cap.start', '<b class="codechip">' + bombTag(S.spec) + '</b>')) + '</p>';
     else h = '';
     el.innerHTML = h ? '<div class="pp">' + h + '</div>' : '';
   }
   function viewBomb() {
     var g = S.game, v = S.view, manual = S.solo && S.soloView === 'manual';
     var gr = gridFor(S.spec); v.cols = gr.cols; v.rows = gr.rows; v.dims = bombDims(gr.cols, gr.rows); v.place = placement(S.spec);
-    var h = '<div class="game">' + hudHTML();
+    var h = '<div class="game' + (S.solo && !manual && !g.paused ? ' solo-on' : '') + '">' + hudHTML();
     if (manual) h += '<div class="man-scroll"><div class="paper-wrap">' + helpHTML() + '</div></div>';
     else if (g.paused) h += '<div class="stage" id="stage"><div class="paused"><p>' + t('paused') + '</p><button type="button" class="cta" data-a="pause">' + t('tb.resume') + '</button></div></div>';
-    else h += '<div class="stage" id="stage">' + sceneHTML() + '<div class="caption" id="caption" aria-live="polite"></div></div>';
-    return h + '<div class="toolbar" id="toolbar">' + toolbarHTML() + '</div></div>';
+    else h += '<div class="stage" id="stage">' + sceneHTML() + '<div class="caption" id="caption" aria-live="polite"></div></div>' + (S.solo ? '<div class="solo-pane" id="solo-pane">' + soloPaneHTML() + '</div>' : '');
+    return h + '<div class="toolbar" id="toolbar">' + toolbarHTML() + '</div>' + (S.vs && g.hold ? '<div class="vs-hold" id="vs-hold" role="status">' + vsHoldHTML() + '</div>' : '') + '</div>';
   }
 
   /* ---------- the helper's page ---------- */
@@ -7959,7 +8148,7 @@ var ES_PHRASES = [
     var m = S.spec.modules[i];
     var hw = UI[m.t].hwait ? UI[m.t].hwait(m.data, manState(i)) : null;
     var waitTop = S.screen === 'helper' && !S.linked ? '<div class="hwait" role="status"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><p>' + esc(t('who.start', bombTag(S.spec).replace(/<[^>]*>/g, ''))) + '</p></div>' : '';
-    return waitTop + '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + guideHTML(m.t, 'help', hw) + UI[m.t].help(m.data, i, manState(i));
+    return waitTop + '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + (S.solo && S.screen === 'bomb' ? '' : guideHTML(m.t, 'help', hw)) + UI[m.t].help(m.data, i, manState(i));
   }
   /* a task can also have a column beside its page (the notes) and a part below it */
   function sideHTML(i) { var m = S.spec.modules[i]; return UI[m.t].side ? UI[m.t].side(m.data, i, manState(i)) : ''; }
@@ -7987,7 +8176,7 @@ var ES_PHRASES = [
   }
   /* redraws the task page (not the notes beside it) and puts the keyboard back where it was */
   function renderHelpBody() {
-    var el = $('#man-body'), af = $('#man-after'); if (!el || !helperVisible()) return;
+    var el = $('#man-body'), af = $('#man-after'); if (!el || !helpShown()) return;
     var ae = document.activeElement, key = null, s0 = null, s1 = null;
     if (ae && (el.contains(ae) || (af && af.contains(ae)))) {
       if (ae.id) { key = '#' + ae.id; try { s0 = ae.selectionStart; s1 = ae.selectionEnd; } catch (e) {} }
@@ -8000,7 +8189,7 @@ var ES_PHRASES = [
       if (n && !n.disabled) { try { n.focus({ preventScroll: true }); if (s0 != null && n.setSelectionRange) n.setSelectionRange(s0, s1); } catch (e2) {} }
     }
   }
-  function renderHelpSide() { var el = $('#man-side'); if (el && helperVisible()) el.innerHTML = sideHTML(S.tab); }
+  function renderHelpSide() { var el = $('#man-side'); if (el && helpShown()) el.innerHTML = sideHTML(S.tab); }
   function viewHelper() {
     if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '</div>';
     return '<div class="paper-wrap">' + helpHTML() + '</div>';
@@ -8025,6 +8214,7 @@ var ES_PHRASES = [
       (all.length ? '<div class="recap"><h2>' + t('res.recap') + '</h2><section>' + learn(all) + '</section></div>' : '') + '</div>';
   }
   function viewResult() {
+    if (S.vs) return viewVsResult();
     if (S.spec.party) return viewPartyResult();
     if (S.spec.path) return viewPathResult();
     var g = S.game, spec = S.spec, P = PACK[spec.lang], ok = g.over === 'ok';
@@ -8093,7 +8283,7 @@ var ES_PHRASES = [
     var el = $('#overlay');
     if (!S.drawer) { el.innerHTML = S.sheet ? sheetHTML() : ''; return; }
     var name = t(S.drawer === 'parlor' ? 'bar.phrases' : S.drawer === 'pair' ? 'pair.title' : 'bar.settings');
-    el.innerHTML = '<div class="scrim" data-a="drawer-close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="' + esc(name) + '"><button type="button" class="pbtn x" data-a="drawer-close">' + t('close') + '</button>' + (S.drawer === 'parlor' ? parlor() : S.drawer === 'pair' ? pairHTML() : settings()) + '</aside>';
+    el.innerHTML = '<div class="scrim" data-a="drawer-close"></div><aside class="drawer" role="dialog" aria-modal="true" aria-label="' + esc(name) + '"><button type="button" class="pbtn x" data-a="drawer-close">' + t('close') + '</button>' + (S.drawer === 'parlor' ? parlor() : S.drawer === 'pair' ? (S.pendVs ? '<p class="pair-vs">⚔️ ' + t('vs.link') + '</p>' : '') + pairHTML() : settings()) + '</aside>';
   }
 
 
@@ -8221,7 +8411,8 @@ var ES_PHRASES = [
   });
   try { if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit); } catch (e) {}
   function goHome() {
-    linkStop();
+    linkStop(); S.mstep = null;
+    if (S.vs) { if (S.game && !S.game.over) { S.game.quit = true; vsEnd(); } vsStop(); }
     if (S.spec && S.spec.party && S.screen !== 'party') { var bs = S.spec.party > BOSS0; stopLoop(); clearTimers(); micStop(); document.body.classList.remove('boom'); S.game = null; S.spec = null; S.solo = false; S.screen = bs ? 'deadair' : 'party'; render(); window.scrollTo(0, 0); return; }
     if (S.spec && S.spec.path && S.screen !== 'home' && S.screen !== 'classic') { goPath(); return; }
     var back = S.spec && !S.spec.path && S.screen !== 'home' && S.screen !== 'classic' ? 'classic' : 'home';
@@ -8339,7 +8530,11 @@ var ES_PHRASES = [
       case 'say': Voice.speak(ds.say, 0.9); break;
       case 'voice-stop': Voice.stop(); break;
       case 'drawer': S.drawer = ds.v; renderDrawer(); { var x = $('.drawer .x'); if (x) x.focus(); } break;
-      case 'drawer-close': S.drawer = null; renderDrawer(); break;
+      case 'drawer-close': S.drawer = null; S.pendVs = null; renderDrawer(); break;
+      case 'mode': modePick(ds.v); break;
+      case 'mback': S.mstep = null; if (S.sheet) renderDrawer(); else render(); break;
+      case 'vs-alone': vsAlone(); break;
+      case 'vs-again': vsAgain(); break;
     }
   }
   /* text typed on the helper's page: an answer for the task, or a note */
