@@ -168,6 +168,9 @@ body[data-screen="bomb"] :focus-visible{outline-color:var(--signal)}
 .stage{position:relative;flex:1;min-height:0;overflow:hidden;overflow:clip;background:#14181c}
 .man-scroll{flex:1;min-height:0;overflow-y:auto;background:var(--paper)}
 .man-scroll .paper-wrap{padding-bottom:24px;min-height:100%}
+.solo-pane{flex:none;height:40vh;height:40dvh;overflow-y:auto;background:var(--paper);color:var(--ink);border-top:4px solid var(--signal);-webkit-overflow-scrolling:touch}
+.solo-pane .paper-wrap{padding-bottom:20px;min-height:100%}
+@media (min-width:900px){.game.solo-on{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,38%);grid-template-rows:auto minmax(0,1fr) auto}.game.solo-on>.hud,.game.solo-on>.toolbar{grid-column:1/-1}.game.solo-on>.solo-pane{height:auto;border-top:0;border-left:4px solid var(--signal)}}
 .toolbar{flex:none;display:flex;gap:6px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 10px;background:#07090b}
 .tb{background:#1b2026;border:1.5px solid #4a535c;color:#fff;border-radius:8px;padding:7px 13px;min-height:42px;font-weight:700;font-size:15px}
 .tb:disabled{opacity:.4}
@@ -3708,7 +3711,7 @@ var STR = {
   'hud.sr': ['{0} minutes and {1} seconds', '{0} perc {1} másodperc', '{0} minutter og {1} sekunder'],
   'pen': ['−{0} s', '−{0} mp', '−{0} s'],
   'cap.start': ['Your partner opens the same bomb: {0}. When your partner is ready, tap a task on the bomb. Then the clock starts.', 'A társad ugyanezt a bombát nyitja meg: {0}. Ha a társad készen áll, koppints egy feladatra a bombán. Ekkor indul az óra.', 'Din makker åbner den samme bombe: {0}. Når din makker er klar, så tryk på en opgave på bomben. Så starter uret.'],
-  'cap.start.solo': ['You are playing alone. Tap a task on the bomb to start the clock. The “Helper page” button below shows what a partner would see.', 'Egyedül játszol. Koppints egy feladatra a bombán, ekkor indul az óra. A lenti „Segítő oldala” gomb megmutatja, amit a társad látna.', 'Du spiller alene. Tryk på en opgave på bomben for at starte uret. Knappen »Hjælperens side« nedenfor viser det, en makker ville se.'],
+  'cap.start.solo': ['Tap a task to start the clock. The helper\'s half is right here too.', 'Koppints egy feladatra, ekkor indul az óra. A segítő fele is itt van.', 'Tryk på en opgave for at starte uret. Hjælperens halvdel er også her.'],
   'cap.over': ['Tap a task to zoom in.', 'Koppints egy feladatra a nagyításhoz.', 'Tryk på en opgave for at zoome ind.'],
   'cap.over.more': ['Turn the bomb to see the tasks on the back.', 'Fordítsd meg a bombát, hogy lásd a hátoldalon lévő feladatokat.', 'Vend bomben for at se opgaverne på bagsiden.'],
   'cap.under': ['The serial number and the batteries are here. Your partner may ask about them.', 'Itt van a sorozatszám és az elemek. A társad rákérdezhet ezekre.', 'Her står serienummeret og batterierne. Din makker spørger måske om dem.'],
@@ -4647,7 +4650,7 @@ var ES_PHRASES = [
 'use strict';
 (function () {
   /* ===== Last Wire: interface, part A: state, languages, voice, sound, clock, camera ===== */
-  var BUILD = 46;
+  var BUILD = 47;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4872,7 +4875,7 @@ var ES_PHRASES = [
   }
   function voiceChanged() {
     if (S.drawer) renderDrawer();
-    if (helperVisible()) renderHelpBody();
+    if (helpShown()) renderHelpBody();
   }
   var SPK = '<svg class="spk" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
   function sayBtn(text, small) {
@@ -5378,7 +5381,7 @@ var ES_PHRASES = [
   function solvedFx(i) {
     var g = S.game; sfx('ok'); paintHud(); vsProg();
     if (g.solved.every(Boolean)) { defuse(); return; }
-    var nx = nextTask(); S.tab = nx;
+    var nx = nextTask(); S.tab = nx; paintSoloPane();
     if (helperVisible()) { render(); var sc2 = $('.man-scroll'); if (sc2) sc2.scrollTop = 0; }
     setTimeout(function () { if (S.game === g && !g.over && S.view) goTask(nx); }, 1100);
   }
@@ -5478,7 +5481,7 @@ var ES_PHRASES = [
     if (!g.started) { g.started = true; g.last = Date.now(); }
     v.focus = i; v.lockS = 0;
     if (old != null) renderMod(old);
-    renderMod(i); paintToolbar(); paintCaption(); applyView(true); sfx('zoom');
+    renderMod(i); paintToolbar(); paintCaption(); paintSoloPane(); applyView(true); sfx('zoom');
     if (!focusField(i)) { var el = document.getElementById('mod-' + i); if (el) { try { el.focus({ preventScroll: true }); } catch (e) {} } }
   }
   function nextTask() { var g = S.game; if (!g) return -1; for (var k = 0; k < g.solved.length; k++) if (!g.solved[k]) return k; return -1; }
@@ -5950,7 +5953,7 @@ var ES_PHRASES = [
       if (!ms.cd) { clearInterval(iv); return; }
       ms.cd.n--;
       if (ms.cd.n <= 0) { clearInterval(iv); ms.rev[ms.cd.key] = true; ms.cd = null; }
-      if (!helperVisible() || S.tab !== i) return;
+      if (!helpShown() || S.tab !== i) return;
       /* while it counts only the label changes, so that somebody who is typing is not disturbed */
       var b = ms.cd && document.querySelector('#man-body [data-k="reveal"][data-v="' + ms.cd.key + '"]');
       if (b) b.textContent = t('write.wait', ms.cd.n); else renderHelpBody();
@@ -5963,7 +5966,7 @@ var ES_PHRASES = [
       var text = textOf(v); if (text == null) return true;
       if (!Voice.has()) { ms.rev[v] = true; renderHelpBody(); return true; }
       /* a voice that fails must not stop the game: what it could not read is written down, at no cost */
-      Voice.speak(text, k === 'slow' || ms.slow ? 0.7 : 1).then(function (ok) { if (!ok) { ms.rev[v] = true; ms.vf = ms.vf || {}; ms.vf[v] = true; if (helperVisible() && S.tab === i) renderHelpBody(); } });
+      Voice.speak(text, k === 'slow' || ms.slow ? 0.7 : 1).then(function (ok) { if (!ok) { ms.rev[v] = true; ms.vf = ms.vf || {}; ms.vf[v] = true; if (helpShown() && S.tab === i) renderHelpBody(); } });
       return true;
     }
     if (k === 'reveal') { startReveal(ms, v, i); return true; }
@@ -6337,7 +6340,7 @@ var ES_PHRASES = [
     S.wopen[k] = true; S.wnew = k;
     wAdd(tl(), k, ctx, S.spec ? S.spec.code : '');
     if (S.screen === 'bomb' && S.game && !S.game.over) penalty(3); else sfx('pen');
-    if (helperVisible()) renderHelpBody();
+    if (helpShown()) renderHelpBody();
     else if (S.screen === 'bomb' && S.view && S.view.focus != null) renderMod(S.view.focus);
     else render();
     S.wnew = null;
@@ -7944,6 +7947,22 @@ var ES_PHRASES = [
   }
 
   /* ===== part D: screens, events, start-up ===== */
+  /* solo: the helper's half sits beside (or under) the bomb, for the task being solved */
+  function soloPaneOn() { return S.screen === 'bomb' && S.solo && S.soloView !== 'manual' && !!S.game && !S.game.paused && !!document.getElementById('solo-pane'); }
+  function helpShown() { return helperVisible() || soloPaneOn(); }
+  function soloTab() { var g = S.game, f = S.view && S.view.focus; return f != null && f >= 0 && !g.solved[f] ? f : Math.max(0, nextTask()); }
+  function soloPaneHTML() {
+    var spec = S.spec, i = S.tab = soloTab();
+    spec.modules.forEach(function (m, k) { if (UI[m.t].pos && S.game.ms[k]) manState(k).step = UI[m.t].pos(m.data, S.game.ms[k]); });
+    var side = sideHTML(i), after = afterHTML(i);
+    return '<div class="paper-wrap"><div class="manual"><div class="man-cols" id="man-cols"><article class="chapter" id="man-body">' + chapterHTML(i) + '</article>' +
+      (side ? '<aside class="side" id="man-side">' + side + '</aside>' : '') + (after ? '<div class="chapter after" id="man-after">' + after + '</div>' : '') + '</div></div></div>';
+  }
+  function paintSoloPane() {
+    var el = document.getElementById('solo-pane'); if (!el || !S.game) return;
+    var was = S.tab, ae = document.activeElement; if (ae && el.contains(ae) && soloTab() === was) { renderHelpBody(); return; }
+    el.innerHTML = soloPaneHTML(); if (S.tab !== was) el.scrollTop = 0;
+  }
   function helperVisible() { return S.screen === 'helper' || (S.screen === 'bomb' && S.solo && S.soloView === 'manual'); }
   function stars(n) { var s = ''; for (var k = 0; k < 3; k++) s += k < n ? '★' : '☆'; return s; }
   var ICON_BOMB = '<svg class="role-i" viewBox="0 0 96 72" aria-hidden="true"><path d="M30 15v-5a8 8 0 0 1 8-8h20a8 8 0 0 1 8 8v5" fill="none" stroke="#9aa3ab" stroke-width="5"/><rect x="6" y="14" width="84" height="54" rx="6" fill="var(--enamel)"/><rect x="33" y="24" width="30" height="16" rx="2" fill="#140406"/><path d="M38 36v-8h5v8zM47 36v-8h5v8M56 28v8" fill="none" stroke="var(--signal)" stroke-width="2"/><path d="M13 28q7-6 14 0M13 40q7 6 14 0M69 28q7-6 14 0M69 40q7 6 14 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/><circle cx="48" cy="54" r="4.5" fill="#ff4040"/></svg>';
@@ -8040,7 +8059,7 @@ var ES_PHRASES = [
   function modHTML(i) {
     var g = S.game, v = S.view, m = S.spec.modules[i], name = modName(m.t), solved = g.solved[i], focus = v.focus === i, body;
     if (solved) body = '<p class="okline">' + t('solved') + '</p><div class="donebox">' + (UI[m.t].done ? UI[m.t].done(m.data, g.ms[i], i) : '') + '</div>';
-    else body = (focus ? guideHTML(m.t, 'bomb', UI[m.t].bwait ? UI[m.t].bwait(m.data, g.ms[i]) : null) : '') + UI[m.t].bomb(m.data, g.ms[i], i);
+    else body = (focus && !S.solo ? guideHTML(m.t, 'bomb', UI[m.t].bwait ? UI[m.t].bwait(m.data, g.ms[i]) : null) : '') + UI[m.t].bomb(m.data, g.ms[i], i);
     return '<section class="panel mod m-' + m.t + (solved ? ' solved' : '') + (focus ? ' focus' : '') + '" id="mod-' + i + '" tabindex="-1" style="' + cellStyle(v.place[i].cell) + '" aria-label="' + esc(name) + '">' +
       '<header class="p-h"><h3 lang="' + tl() + '">' + esc(name) + '</h3><span class="led" role="img" aria-label="' + esc(t(solved ? 'solved' : 'unsolved')) + '"></span></header>' +
       '<div class="p-b"' + (focus ? '' : ' inert') + '>' + body + '</div>' +
@@ -8055,6 +8074,7 @@ var ES_PHRASES = [
       else if (ae.getAttribute('data-k')) key = '[data-k="' + ae.getAttribute('data-k') + '"]' + (ae.getAttribute('data-v') != null ? '[data-v="' + ae.getAttribute('data-v') + '"]' : '');
     }
     el.outerHTML = modHTML(i);
+    if (S.solo && i === S.tab) paintSoloPane();
     var n = document.getElementById('mod-' + i); if (!n) return;
     var cur = n.querySelector('.gapw.cur'), box = cur && cur.parentNode;
     if (box) box.scrollTop = Math.max(0, cur.offsetTop - box.clientHeight / 2);
@@ -8115,10 +8135,10 @@ var ES_PHRASES = [
   function viewBomb() {
     var g = S.game, v = S.view, manual = S.solo && S.soloView === 'manual';
     var gr = gridFor(S.spec); v.cols = gr.cols; v.rows = gr.rows; v.dims = bombDims(gr.cols, gr.rows); v.place = placement(S.spec);
-    var h = '<div class="game">' + hudHTML();
+    var h = '<div class="game' + (S.solo && !manual && !g.paused ? ' solo-on' : '') + '">' + hudHTML();
     if (manual) h += '<div class="man-scroll"><div class="paper-wrap">' + helpHTML() + '</div></div>';
     else if (g.paused) h += '<div class="stage" id="stage"><div class="paused"><p>' + t('paused') + '</p><button type="button" class="cta" data-a="pause">' + t('tb.resume') + '</button></div></div>';
-    else h += '<div class="stage" id="stage">' + sceneHTML() + '<div class="caption" id="caption" aria-live="polite"></div></div>';
+    else h += '<div class="stage" id="stage">' + sceneHTML() + '<div class="caption" id="caption" aria-live="polite"></div></div>' + (S.solo ? '<div class="solo-pane" id="solo-pane">' + soloPaneHTML() + '</div>' : '');
     return h + '<div class="toolbar" id="toolbar">' + toolbarHTML() + '</div>' + (S.vs && g.hold ? '<div class="vs-hold" id="vs-hold" role="status">' + vsHoldHTML() + '</div>' : '') + '</div>';
   }
 
@@ -8128,7 +8148,7 @@ var ES_PHRASES = [
     var m = S.spec.modules[i];
     var hw = UI[m.t].hwait ? UI[m.t].hwait(m.data, manState(i)) : null;
     var waitTop = S.screen === 'helper' && !S.linked ? '<div class="hwait" role="status"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><p>' + esc(t('who.start', bombTag(S.spec).replace(/<[^>]*>/g, ''))) + '</p></div>' : '';
-    return waitTop + '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + guideHTML(m.t, 'help', hw) + UI[m.t].help(m.data, i, manState(i));
+    return waitTop + '<h2 class="sr" lang="' + tl() + '">' + esc(modName(m.t)) + '</h2>' + (S.solo && S.screen === 'bomb' ? '' : guideHTML(m.t, 'help', hw)) + UI[m.t].help(m.data, i, manState(i));
   }
   /* a task can also have a column beside its page (the notes) and a part below it */
   function sideHTML(i) { var m = S.spec.modules[i]; return UI[m.t].side ? UI[m.t].side(m.data, i, manState(i)) : ''; }
@@ -8156,7 +8176,7 @@ var ES_PHRASES = [
   }
   /* redraws the task page (not the notes beside it) and puts the keyboard back where it was */
   function renderHelpBody() {
-    var el = $('#man-body'), af = $('#man-after'); if (!el || !helperVisible()) return;
+    var el = $('#man-body'), af = $('#man-after'); if (!el || !helpShown()) return;
     var ae = document.activeElement, key = null, s0 = null, s1 = null;
     if (ae && (el.contains(ae) || (af && af.contains(ae)))) {
       if (ae.id) { key = '#' + ae.id; try { s0 = ae.selectionStart; s1 = ae.selectionEnd; } catch (e) {} }
@@ -8169,7 +8189,7 @@ var ES_PHRASES = [
       if (n && !n.disabled) { try { n.focus({ preventScroll: true }); if (s0 != null && n.setSelectionRange) n.setSelectionRange(s0, s1); } catch (e2) {} }
     }
   }
-  function renderHelpSide() { var el = $('#man-side'); if (el && helperVisible()) el.innerHTML = sideHTML(S.tab); }
+  function renderHelpSide() { var el = $('#man-side'); if (el && helpShown()) el.innerHTML = sideHTML(S.tab); }
   function viewHelper() {
     if (S.spec.path) return '<div class="paper-wrap">' + helpHTML() + '</div>';
     return '<div class="paper-wrap">' + helpHTML() + '</div>';
